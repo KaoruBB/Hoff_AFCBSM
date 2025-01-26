@@ -43,13 +43,15 @@ I hope this site will help someone who will read this book.
 #+INCLUDE: ./part/ch9/exercise.org
 #+INCLUDE: ./part/ch10/exercise.org
 * How to contribute
-This website was created by [[https://kaorubb.org/][me]] as a hobby during my master's program, so there may be many typos and errors.
+This website is a personal project I created during my master's program.
 
-There are still many unsolved problems, and I plan to continue to update this site.
+As such, there may be some typos, inaccuracies, or other errors. I am aware that there are still some areas for improvement, and I plan to continue developing and updating this site.
 
-If you find any mistakes, please send an Issue or Pull Request to [[https://github.com/KaoruBB/Hoff_AFCBSM][this repository]].
+If you encounter any errors or have suggestions for improvement, please feel free to submit an issue or pull request to [[https://github.com/KaoruBB/Hoff_AFCBSM][this GitHub repository]].
 
 You can also [[mailto:bbkaoru1007@keio.jp][contact me by email]].
+
+Your feedback is greatly appreciated.
 
 I would like to thank the following people for pointing out typos and errors:
 - Okamoto Noriaki
