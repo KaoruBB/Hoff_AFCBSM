@@ -1,0 +1,1076 @@
+* Chapter 4
+** 4.1
+*** question :noexport:
+Posterior comparisons: Reconsider the sample survey in [[id:9b7f815b-a904-4921-b8b8-fcaf7c9dac74][Exercise 3.1.]]
+Suppose you are interested in comparing the rate of support in that county to the rate in another county.
+Suppose that survey of sample size 50 was done in the second county, and the total number of people in the sample who supported the policy was 30.
+Identify the posterior distribution of \(\theta_2\) assuming a uniform prior.
+Sample 5,000 values of each of \(\theta_1\) and \(\theta_2\) from their posterior distributions and estimate Pr(\(\theta_1 < \theta_2 \mid\) the data and prior).
+
+*** answer
+\(\theta_1, \theta_2\)それぞれの事後分布は、
+
+\begin{align*}
+& \theta_1 \sim \text{Beta}(1 +57, 1 + 43) \\
+& \theta_2 \sim \text{Beta}(1 + 30, 1 + 20) \\
+\end{align*}
+
+である。
+Pr(\(\theta_1 < \theta_2 \mid\) the data and prior)
+は、以下のように計算できる。
+
+#+begin_src julia :session ch4 :exports both :eval no-export
+using Distributions
+using Random
+Random.seed!(1234)
+a, b = 1, 1
+sy₁, n₁ = 57, 100
+sy₂, n₂ = 30, 50
+
+θ₁_mc = rand(Beta(a + sy₁, b + n₁ -sy₁), 5000)
+θ₂_mc = rand(Beta(a + sy₂, b + n₂ -sy₂), 5000)
+
+mean(θ₁_mc .< θ₂_mc)
+#+end_src
+
+#+RESULTS:
+: 0.626
+
+よって、事後分布の比較により、\(\theta_2\)の方が大きい事後確率は約 63%である。
+** 4.2
+:PROPERTIES:
+:header-args: :session ch4 :eval no-export
+:END:
+*** question :noexport:
+Tumor count comparisons:
+Reconsider the tumor count data in [[id:0e0e4476-05ff-4592-8dff-c34d6d1209e6][Exercise 3.3]] :
+*** a)
+**** question :noexport:
+For the prior distribution given in [[id:9314c55b-504f-4446-adfe-c726d99efc87][part a)]] of that exercise, obtain
+Pr(\(\theta_B < \theta_A \mid \boldsymbol{y}_A, \boldsymbol{y}_B\)).
+via Monte Carlo sampling.
+
+**** answer
+
+#+begin_src julia :session ch4 :exports both :eval no-export
+using Distributions
+using Random
+Random.seed!(1234)
+y_A = [12, 9, 12, 14, 13, 13, 15, 8, 15, 6]
+y_B = [11, 11, 10, 9, 9, 8, 7, 10, 6, 8, 8, 9, 7]
+
+n_A, sy_A = length(y_A) , sum(y_A)
+n_B, sy_B = length(y_B) , sum(y_B)
+
+a₀_A = 120
+b₀_A = 10
+a₀_B = 12
+b₀_B = 1
+
+# Posterior distributions
+dist_A = Gamma(a₀_A + sy_A, 1/(b₀_A + n_A))
+dist_B = Gamma(a₀_B + sy_B, 1/(b₀_B + n_B))
+
+θ_A_mc = rand(dist_A, 5000)
+θ_B_mc = rand(dist_B, 5000)
+
+mean(θ_B_mc .< θ_A_mc)
+#+end_src
+
+#+RESULTS:
+: 0.996
+
+以上より、
+\[
+\text{Pr}(\theta_B < \theta_A \mid \boldsymbol{y}_A, \boldsymbol{y}_B)
+\fallingdotseq 0.997
+\]
+*** b)
+**** question :noexport:
+For a range of values of \(n_0\), obtain
+Pr(\(\theta_B < \theta_A \mid \boldsymbol{y}_A, \boldsymbol{y}_B\))
+for
+\( \theta_A \sim \text{gamma}(120, 10) \)
+and
+\( \theta_B \sim \text{gamma}(12 \times n_0, n_0) \).
+
+**** answer
+
+#+begin_src julia :exports code
+dist_θ_B = n -> Gamma(a₀_B*n + sy_B, 1/(n + n_B) )
+
+# %%
+t_mc = []
+for n₀ in 1:50
+    θ_B_mc = rand(dist_θ_B(n₀), 5000)
+    append!(t_mc, mean(θ_B_mc .< θ_A_mc))
+end
+#+end_src
+
+
+#+begin_src julia :results file :exports none
+using Plots
+using LaTeXStrings
+p = plot(
+    1:50, t_mc, label=L"\theta_B < \theta_A"
+    , xlabel="n₀", legend=nothing
+    , ylabel=L"Pr(θ_B < θ_A \mid y_A, y_B)"
+)
+savefig(p, "../../fig/ch4/excersise4-2b.png")
+"../../fig/ch4/excersise4-2b.png"
+#+end_src
+
+#+RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4-2b.png]]
+
+*** c)
+**** question :noexport:
+Rpeat parts a) and b), replacing the event
+\(\{\theta_B < \theta_A\}\)
+with the event
+\(\{\tilde{Y}_B < \tilde{Y}_A\}\),
+where \(\tilde{Y}_A\) and \(\tilde{Y}_B\) are samples from the posterior predictive distributions.
+
+**** answer a'
+
+#+begin_src julia :exports both
+θ_A_mc = rand(dist_A, 10000)
+θ_B_mc = rand(dist_B, 10000)
+y_A_mc = rand.(Poisson.(θ_A_mc))
+y_B_mc = rand.(Poisson.(θ_B_mc))
+
+mean(y_A_mc .> y_B_mc)
+#+end_src
+
+#+RESULTS:
+: 0.6953
+
+以上より、
+\[
+\text{Pr}(\tilde{Y}_B < \tilde{Y}_A \mid \boldsymbol{y}_A, \boldsymbol{y}_B)
+\fallingdotseq 0.695
+\]
+
+**** answer b'
+
+#+begin_src julia :exports code
+t_mc = []
+for n₀ in 1:50
+    θ_B_mc = rand(dist_θ_B(n₀), 10000)
+    y_B_mc = rand.(Poisson.(θ_B_mc))
+    append!(t_mc, mean(θ_B_mc .< θ_A_mc))
+end
+#+end_src
+
+#+begin_src julia :exports results
+p = plot(
+    1:50, t_mc,
+    xlabel="n₀",
+    ylabel=L"Pr(\tilde{Y}_A > \tilde{Y}_B \mid y_A, y_B)",
+    legend=nothing
+)
+#+end_src
+
+#+RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4-2c.png]]
+
+** 4.3
+:PROPERTIES:
+:header-args: :session ch4 :eval no-export
+:END:
+*** question :noexport:
+Posterior predictive checks:
+Let's investigate the the adequacy of the Poisson model for the tumor count data.
+Following the example in Section 4.4, generate posterior predictive datasets
+\(\boldsymbol{y}^{(1)}_A, \boldsymbol{y}^{(2)}_A, \ldots, \boldsymbol{y}^{(1000)}_A\).
+Each \( \boldsymbol{y}^{(s)}_A \) is a sample of size \(n_A = 10\) from the Poisson distribution with parameter \(\theta^{(s)}_A\),
+\(\theta^{(s)}_A\) is itself a sample from the posterior distribution \(p(\theta_A \mid \boldsymbol{y}_A)\), and \(\boldsymbol{y}_A\) is the observed data.
+
+
+*** a)
+**** question :noexport:
+For each \(s\), let \(t^{(s)} \) be the sample average of the 10 values of \(\boldsymbol{y}^{(s)}_A\),
+divided by the sample standard deviation of \(\boldsymbol{y}^{(s)}_A\).
+Make a histogram of \(t^{(s)}\) and compare to the observed value of this statistic.
+Based on this statistic, assess the fit of the Poisson model for these data.
+
+**** answer
+
+#+begin_src julia
+using Distributions
+using Random
+Random.seed!(1234)
+y_A = [12, 9, 12, 14, 13, 13, 15, 8, 15, 6]
+y_B = [11, 11, 10, 9, 9, 8, 7, 10, 6, 8, 8, 9, 7]
+
+n_A, sy_A = length(y_A) , sum(y_A)
+n_B, sy_B = length(y_B) , sum(y_B)
+
+a₀_A = 120
+b₀_A = 10
+a₀_B = 12
+b₀_B = 1
+
+# Posterior distributions
+dist_A = Gamma(a₀_A + sy_A, 1/(b₀_A + n_A))
+dist_B = Gamma(a₀_B + sy_B, 1/(b₀_B + n_B))
+
+n_A = 10
+
+# %%
+t_mc = []
+for s in 1:1000
+    θ_A = rand(dist_A)
+    y_A_mc = rand(Poisson(θ_A), n_A)
+    avg = mean(y_A_mc)
+    sd = std(y_A_mc)
+    append!(t_mc, avg/sd )
+end
+#+end_src
+
+:RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4-3a.png]]
+
+You can see that the observed value of \(t\) is in the middle of the distribution of \(t^{(s)}\).
+From this, we can conclude that the Poisson model is a good fit for the population of this data.
+
+*** b)
+**** question :noexport:
+
+Repeat the above goodness of fit evaluation for the data in population \(B\).
+
+**** answer
+#+begin_src julia
+t_mc = []
+for s in 1:1000
+    θ_B = rand(dist_B)
+    y_B_mc = rand(Poisson(θ_B), n_B)
+    avg = mean(y_B_mc)
+    sd = std(y_B_mc)
+    append!(t_mc, avg/sd )
+end
+#+end_src
+
+:RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4-3b.png]]
+
+
+You can see that the observed value of \(t\) is located at the quite edge of the distribution.
+From this, we can conclude that the Poisson model cannot reflect the feature of the population.
+** 4.4
+:PROPERTIES:
+:header-args: :session ch4 :eval no-export
+:END:
+*** question :noexport:
+Mixture of conjugate priors:
+For the posterior density from [[3.4][Exercise3.4:]]
+
+*** a)
+**** question :noexport:
+Make a plot of \(p(\theta \mid y)\) or \(p( y \mid \theta) p(\theta)\)
+using the mixture prior distribution and a dense sequence of \(\theta\)-values.
+Can you think of a way to obtain a 95% quantile-based posterior confidence interval for \(\theta\)?
+You might want to try some sort of discrete approximation.
+
+**** answer
+
+[[id:de979953-989c-4e64-b67f-57f4443d2d39][3.4 d) ii]] の結果より、
+mixture prior distribution を用いたときの posterior distribution は
+\(\frac{3}{4} \text{Beta}(17, 36) + \frac{1}{4} \text{Beta}(23, 30)\)
+に従う。
+プロットは以下の通り。
+
+#+begin_src julia :exports both
+using Distributions
+using Random
+using LaTeXStrings
+using Plots
+mm = MixtureModel(
+    [Beta(17, 36), Beta(23, 30)],
+    [0.75, 0.25]
+)
+mm_samples = rand(mm, 10_000_000)
+histogram(
+    mm_samples, label="mixture model posterior"
+    , bins=1000, normalize=:pdf, xlabel="θ", ylabel=L"p(\theta \mid y)"
+)
+#+end_src
+
+#+RESULTS:
+
+:RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4-4a.png]]
+
+95% quantile-based posterior confidence interval は以下のように、サンプルの quantile を用いて近似値を求めることができる。
+
+#+begin_src julia :exports both :results output
+quantile(mm_samples, [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:  0.2098971517541345
+:  0.5230478539666719
+*** b)
+**** question :noexport:
+To sample a random variable \(z\) from the mixture distribution
+\(w p_1(z) + (1-w)p_0(z)\), first toss a \(w\)-coin and let \(x\) be the outcome
+(this can be done in Julia with
+~rand(Bernoulli(w), 1)~).
+Then if \(x = 1\) sample \(z\) from \(p_1\),
+and if \(x=0\) sample \(z\) from \(p_0\).
+Using this technique, obtain a Monte Carlo approximation of the posterior distribution
+\(p(\theta \mid y)\) and a 95% quantile-based posterior confidence interval,
+and compare them to the results in part a).
+
+**** answer
+#+begin_src julia :exports code
+w = 0.75
+
+z_mc = []
+for s in 1:10_000_000
+    x = rand(Bernoulli(w), 1)
+    dist = x == 1 ? Beta(17, 36) : Beta(23, 30)
+    z = rand(dist)
+    append!(z_mc, z)
+end
+#+end_src
+
+:RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4-4b.png]]
+
+どちらも同じ形状の分布になる！
+** 4.5
+:PROPERTIES:
+:header-args: :session ch4 :eval no-export
+:END:
+*** question :noexport:
+Cancer deaths:
+Suppose for a set of counties \(i \in \left\{ 1, \dots, n \right\}\)
+we have information on the population size
+\(X_i =\) number of people in 10,000s, and
+\(Y_i = \) number of cancer fatalities.
+One model for the distribution of cancer fatalities is that, given the cancer rate \(\theta\),
+they are independently distributed with \(Y_i \sim \text{Poisson}(\theta X_i)\).
+*** a)
+**** question :noexport:
+Identify the posterior distribution of \(\theta\) given data
+\((Y_1, X_1), \dots, (Y_n, X_n)\)
+and gamma(\(a,b\)) prior distribution.
+**** answer
+\(Y_i \sim \text{Poisson}(\theta X_i)\)より、尤度は
+\begin{align*}
+p((Y_1, X_1), \dots, (Y_n, X_n) \mid \theta )
+&= \prod_{i=1}^n p(Y_i, X_i \mid \theta )
+\quad (\because \text{ i.i.d. })\\
+&= \prod_{i=1}^n p(Y_i \mid X_i, \theta ) p(X_i \mid \theta ) \\
+&\propto \prod_{i=1}^n p(Y_i \mid X_i, \theta )
+\quad (\because  X_i \text{ is independent from } \theta) \\
+&= \prod_{i=1}^n \frac{(\theta X_i)^{Y_i} e^{-\theta X_i}}{Y_i!} \\
+&\propto \theta^{ \sum_{i=1}^n Y_i } e^{-\theta \sum_{i=1}^n X_i}
+\end{align*}
+
+また、\(\theta \sim \text{gamma}(a, b)\)より、事前分布は、
+\begin{align*}
+p(\theta)
+&= \frac{b^a}{\Gamma(a)} \theta^{a-1} e^{-b \theta} \\
+&\propto \theta^{a-1} e^{-b \theta}
+\end{align*}
+
+ベイズの定理より、事後分布は、
+\begin{align*}
+p(\theta \mid (Y_1, X_1), \dots, (Y_n, X_n))
+&\propto \theta^{ \sum_{i=1}^n Y_i } e^{-\theta \sum_{i=1}^n X_i}
+\times \theta^{a-1} e^{-b \theta} \\
+&\propto \theta^{ a-1 + \sum_{i=1}^n Y_i } e^{ - \theta (b + \sum_{i=1}^n X_i) }
+\end{align*}
+
+以上より、事後分布は、
+Gamma(\(a + \sum_{i=1}^n Y_i, b + \sum_{i=1}^n X_i\))
+に従う。
+
+*** b)
+**** question :noexport:
+Using the numerical values of the data, identify the posterior distributions for \(\theta_1\) and \(\theta_2\) for any values of \(a_1, b_1, a_2, b_2\).
+
+**** answer
+#+begin_src julia :exports none
+import Pkg; Pkg.activate("./code")
+using Distributions
+using Random
+using LaTeXStrings
+using Plots, StatsPlots
+using CSV, DataFrames
+using DelimitedFiles
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :results output
+cancer_noreact=DataFrame(readdlm("./Exercises/cancer_noreact.dat", skipstart=1), :auto);
+sx₁, sy₁ = sum.(eachcol(cancer_noreact))
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:  1037.0
+:  2285.0
+
+#+begin_src julia :results output
+cancer_react=DataFrame(readdlm("./Exercises/cancer_react.dat", skipstart=1), :auto);
+sx₂, sy₂ = sum.(eachcol(cancer_react))
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:   95.0
+:  256.0
+
+nuclear reactors に近い地域では、
+\begin{align*}
+\sum_{i=1}^n X_i &= 95 \\
+\sum_{i=1}^n Y_i &= 256
+\end{align*}
+
+nuclear reactors に近くない地域では、
+\begin{align*}
+\sum_{i=1}^n X_i &= 1037 \\
+\sum_{i=1}^n Y_i &= 2285
+\end{align*}
+
+であることから、\(\theta_1, \theta_2\)それぞれの事後分布は、
+\begin{align*}
+\theta_1 &\sim \text{Gamma}(a_1 + 2285, b_1 + 1037) \\
+\theta_2 &\sim \text{Gamma}(a_2 + 256, b_2 + 95)
+\end{align*}
+である。
+*** c)
+**** question :noexport:
+Suppose cancer rates from previous years have been roughly
+\(\hat{\theta} = 2.2\) per 10,000 (and note that most counties are not near reactors).
+For each of the following three prior opinions, compute E[\(\theta_1 \mid \) data], E[\(\theta_2 \mid \) data], 95% quantile-based posterior intervals for \(\theta_1\) and \(\theta_2\), and
+Pr(\(\theta_2 > \theta_1 \mid \) data).
+Also plot the posterior densities (try to put \(p(\theta_1 \mid \) data) and \(p(\theta_2 \mid \) data) on the same plot).
+Comment on the differences across posterior opinions.
+
+**** i
+***** question :noexport:
+Opinion 1:
+\( (a_1 = a_2= 2.2 \times 100,
+b_1 = b_2 = 100 )\).
+Cancer rates for both types of counties are similar to the average rates across all counties from previous years.
+***** answer
+
+#+begin_src julia :exports both
+a₁, b₁ = 2.2 * 100, 100
+a₂, b₂ = 2.2 * 100, 100
+
+# Posterior distributions
+dist_1 = Gamma(a₁ + sy₁, 1/(b₁ + sx₁))
+dist_2 = Gamma(a₂ + sy₂, 1/(b₂ + sx₂))
+
+mean_1 = round((a₁ + sy₁) /(b₁ + sx₁), digits=2)
+mean_2 = round((a₂ + sy₂) /(b₂ + sx₂), digits=2)
+
+["Posterior mean of Group 1:  $mean_1"
+ , "Posterior mean of Group 2:  $mean_2"]
+#+end_src
+
+#+RESULTS:
+| Posterior mean of Group 1:  2.2  |
+| Posterior mean of Group 2:  2.44 |
+
+#+begin_src julia :exports both
+# 95% quantile-based confidence intervals
+ci_1 = round.(quantile.(dist_1, [0.025, 0.975]), digits=2)
+ci_2 = round.(quantile.(dist_2, [0.025, 0.975]), digits=2)
+["95% CI of Group 1:  $ci_1"
+    , "95% CI of Group 2:  $ci_2"]
+#+end_src
+
+#+RESULTS:
+| 95% CI of Group 1:  [2.12, 2.29] |
+| 95% CI of Group 2:  [2.23, 2.67] |
+
+#+begin_src julia :exports both :results output
+θ₁_mc = rand(dist_1, 10000);
+θ₂_mc = rand(dist_2, 10000);
+"Pr(θ₂>θ₁|data) = $(mean(θ₁_mc .< θ₂_mc))"
+#+end_src
+
+#+RESULTS:
+: "Pr(θ₂>θ₁|data) = 0.9788"
+
+#+begin_src julia :exports none
+fig = plot(
+    dist_1, label="p(θ₁|data)"
+)
+fig = plot!(
+    dist_2, label="p(θ₂|data)"
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_5ci.png]]
+**** ii.
+***** question :noexport:
+Opiion 2:
+\( (a_1 = 2.2 \times 100, b_1 = 100, a_2 = 2.2, b_2 = 1 )\).
+Cancer rates in this year for nonreactor counties are similar to rates in previous years in nonreactor connties are similar to rates in previous years in nonreactor counties.
+We don't have much information on reactor counties, but perhaps the rates are close to those observed previously in nonreactor counties.
+
+***** answer
+
+#+begin_src julia :exports both
+a₁, b₁ = 2.2 * 100, 100
+a₂, b₂ = 2.2 , 1
+
+# Posterior distributions
+dist_1 = Gamma(a₁ + sy₁, 1/(b₁ + sx₁))
+dist_2 = Gamma(a₂ + sy₂, 1/(b₂ + sx₂))
+
+mean_1 = round((a₁ + sy₁) /(b₁ + sx₁), digits=2)
+mean_2 = round((a₂ + sy₂) /(b₂ + sx₂), digits=2)
+
+["Posterior mean of Group 1:  $mean_1"
+ , "Posterior mean of Group 2:  $mean_2"]
+#+end_src
+
+#+RESULTS:
+| Posterior mean of Group 1:  2.2  |
+| Posterior mean of Group 2:  2.69 |
+
+#+begin_src julia :exports both
+# 95% quantile-based confidence intervals
+ci_1 = round.(quantile.(dist_1, [0.025, 0.975]), digits=2)
+ci_2 = round.(quantile.(dist_2, [0.025, 0.975]), digits=2)
+["95% CI of Group 1:  $ci_1"
+    , "95% CI of Group 2:  $ci_2"]
+#+end_src
+
+#+RESULTS:
+| 95% CI of Group 1:  [2.12, 2.29] |
+| 95% CI of Group 2:  [2.37, 3.03] |
+
+#+begin_src julia :exports both :results output
+θ₁_mc = rand(dist_1, 10000);
+θ₂_mc = rand(dist_2, 10000);
+"Pr(θ₂>θ₁|data) = $(mean(θ₁_mc .< θ₂_mc))"
+#+end_src
+
+#+RESULTS:
+: "Pr(θ₂>θ₁|data) = 0.9992"
+
+#+begin_src julia :exports none
+fig = plot(
+    dist_1, label="p(θ₁|data)"
+)
+fig = plot!(
+    dist_2, label="p(θ₂|data)"
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_5cii.png]]
+**** iii.
+***** question :noexport:
+Opinion 3:
+\( (a_1 = a_2= 2.2, b_1 = b_2 = 1 )\).
+Cancer rates in this year could be different from rates in previous years, for both reactor and nonreactor counties.
+
+***** answer
+
+#+begin_src julia :exports both
+a₁, b₁ = 2.2 , 1
+a₂, b₂ = 2.2 , 1
+
+# Posterior distributions
+dist_1 = Gamma(a₁ + sy₁, 1/(b₁ + sx₁))
+dist_2 = Gamma(a₂ + sy₂, 1/(b₂ + sx₂))
+
+mean_1 = round((a₁ + sy₁) /(b₁ + sx₁), digits=2)
+mean_2 = round((a₂ + sy₂) /(b₂ + sx₂), digits=2)
+
+["Posterior mean of Group 1:  $mean_1"
+ , "Posterior mean of Group 2:  $mean_2"]
+#+end_src
+
+#+RESULTS:
+| Posterior mean of Group 1:  2.2  |
+| Posterior mean of Group 2:  2.69 |
+
+#+begin_src julia :exports both
+# 95% quantile-based confidence intervals
+ci_1 = round.(quantile.(dist_1, [0.025, 0.975]), digits=2)
+ci_2 = round.(quantile.(dist_2, [0.025, 0.975]), digits=2)
+["95% CI of Group 1:  $ci_1"
+    , "95% CI of Group 2:  $ci_2"]
+#+end_src
+
+#+RESULTS:
+| 95% CI of Group 1:  [2.11, 2.29] |
+| 95% CI of Group 2:  [2.37, 3.03] |
+
+#+begin_src julia :exports both :results output
+θ₁_mc = rand(dist_1, 10000);
+θ₂_mc = rand(dist_2, 10000);
+"Pr(θ₂>θ₁|data) = $(mean(θ₁_mc .< θ₂_mc))"
+#+end_src
+
+#+RESULTS:
+: "Pr(θ₂>θ₁|data) = 0.9984"
+
+#+begin_src julia :exports none
+fig = plot(
+    dist_1, label="p(θ₁|data)"
+)
+fig = plot!(
+    dist_2, label="p(θ₂|data)"
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_5ciii.png]]
+*** d)
+:PROPERTIES:
+:ID:       5981ba98-9c2d-45af-a504-8ccca7c18441
+:END:
+**** Question :noexport:
+In the above analysis we assumed that population size gives no information about fatality rate.
+Is this reasonable?
+How would the analysis have to change if this is not reasonable?
+**** answer
+
+「人口が多い地域は、人口が少ない地域よりも医療が充実しており、がんになった場合の生存率が高い可能性がある」
+など考えることもできるので、人口規模と致死率が独立していると考えるのは必ずしも合理的であると言えない。
+
+そこで、
+\( \theta_i \sim \exp(\beta_0 + \beta_1 X_i) \)
+などとして、階層モデルを考えるなどする。
+
+*** e)
+**** Question :noexport:
+We encoded our beliefs about \( \theta_1 \) and \( \theta_2 \) such that they gave no information about each other (they were a priori independent).
+Think about why and how you might encode beliefs such that they were a priori dependent.
+**** Answer
+
+\begin{align*}
+\theta_1 &\sim w \times \text{Beta}(a_1, b_1) + (1-w) \times \text{Beta}(a_2, b_2) \\
+\theta_2 &\sim w \times \text{Beta}(a_2, b_2) + (1-w) \times \text{Beta}(a_1, b_1)
+\end{align*}
+
+のような形で、それぞれの事前分布を重み付きの混合分布にすることで、事前従属にできる。
+
+** 4.6
+:PROPERTIES:
+:header-args: :session ch4 :eval no-export
+:END:
+*** Question :noexport:
+Non-informative prior distributions:
+Suppose for a binary sampling problem we plan on using a uniform, or beta(1,1), prior for the population proportion \( \theta \).
+Perhaps our reasoning is that this represents "no prior information about \( \theta \)".
+However, some people like to look at proportions on the log-odds scale, that is, they are interested in
+\( \gamma = \log \frac{\theta}{1 - \theta}\).
+Via Monte Carlo sampling or otherwise, find the prior distribution for \( \gamma \) that is induced by the uniform prior for \( \theta \).
+Is the prior informative about \( \gamma \)?
+
+*** answer
+
+#+begin_src julia :exports code
+a, b = 1, 1
+θ_prior_mc = rand(Beta(a, b), 1000000)
+γ_prior_mc = map(θ -> log(θ/(1-θ)), θ_prior_mc)
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :exports none
+plot(
+    γ_prior_mc, seriestype=:histogram, label=nothing
+    , title="Prior distribution of γ sampled by Monte Carlo"
+    , xlabel="γ", normalize=true
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_6.png]]
+
+This prior is informative about \( \gamma \) because this gives us information that \( \gamma \) is symmetrically distributed around 0.
+** 4.7
+:PROPERTIES:
+:ID:       fb4072e2-0f15-44b1-a558-8b32924b8f8c
+:header-args: :session ch4 :eval no-export
+:END:
+*** Question :noexport:
+Mixture models:
+After a posterior analysis on data from a population of squash plants, it was determined that the total vegetable weight of a given plant could be modeled with the following distribution:
+\[
+p(y \mid \sigma^2) = .31 \text{dnorm}(y, \theta, \sigma) + .46 \text{dnorm}(2 \theta_1, 2 \sigma) + .23 \text{dnorm}(y, 3 \theta_1, 3 \sigma)
+\]
+where the posterior distributions of the parameters have been calculated as
+\(\frac{1}{\sigma^{2} } \sim \text{gamma}(10, 2.5)\), and
+\( \theta \mid \sigma^2 \sim \text{normal}(4.1, \frac{\sigma^2}{20} )\).
+*** a)
+**** Question :noexport:
+Sample at least 5,000 y values from the posterior predictive distribution.
+**** answer
+
+#+begin_src julia :exports none
+using Distributions
+using Random
+using LaTeXStrings
+using Plots, StatsPlots
+using CSV, DataFrames
+using DelimitedFiles
+using KernelEstimator
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :exports code
+Random.seed!(1234)
+dist_inv_σ² = Gamma(10, 1/2.5)
+dist_θ = σ² -> Normal(4.1, σ²/20)
+
+π = [0.31, 0.46, 0.23]
+t = Multinomial(1, π)
+dist_list = (θ, σ) -> [Normal(θ, σ), Normal(2θ, 2σ), Normal(3θ, 3σ)]
+y_mc = Array{Float64, 1}()
+for i in 1:5000
+    inv_σ² = rand(dist_inv_σ²)
+    σ² = 1 / inv_σ²
+    σ = sqrt(σ²)
+    θ = rand(dist_θ(σ²))
+    w = rand(t) .== 1
+    dist_pred = dist_list(θ, σ)[w][1]
+    y = rand(dist_pred)
+    append!(y_mc, y)
+end
+#+end_src
+
+#+begin_src julia :exports none
+p = histogram(
+    y_mc, title="samples from the posterior predictive distribution",
+    bins=1000, xlabel="y", label=nothing
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_7a.png]]
+
+*** b)
+**** Question :noexport:
+Form a 75% quantile-based confidence interval for a new value of \(Y\).
+**** answer
+
+#+begin_src julia :exports both
+# 75% quantile
+prob = 0.75
+lower = (1 - prob) / 2
+upper = 1 - lower
+ci_quantile = quantile(y_mc, [lower, upper])
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:   3.954945418674755
+:  12.059043291517227
+*** c)
+**** Question :noexport:
+Form a 75% HPD region for a new \(Y\) as follows:
+- i :: Compute estimates of the posterior density of \(Y\) using the
+   ~KernelEstimator.kerneldensity()~ command in Julia, and then normalize the density values so they sum to 1.
+- ii :: Sort these discrete probabilities in decreasing order.
+- iii :: Find the first probability value such that the cumulative sum of the sorted values exceeds 0.75.
+  Your HPD region includes all values of \(y\) which have a discretized probability greater than this cutoff.
+  Describe your HPD region, and compare it to your quantile-based region.
+**** answer
+#+begin_src julia
+# i
+sorted_y_mc = sort(y_mc)
+y_density = kerneldensity(y_mc)
+y_density_normalized = y_density ./ sum(y_density)
+
+# ii
+y_density_sorted = sort(y_density_normalized, rev=true)
+
+# iii
+y_density_sorted_cumsum = cumsum(y_density_sorted)
+threshhold_cumsum_idx = findfirst(x -> x > prob, y_density_sorted_cumsum)
+y_density_sorted_cumsum[threshhold_cumsum_idx]
+threshhold_prob = y_density_sorted[threshhold_cumsum_idx]
+#+end_src
+
+#+RESULTS:
+: 0.0002135540651187891
+
+#+begin_src julia :exports none
+y_prob = y_density_normalized[sortperm(y_mc)]
+v = y_prob .> threshhold_prob
+prev = v[1]
+out = []
+for (i,x) in enumerate(v)
+    if x != prev
+        push!(out, i)
+        prev = x
+    end
+end
+# %%
+threshold_y = reshape(out, 2, :)
+
+prob_int = Int(prob*100)
+
+fig_hpd = plot(
+    sorted_y_mc, y_prob, label="discrete density",
+)
+hline!(fig_hpd, [threshhold_prob], label=nothing)
+# vline!(fig, sorted_y_mc[out], label="quantile-based CI")
+for (i, region) in enumerate(eachcol(threshold_y))
+    y_choiced = sorted_y_mc[region[1]:region[2]]
+    prob_choiced = y_prob[region[1]:region[2]]
+    label = i == 1 ? "$prob_int% HPD region" : nothing
+    fig = plot!(
+        fig_hpd, y_choiced, prob_choiced, fillrange=repeat([0], length(y_choiced))
+        , fillalpha=0.3, label=label, color=:red
+    )
+end
+fig_hpd
+
+# %%
+fig_quantile = plot(
+    sorted_y_mc, y_prob, label="discrete density",
+    ylims=(0, :auto)
+)
+quantile_idx = ci_quantile[1] .<  sorted_y_mc .< ci_quantile[2]
+fig_quantile = plot!(fig_quantile,
+    sorted_y_mc[quantile_idx], y_prob[quantile_idx],
+    fillrange=repeat([0], sum(quantile_idx))
+    , fillalpha=0.3, label="$prob_int% quantile-based CI", color=:green
+)
+vline!(fig_quantile, ci_quantile, label=nothing, color=:green)
+fig_quantile
+
+# %%
+fig = plot(fig_hpd, fig_quantile, layout=(2,1), size=(800, 600))
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_7c.png]]
+*** d)
+**** Question :noexport:
+Can you think of a physical justification for the mixture sampling distribuiton of \(Y\)?
+**** answer
+The model is as follows:
+\begin{align*}
+\boldsymbol{w} = \begin{pmatrix} w_1 \\ w_2 \\ w_3 \end{pmatrix} &\sim \text{Multinomial}(0.31, 0.46, 0.23) \\
+\sigma^2 &\sim \text{InverseGamma}(10, 2.5) \\
+\theta | \sigma^2 &\sim \text{Normal}(4.1, \sigma^2/20) \\
+y | \theta, \sigma^2, \boldsymbol{w}
+&\sim w_1 \mathcal{N}(\theta, \sigma^2) + w_2 \mathcal{N}(2 \theta, 2 \sigma^2) + w_3 \mathcal{N}(3 \theta, 3 \sigma^2)
+\end{align*}
+
+Then the marginal distribution of \(Y\) is
+\begin{align*}
+p(y)
+&= \int \int \int p(y, \theta, \sigma^2, \boldsymbol{w}) d\theta d\sigma^2 d\boldsymbol{w} \\
+&= \int \int \int p(y | \theta, \sigma^2, \boldsymbol{w}) p(\theta | \sigma^2) p(\sigma^2) p(\boldsymbol{w}) d\theta d\sigma^2 d\boldsymbol{w}. \\
+\end{align*}
+Therefore, \(Y\) can be sampled from the following procedure:
+1. Sample \(\sigma^{2(s)} \sim p(\sigma^2) \).
+2. Sample \(\theta^{(s)} \sim p(\theta | \sigma^{2(s)}) \).
+3. Sample \(\boldsymbol{w}^{(s)} \sim p(\boldsymbol{w})\).
+4. Sample \(y^{(s)} \sim p(y | \theta^{(s)}, \sigma^{2(s)}, \boldsymbol{w}^{(s)})\).
+
+Then, the empirical distribution of
+\(\{y^{(1)}, \dots, y^{(s)}\} \to p(y)\) as \(s \to \infty\).
+
+** 4.8
+:PROPERTIES:
+:header-args: :eval no-export
+:END:
+*** question :noexport:
+More posterior predictive checks:
+Let \(\theta_A\) and \(\theta_B\) be the average number of children of men in their 30s with and without bachelor’s degrees, respectively.
+*** a)
+**** Question :noexport:
+Using a Poisson sampling model, a gamma(2,1) prior for each \(\theta\) and the data in the files ~menchild30bach.dat~ and ~menchild30nobach.dat~, obtain 5,000 samples of \(\hat{Y}_A\) and \(\hat{Y}_B\) from the posterior predictive distribution of the two samples.
+Plot the Monte Carlo approximations to these two posterior predictive distributions.
+**** answer
+#+begin_src julia :export code
+menchild_bach = []
+open("../../Exercises/menchild30bach.dat") do file
+    for line in eachline(file)
+        append!(menchild_bach, parse.(Int, split(line)))
+    end
+end
+
+menchild_nobach = []
+open("../../Exercises/menchild30nobach.dat") do file
+    for line in eachline(file)
+        append!(menchild_nobach, parse.(Int, split(line)))
+    end
+end
+
+# data
+sy_A = sum(menchild_bach)
+n_A = length(menchild_bach)
+
+sy_B = sum(menchild_nobach)
+n_B = length(menchild_nobach)
+
+# prior parameters
+a₀ = 2
+b₀ = 1
+
+# Posterior distributions
+dist_θ_A = Gamma(a₀ + sy_A, 1/(b₀ + n_A))
+dist_θ_B = Gamma(a₀ + sy_B, 1/(b₀ + n_B))
+
+# Monte Carlo samples
+θ_A_mc = rand(dist_θ_A, 5000)
+θ_B_mc = rand(dist_θ_B, 5000)
+y_A_mc = rand.(Poisson.(θ_A_mc))
+y_B_mc = rand.(Poisson.(θ_B_mc))
+
+#+end_src
+
+#+begin_src julia :exports none
+v = [y_A_mc, y_B_mc]
+
+function plot_hist(v; kwargs...)
+    flat_v = vcat(v...)
+    min, max = extrema(flat_v)
+    m = []
+    for (i, y) in enumerate(v)
+        h = fit(Histogram, y, min:max)
+        push!(m, h.weights)
+    end
+    p = groupedbar(
+        reduce(hcat, m), xticks=(min:max)
+        ; kwargs...,
+    )
+    p
+end
+
+fig = plot_hist(
+    v; title="histogram for both groups", xlabel="y", ylabel="frequency"
+    , label=["A" "B"]
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_8a.jpg]]
+*** b)
+**** Question :noexport:
+Find 95% quantile-based posterior confidence intervals for \(\theta_B - \theta_A\) and \(\hat{Y}_B - \hat{Y}_A\).
+Describe in words the differences between the two populations using these quantiles and the plots in a), along with any other results that may be of interest to you.
+**** answer
+
+for \(\theta_B - \theta_A\):
+
+#+begin_src julia :exports both
+quantile(θ_B_mc .- θ_A_mc, [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:  0.14453032216400238
+:  0.7359150252471184
+
+
+for \(\hat{Y}_B - \hat{Y}_A\):
+
+#+begin_src julia :exports both
+quantile(y_B_mc .- y_A_mc, [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:  -2.0
+:   4.0
+
+*** c)
+**** Question :noexport:
+Obtain the empirical distribution of the data in group B.
+Compare this to the Poisson distribution with mean \(\hat{\theta} = 1.4\).
+Do you think the Poisson model is a good fit?
+Why or why not?
+**** answer
+
+#+begin_src julia :exports both
+(a₀ + sy_B) / (b₀ + n_B)
+#+end_src
+
+#+RESULTS:
+: 1.4018264840182648
+
+\(\hat{\theta} = 1.4 \)はほぼ\(\theta_B\)の事後平均。
+
+#+begin_src julia :exports none
+θ̂ = 1.4
+min, max = extrema(menchild_nobach)
+h = fit(Histogram, menchild_nobach, min:max+1)
+empirical_prob = h.weights ./ sum(h.weights)
+pois_model_prob = pdf.(Poisson(θ̂), min:max)
+
+p = groupedbar(
+    [empirical_prob pois_model_prob]
+    , xticks=(1: length(empirical_prob), min:max)
+    , label=["empirical" "poisson"]
+    , color=[:blue :red]
+    , xlabel="y"
+    , opacity=0.5
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_8_c.png]]
+
+
+モデルはデータに比べて、子供の数が 1 人の人の割合が多く、0人と 2 人の割合が少ない。
+Poisson モデルは峰が２つあるような分布を表現できないので、もし母集団の分布が上の empirical distribution のように、0と 2 の２点でピークを持つような分布であれば、Poisson モデルは適切ではないと考えられる。
+*** d)
+**** Question :noexport:
+For each of the 5,000 \(\theta_B\)-values you sampled, sample \(n_B = 218\) Poisson randomm variables and count the number of 0s and the number of 1s in each of the 5,000 simulated datasets.
+You should now have two sequences of length 5,000 each, one sequence counting the number of people with one child.
+Plot the two sequences against one another (one on the x-axis, one on the y-axis).
+Add to the plot a point marking how many people in the observed dataset had zero children and one child.
+Using this plot, describe the adequacy of the Poisson model.
+**** answer
+
+#+begin_src julia :exports code
+obs_zero = sum(menchild_nobach .== 0)
+obs_one = sum(menchild_nobach .== 1)
+num_zero = []
+num_one = []
+for θ in θ_B_mc
+    y_mc = rand(Poisson(θ), n_B)
+    push!(num_zero, sum(y_mc .== 0))
+    push!(num_one, sum(y_mc .== 1))
+end
+#+end_src
+
+#+begin_src julia :exports none
+# two dimensional histogram
+fig = histogram2d(
+    num_zero, num_one
+    , xlabel="number of zero", ylabel="number of one"
+)
+plot!(
+    fig, [obs_zero], [obs_one], label="observed", seriestype=:scatter
+    , legend=:topright
+)
+fig
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch4/exercise4_8d.png]]
+
+上図より、Poisson モデルが母集団の真の分布であると仮定すると、今回の標本が観測される可能性は極めて低いことがわかる。
+よって、Poisson モデルは適切ではないと考えられる。

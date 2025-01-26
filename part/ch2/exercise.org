@@ -1,0 +1,445 @@
+* Chapter 2
+** 2.1
+(a)
+
+\begin{align*}
+Pr (Y_1 = \text{farm})
+& = Pr(Y_1 = \text{farm} | Y_2 = \text{farm})+
+Pr(Y_1 = \text{farm} | Y_2 = \text{operatives})\\ &+
+Pr(Y_1 = \text{farm} | Y_2 = \text{craftsman}) \\&+
+Pr(Y_1 = \text{farm} | Y_2 = \text{sales}) \\&+
+Pr(Y_1 = \text{farm} | Y_2 = \text{professinonal})\\
+&= 0.018 + 0.035 + 0.031 + 0.008 + 0.018 \\
+&= 0.110
+\end{align*}
+
+同様にして、
+\begin{align*}
+& Pr (Y_1 = \text{operatives})
+= 0.002 + 0.112 + 0.064 + 0.032 + 0.069
+= 0.279\\
+& Pr (Y_1 = \text{craftsman})
+= 0.001 + 0.066 + 0.094 + 0.032 + 0.084
+= 0.277\\
+& Pr (Y_1 = \text{sales})
+= 0.001 + 0.018 + 0.019 + 0.010 + 0.051
+= 0.099\\
+& Pr (Y_1 = \text{professional})
+= 0.001 + 0.029 + 0.032 + 0.043 + 0.130
+= 0.235
+\end{align*}
+
+(b)
+
+\begin{align*}
+&\text{Pr}(Y_2 = \text{farm}) = 0.018 + 0.002 + 0.001 + 0.001 + 0.001 = 0.023\\
+&\text{Pr}(Y_2 = \text{operatives}) = 0.035 + 0.112 + 0.066 + 0.018 + 0.029 = 0.26\\
+&\text{Pr}(Y_2 = \text{craftsman}) = 0.031 + 0.064 + 0.094 + 0.019 + 0.032 = 0.24\\
+&\text{Pr}(Y_2 = \text{sales}) = 0.008 + 0.032 + 0.032 + 0.010 + 0.043 = 0.125\\
+&\text{Pr}(Y_2 = \text{professional}) = 0.018 + 0.069 + 0.084 + 0.051 + 0.130 = 0.352
+\end{align*}
+
+(c)
+the conditional distribution of a son's occupation, given that the father is a farmer;
+
+\begin{align*}
+&\text{Pr}(Y_2 = \text{farm} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{farm}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.018}{0.110} = 0.164\\
+&\text{Pr}(Y_2 = \text{operatives} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{operatives}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.035}{0.110} = 0.318\\
+&\text{Pr}(Y_2 = \text{craftsman} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{craftsman}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.031}{0.110} = 0.282\\
+&\text{Pr}(Y_2 = \text{sales} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{sales}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.008}{0.110} = 0.073\\
+&\text{Pr}(Y_2 = \text{professional} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{professional}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.018}{0.110} = 0.164
+\end{align*}
+
+(d)
+the conditional distribution of a father's occupation, given that the son is a farmer;
+
+\begin{align*}
+&\text{Pr}(Y_1 = \text{farm} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.018}{0.023} = 0.783\\
+&\text{Pr}(Y_1 = \text{operatives} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{operatives} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.002}{0.023} = 0.087\\
+&\text{Pr}(Y_1 = \text{craftsman} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{craftsman} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.001}{0.023} = 0.043\\
+&\text{Pr}(Y_1 = \text{sales} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{sales} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.001}{0.023} = 0.043\\
+&\text{Pr}(Y_1 = \text{professional} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{professional} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.001}{0.023} = 0.043
+\end{align*}
+** 2.2
+*** a
+\begin{align*}
+\text{E} [a_1 Y_1 + a_2 Y_2] &= a_1 \text{E} [Y_1] + a_2 \text{E} [Y_2] \\
+& = a_1 \mu_1 + a_2 \mu_2 \\
+\\
+\text{Var} [a_1 Y_1 + a_2 Y_2]
+&= \text{E} [(a_1 Y_1 + a_2 Y_2)^2] - \text{E} [a_1 Y_1 + a_2 Y_2]^2 \\
+&= \text{E} [a_1^2 Y_1^2 + a_2^2 Y_2^2 + 2 a_1 a_2 Y_1 Y_2] - \text{E} [a_1 Y_1 + a_2 Y_2]^2 \\
+&= a_1^2 \text{E} [Y_1^2] + a_2^2 \text{E} [Y_2^2] + 2 a_1 a_2 \text{E} [Y_1 Y_2]
+- (a_1 \mu_1 + a_2 \mu_2)^2\\
+&= a_1^2 (\text{E} [Y_1^2] - \mu_1^2) + a_2^2 (\text{E} [Y_2^2] - \mu_2^2) + 2 a_1 a_2 \text{E} [Y_1] \text{E} [Y_2] - 2 a_1 a_2 \mu_1 \mu_2 \\
+& \qquad \qquad ( \because Y_1 \text{ and } Y_2 \text{ are independent })\\
+&= a_1^2 \sigma_1^2 + a_2^2 \sigma_2^2
+\end{align*}
+*** b
+\begin{align*}
+\text{E} [a_1 Y_1 - a_2 Y_2]
+&= a_1 \text{E} [Y_1] - a_2 \text{E} [Y_2] \\
+&= a_1 \mu_1 - a_2 \mu_2 \\
+\\
+\text{Var} [a_1 Y_1 - a_2 Y_2]
+&= \text{E} [(a_1 Y_1 - a_2 Y_2)^2] - \text{E} [a_1 Y_1 - a_2 Y_2]^2 \\
+&= \text{E} [a_1^2 Y_1^2 + a_2^2 Y_2^2 - 2 a_1 a_2 Y_1 Y_2] - \text{E} [a_1 Y_1 - a_2 Y_2]^2 \\
+&= a_1^2 \text{E} [Y_1^2] + a_2^2 \text{E} [Y_2^2] - 2 a_1 a_2 \text{E} [Y_1 Y_2]
+- (a_1 \mu_1 - a_2 \mu_2)^2\\
+&= a_1^2 (\text{E} [Y_1^2] - \mu_1^2) + a_2^2 (\text{E} [Y_2^2] - \mu_2^2) - 2 a_1 a_2 \text{E} [Y_1] \text{E} [Y_2] + 2 a_1 a_2 \mu_1 \mu_2 \\
+& \qquad \qquad ( \because Y_1 \text{ and } Y_2 \text{ are independent })\\
+&= a_1^2 \sigma_1^2 + a_2^2 \sigma_2^2
+\end{align*}
+
+** 2.3
+*** a
+\begin{align*}
+p(x \mid y, z) &= \frac{p(x, y, z)}{p(y, z)} \\
+&= \frac{p(x, y, z)}{\int p(x, y, z) \; dx} \\
+&= \frac{f(x, z) g(y, z) h(z)}{\int f(x, z) g(y, z) h(z) \; dx} \\
+& \qquad (\because \text{ 仮定より } p(x, y, z) = Const \times f(x, z) g(y, z) h(z)) \text{ となるが、定数はインテグラルの外に出て打ち消されるから。}\\
+&= \frac{f(x, z) g(y, z) h(z)}{g(y, z) h(z) \int f(x, z) \; dx} \\
+&= \frac{f(x, z)}{\int f(x, z) \; dx}
+\end{align*}
+*** b
+\begin{align*}
+p( y \mid x, z)
+& = \frac{p(x, y, z)}{p(x, z)} \\
+&= \frac{p(x, y, z)}{\int p(x, y, z) \; dy} \\
+&= \frac{f(x, z) g(y, z) h(z)}{\int f(x, z) g(y, z) h(z) \; dy} \\
+&= \frac{f(x, z) g(y, z) h(z)}{ f(x, z) h(z) \int g(y, z) \; dy} \\
+&= \frac{g(y, z)}{\int g(y, z) \; dy}
+\end{align*}
+*** c
+\(p(x, y \mid z) = p(x \mid z) \times p(y \mid z) \) を示せばよい。
+
+\(p(x,y \mid z) = p(x \mid y, z) p(y \mid z)\)
+は常に成り立つことから、\(p(x \mid z) = p(x \mid y, z)\)を示す。
+
+\begin{align*}
+p(x \mid z) &= \frac{p(x, z)}{p(z)} \\
+&= \frac{\int p(x, y, z) \; dy}{\int \int p(x, y, z) \; dy \; dx} \\
+&= \frac{\int f(x, z) g(y, z) h(z) \; dy}{\int \int f(x, z) g(y, z) h(z) \; dy \; dx} \\
+&= \frac{f(x, z) h(z) \int g(y, z) \; dy}{h(z)  \int \int g(y, z)  f(x, z) \; dy \; dx } \\
+&= \frac{f(x, z) h(z) \int g(y, z) \; dy}{h(z) \int f(x, z) \left( \int g(y, z)  \; dy \right) \; dx } \\
+&= \frac{f(x, z) h(z) \int g(y, z) \; dy}{h(z) \left( \int g(y, z) \; dy \right) \left( \int f(x, z) \; dx \right)} \\
+&= \frac{f(x, z)}{\int f(x, z) \; dx} \\
+&= p(x \mid y, z) \qquad ( \because \text{ a })
+\end{align*}
+
+よって、\(p(x \mid z) = p(x \mid y, z)\)が成り立つ。
+
+** 2.4
+*** Question :noexport:
+Symbolic manipulation: Prove the following form of Bayes’ rule:
+
+\[
+\text{Pr}(H_j \mid E)
+= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\sum_{k=1}^K \text{Pr}(E \mid H_k) \text{Pr}(H_k)}
+\]
+
+where /E/ is any event and \(\{H_1, \dots , H_K\}\) form a partition.
+Prove this using only axioms *P1-P3* from this chapter, by following steps a)-d) below:
+
+- a :: Show that \(\text{Pr}(H_j \mid E) \text{Pr}(E) = \text{Pr}(E \mid H_j) \text{Pr}(H_j)\).
+- b :: Show that \(\text{Pr}(E) = \text{Pr}(E \cap H_1) + \text{Pr}(E \cap \{ \cup^K_{k=2} H_k\})\).
+- c :: Show that \(\text{Pr}(E) = \sum_{k=1}^K \text{Pr}(E \cap H_k)\).
+- d :: Put it all together to show Bayes’ rule, as described above.
+
+*** Answer
+**** a
+
+\begin{align*}
+\text{Pr}(H_j \mid E) \text{Pr}(E)
+&= \text{Pr}(H_j \mid E \cap (E \text{ or not} E)) \text{Pr}(E \mid E \text{ or not} E) \\
+&= \text{Pr}(H_j \cap E \mid E \text{ or not} E)
+\qquad (\because \text{P3}) \\
+\\
+\text{Pr}(E \mid H_j) \text{Pr}(H_j)
+&= \text{Pr}(E \mid H_j \cap (E \text{ or not} E)) \text{Pr}(H_j \mid E \text{ or not} E) \\
+&= \text{Pr}(E \cap H_j \mid E \text{ or not} E)
+\qquad (\because \text{P3}) \\
+\\
+\therefore \text{Pr}(H_j \mid E) \text{Pr}(E)
+&= \text{Pr}(E \mid H_j) \text{Pr}(H_j)
+\end{align*}
+
+**** b
+
+\(\text{Pr}( \bigcup^K_{k=1} H_k ) = 1\)
+と仮定する。
+
+\begin{align*}
+\text{Pr}(E)
+&= \text{Pr}\left(E \cap \bigcup_{k=1}^K H_k\right) \\
+&= \text{Pr}\left( \left(E \cap H_1 \right) \cup \left( E \cap \left\{\bigcup_{k=2}^K H_k \right\} \right) \right)\\
+&= \text{Pr}\left( E \cap H_1 \right) + \text{Pr}\left( E \cap \left\{ \bigcup_{k=2}^K H_k \right\} \right)
+\qquad (\because \{H_1, \dots , H_K\} \text{ is a partition and P2})
+\end{align*}
+
+**** c
+
+\begin{align*}
+\text{Pr}(E)
+&= \text{Pr}\left(E \cap H_1 \right)+
+\text{Pr}\left( E \cap \left\{ \bigcup_{k=2}^K H_k \right\} \right) \\
+&= \text{Pr}\left( E \cap H_1 \right) +
+\text{Pr}\left( E \cap H_2 \right) +
+\text{Pr}\left( E \cap \left\{ \bigcup_{k=3}^K H_k \right\} \right) \\
+&= \cdots \\
+&= \text{Pr}\left( E \cap H_1 \right) +
+\text{Pr}\left( E \cap H_2 \right) +
+\cdots + \text{Pr}\left( E \cap H_K \right) \\
+&= \sum_{k=1}^K \text{Pr}\left( E \cap H_k \right)
+\end{align*}
+**** d
+\begin{align*}
+\text{Pr}(H_j \mid E)
+&= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\text{Pr}(E)}
+\qquad (\because \text{a}) \\
+&= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\sum_{k=1}^K \text{Pr}(E \cap H_k)}
+\qquad (\because \text{c})\\
+&= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\sum_{k=1}^K \text{Pr}(E \mid H_k) \text{Pr}(H_k)}
+\qquad (\because \text{P3})\\
+\end{align*}
+
+** 2.5
+*** Question :noexport:
+Urns: Suppose urn /H/ is filed with 40% green balls and 60% red balls,
+and urn /T/ is filled with 60% green balls and 40% red balls.
+Someone will flip a coin and then select a ball from urn /H/ or urn /T/ depending on whether the coin lands heads or tails, respectively.
+Let /X/ be 1 or 0 if the coin lands heads or tails, and let /Y/ be 1 or 0 if the ball is green or red.
+
+- a :: Write out the joint distribution of /X/ and /Y/ in a table.
+- b :: Find E\([Y]\). What is probability that the ball is green?
+- c :: Find Var\([Y \mid X =0]\), Var\([Y \mid X =1]\), and Var\([Y]\).
+  Thinking of variance as measuring uncertainty, explain intuitively why one of these variances is larger than the others.
+- d :: Suppose you see that the ball is green.
+  What is the probability that the coin turned up tails?
+
+*** Answer
+**** a
+|       | X = 0 | X = 1 |
+|-------+-------+-------|
+| Y = 0 |   0.2 |   0.3 |
+| Y = 1 |   0.3 |   0.2 |
+
+**** b
+上の表を用いて、
+\begin{align*}
+\text{E}\left[Y\right]
+&= \text{Pr}(Y = 0) \cdot 0 + \text{Pr}(Y = 1) \cdot 1 \\
+&= (0.2 + 0.3) \cdot 0 + (0.3 + 0.2) \cdot 1 \\
+&= 0.5
+\end{align*}
+**** c
+\begin{align*}
+\text{Var}\left[Y \mid X = 0\right]
+&= \text{Pr}(Y = 0 \mid X = 0) \cdot (0 - \text{E}\left[Y \mid X = 0\right])^2 +
+\text{Pr}(Y = 1 \mid X = 0) \cdot (1 - \text{E}\left[Y \mid X = 0\right])^2 \\
+&= 0.4 \cdot (0- 0.6)^2 + 0.6 \cdot (1 - 0.6)^2 \\
+&= 0.24 \\
+\\
+\text{Var}\left[Y \mid X = 1\right]
+&= \text{Pr}(Y = 0 \mid X = 1) \cdot (0 - \text{E}\left[Y \mid X = 1\right])^2 +
+\text{Pr}(Y = 1 \mid X = 1) \cdot (1 - \text{E}\left[Y \mid X = 1\right])^2 \\
+&= 0.6 \cdot (0- 0.4)^2 + 0.4 \cdot (1 - 0.4)^2 \\
+&= 0.24 \\
+\\
+\text{Var}\left[Y\right]
+&= \text{Pr}(Y = 0) \cdot (0 - \text{E}\left[Y\right])^2 +
+\text{Pr}(Y = 1) \cdot (1 - \text{E}\left[Y\right])^2 \\
+&= 0.5 \cdot (0- 0.5)^2 + 0.5 \cdot (1 - 0.5)^2 \\
+&= 0.25
+\end{align*}
+
+Var[Y]が Var[\(Y \mid X = 0\)] と Var[\(Y \mid X = 1\)]よりも大きいのは、
+どちらの壺からボールを選ぶか決まっていない分不確実性が大きくなるから。
+**** d
+\begin{align*}
+\text{Pr}(X = 0 \mid Y = 1)
+&= \frac{\text{Pr}(Y = 1 \mid X = 0) \text{Pr}(X = 0)}{\text{Pr}(Y = 1)} \\
+&= \frac{0.6 \cdot 0.5}{0.5} \\
+&= 0.6
+\end{align*}
+** 2.6
+*** Question :noexport:
+Conditional Independence: Suppose events /A/ and /B/ are conditionally independent given /C/, which is written \(A \perp B \mid C\).
+Show that this implies that \( A^c \perp B \mid C , \ A \perp B^c \mid C \) and \( A^c \perp B^c \mid C \), where \( A^c \) means "not /A/."
+Find an example where \(A \perp B \mid C\) holds but \(A \perp B \mid C^c\) does not hold.
+
+*** Answer
+\( A \perp B \mid C \)は、
+\begin{equation}
+\label{2.6condition}
+\text{Pr}(A\cap B \mid C) = \text{Pr}(A \mid C) \text{Pr}(B \mid C)
+\end{equation}
+を満たすことを意味する。
+
+また、
+\begin{equation}
+\label{2.6condition2}
+\text{Pr}(B \mid C) = \text{Pr}(A \cap B \mid C) + \text{Pr}(A^c \cap B \mid C)
+\end{equation}
+
+より、
+\begin{equation}
+\label{2.6ans1}
+    \begin{aligned}
+    \text{Pr}(A^c \cap B \mid C)
+    &= \text{Pr}(B \mid C) - \text{Pr}(A \cap B \mid C)
+    \qquad  (\because \eqref{2.6condition2})\\
+    &= \text{Pr}(B \mid C) - \text{Pr}(A \mid C) \text{Pr}(B \mid C)
+    \qquad  (\because \eqref{2.6condition})\\
+    &= \text{Pr}(B \mid C) \left(1 - \text{Pr}(A \mid C)\right) \\
+    &= \text{Pr}(A^c \mid C) \text{Pr}(B \mid C) \\
+    \end{aligned}
+\end{equation}
+これは、\( A^c \perp B \mid C \)を意味する。
+
+同様に、
+\begin{equation}
+\label{2.6ans2}
+    \begin{aligned}
+        \text{Pr}(A \cap B^c \mid C)
+        &= \text{Pr}(A \mid C) - \text{Pr}(A \cap B \mid C) \\
+        &= \text{Pr}(A \mid C) - \text{Pr}(A \mid C) \text{Pr}(B \mid C)
+        \qquad (\because \eqref{2.6condition})\\
+        &= \text{Pr}(A \mid C) \left(1 - \text{Pr}(B \mid C)\right) \\
+        &= \text{Pr}(A \mid C) \text{Pr}(B^c \mid C) \\
+    \end{aligned}
+\end{equation}
+これは、\( A \perp B^c \mid C \)を意味する。
+
+\begin{align*}
+\text{Pr}(A^c \cap B^c \mid C)
+&= \text{Pr}(A^c \mid C) - \text{Pr}(A^c \cap B \mid C) \\
+&= \text{Pr}(A^c \mid C) - \text{Pr}(A^c \mid C) \text{Pr}(B \mid C)
+\qquad (\because \eqref{2.6ans1})\\
+&= \text{Pr}(A^c \mid C) \left(1 - \text{Pr}(B \mid C)\right) \\
+&= \text{Pr}(A^c \mid C) \text{Pr}(B^c \mid C)
+\end{align*}
+これは、\( A^c \perp B^c \mid C \)を意味する。
+
+** 2.7
+*** Question :noexport:
+Coherence of bets:
+de Finetti thought of subjective probability as follows:
+
+Your probability \(p(E)\) for event /E/ is the amount you would be willing to pay or charge in exchange for a dollar on the occurrence of /E/.
+In other words, you must willing to
+
+- give \(p(E)\) to someone, provided they give you $1 if /E/ occurs;
+- take \(p(E)\) from someone, and give them $1 if /E/ occurs.
+
+Your probability for the event \(E^c = \) "not /E/" is defined similarly.
+
+- a :: Show that it is a good idea to have \(p(E) \le 1\).
+- b :: Show that it is a good idea to have \(p(E) + p(E^c) = 1\).
+
+*** Answer
+**** a
+もし\(p(E) > 1\)なら、収支は
+\(E\)が起こると、\(1 - p(E) < 0\)、
+E が起こらないと、\(-p(E) < 0 \)となる。
+
+一方、\(p(E) \le 1\)のとき、収支は
+\(E\)が起こると、\(1 - p(E) \ge 0 \)、
+\(E\)が起こらないと、\( -p(E) \le 0\)となる。
+
+よって、合理的な選択の結果は、\(p(E) \le 1\)となる。
+**** b
+\(p(E) \le 1\) を任意に固定する。
+このとき、参加者の収支は、
+\(E\)が起こると、\(1 - p(E) \ge 0 \)、
+\(E\)が起こらないと、\(-p(E) \le 0 \)となる。
+
+ここで、新たに、\(E^c\)を誰かに支払い、もし\(E^c\)が起こった場合は$1 もらえるという賭けをするとき、
+参加者の収支は、
+- \(E\)が起こると、\(-p(E^c) \le 0 \)、
+- \(E\)が起こらないと、\(1 - p(E^c) \ge 0 \)となる。
+以上より、1 つ目と 2 つ目の賭けの合計の収支は、
+- \(E\)が起こると、\(1 - p(E) - p(E^c)\)
+- \(E\)が起こらないと、\(-p(E) + 1 - p(E^c)\)となり、
+どちらにしろ収支は\(1 - p(E) - p(E^c)\)。
+
+合理的な人間は、収支がゼロになるギリギリのところまでなら参加するので、
+\(1 - p(E) - p(E^c) = 0\)となる\( p(E^c) \)
+すなわち、
+\[p(E^c) = 1 - p(E)\]
+が選択される。
+よって、
+\[p(E) + p(E^c) = 1\]
+\(p(E)\)は任意であったので、題意は示せた。
+
+** 2.8
+*** Question :noexport:
+- a :: The distributution of religions in Sri Lanka is 70% Buddhist, 15% Hindu, 8% Christian, and 7% Muslim.
+  Suppose each person can be identified by a number from 1 to /K/ on a census roll.
+  A number \(x\) is to be sampled from \(\{1, \dots , K \}\) using a pseudo-random number generator on a computer. Interpret the meaning of the following probabilities:
+  - i :: Pr(person /x/ is Hindu);
+  - ii :: Pr(\(x = 6452859\));
+  - iii :: Pr(Person /x/ is Hindu \(\mid x = 6452859\));
+- b :: A quarter which you got as change is to be flipped many times.
+  Interpret the meaning of the following probabilities:
+  - i :: Pr(\(\theta\), the long-run relative frequency of heads, equals 1/3);
+  - ii :: Pr(the first coin flip will result in a heads);
+  - iii :: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\)).
+- c :: The quarter above has been flipped, but you have not seen the outcome.
+  Interpret Pr(the flip has resulted in a heads).
+
+*** Answer
+**** a
+***** i
+K を無限大に近づけたときの標本中のヒンズー教徒の割合。
+(観測されたヒンズー教徒の人数を K で割ったもの)
+***** ii
+1 から K の中から x を無限回復元抽出したとき、xが 6452859 である割合。
+***** iii
+1 から K の中から x を無限回復元抽出したときに
+x が 6452859 であるという事象のうち、
+x がヒンズー教徒である割合。
+**** b
+***** i
+\begin{align*}
+&Pr(\theta, \text{the long-run relative frequency of heads, equals }1/3 ) \\
+= &Pr(\theta | \text{the long-run relative frequency of heads, equals }1/3 ) \\
+& \quad \times Pr(\text{the long-run relative frequency of heads, equals }1/3 )
+\end{align*}
+が成り立つ。
+よって、
+長期的にコイン投げを行った試行を無限個集める。
+そのサンプルのうち、相対頻度が 1/3 であり、
+なおかつ相対頻度が 1/3 サンプル内の相対頻度が\(\theta\)である割合。
+
+(すなわち、\(\theta \neq \frac{1}{3}\)で \(0\)となる。 )
+
+***** ii
+コインを無限回投げたときの、表が出た割合。
+***** iii
+i で\(\theta\)が 1/3 であったサンプルを m 個集めたとき、
+m 個のサンプルのうち、
+1 回目で表が出たサンプルの割合。
+**** c
+コインを無限回投げたときの、表が出た割合。
+(c-ii) と同じ。

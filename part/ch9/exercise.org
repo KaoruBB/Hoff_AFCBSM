@@ -1,0 +1,549 @@
+* Chapter 9
+:PROPERTIES:
+:header-args: :eval no-export :session hoff
+:END:
+
+** 9.1
+*** Question :noexport:
+Extrapoloation:
+The file ~swim.dat~ contains data on the amount of time,
+in seconds, it takes each of four high school swimmers to swim 50 yards.
+Each swimmer has six times, taken on a biweekly basis.
+
+*** a)
+**** Question :noexport:
+Perform the following data analysis for each swimmer separately:
+- i. :: Fit a linear regression model of swimming time as the response and week as the explanatory variable.
+   To formulate your prior, use the information that competitive times for this age group generally range from 22 to 24 seconds.
+- ii. :: For each swimmer \(j\), obtain a posterior predictive distribution for \(Y_j^{\ast}\), their time if they were to swim two weeks from the last recorded time.
+
+**** Answer
+The prior information means that the line \(\beta_1 + \beta_2 x\) should produce values between 22 and 24 when \(x\) is between 1 and 6.
+A little algebra shows that we need a prior distribution on \((\beta_1, \beta_2)\) such that
+\(\frac{98}{5} < \beta_1 < \frac{132}{5}\) and \(-\frac{2}{5} < \beta_2 < \frac{2}{5}\) with high probability.
+This could be done by taking \(\boldsymbol{\beta}_0 = (23, 0) \) and \(\Sigma_0 = \text{diag}\left( \left(\frac{17}{5} \right)^2, \left(\frac{1}{5} \right)^2 \right)\).
+For \(\nu_0\) and \(\sigma_0^2\), we could take \(\nu_0 = 2\) and \(\sigma_0^2 = 0.5\) so that the prior distribution of \(\sigma^2\) is concentrated around 0.5.
+
+#+begin_src julia :exports both
+# read data
+swim = readdlm("../../Exercises/swim.dat", header=false)
+
+function regressionSemiconjugatePrior(y, X, β₀, Σ₀, ν₀, σ₀²; S=5000)
+    n, p = size(X)
+
+    BETA = Matrix{Float64}(undef, S, p)
+    SIGMA² = Vector{Float64}(undef, S)
+
+    # starting values
+    olsfit = lm(X, y)
+    β = coef(olsfit)
+    σ² = sum(map(x -> x^2, residuals(olsfit))) / (n - p)
+
+    # MCMC algorithm
+    for s in 1:S
+        # update β
+        V = inv(inv(Σ₀) + X'X / σ²)
+        E = V * (inv(Σ₀) * β₀ + X'y / σ²)
+        β = rand(MvNormal(E, Symmetric(V)))
+
+        # update σ²
+        νₙ = ν₀ + n
+        SSR = sum(map(x -> x^2, y - X*β))
+        νₙσ²ₙ = ν₀ * σ₀² + SSR
+        σ² = rand(InverseGamma(νₙ / 2, 2/νₙσ²ₙ))
+
+        # store
+        BETA[s, :] = β
+        SIGMA²[s] = σ²
+    end
+
+    return BETA, SIGMA²
+end
+
+# set prior parameters
+β₀ = [23, 0]
+Σ₀ = diagm([(17/5)^2, (1/5)^2])
+ν₀ = 2
+σ₀² = 0.5
+
+S = 5000
+
+Y_PRED = Matrix{Float64}(undef, S, size(swim,1))
+fig = plot(
+    title="posterior predictive distribution", xlabel="time", ylabel="density"
+    , size=(800, 400), margin=3mm
+)
+for i in 1:size(swim,1)
+    y = swim[i, :]
+    X = [repeat([1], length(y)) 1:length(y)]
+    BETA, SIGMA² = regressionSemiconjugatePrior(y, X, β₀, Σ₀, ν₀, σ₀², S=S)
+    μ_ypred = BETA[:,1] .+ BETA[:,2] * (length(y)+1)
+    ypred = rand.(Normal.(μ_ypred, sqrt.(SIGMA²)))
+    Y_PRED[:, i] = ypred
+    fig = density!(fig, ypred, label="swimmer $i")
+    ypred_mean = ypred |> mean |> x -> round(x, digits=2)
+    println("swimmer $i: ", ypred_mean)
+end
+#+end_src
+
+:RESULTS:
+: swimmer 1: 22.73
+: swimmer 2: 23.52
+: swimmer 3: 22.86
+: swimmer 4: 23.44
+
+[[file:../../fig/ch9/ex9-1_posterior_predictive.png]]
+
+*** b)
+**** Question :noexport:
+The coach of the team has to decide which of the four swimmers will compete in a swimming meet in two weeks.
+Using your predictive distributions, compute
+\(\mathrm{Pr}(Y_j^{\ast} = \max \{ Y_1^{\ast}, \dots, Y_4^{\ast}\} | \mathbf{Y})\)
+for each swimmer \(j\), and based on this make a recommendation to the coach.
+
+**** Answer
+#+begin_src julia :exports both
+ind_fastest = mapslices(x -> x .== minimum(x), Y_PRED, dims=2)
+mean(ind_fastest, dims=1)
+#+end_src
+
+:RESULTS:
+: 1×4 Matrix{Float64}:
+:  0.4184  0.1064  0.3504  0.1248
+
+The probability that each swimmer is the fastest is shown above.
+Swimmer 1 will be the fastest with probability 0.4184, so I recommend that the coach choose swimmer 1.
+
+** 9.2
+*** Question :noexport:
+Model selection:
+As described in Example 6 of Chapter 7, The file ~azdiabetes.dat~ contains data on health-related variables of a population of 532 women.
+In this exercise we will be modeling the conditional distribution of glucose level (~glu~) as a linear combination of the other variables, excluding the variable diabetes.
+*** a)
+**** Question :noexport:
+Fit a regression model using the /g/-prior with
+\(g=n, \nu_0=2\) and \(\sigma_0^2=1\).
+Obtain posterior confidence intervals for all of the parameters.
+
+**** Answer
+:PROPERTIES:
+:header-args: :session *julia:hoff* :eval no-export
+:END:
+
+#+begin_src julia :exports code
+Y_src = readdlm("../../Exercises/azdiabetes.dat", header=true)
+Y = Y_src[1]
+header = Y_src[2] |> vec
+df = DataFrame(Y, header)
+
+col_int = [:npreg, :glu, :bp, :skin, :age]
+col_float = [:bmi, :ped]
+col_str = :diabetes
+df[!,col_int] = Int.(df[!,col_int])
+df[!,col_float] = Float32.(df[!,col_float])
+df[!,col_str] = String.(df[!,col_str])
+
+function ResidualSE(y,X)
+    fit = lm(X, y)
+    return sum(map(x -> x^2, residuals(fit))) / (size(X, 1) - size(X, 2))
+end
+
+function lmGprior(y, X; g=length(y), ν₀=1, σ₀²=ResidualSE(y,X), S=1000)
+    n, p = size(X)
+
+    Hg = (g/(g+1)) * X * inv(X'X) * X'
+    SSRg = y' * (diagm(ones(n)) - Hg) * y
+    σ² = 1 ./ rand(Gamma((ν₀+n)/2, 2/(ν₀*σ₀²+SSRg)), S)
+
+    Vb = g * inv(X'X) /(g+1)
+    Eb = Vb * X' * y
+
+    β = Matrix{Float64}(undef, 0, p)
+    for i in 1:S
+        s = σ²[i]
+        β = vcat(β, rand(MvNormal(Eb, Symmetric(s * Vb)))')
+    end
+    return β, σ²
+end
+
+# set prior parameters
+g = size(df, 1)
+ν₀ = 2
+σ₀² = 1
+
+y = df[:, :glu]
+X = select(df, Not([:diabetes, :glu])) |> Matrix
+X = [ones(size(X, 1)) X] # add intercept
+S=5000
+BETA, SIGMA² = lmGprior(y, X; g=g, ν₀=ν₀, σ₀²=σ₀², S=S)
+#+end_src
+
+#+begin_src julia :exports both
+# posterior confidence intervals for σ²
+ci_σ² = quantile(SIGMA², [0.025, 0.975])
+
+# %%
+# posterior confidence intervals for β
+ci_β = map(x -> quantile(x, [0.025, 0.975]), eachcol(BETA))
+#+end_src
+
+:RESULTS:
+#+begin_example
+8×4 DataFrame
+ Row │ param      ci_lower    ci_upper    ci_length
+     │ String     Float64     Float64     Float64
+─────┼───────────────────────────────────────────────
+   1 │ intercept   35.1914     69.5733     34.3819
+   2 │ npreg       -1.64525     0.306686    1.95194
+   3 │ bp          -0.01787     0.425742    0.443612
+   4 │ skin        -0.112215    0.511       0.623215
+   5 │ bmi          0.142702    1.129       0.986294
+   6 │ ped          3.36953    17.7334     14.3639
+   7 │ age          0.454045    1.09135     0.637302
+   8 │ σ²         745.993     948.869     202.875
+#+end_example
+
+*** b)
+**** Question :noexport:
+Perform the model selection and averaging procedure described in Section 9.3.
+Obtain \(\mathrm{Pr}(\beta_j \neq 0 | \boldsymbol{y})\), as well as posterior confidence intervals for all of the parameters.
+Compare to the results in part a).
+
+**** Answer
+#+begin_src julia :exports both
+function lpyX(y, X; g=length(y), ν₀=1)
+
+    n = size(X, 1)
+    p = size(X, 2)
+
+    if p ==0
+        σ̂² = mean(y.^2)
+        H0 = zeros(n, n)
+    else
+        fit = lm(X, y)
+        σ̂² = sum(map(x -> x^2, residuals(fit))) / (n - p)
+        H0 = (g/(g+1)) * X * inv(X'X) * X'
+    end
+    SS0 = y' * (diagm(ones(n)) - H0) * y
+    return(
+        -0.5*n*log(2*π) + logabsgamma(0.5*(ν₀+n))[1] - logabsgamma(0.5*ν₀)[1] - 0.5*p*log(1+g) +
+            0.5*ν₀*log(0.5*ν₀*σ̂²) - 0.5*(ν₀+n)*log(0.5*(ν₀*σ̂²+SS0))
+    )
+end
+
+function BayesianModelAveraging(y, X; S=5000)
+    n, p = size(X)
+    BETA = Matrix{Float64}(undef, S, p)
+    Z = Matrix{Int64}(undef, S, p)
+    z = ones(p)
+    lpy_c = lpyX(y, X[:, findall(z .== 1)])
+
+    for s in 1:S
+        for j in shuffle(1:p)
+            zp = copy(z)
+            zp[j] = 1 .- zp[j]
+            lpy_p = lpyX(y, X[:, findall(zp .== 1)])
+            r = (lpy_p - lpy_c)*(-1)^(zp[j]==0)
+            z[j] = rand(Bernoulli(1/(1+exp(-r)))) |> Int
+            if z[j] == zp[j]
+                lpy_c = lpy_p
+            end
+        end
+
+        β = copy(z)
+        if sum(z) > 0
+            β[findall(z .== 1)] = lmGprior(y, X[:, findall(z .== 1)], S=1)[1]
+        end
+        Z[s, :] = z
+        BETA[s, :] = β
+
+        if s % 10 == 0
+            bpm = mean(BETA[1:s, :], dims=1) |> vec
+            mse = mean((y - X * bpm).^2)
+            println("s = ", s, ", mse = ", mse)
+        end
+    end
+    return BETA, Z
+end
+
+BETA2, Z = BayesianModelAveraging(y, X; S=5000)
+z_prob = mean(Z, dims=1) |> vec
+ci_β_bma = map(x -> quantile(x, [0.025, 0.975]), eachcol(BETA2))
+df_ci_bma = DataFrame(
+    param = coef_name,
+    prob = z_prob,
+    ci_lower = map(x -> x[1], ci_β_bma),
+    ci_upper = map(x -> x[2], ci_β_bma)
+)
+#+end_src
+
+:RESULTS:
+#+begin_example
+7×5 DataFrame
+ Row │ param      prob     ci_lower   ci_upper   ci_length
+     │ String     Float64  Float64    Float64    Float64
+─────┼─────────────────────────────────────────────────────
+   1 │ intercept   1.0     43.3728    76.389     33.0162
+   2 │ npreg       0.0978  -1.00526    0.0        1.00526
+   3 │ bp          0.168    0.0        0.32304    0.32304
+   4 │ skin        0.0934   0.0        0.363007   0.363007
+   5 │ bmi         0.9812   0.403414   1.34051    0.937095
+   6 │ ped         0.6928   0.0       17.7104    17.7104
+   7 │ age         1.0      0.480682   1.01743    0.536749
+#+end_example
+
+\(\mathrm{Pr}(\beta_j \neq 0|\boldsymbol{y})\) is nearly 1 for intercept, bmi and age, and is around 0.1 for npreg, bp and skin.
+Compared to the results in part a), the lengths of the confidence intervals tend to be shorter (except for ped) in part b).
+
+** 9.3
+*** Question :noexport:
+Crime:
+The file ~crime.dat~ contains crime rates and data on 15 explanatory variables for 47 U.S. states, in which both the crime rates and the explanatory variables have been centered and scaled to have variance 1.
+A description of the variables can be obtained by typing ~library (MASS);?UScrime~ in ~R~.
+*** a)
+**** Question :noexport:
+Fit a regression model \(\boldsymbol{y} = \mathbf{X} \boldsymbol{\beta} + \epsilon\) using the /g/-prior with \(g=n, \nu_0=2\) and \(\sigma_0^2=1\).
+Obtain marginal posterior mean and 95% confidence intervals for \(\boldsymbol{\beta}\),
+and compare to the least square estimates.
+Describe the relationships between crime and the explanatory variables.
+Which variables seem strongly predictive of crime rates?
+
+**** Answer
+
+The result of bayesian regression using the /g/-prior is shown below:
+
+#+begin_src julia :exports both
+crime_src = readdlm("../../Exercises/crime.dat", header=true)
+crime = crime_src[1]
+header = crime_src[2] |> vec
+
+df = DataFrame(crime, header)
+
+using GLM
+
+function ResidualSE(y,X)
+    fit = lm(X, y)
+    return sum(map(x -> x^2, residuals(fit))) / (size(X, 1) - size(X, 2))
+end
+
+function lmGprior(y, X; g=length(y), ν₀=1, σ₀²=ResidualSE(y,X), S=1000)
+    n, p = size(X)
+
+    Hg = (g/(g+1)) * X * inv(X'X) * X'
+    SSRg = y' * (diagm(ones(n)) - Hg) * y
+    σ² = 1 ./ rand(Gamma((ν₀+n)/2, 2/(ν₀*σ₀²+SSRg)), S)
+
+    Vb = g * inv(X'X) /(g+1)
+    Eb = Vb * X' * y
+
+    β = Matrix{Float64}(undef, 0, p)
+    for i in 1:S
+        s = σ²[i]
+        β = vcat(β, rand(MvNormal(Eb, Symmetric(s * Vb)))')
+    end
+    return β, σ²
+end
+
+# set prior parameters
+n = size(df, 1)
+g = n
+ν₀ = 2
+σ₀² = 1
+
+y = df[:, :y]
+X = select(df, Not(:y)) |> Matrix
+X = [ones(size(X, 1)) X] # add intercept
+p = size(X, 2)
+S=5000
+BETA, SIGMA² = lmGprior(y, X; g=g, ν₀=ν₀, σ₀²=σ₀², S=S)
+
+# posterior mean for β
+β̂_gprior = mean(BETA, dims=1) |> vec
+
+# posterior confidence intervals for β
+ci_gprior = map(x -> quantile(x, [0.025, 0.975]), eachcol(BETA))
+
+# store results
+coef_name = names(df[:, Not(:y)]) |> vec
+coef_name = ["intercept", coef_name...]
+result_gprior = DataFrame(
+    param = coef_name,
+    β̂ = β̂_gprior,
+    ci_lower = map(x -> x[1], ci_gprior),
+    ci_upper = map(x -> x[2], ci_gprior)
+)
+@transform!(result_gprior, :ci_length = :ci_upper - :ci_lower)
+end
+#+end_src
+
+:RESULTS:
+#+begin_example
+16×5 DataFrame
+ Row │ param      β̂             ci_lower    ci_upper    ci_length
+     │ String     Float64       Float64     Float64     Float64
+─────┼────────────────────────────────────────────────────────────
+   1 │ intercept  -0.00138411   -0.145485    0.141785    0.28727
+   2 │ M           0.280085      0.0326016   0.522226    0.489625
+   3 │ So          0.000124904  -0.335994    0.326097    0.662091
+   4 │ Ed          0.531345      0.213679    0.848809    0.63513
+   5 │ Po1         1.4448        0.0578835   2.9098      2.85191
+   6 │ Po2        -0.769673     -2.28756     0.708661    2.99622
+   7 │ LF         -0.0649535    -0.345494    0.201018    0.546512
+   8 │ M.F         0.128508     -0.147925    0.402133    0.550058
+   9 │ Pop        -0.0704276    -0.301267    0.153849    0.455116
+  10 │ NW          0.105647     -0.200629    0.416185    0.616814
+  11 │ U1         -0.265548     -0.631514    0.103081    0.734594
+  12 │ U2          0.359167      0.0283685   0.688258    0.659889
+  13 │ GDP         0.239074     -0.213783    0.692641    0.906425
+  14 │ Ineq        0.715697      0.299354    1.13272     0.83337
+  15 │ Prob       -0.27993      -0.527327   -0.0344898   0.492837
+  16 │ Time       -0.0602993    -0.288748    0.181236    0.469984
+#+end_example
+
+The result of least square estimation is shown below:
+
+#+begin_src julia :exports both
+# least square estimates
+olsfit = lm(X, y)
+
+tstat = coef(olsfit) ./ stderror(olsfit)
+pval = 2 * (1 .- cdf.(Normal(), abs.(tstat)))
+
+result_ols = DataFrame(
+    param = coef_name,
+    β̂ = coef(olsfit),
+    pvalue = pval,
+    ci_lower = confint(olsfit)[:, 1],
+    ci_upper = confint(olsfit)[:, 2]
+)
+@transform!(result_ols, :ci_length = :ci_upper - :ci_lower)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+16×6 DataFrame
+ Row │ param      β̂             pvalue      ci_lower     ci_upper    ci_length
+     │ String     Float64       Float64     Float64      Float64     Float64
+─────┼─────────────────────────────────────────────────────────────────────────
+   1 │ intercept  -0.000458109  0.995369    -0.161444     0.160527    0.321971
+   2 │ M           0.286518     0.0348684    0.00955607   0.56348     0.553924
+   3 │ So         -0.000114046  0.999506    -0.375493     0.375265    0.750757
+   4 │ Ed          0.544514     0.00243231   0.178196     0.910832    0.732636
+   5 │ Po1         1.47162      0.0715397   -0.193934     3.13718     3.33111
+   6 │ Po2        -0.78178      0.358608    -2.51862      0.955056    3.47367
+   7 │ LF         -0.0659646    0.667281    -0.378923     0.246994    0.625917
+   8 │ M.F         0.131298     0.397494    -0.185192     0.447788    0.63298
+   9 │ Pop        -0.0702919    0.579692    -0.329144     0.18856     0.517704
+  10 │ NW          0.109057     0.525852    -0.241574     0.459687    0.701261
+  11 │ U1         -0.270536     0.168865    -0.671568     0.130495    0.802063
+  12 │ U2          0.36873      0.0403534    0.00190637   0.735554    0.733648
+  13 │ GDP         0.238059     0.357931    -0.290079     0.766198    1.05628
+  14 │ Ineq        0.726292     0.00192334   0.24874      1.20384     0.955105
+  15 │ Prob       -0.285226     0.033017    -0.558095    -0.0123574   0.545738
+  16 │ Time       -0.0615769    0.638379    -0.328802     0.205648    0.534451
+#+end_example
+
+[[file:../../fig/ch9/ex_9-3a_coef.png]]
+
+The point estimates and 95% confidence/credible intervals are very similar between bayesian regression and least square estimation.
+The lengths of the intervals seem to be shorter in bayesian regression than in least square estimation.
+Seeing the results of bayesian regression, the 95% credible intervals of coefficients of M, Ed, Po1, U2, Ineq and Prob do not include 0, so these variables seem strongly predictive of crime rates.
+On the other hand, the results of least square estimation show that the p-values of M, Ed, U2 and Ineq are less than 0.05, so these variables seem strongly predictive of crime rates.
+Using these types of criteria, the difference between the two results is that Po1 and Prob are predictive of crime rates in bayesian regression, but not in least square estimation.
+
+*** b)
+**** Question :noexport:
+Lets see how well regression models can predict crime rates based on the \(\boldsymbol{X}\)-variables.
+Randomly divide the crime roughly in half, into a training set \(\{\boldsymbol{y}_{ \mathrm{tr} }, \mathbf{X}_{ \mathrm{tr} }\}\) and a test set \(\{\boldsymbol{y}_{ \mathrm{te} }, \mathbf{X}_{ \mathrm{te} }\}\).
+- i. :: Using only the training set, obtain least squares regression coefficients \(\hat{ \boldsymbol{\beta} }_{ \mathrm{ols} }\).
+  Obtain predicted values for the test data by computing
+  \( \hat{ \boldsymbol{y} }_{ \mathrm{ols} } = \mathbf{X}_{ \mathrm{te} } \hat{ \boldsymbol{\beta} }_{ \mathrm{ols} } \).
+  Plot \( \hat{ \boldsymbol{y} }_{ \mathrm{ols} } \) versus \( \boldsymbol{y}_{ \mathrm{te} } \) and compute the prediction error
+  \( \frac{1}{n_{ \mathrm{te} } } \sum (y_{i, \mathrm{te} } - \hat{y}_{i, \mathrm{ols} })^2 \).
+- ii. :: Now obtain the posterior mean
+  \( \hat{ \boldsymbol{\beta} }_{ \mathrm{Bayes} } = E[ \boldsymbol{\beta} | \boldsymbol{y}_{ \mathrm{tr} } \) using the /g/-prior described above and the training data only.
+  Obtain predictions for the test set
+  \( \hat{ \boldsymbol{y} }_{ \mathrm{Bayes} } = \mathbf{X}_{ \mathrm{te} } \hat{ \boldsymbol{\beta} }_{ \mathrm{Bayes} } \).
+  Plot versus the test data, compute the prediction error, and compare to the OLS prediction error.
+  Explain the results.
+**** Answer
+#+begin_src julia :exports code
+# split data into training and test set
+Random.seed!(1234)
+i_te = sample(1:n, div(n, 2), replace=false)
+i_tr = setdiff(1:n, i_te)
+
+y_tr = y[i_tr]
+y_te = y[i_te]
+X_tr = X[i_tr, :]
+X_te = X[i_te, :]
+#+end_src
+
+#+begin_src julia :exports both
+# OLS
+olsfit = lm(X_tr, y_tr)
+β̂_ols = coef(olsfit)
+ŷ_ols = X_te * β̂_ols
+error_ols = mean((y_te - ŷ_ols).^2)
+#+end_src
+
+:RESULTS:
+: 0.6155918321208247
+
+#+begin_src julia :exports both
+# Bayesian
+BETA, SIGMA² = lmGprior(y_tr, X_tr; g=g, ν₀=ν₀, σ₀²=σ₀², S=S)
+β̂_bayes = mean(BETA, dims=1) |> vec
+ŷ_bayes = X_te * β̂_bayes
+error_bayes = mean((y_te - ŷ_bayes).^2)
+#+end_src
+
+:RESULTS:
+: 0.6012597112455574
+
+[[file:../../fig/ch9/ex_9-3b.png]]
+
+From the above results, the least square regression and bayesian regression seem to yield very similar predictions for the test data.
+For this time, the bayesian regression predict better than the least square regression, but the gap is very small.
+*** c)
+**** Question :noexport:
+Repeat the procedures in b) many times with different randomly generated test and training sets.
+Compute the average prediction error for both the OLS and Bayesian methods.
+
+**** Answer
+#+begin_src julia :exports both
+function computeMses(y, X; g=g, ν₀=ν₀, σ₀²=σ₀², S=S)
+    # split data into training and test set
+    y_tr, y_te, X_tr, X_te = splitData(y, X)
+
+    # OLS
+    olsfit = lm(X_tr, y_tr)
+    β̂_ols = coef(olsfit)
+    ŷ_ols = X_te * β̂_ols
+    error_ols = mean((y_te - ŷ_ols).^2)
+
+    # Bayesian
+    BETA, SIGMA² = lmGprior(y_tr, X_tr; g=g, ν₀=ν₀, σ₀²=σ₀², S=S)
+    β̂_bayes = mean(BETA, dims=1) |> vec
+    ŷ_bayes = X_te * β̂_bayes
+    error_bayes = mean((y_te - ŷ_bayes).^2)
+
+    return error_ols, error_bayes
+end
+
+# compute MSEs
+n_sim = 1000
+error_ols = zeros(n_sim)
+error_bayes = zeros(n_sim)
+for i in 1:n_sim
+    error_ols[i], error_bayes[i] = computeMses(y, X)
+end
+
+# average MSEs
+mean(error_ols), mean(error_bayes)
+#+end_src
+
+:RESULTS:
+: (1.12446194924989, 1.092206057122776)
+
+[[file:../../fig/ch9/ex_9-3c.png]]

@@ -1,0 +1,57 @@
+* setup :ignore:
+#+title: Answers of exercises on Hoff, A first course in Bayesian statistical methods
+# #+SUBTITLE: By Kaoru Babasaki
+#+AUTHOR: Kaoru Babasaki
+#+OPTIONS: toc:2
+#+OPTIONS: H:7
+#+OPTIONS: tags:nil
+#+OPTIONS: num:nil
+#+OPTIONS: timestamp:nil
+#+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
+#+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
+
+#+EXCLUDE_TAGS: noexport Japanese
+#+begin_export html
+<link rel="stylesheet" href="css/custom.css">
+#+end_export
+
+#+BEGIN_EXPORT latex
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\setminted[julia]{
+  bgcolor=bg,
+  breaklines=true,
+  mathescape,
+  fontsize=\footnotesize}
+#+END_EXPORT
+
+* About This Page :onlyforsite:English:
+日本語のサイトは[[./index_jp.org][こちら]]です。
+
+This is my answers of exercises on [[https://pdhoff.github.io/book/][Peter Hoff, A First Course in Bayesian Statistical Methods]].
+
+I hope this site will help someone who will read this book.
+* Parts :ignore:
+#+INCLUDE: ./part/ch2/exercise.org
+#+INCLUDE: ./part/ch3/exercise.org
+#+INCLUDE: ./part/ch4/exercise.org
+#+INCLUDE: ./part/ch5/exercise.org
+#+INCLUDE: ./part/ch6/exercise.org
+#+INCLUDE: ./part/ch7/exercise.org
+#+INCLUDE: ./part/ch8/exercise.org
+#+INCLUDE: ./part/ch9/exercise.org
+#+INCLUDE: ./part/ch10/exercise.org
+* How to contribute
+This website was created by [[https://kaorubb.org/][me]] as a hobby during my master's program, so there may be many typos and errors.
+
+There are still many unsolved problems, and I plan to continue to update this site.
+
+If you find any mistakes, please send an Issue or Pull Request to [[https://github.com/KaoruBB/Hoff_AFCBSM][this repository]].
+
+You can also [[mailto:bbkaoru1007@keio.jp][contact me by email]].
+
+I would like to thank the following people for pointing out typos and errors:
+- Okamoto Noriaki
+- Kubota Kohsuke
+- Kondo Daisuke
+
+Thank you.

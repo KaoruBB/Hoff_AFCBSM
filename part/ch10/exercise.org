@@ -1,0 +1,1234 @@
+* Chapter 10
+:PROPERTIES:
+:header-args:julia: :session hoff_site :eval no-export :exports code
+:END:
+
+** 10.1
+*** Question :noexport:
+Reflecting random walks:
+It is often useful in MCMC to have a proposal distribution which is both symmetric and has support only on a certain region.
+For example, if we know \(\theta > 0\), we would like our proposal distribution \(J(\theta_1 | \theta_0 )\) to have support on positive \(\theta\) values.
+Consider the following proposal algorithm:
+- sample \(\tilde{\theta} \sim \mathrm{uniform}(\theta_0 - \delta, \theta_0 + \delta)\);
+- if \(\tilde{\theta} < 0\), set \(\theta_1 = -\tilde{\theta}\);
+- if \(\tilde{\theta} \ge 0\), set \(\theta_1 = \tilde{\theta}\).
+In other words, \(\theta_1 = |\tilde{\theta}|\).
+Show that the above algorithm draws samples from a symmetric proposal distribution which has support on positive values of \(\theta\).
+It may be helpful to write out the associated proposal density \(J(\theta_1 | \theta_0 )\) under the two conditions \(\theta_0 \le \delta\) and \(\theta_0 > \delta\) separately.
+
+*** Answer :eng:
+It is obvious that the support of the proposal distribution is positive.
+Therefore, it suffices to show \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\).
+Let \(\theta_1, \theta_0, \delta \) be arbitrary positive numbers,
+and without loss of generality, assume \(\theta_1 \ge \theta_0\).
+
+When \(\theta_1 - \theta_0 \ge \delta\), \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1) = 0\) holds.
+Thus, we can only consider the case \(\theta_1 - \theta_0 < \delta \).
+
+(i-i) When \(\theta_0 \le \delta \),
+and \( \theta_0 - \delta < -\theta_1 \),
+\(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals either \(\theta_1\) or \(-\theta_1\).
+On the other hand, given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals either \(\theta_0\) or \(-\theta_0\) because \( \theta_1 - \delta < -\theta_0 < 0 \le \theta_0 \le \theta_1 + \delta \).
+
+(i-ii) When \(\theta_0 \le \delta \) and \( -\theta_1 \le \theta_0 - \delta \),
+\(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals \(\theta_1\).
+Given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals \(\theta_0\) because \(-\theta_0 \le \theta_1 - \delta < 0 \le \theta_0 \le \theta_1 + \delta \).
+Therefore, \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\) holds.
+
+(ii) When \(\theta_0 > \delta \),
+\((\theta_0 - \delta, \theta_0 + \delta)\) covers only positive numbers.
+Thus, \(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals either \(\theta_1\).
+Conversely, given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals \(\theta_0\) because \(\theta_1 - \delta > 0 \).
+Therefore, \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\) holds.
+
+In conclusion, it holds that the proposal distribution is symmetric.
+*** Answer :jp:
+提案分布が正の値のみをサポートすることは明らか。
+したがって、\(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\)を示せば十分。
+
+\(\theta_1, \theta_0, \delta \)を任意の正の数とし、一般性を失わず\(\theta_1 \ge \theta_0\)と仮定する。
+
+(i-i) \(\theta_0 \le \delta \)かつ\( \theta_0 - \delta < -\theta_1 \)のとき、
+\(\theta_1\)は\(\tilde{\theta} = \theta_1\)または\(\tilde{\theta} =-\theta_1\)のときに提案される。
+一方、\(\theta_1\)が与えられたとき、\( \theta_1 - \delta < -\theta_0 < 0 \le \theta_0 \le \theta_1 + \delta \)より\(\tilde{\theta} = \theta_0\)または\(\tilde{\theta} =-\theta_0\)のときに\(\theta_0\)が提案される。
+
+(i-ii) \(\theta_0 \le \delta\) かつ \( -\theta_1 \le \theta_0 - \delta \)のとき、
+\(\theta_1\)は\(\tilde{\theta} = \theta_1\)のときに提案される。
+一方、\(\theta_1\)が与えられたとき、\(-\theta_0 \le \theta_1 - \delta < 0 \le \theta_0 \le \theta_1 + \delta \)より\(\tilde{\theta} = \theta_0\)のときに\(\theta_0\)が提案される。
+
+(ii) \(\theta_0 > \delta \)のとき、\((\theta_0 - \delta, \theta_0 + \delta)\)は正の数のみをカバーする。
+したがって、\(\theta_1\)は\(\tilde{\theta} = \theta_1\)のときのみに提案される。
+逆に、\(\theta_1\)が与えられたとき、\(\theta_1 - \delta > 0 \)より\(\tilde{\theta} = \theta_0\)のときに\(\theta_0\)が提案される。
+
+提案分布は一様分布であることから、以上の議論により対称性が示された。
+
+** 10.2
+*** Question :noexport:
+Nesting success:
+Younger male sparrows may or may not nest during a mating season, perhaps depending on their physical characteristics.
+Researchers have recorded the nesting success of 43 young male sparrows of the same age,
+as well as their wingspan, and the data appear in the file ~msparrownest.dat~.
+Let \(Y_i\) be the binary indicator that sparrow \(i\) successfully nests, and let \(x_{i}\) denote their wingspan.
+Our model for \(Y_i\) is
+\(\text{logit Pr}(Y_i = 1|\alpha, \beta x_i) = \alpha + \beta x) \), where the logit function is given by
+\(\text{logit} \theta = \log \frac{\theta}{1-\theta}\).
+
+*** a)
+**** Question :noexport:
+Write out the joint sampling distribution
+\(\prod_{i=1}^n p(y_i | \alpha, \beta, x_i)\) and simplify as much as possible.
+**** Answer
+\begin{align*}
+\prod_{i=1}^n p(y_i | \alpha, \beta, x_i)
+&= \prod_{i=1}^n \frac{\exp(\alpha + \beta x_i)^{y_i}}{1 + \exp(\alpha + \beta x_i)} \\
+\end{align*}
+
+*** b)
+**** Question :noexport:
+Formulate a prior probability distribution over \(\alpha\) and \(\beta\) by considering the range of \(\mathrm{Pr}(Y=1 | \alpha, \beta, x) \) as \(x\) ranges over 10 to 15, the approximate range of the observed wingspans.
+
+**** Answer
+Let \(p\) be the probability of nesting success.
+Then,
+\begin{align*}
+\alpha + \beta x_i
+&= \text{logit } p \\
+&= \log \frac{p}{1-p}. \\
+\end{align*}
+Thus, if we have no prior information about the probability of nesting success,
+we can set the prior expectation of \(\alpha + \beta x_i\) to 0, \(p = 0.5\).
+Also, we have no prior information about the relationship between wingspan and nesting success,
+so we can set the prior expectation of \(\beta\) to 0.
+Consequently, we can set the prior expectation of \(\alpha\) to 0.
+
+Next, we consider the prior variance of \(\alpha\) and \(\beta\).
+Suppose temporarily that \(\beta = 0\).
+If the prior variance of \(\alpha\) is set to \(2500\),
+\(\alpha\) ranges between \(-100\) and \(100\) for 95% probability, and
+the odds ratio should be between
+\(\exp(-100) \approx 3.7 \times 10^{-44}\) and
+\(\exp(100) \approx 2.7 \times 10^{43}\).
+This prior can be seen quite uninformative.
+Similarly, considering \(x_i\) ranges between 10 and 15,
+we can set the prior variance of \(\beta\) to 25.
+Thus, we can set the prior distribution of \(\alpha\) and \(\beta\) as follows:
+\begin{align*}
+\alpha &\sim \mathcal{N}(0, 2500) \\
+\beta &\sim \mathcal{N}(0, 25) \\
+\end{align*}
+*** c)
+**** Question :noexport:
+Implement a Metropolis algorithm that approximates that approximates \(p(\alpha, \beta |\by, \bx)\).
+Adjust the proposal distribution to achieve a reasonable acceptance rate, and run the algorithm long enough so that the effective sample size is at least 1,000 for each parameter.
+
+**** Answer
+
+#+begin_src julia :exports none
+# start session at project root
+import Pkg; Pkg.activate("./code")
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :exports code
+using BayesPlots
+using DelimitedFiles
+using Distributions
+using LaTeXStrings
+using LinearAlgebra
+using MCMCChains
+using Plots
+using Plots.Measures
+using Random
+using StatsBase
+using StatsModels
+using StatsPlots
+using GLM
+#+end_src
+
+#+RESULTS:
+: nil
+
+#+begin_src julia :exports code :eval never
+data = readdlm("../../Exercises/msparrownest.dat")
+y = data[:, 1]
+x = data[:, 2]
+# add intercept
+x = hcat(ones(length(x)), x)
+
+function MetropolisLogit(S, y, x, β₀, Σ₀, var_prop; seed=123)
+    # S: number of samples
+    # y: response vector
+    # x: predictor vector
+    # β₀: prior mean of β
+    # Σ₀: prior covariance of β
+    # var_prop: proposal variance
+
+    function logistic(ψ)
+        return exp(ψ) / (1 + exp(ψ))
+    end
+
+    Random.seed!(seed)
+    q = length(β₀)
+    BETA = Matrix{Float64}(undef, S, q)
+    acs = 0 # acceptance rate
+
+    # Initialize
+    glmfit = glm(x, y, Binomial(), LogitLink())
+    β = coef(glmfit)
+
+    # Metropolis algorithm
+    for s in 1:S
+        p = logistic.(x*β)
+        # Draw β*
+        β_star = rand(MvNormal(β, var_prop))
+        p_star = logistic.(x*β_star)
+        log_r = sum(logpdf.(Bernoulli.(p_star), y)) +
+                logpdf(MvNormal(β_star, Σ₀), β) -
+                sum(logpdf.(Bernoulli.(p), y)) -
+                logpdf(MvNormal(β, Σ₀), β_star)
+
+        if log(rand()) < log_r
+            β = β_star
+            acs += 1
+        end
+        BETA[s, :] = β
+    end
+    return BETA, acs/S
+end
+
+# Prior
+β₀ = [0, 0]
+Σ₀ = [2500 0; 0 25]
+
+S = 10000
+
+# search best proposal variance
+for i in 1:20
+# Proposal variance
+    var_prop = i*inv(x'x)
+    BETA, acs = MetropolisLogit(S, y, x, β₀, Σ₀, var_prop)
+    println("i = ", i)
+    println("acceptance rate = ", acs)
+    ess_α = MCMCDiagnosticTools.ess(BETA[:,1])
+    ess_β = MCMCDiagnosticTools.ess(BETA[:,2])
+    println("ess_α = ", ess_α)
+    println("ess_β = ", ess_β)
+end
+#+end_src
+
+#+begin_src julia :exports both :eval never
+var_prop = 17*inv(x'x)
+BETA, acs = MetropolisLogit(S, y, x, β₀, Σ₀, var_prop)
+
+ess(MCMCChains.Chains(BETA))
+#+end_src
+
+#+RESULTS:
+#+begin_example julia
+ESS
+  parameters         ess   ess_per_sec
+      Symbol     Float64       Missing
+
+     param_1   1261.2209       missing
+     param_2   1248.0384       missing
+#+end_example
+
+[[file:../../fig/ch10/ex10-2_itr.png]]
+
+*** d)
+**** Question :noexport:
+Compare the posterior densities of \(\alpha\) and \(\beta\) to their prior densities.
+**** Answer
+
+[[file:../../fig/ch10/ex10-2d.png]]
+
+*** e)
+**** Question :noexport:
+Using output from the Metropolis algorithm,
+come up with a way to make a confidence band for the following /function/ \(f_{\alpha \beta}(x)\) of wingspan:
+\[
+f_{\alpha \beta}(x) = \frac{ e^{\alpha + \beta x} }{ 1 + e^{\alpha + \beta x} }.
+\]
+where \(\alpha\) and \(\beta\) are the parameters in your sampling model.
+Make a plot of such a band.
+
+**** Answer
+
+#+begin_src julia :exports code :eval never
+x_grid = 10:0.1:15
+x_grid = hcat(ones(length(x_grid)), x_grid)
+
+# %%
+f_post = logistic.(x_grid*BETA[burnin:end, :]')
+
+# %%
+f_post_mean = mean(f_post, dims=2)
+f_post_lower = map(x -> quantile(x, 0.025), eachrow(f_post))
+f_post_upper = map(x -> quantile(x, 0.975), eachrow(f_post))
+#+end_src
+
+[[file:../../fig/ch10/ex10-2e.png]]
+
+** 10.3
+*** Question :noexport:
+Tomato plants:
+The file ~tplant.dat~ contains data on the heights of ten tomato plants, grown under a variety of soil =pH= conditions.
+Each plant was measured twice.
+During the first measurement, each plant’s height was recorded and a reading of soil =pH= was taken.
+During the second measurement only plant height was measured, although it is assumed that pH levels did not vary much from measurement to measurement.
+
+*** a)
+**** Question :noexport:
+Using ordinary least squares, fit a linear regression to the data, modeling plant height as a function of time (measurement period) and =pH= level.
+Interpret your model parameters.
+
+**** Answer
+
+#+begin_src julia :exports none
+import Pkg; Pkg.activate("./code")
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :exports code
+import Pkg; Pkg.add(url="https://github.com/KaoruBB/BayesPlots.jl")
+#+end_src
+
+#+begin_src julia :results output :exports both
+data = readdlm("Exercises/tplant.dat")
+#+end_src
+
+#+RESULTS:
+#+begin_example
+20×3 Matrix{Float64}:
+ 11.8   0.0  6.39
+ 15.34  1.0  6.39
+  9.31  0.0  5.58
+ 13.7   1.0  5.58
+ 11.2   0.0  4.26
+ 14.75  1.0  4.26
+ 10.33  0.0  5.87
+ 14.38  1.0  5.87
+  9.79  0.0  3.91
+ 13.96  1.0  3.91
+  8.39  0.0  3.91
+ 12.84  1.0  3.91
+ 10.61  0.0  6.17
+ 14.87  1.0  6.17
+  8.54  0.0  3.36
+ 12.77  1.0  3.36
+  9.25  0.0  3.52
+ 13.14  1.0  3.52
+  8.86  0.0  2.02
+ 12.24  1.0  2.02
+#+end_example
+
+#+begin_src julia :exports both :results code
+# first column: plant height
+# second column: measurement period
+# third column: pH level
+y = data[:, 1]
+X = data[:, 2]
+# add intercept
+X = hcat(ones(length(X)), X)
+df = DataFrame(
+    height = y,
+    time = X[:, 2],
+    pH = data[:, 3]
+)
+lmfit = lm(@formula(height ~ time + pH), df)
+#+end_src
+
+#+RESULTS:
+#+begin_src julia
+"StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}
+
+height ~ 1 + time + pH
+
+Coefficients:
+────────────────────────────────────────────────────────────────────────
+                Coef.  Std. Error      t  Pr(>|t|)  Lower 95%  Upper 95%
+────────────────────────────────────────────────────────────────────────
+(Intercept)  7.20869     0.589054  12.24    <1e-09   5.9659     8.45149
+time         3.991       0.328003  12.17    <1e-09   3.29897    4.68303
+pH           0.577752    0.120354   4.80    0.0002   0.323828   0.831676
+────────────────────────────────────────────────────────────────────────"
+#+end_src
+
+***** English :ignore:English:
+This result shows that the height of tomato plants increases by 3.99 cm per time on average.
+Also, the height of tomato plants increases by 0.58 cm when the pH level increases by 1.
+Even with a significance level of 0.01, these effects are statistically significant.
+***** Japanese :ignore:Japanese:
+この結果は、トマトの苗の高さは平均して時間あたり3.99 cmずつ増加し、
+pHレベルが1上昇すると、0.58 cm増加することを示唆している。
+有意水準0.01でも、有意な結果となっている。
+
+*** b)
+**** Question :noexport:
+Perform model diagnostics.
+In particular, carefully analyze the residuals and comment on possible violations of the model assumptions.
+In particular, assesss (graphically or otherwise) whether or not the residuals within a plant are independent.
+What parts of your ordinary linear regression model do you think are sensitive to any violations of assumptions you may have detected?
+
+**** Answer
+[[file:../../fig/ch10/ex10-3b.png]]
+***** Japanese :ignore:Japanese:
+上は残差の散布図である。
+同じトマトの苗は同じ色で示されており、同じ苗に関する残差に相関が見られる。
+これより、このデータは一般的なOLSモデルの仮定である、
+誤差項が独立同一に分布しているという仮定(random sampling)を満たしていないことが示唆される。
+この仮定からの逸脱は、回帰係数や標準誤差の妥当性を損なう。
+
+***** English :ignore:English:
+The scatter plot of residuals is shown above.
+The same tomato plants are indicated in the same color, and the residuals for the same plant show correlation.
+This suggests that the data do not satisfy the assumption of the ordinary least squares model that the errors are independently and identically distributed (random sampling).
+Deviation from this assumption would compromise the validity of the regression coefficients and standard errors.
+
+*** c)
+**** Question :noexport:
+Hypothesize a new model for your data which allows for observations within a plant to be correlated.
+Fit the model using a MCMC approximation to the posterior distribution, and present diagnostics for your approximation.
+
+**** Answer
+***** algorithm :ignore:
+\[
+\boldsymbol{Y} = \begin{pmatrix}
+Y_{1,1} \\ Y_{1,2} \\
+Y_{2,1} \\ Y_{2,2} \\
+\vdots \\
+Y_{n,1} \\ Y_{n,2}
+\end{pmatrix}
+\sim \text{multivariate normal} \left( \mathbf{X} \boldsymbol{\beta}, \Sigma \right)
+\]
+where
+\[
+\Sigma = \sigma^2 \mathbf{C}_{\rho}
+= \sigma^2 \begin{pmatrix}
+1 & \rho & 0 & 0 & \cdots & 0 \\
+\rho & 1 & 0 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \rho & \cdots & 0 \\
+0 & 0 & \rho & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & 0 & \cdots & 1
+\end{pmatrix}
+\]
+and \(\rho\) is the correlation between the two measurements of the same plant.
+
+Setting the prior distribution of \(\beta, \sigma, \rho\) as follows,
+- \(\beta\):
+  \[
+  \beta \sim \mathcal{N}(\boldsymbol{\beta}_0, \Sigma_0),
+  \]
+- \(\sigma\):
+  \[
+  \sigma \sim \text{inverse-gamma}( \frac{v_0}{2}, \frac{v_0 \sigma_0^2}{2} ),
+  \]
+- \(\rho\):
+  \[
+  \rho \sim \text{uniform}( 0, 1 ),
+  \]
+the posterior distributions of \(\beta, \sigma\) are given by
+\begin{align*}
+\{\boldsymbol{\beta} | \boldsymbol{y}, \mathbf{X}, \sigma^2, \rho \} &\sim \text{multivariate normal}(\boldsymbol{\beta}_n, \Sigma_n), \text{ where} \\
+\Sigma_n &= \left( \mathbf{X}^{\top} \mathbf{C}_{\rho}^{-1} \mathbf{X}/\sigma^2 + \Sigma_0^{-1} \right)^{-1} \\
+\boldsymbol{\beta}_n &= \Sigma_n \left( \mathbf{X}^{\top} \mathbf{C}_{\rho}^{-1} \boldsymbol{y}/\sigma^2 + \Sigma_0^{-1} \boldsymbol{\beta}_0 \right), \text{ and} \\
+\{\sigma^2 | \boldsymbol{y}, \mathbf{X}, \boldsymbol{\beta}, \rho \} &\sim \text{inverse-gamma} \left( \frac{ \nu_0 + n }{2}, \frac{ \nu_0 + \mathrm{SSR}_{\rho} }{2} \right), \text{ where} \\
+\mathrm{SSR}_{\rho} &= \left( \boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} \right)^{\top} \mathbf{C}_{\rho}^{-1} \left( \boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} \right). \\
+\end{align*}
+
+The posterior distribution of \(\rho\) is not analytically tractable, so we use the Metropolis algorithm to sample from the posterior distribution.
+
+Given \(\{\boldsymbol{\beta}^{(s)}, \sigma^{2(s)}, \rho^{(s)}\}\), we update the parameters as follows:
+1. Update \(\boldsymbol{\beta}\):
+   Sample \(\boldsymbol{\beta}^{(s+1)} \sim \text{multivariate normal}(\boldsymbol{\beta}_n, \Sigma_n)\),
+   where \(\boldsymbol{\beta}_n \) and \(\Sigma_n\) depend on \(\sigma^{2(s)}\) and \(\rho^{(s)}\).
+2. Update \(\sigma^2\):
+   Sample \(\sigma^{2(s+1)} \sim \text{inverse-gamma}([\nu_0 + n]/2, [\nu_0 \sigma_0^2 + \mathrm{SSR}_{\rho}] / 2)\),
+   where \(\mathrm{SSR}_{\rho}\) depends on \(\boldsymbol{\beta}^{(s+1)}\) and \(\rho^{(s)}\).
+3. Update \(\rho\):
+   a. Propose \(\rho^{\ast} \sim \text{uniform}(\rho^{(s)} - \delta, \rho^{(s)} + \delta)\).
+      If \(\rho^{\ast} \lt 0\) then reassin it to be \(|\rho^{\ast}|\).
+      If \(\rho^{\ast} > 1\) reassin it to be \(2 - \rho^{\ast}\).
+   b. Compute the acceptance ratio
+      \[ r = \frac{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{\ast} ) p(\rho^{\ast})}{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{(s)} ) p(\rho^{(s)})} \]
+      and sample \(u \sim \text{uniform}(0,1)\).
+      If \(u \lt r\), set \(\rho^{(s+1)} = \rho^{\ast}\), otherwise set \(\rho^{(s+1)} = \rho^{(s)}\).
+
+***** code :ignore:
+
+#+begin_src julia :exports code
+function fit_ar1_linear_model_for_repeated_individuals(y, X, β₀, Σ₀, ν₀, σ₀²; S=5000, δ=1, seed=42, thin=1)
+
+    n, p = size(X)
+
+    # starting values
+    lmfit = lm(X, y)
+    β = coef(lmfit)
+    σ² = sum(map(x -> x^2, residuals(lmfit))) / (n - p)
+    res = residuals(lmfit)
+    ρ = autocor(res, [1])[1]
+
+    Random.seed!(seed)
+    OUT = Matrix{Float64}(undef, 0, p+2)
+    ac = 0 # acceptance count
+
+    function _create_cor_matrix(n::Int, ρ::Number)
+        Cᵨ = zeros(n, n)
+        for i in 1:n
+            for j in 1:n
+                if i == j
+                    Cᵨ[i, j] = 1
+                elseif (i - j == 1 && i % 2 == 0) || (j - i == 1 && j % 2 == 0)
+                    Cᵨ[i, j] = ρ
+                end
+            end
+        end
+        return Cᵨ
+    end
+
+    function _update_β(y, X, σ², iCor, Σ₀, β₀)
+        V_β = inv(X' * iCor * X/σ² + Σ₀)
+        E_β = V_β * (X' * iCor * y/σ² + inv(Σ₀) * β₀)
+        return rand(MvNormal(E_β, Symmetric(V_β)))
+    end
+
+    function _update_σ²(y, X, β, iCor, ν₀, σ₀²)
+        νₙ = ν₀ + length(y)
+        SSR = (y - X*β)' * iCor * (y - X*β)
+        νₙσ²ₙ = ν₀ * σ₀² + SSR
+        return rand(InverseGamma(νₙ / 2, νₙσ²ₙ/2))
+    end
+
+    function _update_ρ(ρ, y, X, β, σ², δ)
+        ρₚ = rand(Uniform(ρ-δ, ρ+δ)) |> abs
+        ρₚ = minimum([ρₚ, 2-ρₚ])
+        Cor = _create_cor_matrix(n, ρ)
+        Corₚ = _create_cor_matrix(n, ρₚ)
+        lr = -0.5*(
+            logdet(Corₚ) - logdet(Cor)  +
+            tr((y-X*β)*(y-X*β)' * (inv(Corₚ) - inv(Cor)))/σ²
+        )
+        if log(rand()) < lr
+            ac += 1
+            return ρₚ
+        else
+            return ρ
+        end
+    end
+
+    # MCMC algorithm
+    for s in 1:S
+        Cor = _create_cor_matrix(n, ρ)
+        iCor = inv(Cor)
+
+        β = _update_β(y, X, σ², iCor, Σ₀, β₀)
+        σ² = _update_σ²(y, X, β, iCor, ν₀, σ₀²)
+        ρ = _update_ρ(ρ, y, X, β, σ², δ)
+
+        # store
+        if s % thin == 0
+            # println(s, ac/s, β, σ², ρ)
+            println(join([s, ac/s, β, σ², ρ], ", "))
+            params = vcat(β, σ², ρ)'
+            OUT = vcat(OUT, params)
+        end
+    end
+
+    return OUT
+end
+#+end_src
+
+#+RESULTS:
+: fit_ar1_linear_model_for_repeated_individuals
+
+#+begin_src julia :exports code
+# set prior parameters
+ν₀ = 1
+σ₀² = 1
+Σ₀ = diagm(repeat([1/1000], 3))
+β₀ = [0, 0, 0]
+#+end_src
+
+#+RESULTS:
+| 0 |
+| 0 |
+| 0 |
+
+#+begin_src julia :results output :exports both
+y = df[:, 1];
+X = hcat(ones(length(y)), df[:,2], df[:,3])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+
+20×3 Matrix{Float64}:
+ 1.0  0.0  6.39
+ 1.0  1.0  6.39
+ 1.0  0.0  5.58
+ 1.0  1.0  5.58
+ 1.0  0.0  4.26
+ 1.0  1.0  4.26
+ 1.0  0.0  5.87
+ 1.0  1.0  5.87
+ 1.0  0.0  3.91
+ 1.0  1.0  3.91
+ 1.0  0.0  3.91
+ 1.0  1.0  3.91
+ 1.0  0.0  6.17
+ 1.0  1.0  6.17
+ 1.0  0.0  3.36
+ 1.0  1.0  3.36
+ 1.0  0.0  3.52
+ 1.0  1.0  3.52
+ 1.0  0.0  2.02
+ 1.0  1.0  2.02
+#+end_example
+
+#+begin_src julia :exports code
+# MCMC
+S=25000
+δ=0.1
+thin=25
+fitted_sample = fit_ar1_linear_model_for_repeated_individuals(y, X, β₀, Σ₀, ν₀, σ₀², S=S, δ=δ, thin=thin);
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :results file :exports both
+plot(
+    map(
+        1:size(fitted_sample, 2), ["intercept", "β₁", "β₂", "σ²", "ρ"]
+    ) do i, label
+        plot(
+            fitted_sample[:, i],
+            xlabel="scan/25",
+            ylabel=label,
+            legend=nothing
+        )
+    end...,
+    layout=(3, 2), size=(900, 900)
+)
+savefig("../../fig/ch10/ex10_3_scan.png")
+"../../fig/ch10/ex10_3_scan.png"
+#+end_src
+
+#+CAPTION: Sample paths of the parameters
+#+NAME: fig:ex10_3_scan
+#+RESULTS:
+[[file:../../fig/ch10/ex10_3_scan.png]]
+
+#+begin_src julia :results file :exports both
+plot(
+    map(
+        1:size(fitted_sample, 2), ["intercept", "β₁", "β₂", "σ²", "ρ"]
+    ) do i, label
+        bar(
+            0:30,
+            autocor(fitted_sample[:, i], 0:30),
+            xlabel="lag/25 of $label",
+            ylabel="ACF",
+            legend=false
+        )
+    end...,
+    layout=(2, 3), size=(900, 500), margin=5mm
+)
+savefig("./../../fig/ch10/ex10_3_acf.png")
+"./../../fig/ch10/ex10_3_acf.png"
+#+end_src
+
+#+CAPTION: Autocorrelation plots of the parameters
+#+NAME: fig:ex10_3_acf
+#+RESULTS:
+[[file:../../fig/ch10/ex10_3_acf.png]]
+***** Japanese :ignore:Japanese:
+図[[fig:ex10_3_scan]]、[[fig:ex10_3_acf]]はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。
+これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
+***** English :ignore:English:
+Figure [[fig:ex10_3_scan]] and [[fig:ex10_3_acf]] show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
+These results confirm that the MCMC sampling has sufficiently converged.
+
+*** d)
+**** Question :noexport:
+Discuss the results of your data analysis.
+In particular, discuss similarities and differences between the ordinary linear regression and the model fit with correlated responses.
+Are the conclusions different?
+**** Answer
+***** plot :ignore:
+#+begin_src julia :exports both :results raw file
+figs = []
+for i in 1:3
+    fig = plot_posterior_density(
+        fitted_sample[:, i], bandwidth=0.1, xlabel="β" * "_$i"
+    )
+    fig = vspan!(
+        fig,
+        confint(lmfit)[i, :],
+        color = :blue,
+        alpha = 0.1,
+        label = "95% CI of OLS",
+        legend = i == 3 ? :topright : nothing,
+    )
+    fig = vline!(
+        fig,
+        [coef(lmfit)[i]],
+        color = :blue,
+        linestyle = :dash,
+        label = "OLS estimate",
+    )
+    push!(figs, fig)
+end
+
+plot(figs..., layout=(1, 3), size=(1000, 400), margin=5mm)
+savefig("../../fig/ch10/ex10_3d.png")
+"../../fig/ch10/ex10_3d.png"
+#+end_src
+
+#+CAPTION: Posterior of the coefficients
+#+NAME: fig:ex10_3d
+#+RESULTS:
+[[file:../../fig/ch10/ex10_3d.png]]
+***** Japanese :ignore:Japanese:
+図[[fig:ex10_3d]]は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
+OLSによる点推定量と95%信頼区間を示している。
+切片(\(\beta_1\)), timeの係数(\(\beta_2\)), pHの係数(\(\beta_3\))について、MCMCサンプリングによる事後平均とOLS推定量はほぼ一致しているが、95%信用区間とOLSの信頼区間は異なる。
+もし点推定値のみに関心がある場合、同様な結論が得られるが、推定値の不確実性などを考慮したい場合、今回のベイズモデルとOLSモデルの結論は大きく異なる。
+***** English :ignore:English:
+Figure [[fig:ex10_3d]] shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
+The posterior means of \(\beta_1\) and \(\beta_2\) are almost identical to the OLS estimates, but the 95% credible intervals and OLS confidence intervals differ.
+If only point estimates are of interest, similar conclusions can be drawn, but if uncertainties in the estimates are to be considered, the conclusions of the Bayesian model and the OLS model differ significantly.
+** 10.4
+*** Question :noexport:
+Gibbs sampling:
+Consider the general Gibbs sampler for a vector of parameters \(\bm{\phi}\).
+Suppose \(\bm{\phi}^{(s)}\) is sampled from the target distribution \(p(\bm{\phi})\) and then \(\bm{\phi}^{(s+1)}\) is generated using the Gibbs sampler by iteratively updating each component of the parameter vector.
+Show that the marginal probability \(\text{Pr}(\bm{\phi}^{(s+1)} \in A)\) equals the target distribution \(\int_A p(\bm{\phi}) d \bm{\phi} \)
+
+*** Answer :Japanese:
+\(\bm{\phi}\)は\(d\)次元の確率ベクトルとする。
+
+\(\bm{\phi}_a\), \(\bm{\phi}_b\)をそれぞれ\(\mathbb{R}^d\)の任意の確率ベクトルとし、
+\(\bm{\phi}_a = (a_1, \dots, a_d)\), \(\bm{\phi}_b = (b_1, \dots, b_d)\)とおくと、
+\begin{equation}
+\label{eq:10-4-dbc}
+\begin{aligned}
+& p(\bm{\phi}_a) \mathrm{Pr}( \bm{\phi}^{(t)} = \bm{\phi}_a, \bm{\phi}^{(t+1)} = \bm{\phi}_b ) \\
+= & p(a_1, \dots, a_d) p(b_1 | a_2, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+& \times p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(a_2, \dots, a_d) p(b_1 | a_2, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+& \times p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(b_1, a_2, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+& \times p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(a_2 | b_1, a_3, \dots, a_d) p(b_1, a_3, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+= & p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(a_2 | b_1, a_3, \dots, a_d) p(b_1, b_2, a_3, \dots, a_d) \\
+= &  p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & \ldots \\
+= &p(a_1 | a_2, \dots, a_d) p(a_2 | b_1, a_3, \dots, a_d) \dots p(a_d | a_1, \dots, a_{d-1}) p(b_1, \dots, b_d) \\
+= & p(\bm{\phi}_b) \mathrm{Pr}( \bm{\phi}^{(t)} = \bm{\phi}_b, \bm{\phi}^{(t+1)} = \bm{\phi}_a ) \\
+\end{aligned}
+\end{equation}
+が成り立つ。
+
+よって、
+\begin{equation*}
+\begin{aligned}
+\text{Pr}(\bm{\phi}^{(s+1)} \in A)
+&= \int_A \left[\int_{\mathbb{R}^d} p(\bm{\phi}^{(s)}) \mathrm{Pr}(\bm{\phi}^{(t)} = \bm{\phi}^{(s)}, \bm{\phi}^{(t+1)} = \bm{\phi}^{(s+1)})
+d\bm{\phi}^{(s)}\right] d\bm{\phi}^{(s+1)} & (\text{by assumption}) \\
+&= \int_A \left[\int_{\mathbb{R}^d} p(\bm{\phi}^{(s+1)}) \mathrm{Pr}(\bm{\phi}^{(t)} = \bm{\phi}^{(s+1)}, \bm{\phi}^{(t+1)} = \bm{\phi}^{(s)})
+d\bm{\phi}^{(s)}\right] d\bm{\phi}^{(s+1)} &(\because \eqref{eq:10-4-dbc}) \\
+&= \int_A p(\bm{\phi}^{(s+1)}) \left[\int_{\mathbb{R}^d} \mathrm{Pr}(\bm{\phi}^{(t)} = \bm{\phi}^{(s+1)}, \bm{\phi}^{(t+1)} = \bm{\phi}^{(s)})
+d\bm{\phi}^{(s)}\right] d\bm{\phi}^{(s+1)} \\
+&= \int_A p(\bm{\phi}^{(s+1)}) d\bm{\phi}^{(s+1)} \\
+&= \int_A p(\bm{\phi}) d\bm{\phi}
+\end{aligned}
+\end{equation*}
+
+*** Answer :English:
+\(\bm{\phi}\) is a \(d\)-dimensional vector of parameters.
+
+Let \(\bm{\phi}_a\), \(\bm{\phi}_b\) be arbitrary probability vectors in \(\mathbb{R}^d\), and
+\(\bm{\phi}_a = (a_1, \dots, a_d)\), \(\bm{\phi}_b = (b_1, \dots, b_d)\).
+Then, we have
+\begin{equation}
+\label{eq:10-4-dbc}
+\begin{aligned}
+& p(\bm{\phi}_a) \mathrm{Pr}( \bm{\phi}^{(t)} = \bm{\phi}_a, \bm{\phi}^{(t+1)} = \bm{\phi}_b ) \\
+= & p(a_1, \dots, a_d) p(b_1 | a_2, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+& \times p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(a_2, \dots, a_d) p(b_1 | a_2, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+& \times p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(b_1, a_2, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+& \times p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(a_2 | b_1, a_3, \dots, a_d) p(b_1, a_3, \dots, a_d) p(b_2 | b_1, a_3, \dots, a_d) \\
+= & p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & p(a_1|a_2, \dots, a_d) p(a_2 | b_1, a_3, \dots, a_d) p(b_1, b_2, a_3, \dots, a_d) \\
+= &  p(b_3 | b_1, b_2, a_4, \dots, a_d) \dots p(b_d | b_1, \dots, b_{d-1}) \\
+= & \ldots \\
+= &p(a_1 | a_2, \dots, a_d) p(a_2 | b_1, a_3, \dots, a_d) \dots p(a_d | a_1, \dots, a_{d-1}) p(b_1, \dots, b_d) \\
+= & p(\bm{\phi}_b) \mathrm{Pr}( \bm{\phi}^{(t)} = \bm{\phi}_b, \bm{\phi}^{(t+1)} = \bm{\phi}_a ) \\
+\end{aligned}
+\end{equation}
+
+Therefore, the following holds:
+\begin{equation*}
+\begin{aligned}
+\text{Pr}(\bm{\phi}^{(s+1)} \in A)
+&= \int_A \left[\int_{\mathbb{R}^d} p(\bm{\phi}^{(s)}) \mathrm{Pr}(\bm{\phi}^{(t)} = \bm{\phi}^{(s)}, \bm{\phi}^{(t+1)} = \bm{\phi}^{(s+1)})
+d\bm{\phi}^{(s)}\right] d\bm{\phi}^{(s+1)} & (\text{by assumption}) \\
+&= \int_A \left[\int_{\mathbb{R}^d} p(\bm{\phi}^{(s+1)}) \mathrm{Pr}(\bm{\phi}^{(t)} = \bm{\phi}^{(s+1)}, \bm{\phi}^{(t+1)} = \bm{\phi}^{(s)})
+d\bm{\phi}^{(s)}\right] d\bm{\phi}^{(s+1)} &(\because \eqref{eq:10-4-dbc}) \\
+&= \int_A p(\bm{\phi}^{(s+1)}) \left[\int_{\mathbb{R}^d} \mathrm{Pr}(\bm{\phi}^{(t)} = \bm{\phi}^{(s+1)}, \bm{\phi}^{(t+1)} = \bm{\phi}^{(s)})
+d\bm{\phi}^{(s)}\right] d\bm{\phi}^{(s+1)} \\
+&= \int_A p(\bm{\phi}^{(s+1)}) d\bm{\phi}^{(s+1)} \\
+&= \int_A p(\bm{\phi}) d\bm{\phi}.
+\end{aligned}
+\end{equation*}
+** 10.5 :noexport:
+*** Question :noexport:
+Logistic regression variable selection:
+Consider a logistic regression model for predicting diabetes as a function of \(x1 =\) number of pregnancies, \(x2 =\) blood pressure, \(x3 =\) body mass index, \(x4 =\) diabetes pedigree and \(x5 =\) age.
+Using the data in ~azdiabetes.dat~, center and scale each of the \(x\)- variables by subtracting the sample average and dividing by the sample standard deviation for each variable.
+Consider a logistic regression model of the form \(\mathrm{Pr}(Y_i=1 | \bm{x}_i, \bm{\beta}, \bm{\gamma}) = e^{\theta_i}/(1+e^{\theta_i})\) where
+\[
+\theta_i = \beta_0 + \beta_1 \gamma_1 x_{i,1} + \beta_2 \gamma_2 x_{i,2} + \beta_3 \gamma_3 x_{i,3} + \beta_4 \gamma_4 x_{i,4} + \beta_5 \gamma_5 x_{i,5}
+\]
+In this model, each \(\gamma_j\) is either 0 or 1, indicating whether or not variable \( j \) is a predictor of diabetes.
+For example, if it were the case that \(\bm{\gamma} = (1, 1, 0, 0, 0)\), then \(\theta_i = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2}\).
+Obtain posterior distributions for \(\bm{\beta}\) and \(\bm{\gamma}\), using independent prior distributions for the parameters, such that \(\gamma_j \sim \mathrm{binary}(1/2), \beta_0 \sim \mathrm{normal}(0,16)\) and \(\beta_j \sim \mathrm{normal}(0, 4)\) for each \(j > 0\).
+
+*** a)
+**** Question :noexport:
+Implement a Metropolis-Hastings algorithm for approximating the posterior distribution of \(\bm{\beta}\) and \(\bm{\gamma}\).
+Examine the sequence \(\beta_j^{(s)}\) and \(\beta_j^{(s)} \times \gamma_j^{(s)}\) for each \(j\) and discuss the mixing of the chain.
+**** Answer
+***** sampling model
+\begin{align*}
+Y_i &\sim \text{Bernoulli} \left(\frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) \quad (i = 1, \dots, n) \\
+\theta_i &= \beta_0 + \beta_1 \gamma_1 x_{i,1} + \beta_2 \gamma_2 x_{i,2} + \beta_3 \gamma_3 x_{i,3} + \beta_4 \gamma_4 x_{i,4} + \beta_5 \gamma_5 x_{i,5} \\
+\end{align*}
+
+***** prior
+\begin{align*}
+\gamma_j &\sim \text{Bernoulli}(1/2) \quad (j = 1, \dots, 5) \\
+\beta_0 &\sim \mathcal{N}(0, 16) \\
+\beta_j &\sim \mathcal{N}(0, 4) \quad (j = 1, \dots, 5) \\
+\end{align*}
+
+***** calculation of acceptance ratio \(r\)
+The likelihood and log-likelihood are as follows:
+
+\begin{align*}
+p(\bm{y} | \bm{x}, \bm{\beta}, \bm{\gamma})
+&= \prod_{i=1}^n \left( \frac{e^{\theta_i}}{1 + e^{\theta_i}} \right)^{y_i} \left( \frac{1}{1 + e^{\theta_i}} \right)^{1-y_i} \\
+\log p(\bm{y} | \bm{x}, \bm{\beta}, \bm{\gamma})
+&= \sum_{i=1}^n \left\{ y_i \log \left( \frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) + (1-y_i) \log \left( \frac{1}{1 + e^{\theta_i}} \right) \right\} \\
+&= \sum_{i=1}^n \left\{ y_i \left[ \log(e^{\theta_i}) - \log(1 + e^{\theta_i}) \right] + (1-y_i) \left[ - \log(1 + e^{\theta_i}) \right] \right\} \\
+&= \sum_{i=1}^n \left( y_i \theta_i - y_i \log(1 + e^{\theta_i}) - (1-y_i) \log(1 + e^{\theta_i}) \right) \\
+&= \sum_{i=1}^n \left( y_i \theta_i - \log(1 + e^{\theta_i}) \right) \\
+\end{align*}
+
+For example, when updating \(\gamma_j\), the acceptance ratio is calculated as follows:
+
+\begin{align*}
+r &= \frac{ p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j^{\ast} ) p(\gamma_j^{\ast})}{ p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j^{(s)}) p(\gamma_j^{(s)}) }
+\times \frac{ J(\gamma_j^{(s)} | \gamma_j^{\ast}) }{ J(\gamma_j^{\ast} | \gamma_j^{(s)}) } \\
+\log r &= \log p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j^{\ast} ) + \log p(\gamma_j^{\ast}) - \log p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j^{(s)}) - \log p(\gamma_j^{(s)}) \\
+&\quad+ \log J(\gamma_j^{(s)} | \gamma_j^{\ast}) - \log J(\gamma_j^{\ast} | \gamma_j^{(s)}) \\
+\end{align*}
+***** proposal distributions
+****** Japanese :ignore:Japanese:
+提案分布をどう設定するかがまじでわからん。
+とりあえずこんな感じで置いてみて、適当にパラメーターを調整していくことにする。
+
+****** distribution :ignore:
+\begin{align*}
+\beta_j^{\ast} | \beta_j^{(s)} &\sim \mathcal{N}(\beta_j^{(s)}, \delta^2) \\
+\gamma_j^{\ast} | \gamma_j^{(s)} &\sim \text{Bernoulli}(\max(\eta, \gamma_j^{(s)}-\eta)), \quad 0 < \eta < 1 \\
+\end{align*}
+
+***** import data
+#+begin_src julia :exports code :results none
+data = readdlm("./Exercises/azdiabetes.dat", header=true)
+header = data[2] |> vec
+df = DataFrame(data[1], header)
+
+col_int = [:npreg, :glu, :bp, :skin, :age]
+col_float = [:bmi, :ped]
+col_str = :diabetes
+df[!,col_int] = Int.(df[!,col_int])
+df[!,col_float] = Float32.(df[!,col_float])
+df[!,col_str] = String.(df[!,col_str])
+#+end_src
+
+#+begin_src julia :results output
+first(df, 5)
+#+end_src
+
+#+RESULTS:
+: 5×8 DataFrame
+:  Row │ npreg  glu    bp     skin   bmi      ped      age    diabetes
+:      │ Int64  Int64  Int64  Int64  Float32  Float32  Int64  String
+: ─────┼───────────────────────────────────────────────────────────────
+:    1 │     5     86     68     28     30.2    0.364     24  No
+:    2 │     7    195     70     33     25.1    0.163     55  Yes
+:    3 │     5     77     82     41     35.8    0.156     35  No
+:    4 │     0    165     76     43     47.9    0.259     26  No
+:    5 │     0    107     60     25     26.4    0.133     23  No
+
+***** process data
+#+begin_src julia :exports code :results none
+predictors = [:npreg, :bp, :bmi, :ped, :age]
+X = hcat(
+    ones(size(df, 1)),
+    mapcols(zscore, df[!, predictors])
+) |> Matrix
+y = map(x -> x == "Yes" ? 1 : 0, df[!, :diabetes]) |> Vector
+#+end_src
+
+#+begin_src julia :exports both :results output
+X[1:5, :]
+#+end_src
+
+#+RESULTS:
+: 5×6 Matrix{Float64}:
+:  1.0   0.447786  -0.284774  -0.390958  -0.403331  -0.707578
+:  1.0   1.05164   -0.122308  -1.13212   -0.986707   2.17304
+:  1.0   0.447786   0.852489   0.422864  -1.00702    0.314576
+:  1.0  -1.06186    0.365091   2.1813    -0.708079  -0.521732
+:  1.0  -1.06186   -0.934639  -0.943195  -1.07378   -0.800501
+
+***** step by step :noexport:
+#+begin_src julia :exports both :results output
+γ_init = ones(5);
+glmfit = glm(X, y, Binomial(), LogitLink())
+#+end_src
+
+#+RESULTS:
+#+begin_example
+
+GeneralizedLinearModel{GLM.GlmResp{Vector{Float64}, Binomial{Float64}, LogitLink}, GLM.DensePredChol{Float64, CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}:
+
+Coefficients:
+──────────────────────────────────────────────────────────────────
+         Coef.  Std. Error      z  Pr(>|z|)   Lower 95%  Upper 95%
+──────────────────────────────────────────────────────────────────
+x1  -0.864381     0.108382  -7.98    <1e-14  -1.07681    -0.651956
+x2   0.280428     0.128647   2.18    0.0293   0.0282854   0.532571
+x3   0.0111493    0.115413   0.10    0.9230  -0.215057    0.237355
+x4   0.702529     0.11985    5.86    <1e-08   0.467628    0.93743
+x5   0.456899     0.10762    4.25    <1e-04   0.245969    0.66783
+x6   0.504739     0.135298   3.73    0.0002   0.239561    0.769917
+──────────────────────────────────────────────────────────────────
+#+end_example
+
+#+begin_src julia :exports both :results output
+β_init = coef(glmfit)
+#+end_src
+
+#+RESULTS:
+: 6-element Vector{Float64}:
+:  -0.8643810299747683
+:   0.2804280589402069
+:   0.011149325407118655
+:   0.7025291397493797
+:   0.4568994903080483
+:   0.5047389752091812
+
+#+begin_src julia
+δ = 0.1
+η = 0.1
+
+γ = γ_init
+β = β_init
+j = 1
+β_prp = copy(β)
+β_prp[j] = rand(Normal(β[j], δ))
+#+end_src
+
+#+RESULTS:
+: -0.7953925411287963
+
+#+begin_src julia
+γ, β
+#+end_src
+
+#+RESULTS:
+: ([1.0, 1.0, 1.0, 1.0, 1.0], [-0.8643810299747683, 0.2804280589402069, 0.011149325407118655, 0.7025291397493797, 0.4568994903080483, 0.5047389752091812])
+
+#+begin_src julia :results none
+function _loglikelihood(y, X, β, γ)
+    θ = X * (β .* [1;γ])
+    return sum(y .* θ - log.(1 .+ exp.(θ)))
+end
+#+end_src
+
+#+begin_src julia :results output
+_loglikelihood(y, X, β, γ)
+#+end_src
+
+#+RESULTS:
+: -276.83295986825374
+
+#+begin_src julia
+log_r = _loglikelihood(y, X, β_prp, γ) - _loglikelihood(y, X, β, γ) +
+    logpdf(Normal(0, 4), β_prp[j]) - logpdf(Normal(0, 4), β[j]) +
+    logpdf(Normal(β_prp[j], δ), β[j]) - logpdf(Normal(β[j], δ), β_prp[j])
+#+end_src
+
+#+RESULTS:
+: -0.21652835739004717
+
+#+begin_src julia :results value
+if log(rand()) < log_r
+    β[j] = β_prp[j]
+end
+β[j]
+#+end_src
+
+#+RESULTS:
+: -0.8643810299747683
+
+#+begin_src julia
+j = 2
+β_prp = copy(β)
+β_prp[j] = rand(Normal(β[j], δ))
+log_r = _loglikelihood(y, X, β_prp, γ) - _loglikelihood(y, X, β, γ) +
+    logpdf(Normal(0, 2), β_prp[j]) - logpdf(Normal(0, 2), β[j]) +
+    logpdf(Normal(β_prp[j], δ), β[j]) - logpdf(Normal(β[j], δ), β_prp[j])
+#+end_src
+
+#+RESULTS:
+: -0.04360858509140009
+
+#+begin_src julia :results value
+if log(rand()) < log_r
+    β[j] = β_prp[j]
+end
+β
+#+end_src
+
+#+RESULTS:
+|  -0.8643810299747683 |
+|  0.30932193994622503 |
+| 0.011149325407118655 |
+|   0.7025291397493797 |
+|   0.4568994903080483 |
+|   0.5047389752091812 |
+
+これをjについてやっていけばよさそう
+
+γについてもやっていく
+
+#+begin_src julia
+max(η, γ[j]-η)
+#+end_src
+
+#+begin_src julia
+γ_prp = copy(γ)
+γ_prp[j] = rand(Bernoulli(max(η, γ[j]-η)))
+#+end_src
+
+#+RESULTS:
+: false
+
+#+begin_src julia
+γ_prp
+#+end_src
+
+#+RESULTS:
+| 1.0 |
+| 0.0 |
+| 1.0 |
+| 1.0 |
+| 1.0 |
+
+#+begin_src julia :results output
+pdf(Bernoulli(0.1), 1)
+pdf(Bernoulli(0.1), 0)
+#+end_src
+
+#+RESULTS:
+: 0.1
+: 0.9
+
+#+begin_src julia
+log_r = _loglikelihood(y, X, β, γ_prp) - _loglikelihood(y, X, β, γ) +
+    logpdf(Bernoulli(0.5), γ_prp[j]) - logpdf(Bernoulli(0.5), γ[j]) +
+    logpdf(Bernoulli(max(η , γ[j]-η)), γ_prp[j]) - logpdf(Bernoulli(max(η, γ_prp[j]-η)), γ[j])
+log_r
+#+end_src
+
+#+RESULTS:
+: -0.0004947853245771405
+
+#+begin_src julia
+if log(rand()) < log_r
+    γ[j] = γ_prp[j]
+end
+γ
+#+end_src
+
+#+RESULTS:
+| 1.0 |
+| 0.0 |
+| 1.0 |
+| 1.0 |
+| 1.0 |
+
+***** M-H algorithm
+#+begin_src julia :exports code :results none
+function logit_reg_with_var_select(y, X, β_init, γ_init, δ, η; S=1000, seed=42)
+    function _loglikelihood(y, X, β, γ)
+        θ = X * (β .* [1;γ])
+        return sum(y .* θ - log.(1 .+ exp.(θ)))
+    end
+
+    Random.seed!(seed)
+
+    # initialize
+    β = copy(β_init)
+    γ = copy(γ_init)
+
+    # prepare storage
+    q = length(β)
+    BETA = Matrix{Float64}(undef, S, q)
+    GAMMA = Matrix{Float64}(undef, S, q-1)
+    acs_β = zeros(q)
+    acs_γ = zeros(q-1)
+
+    for s in 1:S
+        # coefficients
+        for j in 1:q
+            β_prp = copy(β)
+            β_prp[j] = rand(Normal(β[j], δ))
+            prior_std = j == 1 ? 4 : 2
+            log_r = _loglikelihood(y, X, β_prp, γ) - _loglikelihood(y, X, β, γ) +
+                logpdf(Normal(0, prior_std), β_prp[j]) - logpdf(Normal(0, prior_std), β[j]) +
+                logpdf(Normal(β_prp[j], δ), β[j]) - logpdf(Normal(β[j], δ), β_prp[j])
+            if log(rand()) < log_r
+                β[j] = β_prp[j]
+                acs_β[j] += 1
+            end
+        end
+
+        # variable selection
+        for j in 1:q-1
+            γ_prp = copy(γ)
+            γ_prp[j] = rand(Bernoulli(max(η, γ[j]-η)))
+            log_r = _loglikelihood(y, X, β, γ_prp) - _loglikelihood(y, X, β, γ) +
+                logpdf(Bernoulli(0.5), γ_prp[j]) - logpdf(Bernoulli(0.5), γ[j]) +
+                logpdf(Bernoulli(max(η , γ_prp[j]-η)), γ[j]) - logpdf(Bernoulli(max(η, γ[j]-η)), γ_prp[j])
+            if log(rand()) < log_r
+                γ[j] = γ_prp[j]
+                acs_γ[j] += 1
+            end
+        end
+
+        BETA[s, :] = β
+        GAMMA[s, :] = γ
+    end
+        return BETA, GAMMA, acs_β./S, acs_γ./S
+end
+#+end_src
+***** run M-H algorithm
+#+begin_src julia :exports code :results none
+glmfit = glm(X, y, Binomial(), LogitLink())
+β_init = coef(glmfit)
+γ_init = ones(5)
+δ = 0.1
+η = 0.1
+
+BETA, GAMMA, acs_β, acs_γ = logit_reg_with_var_select(y, X, β_init, γ_init, δ, η; S=100000, seed=42)
+#+end_src
+
+#+begin_src julia
+acs_β, acs_γ
+#+end_src
+
+#+RESULTS:
+: ([0.71571, 0.8801, 0.96787, 0.73122, 0.72316, 0.70651], [0.90838, 0.91158, 0.90262, 0.89727, 0.89988])
+
+#+begin_src julia :results output :exports both
+chn_β = Chains(BETA, ["β0","β1", "β2", "β3", "β4", "β5"])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Chains MCMC chain (100000×6×1 Array{Float64, 3}):
+
+Iterations        = 1:1:100000
+Number of chains  = 1
+Samples per chain = 100000
+parameters        = β0, β1, β2, β3, β4, β5
+
+Summary Statistics
+  parameters      mean       std      mcse     ess_bulk     ess_tail      rhat   ess_per_sec
+      Symbol   Float64   Float64   Float64      Float64      Float64   Float64       Missing
+
+          β0   -0.8621    0.1077    0.0011   10072.6329   16706.9358    1.0002       missing
+          β1    0.1097    1.6223    0.1060     244.9050     344.6235    1.0319       missing
+          β2   -0.3174    1.9949    0.1319     230.4491     296.1379    1.0412       missing
+          β3    0.7001    0.1164    0.0013    8369.8900   13984.8124    1.0001       missing
+          β4    0.4554    0.1080    0.0011   10278.2298   13772.6993    1.0003       missing
+          β5    0.6238    0.1436    0.0048     949.4711    2999.6897    1.0044       missing
+
+Quantiles
+  parameters      2.5%     25.0%     50.0%     75.0%     97.5%
+      Symbol   Float64   Float64   Float64   Float64   Float64
+
+          β0   -1.0757   -0.9344   -0.8613   -0.7897   -0.6522
+          β1   -3.2236   -0.7286    0.2505    0.5895    3.6983
+          β2   -4.3020   -1.5753   -0.1867    0.8885    3.9288
+          β3    0.4742    0.6220    0.6989    0.7768    0.9321
+          β4    0.2483    0.3814    0.4540    0.5275    0.6712
+          β5    0.3174    0.5315    0.6361    0.7248    0.8764
+#+end_example
+
+#+begin_src julia :results output :exports both
+chn_γ = Chains(GAMMA, ["γ1", "γ2", "γ3", "γ4", "γ5"])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Chains MCMC chain (100000×5×1 Array{Float64, 3}):
+
+Iterations        = 1:1:100000
+Number of chains  = 1
+Samples per chain = 100000
+parameters        = γ1, γ2, γ3, γ4, γ5
+
+Summary Statistics
+  parameters      mean       std      mcse    ess_bulk   ess_tail      rhat   ess_per_sec
+      Symbol   Float64   Float64   Float64     Float64    Float64   Float64       Missing
+
+          γ1    0.3719    0.4833    0.0243    396.0202        NaN    1.0034       missing
+          γ2    0.0572    0.2322    0.0051   2045.8099        NaN    1.0006       missing
+          γ3    1.0000    0.0000       NaN         NaN        NaN       NaN       missing
+          γ4    1.0000    0.0000       NaN         NaN        NaN       NaN       missing
+          γ5    0.9995    0.0226    0.0005   1960.8647        NaN    1.0005       missing
+
+Quantiles
+  parameters      2.5%     25.0%     50.0%     75.0%     97.5%
+      Symbol   Float64   Float64   Float64   Float64   Float64
+
+          γ1    0.0000    0.0000    0.0000    1.0000    1.0000
+          γ2    0.0000    0.0000    0.0000    0.0000    1.0000
+          γ3    1.0000    1.0000    1.0000    1.0000    1.0000
+          γ4    1.0000    1.0000    1.0000    1.0000    1.0000
+          γ5    1.0000    1.0000    1.0000    1.0000    1.0000
+#+end_example
+
+#+begin_src julia :results value raw
+# visualize the MCMC simulation results
+p = plot(chn_β)
+# savefig("../../fig/ch10/example1.png")
+"[[file:../../fig/ch10/example1.png]]"
+#+end_src
+
+#+RESULTS:
+[[file:../../fig/ch10/example1.png]]

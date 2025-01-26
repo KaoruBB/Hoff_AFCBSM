@@ -1,0 +1,642 @@
+* Chapter 5
+** 5.1
+:PROPERTIES:
+:header-args: :session *julia:ch5* :eval no-export
+:END:
+*** Question :noexport:
+Studying:
+The files ~school1.dat~, ~school2.dat~ and ~school3.dat~ contain data on the amount of time students from three high schools spent on studying or homework during an exam period.
+Analyze data from each of these schools separately,
+using the normal model with a conjugate prior distribution, in which
+\( \{\mu_0 = 5, \sigma^2 = 4, \kappa_0 =1, \nu_0 = 2\}\)
+and compute or approximate the following:
+*** a)
+**** Question :noexport:
+posterior means and 95% confidence intervals for the mean \(\theta\) and standard deviation \(\sigma\) from each school.
+**** answer
+
+#+begin_src julia :exports none
+using Distributions
+using Random
+using DelimitedFiles
+Random.seed!(1234)
+#+end_src
+
+#+RESULTS:
+
+
+#+begin_src julia :exports code
+school1 = readdlm("./Exercises/school1.dat")
+school2 = readdlm("./Exercises/school2.dat")
+school3 = readdlm("./Exercises/school3.dat")
+
+# set prior parameters
+μ₀ = 5
+σ₀² = 4
+κ₀ = 1
+ν₀ = 2
+
+# %%
+n1 = length(school1)
+n2 = length(school2)
+n3 = length(school3)
+
+ȳ₁ = mean(school1)
+ȳ₂ = mean(school2)
+ȳ₃ = mean(school3)
+
+s₁² = var(school1)
+s₂² = var(school2)
+s₃² = var(school3)
+
+function calc_posterior_param(n, ȳ, s², μ₀, σ₀², κ₀, ν₀)
+    κn = κ₀ + n
+    νn = ν₀ + n
+    μn =  (κ₀ * μ₀ + n * ȳ) / κn
+    σ²n = (ν₀ * σ₀² + (n-1) * s² + (κ₀ * n * (ȳ - μ₀)^2)/ κn ) / νn
+
+    return κn, νn, μn, σ²n
+end
+
+function calc_mc(n, ȳ, s², μ₀, σ₀², κ₀, ν₀, n_mc)
+    κn, νn, μn, σ²n = calc_posterior_param(n, ȳ, s², μ₀, σ₀², κ₀, ν₀)
+    dist_inverse_σ² = Gamma(νn/2, 2/(νn * σ²n))
+    σ²_mc = rand(dist_inverse_σ², n_mc) .^ -1
+
+    calc_θ_mc = σ² -> rand(Normal(μn, sqrt(σ²/κn)))
+    θ_mc = calc_θ_mc.(σ²_mc)
+
+    return θ_mc, sqrt.(σ²_mc)
+end
+
+function write_quantile_ci(θ_mc, σ_mc, ci)
+    lower = (1 - ci) / 2
+    upper = 1 - lower
+    θ_quantile = round.(quantile(θ_mc, [lower, upper]), digits=3)
+    σ_quantile = round.(quantile(σ_mc, [lower, upper]), digits=3)
+
+    res = ["$(θ_quantile[1]) < θ < $(θ_quantile[2])"
+            ,"$(σ_quantile[1]) < σ < $(σ_quantile[2])"]
+    return res
+end
+
+#+end_src
+
+#+RESULTS:
+: write_quantile_ci
+
+#+begin_src julia :exports both :results output
+# School 1
+θ₁_mc, σ₁_mc = calc_mc(n1, ȳ₁, s₁², μ₀, σ₀², κ₀, ν₀, 5000);
+write_quantile_ci(θ₁_mc, σ₁_mc, 0.95)
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{String}:
+:  "7.746 < θ < 10.814"
+:  "2.985 < σ < 5.181"
+
+#+begin_src julia :exports both :results output
+# School 2
+θ₂_mc, σ₂_mc = calc_mc(n2, ȳ₂, s₂², μ₀, σ₀², κ₀, ν₀, 5000);
+write_quantile_ci(θ₂_mc, σ₂_mc, 0.95)
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{String}:
+:  "5.24 < θ < 8.753"
+:  "3.356 < σ < 5.91"
+
+#+begin_src julia :exports both :results output
+# School 3
+θ₃_mc, σ₃_mc = calc_mc(n3, ȳ₃, s₃², μ₀, σ₀², κ₀, ν₀, 5000);
+write_quantile_ci(θ₃_mc, σ₃_mc, 0.95)
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{String}:
+:  "6.129 < θ < 9.421"
+:  "2.818 < σ < 5.114"
+*** b)
+**** Question :noexport:
+the posterior probability that
+\(\theta_i < \theta_j < \theta_k\) for all six permutations
+\(\{i, j, k\} \) of \(\{1, 2, 3\}\);
+**** answer
+
+#+begin_src julia :exports both
+θ_mcs = [θ₁_mc, θ₂_mc, θ₃_mc]
+perms(l) = isempty(l) ? [l] : [[x; y] for x in l for y in perms(setdiff(l, x))]
+for perm in perms([1,2,3])
+    i, j, k = perm
+    p = mean(θ_mcs[i] .< θ_mcs[j] .< θ_mcs[k])
+    println("p(θ$i < θ$j < θ$k) = $p")
+end
+#+end_src
+
+#+RESULTS:
+: p(θ1 < θ2 < θ3) = 0.0084
+: p(θ1 < θ3 < θ2) = 0.005
+: p(θ2 < θ1 < θ3) = 0.0904
+: p(θ2 < θ3 < θ1) = 0.6506
+: p(θ3 < θ1 < θ2) = 0.02
+: p(θ3 < θ2 < θ1) = 0.2256
+*** c)
+**** Question :noexport:
+the posterior probability that
+\(\tilde{Y}_i < \tilde{Y}_j < \tilde{Y}_k\)
+for all six permutations
+\(\{i, j, k\} \) of \(\{1, 2, 3\}\),
+where \(\tilde{Y}_i\) is a sample from the posterior predictive distribution of school \(i\).
+**** answer
+#+begin_src julia :exports both
+function sample_posterior_predictive(θ_mc, σ_mc)
+    ỹ_mc = rand.(Normal.(θ_mc, σ_mc))
+    return ỹ_mc
+end
+
+ỹ₁_mc = sample_posterior_predictive(θ₁_mc, σ₁_mc)
+ỹ₂_mc = sample_posterior_predictive(θ₂_mc, σ₂_mc)
+ỹ₃_mc = sample_posterior_predictive(θ₃_mc, σ₃_mc)
+
+ỹ_mcs = [ỹ₁_mc, ỹ₂_mc, ỹ₃_mc]
+
+for perm in perms([1,2,3])
+    i, j, k = perm
+    p = mean(ỹ_mcs[i] .< ỹ_mcs[j] .< ỹ_mcs[k])
+    println("p(ỹ$i < ỹ$j < ỹ$k) = $p")
+end
+#+end_src
+
+#+RESULTS:
+: p(ỹ1 < ỹ2 < ỹ3) = 0.109
+: p(ỹ1 < ỹ3 < ỹ2) = 0.1008
+: p(ỹ2 < ỹ1 < ỹ3) = 0.1882
+: p(ỹ2 < ỹ3 < ỹ1) = 0.2634
+: p(ỹ3 < ỹ1 < ỹ2) = 0.1498
+: p(ỹ3 < ỹ2 < ỹ1) = 0.1888
+*** d)
+**** Question :noexport:
+Compute the posterior probability that \(\theta_1\) is bigger than both \(\theta_2\) and \(\theta_3\),
+and the posterior probability that \(\tilde{Y}_1\) is bigger than both \(\tilde{Y}_2\) and \(\tilde{Y}_3\).
+**** answer
+上の計算結果を用いて、
+\begin{align*}
+Pr(\theta_1 > \theta_2, \theta_1 > \theta_3 | \text{data})
+&= Pr(\theta_1 > \theta_2 > \theta_3 | \text{data}) + Pr(\theta_1 > \theta_3 > \theta_2 | \text{data}) \\
+&= 0.6506 + 0.2256 = 0.8762 \\
+\\
+Pr(\tilde{Y}_1 > \tilde{Y}_2, \tilde{Y}_1 > \tilde{Y}_3 | \text{data})
+&= Pr(\tilde{Y}_1 > \tilde{Y}_2 > \tilde{Y}_3 | \text{data}) + Pr(\tilde{Y}_1 > \tilde{Y}_3 > \tilde{Y}_2 | \text{data}) \\
+&= 0.2634 + 0.1888 = 0.4522
+\end{align*}
+** 5.2
+*** question :noexport:
+Sensitivity analysis:
+Thirty-two students in a science classroom were randomly assigned to one of two study methods,
+A and B,
+so that \(n_A = n_B = 16\) students were assigned to each method.
+After several weeks of study, students were examined on the course material with an exam designed to give an average score of 75 with an exam designed to give an average score of 75 with a standard deviation of 10.
+The scores for  the two groups are summarized by
+\(\{\bar{y}_A = 75.2, s_A = 7.3\}\) and \(\{\bar{y}_B = 77.5, s_B = 8.1\}\).
+Consider independent, conjugate normal prior distributions for each of \(\theta_A\) and \(\theta_B\),
+with \(\mu_0 = 75\) and \(\sigma_0^2 = 100\) for both groups.
+For each
+\((\kappa_0, \nu_0) \in \{ (1,1), (2.2), (4,4), (8,8), (16, 16), (32,32)\}\)
+(or more values), obtain
+Pr(\(\theta_A < \theta_B | \boldsymbol{y}_A , \boldsymbol{y}_B\))
+via Monte Carlo sampling.
+Plot this probability as a function of \(\kappa_0 = \nu_0\).
+Describe how you might use this plot to convey the evidence that
+\(\theta_A < \theta_B\) to people of a variety of prior opinions.
+*** answer
+#+begin_src julia :exports code
+μ₀ = 75
+σ₀² = 100
+
+# %%
+n_A = 16
+n_B = 16
+
+ȳ_A = 75.2
+ȳ_B = 77.5
+
+s_A = 7.3
+s_B = 8.1
+
+calc_μn = (n, ȳ, μ₀, κ₀) -> (κ₀ * μ₀ + n * ȳ) / (κ₀ + n)
+calc_σ²n = (n, ȳ, s², σ₀², κ₀, ν₀) -> (ν₀ * σ₀² + (n-1) * s² + (κ₀ * n * (ȳ - μ₀)^2) / (κ₀ + n)) / (ν₀ + n)
+
+function calc_posterior_param(n, ȳ, s², μ₀, σ₀², κ₀, ν₀)
+    κn = κ₀ + n
+    νn = ν₀ + n
+    μn =  (κ₀ * μ₀ + n * ȳ) / κn
+    σ²n = (ν₀ * σ₀² + (n-1) * s² + (κ₀ * n * (ȳ - μ₀)^2)/ κn ) / νn
+
+    return κn, νn, μn, σ²n
+end
+
+function calc_mc(n, ȳ, s², μ₀, σ₀², κ₀, ν₀, n_mc)
+    κn, νn, μn, σ²n = calc_posterior_param(n, ȳ, s², μ₀, σ₀², κ₀, ν₀)
+    dist_inverse_σ² = Gamma(νn/2, 2/(νn * σ²n))
+    σ²_mc = rand(dist_inverse_σ², n_mc) .^ -1
+
+    calc_θ_mc = σ² -> rand(Normal(μn, sqrt(σ²/κn)))
+    θ_mc = calc_θ_mc.(σ²_mc)
+
+    return θ_mc, sqrt.(σ²_mc)
+end
+
+m = 10000
+prob_A_lt_B = []
+for k in [2^i for i in 0:5]
+    κ₀, ν₀ = k, k
+    θ_mc_A, σ_mc_A = calc_mc(n_A, ȳ_A, s_A^2, μ₀, σ₀², κ₀, ν₀, m)
+    θ_mc_B, σ_mc_B = calc_mc(n_B, ȳ_B, s_B^2, μ₀, σ₀², κ₀, ν₀, m)
+
+    prob = mean(θ_mc_A .< θ_mc_B)
+    push!(prob_A_lt_B, prob)
+end
+#+end_src
+
+#+begin_src julia :exports none
+fig = plot(
+    [2^i for i in 0:5], prob_A_lt_B,
+    xlabel = L"\kappa_0 = \nu_0",
+    ylabel = L"\Pr(\theta_A < \theta_B | y_A , y_B)",
+    legend = false,
+    title = "Probability of θ_A < θ_B",
+    ylims = (0, 1),
+)
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch5/exercise5_2.png]]
+
+prior のパラメータ \(\kappa_0, \nu_0\) を大きくとるほど、
+事後分布に対するデータの影響が相対的に小さくなり、
+\(\theta_A < \theta_B\)の事後確率は減少していることがわかるが、同時に
+\(\kappa_0, \nu_0\)の値を上の範囲でいくら変えても、
+\(\theta_A < \theta_B\)の確率は 70%程度であることがいえる。
+** 5.3
+*** question :noexport:
+Marginal distributions:
+Given observations \(Y_1, \ldots, Y_n \sim \text{i.i.d. normal}(\theta, \sigma^2) \)
+and using the conjugate prior distribution for \(\theta\) and \(\sigma^2\),
+derive the formula for \(p(\theta | y_1, \dots, y_n)\),
+the marginal posterior distribution of \(\theta\), conditional on the data but marginal over \(\sigma^2\).
+Check your work by comparing your formula to a Monte Carlo estimate of the marginal distribution, using some values of \( Y_1, \ldots, Y_n, \mu_0, \sigma_0^2,\nu_0, \kappa_0\) that you choose.
+Also derive
+\(p(\tilde{\sigma}^2 | y_1, \dots, y_n)\)
+, where \(\tilde{\sigma}^2 = 1/\sigma^2\) is the precision.
+*** answer
+**** marginal posterior distribution of \(\theta\)
+\begin{align*}
+p(\theta | y_1, \dots, y_n)
+&= \int_0^{\infty} p(\theta, \sigma^2 | y_1, \dots, y_n) d\sigma^2 \\
+&= \int_0^{\infty} p(\theta | \sigma^2, y_1, \dots, y_n) p(\sigma^2 | y_1, \dots, y_n) d\sigma^2 \\
+&= \int_0^{\infty} \sqrt{ \frac{\kappa_n}{2 \pi \sigma^2 } } \exp \left( - \frac{\kappa_n (\theta - \mu_n)^2}{2 \sigma^2} \right)
+\frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})} (\sigma^2)^{-(\frac{\nu_n}{2} + 1)} \exp \left( - \frac{\nu_n \sigma_n^2}{2 \sigma^2} \right) d\sigma^2 \\
+&= \sqrt{ \frac{\kappa_n}{2 \pi} } \frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})}
+\int_0^{\infty} (\sigma^2)^{-(\frac{\nu_n + 1}{2} + 1)} \exp \left( - \frac{\kappa_n (\theta - \mu_n)^2}{2 \sigma^2} - \frac{\nu_n \sigma_n^2}{2 \sigma^2} \right) d\sigma^2 \\
+&= \sqrt{ \frac{\kappa_n}{2 \pi} } \frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})}
+\int_0^{\infty} (\sigma^2)^{-(\frac{\nu_n + 1}{2} + 1)} \exp \left( - \frac{1}{2 \sigma^2} (\kappa_n (\theta - \mu_n)^2 + \nu_n \sigma_n^2) \right) d\sigma^2 \\
+&= \sqrt{ \frac{\kappa_n}{2 \pi} } \frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})}
+\Gamma(\frac{\nu_n + 1}{2}) \times (\frac{\kappa_n (\theta - \mu_n)^2 + \nu_n \sigma_n^2}{2})^{-\frac{\nu_n + 1}{2}} \\
+&= \frac{ \Gamma(\frac{\nu_n + 1}{2}) }{ \Gamma(\frac{\nu_n}{2}) }
+\sqrt{ \frac{\kappa_n}{2 \pi} }
+\left(\frac{2}{\nu_n \sigma_n^2}\right)^{\frac{1}{2} }
+\left(\frac{2}{\nu_n \sigma_n^2}\right)^{-\frac{\nu_n + 1}{2} }
+\times (\frac{\kappa_n (\theta - \mu_n)^2 + \nu_n \sigma_n^2}{2})^{-\frac{\nu_n + 1}{2}} \\
+&= \frac{ \Gamma(\frac{\nu_n + 1}{2}) }{ \Gamma(\frac{\nu_n}{2}) } \sqrt{ \frac{\kappa_n}{\pi \nu_n \sigma_n^2} }
+\left( 1 + \frac{\kappa_n (\theta - \mu_n)^2}{\nu_n \sigma_n^2} \right)^{-\frac{\nu_n + 1}{2}} \\
+&= \text{d-Student t}(\theta | \nu_n, \mu_n, \tau_n^2)
+\end{align*}
+
+where
+\begin{align*}
+\kappa_n &= \kappa_0 + n \\
+\mu_n &= \frac{\kappa_0 \mu_0 + n \bar{y}}{\kappa_n} \\
+\nu_n &= \nu_0 + n \\
+\sigma_n^2 &= \frac{1}{\nu_n} \left( \nu_0 \sigma_0^2 + (n-1)s^2 + \frac{\kappa_0 n}{\kappa_n} (\bar{y} - \mu_0)^2 \right) \\
+\tau_n^2 &= \frac{\nu_n \sigma_n^2}{\kappa_n} \\
+\end{align*}
+
+**** marginal posterior distribution of \(\tilde{\sigma}^2\)
+
+\(\sigma^2\)の marginal posterior distribution は、
+
+\begin{align*}
+p(\sigma^2 | y_1, \dots, y_n)
+& \propto p(\sigma^2) p(y_1, \dots, y_n | \sigma^2) \\
+&= p(\sigma^2) \int p(y_1, \dots, y_n | \theta, \sigma^2) p(\theta | \sigma^2) d\theta \\
+\end{align*}
+となる。
+
+ここで、
+
+
+\begin{equation}
+\label{eq:ex5-3.1}
+\begin{aligned}[b]
+\sum_{i=1}^n (y_i - \theta)^2
+&= \sum_{i=1}^n (y_i - \bar{y} + \bar{y} - \theta)^2 \\
+&= \sum_{i=1}^n (y_i - \bar{y})^2 + n (\bar{y} - \theta)^2 + 2 (\bar{y} - \theta) \sum_{i=1}^n (y_i - \bar{y}) \\
+&= \sum_{i=1}^n (y_i - \bar{y})^2 + n (\bar{y} - \theta)^2 \\
+&= n (\theta - \bar{y})^2 + (n-1)s^2 \\
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\label{eq:ex5-3.2}
+\begin{aligned}
+A(x - a)^2 + B(x - b)^2 &= (A + B)(x - c)^2 + \frac{AB}{A + B}(a - b)^2 \\
+\text{where } c &= \frac{aA + bB}{A + B} \\
+\end{aligned}
+\end{equation}
+を用いると、
+
+\begin{align*}
+p(y_1, \dots, y_n | \theta, \sigma^2) p(\theta | \sigma^2)
+&= \prod_{i=1}^n p(y_i | \theta, \sigma^2) p(\theta | \sigma^2) \\
+&= \prod_{i=1}^n \left( \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{(y_i - \theta)^2}{2 \sigma^2} \right) \right)
+\left( \frac{\sqrt{\kappa_0} }{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{ \kappa_0 (\theta - \mu_0)^2}{2 \sigma^2} \right) \right) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  \sum_{i=1}^n (y_i - \theta)^2 \right)
+\exp \left( - \frac{\kappa_0}{2 \sigma^2} (\theta - \mu_0)^2 \right) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  ( n (\theta - \bar{y})^2 + (n-1)s^2 ) \right) \\
+& \qquad \times
+\exp \left( - \frac{\kappa_0}{2 \sigma^2} (\theta - \mu_0)^2 \right)
+\quad (\because \eqref{eq:ex5-3.1}) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  ( n(\theta - \bar{y})^2 + \kappa_0 (\theta - \mu_0)^2 ) \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  ( (n + \kappa_0)(\theta - \theta^{\ast})^2 + r ) \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) \\
+& \qquad \text{ where } \theta^{\ast} = \frac{n \bar{y} + \kappa_0 \mu_0}{n + \kappa_0}, \quad
+r = \frac{n \kappa_0}{n + \kappa_0} (\bar{y} - \mu_0)^2
+\qquad \qquad \qquad \qquad \qquad (\because \eqref{eq:ex5-3.2}) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{ n + \kappa_0}{2 \sigma^2} (\theta - \theta^{\ast})^2 \right)
+\exp \left( - \frac{r}{2 \sigma^2} \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) \\
+\end{align*}
+
+となるので、
+
+\begin{align*}
+p(\sigma^2 | y_1, \dots, y_n)
+& \propto p(\sigma^2) p(y_1, \dots, y_n | \sigma^2) \\
+&= p(\sigma^2) \int p(y_1, \dots, y_n | \theta, \sigma^2) p(\theta | \sigma^2) d\theta \\
+&= p(\sigma^2) \int (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{ n + \kappa_0}{2 \sigma^2} (\theta - \theta^{\ast})^2 \right)
+\exp \left( - \frac{r}{2 \sigma^2} \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) d\theta \\
+&= p(\sigma^2) (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right) \\
+& \qquad \times
+\left(2 \pi \frac{\sigma^2}{n + \kappa_0} \right)^{\frac{1}{2} }
+\int \left(2 \pi \frac{\sigma^2}{n + \kappa_0} \right)^{-\frac{1}{2} }
+\exp \left( - \frac{ n + \kappa_0}{2 \sigma^2} (\theta - \theta^{\ast})^2 \right) d\theta \\
+&= p(\sigma^2) (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right)
+\left(2 \pi \frac{\sigma^2}{n + \kappa_0} \right)^{\frac{1}{2} } \\
+& \propto p(\sigma^2) (\sigma^2)^{- \frac{n}{2} }
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right) \\
+& \propto (\sigma^2)^{- (\frac{ \nu_0 }{2} + 1 )} \exp \left( - \frac{\nu_0 \sigma_0^2}{2 \sigma^2} \right)
+(\sigma^2)^{- \frac{n}{2} }
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right) \\
+&= (\sigma^2)^{- (\frac{ \nu_0 + n }{2} + 1 )} \exp \left( - \frac{\nu_0 \sigma_0^2 + (n-1)s^2 + r}{2 \sigma^2} \right) \\
+&= (\sigma^2)^{- (\frac{ \nu_0 + n }{2} + 1 )} \exp \left( - \frac{\nu_0 + n}{2 \sigma^2}
+\left( \frac{\nu_0 \sigma_0^2 + (n-1)s^2 + \frac{\kappa_0 n}{\kappa_0 + n} (\bar{y} - \mu_0)^2 }{\nu_0 + n} \right) \right) \\
+&\propto \text{dinverse-gamma}(\sigma^2, \frac{\nu_n}{2}, \frac{\nu_n \sigma_n^2}{2}) \\
+& \text{ where }
+\nu_n = \nu_0 + n, \quad
+\sigma_n^2 = \frac{1}{\nu_n}\left[ \nu_0 \sigma_0^2 + (n-1)s^2 + \frac{\kappa_0 n}{\kappa_n} (\bar{y} - \mu_0)^2 \right]
+\end{align*}
+
+よって、
+\begin{equation*}
+\left| \frac{d \sigma^2}{d \tilde{\sigma}^2} \right|  = (\tilde{\sigma}^2)^{-2}
+\end{equation*}
+より
+\begin{align*}
+p( \tilde{\sigma}^2 | y_1, \dots, y_n)
+&= p( (\tilde{\sigma}^2)^{-1} | y_1, \dots, y_n) \left| \frac{d \sigma^2}{d \tilde{\sigma}^2} \right| \\
+&= \text{dinverse-gamma}(\tilde{\sigma}^{-2} | \frac{\nu_n}{2}, \frac{\nu_n \sigma_n^2}{2}) \times (\tilde{\sigma}^2)^{-2} \\
+&\propto (\tilde{\sigma}^2)^{(\frac{ \nu_0 + n }{2} + 1 )}
+\exp \left( - \frac{\nu_n \sigma_n^2}{2 (\tilde{\sigma}^2)^{-1} } \right) \times (\tilde{\sigma}^2)^{-2} \\
+&= (\tilde{\sigma}^2)^{(\frac{ \nu_0 + n }{2} - 1 )}
+\exp \left( - \tilde{\sigma}^2 \frac{\nu_n \sigma_n^2}{2} \right) \\
+&= \text{dgamma}(\tilde{\sigma}^2 | \frac{\nu_n}{2}, \frac{\nu_n \sigma_n^2}{2})
+\end{align*}
+
+** 5.4 :important:
+*** question :noexport:
+Jeffreys' prior:
+For sampling models expressed in terms of a \(p\)-dimensional vector \(\psi\),
+Jeffreys' prior ([[3.12(和訳は 3.11)][Exercise 3.11]]) is defined as
+\(p_j(\psi) \propto \sqrt{ |I(\psi)|}\), where \(I(\psi)\) is the determinant of the
+\(p \times p\) matrix \(I(\psi)\) having entries \(I(\psi)_{k, l} = - E[\partial \log p(Y | \psi) / \partial \psi_k \partial \psi_l]\).
+
+*** a)
+**** question :noexport:
+Show that Jeffreys' prior for the normal model is
+\(p_J(\theta, \sigma^2) \propto (\sigma^2)^{- \frac{3}{2} }\)
+**** answer
+対数尤度は、
+\begin{align*}
+\ell(y | \theta, \sigma^2)
+&= \log p(y | \theta, \sigma^2) \\
+&= \log \left[ \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{(y_i - \theta)^2}{2 \sigma^2} \right) \right] \\
+&= \log \left[ (2 \pi \sigma^2)^{-\frac{n}{2} } \exp \left( - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \theta)^2 \right) \right] \\
+&= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \theta)^2 \\
+&= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i^2 - 2 y_i \theta + \theta^2) \\
+&= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} (\sum_{i=1}^n y_i^2 - 2 \theta \sum_{i=1}^n y_i + n \theta^2) \\
+\end{align*}
+と表せる。
+従って、\(\theta, \sigma^2\)による一回微分はそれぞれ、
+\begin{align*}
+\ell_{\theta}
+&= - \frac{1}{2 \sigma^2} (- 2 \sum_{i=1}^n y_i + 2 n \theta) \\
+&= \frac{1}{\sigma^2} (\sum_{i=1}^n y_i - n \theta) \\
+\\
+\ell_{\sigma^2}
+&= - \frac{n}{2 \sigma^2} + \frac{1}{2 (\sigma^2)^2} (\sum_{i=1}^n y_i^2 - 2 \theta \sum_{i=1}^n y_i + n \theta^2) \\
+\end{align*}
+となる。
+よって、
+
+\begin{align*}
+I(\theta, \sigma^2)
+&= \begin{pmatrix} - E[\ell_{\theta \theta}] & - E[\ell_{\theta \sigma^2}] \\ - E[\ell_{\sigma^2 \theta}] & - E[\ell_{\sigma^2 \sigma^2}] \end{pmatrix} \\
+& = \begin{pmatrix} - E[- \frac{n}{\sigma^2}] & - E[\frac{n \theta - \sum y_i }{(\sigma^2)^2}] \\ - E[\frac{n \theta - \sum y_i }{(\sigma^2)^2}] & - E[\frac{n}{2 (\sigma^2)^2} - \frac{\sum (y_i - \theta)^2 }{ (\sigma^2)^3}] \end{pmatrix} \\
+& = \begin{pmatrix}  \frac{n}{\sigma^2} & \frac{ \sum E[y_i] - n \theta }{(\sigma^2)^2} \\ \frac{\sum E[y_i] - n \theta }{(\sigma^2)^2} & - \frac{n}{2 (\sigma^2)^2} + \frac{\sum E [(y_i - \theta)^2] }{ (\sigma^2)^3} \end{pmatrix} \\
+& = \begin{pmatrix}  \frac{n}{\sigma^2} & \frac{ n \theta - n \theta }{(\sigma^2)^2} \\ \frac{n \theta - n \theta }{(\sigma^2)^2} & - \frac{n}{2 (\sigma^2)^2} + \frac{n \sigma^2 }{(\sigma^2)^3} \end{pmatrix} \\
+& = \begin{pmatrix}  \frac{n}{\sigma^2} & 0 \\ 0 &  \frac{n}{2 (\sigma^2)^2}  \end{pmatrix} \\
+\\ |I(\theta, \sigma^2)|
+&= \frac{n}{\sigma^2} \frac{n}{2 (\sigma^2)^2} \\
+&= \frac{n^2}{2 (\sigma^2)^3} \\
+\end{align*}
+となるので、Jeffreys' prior は、
+\begin{align*}
+p_J(\theta, \sigma^2)
+&\propto \sqrt{ |I(\theta, \sigma^2)|} \\
+&= \sqrt{ \frac{n^2}{2 (\sigma^2)^3} } \\
+&= \frac{n}{\sqrt{2} } \times (\sigma^2)^{- \frac{3}{2} }  \\
+&\propto (\sigma^2)^{- \frac{3}{2} }  \\
+\end{align*}
+であり、示せた。
+*** b)
+**** question :noexport:
+Let
+\(\boldsymbol{y} = (y_1, \dots , y_n) \)
+be the observed value of an i.i.d. sample from a normal(\(\theta, \sigma^2\)) population.
+Find a probability density \(p_J(\theta, \sigma^2 | \boldsymbol{y})\)
+such that
+\(p_J(\theta, \sigma^2 | \boldsymbol{y}) \propto p_J(\theta, \sigma^2) p(\boldsymbol{y} | \theta, \sigma^2) \).
+It may be convenient to write this joint density as
+\(p_J(\theta | \sigma^2, \boldsymbol{y}) \times p_J(\sigma^2 | \boldsymbol{y}) \).
+Can this joint density be considered a posterior density?
+**** answer
+
+\begin{align*}
+p_J(\theta, \sigma^2 | \boldsymbol{y})
+&= p_J(\theta, \sigma^2) p(\boldsymbol{y} | \theta, \sigma^2) \\
+&\propto (\sigma^2)^{- \frac{3}{2} } \times \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{(y_i - \theta)^2}{2 \sigma^2} \right) \\
+&\propto (\sigma^2)^{- \frac{3}{2} } \times (\sigma^2)^{- \frac{n}{2} } \exp \left( - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \theta)^2 \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} } \exp \left( - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i^2 - 2 y_i \theta + \theta^2) \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} }
+\exp \left( - \frac{ n \bar{y^2} }{ 2 \sigma^2 } + \frac{ n \bar{y} \theta }{ \sigma^2 } - \frac{ n \theta^2 }{ 2 \sigma^2 } \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} }
+\exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta^2 - 2 \bar{y} \theta \right) \right)
+\times \exp \left( - \frac{ n \bar{y^2} }{ 2 \sigma^2 } \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} }
+\exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta - \bar{y} \right)^2 + \frac{ n \bar{y}^2 }{ 2 \sigma^2 } \right)
+\times \exp \left( - \frac{ n \bar{y^2} }{ 2 \sigma^2 } \right) \\
+&= (\sigma^2)^{- \frac{1}{2} } \exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta - \bar{y} \right)^2 \right)
+\times (\sigma^2)^{- \left( \frac{n}{2} + 1 \right) } \exp \left( - \frac{ n ( \bar{y^2} - \bar{y}^2 )}{ 2 \sigma^2 } \right) \\
+&= \left(\frac{\sigma^2}{n} \right)^{- \frac{1}{2} } \exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta - \bar{y} \right)^2 \right)
+\times (\sigma^2)^{- \left( \frac{n}{2} + 1 \right) } \exp \left( - \frac{ n s^2 }{ 2 \sigma^2 } \right) \\
+&\propto \text{dnormal}(\theta, \bar{y}, \frac{\sigma^2}{n})
+\times
+\text{dinverse-gamma}(\sigma^2, \frac{n}{2}, \frac{n s^2}{ 2 } ),
+\end{align*}
+where \(\bar{y^2} = \frac{1}{n} \sum_{i=1}^n y_i^2\) and \(s^2 = \frac{1}{n-1} \sum_{i=1}^n (y_i - \bar{y})^2\).
+
+上式より、joint density は posterior density になっていることが確認できた。
+** 5.5 :important:
+*** Question :noexport:
+Unit information prior:
+Obtain a unit information prior for the normal model as follows:
+*** a)
+**** Question :noexport:
+Reparameterize the normal model as \(p(y | \theta, \psi)\),
+where \(\psi = \frac{1}{\sigma^2}\).
+Write out the log likelihood
+\(l(\theta, \psi | \boldsymbol{y}) = \sum \log p(y_i | \theta, \psi) \)
+in terms of \(\theta\) and \(\psi\).
+**** answer
+\begin{align*}
+l(\theta, \psi | \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i | \theta, \psi) \\
+&= \sum_{i=1}^n \log \left( (2\pi)^{ - \frac{1}{2} } \psi^{ \frac{1}{2} }
+\exp \left( - \frac{\psi}{2}  (y_i - \theta )^2 \right) \right) \\
+&= \sum_{i=1}^n \left\{ \log (2\pi)^{ - \frac{1}{2} } + \log \psi^{ \frac{1}{2} } - \frac{\psi}{2} (y_i - \theta )^2 \right\} \\
+&= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \\
+\end{align*}
+*** b)
+**** Question :noexport:
+Find a probability density \(p_U (\theta, \psi)\) so that
+\(
+\log p_U(\theta, \psi)
+= \frac{l(\theta, \psi | \boldsymbol{y})}{n} + c
+\),
+where \(c\) is a constant that does not depend on \(\theta\) or \(\psi\).
+Hint:
+Write
+\(\sum (y_i - \theta)^2\)
+as
+\(\sum (y_i - \bar{y} + \bar{y} - \theta)^2
+= \sum (y_i - \bar{y})^2 + n (\bar{y} - \theta)^2\),
+and recall that
+\(\log p_U(\theta | \psi) + \log p_U(\psi) \).
+**** answer
+
+\begin{align*}
+l(\theta, \psi | \boldsymbol{y})
+&= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \\
+&= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \left( \sum_{i=1}^n (y_i - \bar{y} )^2 + n (\bar{y} - \theta )^2 \right) \\
+&= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi -
+\frac{\psi}{2} n s^2 - \frac{\psi}{2} n (\bar{y} - \theta )^2 \\
+\end{align*}
+
+従って、
+\begin{align*}
+\log p_U(\theta, \psi)
+&= \frac{l(\theta, \psi | \boldsymbol{y})}{n} + c \\
+&= - \frac{1}{2} \log (2\pi) + \frac{1}{2} \log \psi -
+\frac{\psi}{2} s^2 - \frac{\psi}{2} (\bar{y} - \theta )^2 + c \\
+\end{align*}
+となるので、
+\begin{align*}
+p_U(\theta, \psi)
+&= (2 \pi)^{- \frac{1}{2} } \psi^{ \frac{1}{2} }
+\exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{\psi}{2} (\bar{y} - \theta )^2 \right)
+\exp \left( c \right) \\
+&\propto
+\psi^{ \frac{1}{2} }
+\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\times
+\psi^{ 1 - 1} \exp \left( - \frac{s^2}{2} \psi \right) \\
+&\propto
+\text{dnormal}(\theta, \bar{y}, \psi^{-1})
+\times
+\text{dgamma}(\psi, 1, \frac{s^2}{2})
+\end{align*}
+*** c)
+**** Question :noexport:
+Find a probability density \(p_U (\theta, \psi | \boldsymbol{y}) \)
+that is proportional to
+\(p_U(\theta, \psi) \times p( y_1, \ldots, y_n | \theta, \psi)\).
+It may be convenient to write this joint density as
+\(p_U(\theta | \psi, \boldsymbol{y}) \times p_U(\psi | \boldsymbol{y})\).
+Can this joint density be considered a posterior density?
+**** answer
+
+\begin{align*}
+p_U(\theta, \psi | \boldsymbol{y})
+&\propto
+p_U(\theta, \psi) \times p( y_1, \ldots, y_n | \theta, \psi) \\
+&\propto
+\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\times
+\psi^{ \frac{3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\times
+\psi^{ \frac{n}{2} } \exp \left( - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \right) \\
+&=
+\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\times
+\psi^{ \frac{3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\times
+\psi^{ \frac{n}{2} } \exp \left( - \frac{\psi}{2} \left( \sum_{i=1}^n (y_i - \bar{y} )^2 + n (\bar{y} - \theta )^2 \right) \right) \\
+&=
+\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\times
+\psi^{ \frac{n + 3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\times
+\exp \left( - \frac{n s^2}{2} \psi \right) \times  \exp \left( - \frac{\psi}{2} n (\bar{y} - \theta )^2 \right) \\
+&=
+\exp \left( - \frac{ (n + 1) \psi}{2} ( \theta - \bar{y} )^2 \right)
+\times
+\psi^{ \frac{n + 3}{2} - 1} \exp \left( - \frac{(n + 1) s^2}{2} \psi \right) \\
+&\propto
+\text{dnormal}(\theta, \bar{y}, \frac{1}{(n + 1)\psi})
+\times
+\text{dgamma}(\psi, \frac{n + 3}{2}, \frac{(n + 1) s^2}{2})
+\end{align*}
+
+上式より、joint density は posterior density になっていることが確認できた。

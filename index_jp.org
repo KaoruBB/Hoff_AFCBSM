@@ -1,0 +1,60 @@
+* setup :ignore:
+#+title: 標準ベイズ統計学の演習問題の解答例
+#+AUTHOR: 馬場先 薫
+#+OPTIONS: toc:2
+#+OPTIONS: H:7
+#+OPTIONS: tags:nil
+#+OPTIONS: num:nil
+#+OPTIONS: timestamp:nil
+#+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
+#+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
+#+EXCLUDE_TAGS: noexport English
+
+#+BEGIN_EXPORT latex
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\setminted[julia]{
+  bgcolor=bg,
+  breaklines=true,
+  mathescape,
+  fontsize=\footnotesize}
+#+END_EXPORT
+
+* このサイトについて :onlyforsite:Japanese:
+For English site, please visit [[./index.org][here]].
+
+このサイトは
+- [[https://pdhoff.github.io/book/][Peter Hoff, A First Course in Bayesian Statistical Methods]]
+- [[https://www.asakura.co.jp/detail.php?book_code=12267][標準ベイズ統計学]]
+の Exercise を解いたものです。
+
+もし、間違いなどありましたら、[[間違いを見つけたら][こちら]]をご覧いただき、ご指摘いただけると幸いです。
+
+* Parts :ignore:
+#+INCLUDE: ./part/ch2/exercise.org
+#+INCLUDE: ./part/ch3/exercise.org
+#+INCLUDE: ./part/ch4/exercise.org
+#+INCLUDE: ./part/ch5/exercise.org
+#+INCLUDE: ./part/ch6/exercise.org
+#+INCLUDE: ./part/ch7/exercise.org
+#+INCLUDE: ./part/ch8/exercise.org
+#+INCLUDE: ./part/ch9/exercise.org
+#+INCLUDE: ./part/ch9/exercise.org
+#+INCLUDE: ./part/ch10/exercise.org
+
+* 間違いを見つけたら
+本サイトは、[[https://kaorubb.org/][筆者]]が修士課程のときに趣味の一環で作成したものなので、誤植や間違いが多々あるかと思います。
+
+また、まだ解いていない問題も多く残っており、少しずつ解いていく予定です。
+
+もし、間違い等を見つけた場合は、[[https://github.com/KaoruBB/Hoff_AFCBSM][このリポジトリ]] に Issueを立てていただくか、Pull Requestを送っていただけると幸いです。
+
+また、[[mailto:bbkaoru1007@keio.jp][メールにてご連絡]] いただいても構いません。
+
+
+なお、これまで
+- Okamoto Noriaki さん
+- Kubota Kohsuke さん
+- Kondo Daisuke さん
+から、誤植・間違いの指摘をいただきました。
+
+ありがとうございます。

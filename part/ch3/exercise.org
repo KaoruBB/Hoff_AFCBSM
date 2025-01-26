@@ -1,0 +1,1988 @@
+* Chapter 3
+** 3.1
+:PROPERTIES:
+:header-args: :session exercise3.1 :eval no-export
+:ID:       9b7f815b-a904-4921-b8b8-fcaf7c9dac74
+:END:
+
+*** question :noexport:
+Sample survey:
+Suppose we are going to sample 100 individuals from a county (of size much larger than 100)
+and ask each sampled person supports the policy, and \(Y_i = 0\) otherwise.
+*** a
+**** Question :noexport:
+Assume \(Y_1 , \dots , Y_{100}\) are, conditional on \(\theta\), i.i.d. binary random variables with expectation \(\theta\).
+Write down the joint distribution of Pr(\(Y_1 = y_1, \dots ,Y_{100}=y_{100} \mid \theta\)) is a compact form.
+Also write down the form of Pr(\(\sum Y_i = y \mid \theta\)).
+**** Answer
+
+\begin{align*}
+& \text{Pr}(Y_1 = y_1, \dots , Y_{100}=y_{100} \mid \theta) \\
+= &\text{Pr}(Y_1 = y_1 \mid \theta) \cdot \text{Pr}(Y_2 = y_2 \mid \theta) \cdot \dots \cdot \text{Pr}(Y_{100} = y_{100} \mid \theta)
+\qquad (\because \text{conditionally i.i.d.}) \\
+= &\prod_{i=1}^{100} \text{Pr}(Y_i = y_i \mid \theta) \\
+= &\theta^{\sum_{i=1}^{100} y_i} (1 - \theta)^{100 - \sum_{i=1}^{100} y_i}
+\end{align*}
+
+\begin{align*}
+\text{Pr}\left(\sum Y_i = y \mid \theta\right)
+&= \begin{pmatrix} 100 \\ y \end{pmatrix} \theta^y (1-\theta)^{100-y}
+\end{align*}
+
+*** b
+:PROPERTIES:
+:CUSTOM_ID: 3.1B
+:END:
+**** Question :noexport:
+For the moment, suppose you believed that
+\(\theta \in \{0,0, 0.1, \dots, 0.9, 1.0\}\).
+Given that the results of the survey were
+\(\sum_{i=1}^{100} Y_i = 57\),
+compute Pr(\( \sum Y_i = 57 \mid \theta\))
+for each of these 11 values of \(\theta\)
+and plot these probabilities as a function of \(\theta\).
+
+**** Answer
+:PROPERTIES:
+:ID:       b0c4a6fc-c6ce-4a6c-a48a-93547093aed3
+:END:
+
+#+begin_src julia :exports both :results output
+begin
+using Plots
+using Plots.PlotMeasures
+using Distributions
+
+θ = 0:0.1:1.0
+n = 100
+y = 57
+
+# 全てのθで計算
+pdf_for_θs = map(θ -> pdf(Binomial(n, θ), y), θ)
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+11-element Vector{Float64}:
+ 0.0
+ 4.107156919234531e-31
+ 3.7384586685675986e-16
+ 1.3068947992216428e-8
+ 0.000228579175709527
+ 0.03006864264421479
+ 0.06672894967432967
+ 0.0018531715480875613
+ 1.0035348574340773e-7
+ 9.39585764212832e-18
+ 0.0
+#+end_example
+
+
+#+begin_src julia :output code
+# plot
+bar(
+    θ, pdf_for_θs,
+    xlabel = "θ", ylabel = "p(y|θ)",
+    title = "p(y=$y|θ) for each θ",
+    label = "p(y=$y|θ)",
+    legend = :topleft,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+#+end_src
+
+#+RESULTS:
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/3.1bbar.jpg]]
+
+*** c
+**** Question :noexport:
+Now suppose you originally had no prior information to believe one of these \(\theta\)-values over another,
+and so
+\(\text{Pr}(\theta =0.0) = \text{Pr}(\theta = 0.1) = \cdots = \text{Pr}(\theta = 0.9) = \text{Pr}(\theta = 1.0) \).
+Use Bayes' rule to compute
+\(p(\theta \mid \sum_{i=1}^{100} Y_i = 57)\)
+for each \(\theta\)-value.
+Make a plot of this posterior distribution as a function of \(\theta\).
+
+**** Answer
+:PROPERTIES:
+:ID:       0245c103-12eb-4250-bec6-e165cb52e797
+:END:
+\begin{align*}
+p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
+&= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{p(\sum_{i=1}^{100} Y_i = 57)} \\
+&= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{\sum_{\theta} p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)} \\
+&= \frac{\text{Pr}\left(\sum Y_i = 57 \mid \theta\right) p(\theta)}{\sum_{\theta} \text{Pr}\left(\sum Y_i = 57 \mid \theta\right) p(\theta)} \\
+&= \frac{\text{Pr}\left(\sum Y_i = 57 \mid \theta\right) \frac{1}{11} }{\sum_{\theta} \text{Pr}\left(\sum Y_i = 57 \mid \theta\right) \frac{1}{11} } \\
+&= \frac{\text{Pr}\left(\sum Y_i = 57 \mid \theta\right) }{\sum_{\theta} \text{Pr}\left(\sum Y_i = 57 \mid \theta\right) } \\
+\end{align*}
+
+[[#3.1B][b]] で求めたものを使うと以下のように簡単に計算できる。
+
+
+#+begin_src julia :exports both :results output
+posterior_for_θs = pdf_for_θs ./ sum(pdf_for_θs)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+11-element Vector{Float64}:
+ 0.0
+ 4.153700946664936e-30
+ 3.780824452548815e-15
+ 1.3217050800508843e-7
+ 0.0023116953094392757
+ 0.30409393133068335
+ 0.6748515016170306
+ 0.018741724664998797
+ 1.0149073359758722e-6
+ 9.502335447682657e-17
+ 0.0
+#+end_example
+
+#+begin_src julia :output code
+bar(
+    θ, posterior_for_θs,
+    xlabel = "θ", ylabel = "p(θ|y)",
+    title = "p(θ|y=$y) for each θ",
+    label = "p(θ|y=$y)",
+    legend = :topleft,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+#+end_src
+
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/ex3.1cplot.jpg]]
+*** d
+**** Question :noexport:
+Now suppose you allow \(\theta\) to be any value in the interval \([0,1]\).
+Using the uniform prior density for \(\theta\), so that \(p(\theta) = 1\),
+plot the posterior density
+\(p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)\) as a function of \(\theta\).
+**** Answer
+:PROPERTIES:
+:ID:       3c79f697-e587-4aec-8d37-7c594da42f11
+:END:
+\begin{align*}
+p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
+&= \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
+\qquad (\because \text{Pr}(\theta) = 1) \\
+&= \begin{pmatrix} 100 \\ 57 \end{pmatrix} \theta^{57} (1-\theta)^{43} \\
+&= \text{dbinom}(57, 100, \theta)
+\end{align*}
+
+よって、以下のように計算できる。
+
+#+begin_src julia
+posterior = x -> pdf(Binomial(n, x), y)
+# plot
+xs = 0:0.01:1.0
+plot(
+    xs, posterior.(xs),
+    xlabel = "θ", ylabel = L"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)",
+    title = L"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)",
+    label = "p(θ|y=$y)",
+    legend = :topleft,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/hoffexercise3.1dplot.jpg]]
+
+*** e
+**** Question :noexport:
+As discussed in this chapter, the posterior distribution of \(\theta\) is beta(1 + 57, 1 + 100 − 57).
+Plot the posterior density as a function of \(\theta\).
+Discuss the relationship among all of the plots you have made in this exercise.
+
+**** Answer :ATTACH:
+:PROPERTIES:
+:ID:       ed6b4e69-40e1-450c-9c6f-e2acae922abc
+:END:
+#+begin_src julia
+plot(
+    Beta(1+y, 1+n-y),
+    xlabel = "θ", ylabel = "p(θ|y)",
+    title = "Beta(1+$y, 1+$n-$y)",
+    label = nothing
+    , size = (600, 400)
+    , margin = 5mm
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.1eplot.jpg]]
+
+d と e は同じ形状で、dを正規化したのが e。
+また、c, b のグラフは、パラメータ\(\theta\)を 11 個の値をとる離散変数として扱っているもので、同じ形状をしている。
+コードを見ればわかるように、それぞれの確率の和が 1 になるように正規化しているのが c である。
+
+** 3.2
+:PROPERTIES:
+:header-args: :eval no-export
+:END:
+*** Question :noexport:
+Sensitivity analysis:
+It is sometimes useful to express the parameters \(a\) and \(b\) in a beta distribution in terms of
+\(\theta_0 = \frac{a}{a+b}\)
+and
+\(n_0 = a + b\),
+so that \(a = \theta_0 n_0\) and
+\(b = (1 − \theta_0) n_0\).
+Reconsidering the sample survey data in [[3.1][Exercise 3.1]], for each combination of
+\(\theta_0 \in \{0.1, 0.2, \dots, 0.9\}\) and
+\(n_0 \in \{1,2,9,16,32 \}\)
+find the corresponding \(a, b\) values and compute
+Pr(\( \theta > 0.5 \mid \sum Y_i = 57 \))
+using a beta(\(a, b\)) prior distribution for \(\theta\).
+Display the results with a contour plot, and discuss how the plot could be used to explain to someone whether or not they should believe that \(\theta > 0.5\),
+based on the data that \(\sum_{i=1}^{100} Y_i = 57\).
+
+*** Answer
+:PROPERTIES:
+:ID:       8313bd28-978d-41d0-a3b5-d9a3b5eebed3
+:END:
+
+#+begin_src julia
+θ₀_list = 0.1:0.1:0.9
+n₀_list = [1, 2, 8, 16, 32]
+n = 100
+y = 57
+
+function get_half_cdf(θ₀, n₀)
+    postrior = Beta(θ₀ * n₀ + y, (1 - θ₀) * n₀ + n - y)
+    return 1 - cdf(postrior, 0.5)
+end
+
+contour(
+    θ₀_list, n₀_list, (θ₀_list, n₀_list) -> get_half_cdf(θ₀_list, n₀_list)
+    , clabels=true
+    , xlabel="θ₀", ylabel="n₀"
+    , title = L"Pr(\theta > 0.5 | \sum Y_i = 57,)"
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.2contour.jpg]]
+
+\(\theta_0\)は\(\theta\)に関する事前の信念、
+\(n_0\)は\(\theta\)の事前の信念の強さを表している。
+\(\theta_0\)が大きいほど、\(\theta > 0.5\)の事後確率も大きくなり、同じ\(\theta_0\)で比べた時は、だいたい\(\theta_0 < 0.5\)で\(n_0\)が大きいほど、\(\theta > 0.5\)の事後確率が小さくなり、
+\(\theta_0 > 0.5\)で\(n_0\)が大きいほど、\(\theta > 0.5\)の事後確率が大きくなる。
+
+よって、事前の知識などを参考にしながら、\(\theta_0\)はどれくらいか、またその信念の強さはどの程度なのかを考えたうえで、それに応じて上のプロットを見ながら\(\theta > 0.5\)の信念をアップデートすることができる。
+
+** 3.3
+:PROPERTIES:
+:header-args: :eval no-export :session exercise3.3
+:ID:       0e0e4476-05ff-4592-8dff-c34d6d1209e6
+:END:
+*** Question :noexport:
+Tumor counts:
+A cancer laboratory is estimating the rate of tumorigenesis in two strains of mice, /A/ and /B/.
+They have tumor count data for 10 mice in strain A and 13 mice in strain B. Type A mice have been well studied,
+and information from other laboratories suggests that type A mice have
+tumor counts that are approximately Poisson-distributed with a mean of 12.
+Tumor count rates for type B mice are unknown, but type B mice are related to type A mice. The observed tumor counts for the two populations are
+
+\begin{align*}
+\boldsymbol{y}_A = (12, 9, 12, 14, 13, 13, 15, 8, 15, 6); \\
+\boldsymbol{y}_B = (11, 11, 10, 9, 9, 8, 7, 10, 6, 8, 8, 9, 7).
+\end{align*}
+
+*** a)
+**** Question :noexport:
+Find the posterior distributions, means, variances and 95% quantile-
+based confidence intervals for \(\theta_A\) and \(\theta_B\) , assuming a Poisson sampling
+distribution for each group and the following prior distribution:
+
+\[
+\theta_A \sim \text{gamma}(120, 10), \ \theta_B \sim \text{gamma}(12, 1),
+\ p(\theta_A, \theta_B) = p(\theta_A) p(\theta_B).
+\]
+
+**** answer
+
+#+begin_src julia :export code
+using Distributions
+y_A = [12, 9, 12, 14, 13, 13, 15, 8, 15, 6]
+y_B = [11, 11, 10, 9, 9, 8, 7, 10, 6, 8, 8, 9, 7]
+
+n_A, sy_A = length(y_A) , sum(y_A)
+n_B, sy_B = length(y_B) , sum(y_B)
+
+a₀_A = 120
+b₀_A = 10
+a₀_B = 12
+b₀_B = 1
+
+# Posterior distributions
+dist_A = Gamma(a₀_A + sy_A, 1/(b₀_A + n_A))
+dist_B = Gamma(a₀_B + sy_B, 1/(b₀_B + n_B))
+#+end_src
+
+#+RESULTS:
+: Gamma{Float64}(α=125.0, θ=0.07142857142857142)
+
+#+begin_src julia :exports both
+mean_A = (a₀_A + sy_A) / (b₀_A + n_A)
+mean_B = (a₀_B + sy_B) / (b₀_B + n_B)
+["Posterior mean of A:  $mean_A"
+ , "Posterior mean of B:  $mean_B"]
+#+end_src
+
+#+RESULTS:
+| Posterior mean of A:  11.85             |
+| Posterior mean of B:  8.928571428571429 |
+
+#+begin_src julia :exports both
+var_A = (a₀_A + sy_A) / (b₀_A + n_A)^2
+var_B = (a₀_B + sy_B) / (b₀_B + n_B)^2
+["Posterior variance of A:  $var_A"
+ , "Posterior variance of B:  $var_B"]
+#+end_src
+
+#+RESULTS:
+| Posterior variance of A:  0.5925             |
+| Posterior variance of B:  0.6377551020408163 |
+
+#+begin_src julia :exports both
+# 95% quantile-based confidence intervals
+quantile_A = quantile.(dist_A, [0.025, 0.975])
+quantile_B = quantile.(dist_B, [0.025, 0.975])
+["Posterior 95% quantile of A:  $quantile_A"
+ , "Posterior 95% quantile of B:  $quantile_B"]
+#+end_src
+
+#+RESULTS:
+| Posterior 95% quantile of A:  [10.389238190941795, 13.405448325642006] |
+| Posterior 95% quantile of B:  [7.432064219464302, 10.560308149242365]  |
+
+*** b
+:PROPERTIES:
+:ID:       cf3475bc-6fa0-4c45-95d3-c3814719e43e
+:END:
+
+**** Question :noexport:
+Compute and plot the posterior expectation of \(\theta_B\) under the prior dis-
+tribution
+\( \theta_B \sim \text{gamma}(12 + n_0, n_0) \)
+for each value of
+\( n_0 \in \{1, 2, \ldots, 50\} \).
+Describe what sort of prior beliefs about \(\theta_B\) would be necessary in or-
+der for the posterior expectation of \(\theta_B\) to be close to that of \(\theta_A\).
+
+**** answer
+
+#+begin_src julia
+list_n₀ = 1:50
+exp_θ_B = n -> (a₀_B*n + sy_B) / (n + n_B )
+
+# Plot
+plot(
+    list_n₀, exp_θ_B.(list_n₀), label="Expected value of θ_B",
+    xlabel="n₀", ylabel=L"\theta_B", legend=nothing,
+    title="Expected value of θ_B as a function of n₀"
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.3bplot.jpg]]
+
+
+\(n_0 = 35\)くらいで、\(\theta_B\)の期待値が\(\theta_A\)の期待値を上回る。
+この時の\(\theta_B\)の事前分布のプロットは以下の通り。
+
+#+begin_src julia :exports code
+n = 35
+plot(
+    Gamma(a₀_B*n + sy_B, 1/(n + n_B))
+    , label=L"Prior distribution of \theta_B when n_0 = $n"
+    , legend=false
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.3b2plot.jpg]]
+
+上の分布を見ればわかるように、
+\(\theta_B\)の事後期待値が\(\theta_A\)の事後期待値と同じくらいになるためには、
+\(\theta_B\)がかなりの確率で 11 の近くに分布しているという信念を反映した事前分布が必要。
+*** c
+**** Question :noexport:
+Should knowledge about population A tell us anything about population B?
+Discuss whether or not it makes sense to have
+\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)
+
+**** answer
+
+B 系統のマウスは A 系統のマウスと関連性があるとされているので、
+A 系統のマウスについての腫瘍数の情報は B 系統のマウスについての腫瘍数の事前情報になり得る。
+よって、\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)という仮定は妥当ではなく、
+B 系統のマウスと A 系統のマウスの関連の度合いに関する信念のパラメータ\(n_0\)を導入し、
+\(p(\theta_B | \theta_A, n_0) = \text{gamma}(E[\theta_A] \times n_0, n_0)\)
+などという形でモデル化するのが妥当であると考えられる。
+また、A系統のマウスに関するデータが観測されたあとに B 系統のマウスに関する推測を行う場合には、
+\(\theta_B\)の事前期待値に\(\theta_A\)の事後期待値を用いるようなモデリングも可能。
+
+** 3.4
+:PROPERTIES:
+:header-args: :eval no-export :session exercise3.4
+:END:
+*** question :noexport:
+Mixtures of beta priors:
+Estimate the probability \(\theta\) of teen recidivism based on a study in which there were \(n = 43\) individuals released from incarceration and \(y = 15\) re-offenders within 36 months.
+
+*** a
+:PROPERTIES:
+:ID:       7ca3e17b-cb8f-4b98-90df-0d77ce181a12
+:END:
+#+begin_src julia :exports code
+using Distributions
+using Plots
+using StatsPlots
+using LaTeXStrings
+a₀ = 2
+b₀ = 8
+n = 43
+y = 15
+#+end_src
+
+#+RESULTS:
+: 15
+
+
+#+begin_src julia
+# prior
+plot(
+    Beta(a₀, b₀),
+    title=L"p(\theta)",
+    xlabel=L"\theta",
+    ylabel=L"p(\theta)",
+    legend=false,
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4aplot1.jpg]]
+
+\(y \sim \text{binomial}(43, \theta)\)より、\(p(\theta \mid y)\)を\(\theta\)の関数としてプロットすると以下のようになる。
+
+#+begin_src julia
+θ = 0:0.01:1.0
+# 全てのθで計算
+pdf_for_θs = map(θ -> pdf(Binomial(n, θ), y), θ)
+
+# plot
+plot(
+    θ, pdf_for_θs,
+    xlabel = "θ", ylabel = "p(y|θ)",
+    title = "p(y=$y|θ) as a function of θ",
+    legend = false,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4aplot2.jpg]]
+
+\begin{align*}
+p(\theta \mid y)
+&= \frac{1}{p(y)} p(y \mid \theta) p(\theta) \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{2-1} (1-\theta)^{8-1} \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix}
+\frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{17-1} (1-\theta)^{36-1} \\
+&= const \times \theta^{17-1} (1-\theta)^{36-1} \\
+&= dbeta(\theta, 17, 36)
+\end{align*}
+
+#+begin_src julia
+# posterior
+posterior_dist = Beta(a₀ + y, b₀ + n - y)
+plot(
+    posterior_dist,
+    title=L"p(\theta|y)",
+    xlabel=L"\theta",
+    ylabel=L"p(\theta|y)",
+    legend=false,
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4aposterior.jpg]]
+
+#+begin_src julia :exports both
+# posterior mean
+mean(posterior_dist)
+μ = (a₀ + y)/(a₀ + b₀ + n)
+#+end_src
+
+#+RESULTS:
+: 0.32075471698113206
+
+#+begin_src julia :exports both
+# posterior mode
+mode(posterior_dist)
+(a₀ + y - 1)/(a₀ + b₀ + n - 2)
+#+end_src
+
+#+RESULTS:
+: 0.3137254901960784
+
+#+begin_src julia :exports both
+# posterior standard deviation
+std(posterior_dist)
+var = (μ*(1 - μ))/(a₀ + b₀ + n + 1)
+sqrt(var)
+#+end_src
+
+#+RESULTS:
+: 0.0635188989834093
+
+#+begin_src julia :exports both :results output
+# posterior 95% interval
+quantile(posterior_dist, [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+:
+: 2-element Vector{Float64}:
+:  0.2032977878191033
+:  0.45102398221663165
+
+*** b
+:PROPERTIES:
+:ID:       3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5
+:END:
+#+begin_src julia :exports code
+a₀_b = 8
+b₀_b = 2
+#+end_src
+
+#+RESULTS:
+: 2
+
+
+#+begin_src julia
+# prior
+plot(
+    Beta(a₀_b, b₀_b),
+    title=L"p(\theta)",
+    xlabel=L"\theta",
+    ylabel=L"p(\theta)",
+    legend=false,
+)
+#+end_src
+
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4bprior.jpg]]
+
+
+\begin{align*}
+p(\theta \mid y)
+&= \frac{1}{p(y)} p(y \mid \theta) p(\theta) \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{8-1} (1-\theta)^{2-1} \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix}
+\frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{23-1} (1-\theta)^{30-1} \\
+&= const \times \theta^{23-1} (1-\theta)^{30-1} \\
+&= dbeta(\theta, 23, 30)
+\end{align*}
+
+#+begin_src julia
+# posterior
+posterior_dist_b = Beta(a₀_b + y, b₀_b + n - y)
+plot(
+    posterior_dist_b,
+    title=L"p(\theta|y)",
+    xlabel=L"\theta",
+    ylabel=L"p(\theta|y)",
+    legend=false,
+)
+#+end_src
+
+#+RESULTS:
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4bposterior.jpg]]
+
+#+begin_src julia :exports both
+# posterior mean
+mean(posterior_dist_b)
+μ_b = (a₀_b + y)/(a₀_b + b₀_b + n)
+#+end_src
+
+#+RESULTS:
+: 0.4339622641509434
+
+#+begin_src julia :exports both
+# posterior mode
+mode(posterior_dist_b)
+(a₀_b + y - 1)/(a₀_b + b₀_b + n - 2)
+#+end_src
+
+#+RESULTS:
+: 0.43137254901960786
+
+#+begin_src julia :exports both
+# posterior standard deviation
+std(posterior_dist_b)
+var_b = (μ_b*(1 - μ_b))/(a₀_b + b₀_b + n + 1)
+sqrt(var_b)
+#+end_src
+
+#+RESULTS:
+: 0.06744531631926798
+
+#+begin_src julia :exports both :results output
+# posterior 95% interval
+quantile(posterior_dist_b, [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+:
+: 2-element Vector{Float64}:
+:  0.30469562471174694
+:  0.5679527959964581
+
+*** c
+:PROPERTIES:
+:ID:       02109ca5-ab30-448e-94ce-678e2b8540d1
+:END:
+#+begin_src julia
+using SpecialFunctions
+prior_mix = θ -> 1//4 * gamma(10) / (gamma(2) * gamma(8)) * (3 * θ * (1 - θ)^7 + θ^7 * (1 - θ))
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia
+xs = 0:0.01:1.0
+plot(
+    xs, prior_mix.(xs),
+    xlabel = "θ", ylabel = "p(θ)",
+    title = "mixture of a beta(2,8) and a beta(8,2) prior distribution",
+    titlefontsize = 12,
+    legend = false,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+#+end_src
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4cmixprior.jpg]]
+
+[[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a]]や[[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b]]の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。
+この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
+*** d
+For the prior in c):
+**** i
+Write out mathematically \(p(\theta) \times p(y \mid \theta)\) and simplify as much as possible.
+
+Answer:
+
+\begin{align*}
+p(\theta) \times p(y \mid \theta)
+&= \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} [3 \theta (1-\theta)^7 + \theta^7 (1-\theta)] \times \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \\
+&= \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} \begin{pmatrix} 43 \\ 15 \end{pmatrix} \left[3 \theta^{1+15} (1-\theta)^{7+28} + \theta^{7+15} (1-\theta)^{1+28}\right] \\
+&= \frac{1}{4} \frac{\Gamma(10) \Gamma(44)}{\Gamma(2)\Gamma(8) \Gamma(16) \Gamma(29)} \left[3 \theta^{16} (1-\theta)^{35} + \theta^{22} (1-\theta)^{29}\right] \\
+\end{align*}
+**** ii
+:PROPERTIES:
+:ID:       de979953-989c-4e64-b67f-57f4443d2d39
+:END:
+The posterior distribution is a mixture of two distributions you know.
+Identify these distributions.
+
+Answer:
+
+Beta(17, 36) and Beta(23, 30)
+**** iii
+:PROPERTIES:
+:ID:       67191524-e772-4522-9b70-ecaae9260902
+:END:
+On a computer, calculate and plot \(p(\theta) \times p(y \mid \theta)\)
+for a variety of \(\theta\) values.
+Also find (approximately) the posterior mode, and discuss its relation to the modes in [[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]] and [[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]].
+
+Answer:
+
+#+begin_src julia
+cond_prob = θ -> pdf(Binomial(n, θ), y)
+prior_times_cond_prob = θ -> prior_mix(θ) * cond_prob(θ)
+xs = 0:0.001:1.0
+plot(
+    xs, prior_times_cond_prob.(xs),
+    xlabel = "θ", ylabel = "p(θ) × p(θ|y)",
+    title = "p(θ) × p(θ|y)",
+    legend = false,
+)
+#+end_src
+
+#+RESULTS:
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.4diiiplot.jpg]]
+
+#+begin_src julia
+# prior_times_cond_probが最大になるθ
+xs[argmax(prior_times_cond_prob.(xs))]
+#+end_src
+
+#+RESULTS:
+: 0.314
+
+[[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]] の mode が 0.313,[[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]]の mode が 0.431 であったので、この事後 mode はその中間（かなり a より)に位置している。
+
+*** e
+Find a general formula for the weights of the mixture distribution in [[id:de979953-989c-4e64-b67f-57f4443d2d39][d)ii]],
+and provide an interpretation for their values.
+
+Answer:
+
+\(n ,y\)一般に対し、事後分布は
+
+\begin{align*}
+p(\theta \mid y)
+&= \frac{p(y \mid \theta) p(\theta)}{p(y)} \\
+& \propto p(y \mid \theta) p(\theta) \\
+&= \begin{pmatrix} n \\ y \end{pmatrix} \theta^y (1-\theta)^{n-y} \times
+\frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} \left[3 \theta (1-\theta)^7 + \theta^7 (1-\theta)\right] \\
+& \propto 3 \theta^{y+1} (1-\theta)^{n-y+7} + \theta^{y+7} (1-\theta)^{n-y+1} \\
+& \propto \frac{3}{4} \theta^{y+2-1} (1-\theta)^{n-y+8-1} + \frac{1}{4} \theta^{y+8-1} (1-\theta)^{n-y+2-1} \\
+&= \frac{3}{4} \text{dbeta}(y+2, n-y+8) + \frac{1}{4} \text{dbeta}(y+8, n-y+2)
+\end{align*}
+
+となる。
+よって事後分布は、Beta(y+2, n-y+8) と Beta(y+8, n-y+2)を 3 対 1 の重みをつけて混合させたものが事後分布となる。
+** 3.5
+*** question :noexport:
+Mixtures of conjugate priors:
+Let \(p(y \mid \phi) = c(\phi) h(y) \exp\{\phi t(y) \}\)
+be an exponential family model and let
+\(p_1(\phi), \dots, p_K(\phi)\) be \(K\) different members of the conjugate class of prior densities given in Section 3.3.
+A mixture of conjugate priors is given by
+\(\tilde{p}(\theta) = \sum_{k=1}^K w_k p_k(\theta)\), where the \(w_k\)'s are all greater than zero and \(\sum w_k = 1\)
+(see also Diaconis and Ylvisaker (1985)).
+
+- a) :: Identify the general form of the posterior distribution of \(\theta\), based on \(n\) i.i.d. samples from \(p(y \mid \theta) \) and the prior distribution given by \(\tilde{p}\).
+- b) :: Repeat a) but in the special case that \(p(y \mid \theta) = \text{dpois}(y \mid \theta)\) and \(p_1, \dots, p_K\) are gamma densities.
+
+*** Answer
+**** a)
+
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
+&= \sum_{k=1}^K w_k p_k(\theta \mid n_k, n_k t_k) \prod_{i=1}^n p(y_i \mid \theta) \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \prod_{i=1}^n c(\theta) h(y_i) \exp \{\theta t(y_i)\} \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \prod_{i=1}^n h(y_i) \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
+&\propto \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k + n} \exp \left\{ \theta \times \left[ n_k t_k + \sum_{i=1}^n t(y_i) \right] \right\} \\
+&\propto \sum_{k=1}^K w_k p_k (\theta \mid n_k + n, \frac{n_k t_k + n \bar{t}(\boldsymbol{y})}{n_k + n})
+\end{align*}
+
+where \(\bar{t}(\boldsymbol{y}) = \frac{\sum t(y_i)}{n}\)
+
+**** b)
+
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
+&= \sum_{k=1}^K w_k p_k(\theta \mid a_k, b_k) \times \prod_{i=1}^n p(y_i \mid \theta) \\
+&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
+\exp \left( - b_k \theta \right)
+\times \prod_{i=1}^n \frac{\theta^{y_i} e^{- \theta } }{y_i!} \\
+&\propto \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
+\exp \left( - b_k \theta \right)
+\times \theta^{\sum_{i=1}^n y_i} \exp \left( - n \theta \right) \\
+&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k + \sum y_i - 1}
+\exp \left( - (b_k + n) \theta \right) \\
+&\propto \sum_{k=1}^K w_k \text{dgamma}(\theta \mid a_k + \sum y_i, b_k + n)
+\end{align*}
+** 3.6
+*** question :noexport:
+Exponential family expectations:
+Let \(p(y \mid \theta) = c(\phi) h(y) \exp\{\phi t(y) \}\) be an exponential family model.
+- a) :: Take derivatives with respect to \(\phi\) of both sides of the equation \( \int p(y \mid \theta) dy = 1 \) to show that \(E[t(Y) \mid \phi] = -\frac{c'(\phi)}{c(\phi)}\).
+- b) :: Let \(p(\phi) \propto c(\phi)^{n_0} e^{n_0 t_0 \phi}\) be the prior distribution for \(\phi\). Calculate \(\frac{d p(\phi)}{d \phi}\) and, using the fundamental theorem of calculus, discuss what must be true so that \( E[- \frac{c(\phi)}{c(\phi)}] = t_0 \).
+
+*** Answer
+**** a)
+\( \int p(y \mid \theta) dy = 1 \) の両辺を \(\phi\) で微分すると
+左辺は、
+\begin{align*}
+\frac{d}{d \phi } \int p(y \mid \theta) dy
+&= \int \frac{d}{d \phi } p(y \mid \theta) dy \\
+&= \int \frac{d}{d \phi } c(\phi) h(y) \exp\{\phi t(y) \} dy \\
+&= \int h(y) \left( c(\phi) \frac{d \exp \{\phi t(y) \} }{ d \phi } +
+\frac{d c(\phi)}{d \phi } \exp \{\phi t(y) \} \right) dy \\
+&= \int h(y) \left( c(\phi) t(y) \exp \{\phi t(y) \} +
+c'(\phi) \exp \{\phi t(y) \} \right) dy \\
+&= \int h(y) c(\phi) t(y) \exp \{\phi t(y) \} dy + \int h(y) c'(\phi) \exp \{\phi t(y) \} dy \\
+&= E[ t(y) \mid \phi] +
+\frac{c'(\phi)}{c(\phi)} \int c(\phi) h(y) \exp \{\phi t(y) \} dy \\
+&\quad (\because c(\phi) \neq 0 \text{ because } p(y \mid \theta) \text{ is a probability density}) \\
+&= E[ t(y) \mid \phi] + \frac{c'(\phi)}{c(\phi)} \int p(y \mid \theta) dy \\
+&= E[ t(y) \mid \phi] + \frac{c'(\phi)}{c(\phi)} \\
+\end{align*}
+
+右辺は 0 なので、
+\[ E[ t(y) \mid \phi] = - \frac{c'(\phi)}{c(\phi)} \]
+
+**** b)
+\begin{align*}
+\frac{d p(\phi)}{d \phi}
+&= \frac{d}{d \phi} \left( \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} \right) \\
+&= \kappa(n_0, t_0) \left(
+\frac{d \ c(\phi)^{n_0} }{d \phi}  \exp \{ n_0 t_0 \phi \} +
+c(\phi)^{n_0} \frac{d}{d \phi} \exp \{ n_0 t_0 \phi \} \right)  \\
+&= \kappa(n_0, t_0) \left(
+n_0 c(\phi)^{n_0 - 1} c'(\phi) \exp \{ n_0 t_0 \phi \} +
+c(\phi)^{n_0} n_0 t_0 \exp \{ n_0 t_0 \phi \} \right) \\
+&= \frac{c'(\phi)}{c(\phi)} n_0  \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} +
+n_0 t_0 \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} \\
+&= \frac{c'(\phi)}{c(\phi)} n_0 p(\phi) + n_0 t_0 p(\phi) \\
+\end{align*}
+
+ここで、両辺を \(\phi\)について積分すると
+左辺は
+\begin{align*}
+\int \frac{d p(\phi)}{d \phi} d \phi
+&= \frac{d}{d \phi} \int p(\phi) d \phi \\
+&= \frac{d}{d \phi} 1 \\
+&= 0 \\
+\end{align*}
+
+右辺は
+\begin{align*}
+n_0 \int \frac{c'(\phi)}{c(\phi)} p(\phi) d \phi + n_0 t_0 \int p(\phi) d \phi
+& = n_0 E \left[ \frac{c'(\phi)}{c(\phi)} \right] + n_0 t_0
+\end{align*}
+
+以上より、
+\[ E \left[- \frac{c'(\phi)}{c(\phi)} \right] = t_0 \]
+
+** 3.7
+:PROPERTIES:
+:header-args: :session exercise3.7 :eval no-export
+:END:
+*** question :noexport:
+Posterior prediction:
+Consider a pilot study in which \(n_1 = 15\) children enrolled in special education classes were randomly selected and tested for a certain type of learning disability.
+In the pilot study, \(y_1 = 2\) children tested positive for the disability.
+- a) :: Using a uniform prior distribution, find the posterior distribution of \(\theta\), the fraction of students in special education classes who have the disability.
+  Find the posterior mean, mode and standard deviation of \(\theta\), and plot the posterior density.
+
+*** answer: a)
+:PROPERTIES:
+:ID:       24ce68ed-df81-4b72-be05-454979aeaff5
+:END:
+
+事前分布は一様分布 Beta(1, 1)より、事後分布は Beta(3, 14)となる。
+
+#+BEGIN_SRC julia :exports both
+using Distributions
+begin
+a, b = 1 , 1 # prior parameters
+n₁, y₁ = 15, 2 # data
+mean = (a + y₁)/ (a + b + n₁) # posterior mean
+"Posterior mean :  $mean"
+end
+#+END_SRC
+
+#+RESULTS:
+: Posterior mean :  0.17647058823529413
+
+#+begin_src julia :exports both
+mode = (a + y₁ - 1) / (a + b + n₁ - 2) # posterior mode
+"Posterior mode :  $mode"
+#+end_src
+
+#+RESULTS:
+: Posterior mode :  0.13333333333333333
+
+#+begin_src julia :exports both
+var = mean * (1 - mean) / (a + b + n₁ + 1) # posterior variance
+std = sqrt(var) # posterior standard deviation
+"Posterior standard deviation :  $std"
+#+end_src
+
+#+RESULTS:
+: Posterior standard deviation :  0.08985442539129099
+
+#+begin_src julia :exports none
+using Plots
+using StatsPlots
+plot(Beta(a + y₁, a + b + n₁ - y₁), label = "Posterior", xlabel = "θ")
+plot!(Beta(a, b), label = "Prior")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=2}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.7aposteriorplot.jpg]]
+
+*** b)
+**** question :noexport:
+Researchers would like to recruit students with the disability to participate in a long-term study, but first they need to make sure they can recruit enough students.
+Let \(n_2 = 278\) be the number of children in special education classes in this particular school district, and let \(Y_2\) be the number of students with the disability.
+
+- b) :: Find Pr\((Y_2 = y_2 \mid Y_1= 2)\), the posterior predictive distribution of \(Y_2\), as follows:
+  - i. :: Discuss what assumptions are needed about the joint distribution of \((Y_1, Y_2)\) such that the following is true:
+    \[
+    \text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+    = \int_0^1 \text{Pr}\left( Y_2 = y_2 \mid \theta \right) p(\theta \mid Y_1 = 2) d \theta
+    \]
+  - ii. :: Now plug in the forms for Pr\((Y_2 = y_2 \mid \theta)\) and p\((\theta \mid Y_1 = 2)\) in the above integral.
+  - iii. :: Figure out what the above integral must be by using the calculus result discussed in Section 3.1.
+
+**** answer: b) i.
+
+#+NAME: 3.7bi_ans
+\begin{equation}
+\text{Pr}\left(Y_1 \in A_1, Y_2 \in A_2 \mid \theta \right)
+= \text{Pr}\left(Y_1 \in A_1 \mid \theta \right) \text{Pr}\left(Y_2 \in A_2 \mid \theta \right)
+\end{equation}
+
+Proof:
+
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \int_0^1 \text{Pr}\left( Y_2 = y_2, \theta \mid Y_1 = 2 \right) d \theta \\
+&= \int_0^1 \text{Pr}\left( Y_2 = y_2 \mid \theta , Y_1 = 2 \right) \text{Pr}\left( \theta \mid Y_1 = 2 \right) d \theta \\
+\end{align*}
+
+より、等式が成り立つための条件は、
+
+\begin{align*}
+& \text{Pr}\left( Y_2 = y_2, \mid \theta,  Y_1 = 2 \right)
+= \text{Pr}\left( Y_2 = y_2 \mid \theta \right) \\
+\Leftrightarrow \quad
+&\text{Pr}\left(Y_1 = 2 \mid \theta \right) \text{Pr}\left(Y_2 = y_2 \mid \theta ,  Y_1 = 2\right)
+= \text{Pr}\left(Y_1 = 2 \mid \theta \right) \text{Pr}\left(Y_2 = y_2 \mid \theta \right) \\
+\Leftrightarrow \quad
+&\text{Pr}\left(Y_1 = 2 , Y_2 = y_2 \mid \theta \right)
+= \text{Pr}\left(Y_1 = 2 \mid \theta \right) \text{Pr}\left(Y_2 = y_2 \mid \theta \right)
+\end{align*}
+
+これを\((Y_1, Y_2)\)の同時分布について一般化すると、([[3.7bi_ans]])が導かれる。
+
+**** answer: b) ii.
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \int_0^1 \text{Pr}\left( Y_2 = y_2 \mid \theta \right) p(\theta \mid Y_1 = 2) d \theta \\
+&= \int_0^1 \begin{pmatrix} 278 \\ y_2 \end{pmatrix} \theta^{y_2} (1 - \theta)^{278 - y_2} \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \theta^2 (1 - \theta)^{13} d \theta \\
+&= \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \begin{pmatrix} 278 \\ y_2 \end{pmatrix}
+\int_0^1 \theta^{y_2 + 3 - 1} (1 - \theta)^{292 - y_2 - 1} d \theta \\
+\end{align*}
+**** answer: b) iii.
+:PROPERTIES:
+:ID:       b2208b95-5176-4a27-837e-f7896a8c96a5
+:END:
+
+\begin{align*}
+\int_0^1 \theta^{y_2 + 3 - 1} (1 - \theta)^{292 - y_2 - 1} d \theta
+&= \frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma((y_2 + 3) + (292-y_2) )}  \\
+&= \frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma(295)} \\
+\end{align*}
+より、
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \begin{pmatrix} 278 \\ y_2 \end{pmatrix}
+\frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma(295)} \\
+\end{align*}
+*** c)
+:PROPERTIES:
+:ID:       8e7cd2e7-db0c-47cc-bc6b-ed7637674461
+:END:
+**** question :noexport:
+Plot the function Pr\((Y_2 = y_2 \mid Y_1 = 2)\) as a function of \(y_2\).
+Obtain the mean and standard deviation of \(Y_2\), given \(Y_1 = 2\).
+
+**** answer
+:PROPERTIES:
+:ID:       b3bb8d3c-c637-4296-971a-1efff087756a
+:END:
+[[id:b2208b95-5176-4a27-837e-f7896a8c96a5][b)iiiの答え]]に\(y_2 = 0, 1, \dots\) を代入することもできるが、
+
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \begin{pmatrix} 278 \\ y_2 \end{pmatrix}
+\frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma(295)} \\
+&= \begin{pmatrix} 278 \\ y_2 \end{pmatrix} \frac{B(y_2 + 3, 292 - y_2)}{B(3, 14)} \\
+&= \begin{pmatrix} 278 \\ y_2 \end{pmatrix} \frac{B(y_2 + 3, 278 - y_2 + 14)}{B(3, 14)} \\
+&= \text{dbetabinomial}(y_2, 278, 3, 14)
+\end{align*}
+
+より、
+\(y_2\)はベータ二項分布に従うことがわかる。
+これを利用してプロットすると、以下のようになる。
+
+#+begin_src julia :results output :exports code
+n₂ = 278
+plot(BetaBinomial(n₂, a + y₁, a + b + n₁ - y₁), 0:278, label=nothing)
+xlabel!("y₂")
+#+end_src
+
+#+RESULTS:
+: 278
+: qt.qpa.plugin: Could not find the Qt platform plugin "wayland" in ""
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/3.7cbetabinomial.jpg]]
+*** d)
+**** question :noexport:
+The posterior mode and the MLE (maximum likelihood estimate; see Exercise 3.14) of \(\theta\), based on data from the pilot study, are both \(\hat{\theta} = \frac{2}{15}\).
+Plot the distribution Pr\((Y_2 = y_2 \mid \theta = \hat{\theta})\), and find the mean and standard deviation of \(Y_2\) given \( \theta = \hat{\theta} \).
+Compare these results to the plots and calculations in [[id:8e7cd2e7-db0c-47cc-bc6b-ed7637674461][c)]] and discuss any differences.
+Which distribution for \(Y_2\) would you use to make predictions, and why?
+
+**** answer:
+:PROPERTIES:
+:ID:       847cfb7a-a13c-4b6d-b402-ffdbf2d7acd1
+:END:
+#+begin_src julia :exports code
+θ̂ = 2 // 15
+plot(Binomial(n₂, θ̂), 0:278, label=nothing, xlabel="y₂")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=1}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.7dbinomial.jpg]]
+
+#+begin_src julia :exports both
+mean2 = n₂ * θ̂
+var2 = n₂ * θ̂ * (1 - θ̂)
+std2 = sqrt(var2)
+"mean: $mean2, std: $std2"
+#+end_src
+
+#+RESULTS:
+: mean: 37.06666666666666, std: 5.667843015155276
+
+
+ [[id:8e7cd2e7-db0c-47cc-bc6b-ed7637674461][c)]] との比較:
+
+mode は [[id:8e7cd2e7-db0c-47cc-bc6b-ed7637674461][c)]] が 34, で上の分布が 37 と、かなり近いが、cの分布の方がかなり裾の広い分布（分散が大きい分布）となっていることがわかる。
+これは、1回目のデータが得られたあとの\(\theta\)の事後分布の不確実性が c)の分布に反映されているためである。
+逆に、上の分布には 1 回目のデータのサンプルサイズ（データの妥当性）が反映されていないため、予測には c の分布を使うのがよいと考えられる。
+** 3.8
+:PROPERTIES:
+:header-args: :session exercise3.8 :eval no-export
+:END:
+*** question :noexport:
+Coins: Diaconis and Ylvisaker (1985) suggest that conis spun on a flat surface display long-run frequencies of heads that vary from coin to coin.
+About 20% of the coins behave symmetrically, whereas the rmaining coins tend to give frequencies of 1/3 or 2/3.
+*** a)
+:PROPERTIES:
+:ID:       7242572f-4875-4341-90b9-af5da2f9c15c
+:END:
+**** question :noexport:
+Based on the observations of Diaconis and Ylvisaker, use an appropriate mixture of beta distributions as a prior distribution for \(\theta\), the long-run frequency of heads for a particular coin.
+Plot your prior.
+
+**** answer
+#+begin_src julia :exports none
+using Distributions
+using Plot
+using StatsPlots
+#+end_src
+
+#+RESULTS:
+
+#+begin_src julia :exports code
+a₀_sym, b₀_sym = 15, 15
+sym = Beta(a₀_sym, b₀_sym)
+a₀_asym, b₀_asym = 10, 20
+asym = Beta(a₀_asym, b₀_asym)
+plot(sym, 0:0.01:1, label="symmetric")
+plot!(asym, 0:0.01:1, label="asymmetric")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=2}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.8apriors.jpg]]
+
+上の mixture model は、以下のようになる。
+#+begin_src julia :exports code
+mm = MixtureModel([sym, asym], [0.2, 0.8])
+histogram(rand(mm, 100000), label="mixture model prior", bins=100, normalize=:pdf, xlabel="θ")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=1}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.8amixturemodelprior.jpg]]
+*** b)
+:PROPERTIES:
+:ID:       ba83d37c-181f-45cb-b806-8c4cc051c65b
+:END:
+**** question :noexport:
+Choose a single coin and spin it at least 50 times.
+Record the year and denomination of the coin.
+
+**** answer
+
+|   num | front |
+|-------+-------|
+|     1 |     1 |
+|     2 |     1 |
+|     3 |     1 |
+|     4 |     1 |
+|     5 |     1 |
+|     6 |     0 |
+|     7 |     1 |
+|     8 |     0 |
+|     9 |     0 |
+|    10 |     1 |
+|    11 |     0 |
+|    12 |     0 |
+|    13 |     1 |
+|    14 |     0 |
+|    15 |     1 |
+|    16 |     1 |
+|    17 |     0 |
+|    18 |     0 |
+|    19 |     1 |
+|    20 |     0 |
+|    21 |     1 |
+|    22 |     0 |
+|    23 |     1 |
+|    24 |     0 |
+|    25 |     0 |
+|    26 |     0 |
+|    27 |     1 |
+|    28 |     0 |
+|    29 |     0 |
+|    30 |     1 |
+|    31 |     1 |
+|    32 |     0 |
+|    33 |     0 |
+|    34 |     0 |
+|    35 |     1 |
+|    36 |     1 |
+|    37 |     1 |
+|    38 |     0 |
+|    39 |     0 |
+|    40 |     1 |
+|    41 |     0 |
+|    42 |     0 |
+|    43 |     1 |
+|    44 |     0 |
+|    45 |     0 |
+|    46 |     0 |
+|    47 |     0 |
+|    48 |     1 |
+|    49 |     0 |
+|    50 |     1 |
+|-------+-------|
+| Total |    23 |
+#+TBLFM: @>$2=vsum(@I..@II)
+
+平成 26 年 100 円玉
+*** c)
+:PROPERTIES:
+:ID:       4328caa0-9d0c-4d08-87f6-5f3f071fb0d3
+:END:
+**** question :noexport:
+Compute your posterior for \(\theta\), based on the information obtained in [[id:ba83d37c-181f-45cb-b806-8c4cc051c65b][b)]] .
+
+**** answer
+:PROPERTIES:
+:ID:       52862c18-5bf2-460e-9958-ab9dffc00c71
+:END:
+#+begin_src julia :exports code
+y₁, n₁ = 23 , 50
+sym₁ = Beta(a₀_sym + y₁, b₀_sym + n₁ - y₁)
+asym₁ = Beta(a₀_asym + y₁, b₀_asym + n₁ - y₁)
+mm₁ = MixtureModel([sym₁, asym₁], [0.2, 0.8])
+histogram(rand(mm₁, 100000), label="posterior distribution", bins=100, normalize=:pdf, xlabel="θ")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=1}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.8cposterior.jpg]]
+*** d)
+**** question :noexport:
+Repeat [[id:ba83d37c-181f-45cb-b806-8c4cc051c65b][b)]] and [[id:4328caa0-9d0c-4d08-87f6-5f3f071fb0d3][c)]] for a different coin, but possibly using a prior for \(\theta\) that includes some information from the first coin.
+Your choice of a new prior may be informal, but needs to be justified.
+How the results from the first experiment influence your prior for the \(\theta\) of the second coin may depend on whether or not the two coins have the same denomination, have a similar year, etc.
+Report the year and denominaton of this coin.
+
+**** answer
+:PROPERTIES:
+:ID:       088dd018-5b4d-4404-9912-90f86a831887
+:END:
+今回は、令和元年 100 円玉を使う。
+
+|   num | front |
+|-------+-------|
+|     1 |     0 |
+|     2 |     0 |
+|     3 |     1 |
+|     4 |     0 |
+|     5 |     0 |
+|     6 |     1 |
+|     7 |     1 |
+|     8 |     1 |
+|     9 |     0 |
+|    10 |     0 |
+|    11 |     0 |
+|    12 |     1 |
+|    13 |     1 |
+|    14 |     0 |
+|    15 |     0 |
+|    16 |     0 |
+|    17 |     0 |
+|    18 |     0 |
+|    19 |     0 |
+|    20 |     1 |
+|    21 |     1 |
+|    22 |     1 |
+|    23 |     0 |
+|    24 |     0 |
+|    25 |     0 |
+|    26 |     0 |
+|    27 |     1 |
+|    28 |     1 |
+|    29 |     0 |
+|    30 |     0 |
+|    31 |     0 |
+|    32 |     1 |
+|    33 |     0 |
+|    34 |     0 |
+|    35 |     1 |
+|    36 |     1 |
+|    37 |     0 |
+|    38 |     0 |
+|    39 |     1 |
+|    40 |     1 |
+|    41 |     1 |
+|    42 |     1 |
+|    43 |     0 |
+|    44 |     0 |
+|    45 |     0 |
+|    46 |     1 |
+|    47 |     0 |
+|    48 |     0 |
+|    49 |     0 |
+|    50 |     1 |
+|-------+-------|
+| Total |    20 |
+#+TBLFM: @>$2=vsum(@I..@II)
+
+同じ 100 円玉なので、 [[id:4328caa0-9d0c-4d08-87f6-5f3f071fb0d3][c)]] で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
+
+#+begin_src julia
+n₂, y₂ = 50, 20
+sym₂ = Beta(a₀_sym + y₁ + y₂, b₀_sym + n₁ - y₁ + n₂ - y₂)
+asym₂ = Beta(a₀_asym + y₁ + y₂, b₀_asym + n₁ - y₁ + n₂ - y₂)
+mm₂ = MixtureModel([sym₂, asym₂], [0.2, 0.8])
+histogram(rand(mm₂, 100000), label="posterior distribution", bins=100, normalize=:pdf, xlabel="θ")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=1}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/exercise3.8dposterior.jpg]]
+
+** 3.9
+*** question :noexport:
+Galenshore distribution:
+An unkonwn quantity \(Y\) has a Galenshore(\(a, \theta\)) distribution if its density is given by
+\[
+p(y) = \frac{2}{\Gamma (a)} \theta^{2a} y^{2a-1} e^{-\theta^2 y^2}
+\]
+for \(y > 0\), \(\theta > 0\) and \(a > 0\).
+Assume for now that \(a\) is known.
+For this density,
+\[
+E[Y] = \frac{\Gamma (a + 1/2)}{\theta \Gamma (a)} , \quad E[Y^2] = \frac{a}{\theta^2}.
+\]
+*** a)
+**** question :noexport:
+Identify a class of conjugate prior densities for \(\theta\).
+Plot a few members of this class of densities.
+
+**** answer
+:PROPERTIES:
+:header-args: :session exercise3.8 :eval no-export
+:ID:       89711387-8f12-464b-9f26-7f489b4521fa
+:END:
+
+
+データ\(y_1, y_2, \dots, y_n\)を観測したとき、
+y_1, y_2, \dots, y_n \sim \text{i.i.d. Galenshore}(a, \theta)
+とすると、
+\(\theta\)の\(a\)の条件付き事後分布は、
+\begin{align*}
+p(\theta | y_1, \dots, y_n, a)
+&\propto p(y_1, \dots, y_n | \theta, a) p(\theta | a) \\
+&\propto \theta^{2a n} \exp \left( - \theta^2 \sum_{i=1}^n y_i^2 \right)
+\times p(\theta | a) \\
+\end{align*}
+となる。
+上の計算より、
+\(p(\theta | a)\)が共役事前分布であるためには、
+\(\theta^{2 c_1} \exp(- \theta^2) \)
+のような項を含む分布である必要があるが、そのような分布としては、sampling model と同じ Galenshore 分布がある。
+
+また、\(f(\theta) = - \theta^2 =: \phi\)とおくと、
+\(\phi\)は\(\theta > 0\)で\(\theta\)の全単射の写像であり、
+\begin{align*}
+p(\theta | y_1, \dots, y_n, a)
+&\propto \phi^{an} \exp \left( \phi \sum_{i=1}^n y_i^2 \right)
+\times p(\theta | a) \\
+\end{align*}
+と問題を置き換えて
+\(\phi\)の事前分布として、ガンマ分布を考えることもできる。
+
+以下では、\(\theta\)の事前分布として、Galenshore 分布を用いる。
+
+#+begin_src julia :exports none
+using Distributions
+using Plots
+using StatsPlots
+#+end_src
+
+#+RESULTS:
+: nil
+
+#+begin_src julia :exports code
+plot(Normal(3,2), label="Normal(3,2)")
+plot!(Gamma(1,1), label="Gamma(1,1)")
+#+end_src
+
+#+RESULTS:
+: Plot{Plots.GRBackend() n=2}
+
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/Exercise3_9a.png]]
+
+*** b)
+**** question :noexport:
+Let \(Y_1, \ldots, Y_n \sim \text{i.i.d. Galenshore}(a, \theta) \)
+Find the posterior distribution of \(\theta\) given \(Y_1, \ldots, Y_n\), using a prior from your conjugate class.
+
+**** answer
+\(\theta\)の prior を Galenshore\((b, \phi)\) に設定すると、posterior は以下のように計算できる。
+
+\begin{align*}
+p(\theta | y_1, \dots, y_n, a)
+&\propto p(y_1, \dots, y_n | \theta, a) p(\theta | a) \\
+&\propto \theta^{2a n} \exp \left( - \theta^2 \sum_{i=1}^n y_i^2 \right)
+\times \theta^{2b-1} e^{-\phi^2 \theta^2} \\
+&= \theta^{2(an+b) - 1} \exp \left( - \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta^2 \right) \\
+\end{align*}
+
+以上より、
+\[\theta | y_1, \dots, y_n, a \sim \text{Galenshore}(an+b, \sqrt{\sum_{i=1}^n y_i^2 + \phi^2}\]
+
+*** c)
+**** question :noexport:
+Write down \(p(\theta_a \mid Y_1, \dots , Y_n) / p(\theta_b \mid Y_1, \dots , Y_n)\) and simplify.
+Identify a sufficient statistics.
+**** answer
+
+\begin{align*}
+\frac{p(\theta_a | Y_1 , \dots, Y_n)}{p(\theta_b | Y_1 , \dots, Y_n)}
+&= \frac{ \frac{2}{\Gamma(an + b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{(an+b)}
+\theta_a^{2(an+b)-1} e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta_a^2} }
+{ \frac{2}{\Gamma(an + b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{(an+b)}
+\theta_b^{2(an+b)-1} e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta_b^2} } \\
+&= \left( \frac{\theta_a}{\theta_b} \right)^{2(an+b)-1} \times
+e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) (\theta_a^2 - \theta_b^2)} \\
+\end{align*}
+
+上式から、十分統計量は、
+\(\sum_{i=1}^n y_i^2\)であることが分かる。
+
+*** d)
+**** question :noexport:
+Determine \(E[\theta \mid y_1, \dots , y_n ]\).
+**** answer
+
+\begin{align*}
+E[\theta | y_1, \dots, y_n]
+= \frac{ \Gamma(an+b + \frac{1}{2}) }{ \Gamma(an+b)\sqrt{\sum_{i=1}^n y_i^2 + \phi^2} }
+\end{align*}
+
+*** e)
+**** question :noexport:
+Determine the form of the posterior predictive density
+\(p(\tilde{y} | y_1, \dots , y_n)\).
+**** answer
+
+Galenshore 分布は確率分布であることから、
+\begin{equation}
+\label{eq:galenshore}
+\begin{aligned}[b]
+& \int_0^{\infty} \frac{2}{\Gamma(a)} \theta^{2a} y^{2a-1} e^{-\theta^2 y^2} dy
+= 1 \\
+\Leftrightarrow \quad
+& \frac{2}{\Gamma(a)} \theta^{2a} \int_0^{\infty} y^{2a-1} e^{-\theta^2 y^2} dy = 1 \\
+\Leftrightarrow \quad
+& \int_0^{\infty} y^{2a-1} e^{-\theta^2 y^2} dy
+= \frac{\Gamma(a)}{2} \theta^{-2a}
+\end{aligned}
+\end{equation}
+であることを用いると、
+
+\begin{align*}
+p(\tilde{y} | y_1, \dots, y_n)
+&= \int_0^{\infty} p(\tilde{y} | \theta) p(\theta | y_1, \dots, y_n) d\theta \\
+&= \int_0^{\infty} \frac{2}{\Gamma(a)} \theta^{2a} \tilde{y}^{2a-1} e^{-\theta^2 \tilde{y}^2}
+\times \frac{2}{\Gamma(an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
+\theta^{2(an+b)-1} e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta^2} d\theta \\
+&= \frac{4}{\Gamma(a) \Gamma(an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
+\tilde{y}^{2a-1} \int_0^{\infty} \theta^{2(a + an+b)-1} e^{-(\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)\theta^2 } d\theta \\
+&= \frac{4}{\Gamma(a) \Gamma(an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b} \tilde{y}^{2a-1}
+\frac{\Gamma(a + an+b)}{2(\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)^{a + an+b}}
+\quad (\because \eqref{eq:galenshore})  \\
+&= \frac{2}{B(a, an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
+\tilde{y}^{2a-1} (\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)^{-(a + an+b)} \\
+\end{align*}
+
+** 3.10
+:PROPERTIES:
+:ID:       eb62bf76-2d0a-4d3b-9a2e-3651f13c019a
+:END:
+*** question :noexport:
+Change of variables:
+Let \(\psi = g(\theta)\), where \(g\) is a monotone function of \(\theta\),
+and let \(h\) be the inverse of \(g\) so that \(\theta = h(\psi)\).
+If \(p_{\theta}(\theta)\) is the probability density of \(\theta\), then the probability density of \(\psi\) induced by \(p_{\theta}\) is given by
+\(p_{\psi} (\psi) = p_{\theta}(h(\psi)) \times \mid \frac{dh}{d \psi} \mid\).
+*** a)
+:PROPERTIES:
+:ID:       a80c926c-fbd9-4a95-b5e3-dd4d42ae0faf
+:END:
+**** question :noexport:
+Let \(\theta \sim \text{beta}(a,b)\) and let \(\psi = \log \left[ \frac{\theta}{1 - \theta} \right]\).
+Obtain the form of \(p_{\psi}\) and plot it for the case that \(a = b = 1\).
+
+**** answer
+
+\begin{align*}
+&\psi = \log \left[ \frac{\theta}{1 - \theta} \right] \\
+\Leftrightarrow \quad & e^{\psi} = \frac{\theta}{1 - \theta} \\
+\Leftrightarrow \quad & \theta = \frac{e^{\psi}}{1 + e^{\psi} }
+=: h(\psi) \\
+\end{align*}
+
+また、
+\begin{align*}
+\frac{d h(\psi)}{d \psi}
+&= \frac{e^{\psi} (1+e^{\psi}) - e^{\psi} e^{\psi} }{(1+e^{\psi})^2} \\
+&= \frac{e^{\psi} (1+e^{\psi} - e^{\psi} )}{(1+e^{\psi})^2} \\
+&= \frac{e^{\psi}}{(1+e^{\psi})^2} \quad ( > 0)\\
+\end{align*}
+
+よって、
+
+\begin{align*}
+p_{\psi} (\psi)
+&= p_{\theta}(h(\psi)) \times \mid \frac{d h(\psi)}{d \psi} \mid \\
+&= \frac{1}{B(a,b)} h(\psi)^{a-1} (1-h(\psi))^{b-1} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \frac{1}{B(a,b)} \left( \frac{e^{\psi}}{1 + e^{\psi} } \right)^{a-1} \left( \frac{1}{1 + e^{\psi} } \right)^{b-1} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \frac{1}{B(a,b)} \left( \frac{e^{\psi}}{1 + e^{\psi} } \right)^a \left( \frac{1}{1 + e^{\psi} } \right)^b
+\end{align*}
+
+
+#+begin_src julia :session excercise3.10 :results file :exports both :eval no-export
+using Plots
+using SpecialFunctions
+a, b = 1, 1
+p_ψ = ψ -> exp(ψ)^a * (1 + exp(ψ))^(-b) / beta(a,b)
+ψs = range(-10, 10, length=100)
+p = plot(ψs, p_ψ.(ψs), xlabel="ψ", ylabel="p(ψ)", label="p(ψ)")
+savefig(p, "../../fig/ch3/excersise3-10a.png")
+"../../fig/ch3/excersise3-10a.png"
+#+end_src
+
+#+RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/excersise3-10a.png]]
+*** b)
+**** question :noexport:
+Let \(\theta \sim \text{gamma}(a,b)\) and let \(\psi = \log \theta\).
+Obtain the form of \(p_{\psi}\) and plot it for the case that \(a = b = 1\).
+
+**** answer
+
+\begin{align*}
+&\psi = \log \theta \\
+\Leftrightarrow \quad & \theta = e^{\psi} =: h(\psi)
+\end{align*}
+
+また、
+\begin{align*}
+\frac{d h(\psi)}{d \psi}
+&= e^{\psi} \quad ( > 0)
+\end{align*}
+
+よって、
+
+\begin{align*}
+p_{\psi} (\psi)
+&= p_{\theta}(h(\psi)) \times \mid \frac{d h(\psi)}{d \psi} \mid \\
+&= \frac{b^a}{\Gamma(a)} h(\psi)^{a-1} e^{-b h(\psi)} \times e^{\psi} \\
+&= \frac{b^a}{\Gamma(a)} e^{\psi (a-1)} e^{-b e^{\psi}} \times e^{\psi} \\
+&= \frac{b^a}{\Gamma(a)} e^{\psi a -b e^{\psi} } \\
+\end{align*}
+
+#+begin_src julia :session excercise3.10 :exports both :eval no-export :results file
+using Plots
+using SpecialFunctions
+a, b = 1, 1
+p_ψ = ψ -> b^a/gamma(a) * exp(ψ*a - b*exp(ψ))
+ψs = range(-10, 10, length=100)
+p = plot(ψs, p_ψ.(ψs), xlabel="ψ", ylabel="p(ψ)", label="p(ψ)")
+savefig(p, "../../fig/ch3/excersise3-10b.png")
+"../../fig/ch3/excersise3-10b.png"
+#+end_src
+
+#+RESULTS:
+#+ATTR_HTML: :width 500
+[[file:../../fig/ch3/excersise3-10b.png]]
+
+** 3.12(和訳は 3.11)
+*** question :noexport:
+Jeffrey's prior:
+Jeffreys (1961) suggested a default rule for generating a prior distribution of a parameter \(\theta\) in a sampling model \(p(y \mid \theta)\).
+Jeffreys' prior is given by
+\(p_J(\theta) \propto \sqrt{I(\theta)} \),
+where
+\( I(\theta) = - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right]\)
+is the /Fisher information/.
+*** a)
+:PROPERTIES:
+:ID:       0a397515-a353-4c89-b39b-d6f5c164a43b
+:END:
+**** question :noexport:
+Let \(Y \sim \text{binomial}(n, \theta)\)
+Obtain Jeffreys' prior distribution \(p_J(\theta)\) for this model.
+**** answer
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \begin{pmatrix} n \\ Y \end{pmatrix} \theta^Y (1-\theta)^{n-Y} \right]\\
+&= Y \log \theta + (n-Y) \log (1-\theta) + \log \begin{pmatrix} n \\ Y \end{pmatrix} \\
+\end{align*}
+より、
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - \frac{n-Y}{1-\theta} \right)\\
+&= - \frac{n-Y}{(1-\theta)^2} - \frac{Y}{\theta^2} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= - E \left[ - \frac{n-Y}{(1-\theta)^2} - \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{n-E[Y \mid \theta]}{(1-\theta)^2} + \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{n - n \theta}{(1-\theta)^2} + \frac{n \theta}{\theta^2} \\
+&= \frac{n}{1-\theta} + \frac{n}{\theta} \\
+&= \frac{n}{\theta (1-\theta)}
+\end{align*}
+が得られる。
+また、
+\begin{align*}
+p_J(\theta)
+&\propto \sqrt{\frac{n}{\theta (1-\theta)}} \\
+&= \sqrt{n} \theta^{-\frac{1}{2}} (1-\theta)^{-\frac{1}{2}} \\
+&\propto \theta^{ \frac{1}{2} - 1} (1-\theta)^{\frac{1}{2} - 1} \\
+&\propto \text{dbeta}(\theta, \frac{1}{2}, \frac{1}{2})
+\end{align*}
+より、Jeffreys' prior distribution は、
+Beta\((\frac{1}{2}, \frac{1}{2})\)となる。
+
+*** b)
+:PROPERTIES:
+:ID:       0b080280-6872-4e0b-b08b-03322f9fd048
+:END:
+**** question :noexport:
+Reparameterize the binomial sampling model with \(\psi = \log \frac{\theta}{1-\theta}\), so that
+\( p(y \mid \psi) = \begin{pmatrix} n \\ y \end{pmatrix} e^{\psi y} (1+e^{\psi})^{-n} \).
+Obtain Jeffrey's prior distribution \(p_J(\psi)\) for this model.
+**** answer
+これは [[id:a80c926c-fbd9-4a95-b5e3-dd4d42ae0faf][3.10 a)]] と同じ変換であることに注意。
+
+\begin{align*}
+\log p(Y \mid \psi)
+&= \log \left[ \begin{pmatrix} n \\ Y \end{pmatrix} e^{\psi Y} (1+e^{\psi})^{-n} \right]\\
+&= Y \psi + \log \begin{pmatrix} n \\ Y \end{pmatrix} - n \log (1+e^{\psi}) \\
+\end{align*}
+
+より、
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \psi)}{\partial \psi^2}
+&= \frac{\partial}{\partial \psi}
+\left( Y - \frac{n e^{\psi} }{1+e^{\psi} } \right)\\
+&= - \frac{n e^{\psi} (1 + e^{\psi}) - e^{\psi} n e^{\psi} }{(1+e^{\psi})^2} \\
+&= - \frac{n e^{\psi} }{(1+e^{\psi})^2} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+I(\psi)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \psi)}{\partial \psi^2} \middle| \psi \right] \\
+&= - E \left[ - \frac{n e^{\psi} }{(1+e^{\psi})^2} \middle| \psi \right] \\
+&= \frac{n e^{\psi} }{(1+e^{\psi})^2} \\
+\end{align*}
+
+したがって、prior distribution は、
+
+\begin{align*}
+p_J(\psi)
+= c \times \frac{\sqrt{e^{\psi} } }{1 + e^{\psi} }
+\qquad \text{where } c = \frac{1}{\int_{-\infty}^{\infty} \sqrt{ e^{\psi} } (1 + e^{\psi} )^{-1} d\psi} \\
+\end{align*}
+*** c)
+**** question :noexport:
+Take the prior distribution from [[id:0a397515-a353-4c89-b39b-d6f5c164a43b][a)]] and apply the change of variables formula from [[id:eb62bf76-2d0a-4d3b-9a2e-3651f13c019a][3.10]]
+to obtain the induced prior density on \(\psi\).
+This density should be the same as the one derived in [[id:0b080280-6872-4e0b-b08b-03322f9fd048][part b)]] of this exercise.
+This consistency under reparameterization is the defining characteristic of Jeffrey's prior.
+**** answer
+
+\begin{align*}
+p_{J, \psi}(\psi)
+&= p_{J, \theta}(h(\psi)) \times \left| \frac{\partial h(\psi)}{\partial \psi} \right| \\
+&\propto h(\psi)^{-\frac{1}{2}} (1-h(\psi))^{-\frac{1}{2}} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{1 + e^{\psi} } \right)^{- \frac{1}{2} }
+\left(1-\frac{e^{\psi} }{1 + e^{\psi} }\right)^{-\frac{1}{2} } \times
+\frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{(1 + e^{\psi})^2 } \right)^{- \frac{1}{2} }
+\frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{(1 + e^{\psi})^2 } \right)^{ \frac{1}{2} } \\
+&= \frac{\sqrt{e^{\psi} } }{1 + e^{\psi} } \\
+\end{align*}
+
+
+よって、
+[[id:0b080280-6872-4e0b-b08b-03322f9fd048][b)]] と一致することがわかる。
+** 3.13
+*** question :noexport:
+Improper Jeffreys' prior:
+Let \(Y \sim \text{Poisson}(\theta)\).
+*** a)
+**** question :noexport:
+Apply Jeffreys' procedure to this model, and compare the result to the family of gamma densities.
+Does Jeffreys' procedure an actural probability for \(\theta\)?
+In other words, can \(\sqrt{I(\theta)}\) be proportional to an actual probability density for \(\theta \in (0, \infty)\)?
+
+**** answer
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \frac{\theta^Y e^{-\theta}}{Y!} \right] \\
+&= Y \log \theta - \theta - \log Y! \\
+\end{align*}
+
+より、
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - 1 \right) \\
+&= - \frac{Y}{\theta^2} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= E \left[ \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{\theta}{\theta^2} \\
+&= \frac{1}{\theta} \\
+\end{align*}
+
+したがって、prior distribution は、
+
+\begin{align*}
+p_J(\theta)
+\propto \times \frac{1}{\sqrt{\theta}}
+\end{align*}
+
+となるが、
+
+\(\int_{0}^{\infty} \frac{1}{\sqrt{\theta}} d\theta \)は無限大に発散するので、確率分布とはならない。
+*** b)
+**** question :noexport:
+Obtain the form of the function \(f(\theta, y) = \sqrt{I(\theta)} \times p(y \mid \theta)\).
+What probability density for \(\theta\) is \(\textcolor{red}{f(y \mid \theta)}\) proportional to?
+Can we think of \(\frac{f(\theta, y)}{\int f(\theta, y) d\theta}\) as a posterior density of \(\theta\) given \(Y=y\)?
+
+**** answer
+\begin{align*}
+f(\theta, y)
+&= \sqrt{I(\theta)} \times p(y \mid \theta) \\
+&= \sqrt{\frac{1}{\theta}} \times \frac{\theta^y e^{-\theta}}{y!} \\
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!}
+\end{align*}
+
+\begin{align*}
+f(\theta \mid y)
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!} \\
+&\propto \theta^{y - \frac{1}{2} } e^{-\theta} \\
+&= \theta^{y + \frac{1}{2} -1 } e^{-\theta} \\
+&\propto \text{dgamma}(\theta, y + \frac{1}{2}, 1)
+\end{align*}
+
+Probably yes because we are interested in only the shape of the distribution.
+
+** 3.14
+*** question :noexport:
+Unit information prior:
+Let \(Y_1, \dots, Y_n \sim \text{i.i.d.} p(y \mid \theta)\).
+Having observed the values \(Y_1 = y_1, \dots, Y_n = y_n\), the /log likekihood/ is given by
+\(l(\theta \mid \boldsymbol{y}) = \sum \log p(y_i \mid \theta)\),
+and the value \(\hat{\theta}\)  of \(\theta\) that maximizes
+\(l(\theta \mid \boldsymbol{y}\)
+is called the /maximum likelihood estimater/.
+The negative of the curvature of the log-likelihood,
+\(J(\theta) = - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2}\),
+describes the precision of the MLE \(\hat{\theta}\)
+and is called the /observed Fisher information/.
+
+For situations in which it is difficult to quantify prior information in terms of a probability distribution, some have suggested that the "prior" distribution be based on the likelihood, for example, by centering the prior distribution around the MLE \(\hat{\theta}\).
+To deal with the fact that the MLE is not really prior information, the curvature of the prior is chosen so that it has only "one /n/th" as much information as the likelihood,
+so that
+\(- \frac{\partial^2 \log p(\theta)}{\partial \theta^2} = \frac{J(\theta)}{n}\).
+Such a prior is called a /unit information prior/
+(Kass and Wasserman, 1995; Kass and Raftery, 1995),
+as it has as much information as the average amount of information from a single observation.
+The unit information prior is not really a prior distribution, as it is computed from the observed data.
+However, it can be roughly viewed as the prior information of someone with weak but accurate prior information.
+*** a)
+:PROPERTIES:
+:ID:       9314c55b-504f-4446-adfe-c726d99efc87
+:END:
+**** question :noexport:
+Let \(Y_1, \dots ,Y_n \sim \text{i.i.d. binary}(\theta)\).
+Obtain the MLE \(\hat{\theta}\) and \(\frac{J(\hat{\theta})}{n}\).
+
+**** answer
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \theta^{y_i} (1 - \theta)^{1 - y_i} \\
+&= \sum_{i=1}^n y_i \log \theta + (1 - y_i) \log (1 - \theta) \\
+&= \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \\
+\end{align*}
+
+一階の条件は、
+
+\begin{align*}
+& \frac{\sum_{i=1}^n y_i}{\theta} = \frac{n - \sum_{i=1}^n y_i}{1 - \theta} \\
+\Leftrightarrow \quad & (1 - \theta) \sum_{i=1}^n y_i = \theta (n - \sum_{i=1}^n y_i) \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+また、
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-1} \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-2} \\
+\end{align*}
+
+より、上で求めた \(\hat{\theta}\) を代入すると、
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \hat{\theta})^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} - \left( n - \sum_{i=1}^n y_i \right) \left(1 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} - \frac{n^2}{n - \sum_{i=1}^n y_i} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} - \frac{n}{n - \sum_{i=1}^n y_i} \\
+&= -n \left( \frac{1}{\sum_{i=1}^n y_i} + \frac{1}{n - \sum_{i=1}^n y_i} \right) \\
+\end{align*}
+*** b)
+:PROPERTIES:
+:ID:       f850baf1-b613-4e69-a734-1c734b5c8d2f
+:END:
+**** question :noexport:
+Find a probability density \(p_U (\theta)\) such that
+\(\log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c\),
+where \(c\) is a constant that does not depend on \(\theta\).
+Compute the information \( - \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}\) of this density.
+
+**** answer
+
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) }{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\sum_{i=1}^n y_i}{n} \log \theta + (1 - \frac{\sum_{i=1}^n y_i}{n}) \log (1 - \theta) + c \\
+\Leftrightarrow \quad & p_U (\theta) = \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c\\
+\end{align*}
+
+\(p_U(\theta)\)は probability density なので、
+
+\begin{align*}
+& \int_0^1 p_U (\theta) d\theta = 1 \\
+\Leftrightarrow \quad & \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c d\theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}}  d\theta \right)^{-1} \\
+& = B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-1} \\
+\therefore \quad & c = - \log B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right) \\
+\end{align*}
+
+また、
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2} - \left( 1 - \frac{\sum_{i=1}^n y_i}{n} \right) (1 - \theta)^{-2} \\
+\end{align*}
+*** c)
+:PROPERTIES:
+:ID:       0549f84a-8f93-45ad-9309-36ed4ac03475
+:END:
+**** question :noexport:
+Obtain a probabilitydensity for \(\theta\) that is proportional to
+\(p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )\).
+Can this be considered a posteriror distribution for \(\theta\)?
+
+**** answer
+
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} + \sum_{i=1}^n y_i}
+(1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n} + n - \sum_{i=1}^n y_i}  \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i}
+(1 - \theta)^{(1 + n^{-1}) (n - \sum_{i=1}^n y_i)} \\
+&= \text{dbeta}\left(\theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, (1 + n^{-1}) (n - \sum_{i=1}^n y_i) + 1 \right) \\
+\end{align*}
+
+これは posterior distribution とみなすことができる。
+*** d)
+**** question :noexport:
+Repeat [[id:9314c55b-504f-4446-adfe-c726d99efc87][a)]] , [[id:f850baf1-b613-4e69-a734-1c734b5c8d2f][b)]] and [[id:0549f84a-8f93-45ad-9309-36ed4ac03475][c)]] but with \(p(y \mid \theta)\) being the Poisson distribution.
+
+**** answer
+***** a')
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \frac{\theta^{y_i} e^{- \theta} }{y_i!} \\
+&= \sum_{i=1}^n \left( y_i \log \theta - \theta - \log y_i! \right) \\
+& = \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \\
+\end{align*}
+
+一階の条件は、
+
+\begin{align*}
+& \theta^{-1} \sum_{i=1}^n y_i - n = 0 \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+また、
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- n \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2}  \\
+\end{align*}
+
+より、上で求めた \(\hat{\theta}\) を代入すると、
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2}  \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} \\
+\end{align*}
+
+***** b')
+
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i!}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta)
+= \frac{\sum_{i=1}^n y_i }{n} \log \theta - \theta - \frac{\sum_{i=1}^n \log y_i!}{n} + c \\
+\therefore \quad & p_U (\theta)
+= \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n}
+\end{align*}
+
+\(p_U(\theta)\)は probability density なので、
+
+\begin{align*}
+& \int_0^{\infty} p_U (\theta) d \theta = 1 \\
+\Leftrightarrow \quad & \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i }{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n} d \theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \prod_{i=1}^n y_i! \right)^n \left( \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta} d \theta \right)^{-1} \\
+& = \left( \prod_{i=1}^n y_i! \right)^n \Gamma \left( \frac{\sum_{i=1}^n y_i}{n} + 1 \right)^{-1} \\
+\end{align*}
+
+また、
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2}
+\end{align*}
+
+***** c')
+
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta}
+\times \theta^{\sum_{i=1}^n y_i} e^{-n \theta} \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i} e^{-(1 + n) \theta} \\
+&= \text{dgamma} \left( \theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, 1 + n \right) \\
+\end{align*}
+
+これは posterior distribution とみなすことができる。

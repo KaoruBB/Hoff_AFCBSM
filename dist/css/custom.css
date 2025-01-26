@@ -1,0 +1,26 @@
+/* 長い数式(mathjax)が横スクロールになる */
+mjx-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+#content {
+    max-width: 80% !important;
+}
+
+#content img {
+    display: block;
+    margin: auto;
+}
+
+#table-of-contents {
+    overflow-y: auto;
+}
+
+h4 {
+    color: #00436a;
+}
+h5 {
+    color: #207d93;
+}

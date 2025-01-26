@@ -1,0 +1,599 @@
+* Chapter 8
+:PROPERTIES:
+:header-args: :eval no-export :session hoff
+:END:
+
+** 8.1
+*** Question :noexport:
+Components of variance:
+Consider the hierarchical model where
+\begin{align*}
+\theta_1, \dots, \theta_m | \mu, \tau^2 &\sim \text{ i.i.d. normal}( \mu, \tau^2) \\
+y_{1,j}, \dots, y_{n_j, j} | \theta_j, \sigma^2 &\sim \text{ i.i.d. normal}( \theta_j, \sigma^2)
+\end{align*}
+For this prblem, we will eventually compute the following:
+\begin{align*}
+&\text{Var}[y_{i,j}|\theta_j, \sigma^2],
+\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2],
+\text{Cov}[y_{i_1, j}, y_{i_2, j}|\theta_j, \sigma^2] \\
+&\text{Var}[y_{i,j}|\mu, \tau^2],
+\text{Var}[\bar{y}_{\cdot, j}|\mu, \tau^2],
+\text{Cov}[y_{i_1, j}, y_{i_2, j}|\mu, \tau^2] \\
+\end{align*}
+First, lets use our intuition to guess at the answers:
+
+*** a)
+**** Question :noexport:
+Which do you think is bigger, \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) or \( \text{Var}[y_{i,j}|\mu, \tau^2] \)?
+To guide your intuition, you can interpret the first as the variability of the \(Y\)'s when sampling from a fixed group,
+and the second as the variability in first sampling a group,
+then sampling a unit from within that group.
+
+**** Answer
+\( \text{Var}[y_{i,j}|\mu, \tau^2] \) is bigger because it includes both between-group and within-group variability while \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) only includes within-group variability.
+
+*** b)
+**** Question :noexport:
+Do you think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is negative, positive, or zero?
+Answer the same for \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\).
+You may want to think about what \(y_{i_2,j}\) tells you about \(y_{i_1,j}\) if \(\theta_j\) is known, and what it tells you when \(\theta_j\) is unknown.
+**** Answer
+I think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is zero because when \(\theta_j\) is known, \(y_{i_2,j}\) tells us nothing about \(y_{i_1,j}\) more than what we already know.
+However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive because \(y_{i_2,j}\) tells us something about group-specific information \(\theta_j\) which we do not know.
+
+*** c)
+**** Question :noexport:
+Now compute each of the six quantities above and compare to your answers in a) and b).
+**** Answer
+\begin{align*}
+\text{Var}[y_{i,j}|\theta_j, \sigma^2]
+&= \sigma^2 \\
+\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2]
+&= \text{Var}[\frac{1}{n_j} \sum_{i=1}^{n_j} y_{i,j} | \theta_j, \sigma^2] \\
+&= \frac{1}{n_j^2} \text{Var}[\sum_{i=1}^{n_j} y_{i,j} | \theta_j, \sigma^2] \\
+&= \frac{ \sigma^2 }{n_j} \\
+\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]
+&= E[(y_{i_1, j} - \theta_j)(y_{i_2, j} - \theta_j) | \theta_j, \sigma^2] \\
+&= E[y_{i_1, j}y_{i_2, j} - \theta_j y_{i_1, j} - \theta_j y_{i_2, j}) + \theta_j^2 | \theta_j, \sigma^2] \\
+&= E[y_{i_1, j}y_{i_2, j} | \theta_j, \sigma^2] - \theta_j E[y_{i_1, j} | \theta_j, \sigma^2] - \theta_j E[y_{i_2, j} | \theta_j, \sigma^2] + \theta_j^2 \\
+&= E[y_{i_1, j} | \theta_j, \sigma^2] E[y_{i_2, j} | \theta_j, \sigma^2] - \theta_j^2 - \theta_j^2 + \theta_j^2 \\
+&\qquad (\because  y_{i_1, j} \text{ and } y_{i_2, j} \text{ are conditionally independent given} \theta_j, \sigma^2) \\
+&= \theta_j^2 - \theta_j^2 \\
+&= 0 \\
+\end{align*}
+
+\begin{align*}
+\text{Var}[y_{i,j}|\mu, \tau^2]
+&= E \left[\text{Var}[y_{i,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2\right] + \text{Var} \left[ E[y_{i,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2\right] \\
+&= E[\text{Var}[y_{i,j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Var}[E[y_{i,j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[\sigma^2 | \mu, \tau^2] + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \sigma^2 + \tau^2 \\
+\text{Var}[\bar{y}_{\cdot, j}|\mu, \tau^2]
+&= E \left[ \text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] + \text{Var} \left[ E[\bar{y}_{\cdot, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] \\
+&= E[\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Var}[E[\bar{y}_{\cdot, j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[ \frac{ \sigma^2 }{n_j} | \mu, \tau^2] + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \frac{ \sigma^2 }{n_j} + \tau^2 \\
+\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]
+&= E \left[ \text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] + \text{Cov} \left[ E[y_{i_1, j}|\theta_j, \sigma^2, \mu, \tau^2], E[y_{i_2, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] \\
+&= E[\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Cov}[E[y_{i_1, j}|\theta_j, \sigma^2], E[y_{i_2, j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[0 | \mu, \tau^2] + \text{Cov}[\theta_j, \theta_j | \mu, \tau^2] \\
+&= 0 + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \tau^2 \\
+\end{align*}
+
+*** d)
+**** Question :noexport:
+Now assume we have a prior \(p(\mu)\) for \(\mu\).
+Using Bayes' rule, show that
+\[ p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
+= p(\mu | \theta_1, \ldots, \theta_m, \tau^2)
+\]
+Interpret in words what this means.
+
+**** Answer
+\begin{align*}
+p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ p(\theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ \int p( \mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) d \mu } \\
+&= \frac{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) }{ \int p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) d \mu } \\
+&= \frac{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) }{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\sigma^2)
+\int  p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2) d \mu } \\
+&= \frac{ p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2)}{ \int p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2) d \mu } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \tau^2) }{ \int p(\mu, \theta_1, \ldots, \theta_m, \tau^2) d \mu } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta, \tau^2) }{ p(\theta_1, \ldots, \theta_m, \tau^2) } \\
+&= p(\mu | \theta_1, \ldots, \theta_m, \tau^2) \\
+\end{align*}
+
+This means that the \(\sigma^2, \boldsymbol{y}_1, \dots, \boldsymbol{y}_2\) give us no additional information about \(\mu\) given \(\theta_1, \ldots, \theta_m, \tau^2\).
+** 8.2
+*** Question :noexport:
+Sensitivity analysis:
+In this exercise we will revisit the study from [[5.2][Exercise 5.2]],
+in which 32 students in a science classroom were randomly assigned to one of two study methods, \(A\) and \(B\), with \(n_A = n_B = 16\).
+After several weeks of study, students were examined on the course material, and the scores are summarized by \(\{ \bar{y}_A = 75.2, s_A = 7.3 \}\), \(\{ \bar{y}_B = 77.5, s_B = 8.1 \}\).
+We will estimate \(\theta_A = \mu + \delta\) and \(\theta_B = \mu - \delta\) using the two-sample model and prior distributions of Section 8.1.
+*** a)
+**** Question :noexport:
+Let \(\mu \sim \text{normal}(75, 100), 1/\sigma^2 \sim \text{gamma}(1, 100) \) and
+\(\delta \sim \text{normal}(\delta_0, \tau^2_0)\).
+For each combination of \(\delta_0 \in \{ -4, -2, 0, 2, 4 \}\) and \(\tau^2_0 \in \{ 10, 50, 100, 500 \}\),
+obtain the posterior distribution of \(\mu, \delta\) and \(\sigma^2\) and compute
+1. \(\text{Pr}(\delta \lt 0 | \mathbf{Y})\);
+2. a 95% posterior confidence interval for \(\delta\);
+3. the prior and posterior correlation of \(\theta_A\) and \(\theta_B\).
+
+**** Answer
+:PROPERTIES:
+:header-args: :session *julia:hoff* :eval no-export
+:END:
+
+The prior correlation of \(\theta_A\) and \(\theta_B\) is computed as follows:
+
+\begin{align*}
+\text{cov}(\theta_A, \theta_B)
+&= \text{cov}(\mu + \delta, \mu - \delta) \\
+&= E[(\mu + \delta)(\mu - \delta)] - E[\mu + \delta] E[\mu - \delta] \\
+&= E[\mu^2 - \delta^2] - (E[\mu] + E[\delta]) (E[\mu] - E[\delta]) \\
+&= E[\mu^2] - E[\delta^2] - (E[\mu]^2 - E[\delta]^2) \\
+&= \text{var}(\mu) - \text{var}(\delta) \\
+&= 100 - \tau^2_0 \\
+\text{Var}[\theta_A]
+&= \text{Var}[\mu + \delta] \\
+&= \text{Var}[\mu] + \text{Var}[\delta] + 2 \text{cov}(\mu, \delta) \\
+&= 100 + \tau^2_0 \\
+\text{Var}[\theta_B]
+&= \text{Var}[\mu - \delta] \\
+&= \text{Var}[\mu] + \text{Var}[\delta] - 2 \text{cov}(\mu, \delta) \\
+&= 100 + \tau^2_0 \\
+\text{Corr}(\theta_A, \theta_B)
+&= \frac{\text{cov}(\theta_A, \theta_B)}{\sqrt{\text{Var}[\theta_A] \text{Var}[\theta_B]}} \\
+&= \frac{100 - \tau^2_0}{100 + \tau^2_0}
+\end{align*}
+
+#+begin_src julia :exports both
+# set prior parameters
+μ₀ = 75
+γ₀² = 100
+ν₀ = 2
+σ₀² = 100
+δ₀_list = [-4, -2, 0, 2, 4]
+τ₀²_list = [10, 50, 100, 500]
+
+# set data
+n_A = 16
+n_B = 16
+ȳ_A = 75.2
+ȳ_B = 77.5
+s_A = 7.3
+s_B = 8.1
+
+function GibssSampling(S, n_A, n_B,ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²)
+    # Gibbs sampler
+    MU = Vector{Float64}(undef, S)
+    DELTA = Vector{Float64}(undef, S)
+    SIGMA = Vector{Float64}(undef, S)
+    Y1 = Vector{Float64}(undef, S)
+    Y2 = Vector{Float64}(undef, S)
+
+    # starting values
+    μ = (ȳ_A + ȳ_B) / 2
+    δ = (ȳ_A - ȳ_B) / 2
+
+    for s in 1:S
+        # update σ²
+        νₙ = ν₀ + n_A + n_B
+        νₙσₙ² = ν₀ * σ₀² +
+            n_A*(s_A^2 + ȳ_A^2 - 2*ȳ_A*(μ + δ) + (μ + δ)^2) +
+            n_B*(s_B^2 + ȳ_B^2 - 2*ȳ_B*(μ - δ) + (μ - δ)^2)
+        σ² = 1 / rand(Gamma(νₙ / 2, 2 / νₙσₙ²))
+
+        # update μ
+        γₙ² = 1 / (1 / γ₀² + (n_A + n_B) / σ²)
+        μₙ = γₙ² * (μ₀ / γ₀² + n_A*(ȳ_A - δ) / σ² + n_B*(ȳ_B + δ) / σ²)
+        μ = rand(Normal(μₙ, sqrt(γₙ²)))
+
+        # update δ
+        τₙ² = 1 / (1 / τ₀² + (n_A + n_B) / σ²)
+        δₙ = τₙ² * (δ₀ / τ₀² + n_A*(ȳ_A - μ) / σ² - n_B*(ȳ_B - μ) / σ²)
+        δ = rand(Normal(δₙ, sqrt(τₙ²)))
+
+        # save parameter values
+        MU[s] = μ
+        DELTA[s] = δ
+        SIGMA[s] = σ²
+
+        # update Ys
+        Y1[s] = rand(Normal(μ .+ δ, sqrt(σ²)))
+        Y2[s] = rand(Normal(μ .- δ, sqrt(σ²)))
+
+    end
+    return MU, DELTA, SIGMA, Y1, Y2
+end
+
+function priorCorrelation(γ₀², τ₀²)
+    (γ₀² - τ₀²) / (γ₀² + τ₀²)
+end
+
+function getPosteriorValues(
+    S, n_A, n_B, ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²)
+    MU, DELTA, SIGMA, Y1, Y2 = GibssSampling(
+        S, n_A, n_B, ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²
+    )
+    values = [
+        δ₀, τ₀²,
+        mean(DELTA .< 0),
+        quantile(DELTA, [0.025, 0.975]),
+        priorCorrelation(γ₀², τ₀²),
+        cor(MU .+ DELTA, MU .- DELTA)
+    ]
+    return values
+end
+
+S=5000
+storedf = DataFrame(
+    δ₀ = Float64[],
+    τ₀² = Float64[],
+    Pr_δ_lt_0 = Float64[],
+    δ_CI = Vector{Float64}[],
+    prior_cor = Float64[],
+    posterior_cor = Float64[]
+)
+for δ₀ in δ₀_list
+    for τ₀² in τ₀²_list
+        values = getPosteriorValues(
+            S, n_A, n_B, ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²
+        )
+        push!(storedf, values)
+    end
+end
+storedf
+#+end_src
+
+:RESULTS:
+#+begin_example
+20×6 DataFrame
+ Row │ δ₀       τ₀²      Pr_δ_lt_0  δ_CI                  prior_cor  posterior_cor 
+     │ Float64  Float64  Float64    Array…                Float64    Float64       
+─────┼─────────────────────────────────────────────────────────────────────────────
+   1 │    -4.0     10.0     0.9004  [-4.40737, 0.960564]   0.818182     0.0832215
+   2 │    -4.0     50.0     0.809   [-4.07596, 1.57355]    0.333333     0.0296429
+   3 │    -4.0    100.0     0.7998  [-4.0521, 1.71576]     0.0         -0.00939503
+   4 │    -4.0    500.0     0.7886  [-4.12576, 1.81624]   -0.666667    -0.0262716
+   5 │    -2.0     10.0     0.837   [-3.92399, 1.32537]    0.818182     0.10129
+   6 │    -2.0     50.0     0.8028  [-4.05612, 1.6224]     0.333333     0.00869293
+   7 │    -2.0    100.0     0.8038  [-4.0379, 1.6864]      0.0         -0.00810778
+   8 │    -2.0    500.0     0.7888  [-4.05015, 1.76565]   -0.666667    -0.0191756
+   9 │     0.0     10.0     0.7576  [-3.48922, 1.67463]    0.818182     0.0929888
+  10 │     0.0     50.0     0.7726  [-3.923, 1.72819]      0.333333     0.00904771
+  11 │     0.0    100.0     0.7826  [-3.97522, 1.82757]    0.0         -0.0190771
+  12 │     0.0    500.0     0.7928  [-4.0154, 1.72617]    -0.666667     0.0197301
+  13 │     2.0     10.0     0.6736  [-3.22579, 2.10982]    0.818182     0.0825033
+  14 │     2.0     50.0     0.763   [-3.85493, 1.81963]    0.333333    -0.00669629
+  15 │     2.0    100.0     0.774   [-3.89927, 1.66101]    0.0         -0.0104147
+  16 │     2.0    500.0     0.7908  [-4.0372, 1.75225]    -0.666667     0.00590126
+  17 │     4.0     10.0     0.5678  [-2.83371, 2.36965]    0.818182     0.0925342
+  18 │     4.0     50.0     0.7368  [-3.65975, 1.90021]    0.333333     0.0114906
+  19 │     4.0    100.0     0.7718  [-3.86476, 1.78857]    0.0          0.0232417
+  20 │     4.0    500.0     0.7924  [-4.17904, 1.72876]   -0.666667     0.00648826
+#+end_example
+
+*** b)
+**** Question :noexport:
+Describe how you might use these results to convey evidence that
+\(\theta_A \lt \theta_B\) to people of a variety of prior opinions.
+
+**** Answer
+The posterior probability that
+\(\theta_A \lt \theta_B \iff \delta \lt 0\)
+is over 50% for all combinations of \(\delta_0\) and \(\tau_0^2\).
+Even if we have a strong prior belief that \(\theta_A > \theta_B\),
+the posterior probability that \(\theta_A \lt \theta_B\) is still over 50%.
+(See the case of \(\delta_0 = 4\) and \(\tau_0^2 = 10\).)
+In the case of [[5.2][Exercise 5.2]], where each group was modeled independently, we could not provide such strong evidence.
+
+** 8.3
+*** Question :noexport:
+Hierarchical modeling:
+The files ~school1.dat~ through ~school8.dat~ give weekly hours spent on homework for students sampled from eight different schools.
+Obtain posterior distributions for the true means for the eight different schools using a hierarchical normal model with the following prior parameters:
+\[
+\mu_0 = 7, \gamma_0^2 = 5, \tau_0^2 = 10, \eta_0 = 2, \sigma_0^2 = 15, \nu_0 = 2.
+\]
+
+*** a)
+**** Question :noexport:
+Run a Gibbs sampling algorithm to approximate the posterior distribution of
+\(\{ \boldsymbol{\theta}, \sigma^2, \mu, \tau^2 \}\).
+Assess the convergence of the Markov chain, and find the effective sample size for
+\(\{ \sigma^2, \mu, \tau^2 \}\).
+Run the chain long enough so that the effective sample sizes are all above 1,000.
+
+**** Answer
+
+#+begin_src julia :exports code
+using Distributions
+using Random
+using LaTeXStrings
+using Plots, StatsPlots
+using Plots.Measures
+using CSV, DataFrames
+using DelimitedFiles
+using StatsBase
+using SpecialFunctions
+Random.seed!(1234)
+
+# %%
+# read data
+Y = Matrix{Float64}(undef, 0, 2)
+for i in 1:8
+    school = readdlm("../../Exercises/school$i.dat")
+    Y = vcat(Y, hcat(repeat([i], size(school, 1)), school))
+end
+
+# %%
+# set prior parameters
+μ₀ = 7
+γ₀² = 5
+τ₀² = 10
+η₀ = 2
+σ₀² = 10
+ν₀ = 2
+
+# %%
+# starting values
+m = length(unique(Y[:,1]))
+n = Vector{Float64}(undef, m)
+ȳ = Vector{Float64}(undef, m)
+sv = Vector{Float64}(undef, m)
+for j in 1:m
+    ȳ[j] = mean(Y[Y[:,1] .== j, 2])
+    sv[j] = var(Y[Y[:,1] .== j, 2])
+    n[j] = length(Y[Y[:,1] .== j, 2])
+end
+
+θ = copy(ȳ)
+σ² = mean(sv)
+μ = mean(θ)
+τ² = var(θ)
+
+# setup MCMC
+Random.seed!(1)
+S = 5000
+THETA = Matrix{Float64}(undef, S, m)
+MST = Matrix{Float64}(undef, S, 3)
+
+# MCMC algorithm
+for s in 1:S
+    # sample new values of the θs
+    for j in 1:m
+        v_θ = 1 / (n[j] / σ² + 1 / τ²)
+        E_θ = v_θ * (n[j]*ȳ[j]/σ² + μ/τ²)
+        θ[j] = rand(Normal(E_θ, sqrt(v_θ)))
+    end
+
+    # sample new value of σ²
+    νₙ = ν₀ + sum(n)
+    ss = ν₀ * σ₀²
+    for j in 1:m
+        ss += sum((Y[Y[:,1] .== j, 2] .- θ[j]).^2)
+    end
+    σ² = 1 / rand(Gamma(νₙ / 2, 2/ss))
+
+    # sample a new value of μ
+    v_μ = 1 / (m/τ² + 1/γ₀²)
+    E_μ = v_μ * (m * mean(θ) / τ² + μ₀ / γ₀²)
+    μ = rand(Normal(E_μ, sqrt(v_μ)))
+
+    # sample a new value of τ²
+    etam = η₀ + m
+    ss = η₀ * τ₀² + sum((θ .- μ).^2)
+    τ² = 1 / rand(Gamma(etam/2, 2/ss))
+
+    # store results
+    THETA[s, :] = θ
+    MST[s, :] = [μ, σ², τ²]
+end
+#+end_src
+
+#+CAPTION: stationarity plot
+#+NAME: exercise8-3_stationarity
+#+ATTR_LaTeX: :placement [H]
+[[file:../../fig/ch8/ex8-3_stationarity.png]]
+
+#+begin_src julia :exports both
+using MCMCDiagnosticTools
+using MCMCChains
+
+ess(MCMCChains.Chains(MST))
+#+end_src
+
+#+RESULTS:
+: ESS
+:   parameters         ess   ess_per_sec
+:       Symbol     Float64       Missing
+:
+:      param_1   4046.5607       missing
+:      param_2   4697.5784       missing
+:      param_3   3299.9524       missing
+
+*** b)
+**** Question :noexport:
+Compute posterior means and 95% confidence regions for \(\{\sigma^2, \mu, \tau^2\}\).
+Also, compare the posterior densities to the prior densities, and discuss what was learned from the data.
+
+**** Answer
+#+begin_src julia :exports code
+# posterior mean and 95% confidence region for σ²
+julia> mean(MST[:,2])
+14.413317696499103
+
+julia> quantile(MST[:,2], [0.025, 0.975])
+2-element Vector{Float64}:
+ 11.733606090321313
+ 17.92710379952854
+#+end_src
+
+#+begin_src julia :exports code
+# posterior mean and 95% confidence region for μ
+julia> mean(MST[:,1])
+7.587311747784735
+
+julia> quantile(MST[:,1], [0.025, 0.975])
+2-element Vector{Float64}:
+ 5.910059688648781
+ 9.160791496009686
+#+end_src
+
+#+begin_src julia :exports code
+julia> mean(MST[:,3])
+5.478604048700004
+
+julia> quantile(MST[:,3], [0.025, 0.975])
+2-element Vector{Float64}:
+  1.9240022529423977
+ 14.101516261365546
+#+end_src
+
+#+begin_src julia :exports none
+function plotPosterior(x, xlab, lab)
+    x_mean = mean(x)
+    x_lower, x_upper = quantile(x, [0.025, 0.975])
+    fig = density(
+        x,
+        label=lab,
+        xlabel=xlab,
+        ylabel="density",
+        linewidth=1,
+        legend=:right,
+    )
+    vline!([x_mean], color=:blue, opacity=0.5, linewidth=0.5, linestyle=:dash, label=nothing)
+    vline!([x_lower, x_upper], color=:blue, opacity=0.4, linewidth=0.5, linestyle=:dot, label=nothing)
+    fig
+end
+
+# %%
+fig_μ = plotPosterior(MST[:,1], L"\mu", L"p(\mu|y_1,\dots,y_m)")
+fig_μ = plot!(fig_μ, Normal(μ₀, sqrt(γ₀²)), color=:red, linewidth=1, label=L"p(\mu)")
+fig_μ
+
+# %%
+fig_σ² = plotPosterior(MST[:,2], L"\sigma^2", L"p(\sigma^2|y_1,\dots,y_m)")
+fig_σ² = plot!(
+    fig_σ², Gamma(ν₀/2, 2σ₀²/ν₀), color=:red, linewidth=1, label=L"p(\sigma^2)"
+    , xlims=(0, 40)
+)
+fig_σ²
+
+# %%
+fig_τ² = plotPosterior(MST[:,3], L"\tau^2", L"p(\tau^2|y_1,\dots,y_m)")
+fig_τ² = plot!(
+    fig_τ², Gamma(η₀/2, 2τ₀²/η₀), color=:red, linewidth=1, label=L"p(\tau^2)"
+    , xlims=(0, 40)
+)
+fig_τ²
+
+# %%
+fig = plot(fig_μ, fig_σ², fig_τ², layout=(1,3), size=(800, 400), margin=5mm)
+fig
+#+end_src
+
+#+CAPTION: Comparison of posterior and prior densities
+#+NAME: exercise8-3_poterior
+#+ATTR_LaTeX: :placement [H]
+[[file:../../fig/ch8/ex8-3_posterior.png]]
+
+The following things were learned from the data:
+- \(\sigma^2\) is around 14.4, which is higher than the prior mean 10.0, and the variance is smaller than the prior variance 100.
+- \(\mu\) is around 7.6, which is higher than the prior mean 7.0, and the variance is smaller than the prior variance 10.0.
+- \(\tau^2\) is around 5.5, which is smaller than the prior mean 10.0, and the variance is smaller than the prior variance 100.
+*** c)
+**** Question :noexport:
+Plot the posterior density of \(R = \frac{\tau^2}{\sigma^2 + \tau^2}\) and compare it to a plot of the prior density of \(R\).
+Describe the evidence for between-school variation.
+
+**** Answer
+#+begin_src julia :exports code
+σ²_pri = rand(Gamma(ν₀/2, 2σ₀²/ν₀), S)
+τ²_pri = rand(Gamma(η₀/2, 2τ₀²/η₀), S)
+R_pri = τ²_pri ./ (σ²_pri .+ τ²_pri)
+R_pos = MST[:,3] ./(MST[:,2] .+ MST[:,3])
+#+end_src
+
+#+begin_src julia :exports none
+fig_R = plotPosterior(R_pos, L"R", L"p(R|y_1,\dots,y_m)")
+fig_R = density!(
+    fig_R, R_pri, color=:red, linewidth=1, label=L"p(R)", xlims=(0, 1)
+)
+fig_R
+#+end_src
+
+#+CAPTION: Prior and posterior densities of \(R\)
+#+NAME: exercise8-3_R
+#+ATTR_LaTeX: :placement [H]
+[[file:../../fig/ch8/ex8-3_Rdensity.png]]
+
+The plot above shows that about 25% of the variance is due to between-school variation, and the rest is due to within-school variation.
+
+*** d)
+**** Question :noexport:
+Obtain the posterior probability that \(\theta_7\) is smaller than \(\theta_6\), as well as the posterior probability that \(\theta_7\) is the smallest of all the \(\theta\)’s.
+**** Answer
+#+begin_src julia :exports both
+# posterior probability that θ₇ is smaller than θ₆
+mean(THETA[:,7] .< THETA[:,6])
+#+end_src
+
+#+RESULTS:
+: 0.5222
+
+
+#+begin_src julia :exports both
+# posterior probability that θ₇ is the smallest of all the θ’s
+mean(THETA[:,7] .≤ minimum(THETA, dims=2))
+#+end_src
+
+#+RESULTS:
+: 0.325
+
+*** e)
+**** Question :noexport:
+Plot the sample averages \(\bar{y}_1, \dots, \bar{y}_8\) against the posterior expectations of
+\(\theta_1, \dots, \theta_8\),
+and describe the relationship.
+Also compute the sample mean of all observations and compare it to the posterior mean of \(\mu\).
+
+**** Answer
+
+#+begin_src julia :exports code
+θ̄ = mean(THETA, dims=1) |> vec
+fig_e = plot(
+    ȳ, θ̄, seriestype=:scatter, xlabel=L"\bar{y}_i", ylabel=L"\theta_i", legend=:none,
+    xlims=(6,11), ylims=(6,11), size=(400, 400), margin=5mm, alpha=0.5
+)
+fig_e = plot!(fig_e, x->x, color=:red, linewidth=1,alpha=0.5)
+fig_e
+#+end_src
+
+#+CAPTION: Sample averages and posterior expectations
+#+NAME: exercise8-3_e
+#+ATTR_LaTeX: :height 7cm :placement [!h]
+[[file:../../fig/ch8/ex8-3e_scatter.png]]
+
+For the schools with large sample averages, the posterior expectations tend to be smaller than the sample averages.
+For the schools with small sample averages, the posterior expectations tend to be larger than the sample averages.
+
+#+begin_src julia :exports both
+# sample mean of all observations
+mean(Y[:,2])
+#+end_src
+
+#+RESULTS:
+: 7.6912777777777785
+
+#+begin_src julia :exports both
+# posterior mean of μ
+mean(MST[:,1])
+#+end_src
+
+#+RESULTS:
+: 7.587311747784735

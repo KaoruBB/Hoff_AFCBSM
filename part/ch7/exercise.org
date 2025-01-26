@@ -1,0 +1,1186 @@
+* Chapter 7
+:PROPERTIES:
+:header-args: :eval no-export :session hoff
+:END:
+
+** 7.1
+*** Question :noexport:
+Jeffrey's prior:
+For the multivariate normal model, Jeffrey's rule for generating a prior distribution on \((\boldsymbol{\theta}, \Sigma)\) gives
+\(p_J(\boldsymbol{\theta}, \Sigma) \propto |\Sigma|^{-(p+2)/2}\).
+*** a)
+**** Question :noexport:
+Explain why the function \(p_J\) cannot actually be a probability density for \((\boldsymbol{\theta}, \Sigma)\).
+**** Answer
+\(p_J\)が確率密度関数であるためには、
+\(\int \int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} d\Sigma = 1\)
+である必要があるが、
+\(\int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} = \infty\)
+であるため、\(p_J\)は確率密度関数ではない。
+*** b)
+**** Question :noexport:
+Let
+\(p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+be the probability density that is proportional to
+\(p_J(\boldsymbol{\theta}, \Sigma) \times p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma)\).
+Obtain the form of
+\(p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\),
+\(p_J(\boldsymbol{\theta} | \Sigma, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\),
+and
+\(p_J(\Sigma |\boldsymbol{\theta}, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\).
+**** Answer
+\begin{align*}
+p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_J(\boldsymbol{\theta}, \Sigma) \times p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma) \\
+&\propto |\Sigma|^{-(p+2)/2} \times |\Sigma|^{-n/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+\\
+p_J(\boldsymbol{\theta} | \Sigma, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n) \\
+&\propto \exp\left\{ - \frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i^T - \boldsymbol{\theta}^T) \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i^T \Sigma^{-1} - \boldsymbol{\theta}^T \Sigma^{-1}) (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n \left( \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{y}_i - \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{\theta} - \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{y}_i + \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{\theta} \right) \right\} \\
+&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n \left( \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{y}_i - 2 \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{y}_i + \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{\theta} \right) \right\} \\
+&\propto \exp\left\{ - \frac{1}{2} \boldsymbol{\theta}^T \boldsymbol{A}_1 \boldsymbol{\theta} + \boldsymbol{\theta}^T \boldsymbol{b}_1 \right\},
+\quad \text{where} \quad
+\boldsymbol{A}_1 = n \Sigma^{-1}, \
+\boldsymbol{b}_1 = n \Sigma^{-1} \bar{\boldsymbol{y} }  \\
+&\propto \text{dmultivariate normal}( \bar{\boldsymbol{y} }, \Sigma/n) \\
+\\
+p_J(\Sigma | \boldsymbol{\theta}, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n) \\
+&\propto |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&\propto |\Sigma|^{-(n+1 + p + 1)/2}
+\exp \left\{ -\frac{1}{2} \text{tr}(S_{\theta} \Sigma^{-1}) \right\} \quad
+\text{where} \quad S_{\theta} = \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta}) (\boldsymbol{y}_i - \boldsymbol{\theta})^T \\
+&\propto \text{dinverse Wishart}(n+1, S_{\theta}^{-1})
+\end{align*}
+** 7.2
+*** Question :noexport:
+Unit information prior:
+Letting \(\Psi = \Sigma^{-1}\), show that a unit information prior for \((\boldsymbol{\theta}, \Psi)\) is given by
+\begin{align*}
+\boldsymbol{\theta} | \Psi
+&\sim \text{multivariate normal}(\bar{ \boldsymbol{y} }, \Psi^{-1}) \\
+\Psi
+&\sim \text{Wishart}(p+1, \boldsymbol{S}^{-1}), \quad
+\text{where } \boldsymbol{S} = \frac{1}{n} \sum (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T
+\end{align*}
+This can be done by mimicking the procedure outlined in Exercise 5.5 as follows:
+**** a)
+Reparameterize the multivariate normal model in terms of the precision matrix
+\(\Psi = \Sigma^{-1}\).
+Write out the resulting log likelihood, and find a probability density
+\(p_U(\boldsymbol{\theta}, \Psi) = p_U(\boldsymbol{\theta} | \Psi) p_U(\Psi)\)
+such that
+\( \log p(\boldsymbol{\theta}, \Psi) = l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y})/n + c\),
+where \(c\) does not depend on \(\boldsymbol{\theta}\) or \(\Psi\).
+
+Hint: Write \((\boldsymbol{y}_i - \boldsymbol{\theta})\) as \(\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta}\),
+and note that \(\sum \boldsymbol{a}_i^T \boldsymbol{B} \boldsymbol{a}_i \) can be written as \(\text{tr}(\boldsymbol{A} \boldsymbol{B} )\),
+where \(\boldsymbol{A} = \sum \boldsymbol{a}_i \boldsymbol{a}_i^T\).
+**** b)
+Let \(p_U(\Sigma) \) be the inverse-Wishart density induced by \(p_U(\Psi)\).
+Obtain a density
+\(p_U(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+\propto p_U(\boldsymbol{\theta} | \Sigma) p_U(\Sigma) p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma)\).
+Can this be interpreted as a posterior distribution for \(\theta\) and \(\Sigma\)?
+*** Answer
+**** a)
+\begin{align*}
+l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y})
+&= \sum_{i=1}^n \log p(\boldsymbol{y}_i | \boldsymbol{\theta}, \Psi) \\
+&= \sum_{i=1}^n \log \left\{ (2 \pi)^{-p/2} |\Psi|^{1/2} \exp \left( -\frac{1}{2} (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \right) \right\} \\
+&= \sum_{i=1}^n \left\{ -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ ( (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T + ( \bar{\boldsymbol{y} } -  \boldsymbol{\theta})^T)  \Psi ((\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| \\
+&\qquad -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + 2 (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{n}{2}
+\text{tr}(S \Psi) -\frac{n}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}), \\
+&\qquad \qquad\text{where}
+\quad S = \frac{1}{n} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \\
+\end{align*}
+より、
+\begin{align*}
+\log p_U(\boldsymbol{\theta}, \Psi)
+&= \frac{ l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y}) }{n} + c \\
+&= -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} \text{tr}(S \Psi) -\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + c \\
+\end{align*}
+となる。
+よって
+\begin{align*}
+p_U(\boldsymbol{\theta}, \Psi)
+&= \exp \left\{ -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} \text{tr}(S \Psi) -\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + c \right\} \\
+&= (2 \pi)^{- \frac{p}{2} } |\Psi|^{ \frac{1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\}
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\exp(c)\\
+&\propto
+(2 \pi)^{- \frac{p}{2} } |\Psi^{-1}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\Psi|^{ \frac{p+1-p-1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\} \\
+&\propto
+(2 \pi)^{- \frac{p}{2} } |\Psi^{-1}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\Psi|^{ \frac{p+1-p - 1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\} \\
+&\propto \text{dmultivariate-normal}(\boldsymbol{\theta} | \bar{ \boldsymbol{y} } , \Psi^{-1})
+\times \text{dWishart}(\Psi | p+1, S^{-1}) \\
+\end{align*}
+が成立。
+**** b)
+
+\begin{align*}
+p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_U(\boldsymbol{\theta} | \boldsymbol{\Sigma}) p_U(\boldsymbol{\Sigma})
+p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \boldsymbol{\Sigma}) \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\boldsymbol{\Sigma}^{-1}|^{ \frac{p+1-p - 1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} } \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} } \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta}) \right\} \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} }
+\exp \left\{ - \frac{n}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\}
+\exp \left\{-\frac{n}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Sigma^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+& \propto |\boldsymbol{\Sigma}|^{- \frac{n+1}{2} }
+\exp \left\{-\frac{ n+1 }{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times \exp \left\{ -\frac{n+1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto |\boldsymbol{\Sigma}|^{- \frac{n+1}{2} }
+\exp \left\{-\frac{1}{2} (\boldsymbol{\theta} - \bar{\boldsymbol{y} })^T (n+1) \boldsymbol{\Sigma}^{-1} (\boldsymbol{\theta} - \bar{\boldsymbol{y} }) \right\}
+\times \exp \left\{ -\frac{1}{2} \text{tr}((n+1) S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto | \frac{1}{n+1} \boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\boldsymbol{\theta} - \bar{\boldsymbol{y} })^T
+( \frac{1}{n+1} \boldsymbol{\Sigma})^{-1} (\boldsymbol{\theta} - \bar{\boldsymbol{y} }) \right\} \\
+&\qquad \times |\Sigma|^{- \frac{n-p-1+p+1}{2} }\exp \left\{ -\frac{1}{2} \text{tr}((n+1) S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto \text{dmultivariate-normal}(\boldsymbol{\theta} | \bar{\boldsymbol{y} }, \frac{1}{n+1} \boldsymbol{\Sigma})
+\times \text{dinverse-Wishart}(\boldsymbol{\Sigma} | n-p-1, \frac{1}{n+1} S^{-1}) \\
+\end{align*}
+上式より、
+\(p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+は、データと事前分布の情報が反映された分布であることがわかるので、
+事後分布とみなせる。
+** 7.3
+*** Question :noexport:
+Australian crab data:
+The files ~bluecrab.dat~ and ~orangecrab.dat~ contain measurements of body depth \((Y_1)\) and rear width \((Y_2)\), in millimeters,
+made on 50 male crabs from each of two species, blue and orange.
+We will model these data using a bivariate normal distribution.
+*** a)
+**** Question :noexport:
+For each of the two species, obtain posterior distributions of the population mean \(\boldsymbol{\theta}\) and covariance matrix \(\Sigma\) as follows:
+Using the semi-conjugate prior distributions for \(\boldsymbol{\theta}\) and \(\Sigma\),
+set \(\boldsymbol{\mu}_0\) equal to the sample mean of the data,
+\(\Lambda_0\) and \(\boldsymbol{S}_0\) equal to the sample covariance matrix and
+\(\nu_0 = 4\).
+Obtain 10,000 posterior samples of \(\boldsymbol{\theta}\) and \(\Sigma\).
+Note that this "prior" distribution loosely centers the parameters around empirical estimates based on the observed data (and is very similar to the unit information prior described in the previous exercise).
+It cannot be considered as our true prior distribution, as it was derived from the observed data.
+However, it can be roughly considered as the prior distribution of someone with weak but unbiased information.
+**** Answer
+#+BEGIN_SRC julia :eval no-export :exports code :results silent :wrap "SRC julia :eval never"
+import Pkg; Pkg.activate("..")
+using DelimitedFiles
+using Distributions
+using LinearAlgebra
+using StatsBase
+
+bluecrab = readdlm("../../Exercises/bluecrab.dat")
+orangecrap = readdlm("../../Exercises/orangecrab.dat")
+
+μ_blue = mean(bluecrab, dims=1) |> vec
+μ_orange = mean(orangecrap, dims=1) |> vec
+
+Λ_blue = S_blue = cov(bluecrab)
+Λ_orange = S_orange = cov(orangecrap)
+
+ν₀ = 4
+
+# Gibbs sampler
+function bivariate_gibbs(S, Σ_init, μ₀, Λ₀, S₀, ν₀, Y)
+    THETA = Matrix{Float64}(undef, S, 2)
+    SIGMA = Matrix{Float64}(undef, S, 4)
+    n = size(Y, 1)
+    Σ = Σ_init
+    ȳ = mean(Y, dims=1) |> vec
+    for s in 1:S
+        # update θ
+        Λn = inv( inv(Λ₀) + n * inv(Σ) )
+        μn = Λn * ( inv(Λ₀) * μ₀ + n * inv(Σ) * ȳ ) |> vec
+        dist = MvNormal(μn, Symmetric(Λn))
+        θ = rand(dist)
+
+        # update Σ
+        Sn = S₀ + (Y' .- θ) * (Y' .- θ)'
+        Σ = rand(InverseWishart(n + ν₀, Sn))
+
+        # save results
+        THETA[s, :] = vec(θ)
+        SIGMA[s, :] = vec(Σ)
+    end
+    return THETA, SIGMA
+end
+
+S = 10000
+# Blue crab
+THETA_blue, SIGMA_blue = bivariate_gibbs(S, Λ_blue, μ_blue, Λ_blue, S_blue, ν₀, bluecrab)
+# Orange crab
+THETA_orange, SIGMA_orange = bivariate_gibbs(S, Λ_orange, μ_orange, Λ_orange, S_orange, ν₀, orangecrap)
+#+end_src
+*** b)
+**** Question :noexport:
+Plot values of \(\boldsymbol{\theta} = (\theta_1, \theta_2)'\) for each group and cmpare.
+Describe any size differences between the two groups.
+**** Answer
+#+begin_src julia :exports none
+using Plots
+using StatsPlots
+
+# plot posterior distribution of θ
+θ₁_max = maximum([maximum(THETA_blue[:, 1]), maximum(THETA_orange[:, 1])])
+θ₂_max = maximum([maximum(THETA_blue[:, 2]), maximum(THETA_orange[:, 2])])
+θ₁_min = minimum([minimum(THETA_blue[:, 1]), minimum(THETA_orange[:, 1])])
+θ₂_min = minimum([minimum(THETA_blue[:, 2]), minimum(THETA_orange[:, 2])])
+blue_hist = histogram2d(
+    THETA_blue[:, 1], THETA_blue[:, 2],
+    nbins=50, title="Blue crab", xlabel="θ₁", ylabel="θ₂",
+    xlims=(θ₁_min, θ₁_max), ylims=(θ₂_min, θ₂_max)
+)
+orange_hist = histogram2d(
+    THETA_orange[:, 1], THETA_orange[:, 2],
+    nbins=50, title="Orange crab", xlabel="θ₁", ylabel="θ₂",
+    xlims=(θ₁_min, θ₁_max), ylims=(θ₂_min, θ₂_max)
+)
+fig = plot(blue_hist, orange_hist, layout=(1, 2), size=(800, 400))
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_3b.png]]
+
+- 両方の種で、\(\theta_1\) と \(\theta_2\) は正の相関を持つ。
+- orange crab の方が blue crab よりも幅、深さともに大きい。
+*** c)
+**** Question :noexport:
+From each covariance matrix obtained from the Gibbs sampler,
+obtain the corresponding correlation coefficient.
+From these values, plot posterior densities of the correlation coefficients \(\rho_{ \text{blue} }\) and \(\rho_{ \text{orange} }\) for the two groups.
+Evaluate differences between the two species by cmparing these posterior distributions.
+In particular, obtain an approximation to
+\(Pr(\rho_{ \text{blue} } \lt \rho_{ \text{orange} } | \boldsymbol{y}_{ \text{blue} }, \boldsymbol{y}_{ \text{orange} })\).
+What do the results suggest about differences between the two populations?
+**** Answer
+#+begin_src julia :results none :exports code
+function get_pos_cor(SIGMA, p, S)
+    COR = Array{Float64}(undef, p, p, S)
+    for s in 1:S
+        Sig = reshape(SIGMA[s, :], p, p)
+        COR[:, :, s] = Sig ./ sqrt.(diag(Sig) * diag(Sig)')
+    end
+    return COR
+end
+p = bluecrab |> size |> last
+COR_mc_blue = get_pos_cor(SIGMA_blue, p, S)
+COR_mc_orange = get_pos_cor(SIGMA_orange, p, S)
+#+end_src
+
+#+begin_src julia :exports none
+# plot posterior distribution of ρ
+using Plots.PlotMeasures
+ρ_max = maximum([maximum(COR_mc_blue[1, 2, :]), maximum(COR_mc_orange[1, 2, :])])
+ρ_min = minimum([minimum(COR_mc_blue[1, 2, :]), minimum(COR_mc_orange[1, 2, :])])
+blue_hist = histogram(
+    COR_mc_blue[1, 2, :], nbins=50, title="Blue crab", xlabel=L"\rho_{\mathrm{blue}}", ylabel="Frequency",
+    xlims=(ρ_min, ρ_max), left_margin=5mm, legend=false
+)
+orange_hist = histogram(
+    COR_mc_orange[1, 2, :], nbins=50, title="Orange crab", xlabel=L"\rho_{\mathrm{orange}}", ylabel="Frequency",
+    xlims=(ρ_min, ρ_max), left_margin=5mm, legend=false
+)
+fig = plot(blue_hist, orange_hist, layout=(2, 1), size=(600, 600))
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_3c.png]]
+
+#+begin_src julia :exports both
+mean(COR_mc_blue[1, 2, :] .< COR_mc_orange[1, 2, :] )
+#+end_src
+
+#+RESULTS:
+: 0.9893
+
+- オレンジの方がブルーに比べて、幅と深さの相関が強い。
+** 7.4
+*** Question :noexport:
+Marriage data:
+The file ~agehw.dat~ contains data on the ages of 100 married couples sampled from the U.S. population.
+*** a)
+**** Question :noexport:
+Before you look at the data, use your knowledge to formulate a semiconjugate prior distribution for \(\boldsymbol{\theta} = (\theta_h, \theta_w)^T\) and \(\Sigma\),
+where \(\theta_h, \theta_w\) are mean husband and wife ages, and \(\Sigma\) is the covariance matrix.
+**** Answer
+自分のイメージでは、アメリカの平均的な夫婦の年齢は 50 歳くらいで、
+やや女性の方が若いと思うので、\(\mu_h = 51, \mu_h = 49\) とする。
+また、95%くらいで、25 歳から 75 歳くらいまでの範囲に収まると思うので、
+\(\sigma_h = \sigma_w = 12.5\) とする。
+夫婦の年齢の相関はかなり大きいイメージなので、0.9 になるように、
+\begin{align*}
+&0.9
+= \frac{\sigma_{hw}}{\sigma_h \sigma_w}
+= \frac{\sigma_{hw}}{12.5^2} \\
+\iff &\sigma_{hw} = 0.9 \times 12.5^2 = 140.625
+\end{align*}
+と設定する。
+まとめると、私の prior は以下のようになる。
+\begin{align*}
+\boldsymbol{\mu}_0 &= (51, 49)^T \\
+\Lambda_0 &= \begin{pmatrix}
+12.5^2 & 140.625 \\
+140.625 & 12.5^2
+\end{pmatrix} \\
+\end{align*}
+
+*** b)
+**** Question :noexport:
+Generate a /prior predictive dataset/ of size \(n = 100\), by sampling \((\boldsymbol{\theta}, \Sigma)\) from your prior distribution and then simulating
+\(\boldsymbol{Y}_1, \ldots, \boldsymbol{Y}_n \sim \text{i.i.d. multivariate normal}(\boldsymbol{\theta}, \Sigma)\).
+Generate several such datasets, make bivariate scatterplots for each dataset,
+and make sure they roughly represent your prior beliefs about what such a dataset would actually look like.
+If your prior predictive datasets do not conform to your beliefs, go back to part a) and formulate a new prior.
+Report the prior that you eventually decide upon, and provide scatterplots for at least three prior predictive datasets.
+
+**** Answer
+#+begin_src julia :results none :exports code
+μ₀ = [51, 49]
+Λ₀ = [
+    12.5^2 140.625
+    140.625 12.5^2
+]
+
+# %%
+n = 100
+prior_dist = MvNormal(μ₀, Λ₀)
+dataset1 = rand(prior_dist, n)
+dataset2 = rand(prior_dist, n)
+dataset3 = rand(prior_dist, n)
+#+end_src
+
+#+begin_src julia :exports none
+# plot the data
+fig = scatter(
+    dataset1[1, :], dataset1[2, :],
+    label="Dataset 1",
+    xlabel="Age of husband",
+    ylabel="Age of wife",
+    legend=:topleft
+)
+fig = scatter!(
+    dataset2[1, :], dataset2[2, :],
+    label="Dataset 2"
+)
+fig = scatter!(
+    dataset3[1, :], dataset3[2, :],
+    label="Dataset 3"
+)
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_4b.png]]
+
+- 割とイメージ通りかなあ
+
+*** c)
+**** Question :noexport:
+Using your prior distribution and the 100 values in the dataset, obtain an MCMC approximation to
+\(p(\boldsymbol{\theta}, \Sigma \mid \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\).
+Plot the joint posterior distribution of \(\theta_h\) and \(\theta_w\), and also the marginal posterior density of the correlation between \(Y_h\) and \(Y_w\), the ages of a husband and wife.
+Obtain 95% posterior confidence intervals for \(\theta_h\), \(\theta_w\), and the correlation coefficient.
+
+**** Answer
+***** joint posterior distribution of \(\theta_h\) and \(\theta_w\)
+#+begin_src julia :results none :exports code
+agehw = readdlm("../../Exercises/agehw.dat", skipstart=1)
+
+p = size(agehw,2)
+S = 10000
+Σ_init = cov(agehw)
+S₀ = Λ₀
+ν₀ = p+2
+THETA, SIGMA = bivariate_gibbs(S, Σ_init, μ₀, Λ₀, S₀, ν₀, agehw)
+COR = get_pos_cor(SIGMA, p, S)
+#+end_src
+
+#+begin_src julia :exports none
+# plot the data
+fig = histogram2d(
+    THETA[:, 1], THETA[:, 2],
+    xlabel="Age of husband",
+    ylabel="Age of wife",
+    title="Posterior distribution of θ",
+    legend=:topleft,
+    norm=:pdf
+)
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_4c_jointdist.png]]
+
+***** marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)
+#+begin_src julia :exports none
+# plot the data
+fig = histogram(
+    COR[1, 2, :],
+    xlabel="Correlation",
+    ylabel="density",
+    title="Posterior distribution of correlation",
+    legend=:none,
+    norm=:pdf
+)
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_4c_correlation.png]]
+
+***** 95% posterior confidence intervals for \(\theta_h\), \(\theta_w\), and the correlation coefficient
+
+#+begin_src julia :exports both
+quantile(THETA[:, 1], [0.025, 0.975])
+quantile(THETA[:, 2], [0.025, 0.975])
+quantile(COR[1, 2, :], [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+2-element Vector{Float64}:
+ 41.82793288516493
+ 47.10559872633597
+
+2-element Vector{Float64}:
+ 38.46175689329701
+ 43.44815317601299
+
+2-element Vector{Float64}:
+ 0.8602554314182437
+ 0.9340079518830947
+#+end_example
+*** d)
+**** Question :noexport:
+Obtain 95% posterior confidence intervals for \(\theta_h, \theta_w\) and the correlation coefficient using the following prior distribution:
+- i. :: Jeffreys' prior, described in Exercise 7.1;
+- ii. :: the unit information prior, described in Exercise 7.2;
+- iii. :: a "diffuse prior" with \(\mu_0 = \boldsymbol{0}, \Lambda_0 = 10^5 \times \boldsymbol{I}, \boldsymbol{S}_0 = 1000 \times \boldsymbol{I} \text{ and } \nu_0 = 3\).
+**** Answer
+***** Jeffreys' prior
+#+begin_src julia :exports both
+
+THETA_J = Matrix{Float64}(undef, S, 2)
+SIGMA_J = Matrix{Float64}(undef, S, 4)
+n = size(agehw, 1)
+ȳ = mean(agehw, dims=1) |> vec
+
+# Gibbs sampler
+Σ = cov(agehw) # use the sample covariance matrix as initial value
+for s in 1:S
+    # update θ
+    θ = rand(MvNormal(ȳ, Symmetric(Σ ./ n)))
+    # update Σ
+    S_θ = (agehw' .- θ) * (agehw' .- θ)'
+    Σ = rand(InverseWishart(n+1, S_θ))
+    # save results
+    THETA_J[s, :] = vec(θ)
+    SIGMA_J[s, :] = vec(Σ)
+end
+
+COR_J = get_pos_cor(SIGMA_J, p, S)
+
+# 95% credible interval
+quantile(THETA_J[:, 1], [0.025, 0.975])
+quantile(THETA_J[:, 2], [0.025, 0.975])
+quantile(COR_J[1, 2, :], [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+#+begin_example julia
+julia> quantile(THETA_J[:, 1], [0.025, 0.975])
+2-element Vector{Float64}:
+ 41.68056977372846
+ 47.14646200233917
+
+julia> quantile(THETA_J[:, 2], [0.025, 0.975])
+2-element Vector{Float64}:
+ 38.3145806498635
+ 43.44817143945637
+
+julia> quantile(COR_J[1, 2, :], [0.025, 0.975])
+2-element Vector{Float64}:
+ 0.861004578540727
+ 0.9345565686407257
+#+end_example
+
+***** the unit information prior
+#+begin_src julia :exports both
+S_y = (agehw' .- ȳ) * (agehw' .- ȳ)' ./ n
+THETA_U = Matrix{Float64}(undef, S, 2)
+SIGMA_U = Matrix{Float64}(undef, S, 4)
+
+for s in 1:S
+    # sample Σ
+    Σ = rand(InverseWishart(n-p-1, S_y .* (n+1)))
+    # sample θ
+    θ = rand(MvNormal(ȳ, Symmetric(Σ ./ (n+1))))
+    # save results
+    THETA_U[s, :] = vec(θ)
+    SIGMA_U[s, :] = vec(Σ)
+end
+
+COR_U = get_pos_cor(SIGMA_U, p, S)
+
+# 95% credible interval
+quantile(THETA_U[:, 1], [0.025, 0.975])
+quantile(THETA_U[:, 2], [0.025, 0.975])
+quantile(COR_U[1, 2, :], [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+#+begin_example julia
+julia> quantile(THETA_U[:, 1], [0.025, 0.975])
+2-element Vector{Float64}:
+
+41.72596492912597
+ 47.1866768937701
+
+julia> quantile(THETA_U[:, 2], [0.025, 0.975])
+2-element Vector{Float64}:
+ 38.33626197183087
+ 43.4809122415242
+
+julia> quantile(COR_U[1, 2, :], [0.025, 0.975])
+2-element Vector{Float64}:
+ 0.8600180341629133
+ 0.9358050299774748
+#+end_example
+
+***** diffuse prior
+#+begin_src julia :exports both
+μ₀ = zeros(p)
+Λ₀ = 10^5 .* Matrix{Float64}(I, p, p)
+S₀ = 1000 .* Matrix{Float64}(I, p, p)
+ν₀ = 3
+Σ_init = cov(agehw)
+
+THETA_D, SIGMA_D = bivariate_gibbs(S, Σ_init, μ₀, Λ₀, S₀, ν₀, agehw)
+
+COR_D = get_pos_cor(SIGMA_D, p, S)
+
+# 95% credible interval
+quantile(THETA_D[:, 1], [0.025, 0.975])
+quantile(THETA_D[:, 2], [0.025, 0.975])
+quantile(COR_D[1, 2, :], [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+#+begin_example julia
+julia> quantile(THETA_D[:, 1], [0.025, 0.975])
+
+2-element Vector{Float64}:
+ 41.716486213023344
+ 47.116138763264516
+
+julia> quantile(THETA_D[:, 2], [0.025, 0.975])
+2-element Vector{Float64}:
+ 38.335596688123054
+ 43.49771322728793
+
+julia> quantile(COR_D[1, 2, :], [0.025, 0.975])
+2-element Vector{Float64}:
+ 0.7916370487843212
+ 0.9002008981233564
+#+end_example
+
+*** e)
+**** Question :noexport:
+Compare the confidence intervals from d) to those obtained in c).
+Discuss whether or not you think that your prior information is helpful in estimating \(\boldsymbol{\theta}\) and \(\boldsymbol{\Sigma}\),
+or if you think one of the alternatives in d) is preferable.
+What about if the sample size wer much smaller, say \(n = 25\)?
+**** Answer
+***** Comparison of 95% Credible Intervals of couple age
+#+begin_src julia :exports none
+function plot_ci(fig, ci_values, methods, sex)
+    c = sex == "husband" ? "blue" : "pink"
+    fig = plot!(
+        fig,
+        ci_values,
+        repeat([string(methods, "_", sex)], inner = 2),  # メソッドを信用区間の値数分繰り返す
+        legend = false,
+        xlabel = "Interval",
+        ylabel = "Prior",
+        title = "Comparison of 95% Credible Intervals of couple age",
+        marker = :circle,
+        color = c,
+        yflip = true,  # メソッドを上から下に表示するためにy軸を反転
+        grid = true,
+    )
+    fig
+end
+
+# %%
+methods = ["my own", "Jeffreys", "unitinfo", "diffuse"]
+
+# 信用区間の値を結合
+cih_values = [cih_myprior, cih_jeffreys, cih_unitinfo, cih_diffuse]
+ciw_values = [ciw_myprior, ciw_jeffreys, ciw_unitinfo, ciw_diffuse]
+cicor_values = [cicor_myprior, cicor_jeffreys, cicor_unitinfo, cicor_diffuse]
+
+# %%
+fig = plot(size = (800, 400), margin = 5mm)
+for i in 1:length(methods)
+    fig = plot_ci(fig, cih_values[i], methods[i], "husband")
+    fig = plot_ci(fig, ciw_values[i], methods[i], "wife")
+end
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_4e_age.png]]
+[[file:../../fig/ch7/exercise7_4e_small.png]]
+
+***** Comparison of 95% Credible Intervals of correlation coefficient
+#+begin_src julia :exports none
+# correlation
+function plot_ci_cor(fig, ci_values, methods)
+    fig = plot!(
+        fig,
+        ci_values,
+        repeat([methods], inner = 2),  # メソッドを信用区間の値数分繰り返す
+        legend = false,
+        xlabel = "Interval",
+        ylabel = "Prior",
+        title = "95% Credible Intervals of Correlation",
+        marker = :circle,
+        yflip = true,  # メソッドを上から下に表示するためにy軸を反転
+        grid = true,
+    )
+    fig
+end
+
+# %%
+fig = plot(size = (600, 300), margin = 5mm)
+for i in 1:length(methods)
+    fig = plot_ci_cor(fig, cicor_values[i], methods[i])
+end
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch7/exercise7_4e_cor.png]]
+[[file:../../fig/ch7/exercise7_4e_small_cor.png]]
+
+***** Discussion
+サンプルサイズが大きい場合\((n=100)\)、事前の情報は事後分布にほとんど影響を与えなていない。
+一方で、サンプルサイズが小さいと\((n=25)\)、
+相関係数の信用区間のプロットからもわかるように、
+事前の情報が事後分布に与える影響が大きくなるので、事前の情報が重要になる。
+** 7.5
+*** Question :noexport:
+Imputation:
+The file ~interexp.dat~ contains data from an experiment that
+was interrupted before all the data could be gathered.
+Of interest was the difference in reaction times of experimental subjects when they were given stimulus \(A\) versus stimulus \(B\).
+Each subject is tested under one of the two stimuli on their first day of participation in the study,
+and is tested under the other stimulus at some later date.
+Unfortunately the experiment was interrupted before it was finished, leaving the researchers with 26 subjects with both \(A\) and \(B\) responses, 15 subjects with only \(A\) responses and 17 subjects with only \(B\) responses.
+*** a)
+**** Question :noexport:
+Calculate empirical estimates of \(\theta_A, \theta_B, \rho, \sigma^2_A, \sigma^2_B\) from the data using the commands
+~mean~, ~cor~ and ~var~.
+Use /all/ the \(A\)repsonses to get \(\hat{\theta}_A\) and \(\hat{\sigma}^2_A\),
+and use /all/ the \(B\) responses to get \(\hat{\theta}_B\) and \(\hat{\sigma}^2_B\).
+Use only the complete data cases to get \(\hat{\rho}\).
+**** Answer
+#+begin_src julia :exports code
+Y_src = readdlm("../../Exercises/interexp.dat", skipstart=1)
+function parse_matrix(input_matrix)
+    nrow, ncol = size(input_matrix)
+    output_matrix = Matrix{Union{Missing, Float64}}(missing, nrow, ncol)
+
+    for i in 1:nrow
+        for j in 1:ncol
+            if input_matrix[i, j] == "NA"
+                output_matrix[i, j] = missing
+            else
+                output_matrix[i, j] = Float64(input_matrix[i, j])
+            end
+        end
+    end
+    return output_matrix
+end
+Y = parse_matrix(Y_src)
+θ̂_A = mean(skipmissing(Y[:, 1]))
+θ̂_B = mean(skipmissing(Y[:, 2]))
+σ̂²_A = var(skipmissing(Y[:, 1]))
+σ̂²_B = var(skipmissing(Y[:, 2]))
+
+# get index of not missing
+ind_A = ismissing.(Y[:, 1])
+ind_B = ismissing.(Y[:, 2])
+Y_comp = Y[ind_A.+ind_B.==0, :]
+ρ̂ = cor(Y_comp[:, 1], Y_comp[:, 2])
+#+end_src
+
+#+begin_src julia :exports code
+julia> θ̂_A
+
+24.200487804878044
+
+julia> θ̂_B
+24.805348837209298
+
+julia> ρ̂
+0.6164509013184667
+
+julia> σ̂²_A
+4.092799756097562
+
+julia> σ̂²_B
+4.69157785160576
+#+end_src
+*** b)
+**** Question :noexport:
+For each person \(i\) with only \(A\) response, impute a \(B\) response as
+\[
+\hat{y}_{i, B} = \hat{\theta}_B + (y_{i, A} - \hat{\theta}_A) \hat{\rho} \sqrt{ \frac{\hat{\sigma}^2_B}{\hat{\sigma}^2_A} }
+\]
+For each person \(i\) with only \(B\) response, impute an \(A\) response as
+\[
+\hat{y}_{i, A} = \hat{\theta}_A + (y_{i, B} - \hat{\theta}_B) \hat{\rho} \sqrt{ \frac{\hat{\sigma}^2_A}{\hat{\sigma}^2_B} }
+\]
+You now have two "observations" for each individual.
+Do a paired sample \(t\)-test and obtain 95% confidence interval for \(\theta_A - \theta_B\).
+**** Answer
+#+begin_src julia :exports code
+function impute(Y)
+    nrow = size(Y, 1)
+    Y_imp = copy(Y)
+
+    for i in 1:nrow
+        if ismissing(Y[i, 1])
+            Y_imp[i, 1] = θ̂_A + (Y[i, 2] - θ̂_B) * ρ̂ * sqrt(σ̂²_A / σ̂²_B)
+        end
+        if ismissing(Y[i, 2])
+            Y_imp[i, 2] = θ̂_B + (Y[i, 1] - θ̂_A) * ρ̂ * sqrt(σ̂²_B / σ̂²_A)
+        end
+    end
+    return Y_imp
+end
+
+Y_imp = impute(Y)
+
+# Do a paired sample t-test
+using HypothesisTests
+OneSampleTTest(Y_imp[:, 1] .- Y_imp[:, 2])
+#+end_src
+
+:+RESULTS:
+#+begin_example julia
+One sample t-test
+-----------------
+Population details:
+    parameter of interest:   Mean
+    value under h_0:         0
+    point estimate:          -0.611704
+    95% confidence interval: (-0.9851, -0.2383)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           0.0018
+
+Details:
+    number of observations:   58
+    t-statistic:              -3.280709515438293
+    degrees of freedom:       57
+    empirical standard error: 0.18645474208325274
+#+end_example
+*** c)
+**** Question :noexport:
+Using either Jeffreys' prior or a unit information prior distribution for the parameters,
+implement a Gibbs sampler that approximates the joint distribution of the parameters and the missing data.
+Compute a posterior mean for \(\theta_A - \theta_B\) as well as 95% posterior confidence interval for \(\theta_A - \theta_B\).
+Compare these results with the results from b) and discuss.
+**** Answer
+***** Gibbs sampler
+#+begin_src julia :exports code
+function impute_Gibbs_Jeffreys(S, Y, Y_full, Σ_init)
+    n, p = size(Y)
+    O = 1 .* .!ismissing.(Y)
+
+    THETA = Matrix{Float64}(undef, S, p)
+    SIGMA = Matrix{Float64}(undef, S, p * p)
+    Y_MISS = Matrix{Float64}(undef, S, sum(ismissing.(Y)))
+
+    # initialize
+    Σ = Σ_init
+    for s in 1:S
+        # update θ
+        ȳ = mean(Y_full, dims=1) |> vec
+        θ = rand(MvNormal(ȳ, Symmetric(Σ ./ n)))
+
+        # update Σ
+        S_θ = (Y_full' .- θ) * (Y_full' .- θ)'
+        Σ = rand(InverseWishart(n + 1, S_θ))
+
+        # update missing data
+        for i in 1:n
+            b = (O[i, :] .== 0)
+            a = (O[i, :] .== 1)
+            iSa = inv(Σ[a, a])
+            βj = Σ[b, a] * iSa
+            Σj = Σ[b, b] - Σ[b, a] * iSa * Σ[a, b]
+            θj = θ[b] + βj * ( Y_full[i, a] - θ[a] )
+            Y_full[i, b] = rand(MvNormal(θj, Symmetric(Σj)))
+        end
+
+        # store
+        THETA[s, :] = vec(θ)
+        SIGMA[s, :] = vec(Σ)
+        Y_MISS[s, :] = vec(Y_full[O .== 0])
+    end
+    return THETA, SIGMA, Y_MISS
+end
+
+S = 10000
+Y_full = Float64.(Y_imp)
+Σ_init = cov(Y_full)
+
+THETA, SIGMA, Y_MISS = impute_Gibbs_Jeffreys(S, Y, Y_full, Σ_init)
+#+end_src
+
+***** Posterior mean and confidence interval
+#+begin_src julia :exports both
+# posterior mean
+mean(THETA[:, 1] .- THETA[:, 2])
+#+end_src
+
+#+RESULTS:
+: -0.6129730482663495
+
+#+begin_src julia :exports both
+# posterior confidence interval
+quantile(THETA[:, 1] .- THETA[:, 2], [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:  -1.2864936536119458
+:   0.057091581482583
+
+***** discussion
+b)で行った t 検定では、有意水準 5%で帰無仮説が棄却され、刺激 A と刺激 B の反応時間には有意な差があることが示唆される結果になったが、
+ベイズ推定による代入法では、差の事後分布の 95%信用区間が 0 を含んでおり、必ずしも刺激 A と刺激 B の反応時間に有意な差があるとは言えない結果になった。
+** 7.6
+*** Question :noexport:
+Diabetes data:
+A population of 532 women living near Phoenix, Arizona were tested for diabetes.
+Other information was gathered from these women at the time of testing, including number of pregnancies, glucose level, blood pressure, skin fold thickness, body mass index, diabetes pedigree and age.
+This information appears in the file ~azdiabetes.dat~.
+Model the joint distribution of these variables for the diabetics and non-diabetics
+separately, using a multivariate normal distribution:
+*** a)
+**** Question :noexport:
+For both groups separately, use the following type of unit information prior, where \(\hat{\Sigma}\) is the sample covariance matrix.
+- i :: \(\boldsymbol{\mu}_0 = \bar{ \boldsymbol{y} }, \Lambda_0 = \hat{\Sigma}\);
+- ii :: \(\boldsymbol{S}_0 = \hat{\Sigma}, \nu_0 = p+2=9\)
+Generate at least 10,000 Monte Carlo samples for \(\{\boldsymbol{\theta}_d, \Sigma_d\}\) and \(\{\boldsymbol{\theta}_n, \Sigma_n\}\),
+the model parameters for diabetics and non-diabetics respectively.
+For each of the seven variables \(j \in \{1, \dots ,7\}\),
+compare the marginal posterior distribution of \(\theta_{d,j}\) and \(\theta_{n,j}\).
+Which variables seem to differ between the two groups?
+Also obtain \(Pr(\theta_{d,j} > \theta_{n,j} | \boldsymbol{Y})\) for each \(j \in \{1, \dots ,7\}\).
+
+**** Answer
+***** preprocess & Gibbs sampler
+#+begin_src julia :exports code
+Y_src = readdlm("../../Exercises/azdiabetes.dat", header=true)
+Y = Y_src[1]
+header = Y_src[2] |> vec
+df = DataFrame(Y, header)
+
+col_int = [:npreg, :glu, :bp, :skin, :age]
+col_float = [:bmi, :ped]
+col_str = :diabetes
+df[!,col_int] = Int.(df[!,col_int])
+df[!,col_float] = Float32.(df[!,col_float])
+df[!,col_str] = String.(df[!,col_str])
+
+df_d = filter(:diabetes => ==("Yes"), df)
+df_n = filter(:diabetes => ==("No"), df)
+
+function getPosterior(df, S)
+    # select columns except for diabetes
+    Y = select(df, Not(:diabetes)) |> Matrix
+    n, p = size(Y)
+    ȳ = mean(Y, dims=1) |> vec
+    Σ̂ = cov(Y)
+
+    # set prior
+    μ₀ = ȳ
+    Λ₀ = Σ̂
+    S₀ = Σ̂
+    ν₀ = p + 2
+
+    function multivariateGibbs(S, Σ_init, μ₀, Λ₀, S₀, ν₀, Y)
+        n, p = size(Y)
+        THETA = Matrix{Float64}(undef, S, p)
+        SIGMA = Matrix{Float64}(undef, S, p^2)
+        Σ = Σ_init
+        ȳ = mean(Y, dims=1) |> vec
+        for s in 1:S
+            # update θ
+            Λn = inv( inv(Λ₀) + n * inv(Σ) )
+            μn = Λn * ( inv(Λ₀) * μ₀ + n * inv(Σ) * ȳ ) |> vec
+            dist = MvNormal(μn, Symmetric(Λn))
+            θ = rand(dist)
+
+            # update Σ
+            Sn = S₀ + (Y' .- θ) * (Y' .- θ)'
+            # Σ = rand(InverseWishart(n + ν₀, Sn))
+            Σ = rand(InverseWishart(n + ν₀, round.(Sn, digits=5)))
+
+            # save results
+            THETA[s, :] = vec(θ)
+            SIGMA[s, :] = vec(Σ)
+        end
+        return THETA, SIGMA
+    end
+
+    THETA, SIGMA = multivariateGibbs(S, Σ̂, μ₀, Λ₀, S₀, ν₀, Y)
+    return THETA, SIGMA
+end
+
+S = 10000
+THETA_d, SIGMA_d = getPosterior(df_d, S)
+THETA_n, SIGMA_n = getPosterior(df_n, S)
+#+end_src
+***** marginal posterior distribution
+#+begin_src julia :exports none
+function plotMarginalPosterior(theta_d, theta_n, title)
+    fig_each = plot(title=title, ylabel="density")
+    fig_each = histogram!(
+        fig_each,
+        theta_d,
+        label="diabetes",
+        color=:red,
+        normed = true,
+        opacity=0.5,
+        bins=:fd
+    )
+    fig_each = histogram!(
+        fig_each,
+        theta_n,
+        label="non-diabetes",
+        color=:blue,
+        normed = true,
+        opacity=0.5,
+        bins=:fd
+    )
+    fig_each = density!(
+        fig_each,
+        theta_d,
+        label=nothing,
+        color=:red,
+        normalize=:probability,
+        linewidth=2
+    )
+    fig_each = density!(
+        fig_each,
+        theta_n,
+        label=nothing,
+        color=:blue,
+        normalize=:probability,
+        linewidth=2
+    )
+    fig_each
+end
+
+# %%
+p = size(THETA_d, 2)
+fig_list = []
+for i in 1:p
+    title = header[i]
+    theta_d = THETA_d[:, i]
+    theta_n = THETA_n[:, i]
+    fig_each = plotMarginalPosterior(theta_d, theta_n, title)
+    push!(fig_list, fig_each)
+end
+
+# %%
+fig = plot(fig_list..., layout=(3, 3), size=(1000, 800))
+fig
+#+end_src
+
+#+ATTR_HTML: :width 800
+[[file:../../fig/ch7/exercise7-6a.png]]
+
+#+begin_src julia :exports both
+p = size(THETA_d, 2)
+for i in 1:p
+    theta_d = THETA_d[:, i]
+    theta_n = THETA_n[:, i]
+    println("Pr(θd,$i > θn,$i) = ", mean(theta_d .> theta_n))
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example julia
+Pr(θd,1 > θn,1) = 1.0
+Pr(θd,2 > θn,2) = 1.0
+Pr(θd,3 > θn,3) = 1.0
+Pr(θd,4 > θn,4) = 1.0
+Pr(θd,5 > θn,5) = 1.0
+Pr(θd,6 > θn,6) = 1.0
+Pr(θd,7 > θn,7) = 1.0
+#+end_example
+
+- 全ての変数で、糖尿病患者と非糖尿病患者間での平均値の差があると言える。
+*** b)
+**** Question :noexport:
+Obtain the posterior means of \(\Sigma_d\) and \(\Sigma_n\), and plot the entries versus each other.
+What are the main differences, if any?
+**** Answer
+***** standard deviation
+#+begin_src julia :exports none
+Σ̂_d = reshape(mean(SIGMA_d, dims=1), p, p)
+Σ̂_n = reshape(mean(SIGMA_n, dims=1), p, p)
+
+pos_var_d = diag(Σ̂_d)
+pos_var_n = diag(Σ̂_n)
+
+function plotPosSd(sd_d, sd_n, title)
+    fig_each = plot(title=title, ylabel="sd", margin=5mm)
+    fig_each = bar!(
+        fig_each,
+        ["diabetes", "non-diabetes"],
+        [sd_d, sd_n],
+        color=[:red, :blue],
+        legend=false,
+        opacity=0.5
+    )
+    fig_each
+end
+
+fig_list = []
+for i in 1:p
+    sd_d = pos_var_d[i] |> sqrt
+    sd_n = pos_var_n[i] |> sqrt
+    title = header[i]
+    fig_each = plotPosSd(sd_d, sd_n, title)
+    push!(fig_list, fig_each)
+end
+fig = plot(fig_list..., layout=(2, 4), size=(1200, 800))
+fig
+#+end_src
+
+#+ATTR_HTML: :width 800
+[[file:../../fig/ch7/exercise7-6b_sd.png]]
+***** correlation
+#+begin_src julia :exports none
+function get_pos_cor(SIGMA, p, S)
+    COR = Array{Float64}(undef, p, p, S)
+    for s in 1:S
+        Sig = reshape(SIGMA[s, :], p, p)
+        COR[:, :, s] = Sig ./ sqrt.(diag(Sig) * diag(Sig)')
+    end
+    return COR
+end
+
+COR_d = get_pos_cor(SIGMA_d, p, S)
+COR_n = get_pos_cor(SIGMA_n, p, S)
+
+COR_pos_d = reshape(mean(COR_d, dims=3) ,p, p)
+COR_pos_n = reshape(mean(COR_n, dims=3) ,p, p)
+
+function plotPosCor(COR_d, COR_n, header, i)
+    title = header[i]
+    # choose except i-th header
+    cols =  header[Not(i)]
+
+    cor_d_mean = mean(COR_d[i, Not(i), :], dims=[2, 3])
+    cor_n_mean = mean(COR_n[i, Not(i), :], dims=[2, 3])
+
+    # 95% CI
+    cor_d_95CI = zeros(2, p)
+    cor_n_95CI = zeros(2, p)
+    for j in 1:p
+        cor_d_95CI[:, j] = quantile(COR_d[i, j, :], [0.025, 0.975])
+        cor_n_95CI[:, j] = quantile(COR_n[i, j, :], [0.025, 0.975])
+    end
+    cor_d_95CI = cor_d_95CI[:, Not(i)]
+    cor_n_95CI = cor_n_95CI[:, Not(i)]
+
+    error_d = abs.(cor_d_95CI .- cor_d_mean')
+    error_n = abs.(cor_n_95CI .- cor_n_mean')
+
+    # make error p lenght vector (each element is a tuple)
+    error_d = [(error_d[1, i], error_d[2, i]) for i in 1:p-1]
+    error_n = [(error_n[1, i], error_n[2, i]) for i in 1:p-1]
+
+    function plotPosCor(cor_d_mean, cor_n_mean, error_d, error_n, title)
+        fig_each = plot(title=title, ylabel=title, margin=5mm)
+        fig_each = scatter!(
+            fig_each,
+            [1:(p-1)...] .- 0.1,
+            cor_d_mean,
+            yerror=error_d,
+            label="diabetes",
+            color=:red,
+            opacity=0.5
+        )
+        fig_each = scatter!(
+            fig_each,
+            [1:(p-1)...] .+ 0.1,
+            cor_n_mean,
+            yerror=error_n,
+            label="non-diabetes",
+            color=:blue,
+            opacity=0.5
+        )
+        # change xticks
+        xticks!(fig_each, 1:p-1, cols)
+        fig_each
+
+    end
+
+    fig_each = plotPosCor(cor_d_mean, cor_n_mean, error_d, error_n, title)
+    fig_each
+end
+
+fig_list = []
+for i in 1:p
+    fig_each = plotPosCor(COR_d, COR_n, header, i)
+    push!(fig_list, fig_each)
+end
+
+fig = plot(fig_list..., layout=(2, 4), size=(1200, 800))
+#+end_src
+
+#+ATTR_HTML: :width 800
+[[file:../../fig/ch7/exercise7-6b_cor.png]]
+
+***** discussion
+- 標準偏差は、糖尿病患者群の方が、やや大きい
+- 相関係数は diabetes pedigree 以外の変数に関して、非患者群の方が大きい。

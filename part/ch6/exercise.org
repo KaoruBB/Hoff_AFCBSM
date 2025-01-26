@@ -1,0 +1,619 @@
+* Chapter 6
+:PROPERTIES:
+:header-args: :eval no-export :session ch6
+:END:
+** 6.1
+*** Question :noexport:
+Poisson population comparisons:
+Let's reconsider the number of children data of [[4.8][Exercise 4.8]].
+We'll assume Poisson sampling models for the two groups as before, but now we'll parameterize \(\theta_A\) and \(\theta_B\) as
+\(\theta_A = \theta, \theta_B = \theta \times \gamma\).
+In this parameterization, \(\gamma\) represents the relative rate \(\frac{\theta_B}{\theta_A}\).
+Let \(\theta \sim \text{gamma}(a_{\theta}, b_{\theta})\) and
+let \(\gamma \sim \text{gamma}(a_{\gamma}, b_{\gamma})\).
+*** a) :ask:
+**** Question :noexport:
+Are \(\theta_A\) and \(\theta_B\) independent or dependent under this prior distribution?
+In what situations is such a joint prior distribution justified?
+**** answer
+
+\begin{align*}
+E[\theta_A \theta_B]
+&= E[\theta \theta \gamma] \\
+&= E[\theta^2] E[\gamma] \quad (\because \theta \perp\kern-5pt\perp \gamma)\\
+&= \frac{(a_{\theta} + 1) a_{\theta}}{b_{\theta}^2} \times \frac{a_{\gamma}}{b_{\gamma}} \\
+\\
+E[\theta_A] E[\theta_B]
+&= E[\theta] E[\theta \gamma] \\
+&= E[\theta] E[\theta] E[\gamma] \quad (\because \theta \perp\kern-5pt\perp \gamma)\\
+&= \frac{a_{\theta}^2 }{b_{\theta}^2} \times \frac{a_{\gamma}}{b_{\gamma}} \\
+\end{align*}
+
+より、
+\[ E[\theta_A \theta_B] \neq E[\theta_A] E[\theta_B] \]
+となるが、
+もし\(\theta_A\)と\(\theta_B\)が独立ならば、
+\( E[\theta_A \theta_B] = E[\theta_A] E[\theta_B] \)
+が成り立つはずである。
+よって、\(\theta_A\)と\(\theta_B\)は独立ではない。
+
+また、このような同時事前分布の設定は、B群の一人当たりの子供の数が A 群の一人当たりの子供の数の実数倍であるという事前の信念がある時に正当化される。
+*** b)
+**** Question :noexport:
+Obtain the form of the full conditional distribution of \(\theta \) given
+\(\boldsymbol{y}_A\), \(\boldsymbol{y}_B\) and \(\gamma\).
+**** answer
+
+\begin{align*}
+p(\theta | \boldsymbol{y}_A, \boldsymbol{y}_B, \gamma)
+&\propto p( \boldsymbol{y}_A , \boldsymbol{y}_B, \theta, \gamma) \\
+&= p( \boldsymbol{y}_A \boldsymbol{y}_B | \theta, \gamma) p(\theta , \gamma) \\
+&\propto p( \boldsymbol{y}_A | \theta) p( \boldsymbol{y}_B | \theta, \gamma) p(\theta) \\
+&\propto \theta^{ \sum y_{A,i} } \exp \left( - n_A \theta \right)
+\times (\theta \gamma)^{ \sum y_{B,i} } \exp \left( - n_B \theta \gamma \right) \\
+&\qquad \times \theta^{a_{\theta} - 1} \exp \left( - b_{\theta} \theta \right)  \\
+&\propto \theta^{ a_{\theta} + n_A \bar{y}_A + n_B \bar{y}_B - 1 }
+\times \exp \left( - \theta (b_{\theta} + n_A + n_B \gamma) \right) \\
+&\propto \text{dgamma}( \theta, a_{\theta} + n_A \bar{y}_A + n_B \bar{y}_B, b_{\theta} + n_A + n_B \gamma )
+\end{align*}
+*** c)
+**** Question :noexport:
+Obtain the form of the full conditional distribution of \(\gamma \) given \(\boldsymbol{y}_A\), \(\boldsymbol{y}_B\) and \(\theta\).
+**** answer
+
+\begin{align*}
+p(\gamma | \boldsymbol{y}_A, \boldsymbol{y}_B, \theta)
+&\propto p( \boldsymbol{y}_A , \boldsymbol{y}_B, \theta, \gamma) \\
+&= p( \boldsymbol{y}_A \boldsymbol{y}_B | \theta, \gamma) p(\theta , \gamma) \\
+&\propto p( \boldsymbol{y}_B | \theta, \gamma) p(\gamma) \\
+&\propto (\theta \gamma)^{ \sum y_{B,i} } \exp \left( - n_B \theta \gamma \right) \times \gamma^{a_{\gamma} - 1} \exp \left( - b_{\gamma} \gamma \right) \\
+&\propto \gamma^{ a_{\gamma} + n_B \bar{y}_B - 1 }
+\times \exp \left( - \gamma (b_{\gamma} + n_B \theta) \right) \\
+&\propto \text{dgamma}( \gamma, a_{\gamma} + n_B \bar{y}_B, b_{\gamma} + n_B \theta )
+\end{align*}
+*** d)
+**** Question :noexport:
+Set \(a_{\theta} = 2\) and \(b_{\theta} = 1\).
+Let \(a_{\gamma} = b_{\gamma} \in \{ 8, 16, 32, 64, 128 \}\).
+For each of these five values, run a Gibbs sampler of at least 5,000 iterations and obtain \(E[\theta_B - \theta_A | \boldsymbol{y}_A, \boldsymbol{y}_B ]\).
+Describe the effects of the prior distribution for \(\gamma\) on the results.
+**** answer
+#+begin_src julia :export both
+menchild_bach = []
+open("../../Exercises/menchild30bach.dat") do file
+    for line in eachline(file)
+        append!(menchild_bach, parse.(Int, split(line)))
+    end
+end
+
+menchild_nobach = []
+open("../../Exercises/menchild30nobach.dat") do file
+    for line in eachline(file)
+        append!(menchild_nobach, parse.(Int, split(line)))
+    end
+end
+
+a_θ = 2
+b_θ = 1
+γ_prior_param = [ 2^i for i in 3:7 ]
+
+function get_θ_diff(y_A, y_B, a_θ, b_θ, a_γ, b_γ, S)
+    sy_A = sum(y_A)
+    n_A = length(y_A)
+    mean_A = mean(y_A)
+
+    sy_B = sum(y_B)
+    n_B = length(y_B)
+    mean_B = mean(y_B)
+
+    θ = Vector{Float64}(undef, S)
+    θ[1] = t = mean_A
+    γ = Vector{Float64}(undef, S)
+    γ[1] = g = mean_B/mean_A
+
+    for s in 2:S
+        dist_θ = Gamma(a_θ + sy_A + sy_B, 1/(b_θ + n_A + n_B * g))
+        t = rand(dist_θ)
+
+        dist_γ = Gamma(a_γ + sy_B, 1/(b_γ + n_B * t))
+        g = rand(dist_γ)
+
+        θ[s] = t
+        γ[s] = g
+    end
+    θ_A_mc = θ
+    θ_B_mc = θ .* γ
+    return mean(θ_B_mc .- θ_A_mc)
+end
+
+function θ_diff_by_p(p, S)
+    get_θ_diff(menchild_bach, menchild_nobach, a_θ, b_θ, p, p, S)
+end
+
+S = 5000
+exp_diff = []
+for p in γ_prior_param
+    push!(exp_diff, θ_diff_by_p(p, S))
+end
+
+exp_diff
+#+end_src
+
+:RESULTS:
+: 5-element Vector{Any}:
+:  0.38839289030002194
+:  0.3301515531279979
+:  0.26360712597646224
+:  0.1972987037901306
+:  0.1332427833449685
+
+#+begin_src julia :exports none
+# plot
+fig = plot(
+    γ_prior_param, exp_diff,
+    xlabel = L"a_\gamma = b_\gamma",
+    ylabel = L"\mathbb{E}[\theta_B - \theta_A | y_A, y_B]",
+    marker = :circle,
+    ylims = (0, 0.4),
+    legend = false,
+)
+#+end_src
+
+#+ATTR_HTML: :width 600px
+[[file:../../fig/ch6/exercise6_1d.png]]
+
+\( a_{\gamma} = b_{\gamma}\)に従うガンマ分布の期待値は 1 であり、この値が大きければ大きいほど\( \frac{\theta_B}{\theta_A} \)が 1
+（すなわち、A群と B 群の子供の数の平均が等しい）
+という事前の信念が強いことになる。
+上のグラフからも、\(a_{\gamma} = b_{\gamma} \)が大きくなるにつれて、
+データの影響が小さくなり、事後期待値の差が小さくなっていることがわかる。
+** 6.2
+*** Question :noexport:
+Mixture model:
+The file ~glucose.dat~ contains the plasma glucose concentrations of 532 females from a study on diabetes (see Exercise 7.6).
+*** a)
+**** Question :noexport:
+Make a histogram or kernel density estimate of the data.
+Describe how this empirical distribution deviates from the shape of a normal distribution.
+**** answer
+
+#+begin_src julia :exports none
+data = readdlm("../../Exercises/glucose.dat") |> vec
+
+p1 = histogram(data, label = false, title = "Histogram")
+p2 = density(data, label = false, title = "Kernel Density")
+fig = plot(p1, p2, layout = (1, 2), size = (800, 400), legend = false)
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch6/exercise6_2a.png]]
+
+ヒストグラム及び kernel density のプロットは、左右非対称で右裾が長いという点で、正規分布の形から逸脱している。
+*** b)
+**** Question :noexport:
+Consider the following mixture model for these data:
+For each participant there is an unobserved group membership variable \(X_i\) which is equal to 1 or 2 with probability \(p\) and \(1-p\).
+If \(X_i = 1\) then \(Y_i \sim \text{normal}(\theta_1, \sigma_1^2)\), and if \(X_i = 2\) then \(Y_i \sim \text{normal}(\theta_2, \sigma_2^2)\).
+Let \(p \sim \text{beta}(a, b)\), \(\theta_j \sim \text{normal}(\mu_0, \tau_0^2)\) and
+\(\frac{1}{\sigma_j} \sim \text{gamma}(\frac{\nu_0}{2}, \frac{\nu_0 \sigma_0^2}{2})\) for both \(j = 1, 2\).
+Obtain the full conditional distributions of
+\(( X_1, \ldots, X_n ), p, \theta_1, \theta_2, \sigma_1 \) and \( \sigma_2 \).
+**** answer
+
+同時分布は以下のように書ける。
+
+\begin{equation}
+\label{eq:6.2b-2}
+\begin{aligned}[b]
+&p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= &p( Y_1, \dots, Y_n | X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)
+p( X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= &p( Y_1, \dots, Y_n | X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)
+p( X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= &p( Y_1, \dots, Y_n | X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)
+p(X_1, \dots, X_n | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
+= & \prod_{i=1}^n p(Y_i | X_i, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \times
+\prod_{i=1}^n p(X_i | p) \times p(p) \times p(\theta_1) \times p(\theta_2) \times p(\sigma_1^2) \times p(\sigma_2^2) \\
+= & \prod_{i; X_i = 1} p(Y_i | X_i=1, \theta_1, \sigma_1^2) \times
+\prod_{i; X_i = 2} p(Y_i | X_i=2, \theta_2, \sigma_2^2) \times
+\prod_{i=1}^n p(X_i | p) \\
+& \qquad \times p(p) \times p(\theta_1) \times p(\theta_2) \times p(\sigma_1^2) \times p(\sigma_2^2) \\
+\end{aligned}
+\end{equation}
+
+また、各\(i\)についての同時分布は以下のように書ける。
+
+\begin{equation}
+\label{eq:6.2b-1}
+\begin{aligned}[b]
+& p( Y_i, X_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= &p( Y_i | X_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)
+p(X_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= &p( Y_i | X_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)
+p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
+\end{aligned}
+\end{equation}
+
+***** the full conditional distribution of \( (X_1, \dots, X_n)\)
+
+\begin{align*}
+& p(X_i = 1 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= & \frac{p(Y_i, X_i = 1, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) }{p(Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)} \\
+= & \frac{p(Y_i | X_i = 1, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) p(X_i = 1 | p)}{p(Y_i | X_i = 1, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) p(X_i = 1 | p) + p(Y_i | X_i = 2, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) p(X_i = 2 | p)} \\
+= & \frac{p(Y_i| X_i = 1, \theta_1, \sigma_1^2) \times p}{p(Y_i| X_i = 1, \theta_1, \sigma_1^2) \times p + p(Y_i| X_i = 2, \theta_2, \sigma_2^2) \times (1 - p)} \\
+= & \frac{ p \times \text{dnorm}(Y_i, \theta_1, \sigma_1) }{ p \times \text{dnorm}(Y_i, \theta_1, \sigma_1) + (1 - p) \times \text{dnorm}(Y_i, \theta_2, \sigma_2) } \\
+\end{align*}
+
+
+同様にして、
+
+\begin{align*}
+& p(X_i = 2 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= & \frac{p \times \text{dnorm}(Y_i, \theta_2, \sigma_2) }{ p \times \text{dnorm}(Y_i, \theta_1, \sigma_1) + (1 - p) \times \text{dnorm}(Y_i, \theta_2, \sigma_2) } \\
+\end{align*}
+
+従って、
+
+\begin{align*}
+& p( X_1, \dots, X_n | Y_1, \dots, Y_n p, \theta_1, \theta_2, \sigma_1^2,
+\sigma_2^2) \\
+= & \prod_{i=1}^n p( X_i | Y_i, \theta_1, \theta_2, \sigma_1^2) \\
+= & \prod_{i, X_i = 1} p(X_i = 1 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \times \prod_{i, X_i = 2} p(X_i = 2 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+= & \prod_{i, X_i = 1} \frac{ p \times \text{dnorm}(Y_i, \theta_1, \sigma_1) }{ p \times \text{dnorm}(Y_i, \theta_1, \sigma_1) + (1 - p) \times \text{dnorm}(Y_i, \theta_2, \sigma_2) } \\
+& \quad\times \prod_{i, X_i = 2} \frac{p \times \text{dnorm}(Y_i, \theta_2, \sigma_2) }{ p \times \text{dnorm}(Y_i, \theta_1, \sigma_1) + (1 - p) \times \text{dnorm}(Y_i, \theta_2, \sigma_2) } \\
+\end{align*}
+
+***** the full conditional distribution of \(p\)
+
+\begin{align*}
+& p(p | Y_1, \dots, Y_n, X_1, \dots, X_n, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+\propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, 
+\sigma_2^2) \\
+\propto & \prod_{i=1}^n p(X_i | p) \times p(p)
+\quad (\because \eqref{eq:6.2b-2}) \\
+\propto & p^{\sum (2 - X_i)} (1 - p)^{\sum (X_i - 1)} \times p^{a - 1} (1 - p)^{b - 1} \\
+\propto & p^{\sum (2 - X_i) + a - 1} (1 - p)^{\sum (X_i - 1) + b -1} \\
+\propto & \text{dbeta}(p, \sum (2 - X_i) + a, \sum (X_i - 1) + b) \\
+\end{align*}
+
+***** the full conditional distribution of \(\theta_1\)
+
+
+\begin{align*}
+& p(\theta_1 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_2, \sigma_1^2, \sigma_2^2) \\
+\propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+\propto & \prod_{i; X_i = 1} p(Y_i | X_i =1, \theta_1, 
+\sigma_1^2)
+\times p(\theta_1) 
+\quad (\because \eqref{eq:6.2b-2}) \\
+\propto & \prod_{i; X_i = 1} \exp \left\{ - \frac{1}{2 \sigma_1^2} \left( Y_i - \theta_1 \right)^2 \right\}
+\times \exp \left\{ - \frac{1}{2 \tau_0^2} \left( \theta_1 - \mu_0 \right)^2 \right\} \\
+= & \exp \left\{ - \frac{1}{2 \sigma_1^2} \sum_{i; X_i = 1} \left( Y_i - \theta_1 \right)^2 \right\}
+\times \exp \left\{ - \frac{1}{2 \tau_0^2} \left( \theta_1 - \mu_0 \right)^2 \right\} \\
+\propto & \text{dnormal}(\theta_1, \mu_1, \tau_1),
+\quad \text{ where } \\
+& \mu_1 = \frac{\frac{1}{\tau_0^2} \mu_0 + \frac{n_1}{\sigma_1^2} \bar{Y}_1}{\frac{1}{\tau_0^2} + \frac{n_1}{\sigma_1^2}},
+\quad  \tau_1^2 = \left( \frac{1}{\tau_0^2} + \frac{n_1}{\sigma_1^2} \right)^{-1} \\
+\end{align*}
+
+なお、最後の式変形は教科書 p.70 を参照。
+
+***** the full conditional distribution of \(\theta_2\)
+
+\(\theta_2\)についても同様に計算すると、
+\begin{align*}
+& p(\theta_2 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \sigma_1^2, \sigma_2^2) \\
+\propto & \text{dnormal}(\theta_2, \mu_2, \tau_2),
+\quad \text{ where } \\
+& \mu_2 = \frac{\frac{1}{\tau_0^2} \mu_0 + \frac{n_2}{\sigma_2^2} \bar{Y}_2}{\frac{1}{\tau_0^2} + \frac{n_2}{\sigma_2^2}},
+\quad  \tau_2^2 = \left( \frac{1}{\tau_0^2} + \frac{n_2}{\sigma_2^2} \right)^{-1} \\
+\end{align*}
+***** the full conditional distribution of \(\sigma_1^2\)
+
+\begin{align*}
+& p(\sigma_1^2 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_2^2) \\
+\propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
+\propto & \prod_{i; X_i = 1} p(Y_i | X_i =1, \theta_1, \sigma_1^2) \times p(\sigma_1^2)
+\quad (\because \eqref{eq:6.2b-2}) \\
+\propto & \prod_{i; X_i = 1} (\sigma_1^2)^{ - \frac{1}{2} } \exp \left\{ - \frac{1}{2 \sigma_1^2} \left( Y_i - \theta_1 \right)^2 \right\}
+\times \sigma_1^{- ( \frac{\nu_0}{2} + 1 )} \exp \left\{ - \frac{\nu_0 \sigma_0^2}{2 \sigma_1^2} \right\} \\
+\propto & (\sigma_1^2)^{- ( \frac{\nu_0 + n_1}{2} + 1 )} \exp \left\{ - \frac{1}{2 \sigma_1^2} \left( \nu_0 \sigma_0^2 + \sum_{i; X_i = 1} \left( Y_i - \theta_1 \right)^2 \right) \right\} \\
+\propto & \text{dinverse-gamma}(\sigma_1^2, \frac{\nu_1}{2}, \frac{\nu_1 \sigma_1^2(\theta_1)}{2}),
+\quad \text{ where } \\
+& \nu_1 = \nu_0 + n_1, \\
+& \sigma_1^2(\theta_1) = \frac{1}{\nu_1} [ \nu_0 \sigma_0^2 + n_1 s_1^2(\theta_1) ] \\
+\end{align*}
+
+***** the full conditional distribution of \(\sigma_2^2\)
+
+\(\sigma_2^2\)についても同様に計算すると、
+\begin{align*}
+& p(\sigma_2^2 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2) \\
+\propto & \text{dinverse-gamma}(\sigma_2^2, \frac{\nu_2}{2}, \frac{\nu_2 \sigma_2^2(\theta_2)}{2}),
+\quad \text{ where } \\
+& \nu_2 = \nu_0 + n_2, \\
+& \sigma_2^2(\theta_2) = \frac{1}{\nu_2} [ \nu_0 \sigma_0^2 + n_2 s_2^2(\theta_2) ] \\
+\end{align*}
+
+*** c)
+**** Question :noexport:
+Setting \(a = b = 1, \mu_0 = 120, \tau_0^2 = 200, \sigma_0^2 = 1000\) and \(\nu_0 = 10\),
+implement the Gibbs sampler for at least 10,000 iterations.
+Let \(\theta_{(1)}^{(s)} = \min \{ \theta_1^{(s)}, \theta_2^{(s)}\}\) and
+\(\theta_{(2)}^{(s)} = \max \{ \theta_1^{(s)}, \theta_2^{(s)}\}\).
+Compute and plot the autocorrelation function of \(\theta_{(1)}^{(s)}\) and \(\theta_{(2)}^{(s)}\),
+as well as their effective sample sizes.
+**** Answer
+
+#+begin_src julia :exports code
+a = b = 1
+μ₀ = 120
+τ₀² = 200
+σ₀² = 1000
+ν₀ = 10
+S = 10000
+
+# %%
+function rand_X(y, p, θ₁, θ₂, σ₁², σ₂²)
+
+    # probability of Xi = 1
+    function bin_prob(yi, p, θ₁, θ₂, σ₁², σ₂²)
+        p1 = p * pdf(Normal(θ₁, sqrt(σ₁²)), yi)
+        p2 = (1 - p) * pdf(Normal(θ₂, sqrt(σ₂²)), yi)
+        prob = p1/(p1 + p2)
+    end
+
+    n = length(y)
+    X = Vector{Float64}(undef, n)
+    for i in 1:n
+        X[i] =  2 - rand(Bernoulli(bin_prob(y[i], p, θ₁, θ₂, σ₁², σ₂²)))
+    end
+
+    return X
+end
+# %%
+function rand_p(X, a, b)
+    n1 = sum(X .== 1)
+    n2 = sum(X .== 2)
+    return rand(Beta(a + n1, b + n2))
+end
+
+# %%
+function rand_θ(μ₀, τ₀², σ², y)
+    n = length(y)
+    ȳ = mean(y)
+    μn = (μ₀/τ₀² + ȳ * n/σ²) / (1/τ₀² + n/σ²)
+    τn² = 1/(1/τ₀² + n/σ²)
+    return rand(Normal(μn, sqrt(τn²)))
+end
+
+# %%
+function rand_σ²(θ, ν₀, σ₀², y)
+    n = length(y)
+    ȳ = mean(y)
+    s² = var(y)
+    ns² = (n-1) * s² + n * (ȳ - θ)^2
+    νn = ν₀ + n
+    σn² = (ν₀ * σ₀² + ns²)/νn
+    α = νn/2
+    β = νn * σn²/2
+    return 1/rand(Gamma(α, 1/β))
+end
+
+# %%
+mean_y = mean(data)
+var_y = var(data)
+
+# %%
+# Gibbs Sampler
+
+THETA = Matrix{Float64}(undef, S, 2)
+SIGMA = Matrix{Float64}(undef, S, 2)
+P = []
+X_MC = Matrix{Int}(undef, S, length(data))
+
+# starting values
+θ₁ = θ₂ = mean_y
+σ₁² = σ₂² = var_y
+p = 0.5
+
+for s in 1:S
+    X_MC[s, :] = rand_X(data, p, θ₁, θ₂, σ₁², σ₂²)
+    p = rand_p(X_MC[s, :], a, b)
+    θ₁ = rand_θ(μ₀, τ₀², σ₁², data[X_MC[s, :] .== 1])
+    θ₂ = rand_θ(μ₀, τ₀², σ₂², data[X_MC[s, :] .== 2])
+    σ₁² = rand_σ²(θ₁, ν₀, σ₀², data[X_MC[s, :] .== 1])
+    σ₂² = rand_σ²(θ₂, ν₀, σ₀², data[X_MC[s, :] .== 2])
+    THETA[s, :] = [θ₁, θ₂]
+    SIGMA[s, :] = [σ₁², σ₂²]
+    push!(P, p)
+    if s % 1000 == 0
+        println("Iteration: $s done")
+    end
+end
+
+# %%
+# get smaller one for each row
+THETA1 = mapslices(minimum, THETA, dims = 2)
+THETA2 = mapslices(maximum, THETA, dims = 2)
+
+# %%
+# autocorrelation plot
+lags = 0:100
+fig = plot(
+    lags, autocor(THETA1, lags), label = L"\theta_1^(s)",
+    xlabel = "Lag", ylabel = "Autocorrelation", title = "Autocorrelation Plot"
+)
+fig = plot!(
+    lags, autocor(THETA2, lags), label = L"\theta_2^(s)",
+)
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch6/exercise6_2c.png]]
+
+#+begin_src julia :exports both
+ess(Chains([THETA1 THETA2]))
+#+end_src
+
+#+RESULTS:
+: ESS
+:   parameters        ess      rhat
+:       Symbol    Float64   Float64
+:
+:      param_1   464.2489    1.0002
+:      param_2   238.5754    1.0000
+*** d)
+**** Question :noexport:
+For each iteration \(s\), of the Gibbs sampler, sample a value
+\(x \sim \text{binary}(p^{(s)}) \),
+then sample \(\tilde{Y}^{(s)} \sim \text{normal}(\theta_x^{(s)}, \sigma_x^{2(s)})\).
+Plot a histogram or kernel density estimate for the empirical distribution of
+\( \tilde{Y}^{(1)}, \ldots, \tilde{Y}^{(S)} \),
+and compare to the distribution in part a).
+Discuss the adequacy of this two component mixture model for the glucose data.
+**** Answer
+
+#+begin_src julia :exports code
+# sample y function
+function rand_y(p, θ₁, θ₂, σ₁², σ₂²)
+    x = 2 - rand(Bernoulli(p))
+    if x == 1
+        return rand(Normal(θ₁, sqrt(σ₁²)))
+    else
+        return rand(Normal(θ₂, sqrt(σ₂²)))
+    end
+end
+
+# %%
+# Gibbs Sampler
+
+THETA = Matrix{Float64}(undef, S, 2)
+SIGMA = Matrix{Float64}(undef, S, 2)
+P = []
+X_MC = Matrix{Int}(undef, S, length(data))
+Y = []
+
+# starting values
+θ₁ = θ₂ = mean_y
+σ₁² = σ₂² = var_y
+p = 0.5
+
+for s in 1:S
+    X_MC[s, :] = rand_X(data, p, θ₁, θ₂, σ₁², σ₂²)
+    if s % 1000 == 0
+        println("Iteration: $s")
+        tmp = X_MC[s, :]
+        println(sum(tmp .== 1),", ", sum(tmp .== 2))
+    end
+    p = rand_p(X_MC[s, :], a, b)
+    θ₁ = rand_θ(μ₀, τ₀², σ₁², data[X_MC[s, :] .== 1])
+    θ₂ = rand_θ(μ₀, τ₀², σ₂², data[X_MC[s, :] .== 2])
+    σ₁² = rand_σ²(θ₁, ν₀, σ₀², data[X_MC[s, :] .== 1])
+    σ₂² = rand_σ²(θ₂, ν₀, σ₀², data[X_MC[s, :] .== 2])
+    THETA[s, :] = [θ₁, θ₂]
+    SIGMA[s, :] = [σ₁², σ₂²]
+    push!(P, p)
+
+    # sample y
+    y = rand_y(p, θ₁, θ₂, σ₁², σ₂²)
+    push!(Y, y)
+end
+#+end_src
+
+#+begin_src julia :exports none
+hist = histogram(data, label = "empirical", title = "Histogram", color = :blue, normed = true, opacity = 0.5)
+hist = histogram!(hist, Y, label = "Gibbs sample", title = "Histogram", color = :red, normed = true, opacity = 0.5)
+kd = density(data, label = "empirical", title = "Kernel Density", color = :blue)
+kd = density!(kd,Y, label = "Gibbs sample", title = "Kernel Density", color = :red)
+fig = plot(hist, kd, layout = (1, 2), size = (800, 400))
+fig
+#+end_src
+
+#+ATTR_HTML: :width 600
+[[file:../../fig/ch6/exercise6_2d.png]]
+
+
+このモデルは、データの分布を割とうまく近似できてるんちゃうん。
+** 6.3 :difficult:
+*** question :noexport:
+Probit regression:
+A panel study followed 25 married couples over a period of five years.
+One item of interest is the relationship between divorce rates and the various characteristics of the couples.
+For example, the researchers would like to model the probability of divorce as a function of age differential, recorded as the man's age minus the woman's age.
+The data can be found in the file ~divorce.dat~.
+We will model these data with probit regression, in which a binary variable \(Y_i\) is described in terms of an explanatory variable \(x_i\) via the following latent variable model:
+\begin{align*}
+Z_i &= \beta x_i + \epsilon_i \\
+Y_i &= \delta_{(c, \infty)}(Z_i),
+\end{align*}
+where \(\beta\) and \(c\) are unknown coefficients, \(\epsilon_1, \ldots, \epsilon_n \sim \text{i.i.d. normal}(0, 1)\), and \(\delta_{(c, \infty)}(z) = 1\) if \(z > c\) and equals zero otherwise.
+
+*** a)
+**** question :noexport:
+Assuming \(\beta \sim \mathrm{normal}(0, \tau_{\beta}^2)\)
+obtain the full conditional distribution \(p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)\).
+**** answer
+\begin{align*}
+p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
+&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta) p(\boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta)
+p(\boldsymbol{z} | \boldsymbol{x}, c, \beta) p(\boldsymbol{x}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{z}, c) p(\boldsymbol{z} | \boldsymbol{x}, \beta) p(\boldsymbol{x}) p(c) p(\beta) \\
+&\propto  p(\boldsymbol{z} | \boldsymbol{x},\beta) p(\beta) \\
+&\propto \prod_{i=1}^n \exp \left( -\frac{1}{2} (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+&= \exp \left( -\frac{1}{2} \sum_{i=1}^n (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+&= \exp \left( -\frac{1}{2} \left( \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 \right) \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+\end{align*}
+
+ここで、
+\begin{align*}
+\sum_{i=1}^n (z_i - \beta x_i)^2 + \frac{1}{\tau_{\beta}^2} \beta^2
+&= \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \beta^2 \\
+&= a \beta^2 - 2 b \beta + \sum_{i=1}^n z_i^2 \\
+\mathrm{where} \quad
+a &= \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \\
+b &= \sum_{i=1}^n x_i z_i \\
+\end{align*}
+
+となるので、
+\begin{align*}
+p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
+&\propto \exp \left\{ -\frac{1}{2} \left( a \beta^2 - 2 b \beta \right) \right\} \\
+&= \exp \left\{ -\frac{1}{2} a \left( \beta^2 - \frac{2 b}{a} \beta + \frac{b^2}{a^2} \right) + \frac{1}{2} \frac{b^2}{a} \right\} \\
+&\propto \exp \left\{ -\frac{1}{2} a \left( \beta - \frac{b}{a} \right)^2 \right\} \\
+&= \exp \left\{ - \frac{1}{2} \left( \frac{\beta - b/a}{1/ \sqrt{a} } \right) \right\} \\
+&= \mathrm{dnorm}(\beta, b/a, 1/ \sqrt{a} ) \\
+\end{align*}
+
+よって、
+\begin{align*}
+\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c \sim
+\mathrm{Normal} \left( \frac{ \sum_{i=1}^n x_i z_i }{ \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} }, \frac{1}{  \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2}  } \right)
+\end{align*}
+*** b)
+**** question :noexport:
+Assuming \(c \sim \mathrm{normal}(0, \tau_c^2)\),
+show that \(p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)\) is a constrained normal density, i.e. proportional to normal density but constrained to lie in an interval.
+Similarly, show that \(p(z_i | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}_{-i}, \beta, c)\) is proportional to a normal density but constrained to be either above \(c\) or below \(c\), depending on \(y_i\).
+
+**** answer
+
+\begin{align*}
+p(c | y_i = 0, x_i, z_i, \beta)
+&\propto p(y_i = 0 | z_i, c) p(c) \\
+&= p(y_i = 0 | x_i, c, \beta) p(c) \\
+&= \Phi(c - \beta x_i) p(c) \\
+\end{align*}
+
+\begin{align*}
+p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
+&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, \beta, c) p(\boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
+&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) p(c) \\
+&= \left( 1 - \Phi() \right)
+\end{align*}
+
