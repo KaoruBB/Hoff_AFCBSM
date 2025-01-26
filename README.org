@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: Answers of exercises on Hoff, A first course in Bayesian statistical methods
 #+OPTIONS: toc:nil num:nil
 
 The [[https://orgmode.org/][org-mode]] source files (before HTML conversion) for the answers to exercises in [[https://hoff-exercise.kaorubb.org/][Answers of exercises on Hoff, A first course in Bayesian statistical methods]] can be found here.
