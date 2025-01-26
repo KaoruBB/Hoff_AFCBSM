@@ -9,8 +9,8 @@
 #+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
 #+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
 #+HTML_HEAD: <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-
 #+EXCLUDE_TAGS: noexport English
+
 #+BEGIN_EXPORT latex
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \setminted[julia]{
