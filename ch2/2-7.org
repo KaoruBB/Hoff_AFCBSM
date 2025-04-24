@@ -1,0 +1,95 @@
+#+SETUPFILE: setup
+* 2.7
+** Question :noexport:
+Coherence of bets:
+de Finetti thought of subjective probability as follows:
+
+Your probability \(p(E)\) for event /E/ is the amount you would be willing to pay or charge in exchange for a dollar on the occurrence of /E/.
+In other words, you must willing to
+
+- give \(p(E)\) to someone, provided they give you $1 if /E/ occurs;
+- take \(p(E)\) from someone, and give them $1 if /E/ occurs.
+
+Your probability for the event \(E^c = \) "not /E/" is defined similarly.
+
+- a :: Show that it is a good idea to have \(p(E) \le 1\).
+- b :: Show that it is a good idea to have \(p(E) + p(E^c) = 1\).
+
+** English :English:
+*** a
+Suppose you set \(p(E) > 1\).
+If you *take* \(p(E)\) from someone and agree to give them $1 if /E/ occurs:
+- If /E/ occurs, your net gain is \(1 - p(E)< 0\).
+- If /E/ does not occur, your net gain is \(-p(E) < 0\).
+
+In this scenario (giving \(p(E)\)), you are guaranteed to lose money regardless
+of whether /E/ occurs or not. A rational person would want to avoid a guaranteed loss (this is known as a ). Therefore, it is a good idea to ensure \(p(E) \le 1\). (Similarly, one can show \(p(E) \ge 0\)).
+
+*** b
+Consider two bets simultaneously:
+1. Bet on /E/: You agree to pay/charge \(p(E)\) in exchange for $1 if /E/ occurs.
+2. Bet on /E^c/: You agree to pay/charge \(p(E^c)\) in exchange for $1 if /E^c/
+   occurs.
+
+Let's analyze the net gain from the perspective of *giving* the amounts \(p(E)\) and \(p(E^c)\):
+- Case 1: /E/ occurs (so /E^c/ does not occur)
+  - Net gain from bet 1: \(1 - p(E)\)
+  - Net gain from bet 2: \(0 - p(E^c)\)
+  - Total net gain: \(1 - p(E) - p(E^c)\)
+- Case 2: /E/ does not occur (so /E^c/ occurs)
+  - Net gain from bet 1: \(0 - p(E)\)
+  - Net gain from bet 2: \(1 - p(E^c)\)
+  - Total net gain: \(-p(E) + 1 - p(E^c)\)
+
+In both cases, the total net gain is \(1 - p(E) - p(E^c)\).
+
+If \(p(E) + p(E^c) \neq 1\), then the total net gain is either always positive or always negative, regardless of the outcome.
+- If \(p(E) + p(E^c) < 1\), the total net gain \(1 - p(E) - p(E^c)\) is always positive. This means you have a guaranteed profit (a ).
+- If \(p(E) + p(E^c) > 1\), the total net gain \(1 - p(E) - p(E^c)\) is always negative. This means you have a guaranteed loss (a ).
+
+To avoid a guaranteed loss or profit (i.e., for the bets to be coherent), the
+net gain must be zero regardless of the outcome. Therefore, it must be the case
+that: \[1 - p(E) - p(E^c) = 0\] \[p(E) + p(E^c) = 1\] Thus, it is a good idea
+(necessary for coherence) to have \(p(E) + p(E^c) = 1\).
+
+** 日本語 :Japanese:
+*** a
+もし\(p(E) > 1\)なら、収支は
+\(E\)が起こると、\(1 - p(E) < 0\)、
+E が起こらないと、\(-p(E) < 0 \)となる。
+
+一方、\(p(E) \le 1\)のとき、収支は
+\(E\)が起こると、\(1 - p(E) \ge 0 \)、
+\(E\)が起こらないと、\( -p(E) \le 0\)となる。
+
+よって、合理的な選択の結果は、\(p(E) \le 1\)となる。
+*** b
+\(p(E) \le 1\) を任意に固定する。
+このとき、参加者の収支は、
+\(E\)が起こると、\(1 - p(E) \ge 0 \)、
+\(E\)が起こらないと、\(-p(E) \le 0 \)となる。
+
+ここで、新たに、\(E^c\)を誰かに支払い、もし\(E^c\)が起こった場合は$1 もらえるという賭けをするとき、
+参加者の収支は、
+- \(E\)が起こると、\(-p(E^c) \le 0 \)、
+- \(E\)が起こらないと、\(1 - p(E^c) \ge 0 \)となる。
+以上より、1 つ目と 2 つ目の賭けの合計の収支は、
+- \(E\)が起こると、\(1 - p(E) - p(E^c)\)
+- \(E\)が起こらないと、\(-p(E) + 1 - p(E^c)\)となり、
+どちらにしろ収支は\(1 - p(E) - p(E^c)\)。
+
+合理的な人間は、収支がゼロになるギリギリのところまでなら参加するので、
+\(1 - p(E) - p(E^c) = 0\)となる\( p(E^c) \)
+すなわち、
+\[p(E^c) = 1 - p(E)\]
+が選択される。
+よって、
+\[p(E) + p(E^c) = 1\]
+\(p(E)\)は任意であったので、題意は示せた。
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-6.org][2.6]]
+
+#+ATTR_HTML: :class nav-next
+[[./2-8.org][2.8]]

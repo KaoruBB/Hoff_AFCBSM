@@ -1,0 +1,70 @@
+#+SETUPFILE: setup
+* 2.5
+** Question :noexport:
+Urns: Suppose urn /H/ is filed with 40% green balls and 60% red balls,
+and urn /T/ is filled with 60% green balls and 40% red balls.
+Someone will flip a coin and then select a ball from urn /H/ or urn /T/ depending on whether the coin lands heads or tails, respectively.
+Let /X/ be 1 or 0 if the coin lands heads or tails, and let /Y/ be 1 or 0 if the ball is green or red.
+
+- a :: Write out the joint distribution of /X/ and /Y/ in a table.
+- b :: Find E\([Y]\). What is probability that the ball is green?
+- c :: Find Var\([Y \mid X =0]\), Var\([Y \mid X =1]\), and Var\([Y]\).
+  Thinking of variance as measuring uncertainty, explain intuitively why one of these variances is larger than the others.
+- d :: Suppose you see that the ball is green.
+  What is the probability that the coin turned up tails?
+
+** Answer
+*** a
+|       | X = 0 | X = 1 |
+|-------+-------+-------|
+| Y = 0 |   0.2 |   0.3 |
+| Y = 1 |   0.3 |   0.2 |
+
+*** b
+By using the table above (上の表を用いて),
+\begin{align*}
+\text{E}\left[Y\right]
+&= \text{Pr}(Y = 0) \cdot 0 + \text{Pr}(Y = 1) \cdot 1 \\
+&= (0.2 + 0.3) \cdot 0 + (0.3 + 0.2) \cdot 1 \\
+&= 0.5
+\end{align*}
+*** c
+\begin{align*}
+\text{Var}\left[Y \mid X = 0\right]
+&= \text{Pr}(Y = 0 \mid X = 0) \cdot (0 - \text{E}\left[Y \mid X = 0\right])^2 +
+\text{Pr}(Y = 1 \mid X = 0) \cdot (1 - \text{E}\left[Y \mid X = 0\right])^2 \\
+&= 0.4 \cdot (0- 0.6)^2 + 0.6 \cdot (1 - 0.6)^2 \\
+&= 0.24 \\
+\\
+\text{Var}\left[Y \mid X = 1\right]
+&= \text{Pr}(Y = 0 \mid X = 1) \cdot (0 - \text{E}\left[Y \mid X = 1\right])^2 +
+\text{Pr}(Y = 1 \mid X = 1) \cdot (1 - \text{E}\left[Y \mid X = 1\right])^2 \\
+&= 0.6 \cdot (0- 0.4)^2 + 0.4 \cdot (1 - 0.4)^2 \\
+&= 0.24 \\
+\\
+\text{Var}\left[Y\right]
+&= \text{Pr}(Y = 0) \cdot (0 - \text{E}\left[Y\right])^2 +
+\text{Pr}(Y = 1) \cdot (1 - \text{E}\left[Y\right])^2 \\
+&= 0.5 \cdot (0- 0.5)^2 + 0.5 \cdot (1 - 0.5)^2 \\
+&= 0.25
+\end{align*}
+
+
+The reason why \(Var[Y]\) is greater than \(Var[Y \mid X = 0]\) and \(Var[Y \mid X = 1]\) is that the uncertainty increases because it is not determined from which urn the ball is chosen.
+
+Var[Y]が Var[\(Y \mid X = 0\)] と Var[\(Y \mid X = 1\)]よりも大きいのは、
+どちらの壺からボールを選ぶか決まっていない分不確実性が大きくなるから。
+*** d
+\begin{align*}
+\text{Pr}(X = 0 \mid Y = 1)
+&= \frac{\text{Pr}(Y = 1 \mid X = 0) \text{Pr}(X = 0)}{\text{Pr}(Y = 1)} \\
+&= \frac{0.6 \cdot 0.5}{0.5} \\
+&= 0.6
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-4.org][2.4]]
+
+#+ATTR_HTML: :class nav-next
+[[./2-6.org][2.6]]

@@ -1,0 +1,88 @@
+#+SETUPFILE: setup
+
+* 2.1
+** a
+
+\begin{align*}
+Pr (Y_1 = \text{farm})
+& = Pr(Y_1 = \text{farm} | Y_2 = \text{farm})+
+Pr(Y_1 = \text{farm} | Y_2 = \text{operatives})\\ &+
+Pr(Y_1 = \text{farm} | Y_2 = \text{craftsman}) \\&+
+Pr(Y_1 = \text{farm} | Y_2 = \text{sales}) \\&+
+Pr(Y_1 = \text{farm} | Y_2 = \text{professinonal})\\
+&= 0.018 + 0.035 + 0.031 + 0.008 + 0.018 \\
+&= 0.110
+\end{align*}
+
+同様にして、
+\begin{align*}
+& Pr (Y_1 = \text{operatives})
+= 0.002 + 0.112 + 0.064 + 0.032 + 0.069
+= 0.279\\
+& Pr (Y_1 = \text{craftsman})
+= 0.001 + 0.066 + 0.094 + 0.032 + 0.084
+= 0.277\\
+& Pr (Y_1 = \text{sales})
+= 0.001 + 0.018 + 0.019 + 0.010 + 0.051
+= 0.099\\
+& Pr (Y_1 = \text{professional})
+= 0.001 + 0.029 + 0.032 + 0.043 + 0.130
+= 0.235
+\end{align*}
+
+** b
+
+\begin{align*}
+&\text{Pr}(Y_2 = \text{farm}) = 0.018 + 0.002 + 0.001 + 0.001 + 0.001 = 0.023\\
+&\text{Pr}(Y_2 = \text{operatives}) = 0.035 + 0.112 + 0.066 + 0.018 + 0.029 = 0.26\\
+&\text{Pr}(Y_2 = \text{craftsman}) = 0.031 + 0.064 + 0.094 + 0.019 + 0.032 = 0.24\\
+&\text{Pr}(Y_2 = \text{sales}) = 0.008 + 0.032 + 0.032 + 0.010 + 0.043 = 0.125\\
+&\text{Pr}(Y_2 = \text{professional}) = 0.018 + 0.069 + 0.084 + 0.051 + 0.130 = 0.352
+\end{align*}
+
+** c
+the conditional distribution of a son's occupation, given that the father is a farmer;
+
+\begin{align*}
+&\text{Pr}(Y_2 = \text{farm} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{farm}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.018}{0.110} = 0.164\\
+&\text{Pr}(Y_2 = \text{operatives} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{operatives}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.035}{0.110} = 0.318\\
+&\text{Pr}(Y_2 = \text{craftsman} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{craftsman}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.031}{0.110} = 0.282\\
+&\text{Pr}(Y_2 = \text{sales} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{sales}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.008}{0.110} = 0.073\\
+&\text{Pr}(Y_2 = \text{professional} | Y_1 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{professional}) }{ \text{Pr}(Y_1 = \text{farm}) }
+ = \frac{0.018}{0.110} = 0.164
+\end{align*}
+
+** d
+the conditional distribution of a father's occupation, given that the son is a farmer;
+
+\begin{align*}
+&\text{Pr}(Y_1 = \text{farm} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{farm} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.018}{0.023} = 0.783\\
+&\text{Pr}(Y_1 = \text{operatives} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{operatives} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.002}{0.023} = 0.087\\
+&\text{Pr}(Y_1 = \text{craftsman} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{craftsman} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.001}{0.023} = 0.043\\
+&\text{Pr}(Y_1 = \text{sales} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{sales} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.001}{0.023} = 0.043\\
+&\text{Pr}(Y_1 = \text{professional} | Y_2 = \text{farm})
+= \frac{ \text{Pr}(Y_1 = \text{professional} , Y_2 = \text{farm}) }{ \text{Pr}(Y_2 = \text{farm}) }
+ = \frac{0.001}{0.023} = 0.043
+\end{align*}
+
+* nav :ignore:
+
+#+ATTR_HTML: :class nav-next
+[[./2-2.org][2.2]]

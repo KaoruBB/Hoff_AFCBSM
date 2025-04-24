@@ -1,0 +1,69 @@
+#+SETUPFILE: setup
+* 2.6
+** Question :noexport:
+Conditional Independence: Suppose events /A/ and /B/ are conditionally independent given /C/, which is written \(A \perp B \mid C\).
+Show that this implies that \( A^c \perp B \mid C , \ A \perp B^c \mid C \) and \( A^c \perp B^c \mid C \), where \( A^c \) means "not /A/."
+Find an example where \(A \perp B \mid C\) holds but \(A \perp B \mid C^c\) does not hold.
+
+** Answer
+\( A \perp B \mid C \) means that
+\begin{equation}
+\label{2.6condition}
+\text{Pr}(A\cap B \mid C) = \text{Pr}(A \mid C) \text{Pr}(B \mid C)
+\end{equation}
+holds.
+
+\begin{equation}
+\label{2.6condition2}
+\text{Pr}(B \mid C) = \text{Pr}(A \cap B \mid C) + \text{Pr}(A^c \cap B \mid C)
+\end{equation}
+
+From this equation, we can rewrite \(\text{Pr}(A^c \cap B \mid C)\) as follows.
+
+\begin{equation}
+\label{2.6ans1}
+    \begin{aligned}
+    \text{Pr}(A^c \cap B \mid C)
+    &= \text{Pr}(B \mid C) - \text{Pr}(A \cap B \mid C)
+    \qquad  (\because \eqref{2.6condition2})\\
+    &= \text{Pr}(B \mid C) - \text{Pr}(A \mid C) \text{Pr}(B \mid C)
+    \qquad  (\because \eqref{2.6condition})\\
+    &= \text{Pr}(B \mid C) \left(1 - \text{Pr}(A \mid C)\right) \\
+    &= \text{Pr}(A^c \mid C) \text{Pr}(B \mid C) \\
+    \end{aligned}
+\end{equation}
+This means \( A^c \perp B \mid C \).
+
+Similarly, \(\text{Pr}(A \cap B^c \mid C)\) can be rewritten as follows.
+\begin{equation}
+\label{2.6ans2}
+    \begin{aligned}
+        \text{Pr}(A \cap B^c \mid C)
+        &= \text{Pr}(A \mid C) - \text{Pr}(A \cap B \mid C) \\
+        &= \text{Pr}(A \mid C) - \text{Pr}(A \mid C) \text{Pr}(B \mid C)
+        \qquad (\because \eqref{2.6condition})\\
+        &= \text{Pr}(A \mid C) \left(1 - \text{Pr}(B \mid C)\right) \\
+        &= \text{Pr}(A \mid C) \text{Pr}(B^c \mid C). \\
+    \end{aligned}
+\end{equation}
+This means \( A \perp B^c \mid C \).
+
+Furthermore, \(\text{Pr}(A^c \cap B^c \mid C)\) can also be calculated in the same way.
+
+\begin{align*}
+\text{Pr}(A^c \cap B^c \mid C)
+&= \text{Pr}(A^c \mid C) - \text{Pr}(A^c \cap B \mid C) \\
+&= \text{Pr}(A^c \mid C) - \text{Pr}(A^c \mid C) \text{Pr}(B \mid C)
+\qquad (\because \eqref{2.6ans1})\\
+&= \text{Pr}(A^c \mid C) \left(1 - \text{Pr}(B \mid C)\right) \\
+&= \text{Pr}(A^c \mid C) \text{Pr}(B^c \mid C)
+\end{align*}
+
+This means \( A^c \perp B^c \mid C \).
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-5.org][2.5]]
+
+#+ATTR_HTML: :class nav-next
+[[./2-7.org][2.7]]

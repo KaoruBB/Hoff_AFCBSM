@@ -1,0 +1,81 @@
+#+SETUPFILE: setup
+* 2.4
+** Question :noexport:
+Symbolic manipulation: Prove the following form of Bayes’ rule:
+
+\[
+\text{Pr}(H_j \mid E)
+= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\sum_{k=1}^K \text{Pr}(E \mid H_k) \text{Pr}(H_k)}
+\]
+
+where /E/ is any event and \(\{H_1, \dots , H_K\}\) form a partition.
+Prove this using only axioms *P1-P3* from this chapter, by following steps a)-d) below:
+
+- a :: Show that \(\text{Pr}(H_j \mid E) \text{Pr}(E) = \text{Pr}(E \mid H_j) \text{Pr}(H_j)\).
+- b :: Show that \(\text{Pr}(E) = \text{Pr}(E \cap H_1) + \text{Pr}(E \cap \{ \cup^K_{k=2} H_k\})\).
+- c :: Show that \(\text{Pr}(E) = \sum_{k=1}^K \text{Pr}(E \cap H_k)\).
+- d :: Put it all together to show Bayes’ rule, as described above.
+
+** Answer
+*** a
+
+\begin{align*}
+\text{Pr}(H_j \mid E) \text{Pr}(E)
+&= \text{Pr}(H_j \mid E \cap (E \text{ or not} E)) \text{Pr}(E \mid E \text{ or not} E) \\
+&= \text{Pr}(H_j \cap E \mid E \text{ or not} E)
+\qquad (\because \text{P3}) \\
+\\
+\text{Pr}(E \mid H_j) \text{Pr}(H_j)
+&= \text{Pr}(E \mid H_j \cap (E \text{ or not} E)) \text{Pr}(H_j \mid E \text{ or not} E) \\
+&= \text{Pr}(E \cap H_j \mid E \text{ or not} E)
+\qquad (\because \text{P3}) \\
+\\
+\therefore \text{Pr}(H_j \mid E) \text{Pr}(E)
+&= \text{Pr}(E \mid H_j) \text{Pr}(H_j)
+\end{align*}
+
+*** b
+
+\(\text{Pr}( \bigcup^K_{k=1} H_k ) = 1\)
+と仮定する。
+
+\begin{align*}
+\text{Pr}(E)
+&= \text{Pr}\left(E \cap \bigcup_{k=1}^K H_k\right) \\
+&= \text{Pr}\left( \left(E \cap H_1 \right) \cup \left( E \cap \left\{\bigcup_{k=2}^K H_k \right\} \right) \right)\\
+&= \text{Pr}\left( E \cap H_1 \right) + \text{Pr}\left( E \cap \left\{ \bigcup_{k=2}^K H_k \right\} \right)
+\qquad (\because \{H_1, \dots , H_K\} \text{ is a partition and P2})
+\end{align*}
+
+*** c
+
+\begin{align*}
+\text{Pr}(E)
+&= \text{Pr}\left(E \cap H_1 \right)+
+\text{Pr}\left( E \cap \left\{ \bigcup_{k=2}^K H_k \right\} \right) \\
+&= \text{Pr}\left( E \cap H_1 \right) +
+\text{Pr}\left( E \cap H_2 \right) +
+\text{Pr}\left( E \cap \left\{ \bigcup_{k=3}^K H_k \right\} \right) \\
+&= \cdots \\
+&= \text{Pr}\left( E \cap H_1 \right) +
+\text{Pr}\left( E \cap H_2 \right) +
+\cdots + \text{Pr}\left( E \cap H_K \right) \\
+&= \sum_{k=1}^K \text{Pr}\left( E \cap H_k \right)
+\end{align*}
+*** d
+\begin{align*}
+\text{Pr}(H_j \mid E)
+&= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\text{Pr}(E)}
+\qquad (\because \text{a}) \\
+&= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\sum_{k=1}^K \text{Pr}(E \cap H_k)}
+\qquad (\because \text{c})\\
+&= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\sum_{k=1}^K \text{Pr}(E \mid H_k) \text{Pr}(H_k)}
+\qquad (\because \text{P3})\\
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-3.org][2.3]]
+
+#+ATTR_HTML: :class nav-next
+[[./2-5.org][2.5]]

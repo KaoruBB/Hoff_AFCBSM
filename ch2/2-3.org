@@ -1,0 +1,48 @@
+#+SETUPFILE: setup
+* 2.3
+** a
+\begin{align*}
+p(x \mid y, z) &= \frac{p(x, y, z)}{p(y, z)} \\
+&= \frac{p(x, y, z)}{\int p(x, y, z) \; dx} \\
+&= \frac{f(x, z) g(y, z) h(z)}{\int f(x, z) g(y, z) h(z) \; dx} \qquad (*[1]) \\
+&= \frac{f(x, z) g(y, z) h(z)}{g(y, z) h(z) \int f(x, z) \; dx} \\
+&= \frac{f(x, z)}{\int f(x, z) \; dx}
+\end{align*}
+
+*[1]: \\
+仮定より $p(x, y, z) = Const \times f(x, z) g(y, z) h(z)$ となるが、定数はインテグラルの外に出て打ち消されるから。 \\
+By assumption, $p(x, y, z) = Const \times f(x, z) g(y, z) h(z)$, but the constant cancels out after integration.
+
+** b
+\begin{align*}
+p( y \mid x, z)
+& = \frac{p(x, y, z)}{p(x, z)} \\
+&= \frac{p(x, y, z)}{\int p(x, y, z) \; dy} \\
+&= \frac{f(x, z) g(y, z) h(z)}{\int f(x, z) g(y, z) h(z) \; dy} \\
+&= \frac{f(x, z) g(y, z) h(z)}{ f(x, z) h(z) \int g(y, z) \; dy} \\
+&= \frac{g(y, z)}{\int g(y, z) \; dy}
+\end{align*}
+** c
+To show \(p(x, y \mid z) = p(x \mid z) \times p(y \mid z)\):
+
+Since \(p(x,y \mid z) = p(x \mid y, z) p(y \mid z)\) always holds, it suffices to show \(p(x \mid z) = p(x \mid y, z)\).
+
+\begin{align*}
+p(x \mid z) &= \frac{p(x, z)}{p(z)} \\
+&= \frac{\int p(x, y, z) \; dy}{\int \int p(x, y, z) \; dy \; dx} \\
+&= \frac{\int f(x, z) g(y, z) h(z) \; dy}{\int \int f(x, z) g(y, z) h(z) \; dy \; dx} \\
+&= \frac{f(x, z) h(z) \int g(y, z) \; dy}{h(z)  \int \int g(y, z)  f(x, z) \; dy \; dx } \\
+&= \frac{f(x, z) h(z) \int g(y, z) \; dy}{h(z) \int f(x, z) \left( \int g(y, z)  \; dy \right) \; dx } \\
+&= \frac{f(x, z) h(z) \int g(y, z) \; dy}{h(z) \left( \int g(y, z) \; dy \right) \left( \int f(x, z) \; dx \right)} \\
+&= \frac{f(x, z)}{\int f(x, z) \; dx} \\
+&= p(x \mid y, z) \qquad ( \because \text{ a })
+\end{align*}
+
+Therefore, \(p(x \mid z) = p(x \mid y, z)\) holds.
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-2.org][2.2]]
+
+#+ATTR_HTML: :class nav-next
+[[./2-4.org][2.4]]

@@ -1,0 +1,156 @@
+#+SETUPFILE: setup
+* 2.8
+** Question :noexport:
+Interpretations of probability:
+One abstract way to deﬁne probability is via measure theory, in that Pr(·) is simply a “measure” that assigns mass to various events.
+For example, we can “measure” the number of times a particular event occurs in a potentially inﬁnite sequence, or we can “measure” our information about the outcome of an unknown event.
+The above two types of measures are combined in de Finetti’s theorem, which tells us that an exchangeable model for an inﬁnite binary sequence \(Y_1, Y_2 ,\dots\) is equivalent to modeling the sequence as conditionally i.i.d. given a parameter \(\theta\), where \(\mathrm{Pr}(\theta < c)\) represents our information that the long-run frequency of 1’s is less than \(c\).
+With this in mind, discuss the different ways in which probability could be interpreted in each of the following scenarios.
+Avoid using the word “probable” or “likely” when describing probability.
+Also discuss the diﬀerent ways in which the events can be thought of as random.
+
+- a :: The distributution of religions in Sri Lanka is 70% Buddhist, 15% Hindu, 8% Christian, and 7% Muslim.
+  Suppose each person can be identified by a number from 1 to /K/ on a census roll.
+  A number \(x\) is to be sampled from \(\{1, \dots , K \}\) using a pseudo-random number generator on a computer. Interpret the meaning of the following probabilities:
+  - i :: Pr(person /x/ is Hindu);
+  - ii :: Pr(\(x = 6452859\));
+  - iii :: Pr(Person /x/ is Hindu \(\mid x = 6452859\));
+- b :: A quarter which you got as change is to be flipped many times.
+  Interpret the meaning of the following probabilities:
+  - i :: Pr(\(\theta\), the long-run relative frequency of heads, equals 1/3);
+  - ii :: Pr(the first coin flip will result in a heads);
+  - iii :: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\)).
+- c :: The quarter above has been flipped, but you have not seen the outcome.
+  Interpret Pr(the flip has resulted in a heads).
+
+** Answer (English)
+*** a: Distribution of Religions in Sri Lanka
+**** i: Pr(person /x/ is Hindu)
++ /Frequency Interpretation:/ The proportion of Hindus in the sample as the total number of sampled individuals (/K/) approaches infinity. (Calculated as the number of observed Hindus divided by /K/).
++ /Subjective Interpretation:/ Our *degree of belief* that a person /x/ is Hindu, *before* the specific individual is selected.
+
+**** ii: Pr(\(x = 6452859\))
++ /Frequency Interpretation:/ The proportion of times the number 6452859 is drawn when sampling with replacement from the numbers 1 to /K/ infinitely many times.
++ /Subjective Interpretation:/ Our *degree of belief* that the selected number will be 6452859, *before* the sampling occurs.
+
+**** iii: Pr(Person /x/ is Hindu \(\mid x = 6452859\))
++ /Frequency Interpretation:/ Among all the instances where ~x = 6452859~ occurs in an infinite series of draws with replacement from 1 to /K/, the proportion of those instances where person ~x~ is Hindu. (Since ~x = 6452859~ refers to a specific individual whose religion is fixed, this proportion will be either 0 or 1).
++ /Subjective Interpretation:/ Our *degree of belief* that the specific individual (number 6452859) is Hindu, *after* we know that ~x = 6452859~. The probability reflects our *state of knowledge*. (If we know the person's religion, the degree of belief is 0 or 1. If we do not know, we might use information from the general population distribution, e.g., 15%).
+
+*** b: Coin Flipping
+**** i: Pr(θ = 1/3)
+
+This probability represents the probability assigned to the proposition that "the long-run relative frequency of heads (~θ~) when flipping a specific quarter infinitely many times is *exactly* 1/3". Two main interpretations can be considered:
+
++ /Subjective Probability / Bayesian Interpretation:/
+  + In this interpretation, ~Pr(θ = 1/3)~ represents our *degree of belief* or *state of information* regarding the true nature (the value of ~θ~) of the coin.
+  + ~θ~ is a physical property, typically considered to take a continuous value within the range [0, 1].
+  + If ~θ~ is modeled as a continuous quantity, the mathematical probability of it taking a specific single point value (~θ = 1/3~) is *zero*.
+    In this case, we usually consider beliefs about ~θ~ lying within a certain range, such as ~Pr(a < θ < b)~
+    (like the example ~Pr(θ < c)~ in the problem description).
+  + Exceptionally, if we possess strong prior information suggesting that "this coin can only have one of a few specific bias values (e.g., 1/2 or 1/3)", then ~Pr(θ = 1/3)~ could be greater than zero, indicating our degree of belief in that specific possibility.
+  + /Randomness:/ The randomness here stems from our *incomplete knowledge* about the physical properties (the true value of ~θ~) of this specific coin.
+    The fact that we do not know the value of ~θ~ is the source of randomness.
+
++ Frequentist Interpretation:
+  + The value is either 0 or 1.
+  + In the strict frequentist view, ~θ~ is an unknown but *fixed constant* (the true value) and not a random variable.
+  + Therefore, assigning a probability (~Pr(θ = 1/3)~) to the value of the parameter ~θ~ itself is not typically done within the standard frequentist framework.
+    Parameters are considered to have a specific value, not to exhibit probabilistic behavior.
+  + Attempting to force a frequentist interpretation might require imagining a scenario like "there is a population of coins with various ~θ~ values, and when we randomly select one coin from this population, the proportion of coins with ~θ = 1/3~".
+    However, the problem statement refers to *one specific* coin, making this interpretation indirect.
+  + /Randomness:/ In this (somewhat unnatural) interpretation involving selection from a population, the randomness lies in the selection process – "which coin with which ~θ~ was selected".
+    However, once the coin is selected, its ~θ~ is fixed.
+
+*In conclusion*, considering the context of the problem (especially the reference to de Finetti's theorem), interpreting ~Pr(θ = 1/3)~ as representing our *subjective belief* about the value of ~θ~ is the most natural approach.
+However, in the standard case where ~θ~ is considered a continuous quantity, this probability is zero.
+
+
+*** ii: Pr(the first coin flip will result in a heads)
+
++ /Subjective Probability Interpretation:/
+  + This represents our *current degree of belief* that the *next (first)* coin flip will result in heads.
+  + It reflects our state of knowledge or uncertainty about this specific, singular future event.
+  + /Randomness:/ In this view, randomness arises from our *lack of knowledge* or *uncertainty* about the outcome of the first flip. The result is not yet determined for us.
+
++ /Frequentist Interpretation:/
+  + This can be interpreted as the proportion of hypothetical repetitions of the *exact same scenario* (receiving this specific quarter as change and preparing to flip it once) in which the first flip results in heads, if we could repeat this scenario infinitely many times.
+  + It refers to the frequency of heads in the first flip across an imagined ensemble of identical starting situations.
+  + /Randomness:/ Here, randomness is seen as inherent in the *physical unpredictability* or *variability* of the coin flip process itself. Repeating the same process does not guarantee the same outcome each time.
+
+*** iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))
+
++ /Subjective Probability Interpretation:/
+  + This represents our *current degree of belief* that the first coin flip will result in heads, /updated with the information/ that the long-run relative frequency of heads \(\theta = 1/3\).
+
++ /Frequentist Interpretation:/
+  + This represents the proportion of first flips that would result in heads if we could infinitely repeat the scenario of flipping a coin, whose long-run relative frequency of heads \(\theta\) is \(1/3\).
+
+*** c: Pr(the flip has resulted in a heads)
++ /Subjective Probability Interpretation:/ Our *current degree of belief* that the outcome of the flipped coin is heads.
++ /Frequentist Interpretation:/ Since the result is already determined, it simply represents whether the outcome was actually heads (1) or not (0).
+
+** 解答 (日本語)
+*** a: スリランカの宗教分布
+**** i: Pr(xがヒンズー教徒)
++ *頻度主義的解釈:* K を無限大に近づけたときの標本中のヒンズー教徒の割合。 (観測されたヒンズー教徒の人数を K で割ったもの)
++ *主観確率的解釈:* 特定の個人 /x/ が選ばれる *前* に、その人がヒンドゥー教徒であるということに対する、私たちの *信念の度合い*
+
+**** ii: Pr(x = 6452859)
++ *頻度主義的解釈:* 1 から K の中から x を無限回復元抽出したとき、xが 6452859 である割合。
++ *主観確率的解釈:* サンプリングが行われる *前* に、選ばれる番号が 6452859 であるということに対する、私たちの *信念の度合い*
+**** iii: Pr(xがヒンズー教徒 | x = 6452859)
++ *頻度主義的解釈:*
+  1 から K の中から x を無限回復元抽出したときに x が 6452859 であるという事象のうち、 x がヒンズー教徒である割合。
+  (~x = 6452859~ は特定の個人を指し、その人の宗教は固定されているので、0 または 1 のどちらかになる)
++ *主観確率的解釈:*
+   条件 ~x = 6452859~ を知った *後* で、その特定の個人がヒンドゥー教徒であることに対する私たちの *信念の度合い* 。
+   確率は *私たちの知識の状態* を反映する。
+   (もし私たちがその人の宗教を知っていれば、信念の度合いは 0 または 1 になるが、知らなければ一般的な人口分布の情報 (15%がヒンドゥー教徒) を使うかもしれない)
+*** b: コイン投げ
+**** i: Pr(θ = 1/3)
+この確率は、「特定のクォーター（硬貨）を無限回投げたときの表が出る長期的な相対頻度 \(\theta\) が、 *正確に* 1/3 である」という命題に対する確率である。
+これには主に二つの解釈が考えられる。
+
++ *主観確率的解釈:*
+  + この解釈では、\(\mathrm{Pr}(\theta = 1/3)\) は、その硬貨の真の性質 (\theta の値) に関する私たちの *信念の度合い* または *情報の状態* を表す。
+  + \theta は物理的な特性であり、通常は [0, 1] の範囲の連続的な値を取ると考えられる。
+  + もし \theta が連続的な量であるとモデル化する場合、特定の一点 (\(\theta=1/3\)) を取る数学的な確率は *ゼロ* になる。
+    この場合、通常は Pr(a < θ < b) のように、\theta がある範囲内にあることに対する信念を考える
+    （問題文の Pr(θ < c) の例のように）。
+  + 例外的に、もし私たちが「このコインは、いくつかの特定のバイアス値（例えば、1/2 または 1/3）しか持ち得ない」と考える強い事前情報を持っている場合、\(\mathrm{Pr}(\theta=1/3)\) はゼロより大きい値を持ち、その特定の可能性に対する私たちの信念の度合いを示すことができる。
+  + *ランダム性:* ここでのランダム性は、この特定のコインの物理的性質 (\theta の真の値) に関する私たちの *知識の不完全さ* に起因する。
+    \(\theta\) の値が何であるか、私たちにはわからないという点がランダム性の源である。
+
++ *頻度主義的解釈:*
+  + \(\theta=1/3\)という命題が正しいかどうか (0 または 1) ということ。
+  + 厳密な頻度主義の立場では、\(\theta\) は未知ではあるものの *固定された定数* （真の値）であり、ランダム変数ではありません。
+  + そのため、パラメータ \(\theta\) 自体の値に対して確率 (\(\mathrm{Pr}(\theta=1/3)\)) を割り当てることは、標準的な頻度主義の枠組みでは通常行われない。
+    パラメータは確率的な振る舞いをするものではなく、単に特定の値を持つものと考えられる。
+  + 無理に頻度主義的な解釈を適用しようとすると、「様々な \(\theta\) を持つコインの集団があり、そこからランダムに一つ選んだときに、そのコインの \(\theta\) が 1/3 である割合」のような状況を想定する必要がある。
+    しかし、問題は *特定の* 一枚のコインについて述べているため、この解釈は直接的ではない。
+  + *ランダム性:* この（やや不自然な）集団からの選択という解釈では、ランダム性は「どの \(\theta\) を持つコインが選ばれたか」という選択プロセスにある。
+    しかし、一度コインが選ばれれば、そのコインの \(\theta\) は固定されている。
+
+
+**** ii: Pr(最初のコイン投げで表が出る)
++ *主観確率的解釈:* *次に行う（最初の）* コイン投げの結果が表になることに対する、私たちの *現在の信念の度合い*
+  + ランダム性は、最初のコイン投げの結果についての私たちの *知識の欠如* または *不確実性* に起因する
++ *頻度主義的解釈:*
+  + お釣りとして得た25セント硬貨を何度も投げる世界線を無限に考えたとき、最初のコイン投げで表が出る世界線の割合。
+  + ランダム性は、コイン投げという物理的プロセス固有の *予測不可能性* や *変動性* に起因する
+
+**** iii: Pr(最初のコイン投げで表が出る | θ = 1/3)
++ *主観確率的解釈:* 長期的に見た表が出る相対頻度\(\theta = 1/3\) という情報を知ったうえで、最初のコイン投げの結果が表になることに対する私たちの *現在の信念の度合い*
++ *頻度主義的解釈:* 長期的に見た表が出る相対頻度\(\theta = 1/3\)の25セント硬貨を何度も投げる世界線を無限に考えたとき、最初のコイン投げで表が出る世界線の割合
+
+*** c: Pr(すでに投げられたコインの結果が表)
++ *主観確率的解釈:* 投げられたコインの結果が表であることに対する私たちの *現在の信念の度合い*
++ *頻度主義的解釈:* すでに結果が決まっているので、単に結果が表であったどうか(0 または 1) ということを表す
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-7.org][2.7]]
+
+#+ATTR_HTML: :class nav-next
+# [[./3-1.org][3.1]]

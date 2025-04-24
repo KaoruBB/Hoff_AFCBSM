@@ -1,0 +1,38 @@
+#+SETUPFILE: setup
+* 2.2
+** a
+\begin{align*}
+\text{E} [a_1 Y_1 + a_2 Y_2] &= a_1 \text{E} [Y_1] + a_2 \text{E} [Y_2] \\
+& = a_1 \mu_1 + a_2 \mu_2 \\
+\\
+\text{Var} [a_1 Y_1 + a_2 Y_2]
+&= \text{E} [(a_1 Y_1 + a_2 Y_2)^2] - \text{E} [a_1 Y_1 + a_2 Y_2]^2 \\
+&= \text{E} [a_1^2 Y_1^2 + a_2^2 Y_2^2 + 2 a_1 a_2 Y_1 Y_2] - \text{E} [a_1 Y_1 + a_2 Y_2]^2 \\
+&= a_1^2 \text{E} [Y_1^2] + a_2^2 \text{E} [Y_2^2] + 2 a_1 a_2 \text{E} [Y_1 Y_2]
+- (a_1 \mu_1 + a_2 \mu_2)^2\\
+&= a_1^2 (\text{E} [Y_1^2] - \mu_1^2) + a_2^2 (\text{E} [Y_2^2] - \mu_2^2) + 2 a_1 a_2 \text{E} [Y_1] \text{E} [Y_2] - 2 a_1 a_2 \mu_1 \mu_2 \\
+& \qquad \qquad ( \because Y_1 \text{ and } Y_2 \text{ are independent })\\
+&= a_1^2 \sigma_1^2 + a_2^2 \sigma_2^2
+\end{align*}
+** b
+\begin{align*}
+\text{E} [a_1 Y_1 - a_2 Y_2]
+&= a_1 \text{E} [Y_1] - a_2 \text{E} [Y_2] \\
+&= a_1 \mu_1 - a_2 \mu_2 \\
+\\
+\text{Var} [a_1 Y_1 - a_2 Y_2]
+&= \text{E} [(a_1 Y_1 - a_2 Y_2)^2] - \text{E} [a_1 Y_1 - a_2 Y_2]^2 \\
+&= \text{E} [a_1^2 Y_1^2 + a_2^2 Y_2^2 - 2 a_1 a_2 Y_1 Y_2] - \text{E} [a_1 Y_1 - a_2 Y_2]^2 \\
+&= a_1^2 \text{E} [Y_1^2] + a_2^2 \text{E} [Y_2^2] - 2 a_1 a_2 \text{E} [Y_1 Y_2]
+- (a_1 \mu_1 - a_2 \mu_2)^2\\
+&= a_1^2 (\text{E} [Y_1^2] - \mu_1^2) + a_2^2 (\text{E} [Y_2^2] - \mu_2^2) - 2 a_1 a_2 \text{E} [Y_1] \text{E} [Y_2] + 2 a_1 a_2 \mu_1 \mu_2 \\
+& \qquad \qquad ( \because Y_1 \text{ and } Y_2 \text{ are independent })\\
+&= a_1^2 \sigma_1^2 + a_2^2 \sigma_2^2
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./2-1.org][2.1]]
+
+#+ATTR_HTML: :class nav-next
+[[./2-3.org][2.3]]
