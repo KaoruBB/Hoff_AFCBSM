@@ -1,5 +1,6 @@
-#+SETUPFILE: setup
-* 2.3
+#+TITLE: 2.3
+#+INCLUDE: setup.org
+* Answer
 ** a
 \begin{align*}
 p(x \mid y, z) &= \frac{p(x, y, z)}{p(y, z)} \\

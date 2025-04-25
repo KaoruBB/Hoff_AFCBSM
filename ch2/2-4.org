@@ -1,6 +1,6 @@
-#+SETUPFILE: setup
-* 2.4
-** Question :noexport:
+#+TITLE: 2.4
+#+INCLUDE: setup.org
+* Question :noexport:
 Symbolic manipulation: Prove the following form of Bayes’ rule:
 
 \[
@@ -16,8 +16,8 @@ Prove this using only axioms *P1-P3* from this chapter, by following steps a)-d)
 - c :: Show that \(\text{Pr}(E) = \sum_{k=1}^K \text{Pr}(E \cap H_k)\).
 - d :: Put it all together to show Bayes’ rule, as described above.
 
-** Answer
-*** a
+* Answer
+** a
 
 \begin{align*}
 \text{Pr}(H_j \mid E) \text{Pr}(E)
@@ -34,7 +34,7 @@ Prove this using only axioms *P1-P3* from this chapter, by following steps a)-d)
 &= \text{Pr}(E \mid H_j) \text{Pr}(H_j)
 \end{align*}
 
-*** b
+** b
 
 \(\text{Pr}( \bigcup^K_{k=1} H_k ) = 1\)
 と仮定する。
@@ -47,7 +47,7 @@ Prove this using only axioms *P1-P3* from this chapter, by following steps a)-d)
 \qquad (\because \{H_1, \dots , H_K\} \text{ is a partition and P2})
 \end{align*}
 
-*** c
+** c
 
 \begin{align*}
 \text{Pr}(E)
@@ -62,7 +62,7 @@ Prove this using only axioms *P1-P3* from this chapter, by following steps a)-d)
 \cdots + \text{Pr}\left( E \cap H_K \right) \\
 &= \sum_{k=1}^K \text{Pr}\left( E \cap H_k \right)
 \end{align*}
-*** d
+** d
 \begin{align*}
 \text{Pr}(H_j \mid E)
 &= \frac{\text{Pr}(E \mid H_j) \text{Pr}(H_j)}{\text{Pr}(E)}

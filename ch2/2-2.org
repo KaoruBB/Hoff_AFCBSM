@@ -1,5 +1,6 @@
-#+SETUPFILE: setup
-* 2.2
+#+TITLE: 2.2
+#+INCLUDE: setup.org
+* Answer
 ** a
 \begin{align*}
 \text{E} [a_1 Y_1 + a_2 Y_2] &= a_1 \text{E} [Y_1] + a_2 \text{E} [Y_2] \\

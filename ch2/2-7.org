@@ -1,6 +1,6 @@
-#+SETUPFILE: setup
-* 2.7
-** Question :noexport:
+#+TITLE: 2.7
+#+INCLUDE: setup.org
+* Question :noexport:
 Coherence of bets:
 de Finetti thought of subjective probability as follows:
 
@@ -15,8 +15,8 @@ Your probability for the event \(E^c = \) "not /E/" is defined similarly.
 - a :: Show that it is a good idea to have \(p(E) \le 1\).
 - b :: Show that it is a good idea to have \(p(E) + p(E^c) = 1\).
 
-** English :English:
-*** a
+* Answer (English) :English:
+** a
 Suppose you set \(p(E) > 1\).
 If you *take* \(p(E)\) from someone and agree to give them $1 if /E/ occurs:
 - If /E/ occurs, your net gain is \(1 - p(E)< 0\).
@@ -25,7 +25,7 @@ If you *take* \(p(E)\) from someone and agree to give them $1 if /E/ occurs:
 In this scenario (giving \(p(E)\)), you are guaranteed to lose money regardless
 of whether /E/ occurs or not. A rational person would want to avoid a guaranteed loss (this is known as a ). Therefore, it is a good idea to ensure \(p(E) \le 1\). (Similarly, one can show \(p(E) \ge 0\)).
 
-*** b
+** b
 Consider two bets simultaneously:
 1. Bet on /E/: You agree to pay/charge \(p(E)\) in exchange for $1 if /E/ occurs.
 2. Bet on /E^c/: You agree to pay/charge \(p(E^c)\) in exchange for $1 if /E^c/
@@ -52,8 +52,8 @@ net gain must be zero regardless of the outcome. Therefore, it must be the case
 that: \[1 - p(E) - p(E^c) = 0\] \[p(E) + p(E^c) = 1\] Thus, it is a good idea
 (necessary for coherence) to have \(p(E) + p(E^c) = 1\).
 
-** 日本語 :Japanese:
-*** a
+* 解答 (日本語) :Japanese:
+** a
 もし\(p(E) > 1\)なら、収支は
 \(E\)が起こると、\(1 - p(E) < 0\)、
 E が起こらないと、\(-p(E) < 0 \)となる。
@@ -63,7 +63,7 @@ E が起こらないと、\(-p(E) < 0 \)となる。
 \(E\)が起こらないと、\( -p(E) \le 0\)となる。
 
 よって、合理的な選択の結果は、\(p(E) \le 1\)となる。
-*** b
+** b
 \(p(E) \le 1\) を任意に固定する。
 このとき、参加者の収支は、
 \(E\)が起こると、\(1 - p(E) \ge 0 \)、

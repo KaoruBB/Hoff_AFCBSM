@@ -1,11 +1,11 @@
-#+SETUPFILE: setup
-* 2.6
-** Question :noexport:
+#+TITLE: 2.6
+#+INCLUDE: setup.org
+* Question :noexport:
 Conditional Independence: Suppose events /A/ and /B/ are conditionally independent given /C/, which is written \(A \perp B \mid C\).
 Show that this implies that \( A^c \perp B \mid C , \ A \perp B^c \mid C \) and \( A^c \perp B^c \mid C \), where \( A^c \) means "not /A/."
 Find an example where \(A \perp B \mid C\) holds but \(A \perp B \mid C^c\) does not hold.
 
-** Answer
+* Answer
 \( A \perp B \mid C \) means that
 \begin{equation}
 \label{2.6condition}

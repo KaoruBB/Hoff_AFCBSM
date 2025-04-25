@@ -1,6 +1,6 @@
-#+SETUPFILE: setup
-
-* 2.1
+#+TITLE: 2.1
+#+INCLUDE: setup.org
+* Answer
 ** a
 
 \begin{align*}

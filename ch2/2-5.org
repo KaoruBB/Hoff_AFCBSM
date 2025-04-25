@@ -1,6 +1,6 @@
-#+SETUPFILE: setup
-* 2.5
-** Question :noexport:
+#+TITLE: 2.5
+#+INCLUDE: setup.org
+* Question :noexport:
 Urns: Suppose urn /H/ is filed with 40% green balls and 60% red balls,
 and urn /T/ is filled with 60% green balls and 40% red balls.
 Someone will flip a coin and then select a ball from urn /H/ or urn /T/ depending on whether the coin lands heads or tails, respectively.
@@ -13,14 +13,14 @@ Let /X/ be 1 or 0 if the coin lands heads or tails, and let /Y/ be 1 or 0 if the
 - d :: Suppose you see that the ball is green.
   What is the probability that the coin turned up tails?
 
-** Answer
-*** a
+* Answer
+** a
 |       | X = 0 | X = 1 |
 |-------+-------+-------|
 | Y = 0 |   0.2 |   0.3 |
 | Y = 1 |   0.3 |   0.2 |
 
-*** b
+** b
 By using the table above (上の表を用いて),
 \begin{align*}
 \text{E}\left[Y\right]
@@ -28,7 +28,7 @@ By using the table above (上の表を用いて),
 &= (0.2 + 0.3) \cdot 0 + (0.3 + 0.2) \cdot 1 \\
 &= 0.5
 \end{align*}
-*** c
+** c
 \begin{align*}
 \text{Var}\left[Y \mid X = 0\right]
 &= \text{Pr}(Y = 0 \mid X = 0) \cdot (0 - \text{E}\left[Y \mid X = 0\right])^2 +
@@ -54,7 +54,7 @@ The reason why \(Var[Y]\) is greater than \(Var[Y \mid X = 0]\) and \(Var[Y \mid
 
 Var[Y]が Var[\(Y \mid X = 0\)] と Var[\(Y \mid X = 1\)]よりも大きいのは、
 どちらの壺からボールを選ぶか決まっていない分不確実性が大きくなるから。
-*** d
+** d
 \begin{align*}
 \text{Pr}(X = 0 \mid Y = 1)
 &= \frac{\text{Pr}(Y = 1 \mid X = 0) \text{Pr}(X = 0)}{\text{Pr}(Y = 1)} \\
