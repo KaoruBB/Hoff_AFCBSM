@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3.3</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">3.3
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org27f102c">Answer</a>
+<ul>
+<li><a href="#org55fd4a5">a)</a>
+<ul>
+<li><a href="#orgcc77f0c">answer</a></li>
+</ul>
+</li>
+<li><a href="#org81791d0">b</a>
+<ul>
+<li><a href="#orge6ce0c2">answer</a></li>
+</ul>
+</li>
+<li><a href="#orge357481">c</a>
+<ul>
+<li><a href="#orgd295d6f">answer</a>
+<ul>
+<li><a href="#org1cabf3a">日本語</a></li>
+<li><a href="#org44ddc6d">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org27f102c" class="outline-2">
+<h2 id="org27f102c">Answer</h2>
+<div class="outline-text-2" id="text-org27f102c">
+</div>
+<div id="outline-container-org55fd4a5" class="outline-3">
+<h3 id="org55fd4a5">a)</h3>
+<div class="outline-text-3" id="text-org55fd4a5">
+</div>
+<div id="outline-container-orgcc77f0c" class="outline-4">
+<h4 id="orgcc77f0c">answer</h4>
+<div class="outline-text-4" id="text-orgcc77f0c">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
+y_A = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">14</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">6</span><span style="color: #51afef;">]</span>
+y_B = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">7</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">6</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">7</span><span style="color: #51afef;">]</span>
+
+n_A, sy_A = length<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span>
+n_B, sy_B = length<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span>
+
+a&#8320;_A = <span style="color: #e69055; font-weight: bold;">120</span>
+b&#8320;_A = <span style="color: #e69055; font-weight: bold;">10</span>
+a&#8320;_B = <span style="color: #e69055; font-weight: bold;">12</span>
+b&#8320;_B = <span style="color: #e69055; font-weight: bold;">1</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_A = Gamma<span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_B = Gamma<span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">mean_A = <span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #51afef;">)</span>
+mean_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior mean of A:  $mean_A"</span>
+ , <span style="color: #7bc275;">"Posterior mean of B:  $mean_B"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior mean of A:  11.85</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior mean of B:  8.928571428571429</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia">var_A = <span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
+var_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior variance of A:  $var_A"</span>
+ , <span style="color: #7bc275;">"Posterior variance of B:  $var_B"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior variance of A:  0.5925</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior variance of B:  0.6377551020408163</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">95% quantile-based confidence intervals</span>
+quantile_A = quantile.<span style="color: #51afef;">(</span>dist_A, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+quantile_B = quantile.<span style="color: #51afef;">(</span>dist_B, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior 95% quantile of A:  $quantile_A"</span>
+ , <span style="color: #7bc275;">"Posterior 95% quantile of B:  $quantile_B"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior 95% quantile of A:  [10.389238190941795, 13.405448325642006]</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior 95% quantile of B:  [7.432064219464302, 10.560308149242365]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org81791d0" class="outline-3">
+<h3 id="org81791d0">b</h3>
+<div class="outline-text-3" id="text-org81791d0">
+</div>
+<div id="outline-container-orge6ce0c2" class="outline-4">
+<h4 id="orge6ce0c2">answer</h4>
+<div class="outline-text-4" id="text-orge6ce0c2">
+<div class="org-src-container">
+<pre class="src src-julia">list_n&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
+exp_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">+</span> n_B <span style="color: #51afef;">)</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Plot</span>
+plot<span style="color: #51afef;">(</span>
+    list_n&#8320;, exp_&#952;_B.<span style="color: #C57BDB;">(</span>list_n&#8320;<span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Expected value of &#952;_B"</span>,
+    xlabel=<span style="color: #7bc275;">"n&#8320;"</span>, ylabel=L<span style="color: #7bc275;">"\theta_B"</span>, legend=<span style="color: #a991f1;">nothing</span>,
+    title=<span style="color: #7bc275;">"Expected value of &#952;_B as a function of n&#8320;"</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgf338617" class="figure">
+<p><img src="fig/exercise3.3bplot.jpg" alt="exercise3.3bplot.jpg" width="500" />
+</p>
+</div>
+
+
+<p>
+\(n_0 = 35\)くらいで、\(\theta_B\)の期待値が\(\theta_A\)の期待値を上回る。この時の\(\theta_B\)の事前分布のプロットは以下の通り。
+</p>
+
+<p>
+(The expected value of \(\theta_B\) exceeds that of \(\theta_A\) when \(n_0 = 35\).
+The plot of the prior distribution of \(\theta_B\) at this time is as follows.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">n = <span style="color: #e69055; font-weight: bold;">35</span>
+plot<span style="color: #51afef;">(</span>
+    Gamma<span style="color: #C57BDB;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #7bc275;">(</span>n <span style="color: #FCCE7B;">+</span> n_B<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>
+    , label=L<span style="color: #7bc275;">"Prior distribution of \theta_B when n_0 = $n"</span>
+    , legend=<span style="color: #a991f1;">false</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgd90303a" class="figure">
+<p><img src="fig/exercise3.3b2plot.jpg" alt="exercise3.3b2plot.jpg" width="500" />
+</p>
+</div>
+
+<p>
+上の分布を見ればわかるように、
+\(\theta_B\)の事後期待値が\(\theta_A\)の事後期待値と同じくらいになるためには、
+\(\theta_B\)がかなりの確率で 11 の近くに分布しているという信念を反映した事前分布が必要。
+</p>
+
+<p>
+(As can be seen from the distribution above,
+in order for the posterior expectation of \(\theta_B\) to be similar to that of \(\theta_A\),
+a prior distribution reflecting the belief that \(\theta_B\) is distributed close to 11 with a high probability is required.)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge357481" class="outline-3">
+<h3 id="orge357481">c</h3>
+<div class="outline-text-3" id="text-orge357481">
+</div>
+<div id="outline-container-orgd295d6f" class="outline-4">
+<h4 id="orgd295d6f">answer</h4>
+<div class="outline-text-4" id="text-orgd295d6f">
+</div>
+<div id="outline-container-org1cabf3a" class="outline-5">
+<h5 id="org1cabf3a">日本語</h5>
+<div class="outline-text-5" id="text-org1cabf3a">
+<p>
+B 系統のマウスは A 系統のマウスと関連性があるとされているので、
+A 系統のマウスについての腫瘍数の情報は B 系統のマウスについての腫瘍数の事前情報になり得る。よって、\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)という仮定は妥当ではなく、
+B 系統のマウスと A 系統のマウスの関連の度合いに関する信念のパラメータ\(n_0\)を導入し、
+\(p(\theta_B | \theta_A, n_0) = \text{gamma}(E[\theta_A] \times n_0, n_0)\)
+などという形でモデル化するのが妥当であると考えられる。また、A系統のマウスに関するデータが観測されたあとに B 系統のマウスに関する推測を行う場合には、
+\(\theta_B\)の事前期待値に\(\theta_A\)の事後期待値を用いるようなモデリングも可能。
+</p>
+</div>
+</div>
+<div id="outline-container-org44ddc6d" class="outline-5">
+<h5 id="org44ddc6d">English</h5>
+<div class="outline-text-5" id="text-org44ddc6d">
+<p>
+The B strain of mice is said to be related to the A strain of mice,
+so information about the number of tumors in A strain mice can serve as prior information about the number of tumors in B strain mice.
+Therefore, the assumption \(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\) is not valid,
+and it is reasonable to introduce a parameter \(n_0\) that represents the degree of correlation between the B strain mice and the A strain mice,
+and model it in the form of \(p(\theta_B | \theta_A, n_0) = \text{gamma}(E[\theta_A] \times n_0, n_0)\).
+Also, when making inferences about the B strain mice after observing data about the A strain mice,
+it is possible to model it using the posterior expectation of \(\theta_A\) as the prior expectation of \(\theta_B\).
+</p>
+
+
+<p>
+aaa
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./3-2.html" class="nav-prev">3.2</a>
+</p>
+
+<p class="nav-next">
+<a href="./3-4.html" class="nav-next">3.4</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

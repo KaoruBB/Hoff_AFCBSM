@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3.13</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">3.13
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org985fc31">a)</a>
+<ul>
+<li><a href="#orgb4bab37">answer</a></li>
+</ul>
+</li>
+<li><a href="#orga8becc2">b)</a>
+<ul>
+<li><a href="#org667a29e">answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org985fc31" class="outline-2">
+<h2 id="org985fc31">a)</h2>
+<div class="outline-text-2" id="text-org985fc31">
+</div>
+<div id="outline-container-orgb4bab37" class="outline-3">
+<h3 id="orgb4bab37">answer</h3>
+<div class="outline-text-3" id="text-orgb4bab37">
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \frac{\theta^Y e^{-\theta}}{Y!} \right] \\
+&= Y \log \theta - \theta - \log Y! \\
+\end{align*}
+
+<p>
+より、
+(As the above equation holds,)
+</p>
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - 1 \right) \\
+&= - \frac{Y}{\theta^2} \\
+\end{align*}
+
+<p>
+よって、
+(therefore, we have)
+</p>
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= E \left[ \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{\theta}{\theta^2} \\
+&= \frac{1}{\theta} \\
+\end{align*}
+
+<p>
+したがって、prior distribution は、
+(therefore, the prior distribution is)
+</p>
+
+\begin{align*}
+p_J(\theta)
+\propto \times \frac{1}{\sqrt{\theta}}
+\end{align*}
+
+<p>
+となるが、
+\(\int_{0}^{\infty} \frac{1}{\sqrt{\theta}} d\theta \)は無限大に発散するので、確率分布とはならない。
+(The integral diverges to infinity, so it does not become a probability distribution.)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga8becc2" class="outline-2">
+<h2 id="orga8becc2">b)</h2>
+<div class="outline-text-2" id="text-orga8becc2">
+</div>
+<div id="outline-container-org667a29e" class="outline-3">
+<h3 id="org667a29e">answer</h3>
+<div class="outline-text-3" id="text-org667a29e">
+\begin{align*}
+f(\theta, y)
+&= \sqrt{I(\theta)} \times p(y \mid \theta) \\
+&= \sqrt{\frac{1}{\theta}} \times \frac{\theta^y e^{-\theta}}{y!} \\
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!}
+\end{align*}
+
+\begin{align*}
+f(\theta \mid y)
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!} \\
+&\propto \theta^{y - \frac{1}{2} } e^{-\theta} \\
+&= \theta^{y + \frac{1}{2} -1 } e^{-\theta} \\
+&\propto \text{dgamma}(\theta, y + \frac{1}{2}, 1)
+\end{align*}
+
+<p>
+Probably yes because we are interested in only the shape of the distribution.
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./3-12.html" class="nav-prev">3.12</a>
+</p>
+
+<p class="nav-next">
+<a href="./3-14.html" class="nav-next">3.14</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

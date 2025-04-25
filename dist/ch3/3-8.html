@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3.8</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">3.8
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdfef250">a)</a>
+<ul>
+<li><a href="#org581fe2d">answer</a></li>
+</ul>
+</li>
+<li><a href="#org7701fa6">b)</a>
+<ul>
+<li><a href="#org67f87bd">answer</a></li>
+</ul>
+</li>
+<li><a href="#org42f59ac">c)</a>
+<ul>
+<li><a href="#orgf6ef24f">answer</a></li>
+</ul>
+</li>
+<li><a href="#org3d40f69">d)</a>
+<ul>
+<li><a href="#org7b4a32b">answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orgdfef250" class="outline-2">
+<h2 id="orgdfef250">a)</h2>
+<div class="outline-text-2" id="text-orgdfef250">
+</div>
+<div id="outline-container-org581fe2d" class="outline-3">
+<h3 id="org581fe2d">answer</h3>
+<div class="outline-text-3" id="text-org581fe2d">
+<div class="org-src-container">
+<pre class="src src-julia">a&#8320;_sym, b&#8320;_sym = <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">15</span>
+sym = Beta<span style="color: #51afef;">(</span>a&#8320;_sym, b&#8320;_sym<span style="color: #51afef;">)</span>
+a&#8320;_asym, b&#8320;_asym = <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">20</span>
+asym = Beta<span style="color: #51afef;">(</span>a&#8320;_asym, b&#8320;_asym<span style="color: #51afef;">)</span>
+plot<span style="color: #51afef;">(</span>sym, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1</span>, label=<span style="color: #7bc275;">"symmetric"</span><span style="color: #51afef;">)</span>
+plot!<span style="color: #51afef;">(</span>asym, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1</span>, label=<span style="color: #7bc275;">"asymmetric"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org6e312fb" class="figure">
+<p><img src="fig/exercise3.8apriors.jpg" alt="exercise3.8apriors.jpg" width="500" />
+</p>
+</div>
+
+<p>
+上の mixture model は、以下のようになる。
+</p>
+<div class="org-src-container">
+<pre class="src src-julia">mm = MixtureModel<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>sym, asym<span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.2</span>, <span style="color: #e69055; font-weight: bold;">0.8</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">(</span>mm, <span style="color: #e69055; font-weight: bold;">100000</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"mixture model prior"</span>, bins=<span style="color: #e69055; font-weight: bold;">100</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org4c36749" class="figure">
+<p><img src="fig/exercise3.8amixturemodelprior.jpg" alt="exercise3.8amixturemodelprior.jpg" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7701fa6" class="outline-2">
+<h2 id="org7701fa6">b)</h2>
+<div class="outline-text-2" id="text-org7701fa6">
+</div>
+<div id="outline-container-org67f87bd" class="outline-3">
+<h3 id="org67f87bd">answer</h3>
+<div class="outline-text-3" id="text-org67f87bd">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">num</th>
+<th scope="col" class="org-right">front</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">17</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">19</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">21</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">23</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">24</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">25</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">26</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">27</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">28</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">29</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">30</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">31</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">32</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">33</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">34</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">35</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">36</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">37</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">38</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">39</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">40</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">41</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">42</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">43</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">44</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">45</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">46</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">47</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">48</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">49</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">50</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">Total</td>
+<td class="org-right">23</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+平成 26 年 100 円玉
+(100 yen coin from 2014)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org42f59ac" class="outline-2">
+<h2 id="org42f59ac">c)</h2>
+<div class="outline-text-2" id="text-org42f59ac">
+</div>
+<div id="outline-container-orgf6ef24f" class="outline-3">
+<h3 id="orgf6ef24f">answer</h3>
+<div class="outline-text-3" id="text-orgf6ef24f">
+<div class="org-src-container">
+<pre class="src src-julia">y&#8321;, n&#8321; = <span style="color: #e69055; font-weight: bold;">23</span> , <span style="color: #e69055; font-weight: bold;">50</span>
+sym&#8321; = Beta<span style="color: #51afef;">(</span>a&#8320;_sym <span style="color: #FCCE7B;">+</span> y&#8321;, b&#8320;_sym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #51afef;">)</span>
+asym&#8321; = Beta<span style="color: #51afef;">(</span>a&#8320;_asym <span style="color: #FCCE7B;">+</span> y&#8321;, b&#8320;_asym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #51afef;">)</span>
+mm&#8321; = MixtureModel<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>sym&#8321;, asym&#8321;<span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.2</span>, <span style="color: #e69055; font-weight: bold;">0.8</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">(</span>mm&#8321;, <span style="color: #e69055; font-weight: bold;">100000</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"posterior distribution"</span>, bins=<span style="color: #e69055; font-weight: bold;">100</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org9932224" class="figure">
+<p><img src="fig/exercise3.8cposterior.jpg" alt="exercise3.8cposterior.jpg" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d40f69" class="outline-2">
+<h2 id="org3d40f69">d)</h2>
+<div class="outline-text-2" id="text-org3d40f69">
+</div>
+<div id="outline-container-org7b4a32b" class="outline-3">
+<h3 id="org7b4a32b">answer</h3>
+<div class="outline-text-3" id="text-org7b4a32b">
+<p>
+今回は、令和元年 100 円玉を使う。
+(I will use a 100 yen coin from 2019.)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">num</th>
+<th scope="col" class="org-right">front</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">17</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">19</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">21</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">23</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">24</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">25</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">26</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">27</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">28</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">29</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">30</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">31</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">32</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">33</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">34</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">35</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">36</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">37</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">38</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">39</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">40</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">41</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">42</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">43</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">44</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">45</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">46</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">47</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">48</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">49</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">50</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">Total</td>
+<td class="org-right">20</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+同じ 100 円玉なので、 <a href="#org42f59ac">c)</a> で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
+(Since it is the same 100 yen coin, I will use the posterior distribution obtained in <a href="#org42f59ac">c)</a> as the prior distribution, and the posterior distribution will be as follows.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">n&#8322;, y&#8322; = <span style="color: #e69055; font-weight: bold;">50</span>, <span style="color: #e69055; font-weight: bold;">20</span>
+sym&#8322; = Beta<span style="color: #51afef;">(</span>a&#8320;_sym <span style="color: #FCCE7B;">+</span> y&#8321; <span style="color: #FCCE7B;">+</span> y&#8322;, b&#8320;_sym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321; <span style="color: #FCCE7B;">+</span> n&#8322; <span style="color: #FCCE7B;">-</span> y&#8322;<span style="color: #51afef;">)</span>
+asym&#8322; = Beta<span style="color: #51afef;">(</span>a&#8320;_asym <span style="color: #FCCE7B;">+</span> y&#8321; <span style="color: #FCCE7B;">+</span> y&#8322;, b&#8320;_asym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321; <span style="color: #FCCE7B;">+</span> n&#8322; <span style="color: #FCCE7B;">-</span> y&#8322;<span style="color: #51afef;">)</span>
+mm&#8322; = MixtureModel<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>sym&#8322;, asym&#8322;<span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.2</span>, <span style="color: #e69055; font-weight: bold;">0.8</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">(</span>mm&#8322;, <span style="color: #e69055; font-weight: bold;">100000</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"posterior distribution"</span>, bins=<span style="color: #e69055; font-weight: bold;">100</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org77b1dd7" class="figure">
+<p><img src="fig/exercise3.8dposterior.jpg" alt="exercise3.8dposterior.jpg" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./3-7.html" class="nav-prev">3.7</a>
+</p>
+
+<p class="nav-next">
+<a href="./3-9.html" class="nav-next">3.9</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

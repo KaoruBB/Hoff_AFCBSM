@@ -181,3 +181,10 @@ p(\tilde{y} | y_1, \dots, y_n)
 &= \frac{2}{B(a, an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
 \tilde{y}^{2a-1} (\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)^{-(a + an+b)} \\
 \end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./3-8.org][3.8]]
+
+#+ATTR_HTML: :class nav-next
+[[./3-10.org][3.10]]

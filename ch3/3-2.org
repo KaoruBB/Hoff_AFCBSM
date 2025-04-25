@@ -43,7 +43,7 @@ contour(
 #+end_src
 
 #+ATTR_HTML: :width 500
-[[file:fig/exercise3.2contour.jpg]]
+[[./fig/exercise3.2contour.jpg]]
 
 ** Discussion
 *** English

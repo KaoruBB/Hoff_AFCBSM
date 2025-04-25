@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3.14</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">3.14
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge53b7db">a)</a>
+<ul>
+<li><a href="#orgc857ffb">answer</a></li>
+</ul>
+</li>
+<li><a href="#orgc8e97ef">b)</a>
+<ul>
+<li><a href="#orgaa07dbb">answer</a></li>
+</ul>
+</li>
+<li><a href="#orge781fcb">c)</a>
+<ul>
+<li><a href="#orgbbc4c7b">answer</a></li>
+</ul>
+</li>
+<li><a href="#org8ecc626">d)</a>
+<ul>
+<li><a href="#org74cbd48">answer</a>
+<ul>
+<li><a href="#org663f90c">a&rsquo;)</a></li>
+<li><a href="#orge126063">b&rsquo;)</a></li>
+<li><a href="#org4107c60">c&rsquo;)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orge53b7db" class="outline-2">
+<h2 id="orge53b7db">a)</h2>
+<div class="outline-text-2" id="text-orge53b7db">
+</div>
+<div id="outline-container-orgc857ffb" class="outline-3">
+<h3 id="orgc857ffb">answer</h3>
+<div class="outline-text-3" id="text-orgc857ffb">
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \theta^{y_i} (1 - \theta)^{1 - y_i} \\
+&= \sum_{i=1}^n y_i \log \theta + (1 - y_i) \log (1 - \theta) \\
+&= \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \\
+\end{align*}
+
+<p>
+The first order condition is
+</p>
+
+\begin{align*}
+& \frac{\sum_{i=1}^n y_i}{\theta} = \frac{n - \sum_{i=1}^n y_i}{1 - \theta} \\
+\Leftrightarrow \quad & (1 - \theta) \sum_{i=1}^n y_i = \theta (n - \sum_{i=1}^n y_i) \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+<p>
+and
+</p>
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-1} \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-2} \\
+\end{align*}
+
+<p>
+Then, substituting the above \(\hat{\theta}\) into \(J(\hat{\theta})\),
+</p>
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \hat{\theta})^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} - \left( n - \sum_{i=1}^n y_i \right) \left(1 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} - \frac{n^2}{n - \sum_{i=1}^n y_i} \\
+\end{align*}
+
+<p>
+therefore the following holds.
+</p>
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} - \frac{n}{n - \sum_{i=1}^n y_i} \\
+&= -n \left( \frac{1}{\sum_{i=1}^n y_i} + \frac{1}{n - \sum_{i=1}^n y_i} \right) \\
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8e97ef" class="outline-2">
+<h2 id="orgc8e97ef">b)</h2>
+<div class="outline-text-2" id="text-orgc8e97ef">
+</div>
+<div id="outline-container-orgaa07dbb" class="outline-3">
+<h3 id="orgaa07dbb">answer</h3>
+<div class="outline-text-3" id="text-orgaa07dbb">
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) }{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\sum_{i=1}^n y_i}{n} \log \theta + (1 - \frac{\sum_{i=1}^n y_i}{n}) \log (1 - \theta) + c \\
+\Leftrightarrow \quad & p_U (\theta) = \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c\\
+\end{align*}
+
+<p>
+Since \(p_U(\theta)\) is probability density,
+</p>
+
+\begin{align*}
+& \int_0^1 p_U (\theta) d\theta = 1 \\
+\Leftrightarrow \quad & \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c d\theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}}  d\theta \right)^{-1} \\
+& = B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-1} \\
+\therefore \quad & c = - \log B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right) \\
+\end{align*}
+
+<p>
+and
+</p>
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2} - \left( 1 - \frac{\sum_{i=1}^n y_i}{n} \right) (1 - \theta)^{-2} \\
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-orge781fcb" class="outline-2">
+<h2 id="orge781fcb">c)</h2>
+<div class="outline-text-2" id="text-orge781fcb">
+</div>
+<div id="outline-container-orgbbc4c7b" class="outline-3">
+<h3 id="orgbbc4c7b">answer</h3>
+<div class="outline-text-3" id="text-orgbbc4c7b">
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} + \sum_{i=1}^n y_i}
+(1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n} + n - \sum_{i=1}^n y_i}  \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i}
+(1 - \theta)^{(1 + n^{-1}) (n - \sum_{i=1}^n y_i)} \\
+&= \text{dbeta}\left(\theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, (1 + n^{-1}) (n - \sum_{i=1}^n y_i) + 1 \right) \\
+\end{align*}
+
+<p>
+We can consider this as a posterior distribution for \(\theta\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ecc626" class="outline-2">
+<h2 id="org8ecc626">d)</h2>
+<div class="outline-text-2" id="text-org8ecc626">
+</div>
+<div id="outline-container-org74cbd48" class="outline-3">
+<h3 id="org74cbd48">answer</h3>
+<div class="outline-text-3" id="text-org74cbd48">
+</div>
+<div id="outline-container-org663f90c" class="outline-4">
+<h4 id="org663f90c">a&rsquo;)</h4>
+<div class="outline-text-4" id="text-org663f90c">
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \frac{\theta^{y_i} e^{- \theta} }{y_i!} \\
+&= \sum_{i=1}^n \left( y_i \log \theta - \theta - \log y_i! \right) \\
+& = \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \\
+\end{align*}
+
+<p>
+The first order condition is
+</p>
+
+\begin{align*}
+& \theta^{-1} \sum_{i=1}^n y_i - n = 0 \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+<p>
+and
+</p>
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- n \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2}  \\
+\end{align*}
+
+<p>
+Then, substituting the above \(\hat{\theta}\) into \(J(\hat{\theta})\),
+</p>
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2}  \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} \\
+\end{align*}
+
+<p>
+therefore the following holds.
+</p>
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} \\
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orge126063" class="outline-4">
+<h4 id="orge126063">b&rsquo;)</h4>
+<div class="outline-text-4" id="text-orge126063">
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i!}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta)
+= \frac{\sum_{i=1}^n y_i }{n} \log \theta - \theta - \frac{\sum_{i=1}^n \log y_i!}{n} + c \\
+\therefore \quad & p_U (\theta)
+= \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n}
+\end{align*}
+
+<p>
+Since \(p_U(\theta)\) is probability density,
+</p>
+
+\begin{align*}
+& \int_0^{\infty} p_U (\theta) d \theta = 1 \\
+\Leftrightarrow \quad & \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i }{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n} d \theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \prod_{i=1}^n y_i! \right)^n \left( \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta} d \theta \right)^{-1} \\
+& = \left( \prod_{i=1}^n y_i! \right)^n \Gamma \left( \frac{\sum_{i=1}^n y_i}{n} + 1 \right)^{-1} \\
+\end{align*}
+
+<p>
+and
+</p>
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org4107c60" class="outline-4">
+<h4 id="org4107c60">c&rsquo;)</h4>
+<div class="outline-text-4" id="text-org4107c60">
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta}
+\times \theta^{\sum_{i=1}^n y_i} e^{-n \theta} \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i} e^{-(1 + n) \theta} \\
+&= \text{dgamma} \left( \theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, 1 + n \right) \\
+\end{align*}
+
+<p>
+We can consider this as a posterior distribution for \(\theta\).
+</p>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./3-13.html" class="nav-prev">3.13</a>
+</p>
+
+<p class="nav-next">
+<a href="../ch4/4-1.html" class="nav-next">4.1</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

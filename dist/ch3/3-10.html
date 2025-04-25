@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3.10</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">3.10
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org3da9a04">a)</a>
+<ul>
+<li><a href="#orge2ff337">answer</a></li>
+</ul>
+</li>
+<li><a href="#org476e9d6">b)</a>
+<ul>
+<li><a href="#org588fe1f">answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org3da9a04" class="outline-2">
+<h2 id="org3da9a04">a)</h2>
+<div class="outline-text-2" id="text-org3da9a04">
+</div>
+<div id="outline-container-orge2ff337" class="outline-3">
+<h3 id="orge2ff337">answer</h3>
+<div class="outline-text-3" id="text-orge2ff337">
+\begin{align*}
+&\psi = \log \left[ \frac{\theta}{1 - \theta} \right] \\
+\Leftrightarrow \quad & e^{\psi} = \frac{\theta}{1 - \theta} \\
+\Leftrightarrow \quad & \theta = \frac{e^{\psi}}{1 + e^{\psi} }
+=: h(\psi) \\
+\end{align*}
+
+<p>
+また、
+</p>
+\begin{align*}
+\frac{d h(\psi)}{d \psi}
+&= \frac{e^{\psi} (1+e^{\psi}) - e^{\psi} e^{\psi} }{(1+e^{\psi})^2} \\
+&= \frac{e^{\psi} (1+e^{\psi} - e^{\psi} )}{(1+e^{\psi})^2} \\
+&= \frac{e^{\psi}}{(1+e^{\psi})^2} \quad ( > 0)\\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+p_{\psi} (\psi)
+&= p_{\theta}(h(\psi)) \times \mid \frac{d h(\psi)}{d \psi} \mid \\
+&= \frac{1}{B(a,b)} h(\psi)^{a-1} (1-h(\psi))^{b-1} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \frac{1}{B(a,b)} \left( \frac{e^{\psi}}{1 + e^{\psi} } \right)^{a-1} \left( \frac{1}{1 + e^{\psi} } \right)^{b-1} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \frac{1}{B(a,b)} \left( \frac{e^{\psi}}{1 + e^{\psi} } \right)^a \left( \frac{1}{1 + e^{\psi} } \right)^b
+\end{align*}
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> SpecialFunctions
+a, b = <span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">1</span>
+p_&#968; = &#968; <span style="color: #FCCE7B;">-&gt;</span> exp<span style="color: #51afef;">(</span>&#968;<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span>a <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">+</span> exp<span style="color: #C57BDB;">(</span>&#968;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span>b<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> beta<span style="color: #51afef;">(</span>a,b<span style="color: #51afef;">)</span>
+&#968;s = range<span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">10</span>, length=<span style="color: #e69055; font-weight: bold;">100</span><span style="color: #51afef;">)</span>
+p = plot<span style="color: #51afef;">(</span>&#968;s, p_&#968;.<span style="color: #C57BDB;">(</span>&#968;s<span style="color: #C57BDB;">)</span>, xlabel=<span style="color: #7bc275;">"&#968;"</span>, ylabel=<span style="color: #7bc275;">"p(&#968;)"</span>, label=<span style="color: #7bc275;">"p(&#968;)"</span><span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span>p, <span style="color: #7bc275;">"fig/excersise3-10a.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"fig/excersise3-10a.png"</span>
+</pre>
+</div>
+
+
+<div id="org9f91335" class="figure">
+<p><img src="fig/excersise3-10a.png" alt="excersise3-10a.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org476e9d6" class="outline-2">
+<h2 id="org476e9d6">b)</h2>
+<div class="outline-text-2" id="text-org476e9d6">
+</div>
+<div id="outline-container-org588fe1f" class="outline-3">
+<h3 id="org588fe1f">answer</h3>
+<div class="outline-text-3" id="text-org588fe1f">
+\begin{align*}
+&\psi = \log \theta \\
+\Leftrightarrow \quad & \theta = e^{\psi} =: h(\psi)
+\end{align*}
+
+<p>
+また、
+</p>
+\begin{align*}
+\frac{d h(\psi)}{d \psi}
+&= e^{\psi} \quad ( > 0)
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+p_{\psi} (\psi)
+&= p_{\theta}(h(\psi)) \times \mid \frac{d h(\psi)}{d \psi} \mid \\
+&= \frac{b^a}{\Gamma(a)} h(\psi)^{a-1} e^{-b h(\psi)} \times e^{\psi} \\
+&= \frac{b^a}{\Gamma(a)} e^{\psi (a-1)} e^{-b e^{\psi}} \times e^{\psi} \\
+&= \frac{b^a}{\Gamma(a)} e^{\psi a -b e^{\psi} } \\
+\end{align*}
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> SpecialFunctions
+a, b = <span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">1</span>
+p_&#968; = &#968; <span style="color: #FCCE7B;">-&gt;</span> b<span style="color: #FCCE7B;">^</span>a<span style="color: #FCCE7B;">/</span>gamma<span style="color: #51afef;">(</span>a<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> exp<span style="color: #51afef;">(</span>&#968;<span style="color: #FCCE7B;">*</span>a <span style="color: #FCCE7B;">-</span> b<span style="color: #FCCE7B;">*</span>exp<span style="color: #C57BDB;">(</span>&#968;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+&#968;s = range<span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">10</span>, length=<span style="color: #e69055; font-weight: bold;">100</span><span style="color: #51afef;">)</span>
+p = plot<span style="color: #51afef;">(</span>&#968;s, p_&#968;.<span style="color: #C57BDB;">(</span>&#968;s<span style="color: #C57BDB;">)</span>, xlabel=<span style="color: #7bc275;">"&#968;"</span>, ylabel=<span style="color: #7bc275;">"p(&#968;)"</span>, label=<span style="color: #7bc275;">"p(&#968;)"</span><span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span>p, <span style="color: #7bc275;">"fig/excersise3-10b.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"fig/excersise3-10b.png"</span>
+</pre>
+</div>
+
+
+<div id="org72ecb9e" class="figure">
+<p><img src="fig/excersise3-10b.png" alt="excersise3-10b.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./3-9.html" class="nav-prev">3.9</a>
+</p>
+
+<p class="nav-next">
+<a href="./3-12.html" class="nav-next">3.12</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

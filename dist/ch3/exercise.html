@@ -1,0 +1,2869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-04-25 金 15:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org06a9e78">1. Chapter 3</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org06a9e78" class="outline-2">
+<h2 id="org06a9e78"><span class="section-number-2">1.</span> Chapter 3</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgccad858"></a>3.1<br />
+<div class="outline-text-3" id="text-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="org54bc2b3"></a>a<br />
+<ol class="org-ol">
+<li><a id="org9a26e9d"></a>Answer<br />
+<div class="outline-text-5" id="text-1-1-1-1">
+\begin{align*}
+& \text{Pr}(Y_1 = y_1, \dots , Y_{100}=y_{100} \mid \theta) \\
+= &\text{Pr}(Y_1 = y_1 \mid \theta) \cdot \text{Pr}(Y_2 = y_2 \mid \theta) \cdot \dots \cdot \text{Pr}(Y_{100} = y_{100} \mid \theta)
+\qquad (\because \text{conditionally i.i.d.}) \\
+= &\prod_{i=1}^{100} \text{Pr}(Y_i = y_i \mid \theta) \\
+= &\theta^{\sum_{i=1}^{100} y_i} (1 - \theta)^{100 - \sum_{i=1}^{100} y_i}
+\end{align*}
+
+\begin{align*}
+\text{Pr}\left(\sum Y_i = y \mid \theta\right)
+&= \begin{pmatrix} 100 \\ y \end{pmatrix} \theta^y (1-\theta)^{100-y}
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+<li><a id="3.1B"></a>b<br />
+<div class="outline-text-4" id="text-3.1B">
+</div>
+<ol class="org-ol">
+<li><a id="org9489ba7"></a>Answer<br />
+<div class="outline-text-5" id="text-1-1-2-1">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">begin</span>
+<span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> Plots.PlotMeasures
+<span style="color: #51afef;">using</span> Distributions
+
+&#952; = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+n = <span style="color: #e69055; font-weight: bold;">100</span>
+y = <span style="color: #e69055; font-weight: bold;">57</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">&#20840;&#12390;&#12398;&#952;&#12391;&#35336;&#31639;</span>
+pdf_for_&#952;s = map<span style="color: #51afef;">(</span>&#952; <span style="color: #FCCE7B;">-&gt;</span> pdf<span style="color: #C57BDB;">(</span>Binomial<span style="color: #7bc275;">(</span>n, &#952;<span style="color: #7bc275;">)</span>, y<span style="color: #C57BDB;">)</span>, &#952;<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org2f1fdf7">
+11-element Vector{Float64}:
+ 0.0
+ 4.107156919234531e-31
+ 3.7384586685675986e-16
+ 1.3068947992216428e-8
+ 0.000228579175709527
+ 0.03006864264421479
+ 0.06672894967432967
+ 0.0018531715480875613
+ 1.0035348574340773e-7
+ 9.39585764212832e-18
+ 0.0
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">plot</span>
+bar<span style="color: #51afef;">(</span>
+    &#952;, pdf_for_&#952;s,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(y|&#952;)"</span>,
+    title = <span style="color: #7bc275;">"p(y=$y|&#952;) for each &#952;"</span>,
+    label = <span style="color: #7bc275;">"p(y=$y|&#952;)"</span>,
+    legend = <span style="color: #a991f1;">:topleft</span>,
+    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
+    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
+    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgb124d30" class="figure">
+<p><img src="fig/3.1bbar.jpg" alt="3.1bbar.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org5c40c12"></a>c<br />
+<ol class="org-ol">
+<li><a id="orgc99929b"></a>Answer<br />
+<div class="outline-text-5" id="text-1-1-3-1">
+\begin{align*}
+p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
+&= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{p(\sum_{i=1}^{100} Y_i = 57)} \\
+&= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{\sum_{\theta} p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)} \\
+&= \frac{\text{Pr}\left(\sum Y_i = 57 \mid \theta\right) p(\theta)}{\sum_{\theta} \text{Pr}\left(\sum Y_i = 57 \mid \theta\right) p(\theta)} \\
+&= \frac{\text{Pr}\left(\sum Y_i = 57 \mid \theta\right) \frac{1}{11} }{\sum_{\theta} \text{Pr}\left(\sum Y_i = 57 \mid \theta\right) \frac{1}{11} } \\
+&= \frac{\text{Pr}\left(\sum Y_i = 57 \mid \theta\right) }{\sum_{\theta} \text{Pr}\left(\sum Y_i = 57 \mid \theta\right) } \\
+\end{align*}
+
+<p>
+<a href="#3.1B">b</a> で求めたものを使うと以下のように簡単に計算できる。
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-julia">posterior_for_&#952;s = pdf_for_&#952;s <span style="color: #FCCE7B;">./</span> sum<span style="color: #51afef;">(</span>pdf_for_&#952;s<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org318ac00">
+11-element Vector{Float64}:
+ 0.0
+ 4.153700946664936e-30
+ 3.780824452548815e-15
+ 1.3217050800508843e-7
+ 0.0023116953094392757
+ 0.30409393133068335
+ 0.6748515016170306
+ 0.018741724664998797
+ 1.0149073359758722e-6
+ 9.502335447682657e-17
+ 0.0
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-julia">bar<span style="color: #51afef;">(</span>
+    &#952;, posterior_for_&#952;s,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(&#952;|y)"</span>,
+    title = <span style="color: #7bc275;">"p(&#952;|y=$y) for each &#952;"</span>,
+    label = <span style="color: #7bc275;">"p(&#952;|y=$y)"</span>,
+    legend = <span style="color: #a991f1;">:topleft</span>,
+    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
+    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
+    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+
+<div id="org2c0dbe3" class="figure">
+<p><img src="fig/ex3.1cplot.jpg" alt="ex3.1cplot.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org5491dd0"></a>d<br />
+<ol class="org-ol">
+<li><a id="org150ab0e"></a>Answer<br />
+<div class="outline-text-5" id="text-1-1-4-1">
+\begin{align*}
+p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
+&= \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
+\qquad (\because \text{Pr}(\theta) = 1) \\
+&= \begin{pmatrix} 100 \\ 57 \end{pmatrix} \theta^{57} (1-\theta)^{43} \\
+&= \text{dbinom}(57, 100, \theta)
+\end{align*}
+
+<p>
+よって、以下のように計算できる。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">posterior = x <span style="color: #FCCE7B;">-&gt;</span> pdf<span style="color: #51afef;">(</span>Binomial<span style="color: #C57BDB;">(</span>n, x<span style="color: #C57BDB;">)</span>, y<span style="color: #51afef;">)</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">plot</span>
+xs = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+plot<span style="color: #51afef;">(</span>
+    xs, posterior.<span style="color: #C57BDB;">(</span>xs<span style="color: #C57BDB;">)</span>,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = L<span style="color: #7bc275;">"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)"</span>,
+    title = L<span style="color: #7bc275;">"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)"</span>,
+    label = <span style="color: #7bc275;">"p(&#952;|y=$y)"</span>,
+    legend = <span style="color: #a991f1;">:topleft</span>,
+    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
+    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
+    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org27b3f77" class="figure">
+<p><img src="fig/hoffexercise3.1dplot.jpg" alt="hoffexercise3.1dplot.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org08747aa"></a>e<br />
+<ol class="org-ol">
+<li><a id="org7ac66a6"></a>Answer&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span><br />
+<div class="outline-text-5" id="text-1-1-5-1">
+<div class="org-src-container">
+<pre class="src src-julia">plot<span style="color: #51afef;">(</span>
+    Beta<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>n<span style="color: #FCCE7B;">-</span>y<span style="color: #C57BDB;">)</span>,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(&#952;|y)"</span>,
+    title = <span style="color: #7bc275;">"Beta(1+$y, 1+$n-$y)"</span>,
+    label = <span style="color: #a991f1;">nothing</span>
+    , size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
+    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orga3c7cd4" class="figure">
+<p><img src="fig/exercise3.1eplot.jpg" alt="exercise3.1eplot.jpg" width="500" />
+</p>
+</div>
+
+<p>
+d と e は同じ形状で、dを正規化したのが e。また、c, b のグラフは、パラメータ\(\theta\)を 11 個の値をとる離散変数として扱っているもので、同じ形状をしている。コードを見ればわかるように、それぞれの確率の和が 1 になるように正規化しているのが c である。
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgfd93093"></a>3.2<br />
+<div class="outline-text-3" id="text-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgc7518bc"></a>Answer<br />
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-julia">&#952;&#8320;_list = <span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">0.9</span>
+n&#8320;_list = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">16</span>, <span style="color: #e69055; font-weight: bold;">32</span><span style="color: #51afef;">]</span>
+n = <span style="color: #e69055; font-weight: bold;">100</span>
+y = <span style="color: #e69055; font-weight: bold;">57</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">get_half_cdf</span><span style="color: #51afef;">(</span>&#952;&#8320;, n&#8320;<span style="color: #51afef;">)</span>
+    postrior = Beta<span style="color: #51afef;">(</span>&#952;&#8320; <span style="color: #FCCE7B;">*</span> n&#8320; <span style="color: #FCCE7B;">+</span> y, <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#952;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> n&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">-</span> y<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">return</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> cdf<span style="color: #51afef;">(</span>postrior, <span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+
+contour<span style="color: #51afef;">(</span>
+    &#952;&#8320;_list, n&#8320;_list, <span style="color: #C57BDB;">(</span>&#952;&#8320;_list, n&#8320;_list<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-&gt;</span> get_half_cdf<span style="color: #C57BDB;">(</span>&#952;&#8320;_list, n&#8320;_list<span style="color: #C57BDB;">)</span>
+    , clabels=<span style="color: #a991f1;">true</span>
+    , xlabel=<span style="color: #7bc275;">"&#952;&#8320;"</span>, ylabel=<span style="color: #7bc275;">"n&#8320;"</span>
+    , title = L<span style="color: #7bc275;">"Pr(\theta &gt; 0.5 | \sum Y_i = 57,)"</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org0aa4f52" class="figure">
+<p><img src="fig/exercise3.2contour.jpg" alt="exercise3.2contour.jpg" width="500" />
+</p>
+</div>
+
+<p>
+\(\theta_0\)は\(\theta\)に関する事前の信念、
+\(n_0\)は\(\theta\)の事前の信念の強さを表している。
+\(\theta_0\)が大きいほど、\(\theta > 0.5\)の事後確率も大きくなり、同じ\(\theta_0\)で比べた時は、だいたい\(\theta_0 < 0.5\)で\(n_0\)が大きいほど、\(\theta > 0.5\)の事後確率が小さくなり、
+\(\theta_0 > 0.5\)で\(n_0\)が大きいほど、\(\theta > 0.5\)の事後確率が大きくなる。
+</p>
+
+<p>
+よって、事前の知識などを参考にしながら、\(\theta_0\)はどれくらいか、またその信念の強さはどの程度なのかを考えたうえで、それに応じて上のプロットを見ながら\(\theta > 0.5\)の信念をアップデートすることができる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org3ab016d"></a>3.3<br />
+<div class="outline-text-3" id="text-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="org3f79757"></a>a)<br />
+<ol class="org-ol">
+<li><a id="orgb50f479"></a>answer<br />
+<div class="outline-text-5" id="text-1-3-1-1">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
+y_A = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">14</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">6</span><span style="color: #51afef;">]</span>
+y_B = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">7</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">6</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">7</span><span style="color: #51afef;">]</span>
+
+n_A, sy_A = length<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span>
+n_B, sy_B = length<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span>
+
+a&#8320;_A = <span style="color: #e69055; font-weight: bold;">120</span>
+b&#8320;_A = <span style="color: #e69055; font-weight: bold;">10</span>
+a&#8320;_B = <span style="color: #e69055; font-weight: bold;">12</span>
+b&#8320;_B = <span style="color: #e69055; font-weight: bold;">1</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_A = Gamma<span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_B = Gamma<span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">mean_A = <span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #51afef;">)</span>
+mean_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior mean of A:  $mean_A"</span>
+ , <span style="color: #7bc275;">"Posterior mean of B:  $mean_B"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior mean of A:  11.85</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior mean of B:  8.928571428571429</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia">var_A = <span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
+var_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior variance of A:  $var_A"</span>
+ , <span style="color: #7bc275;">"Posterior variance of B:  $var_B"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior variance of A:  0.5925</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior variance of B:  0.6377551020408163</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">95% quantile-based confidence intervals</span>
+quantile_A = quantile.<span style="color: #51afef;">(</span>dist_A, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+quantile_B = quantile.<span style="color: #51afef;">(</span>dist_B, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior 95% quantile of A:  $quantile_A"</span>
+ , <span style="color: #7bc275;">"Posterior 95% quantile of B:  $quantile_B"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior 95% quantile of A:  [10.389238190941795, 13.405448325642006]</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior 95% quantile of B:  [7.432064219464302, 10.560308149242365]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgb34cbf9"></a>b<br />
+<div class="outline-text-4" id="text-1-3-2">
+</div>
+<ol class="org-ol">
+<li><a id="org2ba1b7c"></a>answer<br />
+<div class="outline-text-5" id="text-1-3-2-1">
+<div class="org-src-container">
+<pre class="src src-julia">list_n&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
+exp_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">+</span> n_B <span style="color: #51afef;">)</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Plot</span>
+plot<span style="color: #51afef;">(</span>
+    list_n&#8320;, exp_&#952;_B.<span style="color: #C57BDB;">(</span>list_n&#8320;<span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Expected value of &#952;_B"</span>,
+    xlabel=<span style="color: #7bc275;">"n&#8320;"</span>, ylabel=L<span style="color: #7bc275;">"\theta_B"</span>, legend=<span style="color: #a991f1;">nothing</span>,
+    title=<span style="color: #7bc275;">"Expected value of &#952;_B as a function of n&#8320;"</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org6594bc9" class="figure">
+<p><img src="fig/exercise3.3bplot.jpg" alt="exercise3.3bplot.jpg" width="500" />
+</p>
+</div>
+
+
+<p>
+\(n_0 = 35\)くらいで、\(\theta_B\)の期待値が\(\theta_A\)の期待値を上回る。この時の\(\theta_B\)の事前分布のプロットは以下の通り。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">n = <span style="color: #e69055; font-weight: bold;">35</span>
+plot<span style="color: #51afef;">(</span>
+    Gamma<span style="color: #C57BDB;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #7bc275;">(</span>n <span style="color: #FCCE7B;">+</span> n_B<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>
+    , label=L<span style="color: #7bc275;">"Prior distribution of \theta_B when n_0 = $n"</span>
+    , legend=<span style="color: #a991f1;">false</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org743d1e3" class="figure">
+<p><img src="fig/exercise3.3b2plot.jpg" alt="exercise3.3b2plot.jpg" width="500" />
+</p>
+</div>
+
+<p>
+上の分布を見ればわかるように、
+\(\theta_B\)の事後期待値が\(\theta_A\)の事後期待値と同じくらいになるためには、
+\(\theta_B\)がかなりの確率で 11 の近くに分布しているという信念を反映した事前分布が必要。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org8883208"></a>c<br />
+<ol class="org-ol">
+<li><a id="org827b2b3"></a>answer<br />
+<div class="outline-text-5" id="text-1-3-3-1">
+<p>
+B 系統のマウスは A 系統のマウスと関連性があるとされているので、
+A 系統のマウスについての腫瘍数の情報は B 系統のマウスについての腫瘍数の事前情報になり得る。よって、\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)という仮定は妥当ではなく、
+B 系統のマウスと A 系統のマウスの関連の度合いに関する信念のパラメータ\(n_0\)を導入し、
+\(p(\theta_B | \theta_A, n_0) = \text{gamma}(E[\theta_A] \times n_0, n_0)\)
+などという形でモデル化するのが妥当であると考えられる。また、A系統のマウスに関するデータが観測されたあとに B 系統のマウスに関する推測を行う場合には、
+\(\theta_B\)の事前期待値に\(\theta_A\)の事後期待値を用いるようなモデリングも可能。
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org48bf231"></a>3.4<br />
+<div class="outline-text-3" id="text-1-4">
+</div>
+<ol class="org-ol">
+<li><a id="org1d9022d"></a>a<br />
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
+<span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> StatsPlots
+<span style="color: #51afef;">using</span> LaTeXStrings
+a&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
+b&#8320; = <span style="color: #e69055; font-weight: bold;">8</span>
+n = <span style="color: #e69055; font-weight: bold;">43</span>
+y = <span style="color: #e69055; font-weight: bold;">15</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">prior</span>
+plot<span style="color: #51afef;">(</span>
+    Beta<span style="color: #C57BDB;">(</span>a&#8320;, b&#8320;<span style="color: #C57BDB;">)</span>,
+    title=L<span style="color: #7bc275;">"p(\theta)"</span>,
+    xlabel=L<span style="color: #7bc275;">"\theta"</span>,
+    ylabel=L<span style="color: #7bc275;">"p(\theta)"</span>,
+    legend=<span style="color: #a991f1;">false</span>,
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org9a7646e" class="figure">
+<p><img src="fig/exercise3.4aplot1.jpg" alt="exercise3.4aplot1.jpg" width="500" />
+</p>
+</div>
+
+<p>
+\(y \sim \text{binomial}(43, \theta)\)より、\(p(\theta \mid y)\)を\(\theta\)の関数としてプロットすると以下のようになる。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">&#952; = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">&#20840;&#12390;&#12398;&#952;&#12391;&#35336;&#31639;</span>
+pdf_for_&#952;s = map<span style="color: #51afef;">(</span>&#952; <span style="color: #FCCE7B;">-&gt;</span> pdf<span style="color: #C57BDB;">(</span>Binomial<span style="color: #7bc275;">(</span>n, &#952;<span style="color: #7bc275;">)</span>, y<span style="color: #C57BDB;">)</span>, &#952;<span style="color: #51afef;">)</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">plot</span>
+plot<span style="color: #51afef;">(</span>
+    &#952;, pdf_for_&#952;s,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(y|&#952;)"</span>,
+    title = <span style="color: #7bc275;">"p(y=$y|&#952;) as a function of &#952;"</span>,
+    legend = <span style="color: #a991f1;">false</span>,
+    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
+    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
+    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org83bad67" class="figure">
+<p><img src="fig/exercise3.4aplot2.jpg" alt="exercise3.4aplot2.jpg" width="500" />
+</p>
+</div>
+
+\begin{align*}
+p(\theta \mid y)
+&= \frac{1}{p(y)} p(y \mid \theta) p(\theta) \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{2-1} (1-\theta)^{8-1} \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix}
+\frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{17-1} (1-\theta)^{36-1} \\
+&= const \times \theta^{17-1} (1-\theta)^{36-1} \\
+&= dbeta(\theta, 17, 36)
+\end{align*}
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior</span>
+posterior_dist = Beta<span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> y, b&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">-</span> y<span style="color: #51afef;">)</span>
+plot<span style="color: #51afef;">(</span>
+    posterior_dist,
+    title=L<span style="color: #7bc275;">"p(\theta|y)"</span>,
+    xlabel=L<span style="color: #7bc275;">"\theta"</span>,
+    ylabel=L<span style="color: #7bc275;">"p(\theta|y)"</span>,
+    legend=<span style="color: #a991f1;">false</span>,
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgd010267" class="figure">
+<p><img src="fig/exercise3.4aposterior.jpg" alt="exercise3.4aposterior.jpg" width="500" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean</span>
+mean<span style="color: #51afef;">(</span>posterior_dist<span style="color: #51afef;">)</span>
+&#956; = <span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> y<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> b&#8320; <span style="color: #FCCE7B;">+</span> n<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.32075471698113206
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mode</span>
+mode<span style="color: #51afef;">(</span>posterior_dist<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> y <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> b&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.3137254901960784
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior standard deviation</span>
+std<span style="color: #51afef;">(</span>posterior_dist<span style="color: #51afef;">)</span>
+var = <span style="color: #51afef;">(</span>&#956;<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#956;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> b&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+sqrt<span style="color: #51afef;">(</span>var<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.0635188989834093
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior 95% interval</span>
+quantile<span style="color: #51afef;">(</span>posterior_dist, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+
+2-element Vector{Float64}:
+ 0.2032977878191033
+ 0.45102398221663165
+</pre>
+</div>
+</li>
+<li><a id="orgd24c02c"></a>b<br />
+<div class="outline-text-4" id="text-1-4-2">
+<div class="org-src-container">
+<pre class="src src-julia">a&#8320;_b = <span style="color: #e69055; font-weight: bold;">8</span>
+b&#8320;_b = <span style="color: #e69055; font-weight: bold;">2</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">prior</span>
+plot<span style="color: #51afef;">(</span>
+    Beta<span style="color: #C57BDB;">(</span>a&#8320;_b, b&#8320;_b<span style="color: #C57BDB;">)</span>,
+    title=L<span style="color: #7bc275;">"p(\theta)"</span>,
+    xlabel=L<span style="color: #7bc275;">"\theta"</span>,
+    ylabel=L<span style="color: #7bc275;">"p(\theta)"</span>,
+    legend=<span style="color: #a991f1;">false</span>,
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+
+<div id="org8bb01c6" class="figure">
+<p><img src="fig/exercise3.4bprior.jpg" alt="exercise3.4bprior.jpg" width="500" />
+</p>
+</div>
+
+
+\begin{align*}
+p(\theta \mid y)
+&= \frac{1}{p(y)} p(y \mid \theta) p(\theta) \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{8-1} (1-\theta)^{2-1} \\
+&= \frac{1}{p(y)} \begin{pmatrix} 43 \\ 15 \end{pmatrix}
+\frac{\Gamma(2+8)}{\Gamma(2)\Gamma(8)} \theta^{23-1} (1-\theta)^{30-1} \\
+&= const \times \theta^{23-1} (1-\theta)^{30-1} \\
+&= dbeta(\theta, 23, 30)
+\end{align*}
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior</span>
+posterior_dist_b = Beta<span style="color: #51afef;">(</span>a&#8320;_b <span style="color: #FCCE7B;">+</span> y, b&#8320;_b <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">-</span> y<span style="color: #51afef;">)</span>
+plot<span style="color: #51afef;">(</span>
+    posterior_dist_b,
+    title=L<span style="color: #7bc275;">"p(\theta|y)"</span>,
+    xlabel=L<span style="color: #7bc275;">"\theta"</span>,
+    ylabel=L<span style="color: #7bc275;">"p(\theta|y)"</span>,
+    legend=<span style="color: #a991f1;">false</span>,
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgf88b78a" class="figure">
+<p><img src="fig/exercise3.4bposterior.jpg" alt="exercise3.4bposterior.jpg" width="500" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean</span>
+mean<span style="color: #51afef;">(</span>posterior_dist_b<span style="color: #51afef;">)</span>
+&#956;_b = <span style="color: #51afef;">(</span>a&#8320;_b <span style="color: #FCCE7B;">+</span> y<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>a&#8320;_b <span style="color: #FCCE7B;">+</span> b&#8320;_b <span style="color: #FCCE7B;">+</span> n<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.4339622641509434
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mode</span>
+mode<span style="color: #51afef;">(</span>posterior_dist_b<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span>a&#8320;_b <span style="color: #FCCE7B;">+</span> y <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>a&#8320;_b <span style="color: #FCCE7B;">+</span> b&#8320;_b <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.43137254901960786
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior standard deviation</span>
+std<span style="color: #51afef;">(</span>posterior_dist_b<span style="color: #51afef;">)</span>
+var_b = <span style="color: #51afef;">(</span>&#956;_b<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#956;_b<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>a&#8320;_b <span style="color: #FCCE7B;">+</span> b&#8320;_b <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+sqrt<span style="color: #51afef;">(</span>var_b<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.06744531631926798
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior 95% interval</span>
+quantile<span style="color: #51afef;">(</span>posterior_dist_b, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+
+2-element Vector{Float64}:
+ 0.30469562471174694
+ 0.5679527959964581
+</pre>
+</div>
+</li>
+<li><a id="org21ee278"></a>c<br />
+<div class="outline-text-4" id="text-1-4-3">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> SpecialFunctions
+prior_mix = &#952; <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">//</span><span style="color: #e69055; font-weight: bold;">4</span> <span style="color: #FCCE7B;">*</span> gamma<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">10</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>gamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> gamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">8</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">3</span> <span style="color: #FCCE7B;">*</span> &#952; <span style="color: #FCCE7B;">*</span> <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#952;<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">7</span> <span style="color: #FCCE7B;">+</span> &#952;<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">7</span> <span style="color: #FCCE7B;">*</span> <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#952;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">xs = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+plot<span style="color: #51afef;">(</span>
+    xs, prior_mix.<span style="color: #C57BDB;">(</span>xs<span style="color: #C57BDB;">)</span>,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(&#952;)"</span>,
+    title = <span style="color: #7bc275;">"mixture of a beta(2,8) and a beta(8,2) prior distribution"</span>,
+    titlefontsize = <span style="color: #e69055; font-weight: bold;">12</span>,
+    legend = <span style="color: #a991f1;">false</span>,
+    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
+    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
+    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org78351b2" class="figure">
+<p><img src="fig/exercise3.4cmixprior.jpg" alt="exercise3.4cmixprior.jpg" width="500" />
+</p>
+</div>
+
+<p>
+<a href="#org1d9022d">a</a>や<a href="#orgd24c02c">b</a>の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
+</p>
+</div>
+</li>
+<li><a id="org8ec9d1c"></a>d<br />
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+For the prior in c):
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org6536b66"></a>i<br />
+<div class="outline-text-5" id="text-1-4-4-1">
+<p>
+Write out mathematically \(p(\theta) \times p(y \mid \theta)\) and simplify as much as possible.
+</p>
+
+<p>
+Answer:
+</p>
+
+\begin{align*}
+p(\theta) \times p(y \mid \theta)
+&= \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} [3 \theta (1-\theta)^7 + \theta^7 (1-\theta)] \times \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \\
+&= \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} \begin{pmatrix} 43 \\ 15 \end{pmatrix} \left[3 \theta^{1+15} (1-\theta)^{7+28} + \theta^{7+15} (1-\theta)^{1+28}\right] \\
+&= \frac{1}{4} \frac{\Gamma(10) \Gamma(44)}{\Gamma(2)\Gamma(8) \Gamma(16) \Gamma(29)} \left[3 \theta^{16} (1-\theta)^{35} + \theta^{22} (1-\theta)^{29}\right] \\
+\end{align*}
+</div>
+</li>
+<li><a id="orgb08164d"></a>ii<br />
+<div class="outline-text-5" id="text-1-4-4-2">
+<p>
+The posterior distribution is a mixture of two distributions you know.
+Identify these distributions.
+</p>
+
+<p>
+Answer:
+</p>
+
+<p>
+Beta(17, 36) and Beta(23, 30)
+</p>
+</div>
+</li>
+<li><a id="orgd39ccbd"></a>iii<br />
+<div class="outline-text-5" id="text-1-4-4-3">
+<p>
+On a computer, calculate and plot \(p(\theta) \times p(y \mid \theta)\)
+for a variety of \(\theta\) values.
+Also find (approximately) the posterior mode, and discuss its relation to the modes in <a href="#org1d9022d">a)</a> and <a href="#orgd24c02c">b)</a>.
+</p>
+
+<p>
+Answer:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">cond_prob = &#952; <span style="color: #FCCE7B;">-&gt;</span> pdf<span style="color: #51afef;">(</span>Binomial<span style="color: #C57BDB;">(</span>n, &#952;<span style="color: #C57BDB;">)</span>, y<span style="color: #51afef;">)</span>
+prior_times_cond_prob = &#952; <span style="color: #FCCE7B;">-&gt;</span> prior_mix<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> cond_prob<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span>
+xs = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.001</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
+plot<span style="color: #51afef;">(</span>
+    xs, prior_times_cond_prob.<span style="color: #C57BDB;">(</span>xs<span style="color: #C57BDB;">)</span>,
+    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(&#952;) &#215; p(&#952;|y)"</span>,
+    title = <span style="color: #7bc275;">"p(&#952;) &#215; p(&#952;|y)"</span>,
+    legend = <span style="color: #a991f1;">false</span>,
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org69bdd6d" class="figure">
+<p><img src="fig/exercise3.4diiiplot.jpg" alt="exercise3.4diiiplot.jpg" width="500" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">prior_times_cond_prob&#12364;&#26368;&#22823;&#12395;&#12394;&#12427;&#952;</span>
+xs<span style="color: #51afef;">[</span>argmax<span style="color: #C57BDB;">(</span>prior_times_cond_prob.<span style="color: #7bc275;">(</span>xs<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<p>
+<a href="#org1d9022d">a)</a> の mode が 0.313,<a href="#orgd24c02c">b)</a>の mode が 0.431 であったので、この事後 mode はその中間（かなり a より)に位置している。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org2452ba0"></a>e<br />
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+Find a general formula for the weights of the mixture distribution in <a href="#orgb08164d">d)ii</a>,
+and provide an interpretation for their values.
+</p>
+
+<p>
+Answer:
+</p>
+
+<p>
+\(n ,y\)一般に対し、事後分布は
+</p>
+
+\begin{align*}
+p(\theta \mid y)
+&= \frac{p(y \mid \theta) p(\theta)}{p(y)} \\
+& \propto p(y \mid \theta) p(\theta) \\
+&= \begin{pmatrix} n \\ y \end{pmatrix} \theta^y (1-\theta)^{n-y} \times
+\frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} \left[3 \theta (1-\theta)^7 + \theta^7 (1-\theta)\right] \\
+& \propto 3 \theta^{y+1} (1-\theta)^{n-y+7} + \theta^{y+7} (1-\theta)^{n-y+1} \\
+& \propto \frac{3}{4} \theta^{y+2-1} (1-\theta)^{n-y+8-1} + \frac{1}{4} \theta^{y+8-1} (1-\theta)^{n-y+2-1} \\
+&= \frac{3}{4} \text{dbeta}(y+2, n-y+8) + \frac{1}{4} \text{dbeta}(y+8, n-y+2)
+\end{align*}
+
+<p>
+となる。よって事後分布は、Beta(y+2, n-y+8) と Beta(y+8, n-y+2)を 3 対 1 の重みをつけて混合させたものが事後分布となる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgf7151bb"></a>3.5<br />
+<ol class="org-ol">
+<li><a id="orgd57a968"></a>Answer<br />
+<ol class="org-ol">
+<li><a id="orgc4fd0b8"></a>a)<br />
+<div class="outline-text-5" id="text-1-5-1-1">
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
+&= \sum_{k=1}^K w_k p_k(\theta \mid n_k, n_k t_k) \prod_{i=1}^n p(y_i \mid \theta) \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \prod_{i=1}^n c(\theta) h(y_i) \exp \{\theta t(y_i)\} \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \prod_{i=1}^n h(y_i) \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
+&\propto \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k + n} \exp \left\{ \theta \times \left[ n_k t_k + \sum_{i=1}^n t(y_i) \right] \right\} \\
+&\propto \sum_{k=1}^K w_k p_k (\theta \mid n_k + n, \frac{n_k t_k + n \bar{t}(\boldsymbol{y})}{n_k + n})
+\end{align*}
+
+<p>
+where \(\bar{t}(\boldsymbol{y}) = \frac{\sum t(y_i)}{n}\)
+</p>
+</div>
+</li>
+<li><a id="org4089705"></a>b)<br />
+<div class="outline-text-5" id="text-1-5-1-2">
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
+&= \sum_{k=1}^K w_k p_k(\theta \mid a_k, b_k) \times \prod_{i=1}^n p(y_i \mid \theta) \\
+&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
+\exp \left( - b_k \theta \right)
+\times \prod_{i=1}^n \frac{\theta^{y_i} e^{- \theta } }{y_i!} \\
+&\propto \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
+\exp \left( - b_k \theta \right)
+\times \theta^{\sum_{i=1}^n y_i} \exp \left( - n \theta \right) \\
+&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k + \sum y_i - 1}
+\exp \left( - (b_k + n) \theta \right) \\
+&\propto \sum_{k=1}^K w_k \text{dgamma}(\theta \mid a_k + \sum y_i, b_k + n)
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org603ea71"></a>3.6<br />
+<ol class="org-ol">
+<li><a id="orgcce8870"></a>Answer<br />
+<ol class="org-ol">
+<li><a id="org02c12ca"></a>a)<br />
+<div class="outline-text-5" id="text-1-6-1-1">
+<p>
+\( \int p(y \mid \theta) dy = 1 \) の両辺を \(\phi\) で微分すると左辺は、
+</p>
+\begin{align*}
+\frac{d}{d \phi } \int p(y \mid \theta) dy
+&= \int \frac{d}{d \phi } p(y \mid \theta) dy \\
+&= \int \frac{d}{d \phi } c(\phi) h(y) \exp\{\phi t(y) \} dy \\
+&= \int h(y) \left( c(\phi) \frac{d \exp \{\phi t(y) \} }{ d \phi } +
+\frac{d c(\phi)}{d \phi } \exp \{\phi t(y) \} \right) dy \\
+&= \int h(y) \left( c(\phi) t(y) \exp \{\phi t(y) \} +
+c'(\phi) \exp \{\phi t(y) \} \right) dy \\
+&= \int h(y) c(\phi) t(y) \exp \{\phi t(y) \} dy + \int h(y) c'(\phi) \exp \{\phi t(y) \} dy \\
+&= E[ t(y) \mid \phi] +
+\frac{c'(\phi)}{c(\phi)} \int c(\phi) h(y) \exp \{\phi t(y) \} dy \\
+&\quad (\because c(\phi) \neq 0 \text{ because } p(y \mid \theta) \text{ is a probability density}) \\
+&= E[ t(y) \mid \phi] + \frac{c'(\phi)}{c(\phi)} \int p(y \mid \theta) dy \\
+&= E[ t(y) \mid \phi] + \frac{c'(\phi)}{c(\phi)} \\
+\end{align*}
+
+<p>
+右辺は 0 なので、
+\[ E[ t(y) \mid \phi] = - \frac{c'(\phi)}{c(\phi)} \]
+</p>
+</div>
+</li>
+<li><a id="orgea2f2a6"></a>b)<br />
+<div class="outline-text-5" id="text-1-6-1-2">
+\begin{align*}
+\frac{d p(\phi)}{d \phi}
+&= \frac{d}{d \phi} \left( \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} \right) \\
+&= \kappa(n_0, t_0) \left(
+\frac{d \ c(\phi)^{n_0} }{d \phi}  \exp \{ n_0 t_0 \phi \} +
+c(\phi)^{n_0} \frac{d}{d \phi} \exp \{ n_0 t_0 \phi \} \right)  \\
+&= \kappa(n_0, t_0) \left(
+n_0 c(\phi)^{n_0 - 1} c'(\phi) \exp \{ n_0 t_0 \phi \} +
+c(\phi)^{n_0} n_0 t_0 \exp \{ n_0 t_0 \phi \} \right) \\
+&= \frac{c'(\phi)}{c(\phi)} n_0  \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} +
+n_0 t_0 \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} \\
+&= \frac{c'(\phi)}{c(\phi)} n_0 p(\phi) + n_0 t_0 p(\phi) \\
+\end{align*}
+
+<p>
+ここで、両辺を \(\phi\)について積分すると左辺は
+</p>
+\begin{align*}
+\int \frac{d p(\phi)}{d \phi} d \phi
+&= \frac{d}{d \phi} \int p(\phi) d \phi \\
+&= \frac{d}{d \phi} 1 \\
+&= 0 \\
+\end{align*}
+
+<p>
+右辺は
+</p>
+\begin{align*}
+n_0 \int \frac{c'(\phi)}{c(\phi)} p(\phi) d \phi + n_0 t_0 \int p(\phi) d \phi
+& = n_0 E \left[ \frac{c'(\phi)}{c(\phi)} \right] + n_0 t_0
+\end{align*}
+
+<p>
+以上より、
+\[ E \left[- \frac{c'(\phi)}{c(\phi)} \right] = t_0 \]
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org87dbe49"></a>3.7<br />
+<div class="outline-text-3" id="text-1-7">
+</div>
+<ol class="org-ol">
+<li><a id="org11aca18"></a>answer: a)<br />
+<div class="outline-text-4" id="text-1-7-1">
+<p>
+事前分布は一様分布 Beta(1, 1)より、事後分布は Beta(3, 14)となる。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
+<span style="color: #51afef;">begin</span>
+a, b = <span style="color: #e69055; font-weight: bold;">1</span> , <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">prior parameters</span>
+n&#8321;, y&#8321; = <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">data</span>
+mean = <span style="color: #51afef;">(</span>a <span style="color: #FCCE7B;">+</span> y&#8321;<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>a <span style="color: #FCCE7B;">+</span> b <span style="color: #FCCE7B;">+</span> n&#8321;<span style="color: #51afef;">)</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean</span>
+<span style="color: #7bc275;">"Posterior mean :  $mean"</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<pre class="example">
+Posterior mean :  0.17647058823529413
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia">mode = <span style="color: #51afef;">(</span>a <span style="color: #FCCE7B;">+</span> y&#8321; <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>a <span style="color: #FCCE7B;">+</span> b <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mode</span>
+<span style="color: #7bc275;">"Posterior mode :  $mode"</span>
+</pre>
+</div>
+
+<pre class="example">
+Posterior mode :  0.13333333333333333
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-julia">var = mean <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> mean<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>a <span style="color: #FCCE7B;">+</span> b <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">posterior variance</span>
+std = sqrt<span style="color: #51afef;">(</span>var<span style="color: #51afef;">)</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">posterior standard deviation</span>
+<span style="color: #7bc275;">"Posterior standard deviation :  $std"</span>
+</pre>
+</div>
+
+<pre class="example">
+Posterior standard deviation :  0.08985442539129099
+</pre>
+
+
+
+<div id="org40c880e" class="figure">
+<p><img src="fig/exercise3.7aposteriorplot.jpg" alt="exercise3.7aposteriorplot.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="orgb485507"></a>b)<br />
+<ol class="org-ol">
+<li><a id="org6597797"></a>answer: b) i.<br />
+<div class="outline-text-5" id="text-1-7-2-1">
+\begin{equation}
+\label{org417acd7}
+\text{Pr}\left(Y_1 \in A_1, Y_2 \in A_2 \mid \theta \right)
+= \text{Pr}\left(Y_1 \in A_1 \mid \theta \right) \text{Pr}\left(Y_2 \in A_2 \mid \theta \right)
+\end{equation}
+
+<p>
+Proof:
+</p>
+
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \int_0^1 \text{Pr}\left( Y_2 = y_2, \theta \mid Y_1 = 2 \right) d \theta \\
+&= \int_0^1 \text{Pr}\left( Y_2 = y_2 \mid \theta , Y_1 = 2 \right) \text{Pr}\left( \theta \mid Y_1 = 2 \right) d \theta \\
+\end{align*}
+
+<p>
+より、等式が成り立つための条件は、
+</p>
+
+\begin{align*}
+& \text{Pr}\left( Y_2 = y_2, \mid \theta,  Y_1 = 2 \right)
+= \text{Pr}\left( Y_2 = y_2 \mid \theta \right) \\
+\Leftrightarrow \quad
+&\text{Pr}\left(Y_1 = 2 \mid \theta \right) \text{Pr}\left(Y_2 = y_2 \mid \theta ,  Y_1 = 2\right)
+= \text{Pr}\left(Y_1 = 2 \mid \theta \right) \text{Pr}\left(Y_2 = y_2 \mid \theta \right) \\
+\Leftrightarrow \quad
+&\text{Pr}\left(Y_1 = 2 , Y_2 = y_2 \mid \theta \right)
+= \text{Pr}\left(Y_1 = 2 \mid \theta \right) \text{Pr}\left(Y_2 = y_2 \mid \theta \right)
+\end{align*}
+
+<p>
+これを\((Y_1, Y_2)\)の同時分布について一般化すると、(\eqref{org417acd7})が導かれる。
+</p>
+</div>
+</li>
+<li><a id="org0c12325"></a>answer: b) ii.<br />
+<div class="outline-text-5" id="text-1-7-2-2">
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \int_0^1 \text{Pr}\left( Y_2 = y_2 \mid \theta \right) p(\theta \mid Y_1 = 2) d \theta \\
+&= \int_0^1 \begin{pmatrix} 278 \\ y_2 \end{pmatrix} \theta^{y_2} (1 - \theta)^{278 - y_2} \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \theta^2 (1 - \theta)^{13} d \theta \\
+&= \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \begin{pmatrix} 278 \\ y_2 \end{pmatrix}
+\int_0^1 \theta^{y_2 + 3 - 1} (1 - \theta)^{292 - y_2 - 1} d \theta \\
+\end{align*}
+</div>
+</li>
+<li><a id="org829f338"></a>answer: b) iii.<br />
+<div class="outline-text-5" id="text-1-7-2-3">
+\begin{align*}
+\int_0^1 \theta^{y_2 + 3 - 1} (1 - \theta)^{292 - y_2 - 1} d \theta
+&= \frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma((y_2 + 3) + (292-y_2) )}  \\
+&= \frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma(295)} \\
+\end{align*}
+<p>
+より、
+</p>
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \begin{pmatrix} 278 \\ y_2 \end{pmatrix}
+\frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma(295)} \\
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgaab2cb7"></a>c)<br />
+<div class="outline-text-4" id="text-1-7-3">
+</div>
+<ol class="org-ol">
+<li><a id="org879a9eb"></a>answer<br />
+<div class="outline-text-5" id="text-1-7-3-1">
+<p>
+<a href="#org829f338">b)iiiの答え</a>に\(y_2 = 0, 1, \dots\) を代入することもできるが、
+</p>
+
+\begin{align*}
+\text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
+&= \frac{\Gamma(3 + 14)}{\Gamma(3) \Gamma(14)} \begin{pmatrix} 278 \\ y_2 \end{pmatrix}
+\frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma(295)} \\
+&= \begin{pmatrix} 278 \\ y_2 \end{pmatrix} \frac{B(y_2 + 3, 292 - y_2)}{B(3, 14)} \\
+&= \begin{pmatrix} 278 \\ y_2 \end{pmatrix} \frac{B(y_2 + 3, 278 - y_2 + 14)}{B(3, 14)} \\
+&= \text{dbetabinomial}(y_2, 278, 3, 14)
+\end{align*}
+
+<p>
+より、
+\(y_2\)はベータ二項分布に従うことがわかる。これを利用してプロットすると、以下のようになる。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">n&#8322; = <span style="color: #e69055; font-weight: bold;">278</span>
+plot<span style="color: #51afef;">(</span>BetaBinomial<span style="color: #C57BDB;">(</span>n&#8322;, a <span style="color: #FCCE7B;">+</span> y&#8321;, a <span style="color: #FCCE7B;">+</span> b <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #C57BDB;">)</span>, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">278</span>, label=<span style="color: #a991f1;">nothing</span><span style="color: #51afef;">)</span>
+xlabel!<span style="color: #51afef;">(</span><span style="color: #7bc275;">"y&#8322;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgd84702b" class="figure">
+<p><img src="fig/3.7cbetabinomial.jpg" alt="3.7cbetabinomial.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org7cc51ae"></a>d)<br />
+<ol class="org-ol">
+<li><a id="orgbdfacbb"></a>answer:<br />
+<div class="outline-text-5" id="text-1-7-4-1">
+<div class="org-src-container">
+<pre class="src src-julia">&#952;&#770; = <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">//</span> <span style="color: #e69055; font-weight: bold;">15</span>
+plot<span style="color: #51afef;">(</span>Binomial<span style="color: #C57BDB;">(</span>n&#8322;, &#952;&#770;<span style="color: #C57BDB;">)</span>, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">278</span>, label=<span style="color: #a991f1;">nothing</span>, xlabel=<span style="color: #7bc275;">"y&#8322;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orge5575cf" class="figure">
+<p><img src="fig/exercise3.7dbinomial.jpg" alt="exercise3.7dbinomial.jpg" width="500" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">mean2 = n&#8322; <span style="color: #FCCE7B;">*</span> &#952;&#770;
+var2 = n&#8322; <span style="color: #FCCE7B;">*</span> &#952;&#770; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#952;&#770;<span style="color: #51afef;">)</span>
+std2 = sqrt<span style="color: #51afef;">(</span>var2<span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"mean: $mean2, std: $std2"</span>
+</pre>
+</div>
+
+<pre class="example">
+mean: 37.06666666666666, std: 5.667843015155276
+</pre>
+
+
+
+<p>
+<a href="#orgaab2cb7">c)</a> との比較:
+</p>
+
+<p>
+mode は <a href="#orgaab2cb7">c)</a> が 34, で上の分布が 37 と、かなり近いが、cの分布の方がかなり裾の広い分布（分散が大きい分布）となっていることがわかる。これは、1回目のデータが得られたあとの\(\theta\)の事後分布の不確実性が c)の分布に反映されているためである。逆に、上の分布には 1 回目のデータのサンプルサイズ（データの妥当性）が反映されていないため、予測には c の分布を使うのがよいと考えられる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgb1fe8e6"></a>3.8<br />
+<div class="outline-text-3" id="text-1-8">
+</div>
+<ol class="org-ol">
+<li><a id="org677cad0"></a>a)<br />
+<div class="outline-text-4" id="text-1-8-1">
+</div>
+<ol class="org-ol">
+<li><a id="org3f9980e"></a>answer<br />
+<div class="outline-text-5" id="text-1-8-1-1">
+<div class="org-src-container">
+<pre class="src src-julia">a&#8320;_sym, b&#8320;_sym = <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">15</span>
+sym = Beta<span style="color: #51afef;">(</span>a&#8320;_sym, b&#8320;_sym<span style="color: #51afef;">)</span>
+a&#8320;_asym, b&#8320;_asym = <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">20</span>
+asym = Beta<span style="color: #51afef;">(</span>a&#8320;_asym, b&#8320;_asym<span style="color: #51afef;">)</span>
+plot<span style="color: #51afef;">(</span>sym, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1</span>, label=<span style="color: #7bc275;">"symmetric"</span><span style="color: #51afef;">)</span>
+plot!<span style="color: #51afef;">(</span>asym, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1</span>, label=<span style="color: #7bc275;">"asymmetric"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org6eef46f" class="figure">
+<p><img src="fig/exercise3.8apriors.jpg" alt="exercise3.8apriors.jpg" width="500" />
+</p>
+</div>
+
+<p>
+上の mixture model は、以下のようになる。
+</p>
+<div class="org-src-container">
+<pre class="src src-julia">mm = MixtureModel<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>sym, asym<span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.2</span>, <span style="color: #e69055; font-weight: bold;">0.8</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">(</span>mm, <span style="color: #e69055; font-weight: bold;">100000</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"mixture model prior"</span>, bins=<span style="color: #e69055; font-weight: bold;">100</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org1d53350" class="figure">
+<p><img src="fig/exercise3.8amixturemodelprior.jpg" alt="exercise3.8amixturemodelprior.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org95b16ca"></a>b)<br />
+<div class="outline-text-4" id="text-1-8-2">
+</div>
+<ol class="org-ol">
+<li><a id="org2200edb"></a>answer<br />
+<div class="outline-text-5" id="text-1-8-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">num</th>
+<th scope="col" class="org-right">front</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">17</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">19</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">21</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">23</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">24</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">25</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">26</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">27</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">28</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">29</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">30</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">31</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">32</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">33</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">34</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">35</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">36</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">37</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">38</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">39</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">40</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">41</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">42</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">43</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">44</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">45</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">46</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">47</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">48</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">49</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">50</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">Total</td>
+<td class="org-right">23</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+平成 26 年 100 円玉
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgb6cd4ce"></a>c)<br />
+<div class="outline-text-4" id="text-1-8-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgb775213"></a>answer<br />
+<div class="outline-text-5" id="text-1-8-3-1">
+<div class="org-src-container">
+<pre class="src src-julia">y&#8321;, n&#8321; = <span style="color: #e69055; font-weight: bold;">23</span> , <span style="color: #e69055; font-weight: bold;">50</span>
+sym&#8321; = Beta<span style="color: #51afef;">(</span>a&#8320;_sym <span style="color: #FCCE7B;">+</span> y&#8321;, b&#8320;_sym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #51afef;">)</span>
+asym&#8321; = Beta<span style="color: #51afef;">(</span>a&#8320;_asym <span style="color: #FCCE7B;">+</span> y&#8321;, b&#8320;_asym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #51afef;">)</span>
+mm&#8321; = MixtureModel<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>sym&#8321;, asym&#8321;<span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.2</span>, <span style="color: #e69055; font-weight: bold;">0.8</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">(</span>mm&#8321;, <span style="color: #e69055; font-weight: bold;">100000</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"posterior distribution"</span>, bins=<span style="color: #e69055; font-weight: bold;">100</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="org2991d79" class="figure">
+<p><img src="fig/exercise3.8cposterior.jpg" alt="exercise3.8cposterior.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org5f6b968"></a>d)<br />
+<ol class="org-ol">
+<li><a id="org2dd3550"></a>answer<br />
+<div class="outline-text-5" id="text-1-8-4-1">
+<p>
+今回は、令和元年 100 円玉を使う。
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">num</th>
+<th scope="col" class="org-right">front</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">17</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">19</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">21</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">23</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">24</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">25</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">26</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">27</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">28</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">29</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">30</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">31</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">32</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">33</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">34</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">35</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">36</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">37</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">38</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">39</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">40</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">41</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">42</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">43</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">44</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">45</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">46</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">47</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">48</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">49</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">50</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">Total</td>
+<td class="org-right">20</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+同じ 100 円玉なので、 <a href="#orgb6cd4ce">c)</a> で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">n&#8322;, y&#8322; = <span style="color: #e69055; font-weight: bold;">50</span>, <span style="color: #e69055; font-weight: bold;">20</span>
+sym&#8322; = Beta<span style="color: #51afef;">(</span>a&#8320;_sym <span style="color: #FCCE7B;">+</span> y&#8321; <span style="color: #FCCE7B;">+</span> y&#8322;, b&#8320;_sym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321; <span style="color: #FCCE7B;">+</span> n&#8322; <span style="color: #FCCE7B;">-</span> y&#8322;<span style="color: #51afef;">)</span>
+asym&#8322; = Beta<span style="color: #51afef;">(</span>a&#8320;_asym <span style="color: #FCCE7B;">+</span> y&#8321; <span style="color: #FCCE7B;">+</span> y&#8322;, b&#8320;_asym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321; <span style="color: #FCCE7B;">+</span> n&#8322; <span style="color: #FCCE7B;">-</span> y&#8322;<span style="color: #51afef;">)</span>
+mm&#8322; = MixtureModel<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>sym&#8322;, asym&#8322;<span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.2</span>, <span style="color: #e69055; font-weight: bold;">0.8</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">(</span>mm&#8322;, <span style="color: #e69055; font-weight: bold;">100000</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"posterior distribution"</span>, bins=<span style="color: #e69055; font-weight: bold;">100</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgea8b607" class="figure">
+<p><img src="fig/exercise3.8dposterior.jpg" alt="exercise3.8dposterior.jpg" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org2f4e69f"></a>3.9<br />
+<ol class="org-ol">
+<li><a id="orgf411738"></a>a)<br />
+<ol class="org-ol">
+<li><a id="org369a86c"></a>answer<br />
+<div class="outline-text-5" id="text-1-9-1-1">
+<p>
+データ\(y_1, y_2, \dots, y_n\)を観測したとき、
+y_1, y_2, &hellip;, y_n &sim; \text{i.i.d. Galenshore}(a, &theta;)
+とすると、
+\(\theta\)の\(a\)の条件付き事後分布は、
+</p>
+\begin{align*}
+p(\theta | y_1, \dots, y_n, a)
+&\propto p(y_1, \dots, y_n | \theta, a) p(\theta | a) \\
+&\propto \theta^{2a n} \exp \left( - \theta^2 \sum_{i=1}^n y_i^2 \right)
+\times p(\theta | a) \\
+\end{align*}
+<p>
+となる。上の計算より、
+\(p(\theta | a)\)が共役事前分布であるためには、
+\(\theta^{2 c_1} \exp(- \theta^2) \)
+のような項を含む分布である必要があるが、そのような分布としては、sampling model と同じ Galenshore 分布がある。
+</p>
+
+<p>
+また、\(f(\theta) = - \theta^2 =: \phi\)とおくと、
+\(\phi\)は\(\theta > 0\)で\(\theta\)の全単射の写像であり、
+</p>
+\begin{align*}
+p(\theta | y_1, \dots, y_n, a)
+&\propto \phi^{an} \exp \left( \phi \sum_{i=1}^n y_i^2 \right)
+\times p(\theta | a) \\
+\end{align*}
+<p>
+と問題を置き換えて
+\(\phi\)の事前分布として、ガンマ分布を考えることもできる。
+</p>
+
+<p>
+以下では、\(\theta\)の事前分布として、Galenshore 分布を用いる。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">plot<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">3</span>,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Normal(3,2)"</span><span style="color: #51afef;">)</span>
+plot!<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span>,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Gamma(1,1)"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orgcbf05be" class="figure">
+<p><img src="fig/Exercise3_9a.png" alt="Exercise3_9a.png" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org40bb18c"></a>b)<br />
+<ol class="org-ol">
+<li><a id="org78be58f"></a>answer<br />
+<div class="outline-text-5" id="text-1-9-2-1">
+<p>
+\(\theta\)の prior を Galenshore\((b, \phi)\) に設定すると、posterior は以下のように計算できる。
+</p>
+
+\begin{align*}
+p(\theta | y_1, \dots, y_n, a)
+&\propto p(y_1, \dots, y_n | \theta, a) p(\theta | a) \\
+&\propto \theta^{2a n} \exp \left( - \theta^2 \sum_{i=1}^n y_i^2 \right)
+\times \theta^{2b-1} e^{-\phi^2 \theta^2} \\
+&= \theta^{2(an+b) - 1} \exp \left( - \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta^2 \right) \\
+\end{align*}
+
+<p>
+以上より、
+\[\theta | y_1, \dots, y_n, a \sim \text{Galenshore}(an+b, \sqrt{\sum_{i=1}^n y_i^2 + \phi^2}\]
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org9135f63"></a>c)<br />
+<ol class="org-ol">
+<li><a id="org58a2e1f"></a>answer<br />
+<div class="outline-text-5" id="text-1-9-3-1">
+\begin{align*}
+\frac{p(\theta_a | Y_1 , \dots, Y_n)}{p(\theta_b | Y_1 , \dots, Y_n)}
+&= \frac{ \frac{2}{\Gamma(an + b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{(an+b)}
+\theta_a^{2(an+b)-1} e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta_a^2} }
+{ \frac{2}{\Gamma(an + b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{(an+b)}
+\theta_b^{2(an+b)-1} e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta_b^2} } \\
+&= \left( \frac{\theta_a}{\theta_b} \right)^{2(an+b)-1} \times
+e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) (\theta_a^2 - \theta_b^2)} \\
+\end{align*}
+
+<p>
+上式から、十分統計量は、
+\(\sum_{i=1}^n y_i^2\)であることが分かる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org7df8b8e"></a>d)<br />
+<ol class="org-ol">
+<li><a id="org9cccf86"></a>answer<br />
+<div class="outline-text-5" id="text-1-9-4-1">
+\begin{align*}
+E[\theta | y_1, \dots, y_n]
+= \frac{ \Gamma(an+b + \frac{1}{2}) }{ \Gamma(an+b)\sqrt{\sum_{i=1}^n y_i^2 + \phi^2} }
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgce8fbf4"></a>e)<br />
+<ol class="org-ol">
+<li><a id="org85ca917"></a>answer<br />
+<div class="outline-text-5" id="text-1-9-5-1">
+<p>
+Galenshore 分布は確率分布であることから、
+</p>
+\begin{equation}
+\label{eq:galenshore}
+\begin{aligned}[b]
+& \int_0^{\infty} \frac{2}{\Gamma(a)} \theta^{2a} y^{2a-1} e^{-\theta^2 y^2} dy
+= 1 \\
+\Leftrightarrow \quad
+& \frac{2}{\Gamma(a)} \theta^{2a} \int_0^{\infty} y^{2a-1} e^{-\theta^2 y^2} dy = 1 \\
+\Leftrightarrow \quad
+& \int_0^{\infty} y^{2a-1} e^{-\theta^2 y^2} dy
+= \frac{\Gamma(a)}{2} \theta^{-2a}
+\end{aligned}
+\end{equation}
+<p>
+であることを用いると、
+</p>
+
+\begin{align*}
+p(\tilde{y} | y_1, \dots, y_n)
+&= \int_0^{\infty} p(\tilde{y} | \theta) p(\theta | y_1, \dots, y_n) d\theta \\
+&= \int_0^{\infty} \frac{2}{\Gamma(a)} \theta^{2a} \tilde{y}^{2a-1} e^{-\theta^2 \tilde{y}^2}
+\times \frac{2}{\Gamma(an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
+\theta^{2(an+b)-1} e^{- \left( \sum_{i=1}^n y_i^2 + \phi^2 \right) \theta^2} d\theta \\
+&= \frac{4}{\Gamma(a) \Gamma(an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
+\tilde{y}^{2a-1} \int_0^{\infty} \theta^{2(a + an+b)-1} e^{-(\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)\theta^2 } d\theta \\
+&= \frac{4}{\Gamma(a) \Gamma(an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b} \tilde{y}^{2a-1}
+\frac{\Gamma(a + an+b)}{2(\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)^{a + an+b}}
+\quad (\because \eqref{eq:galenshore})  \\
+&= \frac{2}{B(a, an+b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{an+b}
+\tilde{y}^{2a-1} (\tilde{y}^2 + \sum_{i=1}^n y_i^2 + \phi^2)^{-(a + an+b)} \\
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgf6be881"></a>3.10<br />
+<div class="outline-text-3" id="text-1-10">
+</div>
+<ol class="org-ol">
+<li><a id="org4f9c3f4"></a>a)<br />
+<div class="outline-text-4" id="text-1-10-1">
+</div>
+<ol class="org-ol">
+<li><a id="org152d498"></a>answer<br />
+<div class="outline-text-5" id="text-1-10-1-1">
+\begin{align*}
+&\psi = \log \left[ \frac{\theta}{1 - \theta} \right] \\
+\Leftrightarrow \quad & e^{\psi} = \frac{\theta}{1 - \theta} \\
+\Leftrightarrow \quad & \theta = \frac{e^{\psi}}{1 + e^{\psi} }
+=: h(\psi) \\
+\end{align*}
+
+<p>
+また、
+</p>
+\begin{align*}
+\frac{d h(\psi)}{d \psi}
+&= \frac{e^{\psi} (1+e^{\psi}) - e^{\psi} e^{\psi} }{(1+e^{\psi})^2} \\
+&= \frac{e^{\psi} (1+e^{\psi} - e^{\psi} )}{(1+e^{\psi})^2} \\
+&= \frac{e^{\psi}}{(1+e^{\psi})^2} \quad ( > 0)\\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+p_{\psi} (\psi)
+&= p_{\theta}(h(\psi)) \times \mid \frac{d h(\psi)}{d \psi} \mid \\
+&= \frac{1}{B(a,b)} h(\psi)^{a-1} (1-h(\psi))^{b-1} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \frac{1}{B(a,b)} \left( \frac{e^{\psi}}{1 + e^{\psi} } \right)^{a-1} \left( \frac{1}{1 + e^{\psi} } \right)^{b-1} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \frac{1}{B(a,b)} \left( \frac{e^{\psi}}{1 + e^{\psi} } \right)^a \left( \frac{1}{1 + e^{\psi} } \right)^b
+\end{align*}
+
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> SpecialFunctions
+a, b = <span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">1</span>
+p_&#968; = &#968; <span style="color: #FCCE7B;">-&gt;</span> exp<span style="color: #51afef;">(</span>&#968;<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span>a <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">+</span> exp<span style="color: #C57BDB;">(</span>&#968;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span>b<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> beta<span style="color: #51afef;">(</span>a,b<span style="color: #51afef;">)</span>
+&#968;s = range<span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">10</span>, length=<span style="color: #e69055; font-weight: bold;">100</span><span style="color: #51afef;">)</span>
+p = plot<span style="color: #51afef;">(</span>&#968;s, p_&#968;.<span style="color: #C57BDB;">(</span>&#968;s<span style="color: #C57BDB;">)</span>, xlabel=<span style="color: #7bc275;">"&#968;"</span>, ylabel=<span style="color: #7bc275;">"p(&#968;)"</span>, label=<span style="color: #7bc275;">"p(&#968;)"</span><span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span>p, <span style="color: #7bc275;">"fig/excersise3-10a.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"fig/excersise3-10a.png"</span>
+</pre>
+</div>
+
+
+<div id="org67fd31a" class="figure">
+<p><img src="fig/excersise3-10a.png" alt="excersise3-10a.png" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org34414ef"></a>b)<br />
+<ol class="org-ol">
+<li><a id="orgea5343f"></a>answer<br />
+<div class="outline-text-5" id="text-1-10-2-1">
+\begin{align*}
+&\psi = \log \theta \\
+\Leftrightarrow \quad & \theta = e^{\psi} =: h(\psi)
+\end{align*}
+
+<p>
+また、
+</p>
+\begin{align*}
+\frac{d h(\psi)}{d \psi}
+&= e^{\psi} \quad ( > 0)
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+p_{\psi} (\psi)
+&= p_{\theta}(h(\psi)) \times \mid \frac{d h(\psi)}{d \psi} \mid \\
+&= \frac{b^a}{\Gamma(a)} h(\psi)^{a-1} e^{-b h(\psi)} \times e^{\psi} \\
+&= \frac{b^a}{\Gamma(a)} e^{\psi (a-1)} e^{-b e^{\psi}} \times e^{\psi} \\
+&= \frac{b^a}{\Gamma(a)} e^{\psi a -b e^{\psi} } \\
+\end{align*}
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> SpecialFunctions
+a, b = <span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">1</span>
+p_&#968; = &#968; <span style="color: #FCCE7B;">-&gt;</span> b<span style="color: #FCCE7B;">^</span>a<span style="color: #FCCE7B;">/</span>gamma<span style="color: #51afef;">(</span>a<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> exp<span style="color: #51afef;">(</span>&#968;<span style="color: #FCCE7B;">*</span>a <span style="color: #FCCE7B;">-</span> b<span style="color: #FCCE7B;">*</span>exp<span style="color: #C57BDB;">(</span>&#968;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+&#968;s = range<span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">10</span>, length=<span style="color: #e69055; font-weight: bold;">100</span><span style="color: #51afef;">)</span>
+p = plot<span style="color: #51afef;">(</span>&#968;s, p_&#968;.<span style="color: #C57BDB;">(</span>&#968;s<span style="color: #C57BDB;">)</span>, xlabel=<span style="color: #7bc275;">"&#968;"</span>, ylabel=<span style="color: #7bc275;">"p(&#968;)"</span>, label=<span style="color: #7bc275;">"p(&#968;)"</span><span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span>p, <span style="color: #7bc275;">"fig/excersise3-10b.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"fig/excersise3-10b.png"</span>
+</pre>
+</div>
+
+
+<div id="orgacd0779" class="figure">
+<p><img src="fig/excersise3-10b.png" alt="excersise3-10b.png" width="500" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgdf59855"></a>3.12(和訳は 3.11)<br />
+<ol class="org-ol">
+<li><a id="org1f8b673"></a>a)<br />
+<div class="outline-text-4" id="text-1-11-1">
+</div>
+<ol class="org-ol">
+<li><a id="org2c817b1"></a>answer<br />
+<div class="outline-text-5" id="text-1-11-1-1">
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \begin{pmatrix} n \\ Y \end{pmatrix} \theta^Y (1-\theta)^{n-Y} \right]\\
+&= Y \log \theta + (n-Y) \log (1-\theta) + \log \begin{pmatrix} n \\ Y \end{pmatrix} \\
+\end{align*}
+<p>
+より、
+</p>
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - \frac{n-Y}{1-\theta} \right)\\
+&= - \frac{n-Y}{(1-\theta)^2} - \frac{Y}{\theta^2} \\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= - E \left[ - \frac{n-Y}{(1-\theta)^2} - \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{n-E[Y \mid \theta]}{(1-\theta)^2} + \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{n - n \theta}{(1-\theta)^2} + \frac{n \theta}{\theta^2} \\
+&= \frac{n}{1-\theta} + \frac{n}{\theta} \\
+&= \frac{n}{\theta (1-\theta)}
+\end{align*}
+<p>
+が得られる。また、
+</p>
+\begin{align*}
+p_J(\theta)
+&\propto \sqrt{\frac{n}{\theta (1-\theta)}} \\
+&= \sqrt{n} \theta^{-\frac{1}{2}} (1-\theta)^{-\frac{1}{2}} \\
+&\propto \theta^{ \frac{1}{2} - 1} (1-\theta)^{\frac{1}{2} - 1} \\
+&\propto \text{dbeta}(\theta, \frac{1}{2}, \frac{1}{2})
+\end{align*}
+<p>
+より、Jeffreys&rsquo; prior distribution は、
+Beta\((\frac{1}{2}, \frac{1}{2})\)となる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org9ac5dc5"></a>b)<br />
+<div class="outline-text-4" id="text-1-11-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgece9a92"></a>answer<br />
+<div class="outline-text-5" id="text-1-11-2-1">
+<p>
+これは <a href="#org4f9c3f4">3.10 a)</a> と同じ変換であることに注意。
+</p>
+
+\begin{align*}
+\log p(Y \mid \psi)
+&= \log \left[ \begin{pmatrix} n \\ Y \end{pmatrix} e^{\psi Y} (1+e^{\psi})^{-n} \right]\\
+&= Y \psi + \log \begin{pmatrix} n \\ Y \end{pmatrix} - n \log (1+e^{\psi}) \\
+\end{align*}
+
+<p>
+より、
+</p>
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \psi)}{\partial \psi^2}
+&= \frac{\partial}{\partial \psi}
+\left( Y - \frac{n e^{\psi} }{1+e^{\psi} } \right)\\
+&= - \frac{n e^{\psi} (1 + e^{\psi}) - e^{\psi} n e^{\psi} }{(1+e^{\psi})^2} \\
+&= - \frac{n e^{\psi} }{(1+e^{\psi})^2} \\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+I(\psi)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \psi)}{\partial \psi^2} \middle| \psi \right] \\
+&= - E \left[ - \frac{n e^{\psi} }{(1+e^{\psi})^2} \middle| \psi \right] \\
+&= \frac{n e^{\psi} }{(1+e^{\psi})^2} \\
+\end{align*}
+
+<p>
+したがって、prior distribution は、
+</p>
+
+\begin{align*}
+p_J(\psi)
+= c \times \frac{\sqrt{e^{\psi} } }{1 + e^{\psi} }
+\qquad \text{where } c = \frac{1}{\int_{-\infty}^{\infty} \sqrt{ e^{\psi} } (1 + e^{\psi} )^{-1} d\psi} \\
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org2297262"></a>c)<br />
+<ol class="org-ol">
+<li><a id="org9a5ac79"></a>answer<br />
+<div class="outline-text-5" id="text-1-11-3-1">
+\begin{align*}
+p_{J, \psi}(\psi)
+&= p_{J, \theta}(h(\psi)) \times \left| \frac{\partial h(\psi)}{\partial \psi} \right| \\
+&\propto h(\psi)^{-\frac{1}{2}} (1-h(\psi))^{-\frac{1}{2}} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{1 + e^{\psi} } \right)^{- \frac{1}{2} }
+\left(1-\frac{e^{\psi} }{1 + e^{\psi} }\right)^{-\frac{1}{2} } \times
+\frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{(1 + e^{\psi})^2 } \right)^{- \frac{1}{2} }
+\frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{(1 + e^{\psi})^2 } \right)^{ \frac{1}{2} } \\
+&= \frac{\sqrt{e^{\psi} } }{1 + e^{\psi} } \\
+\end{align*}
+
+
+<p>
+よって、
+<a href="#org9ac5dc5">b)</a> と一致することがわかる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="org9960463"></a>3.13<br />
+<ol class="org-ol">
+<li><a id="org8d0ff6b"></a>a)<br />
+<ol class="org-ol">
+<li><a id="orgf9caecf"></a>answer<br />
+<div class="outline-text-5" id="text-1-12-1-1">
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \frac{\theta^Y e^{-\theta}}{Y!} \right] \\
+&= Y \log \theta - \theta - \log Y! \\
+\end{align*}
+
+<p>
+より、
+</p>
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - 1 \right) \\
+&= - \frac{Y}{\theta^2} \\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= E \left[ \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{\theta}{\theta^2} \\
+&= \frac{1}{\theta} \\
+\end{align*}
+
+<p>
+したがって、prior distribution は、
+</p>
+
+\begin{align*}
+p_J(\theta)
+\propto \times \frac{1}{\sqrt{\theta}}
+\end{align*}
+
+<p>
+となるが、
+</p>
+
+<p>
+\(\int_{0}^{\infty} \frac{1}{\sqrt{\theta}} d\theta \)は無限大に発散するので、確率分布とはならない。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org55cb5ee"></a>b)<br />
+<ol class="org-ol">
+<li><a id="org09d5921"></a>answer<br />
+<div class="outline-text-5" id="text-1-12-2-1">
+\begin{align*}
+f(\theta, y)
+&= \sqrt{I(\theta)} \times p(y \mid \theta) \\
+&= \sqrt{\frac{1}{\theta}} \times \frac{\theta^y e^{-\theta}}{y!} \\
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!}
+\end{align*}
+
+\begin{align*}
+f(\theta \mid y)
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!} \\
+&\propto \theta^{y - \frac{1}{2} } e^{-\theta} \\
+&= \theta^{y + \frac{1}{2} -1 } e^{-\theta} \\
+&\propto \text{dgamma}(\theta, y + \frac{1}{2}, 1)
+\end{align*}
+
+<p>
+Probably yes because we are interested in only the shape of the distribution.
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a id="orgf6581ff"></a>3.14<br />
+<ol class="org-ol">
+<li><a id="orgff8fd5b"></a>a)<br />
+<div class="outline-text-4" id="text-1-13-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgdd957ca"></a>answer<br />
+<div class="outline-text-5" id="text-1-13-1-1">
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \theta^{y_i} (1 - \theta)^{1 - y_i} \\
+&= \sum_{i=1}^n y_i \log \theta + (1 - y_i) \log (1 - \theta) \\
+&= \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \\
+\end{align*}
+
+<p>
+一階の条件は、
+</p>
+
+\begin{align*}
+& \frac{\sum_{i=1}^n y_i}{\theta} = \frac{n - \sum_{i=1}^n y_i}{1 - \theta} \\
+\Leftrightarrow \quad & (1 - \theta) \sum_{i=1}^n y_i = \theta (n - \sum_{i=1}^n y_i) \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+<p>
+また、
+</p>
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-1} \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-2} \\
+\end{align*}
+
+<p>
+より、上で求めた \(\hat{\theta}\) を代入すると、
+</p>
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \hat{\theta})^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} - \left( n - \sum_{i=1}^n y_i \right) \left(1 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} - \frac{n^2}{n - \sum_{i=1}^n y_i} \\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} - \frac{n}{n - \sum_{i=1}^n y_i} \\
+&= -n \left( \frac{1}{\sum_{i=1}^n y_i} + \frac{1}{n - \sum_{i=1}^n y_i} \right) \\
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgf84aee3"></a>b)<br />
+<div class="outline-text-4" id="text-1-13-2">
+</div>
+<ol class="org-ol">
+<li><a id="org3ba0a33"></a>answer<br />
+<div class="outline-text-5" id="text-1-13-2-1">
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) }{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\sum_{i=1}^n y_i}{n} \log \theta + (1 - \frac{\sum_{i=1}^n y_i}{n}) \log (1 - \theta) + c \\
+\Leftrightarrow \quad & p_U (\theta) = \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c\\
+\end{align*}
+
+<p>
+\(p_U(\theta)\)は probability density なので、
+</p>
+
+\begin{align*}
+& \int_0^1 p_U (\theta) d\theta = 1 \\
+\Leftrightarrow \quad & \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c d\theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}}  d\theta \right)^{-1} \\
+& = B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-1} \\
+\therefore \quad & c = - \log B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right) \\
+\end{align*}
+
+<p>
+また、
+</p>
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2} - \left( 1 - \frac{\sum_{i=1}^n y_i}{n} \right) (1 - \theta)^{-2} \\
+\end{align*}
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org44ad595"></a>c)<br />
+<div class="outline-text-4" id="text-1-13-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgd4d0b1c"></a>answer<br />
+<div class="outline-text-5" id="text-1-13-3-1">
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} + \sum_{i=1}^n y_i}
+(1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n} + n - \sum_{i=1}^n y_i}  \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i}
+(1 - \theta)^{(1 + n^{-1}) (n - \sum_{i=1}^n y_i)} \\
+&= \text{dbeta}\left(\theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, (1 + n^{-1}) (n - \sum_{i=1}^n y_i) + 1 \right) \\
+\end{align*}
+
+<p>
+これは posterior distribution とみなすことができる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgdfcbcbc"></a>d)<br />
+<ol class="org-ol">
+<li><a id="org393b284"></a>answer<br />
+<ol class="org-ol">
+<li><a id="org6cd68b3"></a>a&rsquo;)<br />
+<div class="outline-text-6" id="text-1-13-4-1-1">
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \frac{\theta^{y_i} e^{- \theta} }{y_i!} \\
+&= \sum_{i=1}^n \left( y_i \log \theta - \theta - \log y_i! \right) \\
+& = \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \\
+\end{align*}
+
+<p>
+一階の条件は、
+</p>
+
+\begin{align*}
+& \theta^{-1} \sum_{i=1}^n y_i - n = 0 \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+<p>
+また、
+</p>
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- n \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2}  \\
+\end{align*}
+
+<p>
+より、上で求めた \(\hat{\theta}\) を代入すると、
+</p>
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2}  \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} \\
+\end{align*}
+
+<p>
+よって、
+</p>
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} \\
+\end{align*}
+</div>
+</li>
+<li><a id="org4257504"></a>b&rsquo;)<br />
+<div class="outline-text-6" id="text-1-13-4-1-2">
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i!}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta)
+= \frac{\sum_{i=1}^n y_i }{n} \log \theta - \theta - \frac{\sum_{i=1}^n \log y_i!}{n} + c \\
+\therefore \quad & p_U (\theta)
+= \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n}
+\end{align*}
+
+<p>
+\(p_U(\theta)\)は probability density なので、
+</p>
+
+\begin{align*}
+& \int_0^{\infty} p_U (\theta) d \theta = 1 \\
+\Leftrightarrow \quad & \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i }{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n} d \theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \prod_{i=1}^n y_i! \right)^n \left( \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta} d \theta \right)^{-1} \\
+& = \left( \prod_{i=1}^n y_i! \right)^n \Gamma \left( \frac{\sum_{i=1}^n y_i}{n} + 1 \right)^{-1} \\
+\end{align*}
+
+<p>
+また、
+</p>
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2}
+\end{align*}
+</div>
+</li>
+<li><a id="org6ab5811"></a>c&rsquo;)<br />
+<div class="outline-text-6" id="text-1-13-4-1-3">
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta}
+\times \theta^{\sum_{i=1}^n y_i} e^{-n \theta} \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i} e^{-(1 + n) \theta} \\
+&= \text{dgamma} \left( \theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, 1 + n \right) \\
+\end{align*}
+
+<p>
+これは posterior distribution とみなすことができる。
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+<p class="date">Created: 2025-04-25 金 15:32</p>
+</div>
+</body>
+</html>
