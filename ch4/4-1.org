@@ -1,0 +1,50 @@
+#+TITLE: 4.1
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Posterior comparisons: Reconsider the sample survey in [[id:9b7f815b-a904-4921-b8b8-fcaf7c9dac74][Exercise 3.1.]]
+Suppose you are interested in comparing the rate of support in that county to the rate in another county.
+Suppose that survey of sample size 50 was done in the second county, and the total number of people in the sample who supported the policy was 30.
+Identify the posterior distribution of \(\theta_2\) assuming a uniform prior.
+Sample 5,000 values of each of \(\theta_1\) and \(\theta_2\) from their posterior distributions and estimate Pr(\(\theta_1 < \theta_2 \mid\) the data and prior).
+
+* answer
+\(\theta_1, \theta_2\)それぞれの事後分布は、
+(\theta_1, \theta_2\) are given by
+
+\begin{align*}
+& \theta_1 \sim \text{Beta}(1 +57, 1 + 43) \\
+& \theta_2 \sim \text{Beta}(1 + 30, 1 + 20) \\
+\end{align*}
+
+である。
+Pr(\(\theta_1 < \theta_2 \mid\) the data and prior)
+は、以下のように計算できる。
+(can be calculated as follows.)
+
+#+begin_src julia :session ch4 :exports both :eval no-export
+using Distributions
+using Random
+Random.seed!(1234)
+a, b = 1, 1
+sy₁, n₁ = 57, 100
+sy₂, n₂ = 30, 50
+
+θ₁_mc = rand(Beta(a + sy₁, b + n₁ -sy₁), 5000)
+θ₂_mc = rand(Beta(a + sy₂, b + n₂ -sy₂), 5000)
+
+mean(θ₁_mc .< θ₂_mc)
+#+end_src
+
+#+RESULTS:
+: 0.626
+
+よって、事後分布の比較により、\(\theta_2\)の方が大きい事後確率は約 63%である。
+(The posterior probability that \(\theta_2\) is larger than \(\theta_1\) is about 63%.)
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[../ch3/3-14.org][3.14]]
+
+#+ATTR_HTML: :class nav-next
+[[./4-2.org][4.2]]
