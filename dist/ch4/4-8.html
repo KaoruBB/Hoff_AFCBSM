@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>4.8</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">4.8
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgbe7995d">a)</a>
+<ul>
+<li><a href="#orgb1a139b">answer</a></li>
+</ul>
+</li>
+<li><a href="#org3b74020">b)</a>
+<ul>
+<li><a href="#orga028a41">answer</a></li>
+</ul>
+</li>
+<li><a href="#orgfac4a1e">c)</a>
+<ul>
+<li><a href="#org05dca47">answer</a></li>
+</ul>
+</li>
+<li><a href="#orgfa6c8ae">d)</a>
+<ul>
+<li><a href="#org6e211d7">answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orgbe7995d" class="outline-2">
+<h2 id="orgbe7995d">a)</h2>
+<div class="outline-text-2" id="text-orgbe7995d">
+</div>
+<div id="outline-container-orgb1a139b" class="outline-3">
+<h3 id="orgb1a139b">answer</h3>
+<div class="outline-text-3" id="text-orgb1a139b">
+<div class="org-src-container">
+<pre class="src src-julia">menchild_bach = <span style="color: #51afef;">[]</span>
+open<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/menchild30bach.dat"</span><span style="color: #51afef;">)</span> <span style="color: #51afef;">do</span> file
+    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> eachline<span style="color: #51afef;">(</span>file<span style="color: #51afef;">)</span>
+        append!<span style="color: #51afef;">(</span>menchild_bach, parse.<span style="color: #C57BDB;">(</span>Int, split<span style="color: #7bc275;">(</span>line<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+<span style="color: #51afef;">end</span>
+
+menchild_nobach = <span style="color: #51afef;">[]</span>
+open<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/menchild30nobach.dat"</span><span style="color: #51afef;">)</span> <span style="color: #51afef;">do</span> file
+    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> eachline<span style="color: #51afef;">(</span>file<span style="color: #51afef;">)</span>
+        append!<span style="color: #51afef;">(</span>menchild_nobach, parse.<span style="color: #C57BDB;">(</span>Int, split<span style="color: #7bc275;">(</span>line<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+<span style="color: #51afef;">end</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">data</span>
+sy_A = sum<span style="color: #51afef;">(</span>menchild_bach<span style="color: #51afef;">)</span>
+n_A = length<span style="color: #51afef;">(</span>menchild_bach<span style="color: #51afef;">)</span>
+
+sy_B = sum<span style="color: #51afef;">(</span>menchild_nobach<span style="color: #51afef;">)</span>
+n_B = length<span style="color: #51afef;">(</span>menchild_nobach<span style="color: #51afef;">)</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">prior parameters</span>
+a&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
+b&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_&#952;_A = Gamma<span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> sy_A, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320; <span style="color: #FCCE7B;">+</span> n_A<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_&#952;_B = Gamma<span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320; <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Monte Carlo samples</span>
+&#952;_A_mc = rand<span style="color: #51afef;">(</span>dist_&#952;_A, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+&#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_&#952;_B, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+y_A_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: #C57BDB;">(</span>&#952;_A_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+y_B_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: #C57BDB;">(</span>&#952;_B_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+</pre>
+</div>
+
+
+<div id="orge85d1a7" class="figure">
+<p><img src="fig/exercise4_8a.jpg" alt="exercise4_8a.jpg" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org3b74020" class="outline-2">
+<h2 id="org3b74020">b)</h2>
+<div class="outline-text-2" id="text-org3b74020">
+</div>
+<div id="outline-container-orga028a41" class="outline-3">
+<h3 id="orga028a41">answer</h3>
+<div class="outline-text-3" id="text-orga028a41">
+<p>
+for \(\theta_B - \theta_A\):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">quantile<span style="color: #51afef;">(</span>&#952;_B_mc .<span style="color: #FCCE7B;">-</span> &#952;_A_mc, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+2-element Vector{Float64}:
+ 0.14453032216400238
+ 0.7359150252471184
+</pre>
+
+
+
+<p>
+for \(\hat{Y}_B - \hat{Y}_A\):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">quantile<span style="color: #51afef;">(</span>y_B_mc .<span style="color: #FCCE7B;">-</span> y_A_mc, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+2-element Vector{Float64}:
+ -2.0
+  4.0
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfac4a1e" class="outline-2">
+<h2 id="orgfac4a1e">c)</h2>
+<div class="outline-text-2" id="text-orgfac4a1e">
+</div>
+<div id="outline-container-org05dca47" class="outline-3">
+<h3 id="org05dca47">answer</h3>
+<div class="outline-text-3" id="text-org05dca47">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320; <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+1.4018264840182648
+</pre>
+
+
+<p>
+\(\hat{\theta} = 1.4 \)はほぼ\(\theta_B\)の事後平均。
+</p>
+
+
+<div id="org86b2955" class="figure">
+<p><img src="fig/exercise4_8_c.png" alt="exercise4_8_c.png" width="500" />
+</p>
+</div>
+
+
+<p>
+モデルはデータに比べて、子供の数が 1 人の人の割合が多く、0人と 2 人の割合が少ない。
+Poisson モデルは峰が２つあるような分布を表現できないので、もし母集団の分布が上の empirical distribution のように、0と 2 の２点でピークを持つような分布であれば、Poisson モデルは適切ではないと考えられる。
+</p>
+
+<p>
+Compared to the data, the model shows a higher proportion of individuals with <code>1</code> child and lower proportions for those with <code>0</code> and <code>2</code> children.
+The <code>Poisson</code> model cannot represent a distribution with two peaks.
+Therefore, if the underlying population distribution indeed has peaks at <code>0</code> and <code>2</code> as suggested by the empirical distribution above, the <code>Poisson</code> model would be considered inappropriate.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfa6c8ae" class="outline-2">
+<h2 id="orgfa6c8ae">d)</h2>
+<div class="outline-text-2" id="text-orgfa6c8ae">
+</div>
+<div id="outline-container-org6e211d7" class="outline-3">
+<h3 id="org6e211d7">answer</h3>
+<div class="outline-text-3" id="text-org6e211d7">
+<div class="org-src-container">
+<pre class="src src-julia">obs_zero = sum<span style="color: #51afef;">(</span>menchild_nobach .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
+obs_one = sum<span style="color: #51afef;">(</span>menchild_nobach .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+num_zero = <span style="color: #51afef;">[]</span>
+num_one = <span style="color: #51afef;">[]</span>
+<span style="color: #51afef;">for</span> &#952; <span style="color: #51afef;">in</span> &#952;_B_mc
+    y_mc = rand<span style="color: #51afef;">(</span>Poisson<span style="color: #C57BDB;">(</span>&#952;<span style="color: #C57BDB;">)</span>, n_B<span style="color: #51afef;">)</span>
+    push!<span style="color: #51afef;">(</span>num_zero, sum<span style="color: #C57BDB;">(</span>y_mc .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    push!<span style="color: #51afef;">(</span>num_one, sum<span style="color: #C57BDB;">(</span>y_mc .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+
+<div id="org140ebae" class="figure">
+<p><img src="fig/exercise4_8d.png" alt="exercise4_8d.png" width="500" />
+</p>
+</div>
+
+<p>
+上図より、Poisson モデルが母集団の真の分布であると仮定すると、今回の標本が観測される可能性は極めて低いことがわかる。よって、Poisson モデルは適切ではないと考えられる。
+</p>
+
+<p>
+From the figure above, assuming the <code>Poisson</code> model is the true distribution of the population, we can see that the probability of observing the current sample is extremely low.
+Therefore, the <code>Poisson</code> model is considered inappropriate.
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./4-7.html" class="nav-prev">4.7</a>
+</p>
+
+<p class="nav-next">
+<a href="../ch5/5-1.html" class="nav-next">5.1</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

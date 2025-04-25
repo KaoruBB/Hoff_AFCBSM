@@ -1,0 +1,103 @@
+#+TITLE: 5.4
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Jeffreys' prior:
+For sampling models expressed in terms of a \(p\)-dimensional vector \(\psi\),
+Jeffreys' prior ([[../ch3/3-12.org][Exercise 3.11]]) is defined as
+\(p_j(\psi) \propto \sqrt{ |I(\psi)|}\), where \(I(\psi)\) is the determinant of the
+\(p \times p\) matrix \(I(\psi)\) having entries \(I(\psi)_{k, l} = - E[\partial \log p(Y | \psi) / \partial \psi_k \partial \psi_l]\).
+
+* a)
+** question :noexport:
+Show that Jeffreys' prior for the normal model is
+\(p_J(\theta, \sigma^2) \propto (\sigma^2)^{- \frac{3}{2} }\)
+** answer
+対数尤度は、
+\begin{align*}
+\ell(y | \theta, \sigma^2)
+&= \log p(y | \theta, \sigma^2) \\
+&= \log \left[ \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{(y_i - \theta)^2}{2 \sigma^2} \right) \right] \\
+&= \log \left[ (2 \pi \sigma^2)^{-\frac{n}{2} } \exp \left( - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \theta)^2 \right) \right] \\
+&= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \theta)^2 \\
+&= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i^2 - 2 y_i \theta + \theta^2) \\
+&= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} (\sum_{i=1}^n y_i^2 - 2 \theta \sum_{i=1}^n y_i + n \theta^2) \\
+\end{align*}
+と表せる。
+従って、\(\theta, \sigma^2\)による一回微分はそれぞれ、
+\begin{align*}
+\ell_{\theta}
+&= - \frac{1}{2 \sigma^2} (- 2 \sum_{i=1}^n y_i + 2 n \theta) \\
+&= \frac{1}{\sigma^2} (\sum_{i=1}^n y_i - n \theta) \\
+\\
+\ell_{\sigma^2}
+&= - \frac{n}{2 \sigma^2} + \frac{1}{2 (\sigma^2)^2} (\sum_{i=1}^n y_i^2 - 2 \theta \sum_{i=1}^n y_i + n \theta^2) \\
+\end{align*}
+となる。
+よって、
+
+\begin{align*}
+I(\theta, \sigma^2)
+&= \begin{pmatrix} - E[\ell_{\theta \theta}] & - E[\ell_{\theta \sigma^2}] \\ - E[\ell_{\sigma^2 \theta}] & - E[\ell_{\sigma^2 \sigma^2}] \end{pmatrix} \\
+& = \begin{pmatrix} - E[- \frac{n}{\sigma^2}] & - E[\frac{n \theta - \sum y_i }{(\sigma^2)^2}] \\ - E[\frac{n \theta - \sum y_i }{(\sigma^2)^2}] & - E[\frac{n}{2 (\sigma^2)^2} - \frac{\sum (y_i - \theta)^2 }{ (\sigma^2)^3}] \end{pmatrix} \\
+& = \begin{pmatrix}  \frac{n}{\sigma^2} & \frac{ \sum E[y_i] - n \theta }{(\sigma^2)^2} \\ \frac{\sum E[y_i] - n \theta }{(\sigma^2)^2} & - \frac{n}{2 (\sigma^2)^2} + \frac{\sum E [(y_i - \theta)^2] }{ (\sigma^2)^3} \end{pmatrix} \\
+& = \begin{pmatrix}  \frac{n}{\sigma^2} & \frac{ n \theta - n \theta }{(\sigma^2)^2} \\ \frac{n \theta - n \theta }{(\sigma^2)^2} & - \frac{n}{2 (\sigma^2)^2} + \frac{n \sigma^2 }{(\sigma^2)^3} \end{pmatrix} \\
+& = \begin{pmatrix}  \frac{n}{\sigma^2} & 0 \\ 0 &  \frac{n}{2 (\sigma^2)^2}  \end{pmatrix} \\
+\\ |I(\theta, \sigma^2)|
+&= \frac{n}{\sigma^2} \frac{n}{2 (\sigma^2)^2} \\
+&= \frac{n^2}{2 (\sigma^2)^3} \\
+\end{align*}
+となるので、Jeffreys' prior は、
+\begin{align*}
+p_J(\theta, \sigma^2)
+&\propto \sqrt{ |I(\theta, \sigma^2)|} \\
+&= \sqrt{ \frac{n^2}{2 (\sigma^2)^3} } \\
+&= \frac{n}{\sqrt{2} } \times (\sigma^2)^{- \frac{3}{2} }  \\
+&\propto (\sigma^2)^{- \frac{3}{2} }  \\
+\end{align*}
+であり、示せた。
+* b)
+** question :noexport:
+Let
+\(\boldsymbol{y} = (y_1, \dots , y_n) \)
+be the observed value of an i.i.d. sample from a normal(\(\theta, \sigma^2\)) population.
+Find a probability density \(p_J(\theta, \sigma^2 | \boldsymbol{y})\)
+such that
+\(p_J(\theta, \sigma^2 | \boldsymbol{y}) \propto p_J(\theta, \sigma^2) p(\boldsymbol{y} | \theta, \sigma^2) \).
+It may be convenient to write this joint density as
+\(p_J(\theta | \sigma^2, \boldsymbol{y}) \times p_J(\sigma^2 | \boldsymbol{y}) \).
+Can this joint density be considered a posterior density?
+** answer
+
+\begin{align*}
+p_J(\theta, \sigma^2 | \boldsymbol{y})
+&= p_J(\theta, \sigma^2) p(\boldsymbol{y} | \theta, \sigma^2) \\
+&\propto (\sigma^2)^{- \frac{3}{2} } \times \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{(y_i - \theta)^2}{2 \sigma^2} \right) \\
+&\propto (\sigma^2)^{- \frac{3}{2} } \times (\sigma^2)^{- \frac{n}{2} } \exp \left( - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \theta)^2 \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} } \exp \left( - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i^2 - 2 y_i \theta + \theta^2) \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} }
+\exp \left( - \frac{ n \bar{y^2} }{ 2 \sigma^2 } + \frac{ n \bar{y} \theta }{ \sigma^2 } - \frac{ n \theta^2 }{ 2 \sigma^2 } \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} }
+\exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta^2 - 2 \bar{y} \theta \right) \right)
+\times \exp \left( - \frac{ n \bar{y^2} }{ 2 \sigma^2 } \right) \\
+&= (\sigma^2)^{- \frac{3 + n}{2} }
+\exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta - \bar{y} \right)^2 + \frac{ n \bar{y}^2 }{ 2 \sigma^2 } \right)
+\times \exp \left( - \frac{ n \bar{y^2} }{ 2 \sigma^2 } \right) \\
+&= (\sigma^2)^{- \frac{1}{2} } \exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta - \bar{y} \right)^2 \right)
+\times (\sigma^2)^{- \left( \frac{n}{2} + 1 \right) } \exp \left( - \frac{ n ( \bar{y^2} - \bar{y}^2 )}{ 2 \sigma^2 } \right) \\
+&= \left(\frac{\sigma^2}{n} \right)^{- \frac{1}{2} } \exp \left( - \frac{ n }{2 \sigma^2 } \left( \theta - \bar{y} \right)^2 \right)
+\times (\sigma^2)^{- \left( \frac{n}{2} + 1 \right) } \exp \left( - \frac{ n s^2 }{ 2 \sigma^2 } \right) \\
+&\propto \text{dnormal}(\theta, \bar{y}, \frac{\sigma^2}{n})
+\times
+\text{dinverse-gamma}(\sigma^2, \frac{n}{2}, \frac{n s^2}{ 2 } ),
+\end{align*}
+where \(\bar{y^2} = \frac{1}{n} \sum_{i=1}^n y_i^2\) and \(s^2 = \frac{1}{n-1} \sum_{i=1}^n (y_i - \bar{y})^2\).
+
+上式より、joint density は posterior density になっていることが確認できた。
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./5-3.org][5.3]]
+
+#+ATTR_HTML: :class nav-next
+[[./5-5.org][5.5]]

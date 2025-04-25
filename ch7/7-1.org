@@ -1,0 +1,61 @@
+#+TITLE: 7.1
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* Question :noexport:
+Jeffrey's prior:
+For the multivariate normal model, Jeffrey's rule for generating a prior distribution on \((\boldsymbol{\theta}, \Sigma)\) gives
+\(p_J(\boldsymbol{\theta}, \Sigma) \propto |\Sigma|^{-(p+2)/2}\).
+* a)
+** Question :noexport:
+Explain why the function \(p_J\) cannot actually be a probability density for \((\boldsymbol{\theta}, \Sigma)\).
+** Answer
+\(p_J\)が確率密度関数であるためには、
+\(\int \int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} d\Sigma = 1\)
+である必要があるが、
+\(\int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} = \infty\)
+であるため、\(p_J\)は確率密度関数ではない。
+* b)
+** Question :noexport:
+Let
+\(p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+be the probability density that is proportional to
+\(p_J(\boldsymbol{\theta}, \Sigma) \times p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma)\).
+Obtain the form of
+\(p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\),
+\(p_J(\boldsymbol{\theta} | \Sigma, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\),
+and
+\(p_J(\Sigma |\boldsymbol{\theta}, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\).
+** Answer
+\begin{align*}
+p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_J(\boldsymbol{\theta}, \Sigma) \times p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma) \\
+&\propto |\Sigma|^{-(p+2)/2} \times |\Sigma|^{-n/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+\\
+p_J(\boldsymbol{\theta} | \Sigma, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n) \\
+&\propto \exp\left\{ - \frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i^T - \boldsymbol{\theta}^T) \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i^T \Sigma^{-1} - \boldsymbol{\theta}^T \Sigma^{-1}) (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n \left( \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{y}_i - \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{\theta} - \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{y}_i + \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{\theta} \right) \right\} \\
+&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n \left( \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{y}_i - 2 \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{y}_i + \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{\theta} \right) \right\} \\
+&\propto \exp\left\{ - \frac{1}{2} \boldsymbol{\theta}^T \boldsymbol{A}_1 \boldsymbol{\theta} + \boldsymbol{\theta}^T \boldsymbol{b}_1 \right\},
+\quad \text{where} \quad
+\boldsymbol{A}_1 = n \Sigma^{-1}, \
+\boldsymbol{b}_1 = n \Sigma^{-1} \bar{\boldsymbol{y} }  \\
+&\propto \text{dmultivariate normal}( \bar{\boldsymbol{y} }, \Sigma/n) \\
+\\
+p_J(\Sigma | \boldsymbol{\theta}, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n) \\
+&\propto |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&\propto |\Sigma|^{-(n+1 + p + 1)/2}
+\exp \left\{ -\frac{1}{2} \text{tr}(S_{\theta} \Sigma^{-1}) \right\} \quad
+\text{where} \quad S_{\theta} = \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta}) (\boldsymbol{y}_i - \boldsymbol{\theta})^T \\
+&\propto \text{dinverse Wishart}(n+1, S_{\theta}^{-1})
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[../ch6/6-3.org][6.3]]
+
+#+ATTR_HTML: :class nav-next
+[[./7-2.org][7.2]]

@@ -1,0 +1,132 @@
+#+TITLE: 7.2
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* Question :noexport:
+Unit information prior:
+Letting \(\Psi = \Sigma^{-1}\), show that a unit information prior for \((\boldsymbol{\theta}, \Psi)\) is given by
+\begin{align*}
+\boldsymbol{\theta} | \Psi
+&\sim \text{multivariate normal}(\bar{ \boldsymbol{y} }, \Psi^{-1}) \\
+\Psi
+&\sim \text{Wishart}(p+1, \boldsymbol{S}^{-1}), \quad
+\text{where } \boldsymbol{S} = \frac{1}{n} \sum (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T
+\end{align*}
+This can be done by mimicking the procedure outlined in Exercise 5.5 as follows:
+** a)
+Reparameterize the multivariate normal model in terms of the precision matrix
+\(\Psi = \Sigma^{-1}\).
+Write out the resulting log likelihood, and find a probability density
+\(p_U(\boldsymbol{\theta}, \Psi) = p_U(\boldsymbol{\theta} | \Psi) p_U(\Psi)\)
+such that
+\( \log p(\boldsymbol{\theta}, \Psi) = l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y})/n + c\),
+where \(c\) does not depend on \(\boldsymbol{\theta}\) or \(\Psi\).
+
+Hint: Write \((\boldsymbol{y}_i - \boldsymbol{\theta})\) as \(\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta}\),
+and note that \(\sum \boldsymbol{a}_i^T \boldsymbol{B} \boldsymbol{a}_i \) can be written as \(\text{tr}(\boldsymbol{A} \boldsymbol{B} )\),
+where \(\boldsymbol{A} = \sum \boldsymbol{a}_i \boldsymbol{a}_i^T\).
+** b)
+Let \(p_U(\Sigma) \) be the inverse-Wishart density induced by \(p_U(\Psi)\).
+Obtain a density
+\(p_U(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+\propto p_U(\boldsymbol{\theta} | \Sigma) p_U(\Sigma) p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma)\).
+Can this be interpreted as a posterior distribution for \(\theta\) and \(\Sigma\)?
+* Answer
+** a)
+\begin{align*}
+l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y})
+&= \sum_{i=1}^n \log p(\boldsymbol{y}_i | \boldsymbol{\theta}, \Psi) \\
+&= \sum_{i=1}^n \log \left\{ (2 \pi)^{-p/2} |\Psi|^{1/2} \exp \left( -\frac{1}{2} (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \right) \right\} \\
+&= \sum_{i=1}^n \left\{ -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ ( (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T + ( \bar{\boldsymbol{y} } -  \boldsymbol{\theta})^T)  \Psi ((\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| \\
+&\qquad -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + 2 (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{n}{2}
+\text{tr}(S \Psi) -\frac{n}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}), \\
+&\qquad \qquad\text{where}
+\quad S = \frac{1}{n} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \\
+\end{align*}
+より、
+\begin{align*}
+\log p_U(\boldsymbol{\theta}, \Psi)
+&= \frac{ l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y}) }{n} + c \\
+&= -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} \text{tr}(S \Psi) -\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + c \\
+\end{align*}
+となる。
+よって
+\begin{align*}
+p_U(\boldsymbol{\theta}, \Psi)
+&= \exp \left\{ -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} \text{tr}(S \Psi) -\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + c \right\} \\
+&= (2 \pi)^{- \frac{p}{2} } |\Psi|^{ \frac{1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\}
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\exp(c)\\
+&\propto
+(2 \pi)^{- \frac{p}{2} } |\Psi^{-1}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\Psi|^{ \frac{p+1-p-1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\} \\
+&\propto
+(2 \pi)^{- \frac{p}{2} } |\Psi^{-1}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\Psi|^{ \frac{p+1-p - 1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\} \\
+&\propto \text{dmultivariate-normal}(\boldsymbol{\theta} | \bar{ \boldsymbol{y} } , \Psi^{-1})
+\times \text{dWishart}(\Psi | p+1, S^{-1}) \\
+\end{align*}
+が成立。
+** b)
+
+\begin{align*}
+p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_U(\boldsymbol{\theta} | \boldsymbol{\Sigma}) p_U(\boldsymbol{\Sigma})
+p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \boldsymbol{\Sigma}) \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\boldsymbol{\Sigma}^{-1}|^{ \frac{p+1-p - 1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} } \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} } \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta}) \right\} \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} }
+\exp \left\{ - \frac{n}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\}
+\exp \left\{-\frac{n}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Sigma^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+& \propto |\boldsymbol{\Sigma}|^{- \frac{n+1}{2} }
+\exp \left\{-\frac{ n+1 }{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times \exp \left\{ -\frac{n+1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto |\boldsymbol{\Sigma}|^{- \frac{n+1}{2} }
+\exp \left\{-\frac{1}{2} (\boldsymbol{\theta} - \bar{\boldsymbol{y} })^T (n+1) \boldsymbol{\Sigma}^{-1} (\boldsymbol{\theta} - \bar{\boldsymbol{y} }) \right\}
+\times \exp \left\{ -\frac{1}{2} \text{tr}((n+1) S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto | \frac{1}{n+1} \boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\boldsymbol{\theta} - \bar{\boldsymbol{y} })^T
+( \frac{1}{n+1} \boldsymbol{\Sigma})^{-1} (\boldsymbol{\theta} - \bar{\boldsymbol{y} }) \right\} \\
+&\qquad \times |\Sigma|^{- \frac{n-p-1+p+1}{2} }\exp \left\{ -\frac{1}{2} \text{tr}((n+1) S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto \text{dmultivariate-normal}(\boldsymbol{\theta} | \bar{\boldsymbol{y} }, \frac{1}{n+1} \boldsymbol{\Sigma})
+\times \text{dinverse-Wishart}(\boldsymbol{\Sigma} | n-p-1, \frac{1}{n+1} S^{-1}) \\
+\end{align*}
+
+上式より、
+\(p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+は、データと事前分布の情報が反映された分布であることがわかるので、
+事後分布とみなせる。
+
+(From the expression above, we can see that
+\(p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+is a distribution that reflects information from both the data and the prior distribution.
+Therefore, it can be regarded as the posterior distribution.)
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./7-1.org][7.1]]
+
+#+ATTR_HTML: :class nav-next
+[[./7-3.org][7.3]]

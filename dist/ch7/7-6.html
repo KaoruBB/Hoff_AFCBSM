@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>7.6</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">7.6
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 7</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb725563">a)</a>
+<ul>
+<li><a href="#org7646da8">Answer</a>
+<ul>
+<li><a href="#org029faed">preprocess &amp; Gibbs sampler</a></li>
+<li><a href="#orgd36e4f1">marginal posterior distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8c2ff58">b)</a>
+<ul>
+<li><a href="#org4c9e25b">Answer</a>
+<ul>
+<li><a href="#org2f54b18">standard deviation</a></li>
+<li><a href="#org3d00663">correlation</a></li>
+<li><a href="#orgbdf04d3">discussion</a>
+<ul>
+<li><a href="#org5cbbe43">日本語</a></li>
+<li><a href="#org661eb04">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orgb725563" class="outline-2">
+<h2 id="orgb725563">a)</h2>
+<div class="outline-text-2" id="text-orgb725563">
+</div>
+<div id="outline-container-org7646da8" class="outline-3">
+<h3 id="org7646da8">Answer</h3>
+<div class="outline-text-3" id="text-org7646da8">
+</div>
+<div id="outline-container-org029faed" class="outline-4">
+<h4 id="org029faed">preprocess &amp; Gibbs sampler</h4>
+<div class="outline-text-4" id="text-org029faed">
+<div class="org-src-container">
+<pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
+Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+header = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+df = DataFrame<span style="color: #51afef;">(</span>Y, header<span style="color: #51afef;">)</span>
+
+col_int = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:glu</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:skin</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
+col_float = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span><span style="color: #51afef;">]</span>
+col_str = <span style="color: #a991f1;">:diabetes</span>
+df<span style="color: #51afef;">[</span>!,col_int<span style="color: #51afef;">]</span> = Int.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_int<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+df<span style="color: #51afef;">[</span>!,col_float<span style="color: #51afef;">]</span> = Float32.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_float<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+df<span style="color: #51afef;">[</span>!,col_str<span style="color: #51afef;">]</span> = String.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_str<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+
+df_d = filter<span style="color: #51afef;">(</span><span style="color: #a991f1;">:diabetes</span> <span style="color: #FCCE7B;">=&gt;</span> <span style="color: #FCCE7B;">==</span><span style="color: #C57BDB;">(</span><span style="color: #7bc275;">"Yes"</span><span style="color: #C57BDB;">)</span>, df<span style="color: #51afef;">)</span>
+df_n = filter<span style="color: #51afef;">(</span><span style="color: #a991f1;">:diabetes</span> <span style="color: #FCCE7B;">=&gt;</span> <span style="color: #FCCE7B;">==</span><span style="color: #C57BDB;">(</span><span style="color: #7bc275;">"No"</span><span style="color: #C57BDB;">)</span>, df<span style="color: #51afef;">)</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">getPosterior</span><span style="color: #51afef;">(</span>df, S<span style="color: #51afef;">)</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">select columns except for diabetes</span>
+    Y = select<span style="color: #51afef;">(</span>df, Not<span style="color: #C57BDB;">(</span><span style="color: #a991f1;">:diabetes</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> Matrix
+    n, p = size<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
+    y&#772; = mean<span style="color: #51afef;">(</span>Y, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+    &#931;&#770; = cov<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">set prior</span>
+    &#956;&#8320; = y&#772;
+    &#923;&#8320; = &#931;&#770;
+    S&#8320; = &#931;&#770;
+    &#957;&#8320; = p <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">2</span>
+
+    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">multivariateGibbs</span><span style="color: #51afef;">(</span>S, &#931;_init, &#956;&#8320;, &#923;&#8320;, S&#8320;, &#957;&#8320;, Y<span style="color: #51afef;">)</span>
+        n, p = size<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
+        THETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p<span style="color: #51afef;">)</span>
+        SIGMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+        &#931; = &#931;_init
+        y&#772; = mean<span style="color: #51afef;">(</span>Y, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+        <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+            <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#952;</span>
+            &#923;n = inv<span style="color: #51afef;">(</span> inv<span style="color: #C57BDB;">(</span>&#923;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">*</span> inv<span style="color: #C57BDB;">(</span>&#931;<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">)</span>
+            &#956;n = &#923;n <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span> inv<span style="color: #C57BDB;">(</span>&#923;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> &#956;&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">*</span> inv<span style="color: #C57BDB;">(</span>&#931;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> y&#772; <span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+            dist = MvNormal<span style="color: #51afef;">(</span>&#956;n, Symmetric<span style="color: #C57BDB;">(</span>&#923;n<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+            &#952; = rand<span style="color: #51afef;">(</span>dist<span style="color: #51afef;">)</span>
+
+            <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#931;</span>
+            Sn = S&#8320; <span style="color: #FCCE7B;">+</span> <span style="color: #51afef;">(</span>Y' .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>Y' .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span>'
+            <span style="color: #62686E;"># </span><span style="color: #62686E;">&#931; = rand(InverseWishart(n + &#957;&#8320;, Sn))</span>
+            &#931; = rand<span style="color: #51afef;">(</span>InverseWishart<span style="color: #C57BDB;">(</span>n <span style="color: #FCCE7B;">+</span> &#957;&#8320;, round.<span style="color: #7bc275;">(</span>Sn, digits=<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+            <span style="color: #62686E;"># </span><span style="color: #62686E;">save results</span>
+            THETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span>
+            SIGMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>&#931;<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">end</span>
+        <span style="color: #51afef;">return</span> THETA, SIGMA
+    <span style="color: #51afef;">end</span>
+
+    THETA, SIGMA = multivariateGibbs<span style="color: #51afef;">(</span>S, &#931;&#770;, &#956;&#8320;, &#923;&#8320;, S&#8320;, &#957;&#8320;, Y<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">return</span> THETA, SIGMA
+<span style="color: #51afef;">end</span>
+
+S = <span style="color: #e69055; font-weight: bold;">10000</span>
+THETA_d, SIGMA_d = getPosterior<span style="color: #51afef;">(</span>df_d, S<span style="color: #51afef;">)</span>
+THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd36e4f1" class="outline-4">
+<h4 id="orgd36e4f1">marginal posterior distribution</h4>
+<div class="outline-text-4" id="text-orgd36e4f1">
+
+<div id="org05db12c" class="figure">
+<p><img src="./fig/exercise7-6a.png" alt="exercise7-6a.png" width="800" />
+</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">p = size<span style="color: #51afef;">(</span>THETA_d, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:p
+    theta_d = THETA_d<span style="color: #51afef;">[</span>:, i<span style="color: #51afef;">]</span>
+    theta_n = THETA_n<span style="color: #51afef;">[</span>:, i<span style="color: #51afef;">]</span>
+    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Pr(&#952;d,$i &gt; &#952;n,$i) = "</span>, mean<span style="color: #C57BDB;">(</span>theta_d .<span style="color: #FCCE7B;">&gt;</span> theta_n<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org4f2072c">
+Pr(θd,1 &gt; θn,1) = 1.0
+Pr(θd,2 &gt; θn,2) = 1.0
+Pr(θd,3 &gt; θn,3) = 1.0
+Pr(θd,4 &gt; θn,4) = 1.0
+Pr(θd,5 &gt; θn,5) = 1.0
+Pr(θd,6 &gt; θn,6) = 1.0
+Pr(θd,7 &gt; θn,7) = 1.0
+</pre>
+
+<ul class="org-ul">
+<li>全ての変数で、糖尿病患者と非糖尿病患者間での平均値の差があると言える。
+(For all variables, it can be said that there is a difference in mean values between diabetic and non-diabetic patients.)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8c2ff58" class="outline-2">
+<h2 id="org8c2ff58">b)</h2>
+<div class="outline-text-2" id="text-org8c2ff58">
+</div>
+<div id="outline-container-org4c9e25b" class="outline-3">
+<h3 id="org4c9e25b">Answer</h3>
+<div class="outline-text-3" id="text-org4c9e25b">
+</div>
+<div id="outline-container-org2f54b18" class="outline-4">
+<h4 id="org2f54b18">standard deviation</h4>
+<div class="outline-text-4" id="text-org2f54b18">
+
+<div id="org59eac28" class="figure">
+<p><img src="./fig/exercise7-6b_sd.png" alt="exercise7-6b_sd.png" width="800" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d00663" class="outline-4">
+<h4 id="org3d00663">correlation</h4>
+<div class="outline-text-4" id="text-org3d00663">
+
+<div id="orga9c91bf" class="figure">
+<p><img src="./fig/exercise7-6b_cor.png" alt="exercise7-6b_cor.png" width="800" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbdf04d3" class="outline-4">
+<h4 id="orgbdf04d3">discussion</h4>
+<div class="outline-text-4" id="text-orgbdf04d3">
+</div>
+<div id="outline-container-org5cbbe43" class="outline-5">
+<h5 id="org5cbbe43">日本語</h5>
+<div class="outline-text-5" id="text-org5cbbe43">
+<ul class="org-ul">
+<li>標準偏差は、糖尿病患者群の方が、やや大きい</li>
+<li>相関係数は diabetes pedigree 以外の変数に関して、非患者群の方が大きい。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org661eb04" class="outline-5">
+<h5 id="org661eb04">English</h5>
+<div class="outline-text-5" id="text-org661eb04">
+<ul class="org-ul">
+<li>The standard deviation is slightly larger in the diabetic patient group.</li>
+<li>For variables other than <code>diabetes pedigree</code>, the correlation coefficient is larger in the non-diabetic group.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./7-5.html" class="nav-prev">7.5</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

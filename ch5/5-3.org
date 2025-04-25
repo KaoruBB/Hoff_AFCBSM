@@ -1,0 +1,162 @@
+#+TITLE: 5.3
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Marginal distributions:
+Given observations \(Y_1, \ldots, Y_n \sim \text{i.i.d. normal}(\theta, \sigma^2) \)
+and using the conjugate prior distribution for \(\theta\) and \(\sigma^2\),
+derive the formula for \(p(\theta | y_1, \dots, y_n)\),
+the marginal posterior distribution of \(\theta\), conditional on the data but marginal over \(\sigma^2\).
+Check your work by comparing your formula to a Monte Carlo estimate of the marginal distribution, using some values of \( Y_1, \ldots, Y_n, \mu_0, \sigma_0^2,\nu_0, \kappa_0\) that you choose.
+Also derive
+\(p(\tilde{\sigma}^2 | y_1, \dots, y_n)\)
+, where \(\tilde{\sigma}^2 = 1/\sigma^2\) is the precision.
+* answer
+** marginal posterior distribution of \(\theta\)
+\begin{align*}
+p(\theta | y_1, \dots, y_n)
+&= \int_0^{\infty} p(\theta, \sigma^2 | y_1, \dots, y_n) d\sigma^2 \\
+&= \int_0^{\infty} p(\theta | \sigma^2, y_1, \dots, y_n) p(\sigma^2 | y_1, \dots, y_n) d\sigma^2 \\
+&= \int_0^{\infty} \sqrt{ \frac{\kappa_n}{2 \pi \sigma^2 } } \exp \left( - \frac{\kappa_n (\theta - \mu_n)^2}{2 \sigma^2} \right)
+\frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})} (\sigma^2)^{-(\frac{\nu_n}{2} + 1)} \exp \left( - \frac{\nu_n \sigma_n^2}{2 \sigma^2} \right) d\sigma^2 \\
+&= \sqrt{ \frac{\kappa_n}{2 \pi} } \frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})}
+\int_0^{\infty} (\sigma^2)^{-(\frac{\nu_n + 1}{2} + 1)} \exp \left( - \frac{\kappa_n (\theta - \mu_n)^2}{2 \sigma^2} - \frac{\nu_n \sigma_n^2}{2 \sigma^2} \right) d\sigma^2 \\
+&= \sqrt{ \frac{\kappa_n}{2 \pi} } \frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})}
+\int_0^{\infty} (\sigma^2)^{-(\frac{\nu_n + 1}{2} + 1)} \exp \left( - \frac{1}{2 \sigma^2} (\kappa_n (\theta - \mu_n)^2 + \nu_n \sigma_n^2) \right) d\sigma^2 \\
+&= \sqrt{ \frac{\kappa_n}{2 \pi} } \frac{ (\frac{\nu_n \sigma_n^2}{2})^{\frac{\nu_n}{2} } }{\Gamma(\frac{\nu_n}{2})}
+\Gamma(\frac{\nu_n + 1}{2}) \times (\frac{\kappa_n (\theta - \mu_n)^2 + \nu_n \sigma_n^2}{2})^{-\frac{\nu_n + 1}{2}} \\
+&= \frac{ \Gamma(\frac{\nu_n + 1}{2}) }{ \Gamma(\frac{\nu_n}{2}) }
+\sqrt{ \frac{\kappa_n}{2 \pi} }
+\left(\frac{2}{\nu_n \sigma_n^2}\right)^{\frac{1}{2} }
+\left(\frac{2}{\nu_n \sigma_n^2}\right)^{-\frac{\nu_n + 1}{2} }
+\times (\frac{\kappa_n (\theta - \mu_n)^2 + \nu_n \sigma_n^2}{2})^{-\frac{\nu_n + 1}{2}} \\
+&= \frac{ \Gamma(\frac{\nu_n + 1}{2}) }{ \Gamma(\frac{\nu_n}{2}) } \sqrt{ \frac{\kappa_n}{\pi \nu_n \sigma_n^2} }
+\left( 1 + \frac{\kappa_n (\theta - \mu_n)^2}{\nu_n \sigma_n^2} \right)^{-\frac{\nu_n + 1}{2}} \\
+&= \text{d-Student t}(\theta | \nu_n, \mu_n, \tau_n^2)
+\end{align*}
+
+where
+\begin{align*}
+\kappa_n &= \kappa_0 + n \\
+\mu_n &= \frac{\kappa_0 \mu_0 + n \bar{y}}{\kappa_n} \\
+\nu_n &= \nu_0 + n \\
+\sigma_n^2 &= \frac{1}{\nu_n} \left( \nu_0 \sigma_0^2 + (n-1)s^2 + \frac{\kappa_0 n}{\kappa_n} (\bar{y} - \mu_0)^2 \right) \\
+\tau_n^2 &= \frac{\nu_n \sigma_n^2}{\kappa_n} \\
+\end{align*}
+
+** marginal posterior distribution of \(\tilde{\sigma}^2\)
+
+\(\sigma^2\)の marginal posterior distribution は、
+
+\begin{align*}
+p(\sigma^2 | y_1, \dots, y_n)
+& \propto p(\sigma^2) p(y_1, \dots, y_n | \sigma^2) \\
+&= p(\sigma^2) \int p(y_1, \dots, y_n | \theta, \sigma^2) p(\theta | \sigma^2) d\theta \\
+\end{align*}
+となる。
+
+ここで、
+
+\begin{equation}
+\label{eq:ex5-3.1}
+\begin{aligned}[b]
+\sum_{i=1}^n (y_i - \theta)^2
+&= \sum_{i=1}^n (y_i - \bar{y} + \bar{y} - \theta)^2 \\
+&= \sum_{i=1}^n (y_i - \bar{y})^2 + n (\bar{y} - \theta)^2 + 2 (\bar{y} - \theta) \sum_{i=1}^n (y_i - \bar{y}) \\
+&= \sum_{i=1}^n (y_i - \bar{y})^2 + n (\bar{y} - \theta)^2 \\
+&= n (\theta - \bar{y})^2 + (n-1)s^2 \\
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\label{eq:ex5-3.2}
+\begin{aligned}
+A(x - a)^2 + B(x - b)^2 &= (A + B)(x - c)^2 + \frac{AB}{A + B}(a - b)^2 \\
+\text{where } c &= \frac{aA + bB}{A + B} \\
+\end{aligned}
+\end{equation}
+を用いると、
+
+\begin{align*}
+p(y_1, \dots, y_n | \theta, \sigma^2) p(\theta | \sigma^2)
+&= \prod_{i=1}^n p(y_i | \theta, \sigma^2) p(\theta | \sigma^2) \\
+&= \prod_{i=1}^n \left( \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{(y_i - \theta)^2}{2 \sigma^2} \right) \right)
+\left( \frac{\sqrt{\kappa_0} }{\sqrt{2 \pi \sigma^2}} \exp \left( - \frac{ \kappa_0 (\theta - \mu_0)^2}{2 \sigma^2} \right) \right) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  \sum_{i=1}^n (y_i - \theta)^2 \right)
+\exp \left( - \frac{\kappa_0}{2 \sigma^2} (\theta - \mu_0)^2 \right) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  ( n (\theta - \bar{y})^2 + (n-1)s^2 ) \right) \\
+& \qquad \times
+\exp \left( - \frac{\kappa_0}{2 \sigma^2} (\theta - \mu_0)^2 \right)
+\quad (\because \eqref{eq:ex5-3.1}) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  ( n(\theta - \bar{y})^2 + \kappa_0 (\theta - \mu_0)^2 ) \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2}  ( (n + \kappa_0)(\theta - \theta^{\ast})^2 + r ) \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) \\
+& \qquad \text{ where } \theta^{\ast} = \frac{n \bar{y} + \kappa_0 \mu_0}{n + \kappa_0}, \quad
+r = \frac{n \kappa_0}{n + \kappa_0} (\bar{y} - \mu_0)^2
+\qquad \qquad \qquad \qquad \qquad (\because \eqref{eq:ex5-3.2}) \\
+&= (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{ n + \kappa_0}{2 \sigma^2} (\theta - \theta^{\ast})^2 \right)
+\exp \left( - \frac{r}{2 \sigma^2} \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) \\
+\end{align*}
+
+となるので、
+
+\begin{align*}
+p(\sigma^2 | y_1, \dots, y_n)
+& \propto p(\sigma^2) p(y_1, \dots, y_n | \sigma^2) \\
+&= p(\sigma^2) \int p(y_1, \dots, y_n | \theta, \sigma^2) p(\theta | \sigma^2) d\theta \\
+&= p(\sigma^2) \int (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{ n + \kappa_0}{2 \sigma^2} (\theta - \theta^{\ast})^2 \right)
+\exp \left( - \frac{r}{2 \sigma^2} \right)
+\exp \left( - \frac{1}{2 \sigma^2} (n-1)s^2 \right) d\theta \\
+&= p(\sigma^2) (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right) \\
+& \qquad \times
+\left(2 \pi \frac{\sigma^2}{n + \kappa_0} \right)^{\frac{1}{2} }
+\int \left(2 \pi \frac{\sigma^2}{n + \kappa_0} \right)^{-\frac{1}{2} }
+\exp \left( - \frac{ n + \kappa_0}{2 \sigma^2} (\theta - \theta^{\ast})^2 \right) d\theta \\
+&= p(\sigma^2) (2 \pi \sigma^2)^{-\frac{n + 1}{2} } \sqrt{\kappa_0}
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right)
+\left(2 \pi \frac{\sigma^2}{n + \kappa_0} \right)^{\frac{1}{2} } \\
+& \propto p(\sigma^2) (\sigma^2)^{- \frac{n}{2} }
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right) \\
+& \propto (\sigma^2)^{- (\frac{ \nu_0 }{2} + 1 )} \exp \left( - \frac{\nu_0 \sigma_0^2}{2 \sigma^2} \right)
+(\sigma^2)^{- \frac{n}{2} }
+\exp \left( - \frac{1}{2 \sigma^2} ( (n-1)s^2 + r) \right) \\
+&= (\sigma^2)^{- (\frac{ \nu_0 + n }{2} + 1 )} \exp \left( - \frac{\nu_0 \sigma_0^2 + (n-1)s^2 + r}{2 \sigma^2} \right) \\
+&= (\sigma^2)^{- (\frac{ \nu_0 + n }{2} + 1 )} \exp \left( - \frac{\nu_0 + n}{2 \sigma^2}
+\left( \frac{\nu_0 \sigma_0^2 + (n-1)s^2 + \frac{\kappa_0 n}{\kappa_0 + n} (\bar{y} - \mu_0)^2 }{\nu_0 + n} \right) \right) \\
+&\propto \text{dinverse-gamma}(\sigma^2, \frac{\nu_n}{2}, \frac{\nu_n \sigma_n^2}{2}) \\
+& \text{ where }
+\nu_n = \nu_0 + n, \quad
+\sigma_n^2 = \frac{1}{\nu_n}\left[ \nu_0 \sigma_0^2 + (n-1)s^2 + \frac{\kappa_0 n}{\kappa_n} (\bar{y} - \mu_0)^2 \right]
+\end{align*}
+
+よって、
+\begin{equation*}
+\left| \frac{d \sigma^2}{d \tilde{\sigma}^2} \right|  = (\tilde{\sigma}^2)^{-2}
+\end{equation*}
+より
+\begin{align*}
+p( \tilde{\sigma}^2 | y_1, \dots, y_n)
+&= p( (\tilde{\sigma}^2)^{-1} | y_1, \dots, y_n) \left| \frac{d \sigma^2}{d \tilde{\sigma}^2} \right| \\
+&= \text{dinverse-gamma}(\tilde{\sigma}^{-2} | \frac{\nu_n}{2}, \frac{\nu_n \sigma_n^2}{2}) \times (\tilde{\sigma}^2)^{-2} \\
+&\propto (\tilde{\sigma}^2)^{(\frac{ \nu_0 + n }{2} + 1 )}
+\exp \left( - \frac{\nu_n \sigma_n^2}{2 (\tilde{\sigma}^2)^{-1} } \right) \times (\tilde{\sigma}^2)^{-2} \\
+&= (\tilde{\sigma}^2)^{(\frac{ \nu_0 + n }{2} - 1 )}
+\exp \left( - \tilde{\sigma}^2 \frac{\nu_n \sigma_n^2}{2} \right) \\
+&= \text{dgamma}(\tilde{\sigma}^2 | \frac{\nu_n}{2}, \frac{\nu_n \sigma_n^2}{2})
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./5-2.org][5.2]]
+
+#+ATTR_HTML: :class nav-next
+[[./5-4.org][5.4]]

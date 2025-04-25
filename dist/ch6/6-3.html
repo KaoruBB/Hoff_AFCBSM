@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>6.3</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">6.3
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 6</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org956867f">a)</a>
+<ul>
+<li><a href="#orgd2efc31">answer</a></li>
+</ul>
+</li>
+<li><a href="#orgb65ea8e">b)</a>
+<ul>
+<li><a href="#org09e0825">answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org956867f" class="outline-2">
+<h2 id="org956867f">a)</h2>
+<div class="outline-text-2" id="text-org956867f">
+</div>
+<div id="outline-container-orgd2efc31" class="outline-3">
+<h3 id="orgd2efc31">answer</h3>
+<div class="outline-text-3" id="text-orgd2efc31">
+\begin{align*}
+p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
+&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta) p(\boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta)
+p(\boldsymbol{z} | \boldsymbol{x}, c, \beta) p(\boldsymbol{x}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{z}, c) p(\boldsymbol{z} | \boldsymbol{x}, \beta) p(\boldsymbol{x}) p(c) p(\beta) \\
+&\propto  p(\boldsymbol{z} | \boldsymbol{x},\beta) p(\beta) \\
+&\propto \prod_{i=1}^n \exp \left( -\frac{1}{2} (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+&= \exp \left( -\frac{1}{2} \sum_{i=1}^n (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+&= \exp \left( -\frac{1}{2} \left( \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 \right) \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+\end{align*}
+
+<p>
+ここで、
+</p>
+\begin{align*}
+\sum_{i=1}^n (z_i - \beta x_i)^2 + \frac{1}{\tau_{\beta}^2} \beta^2
+&= \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \beta^2 \\
+&= a \beta^2 - 2 b \beta + \sum_{i=1}^n z_i^2 \\
+\mathrm{where} \quad
+a &= \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \\
+b &= \sum_{i=1}^n x_i z_i \\
+\end{align*}
+
+<p>
+となるので、
+</p>
+\begin{align*}
+p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
+&\propto \exp \left\{ -\frac{1}{2} \left( a \beta^2 - 2 b \beta \right) \right\} \\
+&= \exp \left\{ -\frac{1}{2} a \left( \beta^2 - \frac{2 b}{a} \beta + \frac{b^2}{a^2} \right) + \frac{1}{2} \frac{b^2}{a} \right\} \\
+&\propto \exp \left\{ -\frac{1}{2} a \left( \beta - \frac{b}{a} \right)^2 \right\} \\
+&= \exp \left\{ - \frac{1}{2} \left( \frac{\beta - b/a}{1/ \sqrt{a} } \right) \right\} \\
+&= \mathrm{dnorm}(\beta, b/a, 1/ \sqrt{a} ) \\
+\end{align*}
+
+<p>
+よって、
+</p>
+\begin{align*}
+\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c \sim
+\mathrm{Normal} \left( \frac{ \sum_{i=1}^n x_i z_i }{ \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} }, \frac{1}{  \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2}  } \right)
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-orgb65ea8e" class="outline-2">
+<h2 id="orgb65ea8e">b)</h2>
+<div class="outline-text-2" id="text-orgb65ea8e">
+</div>
+<div id="outline-container-org09e0825" class="outline-3">
+<h3 id="org09e0825">answer</h3>
+<div class="outline-text-3" id="text-org09e0825">
+\begin{align*}
+p(c | y_i = 0, x_i, z_i, \beta)
+&\propto p(y_i = 0 | z_i, c) p(c) \\
+&= p(y_i = 0 | x_i, c, \beta) p(c) \\
+&= \Phi(c - \beta x_i) p(c) \\
+\end{align*}
+
+\begin{align*}
+p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
+&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, \beta, c) p(\boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
+&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) p(c) \\
+&= \left( 1 - \Phi() \right)
+\end{align*}
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./6-2.html" class="nav-prev">6.2</a>
+</p>
+
+<p class="nav-next">
+<a href="../ch7/7-1.html" class="nav-next">7.1</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+#+TITLE: 7.5
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* Question :noexport:
+Imputation:
+The file ~interexp.dat~ contains data from an experiment that
+was interrupted before all the data could be gathered.
+Of interest was the difference in reaction times of experimental subjects when they were given stimulus \(A\) versus stimulus \(B\).
+Each subject is tested under one of the two stimuli on their first day of participation in the study,
+and is tested under the other stimulus at some later date.
+Unfortunately the experiment was interrupted before it was finished, leaving the researchers with 26 subjects with both \(A\) and \(B\) responses, 15 subjects with only \(A\) responses and 17 subjects with only \(B\) responses.
+* a)
+** Question :noexport:
+Calculate empirical estimates of \(\theta_A, \theta_B, \rho, \sigma^2_A, \sigma^2_B\) from the data using the commands
+~mean~, ~cor~ and ~var~.
+Use /all/ the \(A\)repsonses to get \(\hat{\theta}_A\) and \(\hat{\sigma}^2_A\),
+and use /all/ the \(B\) responses to get \(\hat{\theta}_B\) and \(\hat{\sigma}^2_B\).
+Use only the complete data cases to get \(\hat{\rho}\).
+** Answer
+#+begin_src julia :exports code
+Y_src = readdlm("../../Exercises/interexp.dat", skipstart=1)
+function parse_matrix(input_matrix)
+    nrow, ncol = size(input_matrix)
+    output_matrix = Matrix{Union{Missing, Float64}}(missing, nrow, ncol)
+
+    for i in 1:nrow
+        for j in 1:ncol
+            if input_matrix[i, j] == "NA"
+                output_matrix[i, j] = missing
+            else
+                output_matrix[i, j] = Float64(input_matrix[i, j])
+            end
+        end
+    end
+    return output_matrix
+end
+Y = parse_matrix(Y_src)
+θ̂_A = mean(skipmissing(Y[:, 1]))
+θ̂_B = mean(skipmissing(Y[:, 2]))
+σ̂²_A = var(skipmissing(Y[:, 1]))
+σ̂²_B = var(skipmissing(Y[:, 2]))
+
+# get index of not missing
+ind_A = ismissing.(Y[:, 1])
+ind_B = ismissing.(Y[:, 2])
+Y_comp = Y[ind_A.+ind_B.==0, :]
+ρ̂ = cor(Y_comp[:, 1], Y_comp[:, 2])
+#+end_src
+
+#+begin_src julia :exports code
+julia> θ̂_A
+
+24.200487804878044
+
+julia> θ̂_B
+24.805348837209298
+
+julia> ρ̂
+0.6164509013184667
+
+julia> σ̂²_A
+4.092799756097562
+
+julia> σ̂²_B
+4.69157785160576
+#+end_src
+* b)
+** Question :noexport:
+For each person \(i\) with only \(A\) response, impute a \(B\) response as
+\[
+\hat{y}_{i, B} = \hat{\theta}_B + (y_{i, A} - \hat{\theta}_A) \hat{\rho} \sqrt{ \frac{\hat{\sigma}^2_B}{\hat{\sigma}^2_A} }
+\]
+For each person \(i\) with only \(B\) response, impute an \(A\) response as
+\[
+\hat{y}_{i, A} = \hat{\theta}_A + (y_{i, B} - \hat{\theta}_B) \hat{\rho} \sqrt{ \frac{\hat{\sigma}^2_A}{\hat{\sigma}^2_B} }
+\]
+You now have two "observations" for each individual.
+Do a paired sample \(t\)-test and obtain 95% confidence interval for \(\theta_A - \theta_B\).
+** Answer
+#+begin_src julia :exports code
+function impute(Y)
+    nrow = size(Y, 1)
+    Y_imp = copy(Y)
+
+    for i in 1:nrow
+        if ismissing(Y[i, 1])
+            Y_imp[i, 1] = θ̂_A + (Y[i, 2] - θ̂_B) * ρ̂ * sqrt(σ̂²_A / σ̂²_B)
+        end
+        if ismissing(Y[i, 2])
+            Y_imp[i, 2] = θ̂_B + (Y[i, 1] - θ̂_A) * ρ̂ * sqrt(σ̂²_B / σ̂²_A)
+        end
+    end
+    return Y_imp
+end
+
+Y_imp = impute(Y)
+
+# Do a paired sample t-test
+using HypothesisTests
+OneSampleTTest(Y_imp[:, 1] .- Y_imp[:, 2])
+#+end_src
+
+:+RESULTS:
+#+begin_example julia
+One sample t-test
+-----------------
+Population details:
+    parameter of interest:   Mean
+    value under h_0:         0
+    point estimate:          -0.611704
+    95% confidence interval: (-0.9851, -0.2383)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           0.0018
+
+Details:
+    number of observations:   58
+    t-statistic:              -3.280709515438293
+    degrees of freedom:       57
+    empirical standard error: 0.18645474208325274
+#+end_example
+* c)
+** Question :noexport:
+Using either Jeffreys' prior or a unit information prior distribution for the parameters,
+implement a Gibbs sampler that approximates the joint distribution of the parameters and the missing data.
+Compute a posterior mean for \(\theta_A - \theta_B\) as well as 95% posterior confidence interval for \(\theta_A - \theta_B\).
+Compare these results with the results from b) and discuss.
+** Answer
+*** Gibbs sampler
+#+begin_src julia :exports code
+function impute_Gibbs_Jeffreys(S, Y, Y_full, Σ_init)
+    n, p = size(Y)
+    O = 1 .* .!ismissing.(Y)
+
+    THETA = Matrix{Float64}(undef, S, p)
+    SIGMA = Matrix{Float64}(undef, S, p * p)
+    Y_MISS = Matrix{Float64}(undef, S, sum(ismissing.(Y)))
+
+    # initialize
+    Σ = Σ_init
+    for s in 1:S
+        # update θ
+        ȳ = mean(Y_full, dims=1) |> vec
+        θ = rand(MvNormal(ȳ, Symmetric(Σ ./ n)))
+
+        # update Σ
+        S_θ = (Y_full' .- θ) * (Y_full' .- θ)'
+        Σ = rand(InverseWishart(n + 1, S_θ))
+
+        # update missing data
+        for i in 1:n
+            b = (O[i, :] .== 0)
+            a = (O[i, :] .== 1)
+            iSa = inv(Σ[a, a])
+            βj = Σ[b, a] * iSa
+            Σj = Σ[b, b] - Σ[b, a] * iSa * Σ[a, b]
+            θj = θ[b] + βj * ( Y_full[i, a] - θ[a] )
+            Y_full[i, b] = rand(MvNormal(θj, Symmetric(Σj)))
+        end
+
+        # store
+        THETA[s, :] = vec(θ)
+        SIGMA[s, :] = vec(Σ)
+        Y_MISS[s, :] = vec(Y_full[O .== 0])
+    end
+    return THETA, SIGMA, Y_MISS
+end
+
+S = 10000
+Y_full = Float64.(Y_imp)
+Σ_init = cov(Y_full)
+
+THETA, SIGMA, Y_MISS = impute_Gibbs_Jeffreys(S, Y, Y_full, Σ_init)
+#+end_src
+
+*** Posterior mean and confidence interval
+#+begin_src julia :exports both
+# posterior mean
+mean(THETA[:, 1] .- THETA[:, 2])
+#+end_src
+
+#+RESULTS:
+: -0.6129730482663495
+
+#+begin_src julia :exports both
+# posterior confidence interval
+quantile(THETA[:, 1] .- THETA[:, 2], [0.025, 0.975])
+#+end_src
+
+#+RESULTS:
+: 2-element Vector{Float64}:
+:  -1.2864936536119458
+:   0.057091581482583
+
+*** discussion
+**** 日本語
+b)で行った t 検定では、有意水準 5%で帰無仮説が棄却され、刺激 A と刺激 B の反応時間には有意な差があることが示唆される結果になったが、
+ベイズ推定による代入法では、差の事後分布の 95%信用区間が 0 を含んでおり、必ずしも刺激 A と刺激 B の反応時間に有意な差があるとは言えない結果になった。
+**** English
+In the t-test performed in b), the null hypothesis was rejected at the ~5%~ significance level, suggesting a significant difference between the reaction times for stimulus A and stimulus B.
+However, with the Bayesian estimation approach (imputation method), the ~95%~ credible interval for the posterior distribution of the difference included 0. This result suggests that there is not necessarily a significant difference in reaction times between stimulus A and stimulus B.
+
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./7-4.org][7.4]]
+
+#+ATTR_HTML: :class nav-next
+[[./7-6.org][7.6]]

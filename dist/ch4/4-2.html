@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>4.2</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">4.2
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org27dd8d7">a)</a>
+<ul>
+<li><a href="#orge6a12c2">answer</a></li>
+</ul>
+</li>
+<li><a href="#orga1fa76a">b)</a>
+<ul>
+<li><a href="#orgf010b4b">answer</a></li>
+</ul>
+</li>
+<li><a href="#org00d3ec2">c)</a>
+<ul>
+<li><a href="#org241daf5">answer a&rsquo;</a></li>
+<li><a href="#org70dd958">answer b&rsquo;</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org27dd8d7" class="outline-2">
+<h2 id="org27dd8d7">a)</h2>
+<div class="outline-text-2" id="text-org27dd8d7">
+</div>
+<div id="outline-container-orge6a12c2" class="outline-3">
+<h3 id="orge6a12c2">answer</h3>
+<div class="outline-text-3" id="text-orge6a12c2">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
+<span style="color: #51afef;">using</span> Random
+Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
+y_A = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">14</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">6</span><span style="color: #51afef;">]</span>
+y_B = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">7</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">6</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">7</span><span style="color: #51afef;">]</span>
+
+n_A, sy_A = length<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span>
+n_B, sy_B = length<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span>
+
+a&#8320;_A = <span style="color: #e69055; font-weight: bold;">120</span>
+b&#8320;_A = <span style="color: #e69055; font-weight: bold;">10</span>
+a&#8320;_B = <span style="color: #e69055; font-weight: bold;">12</span>
+b&#8320;_B = <span style="color: #e69055; font-weight: bold;">1</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_A = Gamma<span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_B = Gamma<span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+&#952;_A_mc = rand<span style="color: #51afef;">(</span>dist_A, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+&#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_B, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+
+mean<span style="color: #51afef;">(</span>&#952;_B_mc .<span style="color: #FCCE7B;">&lt;</span> &#952;_A_mc<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.996
+</pre>
+
+
+<p>
+以上より、
+\[
+\text{Pr}(\theta_B < \theta_A \mid \boldsymbol{y}_A, \boldsymbol{y}_B)
+\fallingdotseq 0.997
+\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga1fa76a" class="outline-2">
+<h2 id="orga1fa76a">b)</h2>
+<div class="outline-text-2" id="text-orga1fa76a">
+</div>
+<div id="outline-container-orgf010b4b" class="outline-3">
+<h3 id="orgf010b4b">answer</h3>
+<div class="outline-text-3" id="text-orgf010b4b">
+<div class="org-src-container">
+<pre class="src src-julia">dist_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> Gamma<span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>n <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">)</span>
+
+<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
+t_mc = <span style="color: #51afef;">[]</span>
+<span style="color: #51afef;">for</span> n&#8320; <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
+    &#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_&#952;_B<span style="color: #C57BDB;">(</span>n&#8320;<span style="color: #C57BDB;">)</span>, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+    append!<span style="color: #51afef;">(</span>t_mc, mean<span style="color: #C57BDB;">(</span>&#952;_B_mc .<span style="color: #FCCE7B;">&lt;</span> &#952;_A_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+
+
+<div id="org944f29e" class="figure">
+<p><img src="fig/exercise4-2b.png" alt="exercise4-2b.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org00d3ec2" class="outline-2">
+<h2 id="org00d3ec2">c)</h2>
+<div class="outline-text-2" id="text-org00d3ec2">
+</div>
+<div id="outline-container-org241daf5" class="outline-3">
+<h3 id="org241daf5">answer a&rsquo;</h3>
+<div class="outline-text-3" id="text-org241daf5">
+<div class="org-src-container">
+<pre class="src src-julia">&#952;_A_mc = rand<span style="color: #51afef;">(</span>dist_A, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
+&#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_B, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
+y_A_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: #C57BDB;">(</span>&#952;_A_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+y_B_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: #C57BDB;">(</span>&#952;_B_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">&gt;</span> y_B_mc<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0.6953
+</pre>
+
+
+<p>
+以上より、
+\[
+\text{Pr}(\tilde{Y}_B < \tilde{Y}_A \mid \boldsymbol{y}_A, \boldsymbol{y}_B)
+\fallingdotseq 0.695
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org70dd958" class="outline-3">
+<h3 id="org70dd958">answer b&rsquo;</h3>
+<div class="outline-text-3" id="text-org70dd958">
+<div class="org-src-container">
+<pre class="src src-julia">t_mc = <span style="color: #51afef;">[]</span>
+<span style="color: #51afef;">for</span> n&#8320; <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
+    &#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_&#952;_B<span style="color: #C57BDB;">(</span>n&#8320;<span style="color: #C57BDB;">)</span>, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
+    y_B_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: #C57BDB;">(</span>&#952;_B_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    append!<span style="color: #51afef;">(</span>t_mc, mean<span style="color: #C57BDB;">(</span>&#952;_B_mc .<span style="color: #FCCE7B;">&lt;</span> &#952;_A_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+
+<div id="orga4d98bc" class="figure">
+<p><img src="fig/exercise4-2c.png" alt="exercise4-2c.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./4-1.html" class="nav-prev">4.1</a>
+</p>
+
+<p class="nav-next">
+<a href="./4-3.html" class="nav-next">4.3</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2.8</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">2.8
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 2</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf7e34b2">Answer (English)</a>
+<ul>
+<li><a href="#org27b5ee5">a: Distribution of Religions in Sri Lanka</a>
+<ul>
+<li><a href="#org0ff5558">i: Pr(person <i>x</i> is Hindu)</a></li>
+<li><a href="#org01ee2e0">ii: Pr(\(x = 6452859\))</a></li>
+<li><a href="#org5012d46">iii: Pr(Person <i>x</i> is Hindu \(\mid x = 6452859\))</a></li>
+</ul>
+</li>
+<li><a href="#org0cb4789">b: Coin Flipping</a>
+<ul>
+<li><a href="#org3e7575e">i: Pr(θ = 1/3)</a></li>
+</ul>
+</li>
+<li><a href="#orged997f4">ii: Pr(the first coin flip will result in a heads)</a></li>
+<li><a href="#orgc16ece6">iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))</a></li>
+<li><a href="#orgd24c38f">c: Pr(the flip has resulted in a heads)</a></li>
+</ul>
+</li>
+<li><a href="#org51c1af6">解答 (日本語)</a>
+<ul>
+<li><a href="#orgf596360">a: スリランカの宗教分布</a>
+<ul>
+<li><a href="#orga26b031">i: Pr(xがヒンズー教徒)</a></li>
+<li><a href="#org65aea8c">ii: Pr(x = 6452859)</a></li>
+<li><a href="#org8433613">iii: Pr(xがヒンズー教徒 | x = 6452859)</a></li>
+</ul>
+</li>
+<li><a href="#org6ff7c5e">b: コイン投げ</a>
+<ul>
+<li><a href="#org21cf68d">i: Pr(θ = 1/3)</a></li>
+<li><a href="#orge52d6c5">ii: Pr(最初のコイン投げで表が出る)</a></li>
+<li><a href="#org8d29679">iii: Pr(最初のコイン投げで表が出る | θ = 1/3)</a></li>
+</ul>
+</li>
+<li><a href="#orgcbb7304">c: Pr(すでに投げられたコインの結果が表)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orgf7e34b2" class="outline-2">
+<h2 id="orgf7e34b2">Answer (English)</h2>
+<div class="outline-text-2" id="text-orgf7e34b2">
+</div>
+<div id="outline-container-org27b5ee5" class="outline-3">
+<h3 id="org27b5ee5">a: Distribution of Religions in Sri Lanka</h3>
+<div class="outline-text-3" id="text-org27b5ee5">
+</div>
+<div id="outline-container-org0ff5558" class="outline-4">
+<h4 id="org0ff5558">i: Pr(person <i>x</i> is Hindu)</h4>
+<div class="outline-text-4" id="text-org0ff5558">
+<ul class="org-ul">
+<li><i>Frequency Interpretation:</i> The proportion of Hindus in the sample as the total number of sampled individuals (<i>K</i>) approaches infinity. (Calculated as the number of observed Hindus divided by <i>K</i>).</li>
+<li><i>Subjective Interpretation:</i> Our <b>degree of belief</b> that a person <i>x</i> is Hindu, <b>before</b> the specific individual is selected.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org01ee2e0" class="outline-4">
+<h4 id="org01ee2e0">ii: Pr(\(x = 6452859\))</h4>
+<div class="outline-text-4" id="text-org01ee2e0">
+<ul class="org-ul">
+<li><i>Frequency Interpretation:</i> The proportion of times the number 6452859 is drawn when sampling with replacement from the numbers 1 to <i>K</i> infinitely many times.</li>
+<li><i>Subjective Interpretation:</i> Our <b>degree of belief</b> that the selected number will be 6452859, <b>before</b> the sampling occurs.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5012d46" class="outline-4">
+<h4 id="org5012d46">iii: Pr(Person <i>x</i> is Hindu \(\mid x = 6452859\))</h4>
+<div class="outline-text-4" id="text-org5012d46">
+<ul class="org-ul">
+<li><i>Frequency Interpretation:</i> Among all the instances where <code>x = 6452859</code> occurs in an infinite series of draws with replacement from 1 to <i>K</i>, the proportion of those instances where person <code>x</code> is Hindu. (Since <code>x = 6452859</code> refers to a specific individual whose religion is fixed, this proportion will be either 0 or 1).</li>
+<li><i>Subjective Interpretation:</i> Our <b>degree of belief</b> that the specific individual (number 6452859) is Hindu, <b>after</b> we know that <code>x = 6452859</code>. The probability reflects our <b>state of knowledge</b>. (If we know the person&rsquo;s religion, the degree of belief is 0 or 1. If we do not know, we might use information from the general population distribution, e.g., 15%).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0cb4789" class="outline-3">
+<h3 id="org0cb4789">b: Coin Flipping</h3>
+<div class="outline-text-3" id="text-org0cb4789">
+</div>
+<div id="outline-container-org3e7575e" class="outline-4">
+<h4 id="org3e7575e">i: Pr(θ = 1/3)</h4>
+<div class="outline-text-4" id="text-org3e7575e">
+<p>
+This probability represents the probability assigned to the proposition that &ldquo;the long-run relative frequency of heads (<code>θ</code>) when flipping a specific quarter infinitely many times is <b>exactly</b> 1/3&rdquo;. Two main interpretations can be considered:
+</p>
+
+<ul class="org-ul">
+<li><i>Subjective Probability / Bayesian Interpretation:</i>
+<ul class="org-ul">
+<li>In this interpretation, <code>Pr(θ = 1/3)</code> represents our <b>degree of belief</b> or <b>state of information</b> regarding the true nature (the value of <code>θ</code>) of the coin.</li>
+<li><code>θ</code> is a physical property, typically considered to take a continuous value within the range [0, 1].</li>
+<li>If <code>θ</code> is modeled as a continuous quantity, the mathematical probability of it taking a specific single point value (<code>θ = 1/3</code>) is <b>zero</b>.
+In this case, we usually consider beliefs about <code>θ</code> lying within a certain range, such as <code>Pr(a &lt; θ &lt; b)</code>
+(like the example <code>Pr(θ &lt; c)</code> in the problem description).</li>
+<li>Exceptionally, if we possess strong prior information suggesting that &ldquo;this coin can only have one of a few specific bias values (e.g., 1/2 or 1/3)&rdquo;, then <code>Pr(θ = 1/3)</code> could be greater than zero, indicating our degree of belief in that specific possibility.</li>
+<li><i>Randomness:</i> The randomness here stems from our <b>incomplete knowledge</b> about the physical properties (the true value of <code>θ</code>) of this specific coin.
+The fact that we do not know the value of <code>θ</code> is the source of randomness.</li>
+</ul></li>
+
+<li>Frequentist Interpretation:
+<ul class="org-ul">
+<li>The value is either 0 or 1.</li>
+<li>In the strict frequentist view, <code>θ</code> is an unknown but <b>fixed constant</b> (the true value) and not a random variable.</li>
+<li>Therefore, assigning a probability (<code>Pr(θ = 1/3)</code>) to the value of the parameter <code>θ</code> itself is not typically done within the standard frequentist framework.
+Parameters are considered to have a specific value, not to exhibit probabilistic behavior.</li>
+<li>Attempting to force a frequentist interpretation might require imagining a scenario like &ldquo;there is a population of coins with various <code>θ</code> values, and when we randomly select one coin from this population, the proportion of coins with <code>θ = 1/3</code>&rdquo;.
+However, the problem statement refers to <b>one specific</b> coin, making this interpretation indirect.</li>
+<li><i>Randomness:</i> In this (somewhat unnatural) interpretation involving selection from a population, the randomness lies in the selection process – &ldquo;which coin with which <code>θ</code> was selected&rdquo;.
+However, once the coin is selected, its <code>θ</code> is fixed.</li>
+</ul></li>
+</ul>
+
+<p>
+<b>In conclusion</b>, considering the context of the problem (especially the reference to de Finetti&rsquo;s theorem), interpreting <code>Pr(θ = 1/3)</code> as representing our <b>subjective belief</b> about the value of <code>θ</code> is the most natural approach.
+However, in the standard case where <code>θ</code> is considered a continuous quantity, this probability is zero.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orged997f4" class="outline-3">
+<h3 id="orged997f4">ii: Pr(the first coin flip will result in a heads)</h3>
+<div class="outline-text-3" id="text-orged997f4">
+<ul class="org-ul">
+<li><i>Subjective Probability Interpretation:</i>
+<ul class="org-ul">
+<li>This represents our <b>current degree of belief</b> that the <b>next (first)</b> coin flip will result in heads.</li>
+<li>It reflects our state of knowledge or uncertainty about this specific, singular future event.</li>
+<li><i>Randomness:</i> In this view, randomness arises from our <b>lack of knowledge</b> or <b>uncertainty</b> about the outcome of the first flip. The result is not yet determined for us.</li>
+</ul></li>
+
+<li><i>Frequentist Interpretation:</i>
+<ul class="org-ul">
+<li>This can be interpreted as the proportion of hypothetical repetitions of the <b>exact same scenario</b> (receiving this specific quarter as change and preparing to flip it once) in which the first flip results in heads, if we could repeat this scenario infinitely many times.</li>
+<li>It refers to the frequency of heads in the first flip across an imagined ensemble of identical starting situations.</li>
+<li><i>Randomness:</i> Here, randomness is seen as inherent in the <b>physical unpredictability</b> or <b>variability</b> of the coin flip process itself. Repeating the same process does not guarantee the same outcome each time.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc16ece6" class="outline-3">
+<h3 id="orgc16ece6">iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))</h3>
+<div class="outline-text-3" id="text-orgc16ece6">
+<ul class="org-ul">
+<li><i>Subjective Probability Interpretation:</i>
+<ul class="org-ul">
+<li>This represents our <b>current degree of belief</b> that the first coin flip will result in heads, <i>updated with the information</i> that the long-run relative frequency of heads \(\theta = 1/3\).</li>
+</ul></li>
+
+<li><i>Frequentist Interpretation:</i>
+<ul class="org-ul">
+<li>This represents the proportion of first flips that would result in heads if we could infinitely repeat the scenario of flipping a coin, whose long-run relative frequency of heads \(\theta\) is \(1/3\).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd24c38f" class="outline-3">
+<h3 id="orgd24c38f">c: Pr(the flip has resulted in a heads)</h3>
+<div class="outline-text-3" id="text-orgd24c38f">
+<ul class="org-ul">
+<li><i>Subjective Probability Interpretation:</i> Our <b>current degree of belief</b> that the outcome of the flipped coin is heads.</li>
+<li><i>Frequentist Interpretation:</i> Since the result is already determined, it simply represents whether the outcome was actually heads (1) or not (0).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org51c1af6" class="outline-2">
+<h2 id="org51c1af6">解答 (日本語)</h2>
+<div class="outline-text-2" id="text-org51c1af6">
+</div>
+<div id="outline-container-orgf596360" class="outline-3">
+<h3 id="orgf596360">a: スリランカの宗教分布</h3>
+<div class="outline-text-3" id="text-orgf596360">
+</div>
+<div id="outline-container-orga26b031" class="outline-4">
+<h4 id="orga26b031">i: Pr(xがヒンズー教徒)</h4>
+<div class="outline-text-4" id="text-orga26b031">
+<ul class="org-ul">
+<li><b>頻度主義的解釈:</b> K を無限大に近づけたときの標本中のヒンズー教徒の割合。 (観測されたヒンズー教徒の人数を K で割ったもの)</li>
+<li><b>主観確率的解釈:</b> 特定の個人 <i>x</i> が選ばれる <b>前</b> に、その人がヒンドゥー教徒であるということに対する、私たちの <b>信念の度合い</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org65aea8c" class="outline-4">
+<h4 id="org65aea8c">ii: Pr(x = 6452859)</h4>
+<div class="outline-text-4" id="text-org65aea8c">
+<ul class="org-ul">
+<li><b>頻度主義的解釈:</b> 1 から K の中から x を無限回復元抽出したとき、xが 6452859 である割合。</li>
+<li><b>主観確率的解釈:</b> サンプリングが行われる <b>前</b> に、選ばれる番号が 6452859 であるということに対する、私たちの <b>信念の度合い</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8433613" class="outline-4">
+<h4 id="org8433613">iii: Pr(xがヒンズー教徒 | x = 6452859)</h4>
+<div class="outline-text-4" id="text-org8433613">
+<ul class="org-ul">
+<li><b>頻度主義的解釈:</b>
+1 から K の中から x を無限回復元抽出したときに x が 6452859 であるという事象のうち、 x がヒンズー教徒である割合。
+(<code>x = 6452859</code> は特定の個人を指し、その人の宗教は固定されているので、0 または 1 のどちらかになる)</li>
+<li><b>主観確率的解釈:</b>
+条件 <code>x = 6452859</code> を知った <b>後</b> で、その特定の個人がヒンドゥー教徒であることに対する私たちの <b>信念の度合い</b> 。確率は <b>私たちの知識の状態</b> を反映する。
+(もし私たちがその人の宗教を知っていれば、信念の度合いは 0 または 1 になるが、知らなければ一般的な人口分布の情報 (15%がヒンドゥー教徒) を使うかもしれない)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ff7c5e" class="outline-3">
+<h3 id="org6ff7c5e">b: コイン投げ</h3>
+<div class="outline-text-3" id="text-org6ff7c5e">
+</div>
+<div id="outline-container-org21cf68d" class="outline-4">
+<h4 id="org21cf68d">i: Pr(θ = 1/3)</h4>
+<div class="outline-text-4" id="text-org21cf68d">
+<p>
+この確率は、「特定のクォーター（硬貨）を無限回投げたときの表が出る長期的な相対頻度 \(\theta\) が、 <b>正確に</b> 1/3 である」という命題に対する確率である。これには主に二つの解釈が考えられる。
+</p>
+
+<ul class="org-ul">
+<li><b>主観確率的解釈:</b>
+<ul class="org-ul">
+<li>この解釈では、\(\mathrm{Pr}(\theta = 1/3)\) は、その硬貨の真の性質 (&theta; の値) に関する私たちの <b>信念の度合い</b> または <b>情報の状態</b> を表す。</li>
+<li>&theta; は物理的な特性であり、通常は [0, 1] の範囲の連続的な値を取ると考えられる。</li>
+<li>もし &theta; が連続的な量であるとモデル化する場合、特定の一点 (\(\theta=1/3\)) を取る数学的な確率は <b>ゼロ</b> になる。この場合、通常は Pr(a &lt; θ &lt; b) のように、&theta; がある範囲内にあることに対する信念を考える（問題文の Pr(θ &lt; c) の例のように）。</li>
+<li>例外的に、もし私たちが「このコインは、いくつかの特定のバイアス値（例えば、1/2 または 1/3）しか持ち得ない」と考える強い事前情報を持っている場合、\(\mathrm{Pr}(\theta=1/3)\) はゼロより大きい値を持ち、その特定の可能性に対する私たちの信念の度合いを示すことができる。</li>
+<li><b>ランダム性:</b> ここでのランダム性は、この特定のコインの物理的性質 (&theta; の真の値) に関する私たちの <b>知識の不完全さ</b> に起因する。
+\(\theta\) の値が何であるか、私たちにはわからないという点がランダム性の源である。</li>
+</ul></li>
+
+<li><b>頻度主義的解釈:</b>
+<ul class="org-ul">
+<li>\(\theta=1/3\)という命題が正しいかどうか (0 または 1) ということ。</li>
+<li>厳密な頻度主義の立場では、\(\theta\) は未知ではあるものの <b>固定された定数</b> （真の値）であり、ランダム変数ではありません。</li>
+<li>そのため、パラメータ \(\theta\) 自体の値に対して確率 (\(\mathrm{Pr}(\theta=1/3)\)) を割り当てることは、標準的な頻度主義の枠組みでは通常行われない。パラメータは確率的な振る舞いをするものではなく、単に特定の値を持つものと考えられる。</li>
+<li>無理に頻度主義的な解釈を適用しようとすると、「様々な \(\theta\) を持つコインの集団があり、そこからランダムに一つ選んだときに、そのコインの \(\theta\) が 1/3 である割合」のような状況を想定する必要がある。しかし、問題は <b>特定の</b> 一枚のコインについて述べているため、この解釈は直接的ではない。</li>
+<li><b>ランダム性:</b> この（やや不自然な）集団からの選択という解釈では、ランダム性は「どの \(\theta\) を持つコインが選ばれたか」という選択プロセスにある。しかし、一度コインが選ばれれば、そのコインの \(\theta\) は固定されている。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge52d6c5" class="outline-4">
+<h4 id="orge52d6c5">ii: Pr(最初のコイン投げで表が出る)</h4>
+<div class="outline-text-4" id="text-orge52d6c5">
+<ul class="org-ul">
+<li><b>主観確率的解釈:</b> <b>次に行う（最初の）</b> コイン投げの結果が表になることに対する、私たちの <b>現在の信念の度合い</b>
+<ul class="org-ul">
+<li>ランダム性は、最初のコイン投げの結果についての私たちの <b>知識の欠如</b> または <b>不確実性</b> に起因する</li>
+</ul></li>
+<li><b>頻度主義的解釈:</b>
+<ul class="org-ul">
+<li>お釣りとして得た25セント硬貨を何度も投げる世界線を無限に考えたとき、最初のコイン投げで表が出る世界線の割合。</li>
+<li>ランダム性は、コイン投げという物理的プロセス固有の <b>予測不可能性</b> や <b>変動性</b> に起因する</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d29679" class="outline-4">
+<h4 id="org8d29679">iii: Pr(最初のコイン投げで表が出る | θ = 1/3)</h4>
+<div class="outline-text-4" id="text-org8d29679">
+<ul class="org-ul">
+<li><b>主観確率的解釈:</b> 長期的に見た表が出る相対頻度\(\theta = 1/3\) という情報を知ったうえで、最初のコイン投げの結果が表になることに対する私たちの <b>現在の信念の度合い</b></li>
+<li><b>頻度主義的解釈:</b> 長期的に見た表が出る相対頻度\(\theta = 1/3\)の25セント硬貨を何度も投げる世界線を無限に考えたとき、最初のコイン投げで表が出る世界線の割合</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcbb7304" class="outline-3">
+<h3 id="orgcbb7304">c: Pr(すでに投げられたコインの結果が表)</h3>
+<div class="outline-text-3" id="text-orgcbb7304">
+<ul class="org-ul">
+<li><b>主観確率的解釈:</b> 投げられたコインの結果が表であることに対する私たちの <b>現在の信念の度合い</b></li>
+<li><b>頻度主義的解釈:</b> すでに結果が決まっているので、単に結果が表であったどうか(0 または 1) ということを表す</li>
+</ul>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./2-7.html" class="nav-prev">2.7</a>
+</p>
+
+<p class="nav-next">
+<a href="../ch3/3-1.html" class="nav-next">3.1</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

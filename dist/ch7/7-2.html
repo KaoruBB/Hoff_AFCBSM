@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>7.2</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">7.2
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 7</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org3e536dc">Answer</a>
+<ul>
+<li><a href="#org8e752f7">a)</a></li>
+<li><a href="#orgf8f8000">b)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org3e536dc" class="outline-2">
+<h2 id="org3e536dc">Answer</h2>
+<div class="outline-text-2" id="text-org3e536dc">
+</div>
+<div id="outline-container-org8e752f7" class="outline-3">
+<h3 id="org8e752f7">a)</h3>
+<div class="outline-text-3" id="text-org8e752f7">
+\begin{align*}
+l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y})
+&= \sum_{i=1}^n \log p(\boldsymbol{y}_i | \boldsymbol{\theta}, \Psi) \\
+&= \sum_{i=1}^n \log \left\{ (2 \pi)^{-p/2} |\Psi|^{1/2} \exp \left( -\frac{1}{2} (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \right) \right\} \\
+&= \sum_{i=1}^n \left\{ -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \boldsymbol{\theta}) \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} } + \bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ ( (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T + ( \bar{\boldsymbol{y} } -  \boldsymbol{\theta})^T)  \Psi ((\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| \\
+&\qquad -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + 2 (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{1}{2} \sum_{i=1}^n \left\{ (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \Psi (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) + (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+&= -\frac{np}{2} \log (2 \pi) + \frac{n}{2} \log |\Psi| -\frac{n}{2}
+\text{tr}(S \Psi) -\frac{n}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}), \\
+&\qquad \qquad\text{where}
+\quad S = \frac{1}{n} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{\boldsymbol{y} }) (\boldsymbol{y}_i - \bar{\boldsymbol{y} })^T \\
+\end{align*}
+<p>
+より、
+</p>
+\begin{align*}
+\log p_U(\boldsymbol{\theta}, \Psi)
+&= \frac{ l(\boldsymbol{\theta}, \Psi | \boldsymbol{Y}) }{n} + c \\
+&= -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} \text{tr}(S \Psi) -\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + c \\
+\end{align*}
+<p>
+となる。よって
+</p>
+\begin{align*}
+p_U(\boldsymbol{\theta}, \Psi)
+&= \exp \left\{ -\frac{p}{2} \log (2 \pi) + \frac{1}{2} \log |\Psi| -\frac{1}{2} \text{tr}(S \Psi) -\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) + c \right\} \\
+&= (2 \pi)^{- \frac{p}{2} } |\Psi|^{ \frac{1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\}
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\exp(c)\\
+&\propto
+(2 \pi)^{- \frac{p}{2} } |\Psi^{-1}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\Psi|^{ \frac{p+1-p-1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\} \\
+&\propto
+(2 \pi)^{- \frac{p}{2} } |\Psi^{-1}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Psi (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\Psi|^{ \frac{p+1-p - 1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \Psi) \right\} \\
+&\propto \text{dmultivariate-normal}(\boldsymbol{\theta} | \bar{ \boldsymbol{y} } , \Psi^{-1})
+\times \text{dWishart}(\Psi | p+1, S^{-1}) \\
+\end{align*}
+<p>
+が成立。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf8f8000" class="outline-3">
+<h3 id="orgf8f8000">b)</h3>
+<div class="outline-text-3" id="text-orgf8f8000">
+\begin{align*}
+p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto p_U(\boldsymbol{\theta} | \boldsymbol{\Sigma}) p_U(\boldsymbol{\Sigma})
+p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \boldsymbol{\Sigma}) \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times |\boldsymbol{\Sigma}^{-1}|^{ \frac{p+1-p - 1}{2} }
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} } \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} } \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta}) \right\} \\
+&\propto |\boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times
+\exp \left\{ -\frac{1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \qquad \times |\Sigma|^{ -\frac{n}{2} }
+\exp \left\{ - \frac{n}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\}
+\exp \left\{-\frac{n}{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \Sigma^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\} \\
+& \propto |\boldsymbol{\Sigma}|^{- \frac{n+1}{2} }
+\exp \left\{-\frac{ n+1 }{2} (\bar{\boldsymbol{y} } - \boldsymbol{\theta})^T \boldsymbol{\Sigma}^{-1} (\bar{\boldsymbol{y} } - \boldsymbol{\theta}) \right\}
+\times \exp \left\{ -\frac{n+1}{2} \text{tr}(S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto |\boldsymbol{\Sigma}|^{- \frac{n+1}{2} }
+\exp \left\{-\frac{1}{2} (\boldsymbol{\theta} - \bar{\boldsymbol{y} })^T (n+1) \boldsymbol{\Sigma}^{-1} (\boldsymbol{\theta} - \bar{\boldsymbol{y} }) \right\}
+\times \exp \left\{ -\frac{1}{2} \text{tr}((n+1) S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto | \frac{1}{n+1} \boldsymbol{\Sigma}|^{- \frac{1}{2} }
+\exp \left\{-\frac{1}{2} (\boldsymbol{\theta} - \bar{\boldsymbol{y} })^T
+( \frac{1}{n+1} \boldsymbol{\Sigma})^{-1} (\boldsymbol{\theta} - \bar{\boldsymbol{y} }) \right\} \\
+&\qquad \times |\Sigma|^{- \frac{n-p-1+p+1}{2} }\exp \left\{ -\frac{1}{2} \text{tr}((n+1) S \boldsymbol{\Sigma}^{-1}) \right\} \\
+& \propto \text{dmultivariate-normal}(\boldsymbol{\theta} | \bar{\boldsymbol{y} }, \frac{1}{n+1} \boldsymbol{\Sigma})
+\times \text{dinverse-Wishart}(\boldsymbol{\Sigma} | n-p-1, \frac{1}{n+1} S^{-1}) \\
+\end{align*}
+
+<p>
+上式より、
+\(p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+は、データと事前分布の情報が反映された分布であることがわかるので、事後分布とみなせる。
+</p>
+
+<p>
+(From the expression above, we can see that
+\(p_U(\boldsymbol{\theta}, \boldsymbol{\Sigma} | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)\)
+is a distribution that reflects information from both the data and the prior distribution.
+Therefore, it can be regarded as the posterior distribution.)
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./7-1.html" class="nav-prev">7.1</a>
+</p>
+
+<p class="nav-next">
+<a href="./7-3.html" class="nav-next">7.3</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

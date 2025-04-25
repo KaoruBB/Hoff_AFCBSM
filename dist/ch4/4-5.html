@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>4.5</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">4.5
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdf59313">a)</a>
+<ul>
+<li><a href="#org77b17ea">answer</a></li>
+</ul>
+</li>
+<li><a href="#org4dd3906">b)</a>
+<ul>
+<li><a href="#org8ea62a7">answer</a></li>
+</ul>
+</li>
+<li><a href="#org0eac1de">c)</a>
+<ul>
+<li><a href="#org51874e8">i</a>
+<ul>
+<li><a href="#org198dcda">answer</a></li>
+</ul>
+</li>
+<li><a href="#orgfd85fcd">ii.</a>
+<ul>
+<li><a href="#org9b0c291">answer</a></li>
+</ul>
+</li>
+<li><a href="#org5248273">iii.</a>
+<ul>
+<li><a href="#orgdf80834">answer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org342a496">d)</a>
+<ul>
+<li><a href="#orge0dc896">answer</a>
+<ul>
+<li><a href="#orga73b954">日本語</a></li>
+<li><a href="#org8ca2192">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org18321fa">e)</a>
+<ul>
+<li><a href="#org4908076">Answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orgdf59313" class="outline-2">
+<h2 id="orgdf59313">a)</h2>
+<div class="outline-text-2" id="text-orgdf59313">
+</div>
+<div id="outline-container-org77b17ea" class="outline-3">
+<h3 id="org77b17ea">answer</h3>
+<div class="outline-text-3" id="text-org77b17ea">
+<p>
+From \(Y_i \sim \text{Poisson}(\theta X_i)\), the likelihood is
+</p>
+\begin{align*}
+p((Y_1, X_1), \dots, (Y_n, X_n) \mid \theta )
+&= \prod_{i=1}^n p(Y_i, X_i \mid \theta )
+\quad (\because \text{ i.i.d. })\\
+&= \prod_{i=1}^n p(Y_i \mid X_i, \theta ) p(X_i \mid \theta ) \\
+&\propto \prod_{i=1}^n p(Y_i \mid X_i, \theta )
+\quad (\because  X_i \text{ is independent from } \theta) \\
+&= \prod_{i=1}^n \frac{(\theta X_i)^{Y_i} e^{-\theta X_i}}{Y_i!} \\
+&\propto \theta^{ \sum_{i=1}^n Y_i } e^{-\theta \sum_{i=1}^n X_i}
+\end{align*}
+
+<p>
+From \(\theta \sim \text{gamma}(a, b)\), the prior distribution is
+</p>
+\begin{align*}
+p(\theta)
+&= \frac{b^a}{\Gamma(a)} \theta^{a-1} e^{-b \theta} \\
+&\propto \theta^{a-1} e^{-b \theta}
+\end{align*}
+
+<p>
+ベイズの定理より、事後分布は、
+Using Bayes&rsquo; rule, the posterior distribution is given by
+</p>
+\begin{align*}
+p(\theta \mid (Y_1, X_1), \dots, (Y_n, X_n))
+&\propto \theta^{ \sum_{i=1}^n Y_i } e^{-\theta \sum_{i=1}^n X_i}
+\times \theta^{a-1} e^{-b \theta} \\
+&\propto \theta^{ a-1 + \sum_{i=1}^n Y_i } e^{ - \theta (b + \sum_{i=1}^n X_i) }
+\end{align*}
+
+<p>
+Therefore, the posterior distribution of \(\theta\) follows
+Gamma(\(a + \sum_{i=1}^n Y_i, b + \sum_{i=1}^n X_i\))
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4dd3906" class="outline-2">
+<h2 id="org4dd3906">b)</h2>
+<div class="outline-text-2" id="text-org4dd3906">
+</div>
+<div id="outline-container-org8ea62a7" class="outline-3">
+<h3 id="org8ea62a7">answer</h3>
+<div class="outline-text-3" id="text-org8ea62a7">
+<div class="org-src-container">
+<pre class="src src-julia">cancer_noreact=DataFrame<span style="color: #51afef;">(</span>readdlm<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">"./Exercises/cancer_noreact.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>, <span style="color: #a991f1;">:auto</span><span style="color: #51afef;">)</span>;
+sx&#8321;, sy&#8321; = sum.<span style="color: #51afef;">(</span>eachcol<span style="color: #C57BDB;">(</span>cancer_noreact<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">cancer_react=DataFrame<span style="color: #51afef;">(</span>readdlm<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">"./Exercises/cancer_react.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>, <span style="color: #a991f1;">:auto</span><span style="color: #51afef;">)</span>;
+sx&#8322;, sy&#8322; = sum.<span style="color: #51afef;">(</span>eachcol<span style="color: #C57BDB;">(</span>cancer_react<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<p>
+Counties having nearby reactors:
+</p>
+\begin{align*}
+\sum_{i=1}^n X_i &= 95 \\
+\sum_{i=1}^n Y_i &= 256
+\end{align*}
+
+<p>
+Counties having no nearby reactors:
+</p>
+\begin{align*}
+\sum_{i=1}^n X_i &= 1037 \\
+\sum_{i=1}^n Y_i &= 2285
+\end{align*}
+
+<p>
+From the above, the posterior distributions of \(\theta_1, \theta_2\) are as follows:
+</p>
+\begin{align*}
+\theta_1 &\sim \text{Gamma}(a_1 + 2285, b_1 + 1037) \\
+\theta_2 &\sim \text{Gamma}(a_2 + 256, b_2 + 95)
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-org0eac1de" class="outline-2">
+<h2 id="org0eac1de">c)</h2>
+<div class="outline-text-2" id="text-org0eac1de">
+</div>
+<div id="outline-container-org51874e8" class="outline-3">
+<h3 id="org51874e8">i</h3>
+<div class="outline-text-3" id="text-org51874e8">
+</div>
+<div id="outline-container-org198dcda" class="outline-4">
+<h4 id="org198dcda">answer</h4>
+<div class="outline-text-4" id="text-org198dcda">
+<div class="org-src-container">
+<pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
+a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_1 = Gamma<span style="color: #51afef;">(</span>a&#8321; <span style="color: #FCCE7B;">+</span> sy&#8321;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8321; <span style="color: #FCCE7B;">+</span> sx&#8321;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_2 = Gamma<span style="color: #51afef;">(</span>a&#8322; <span style="color: #FCCE7B;">+</span> sy&#8322;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8322; <span style="color: #FCCE7B;">+</span> sx&#8322;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+mean_1 = round<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>a&#8321; <span style="color: #FCCE7B;">+</span> sy&#8321;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8321; <span style="color: #FCCE7B;">+</span> sx&#8321;<span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+mean_2 = round<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>a&#8322; <span style="color: #FCCE7B;">+</span> sy&#8322;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8322; <span style="color: #FCCE7B;">+</span> sx&#8322;<span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior mean of Group 1:  $mean_1"</span>
+ , <span style="color: #7bc275;">"Posterior mean of Group 2:  $mean_2"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior mean of Group 1:  2.2</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior mean of Group 2:  2.44</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">95% quantile-based confidence intervals</span>
+ci_1 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: #C57BDB;">(</span>dist_1, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: #C57BDB;">(</span>dist_2, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"95% CI of Group 1:  $ci_1"</span>
+    , <span style="color: #7bc275;">"95% CI of Group 2:  $ci_2"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">95% CI of Group 1:  [2.12, 2.29]</td>
+</tr>
+
+<tr>
+<td class="org-left">95% CI of Group 2:  [2.23, 2.67]</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia">&#952;&#8321;_mc = rand<span style="color: #51afef;">(</span>dist_1, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>;
+&#952;&#8322;_mc = rand<span style="color: #51afef;">(</span>dist_2, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>;
+<span style="color: #7bc275;">"Pr(&#952;&#8322;&gt;&#952;&#8321;|data) = $(mean(&#952;&#8321;_mc .&lt; &#952;&#8322;_mc))"</span>
+</pre>
+</div>
+
+<pre class="example">
+"Pr(θ₂&gt;θ₁|data) = 0.9788"
+</pre>
+
+
+
+<div id="orgc726248" class="figure">
+<p><img src="fig/exercise4_5ci.png" alt="exercise4_5ci.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfd85fcd" class="outline-3">
+<h3 id="orgfd85fcd">ii.</h3>
+<div class="outline-text-3" id="text-orgfd85fcd">
+</div>
+<div id="outline-container-org9b0c291" class="outline-4">
+<h4 id="org9b0c291">answer</h4>
+<div class="outline-text-4" id="text-org9b0c291">
+<div class="org-src-container">
+<pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
+a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_1 = Gamma<span style="color: #51afef;">(</span>a&#8321; <span style="color: #FCCE7B;">+</span> sy&#8321;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8321; <span style="color: #FCCE7B;">+</span> sx&#8321;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_2 = Gamma<span style="color: #51afef;">(</span>a&#8322; <span style="color: #FCCE7B;">+</span> sy&#8322;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8322; <span style="color: #FCCE7B;">+</span> sx&#8322;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+mean_1 = round<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>a&#8321; <span style="color: #FCCE7B;">+</span> sy&#8321;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8321; <span style="color: #FCCE7B;">+</span> sx&#8321;<span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+mean_2 = round<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>a&#8322; <span style="color: #FCCE7B;">+</span> sy&#8322;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8322; <span style="color: #FCCE7B;">+</span> sx&#8322;<span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior mean of Group 1:  $mean_1"</span>
+ , <span style="color: #7bc275;">"Posterior mean of Group 2:  $mean_2"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior mean of Group 1:  2.2</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior mean of Group 2:  2.69</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">95% quantile-based confidence intervals</span>
+ci_1 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: #C57BDB;">(</span>dist_1, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: #C57BDB;">(</span>dist_2, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"95% CI of Group 1:  $ci_1"</span>
+    , <span style="color: #7bc275;">"95% CI of Group 2:  $ci_2"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">95% CI of Group 1:  [2.12, 2.29]</td>
+</tr>
+
+<tr>
+<td class="org-left">95% CI of Group 2:  [2.37, 3.03]</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia">&#952;&#8321;_mc = rand<span style="color: #51afef;">(</span>dist_1, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>;
+&#952;&#8322;_mc = rand<span style="color: #51afef;">(</span>dist_2, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>;
+<span style="color: #7bc275;">"Pr(&#952;&#8322;&gt;&#952;&#8321;|data) = $(mean(&#952;&#8321;_mc .&lt; &#952;&#8322;_mc))"</span>
+</pre>
+</div>
+
+<pre class="example">
+"Pr(θ₂&gt;θ₁|data) = 0.9992"
+</pre>
+
+
+
+<div id="org2444cc8" class="figure">
+<p><img src="fig/exercise4_5cii.png" alt="exercise4_5cii.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5248273" class="outline-3">
+<h3 id="org5248273">iii.</h3>
+<div class="outline-text-3" id="text-org5248273">
+</div>
+<div id="outline-container-orgdf80834" class="outline-4">
+<h4 id="orgdf80834">answer</h4>
+<div class="outline-text-4" id="text-orgdf80834">
+<div class="org-src-container">
+<pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
+a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
+dist_1 = Gamma<span style="color: #51afef;">(</span>a&#8321; <span style="color: #FCCE7B;">+</span> sy&#8321;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8321; <span style="color: #FCCE7B;">+</span> sx&#8321;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+dist_2 = Gamma<span style="color: #51afef;">(</span>a&#8322; <span style="color: #FCCE7B;">+</span> sy&#8322;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8322; <span style="color: #FCCE7B;">+</span> sx&#8322;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+mean_1 = round<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>a&#8321; <span style="color: #FCCE7B;">+</span> sy&#8321;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8321; <span style="color: #FCCE7B;">+</span> sx&#8321;<span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+mean_2 = round<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>a&#8322; <span style="color: #FCCE7B;">+</span> sy&#8322;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8322; <span style="color: #FCCE7B;">+</span> sx&#8322;<span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior mean of Group 1:  $mean_1"</span>
+ , <span style="color: #7bc275;">"Posterior mean of Group 2:  $mean_2"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Posterior mean of Group 1:  2.2</td>
+</tr>
+
+<tr>
+<td class="org-left">Posterior mean of Group 2:  2.69</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">95% quantile-based confidence intervals</span>
+ci_1 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: #C57BDB;">(</span>dist_1, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: #C57BDB;">(</span>dist_2, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">[</span><span style="color: #7bc275;">"95% CI of Group 1:  $ci_1"</span>
+    , <span style="color: #7bc275;">"95% CI of Group 2:  $ci_2"</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">95% CI of Group 1:  [2.11, 2.29]</td>
+</tr>
+
+<tr>
+<td class="org-left">95% CI of Group 2:  [2.37, 3.03]</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-julia">&#952;&#8321;_mc = rand<span style="color: #51afef;">(</span>dist_1, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>;
+&#952;&#8322;_mc = rand<span style="color: #51afef;">(</span>dist_2, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>;
+<span style="color: #7bc275;">"Pr(&#952;&#8322;&gt;&#952;&#8321;|data) = $(mean(&#952;&#8321;_mc .&lt; &#952;&#8322;_mc))"</span>
+</pre>
+</div>
+
+<pre class="example">
+"Pr(θ₂&gt;θ₁|data) = 0.9984"
+</pre>
+
+
+
+<div id="org0588274" class="figure">
+<p><img src="fig/exercise4_5ciii.png" alt="exercise4_5ciii.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org342a496" class="outline-2">
+<h2 id="org342a496">d)</h2>
+<div class="outline-text-2" id="text-org342a496">
+</div>
+<div id="outline-container-orge0dc896" class="outline-3">
+<h3 id="orge0dc896">answer</h3>
+<div class="outline-text-3" id="text-orge0dc896">
+</div>
+<div id="outline-container-orga73b954" class="outline-4">
+<h4 id="orga73b954">日本語</h4>
+<div class="outline-text-4" id="text-orga73b954">
+<p>
+「人口が多い地域は、人口が少ない地域よりも医療が充実しており、がんになった場合の生存率が高い可能性がある」など考えることもできるので、人口規模と致死率が独立していると考えるのは必ずしも合理的であると言えない。
+</p>
+
+<p>
+そこで、
+\( \theta_i \sim \exp(\beta_0 + \beta_1 X_i) \)
+などとして、階層モデルを考えるなどする。
+</p>
+</div>
+</div>
+<div id="outline-container-org8ca2192" class="outline-4">
+<h4 id="org8ca2192">English</h4>
+<div class="outline-text-4" id="text-org8ca2192">
+<p>
+It is also conceivable that &ldquo;regions with larger populations may have better healthcare compared to regions with smaller populations, potentially leading to higher survival rates in cancer cases.&rdquo;
+Therefore, assuming that population size and mortality rate are independent may not necessarily be reasonable.
+</p>
+
+<p>
+Consequently, one might consider a hierarchical model, for example, by modeling the parameter \( \theta_i \) (or a related parameter like a rate \(\lambda_i\)) as a function of covariates \(X_i\), such as \( \lambda_i = \exp(\beta_0 + \beta_1 X_i) \).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org18321fa" class="outline-2">
+<h2 id="org18321fa">e)</h2>
+<div class="outline-text-2" id="text-org18321fa">
+</div>
+<div id="outline-container-org4908076" class="outline-3">
+<h3 id="org4908076">Answer</h3>
+<div class="outline-text-3" id="text-org4908076">
+\begin{align*}
+\theta_1 &\sim w \times \text{Beta}(a_1, b_1) + (1-w) \times \text{Beta}(a_2, b_2) \\
+\theta_2 &\sim w \times \text{Beta}(a_2, b_2) + (1-w) \times \text{Beta}(a_1, b_1)
+\end{align*}
+
+<p>
+上のような形で、それぞれの事前分布を重み付きの混合分布にすることで、事前従属にできる。
+</p>
+
+<p>
+(In this way, by using weighted mixture distributions for the respective priors, prior dependence can be established.)
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./4-4.html" class="nav-prev">4.4</a>
+</p>
+
+<p class="nav-next">
+<a href="./4-6.html" class="nav-next">4.6</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

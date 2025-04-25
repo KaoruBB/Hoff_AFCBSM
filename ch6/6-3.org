@@ -1,0 +1,88 @@
+#+TITLE: 6.3
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Probit regression:
+A panel study followed 25 married couples over a period of five years.
+One item of interest is the relationship between divorce rates and the various characteristics of the couples.
+For example, the researchers would like to model the probability of divorce as a function of age differential, recorded as the man's age minus the woman's age.
+The data can be found in the file ~divorce.dat~.
+We will model these data with probit regression, in which a binary variable \(Y_i\) is described in terms of an explanatory variable \(x_i\) via the following latent variable model:
+\begin{align*}
+Z_i &= \beta x_i + \epsilon_i \\
+Y_i &= \delta_{(c, \infty)}(Z_i),
+\end{align*}
+where \(\beta\) and \(c\) are unknown coefficients, \(\epsilon_1, \ldots, \epsilon_n \sim \text{i.i.d. normal}(0, 1)\), and \(\delta_{(c, \infty)}(z) = 1\) if \(z > c\) and equals zero otherwise.
+
+* a)
+** question :noexport:
+Assuming \(\beta \sim \mathrm{normal}(0, \tau_{\beta}^2)\)
+obtain the full conditional distribution \(p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)\).
+** answer
+\begin{align*}
+p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
+&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta) p(\boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta)
+p(\boldsymbol{z} | \boldsymbol{x}, c, \beta) p(\boldsymbol{x}, c | \beta) p(\beta) \\
+&= p(\boldsymbol{y} | \boldsymbol{z}, c) p(\boldsymbol{z} | \boldsymbol{x}, \beta) p(\boldsymbol{x}) p(c) p(\beta) \\
+&\propto  p(\boldsymbol{z} | \boldsymbol{x},\beta) p(\beta) \\
+&\propto \prod_{i=1}^n \exp \left( -\frac{1}{2} (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+&= \exp \left( -\frac{1}{2} \sum_{i=1}^n (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+&= \exp \left( -\frac{1}{2} \left( \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 \right) \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
+\end{align*}
+
+ここで、
+\begin{align*}
+\sum_{i=1}^n (z_i - \beta x_i)^2 + \frac{1}{\tau_{\beta}^2} \beta^2
+&= \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \beta^2 \\
+&= a \beta^2 - 2 b \beta + \sum_{i=1}^n z_i^2 \\
+\mathrm{where} \quad
+a &= \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \\
+b &= \sum_{i=1}^n x_i z_i \\
+\end{align*}
+
+となるので、
+\begin{align*}
+p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
+&\propto \exp \left\{ -\frac{1}{2} \left( a \beta^2 - 2 b \beta \right) \right\} \\
+&= \exp \left\{ -\frac{1}{2} a \left( \beta^2 - \frac{2 b}{a} \beta + \frac{b^2}{a^2} \right) + \frac{1}{2} \frac{b^2}{a} \right\} \\
+&\propto \exp \left\{ -\frac{1}{2} a \left( \beta - \frac{b}{a} \right)^2 \right\} \\
+&= \exp \left\{ - \frac{1}{2} \left( \frac{\beta - b/a}{1/ \sqrt{a} } \right) \right\} \\
+&= \mathrm{dnorm}(\beta, b/a, 1/ \sqrt{a} ) \\
+\end{align*}
+
+よって、
+\begin{align*}
+\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c \sim
+\mathrm{Normal} \left( \frac{ \sum_{i=1}^n x_i z_i }{ \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} }, \frac{1}{  \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2}  } \right)
+\end{align*}
+* b)
+** question :noexport:
+Assuming \(c \sim \mathrm{normal}(0, \tau_c^2)\),
+show that \(p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)\) is a constrained normal density, i.e. proportional to normal density but constrained to lie in an interval.
+Similarly, show that \(p(z_i | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}_{-i}, \beta, c)\) is proportional to a normal density but constrained to be either above \(c\) or below \(c\), depending on \(y_i\).
+
+** answer
+
+\begin{align*}
+p(c | y_i = 0, x_i, z_i, \beta)
+&\propto p(y_i = 0 | z_i, c) p(c) \\
+&= p(y_i = 0 | x_i, c, \beta) p(c) \\
+&= \Phi(c - \beta x_i) p(c) \\
+\end{align*}
+
+\begin{align*}
+p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
+&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
+&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, \beta, c) p(\boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
+&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) p(c) \\
+&= \left( 1 - \Phi() \right)
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./6-2.org][6.2]]
+
+#+ATTR_HTML: :class nav-next
+[[../ch7/7-1.org][7.1]]
