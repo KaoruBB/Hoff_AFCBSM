@@ -1,0 +1,130 @@
+#+title: 3.12 (標準ベイズ 3.11)
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Jeffrey's prior:
+Jeffreys (1961) suggested a default rule for generating a prior distribution of a parameter \(\theta\) in a sampling model \(p(y \mid \theta)\).
+Jeffreys' prior is given by
+\(p_J(\theta) \propto \sqrt{I(\theta)} \),
+where
+\( I(\theta) = - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right]\)
+is the /Fisher information/.
+* a)
+:PROPERTIES:
+:ID:       0a397515-a353-4c89-b39b-d6f5c164a43b
+:END:
+** question :noexport:
+Let \(Y \sim \text{binomial}(n, \theta)\)
+Obtain Jeffreys' prior distribution \(p_J(\theta)\) for this model.
+** answer
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \begin{pmatrix} n \\ Y \end{pmatrix} \theta^Y (1-\theta)^{n-Y} \right]\\
+&= Y \log \theta + (n-Y) \log (1-\theta) + \log \begin{pmatrix} n \\ Y \end{pmatrix} \\
+\end{align*}
+より、
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - \frac{n-Y}{1-\theta} \right)\\
+&= - \frac{n-Y}{(1-\theta)^2} - \frac{Y}{\theta^2} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= - E \left[ - \frac{n-Y}{(1-\theta)^2} - \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{n-E[Y \mid \theta]}{(1-\theta)^2} + \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{n - n \theta}{(1-\theta)^2} + \frac{n \theta}{\theta^2} \\
+&= \frac{n}{1-\theta} + \frac{n}{\theta} \\
+&= \frac{n}{\theta (1-\theta)}
+\end{align*}
+が得られる。
+また、
+\begin{align*}
+p_J(\theta)
+&\propto \sqrt{\frac{n}{\theta (1-\theta)}} \\
+&= \sqrt{n} \theta^{-\frac{1}{2}} (1-\theta)^{-\frac{1}{2}} \\
+&\propto \theta^{ \frac{1}{2} - 1} (1-\theta)^{\frac{1}{2} - 1} \\
+&\propto \text{dbeta}(\theta, \frac{1}{2}, \frac{1}{2})
+\end{align*}
+より、Jeffreys' prior distribution は、
+Beta\((\frac{1}{2}, \frac{1}{2})\)となる。
+
+* b)
+:PROPERTIES:
+:ID:       0b080280-6872-4e0b-b08b-03322f9fd048
+:END:
+** question :noexport:
+Reparameterize the binomial sampling model with \(\psi = \log \frac{\theta}{1-\theta}\), so that
+\( p(y \mid \psi) = \begin{pmatrix} n \\ y \end{pmatrix} e^{\psi y} (1+e^{\psi})^{-n} \).
+Obtain Jeffrey's prior distribution \(p_J(\psi)\) for this model.
+** answer
+これは [[id:a80c926c-fbd9-4a95-b5e3-dd4d42ae0faf][3.10 a)]] と同じ変換であることに注意。
+
+\begin{align*}
+\log p(Y \mid \psi)
+&= \log \left[ \begin{pmatrix} n \\ Y \end{pmatrix} e^{\psi Y} (1+e^{\psi})^{-n} \right]\\
+&= Y \psi + \log \begin{pmatrix} n \\ Y \end{pmatrix} - n \log (1+e^{\psi}) \\
+\end{align*}
+
+より、
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \psi)}{\partial \psi^2}
+&= \frac{\partial}{\partial \psi}
+\left( Y - \frac{n e^{\psi} }{1+e^{\psi} } \right)\\
+&= - \frac{n e^{\psi} (1 + e^{\psi}) - e^{\psi} n e^{\psi} }{(1+e^{\psi})^2} \\
+&= - \frac{n e^{\psi} }{(1+e^{\psi})^2} \\
+\end{align*}
+
+よって、
+
+\begin{align*}
+I(\psi)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \psi)}{\partial \psi^2} \middle| \psi \right] \\
+&= - E \left[ - \frac{n e^{\psi} }{(1+e^{\psi})^2} \middle| \psi \right] \\
+&= \frac{n e^{\psi} }{(1+e^{\psi})^2} \\
+\end{align*}
+
+したがって、prior distribution は、
+
+\begin{align*}
+p_J(\psi)
+= c \times \frac{\sqrt{e^{\psi} } }{1 + e^{\psi} }
+\qquad \text{where } c = \frac{1}{\int_{-\infty}^{\infty} \sqrt{ e^{\psi} } (1 + e^{\psi} )^{-1} d\psi} \\
+\end{align*}
+* c)
+** question :noexport:
+Take the prior distribution from [[id:0a397515-a353-4c89-b39b-d6f5c164a43b][a)]] and apply the change of variables formula from [[id:eb62bf76-2d0a-4d3b-9a2e-3651f13c019a][3.10]]
+to obtain the induced prior density on \(\psi\).
+This density should be the same as the one derived in [[id:0b080280-6872-4e0b-b08b-03322f9fd048][part b)]] of this exercise.
+This consistency under reparameterization is the defining characteristic of Jeffrey's prior.
+** answer
+
+\begin{align*}
+p_{J, \psi}(\psi)
+&= p_{J, \theta}(h(\psi)) \times \left| \frac{\partial h(\psi)}{\partial \psi} \right| \\
+&\propto h(\psi)^{-\frac{1}{2}} (1-h(\psi))^{-\frac{1}{2}} \times \frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{1 + e^{\psi} } \right)^{- \frac{1}{2} }
+\left(1-\frac{e^{\psi} }{1 + e^{\psi} }\right)^{-\frac{1}{2} } \times
+\frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{(1 + e^{\psi})^2 } \right)^{- \frac{1}{2} }
+\frac{e^{\psi}}{(1+e^{\psi})^2} \\
+&= \left( \frac{e^{\psi} }{(1 + e^{\psi})^2 } \right)^{ \frac{1}{2} } \\
+&= \frac{\sqrt{e^{\psi} } }{1 + e^{\psi} } \\
+\end{align*}
+
+
+よって、
+[[id:0b080280-6872-4e0b-b08b-03322f9fd048][b)]] と一致することがわかる。
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./3-10.org][3.10]]
+
+#+ATTR_HTML: :class nav-next
+[[./3-13.org][3.13]]

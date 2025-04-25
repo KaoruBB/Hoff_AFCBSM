@@ -1,0 +1,70 @@
+#+TITLE: 3.6
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Exponential family expectations:
+Let \(p(y \mid \theta) = c(\phi) h(y) \exp\{\phi t(y) \}\) be an exponential family model.
+- a) :: Take derivatives with respect to \(\phi\) of both sides of the equation \( \int p(y \mid \theta) dy = 1 \) to show that \(E[t(Y) \mid \phi] = -\frac{c'(\phi)}{c(\phi)}\).
+- b) :: Let \(p(\phi) \propto c(\phi)^{n_0} e^{n_0 t_0 \phi}\) be the prior distribution for \(\phi\). Calculate \(\frac{d p(\phi)}{d \phi}\) and, using the fundamental theorem of calculus, discuss what must be true so that \( E[- \frac{c(\phi)}{c(\phi)}] = t_0 \).
+
+* Answer
+** a)
+Taking derivatives with respect to \(\phi\) of both sides of the equation \( \int p(y \mid \theta) dy = 1 \),
+The left-hand side is
+\begin{align*}
+\frac{d}{d \phi } \int p(y \mid \theta) dy
+&= \int \frac{d}{d \phi } p(y \mid \theta) dy \\
+&= \int \frac{d}{d \phi } c(\phi) h(y) \exp\{\phi t(y) \} dy \\
+&= \int h(y) \left( c(\phi) \frac{d \exp \{\phi t(y) \} }{ d \phi } +
+\frac{d c(\phi)}{d \phi } \exp \{\phi t(y) \} \right) dy \\
+&= \int h(y) \left( c(\phi) t(y) \exp \{\phi t(y) \} +
+c'(\phi) \exp \{\phi t(y) \} \right) dy \\
+&= \int h(y) c(\phi) t(y) \exp \{\phi t(y) \} dy + \int h(y) c'(\phi) \exp \{\phi t(y) \} dy \\
+&= E[ t(y) \mid \phi] +
+\frac{c'(\phi)}{c(\phi)} \int c(\phi) h(y) \exp \{\phi t(y) \} dy \\
+&\quad (\because c(\phi) \neq 0 \text{ because } p(y \mid \theta) \text{ is a probability density}) \\
+&= E[ t(y) \mid \phi] + \frac{c'(\phi)}{c(\phi)} \int p(y \mid \theta) dy \\
+&= E[ t(y) \mid \phi] + \frac{c'(\phi)}{c(\phi)}. \\
+\end{align*}
+
+Since the right-hand side is 0,
+\[ E[ t(y) \mid \phi] = - \frac{c'(\phi)}{c(\phi)}. \]
+
+** b)
+\begin{align*}
+\frac{d p(\phi)}{d \phi}
+&= \frac{d}{d \phi} \left( \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} \right) \\
+&= \kappa(n_0, t_0) \left(
+\frac{d \ c(\phi)^{n_0} }{d \phi}  \exp \{ n_0 t_0 \phi \} +
+c(\phi)^{n_0} \frac{d}{d \phi} \exp \{ n_0 t_0 \phi \} \right)  \\
+&= \kappa(n_0, t_0) \left(
+n_0 c(\phi)^{n_0 - 1} c'(\phi) \exp \{ n_0 t_0 \phi \} +
+c(\phi)^{n_0} n_0 t_0 \exp \{ n_0 t_0 \phi \} \right) \\
+&= \frac{c'(\phi)}{c(\phi)} n_0  \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} +
+n_0 t_0 \kappa(n_0, t_0) c(\phi)^{n_0} \exp \{ n_0 t_0 \phi \} \\
+&= \frac{c'(\phi)}{c(\phi)} n_0 p(\phi) + n_0 t_0 p(\phi) \\
+\end{align*}
+
+Taking the integral of both sides with respect to \(\phi\), the left-hand side is
+\begin{align*}
+\int \frac{d p(\phi)}{d \phi} d \phi
+&= \frac{d}{d \phi} \int p(\phi) d \phi \\
+&= \frac{d}{d \phi} 1 \\
+&= 0. \\
+\end{align*}
+
+The right-hand side is
+\begin{align*}
+n_0 \int \frac{c'(\phi)}{c(\phi)} p(\phi) d \phi + n_0 t_0 \int p(\phi) d \phi
+& = n_0 E \left[ \frac{c'(\phi)}{c(\phi)} \right] + n_0 t_0.
+\end{align*}
+
+Thus, we have
+\[ E \left[- \frac{c'(\phi)}{c(\phi)} \right] = t_0. \]
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./3-5.org][3.5]]
+
+#+ATTR_HTML: :class nav-next
+[[./3-7.org][3.7]]

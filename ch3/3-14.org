@@ -1,0 +1,236 @@
+#+title: 3.14
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+
+* question :noexport:
+Unit information prior:
+Let \(Y_1, \dots, Y_n \sim \text{i.i.d.} p(y \mid \theta)\).
+Having observed the values \(Y_1 = y_1, \dots, Y_n = y_n\), the /log likekihood/ is given by
+\(l(\theta \mid \boldsymbol{y}) = \sum \log p(y_i \mid \theta)\),
+and the value \(\hat{\theta}\)  of \(\theta\) that maximizes
+\(l(\theta \mid \boldsymbol{y}\)
+is called the /maximum likelihood estimater/.
+The negative of the curvature of the log-likelihood,
+\(J(\theta) = - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2}\),
+describes the precision of the MLE \(\hat{\theta}\)
+and is called the /observed Fisher information/.
+
+For situations in which it is difficult to quantify prior information in terms of a probability distribution, some have suggested that the "prior" distribution be based on the likelihood, for example, by centering the prior distribution around the MLE \(\hat{\theta}\).
+To deal with the fact that the MLE is not really prior information, the curvature of the prior is chosen so that it has only "one /n/th" as much information as the likelihood,
+so that
+\(- \frac{\partial^2 \log p(\theta)}{\partial \theta^2} = \frac{J(\theta)}{n}\).
+Such a prior is called a /unit information prior/
+(Kass and Wasserman, 1995; Kass and Raftery, 1995),
+as it has as much information as the average amount of information from a single observation.
+The unit information prior is not really a prior distribution, as it is computed from the observed data.
+However, it can be roughly viewed as the prior information of someone with weak but accurate prior information.
+* a)
+:PROPERTIES:
+:ID:       9314c55b-504f-4446-adfe-c726d99efc87
+:END:
+** question :noexport:
+Let \(Y_1, \dots ,Y_n \sim \text{i.i.d. binary}(\theta)\).
+Obtain the MLE \(\hat{\theta}\) and \(\frac{J(\hat{\theta})}{n}\).
+
+** answer
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \theta^{y_i} (1 - \theta)^{1 - y_i} \\
+&= \sum_{i=1}^n y_i \log \theta + (1 - y_i) \log (1 - \theta) \\
+&= \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \\
+\end{align*}
+
+The first order condition is
+
+\begin{align*}
+& \frac{\sum_{i=1}^n y_i}{\theta} = \frac{n - \sum_{i=1}^n y_i}{1 - \theta} \\
+\Leftrightarrow \quad & (1 - \theta) \sum_{i=1}^n y_i = \theta (n - \sum_{i=1}^n y_i) \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+and
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-1} \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \theta)^{-2} \\
+\end{align*}
+
+Then, substituting the above \(\hat{\theta}\) into \(J(\hat{\theta})\),
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} - \left( n - \sum_{i=1}^n y_i \right) (1 - \hat{\theta})^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} - \left( n - \sum_{i=1}^n y_i \right) \left(1 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-2} \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} - \frac{n^2}{n - \sum_{i=1}^n y_i} \\
+\end{align*}
+
+therefore the following holds.
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} - \frac{n}{n - \sum_{i=1}^n y_i} \\
+&= -n \left( \frac{1}{\sum_{i=1}^n y_i} + \frac{1}{n - \sum_{i=1}^n y_i} \right) \\
+\end{align*}
+* b)
+:PROPERTIES:
+:ID:       f850baf1-b613-4e69-a734-1c734b5c8d2f
+:END:
+** question :noexport:
+Find a probability density \(p_U (\theta)\) such that
+\(\log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c\),
+where \(c\) is a constant that does not depend on \(\theta\).
+Compute the information \( - \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}\) of this density.
+
+** answer
+
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) }{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\sum_{i=1}^n y_i}{n} \log \theta + (1 - \frac{\sum_{i=1}^n y_i}{n}) \log (1 - \theta) + c \\
+\Leftrightarrow \quad & p_U (\theta) = \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c\\
+\end{align*}
+
+Since \(p_U(\theta)\) is probability density,
+
+\begin{align*}
+& \int_0^1 p_U (\theta) d\theta = 1 \\
+\Leftrightarrow \quad & \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}} e^c d\theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \int_0^1 \theta^{\frac{\sum_{i=1}^n y_i}{n}} (1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n}}  d\theta \right)^{-1} \\
+& = B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right)^{-1} \\
+\therefore \quad & c = - \log B\left(\frac{\sum_{i=1}^n y_i}{n} +1, 2 - \frac{\sum_{i=1}^n y_i}{n} \right) \\
+\end{align*}
+
+and
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2} - \left( 1 - \frac{\sum_{i=1}^n y_i}{n} \right) (1 - \theta)^{-2} \\
+\end{align*}
+* c)
+:PROPERTIES:
+:ID:       0549f84a-8f93-45ad-9309-36ed4ac03475
+:END:
+** question :noexport:
+Obtain a probabilitydensity for \(\theta\) that is proportional to
+\(p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )\).
+Can this be considered a posteriror distribution for \(\theta\)?
+
+** answer
+
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} + \sum_{i=1}^n y_i}
+(1 - \theta)^{\frac{n - \sum_{i=1}^n y_i}{n} + n - \sum_{i=1}^n y_i}  \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i}
+(1 - \theta)^{(1 + n^{-1}) (n - \sum_{i=1}^n y_i)} \\
+&= \text{dbeta}\left(\theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, (1 + n^{-1}) (n - \sum_{i=1}^n y_i) + 1 \right) \\
+\end{align*}
+
+We can consider this as a posterior distribution for \(\theta\).
+* d)
+** question :noexport:
+Repeat [[id:9314c55b-504f-4446-adfe-c726d99efc87][a)]] , [[id:f850baf1-b613-4e69-a734-1c734b5c8d2f][b)]] and [[id:0549f84a-8f93-45ad-9309-36ed4ac03475][c)]] but with \(p(y \mid \theta)\) being the Poisson distribution.
+
+** answer
+*** a')
+\begin{align*}
+l(\theta \mid \boldsymbol{y})
+&= \sum_{i=1}^n \log p(y_i \mid \theta) \\
+&= \sum_{i=1}^n \log \frac{\theta^{y_i} e^{- \theta} }{y_i!} \\
+&= \sum_{i=1}^n \left( y_i \log \theta - \theta - \log y_i! \right) \\
+& = \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \\
+\end{align*}
+
+The first order condition is
+
+\begin{align*}
+& \theta^{-1} \sum_{i=1}^n y_i - n = 0 \\
+\therefore \quad & \hat{\theta} = \frac{\sum_{i=1}^n y_i}{n} \\
+\end{align*}
+
+and
+
+\begin{align*}
+J(\theta)
+&= - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2} \\
+&= \frac{\partial^2}{\partial \theta^2} \left( \log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i! \right) \\
+&= \frac{\partial}{\partial \theta} \left( \left( \sum_{i=1}^n y_i \right) \theta^{-1}
+- n \right) \\
+&= - \left( \sum_{i=1}^n y_i \right) \theta^{-2}  \\
+\end{align*}
+
+Then, substituting the above \(\hat{\theta}\) into \(J(\hat{\theta})\),
+
+\begin{align*}
+J(\hat{\theta})
+&= - \left( \sum_{i=1}^n y_i \right) \hat{\theta}^{-2} \\
+&= - \left( \sum_{i=1}^n y_i \right) \left( \frac{\sum_{i=1}^n y_i}{n} \right)^{-2}  \\
+&= - \frac{n^2}{\sum_{i=1}^n y_i} \\
+\end{align*}
+
+therefore the following holds.
+
+\begin{align*}
+\frac{J(\hat{\theta})}{n}
+&= - \frac{n}{\sum_{i=1}^n y_i} \\
+\end{align*}
+
+*** b')
+
+\begin{align*}
+& \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta) = \frac{\log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i!}{n} + c \\
+\Leftrightarrow \quad & \log p_U (\theta)
+= \frac{\sum_{i=1}^n y_i }{n} \log \theta - \theta - \frac{\sum_{i=1}^n \log y_i!}{n} + c \\
+\therefore \quad & p_U (\theta)
+= \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n}
+\end{align*}
+
+Since \(p_U(\theta)\) is probability density,
+
+\begin{align*}
+& \int_0^{\infty} p_U (\theta) d \theta = 1 \\
+\Leftrightarrow \quad & \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i }{n} } e^{c - \theta} \left( \prod_{i=1}^n y_i! \right)^{-n} d \theta = 1 \\
+\Leftrightarrow \quad & e^c
+= \left( \prod_{i=1}^n y_i! \right)^n \left( \int_0^{\infty} \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta} d \theta \right)^{-1} \\
+& = \left( \prod_{i=1}^n y_i! \right)^n \Gamma \left( \frac{\sum_{i=1}^n y_i}{n} + 1 \right)^{-1} \\
+\end{align*}
+
+and
+
+\begin{align*}
+- \frac{\partial^2 \log p_U (\theta)}{\partial \theta^2}
+&= n^{-1} \times
+\left( - \frac{\partial^2 l(\theta \mid \boldsymbol{y})}{\partial \theta^2 }\right) \\
+&= n^{-1} \times J(\theta) \\
+&= - \left( \frac{\sum_{i=1}^n y_i}{n} \right) \theta^{-2}
+\end{align*}
+
+*** c')
+
+\begin{align*}
+p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
+&\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta}
+\times \theta^{\sum_{i=1}^n y_i} e^{-n \theta} \\
+&= \theta^{(1 + n^{-1}) \sum_{i=1}^n y_i} e^{-(1 + n) \theta} \\
+&= \text{dgamma} \left( \theta, (1 + n^{-1}) \sum_{i=1}^n y_i + 1, 1 + n \right) \\
+\end{align*}
+
+We can consider this as a posterior distribution for \(\theta\).
+
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./3-13.org][3.13]]
+
+#+ATTR_HTML: :class nav-next
+[[../ch4/4-1.org][4.1]]

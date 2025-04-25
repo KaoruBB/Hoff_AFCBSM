@@ -1,0 +1,13 @@
+#+SUBTITLE: Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3
+#+AUTHOR: Kaoru Babasaki
+#+OPTIONS: toc:4
+#+OPTIONS: H:7
+#+OPTIONS: tags:nil
+#+OPTIONS: num:nil
+#+OPTIONS: timestamp:nil
+
+#+SETUPFILE: ../org-html-themes/org/theme-readtheorg.setup
+#+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+#+HTML_HEAD: <link rel="stylesheet" href="../css/custom.css">
+
+HOME -> [[file:../index.org][English]] / [[file:../index_jp.org][日本語]]

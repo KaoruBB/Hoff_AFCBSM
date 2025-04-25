@@ -1,0 +1,83 @@
+#+title: 3.13
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+
+* question :noexport:
+Improper Jeffreys' prior:
+Let \(Y \sim \text{Poisson}(\theta)\).
+* a)
+** question :noexport:
+Apply Jeffreys' procedure to this model, and compare the result to the family of gamma densities.
+Does Jeffreys' procedure an actural probability for \(\theta\)?
+In other words, can \(\sqrt{I(\theta)}\) be proportional to an actual probability density for \(\theta \in (0, \infty)\)?
+
+** answer
+\begin{align*}
+\log p(Y \mid \theta)
+&= \log \left[ \frac{\theta^Y e^{-\theta}}{Y!} \right] \\
+&= Y \log \theta - \theta - \log Y! \\
+\end{align*}
+
+より、
+(As the above equation holds,)
+
+\begin{align*}
+\frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2}
+&= \frac{\partial}{\partial \theta}
+\left( \frac{Y}{\theta} - 1 \right) \\
+&= - \frac{Y}{\theta^2} \\
+\end{align*}
+
+よって、
+(therefore, we have)
+
+\begin{align*}
+I(\theta)
+&= - E \left[ \frac{\partial^2 \log p(Y \mid \theta)}{\partial \theta^2} \middle| \theta \right] \\
+&= E \left[ \frac{Y}{\theta^2} \middle| \theta \right] \\
+&= \frac{E[Y \mid \theta]}{\theta^2} \\
+&= \frac{\theta}{\theta^2} \\
+&= \frac{1}{\theta} \\
+\end{align*}
+
+したがって、prior distribution は、
+(therefore, the prior distribution is)
+
+\begin{align*}
+p_J(\theta)
+\propto \times \frac{1}{\sqrt{\theta}}
+\end{align*}
+
+となるが、
+\(\int_{0}^{\infty} \frac{1}{\sqrt{\theta}} d\theta \)は無限大に発散するので、確率分布とはならない。
+(The integral diverges to infinity, so it does not become a probability distribution.)
+* b)
+** question :noexport:
+Obtain the form of the function \(f(\theta, y) = \sqrt{I(\theta)} \times p(y \mid \theta)\).
+What probability density for \(\theta\) is \(\textcolor{red}{f(y \mid \theta)}\) proportional to?
+Can we think of \(\frac{f(\theta, y)}{\int f(\theta, y) d\theta}\) as a posterior density of \(\theta\) given \(Y=y\)?
+
+** answer
+\begin{align*}
+f(\theta, y)
+&= \sqrt{I(\theta)} \times p(y \mid \theta) \\
+&= \sqrt{\frac{1}{\theta}} \times \frac{\theta^y e^{-\theta}}{y!} \\
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!}
+\end{align*}
+
+\begin{align*}
+f(\theta \mid y)
+&= \frac{\theta^{y - \frac{1}{2} } e^{-\theta} }{y!} \\
+&\propto \theta^{y - \frac{1}{2} } e^{-\theta} \\
+&= \theta^{y + \frac{1}{2} -1 } e^{-\theta} \\
+&\propto \text{dgamma}(\theta, y + \frac{1}{2}, 1)
+\end{align*}
+
+Probably yes because we are interested in only the shape of the distribution.
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./3-12.org][3.12]]
+
+#+ATTR_HTML: :class nav-next
+[[./3-14.org][3.14]]

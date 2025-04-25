@@ -1,0 +1,54 @@
+#+TITLE: 3.5
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* question :noexport:
+Mixtures of conjugate priors:
+Let \(p(y \mid \phi) = c(\phi) h(y) \exp\{\phi t(y) \}\)
+be an exponential family model and let
+\(p_1(\phi), \dots, p_K(\phi)\) be \(K\) different members of the conjugate class of prior densities given in Section 3.3.
+A mixture of conjugate priors is given by
+\(\tilde{p}(\theta) = \sum_{k=1}^K w_k p_k(\theta)\), where the \(w_k\)'s are all greater than zero and \(\sum w_k = 1\)
+(see also Diaconis and Ylvisaker (1985)).
+
+- a) :: Identify the general form of the posterior distribution of \(\theta\), based on \(n\) i.i.d. samples from \(p(y \mid \theta) \) and the prior distribution given by \(\tilde{p}\).
+- b) :: Repeat a) but in the special case that \(p(y \mid \theta) = \text{dpois}(y \mid \theta)\) and \(p_1, \dots, p_K\) are gamma densities.
+
+* Answer
+** a)
+
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
+&= \sum_{k=1}^K w_k p_k(\theta \mid n_k, n_k t_k) \prod_{i=1}^n p(y_i \mid \theta) \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \prod_{i=1}^n c(\theta) h(y_i) \exp \{\theta t(y_i)\} \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \prod_{i=1}^n h(y_i) \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
+&\propto \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
+&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k + n} \exp \left\{ \theta \times \left[ n_k t_k + \sum_{i=1}^n t(y_i) \right] \right\} \\
+&\propto \sum_{k=1}^K w_k p_k (\theta \mid n_k + n, \frac{n_k t_k + n \bar{t}(\boldsymbol{y})}{n_k + n})
+\end{align*}
+
+where \(\bar{t}(\boldsymbol{y}) = \frac{\sum t(y_i)}{n}\)
+
+** b)
+
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
+&= \sum_{k=1}^K w_k p_k(\theta \mid a_k, b_k) \times \prod_{i=1}^n p(y_i \mid \theta) \\
+&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
+\exp \left( - b_k \theta \right)
+\times \prod_{i=1}^n \frac{\theta^{y_i} e^{- \theta } }{y_i!} \\
+&\propto \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
+\exp \left( - b_k \theta \right)
+\times \theta^{\sum_{i=1}^n y_i} \exp \left( - n \theta \right) \\
+&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k + \sum y_i - 1}
+\exp \left( - (b_k + n) \theta \right) \\
+&\propto \sum_{k=1}^K w_k \text{dgamma}(\theta \mid a_k + \sum y_i, b_k + n)
+\end{align*}
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./3-4.org][3.4]]
+
+#+ATTR_HTML: :class nav-next
+[[./3-6.org][3.6]]
