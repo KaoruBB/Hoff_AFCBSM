@@ -24,3 +24,51 @@ h4 {
 h5 {
     color: #207d93;
 }
+
+p.nav-prev,
+p.nav-next {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+p.nav-prev {
+    float: left;
+}
+
+p.nav-next {
+    float: right;
+}
+
+a.nav-prev,
+a.nav-next {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    border: 1px solid #bbb;
+    border-radius: 1em;
+    background: #fafbfc;
+    color: #222;
+    text-decoration: none;
+    font-weight: normal;
+    transition:
+        background 0.2s,
+        color 0.2s;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+a.nav-prev:hover,
+a.nav-next:hover {
+    background: #e0e7ef;
+    color: #111;
+}
+
+a.nav-prev::before {
+    content: "← ";
+    color: #888;
+}
+
+a.nav-next::after {
+    content: " →";
+    color: #888;
+}
