@@ -11,38 +11,48 @@
 #+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
 #+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
 
-#+EXCLUDE_TAGS: noexport Japanese
-#+BEGIN_EXPORT latex
-\definecolor{bg}{rgb}{0.95,0.95,0.95}
-\setminted[julia]{
-  bgcolor=bg,
-  breaklines=true,
-  mathescape,
-  fontsize=\footnotesize}
-#+END_EXPORT
+#+EXCLUDE_TAGS: noexport
 
-* About This Page :onlyforsite:English:
-日本語のサイトは[[./index_jp.org][こちら]]です。
+* About This Page
 
-This is my answers of exercises on [[https://pdhoff.github.io/book/][Peter Hoff, A First Course in Bayesian Statistical Methods]].
+This site provides example solutions to the exercises in Peter Hoff's excellent book, "[[https://pdhoff.github.io/book/][A First Course in Bayesian Statistical Methods]]".
 
-I hope this site will help someone who will read this book.
-* Parts :ignore:
-[[file:ch2/index.org]]
-* How to contribute
-This website is a personal project I created during my master's program.
+It aims to help students, and self-learners of Bayesian statistics verify their own solutions and understand the problem-solving approaches.
 
-As such, there may be some typos, inaccuracies, or other errors. I am aware that there are still some areas for improvement, and I plan to continue developing and updating this site.
+Each chapter and exercise has its own page, containing the solution, explanations, and implementation code.
+Currently, the implementations are primarily in ~Julia~, but we hope to add implementations in ~R~ and ~Python~ in the future (Pull Requests are welcome!).
+
+日本語のサイトは[[./index_jp.org][こちら]]です。(Link to the Japanese site)
+
+*Disclaimer*: These solutions were prepared by an individual and may contain errors. Please use them as a reference only. If you find any mistakes, I would appreciate it if you could report them using the methods described below.
+
+* List of Solutions
+Access the solutions for each exercise via the chapter links below.
+
++ [[file:ch2/index.org][Chapter 2]] - Belief, probability and exchangeability
++ [[file:ch3/index.org][Chapter 3]] - One-parameter models
++ [[file:ch4/index.org][Chapter 4]] - Monte Carlo approximation
++ [[file:ch5/index.org][Chapter 5]] - The normal model
++ [[file:ch6/index.org][Chapter 6]] - Posterior approximation with the Gibbs sampler
++ [[file:ch7/index.org][Chapter 7]] - The multivariate normal model
++ [[file:ch8/index.org][Chapter 8]] - Group comparisons and hierarchical modeling
++ [[file:ch9/index.org][Chapter 9]] - Linear regression
++ [[file:ch10/index.org][Chapter 10]] - Nonconjugate priors and Metropolis-Hastings algorithms
++ Chapter 11 - Linear and generalized linear mixed effects models (*to be updated*)
++ Chapter 12 - Latent variable methods for ordinal data (*to be updated*)
+
+* Contribution & Feedback
+This website was started as a personal project during my master's program and is still under development.
+As such, there may be typos, inaccuracies, or other errors.
 
 If you encounter any errors or have suggestions for improvement, please feel free to submit an issue or pull request to [[https://github.com/KaoruBB/Hoff_AFCBSM][this GitHub repository]].
-
 You can also [[mailto:bbkaoru1007@keio.jp][contact me by email]].
 
-Your feedback is greatly appreciated.
+Your feedback is greatly appreciated and helps improve the site.
 
-I would like to thank the following people for pointing out typos and errors:
-- Okamoto Noriaki
-- Kubota Kohsuke
-- Kondo Daisuke
+* Acknowledgements
+I would like to thank the following individuals for pointing out typos and errors:
 
-Thank you.
++ Okamoto Noriaki
++ Kubota Kohsuke
++ Kondo Daisuke

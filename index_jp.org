@@ -10,43 +10,48 @@
 #+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
 #+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
 
-#+EXCLUDE_TAGS: noexport English
+* このサイトについて
 
-#+BEGIN_EXPORT latex
-\definecolor{bg}{rgb}{0.95,0.95,0.95}
-\setminted[julia]{
-  bgcolor=bg,
-  breaklines=true,
-  mathescape,
-  fontsize=\footnotesize}
-#+END_EXPORT
+このサイトは、Peter Hoff 著「A First Course in Bayesian Statistical Methods」(日本語版タイトル: [[https://www.asakura.co.jp/detail.php?book_code=12267][標準ベイズ統計学]]) の演習問題 (Exercise) の解答例を提供する目的で作成されました。
 
-* このサイトについて :onlyforsite:Japanese:
+ベイズ統計学を学ぶ学生、独習者の方々が、ご自身の解答を確認したり、解法を理解する手助けとなることを目指しています。
+
+各章・各問題ごとにページを分けて、解答、解説、そして必要に応じて実装コード (Julia) を掲載しています。
+
 For English site, please visit [[./index.org][here]].
 
-このサイトは
-- [[https://pdhoff.github.io/book/][Peter Hoff, A First Course in Bayesian Statistical Methods]]
-- [[https://www.asakura.co.jp/detail.php?book_code=12267][標準ベイズ統計学]]
-の Exercise を解いたものです。
+*注意*: 解答は個人が作成したものであり、誤りが含まれる可能性があります。
+参考程度にご利用ください。間違いを見つけた場合は、後述の方法でご指摘いただけると幸いです。
 
-もし、間違いなどありましたら、[[間違いを見つけたら][こちら]]をご覧いただき、ご指摘いただけると幸いです。
+* 解答一覧
+各章のリンクから、問題ごとの解答ページへアクセスできます。
 
-* Parts :ignore:
++ [[file:ch2/index.org][第2章]] - 信念、確率、交換可能性
++ [[file:ch3/index.org][第3章]] - 二項モデルとポアソンモデル
++ [[file:ch4/index.org][第4章]] - モンテカルロ近似
++ [[file:ch5/index.org][第5章]] - 正規モデル
++ [[file:ch6/index.org][第6章]] - ギブスサンプラーによる事後分布の近似
++ [[file:ch7/index.org][第7章]] - 多変量正規モデル
++ [[file:ch8/index.org][第8章]] - グループ比較と階層モデリング
++ [[file:ch9/index.org][第9章]] - 線形回帰
++ [[file:ch10/index.org][第10章]] - 非共役事前分布とメトロポリス・ヘイスティングスアルゴリズム
++ 第11章 - ベイズ的なモデル選択 (to be updated)
++ 第12章 - 順序データに対する潜在変数法 (to be updated)
 
 * 間違いを見つけたら
-本サイトは、[[https://kaorubb.org/][筆者]]が修士課程のときに趣味の一環で作成したものなので、誤植や間違いが多々あるかと思います。
+   本サイトは、著者が修士課程のときに作成を開始し、現在も更新を続けています。
+   そのため、誤植や間違いが含まれている可能性があります。
 
-また、まだ解いていない問題も多く残っており、少しずつ解いていく予定です。
+   もし、間違い等を見つけた場合は、[[https://github.com/KaoruBB/Hoff_AFCBSM][GitHubリポジトリ]] に Issue を立てていただくか、Pull Request を送っていただけると大変助かります。
+   また、[[mailto:bbkaoru1007@keio.jp][メール]]でのご連絡も歓迎します。
 
-もし、間違い等を見つけた場合は、[[https://github.com/KaoruBB/Hoff_AFCBSM][このリポジトリ]] に Issueを立てていただくか、Pull Requestを送っていただけると幸いです。
+   皆様からのフィードバックが、サイト改善の励みになります。
 
-また、[[mailto:bbkaoru1007@keio.jp][メールにてご連絡]] いただいても構いません。
+* 謝辞
+   これまで、以下の皆様から誤植・間違いのご指摘をいただきました。
 
+   心より感謝申し上げます。
 
-なお、これまで
-- Okamoto Noriaki さん
-- Kubota Kohsuke さん
-- Kondo Daisuke さん
-から、誤植・間違いの指摘をいただきました。
-
-ありがとうございます。
+   + Okamoto Noriaki さん
+   + Kubota Kohsuke さん
+   + Kondo Daisuke さん
