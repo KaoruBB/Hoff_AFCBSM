@@ -16,3 +16,4 @@ _minted*
 *.toc
 *.DS_Store
 /.dir-locals.el
+/.chats

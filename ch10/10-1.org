@@ -1,0 +1,67 @@
+#+TITLE: 10.1
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* Question :noexport:
+Reflecting random walks:
+It is often useful in MCMC to have a proposal distribution which is both symmetric and has support only on a certain region.
+For example, if we know \(\theta > 0\), we would like our proposal distribution \(J(\theta_1 | \theta_0 )\) to have support on positive \(\theta\) values.
+Consider the following proposal algorithm:
+- sample \(\tilde{\theta} \sim \mathrm{uniform}(\theta_0 - \delta, \theta_0 + \delta)\);
+- if \(\tilde{\theta} < 0\), set \(\theta_1 = -\tilde{\theta}\);
+- if \(\tilde{\theta} \ge 0\), set \(\theta_1 = \tilde{\theta}\).
+In other words, \(\theta_1 = |\tilde{\theta}|\).
+Show that the above algorithm draws samples from a symmetric proposal distribution which has support on positive values of \(\theta\).
+It may be helpful to write out the associated proposal density \(J(\theta_1 | \theta_0 )\) under the two conditions \(\theta_0 \le \delta\) and \(\theta_0 > \delta\) separately.
+
+* Answer (English) :eng:
+It is obvious that the support of the proposal distribution is positive.
+Therefore, it suffices to show \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\).
+Let \(\theta_1, \theta_0, \delta \) be arbitrary positive numbers,
+and without loss of generality, assume \(\theta_1 \ge \theta_0\).
+
+When \(\theta_1 - \theta_0 \ge \delta\), \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1) = 0\) holds.
+Thus, we can only consider the case \(\theta_1 - \theta_0 < \delta \).
+
+(i-i) When \(\theta_0 \le \delta \),
+and \( \theta_0 - \delta < -\theta_1 \),
+\(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals either \(\theta_1\) or \(-\theta_1\).
+On the other hand, given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals either \(\theta_0\) or \(-\theta_0\) because \( \theta_1 - \delta < -\theta_0 < 0 \le \theta_0 \le \theta_1 + \delta \).
+
+(i-ii) When \(\theta_0 \le \delta \) and \( -\theta_1 \le \theta_0 - \delta \),
+\(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals \(\theta_1\).
+Given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals \(\theta_0\) because \(-\theta_0 \le \theta_1 - \delta < 0 \le \theta_0 \le \theta_1 + \delta \).
+Therefore, \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\) holds.
+
+(ii) When \(\theta_0 > \delta \),
+\((\theta_0 - \delta, \theta_0 + \delta)\) covers only positive numbers.
+Thus, \(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals either \(\theta_1\).
+Conversely, given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals \(\theta_0\) because \(\theta_1 - \delta > 0 \).
+Therefore, \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\) holds.
+
+In conclusion, it holds that the proposal distribution is symmetric.
+* Answer (日本語) :jp:
+提案分布が正の値のみをサポートすることは明らか。
+したがって、\(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\)を示せば十分。
+
+\(\theta_1, \theta_0, \delta \)を任意の正の数とし、一般性を失わず\(\theta_1 \ge \theta_0\)と仮定する。
+
+(i-i) \(\theta_0 \le \delta \)かつ\( \theta_0 - \delta < -\theta_1 \)のとき、
+\(\theta_1\)は\(\tilde{\theta} = \theta_1\)または\(\tilde{\theta} =-\theta_1\)のときに提案される。
+一方、\(\theta_1\)が与えられたとき、\( \theta_1 - \delta < -\theta_0 < 0 \le \theta_0 \le \theta_1 + \delta \)より\(\tilde{\theta} = \theta_0\)または\(\tilde{\theta} =-\theta_0\)のときに\(\theta_0\)が提案される。
+
+(i-ii) \(\theta_0 \le \delta\) かつ \( -\theta_1 \le \theta_0 - \delta \)のとき、
+\(\theta_1\)は\(\tilde{\theta} = \theta_1\)のときに提案される。
+一方、\(\theta_1\)が与えられたとき、\(-\theta_0 \le \theta_1 - \delta < 0 \le \theta_0 \le \theta_1 + \delta \)より\(\tilde{\theta} = \theta_0\)のときに\(\theta_0\)が提案される。
+
+(ii) \(\theta_0 > \delta \)のとき、\((\theta_0 - \delta, \theta_0 + \delta)\)は正の数のみをカバーする。
+したがって、\(\theta_1\)は\(\tilde{\theta} = \theta_1\)のときのみに提案される。
+逆に、\(\theta_1\)が与えられたとき、\(\theta_1 - \delta > 0 \)より\(\tilde{\theta} = \theta_0\)のときに\(\theta_0\)が提案される。
+
+提案分布は一様分布であることから、以上の議論により対称性が示された。
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[../ch9/9-3.org][9.3]]
+
+#+ATTR_HTML: :class nav-next
+[[./10-2.org][10.2]]

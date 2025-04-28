@@ -49,17 +49,17 @@
 <ul>
 <li><a href="#org7c871ea">a)</a>
 <ul>
-<li><a href="#orgbaec707">Answer</a></li>
+<li><a href="#org31e2681">Answer</a></li>
 </ul>
 </li>
 <li><a href="#org65efe56">b)</a>
 <ul>
-<li><a href="#org3ec2965">Answer</a></li>
+<li><a href="#org8154e70">Answer</a></li>
 </ul>
 </li>
 <li><a href="#org5b47b3f">c)</a>
 <ul>
-<li><a href="#orgf232869">Answer</a>
+<li><a href="#org013e5e0">Answer</a>
 <ul>
 <li><a href="#orge196343">Gibbs sampler</a></li>
 <li><a href="#orgbe09b0e">Posterior mean and confidence interval</a></li>
@@ -83,9 +83,9 @@ HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">æ—¥æ
 <h2 id="org7c871ea">a)</h2>
 <div class="outline-text-2" id="text-org7c871ea">
 </div>
-<div id="outline-container-orgbaec707" class="outline-3">
-<h3 id="orgbaec707">Answer</h3>
-<div class="outline-text-3" id="text-orgbaec707">
+<div id="outline-container-org31e2681" class="outline-3">
+<h3 id="org31e2681">Answer</h3>
+<div class="outline-text-3" id="text-org31e2681">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/interexp.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">parse_matrix</span><span style="color: #51afef;">(</span>input_matrix<span style="color: #51afef;">)</span>
@@ -142,9 +142,9 @@ julia<span style="color: #FCCE7B;">&gt;</span> &#963;&#770;&#178;_B
 <h2 id="org65efe56">b)</h2>
 <div class="outline-text-2" id="text-org65efe56">
 </div>
-<div id="outline-container-org3ec2965" class="outline-3">
-<h3 id="org3ec2965">Answer</h3>
-<div class="outline-text-3" id="text-org3ec2965">
+<div id="outline-container-org8154e70" class="outline-3">
+<h3 id="org8154e70">Answer</h3>
+<div class="outline-text-3" id="text-org8154e70">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">impute</span><span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
     nrow = size<span style="color: #51afef;">(</span>Y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
@@ -172,7 +172,7 @@ OneSampleTTest<span style="color: #51afef;">(</span>Y_imp<span style="color: #C5
 <p>
 :+RESULTS:
 </p>
-<pre class="example" id="org4010083">
+<pre class="example" id="orga8a3336">
 One sample t-test
 -----------------
 Population details:
@@ -198,9 +198,9 @@ Details:
 <h2 id="org5b47b3f">c)</h2>
 <div class="outline-text-2" id="text-org5b47b3f">
 </div>
-<div id="outline-container-orgf232869" class="outline-3">
-<h3 id="orgf232869">Answer</h3>
-<div class="outline-text-3" id="text-orgf232869">
+<div id="outline-container-org013e5e0" class="outline-3">
+<h3 id="org013e5e0">Answer</h3>
+<div class="outline-text-3" id="text-org013e5e0">
 </div>
 <div id="outline-container-orge196343" class="outline-4">
 <h4 id="orge196343">Gibbs sampler</h4>

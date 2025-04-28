@@ -1,0 +1,111 @@
+#+TITLE: 8.1
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* Question :noexport:
+Components of variance:
+Consider the hierarchical model where
+\begin{align*}
+\theta_1, \dots, \theta_m | \mu, \tau^2 &\sim \text{ i.i.d. normal}( \mu, \tau^2) \\
+y_{1,j}, \dots, y_{n_j, j} | \theta_j, \sigma^2 &\sim \text{ i.i.d. normal}( \theta_j, \sigma^2)
+\end{align*}
+For this prblem, we will eventually compute the following:
+\begin{align*}
+&\text{Var}[y_{i,j}|\theta_j, \sigma^2],
+\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2],
+\text{Cov}[y_{i_1, j}, y_{i_2, j}|\theta_j, \sigma^2] \\
+&\text{Var}[y_{i,j}|\mu, \tau^2],
+\text{Var}[\bar{y}_{\cdot, j}|\mu, \tau^2],
+\text{Cov}[y_{i_1, j}, y_{i_2, j}|\mu, \tau^2] \\
+\end{align*}
+First, lets use our intuition to guess at the answers:
+
+* a)
+** Question :noexport:
+Which do you think is bigger, \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) or \( \text{Var}[y_{i,j}|\mu, \tau^2] \)?
+To guide your intuition, you can interpret the first as the variability of the \(Y\)'s when sampling from a fixed group,
+and the second as the variability in first sampling a group,
+then sampling a unit from within that group.
+
+** Answer
+\( \text{Var}[y_{i,j}|\mu, \tau^2] \) is bigger because it includes both between-group and within-group variability while \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) only includes within-group variability.
+
+* b)
+** Question :noexport:
+Do you think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is negative, positive, or zero?
+Answer the same for \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\).
+You may want to think about what \(y_{i_2,j}\) tells you about \(y_{i_1,j}\) if \(\theta_j\) is known, and what it tells you when \(\theta_j\) is unknown.
+** Answer
+I think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is zero because when \(\theta_j\) is known, \(y_{i_2,j}\) tells us nothing about \(y_{i_1,j}\) more than what we already know.
+However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive because \(y_{i_2,j}\) tells us something about group-specific information \(\theta_j\) which we do not know.
+
+* c)
+** Question :noexport:
+Now compute each of the six quantities above and compare to your answers in a) and b).
+** Answer
+\begin{align*}
+\text{Var}[y_{i,j}|\theta_j, \sigma^2]
+&= \sigma^2 \\
+\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2]
+&= \text{Var}[\frac{1}{n_j} \sum_{i=1}^{n_j} y_{i,j} | \theta_j, \sigma^2] \\
+&= \frac{1}{n_j^2} \text{Var}[\sum_{i=1}^{n_j} y_{i,j} | \theta_j, \sigma^2] \\
+&= \frac{ \sigma^2 }{n_j} \\
+\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]
+&= E[(y_{i_1, j} - \theta_j)(y_{i_2, j} - \theta_j) | \theta_j, \sigma^2] \\
+&= E[y_{i_1, j}y_{i_2, j} - \theta_j y_{i_1, j} - \theta_j y_{i_2, j}) + \theta_j^2 | \theta_j, \sigma^2] \\
+&= E[y_{i_1, j}y_{i_2, j} | \theta_j, \sigma^2] - \theta_j E[y_{i_1, j} | \theta_j, \sigma^2] - \theta_j E[y_{i_2, j} | \theta_j, \sigma^2] + \theta_j^2 \\
+&= E[y_{i_1, j} | \theta_j, \sigma^2] E[y_{i_2, j} | \theta_j, \sigma^2] - \theta_j^2 - \theta_j^2 + \theta_j^2 \\
+&\qquad (\because  y_{i_1, j} \text{ and } y_{i_2, j} \text{ are conditionally independent given} \theta_j, \sigma^2) \\
+&= \theta_j^2 - \theta_j^2 \\
+&= 0 \\
+\end{align*}
+
+\begin{align*}
+\text{Var}[y_{i,j}|\mu, \tau^2]
+&= E \left[\text{Var}[y_{i,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2\right] + \text{Var} \left[ E[y_{i,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2\right] \\
+&= E[\text{Var}[y_{i,j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Var}[E[y_{i,j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[\sigma^2 | \mu, \tau^2] + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \sigma^2 + \tau^2 \\
+\text{Var}[\bar{y}_{\cdot, j}|\mu, \tau^2]
+&= E \left[ \text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] + \text{Var} \left[ E[\bar{y}_{\cdot, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] \\
+&= E[\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Var}[E[\bar{y}_{\cdot, j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[ \frac{ \sigma^2 }{n_j} | \mu, \tau^2] + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \frac{ \sigma^2 }{n_j} + \tau^2 \\
+\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]
+&= E \left[ \text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] + \text{Cov} \left[ E[y_{i_1, j}|\theta_j, \sigma^2, \mu, \tau^2], E[y_{i_2, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] \\
+&= E[\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Cov}[E[y_{i_1, j}|\theta_j, \sigma^2], E[y_{i_2, j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[0 | \mu, \tau^2] + \text{Cov}[\theta_j, \theta_j | \mu, \tau^2] \\
+&= 0 + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \tau^2 \\
+\end{align*}
+
+* d)
+** Question :noexport:
+Now assume we have a prior \(p(\mu)\) for \(\mu\).
+Using Bayes' rule, show that
+\[ p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
+= p(\mu | \theta_1, \ldots, \theta_m, \tau^2)
+\]
+Interpret in words what this means.
+
+** Answer
+\begin{align*}
+p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ p(\theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ \int p( \mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) d \mu } \\
+&= \frac{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) }{ \int p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) d \mu } \\
+&= \frac{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) }{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\sigma^2)
+\int  p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2) d \mu } \\
+&= \frac{ p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2)}{ \int p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2) d \mu } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \tau^2) }{ \int p(\mu, \theta_1, \ldots, \theta_m, \tau^2) d \mu } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta, \tau^2) }{ p(\theta_1, \ldots, \theta_m, \tau^2) } \\
+&= p(\mu | \theta_1, \ldots, \theta_m, \tau^2) \\
+\end{align*}
+
+This means that the \(\sigma^2, \boldsymbol{y}_1, \dots, \boldsymbol{y}_2\) give us no additional information about \(\mu\) given \(\theta_1, \ldots, \theta_m, \tau^2\).
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[../ch7/7-6.org][7.6]]
+
+#+ATTR_HTML: :class nav-next
+[[./8-2.org][8.2]]

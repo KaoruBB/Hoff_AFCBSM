@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9.2</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">9.2
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 9</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org33d013e">a)</a>
+<ul>
+<li><a href="#orgb4aa1d1">Answer</a></li>
+</ul>
+</li>
+<li><a href="#org5817569">b)</a>
+<ul>
+<li><a href="#orgfadbf0d">Answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org33d013e" class="outline-2">
+<h2 id="org33d013e">a)</h2>
+<div class="outline-text-2" id="text-org33d013e">
+</div>
+<div id="outline-container-orgb4aa1d1" class="outline-3">
+<h3 id="orgb4aa1d1">Answer</h3>
+<div class="outline-text-3" id="text-orgb4aa1d1">
+<div class="org-src-container">
+<pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
+Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+header = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+df = DataFrame<span style="color: #51afef;">(</span>Y, header<span style="color: #51afef;">)</span>
+
+col_int = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:glu</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:skin</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
+col_float = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span><span style="color: #51afef;">]</span>
+col_str = <span style="color: #a991f1;">:diabetes</span>
+df<span style="color: #51afef;">[</span>!,col_int<span style="color: #51afef;">]</span> = Int.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_int<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+df<span style="color: #51afef;">[</span>!,col_float<span style="color: #51afef;">]</span> = Float32.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_float<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+df<span style="color: #51afef;">[</span>!,col_str<span style="color: #51afef;">]</span> = String.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_str<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">ResidualSE</span><span style="color: #51afef;">(</span>y,X<span style="color: #51afef;">)</span>
+    fit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">return</span> sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, residuals<span style="color: #7bc275;">(</span>fit<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>size<span style="color: #C57BDB;">(</span>X, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> size<span style="color: #C57BDB;">(</span>X, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">lmGprior</span><span style="color: #51afef;">(</span>y, X; g=length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span>, &#957;&#8320;=<span style="color: #e69055; font-weight: bold;">1</span>, &#963;&#8320;&#178;=ResidualSE<span style="color: #C57BDB;">(</span>y,X<span style="color: #C57BDB;">)</span>, S=<span style="color: #e69055; font-weight: bold;">1000</span><span style="color: #51afef;">)</span>
+    n, p = size<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span>
+
+    Hg = <span style="color: #51afef;">(</span>g<span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>g<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> X <span style="color: #FCCE7B;">*</span> inv<span style="color: #51afef;">(</span>X'X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> X'
+    SSRg = y' <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>diagm<span style="color: #C57BDB;">(</span>ones<span style="color: #7bc275;">(</span>n<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> Hg<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> y
+    &#963;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">./</span> rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">+</span>n<span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">/</span><span style="color: #7bc275;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">*</span>&#963;&#8320;&#178;<span style="color: #FCCE7B;">+</span>SSRg<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
+
+    Vb = g <span style="color: #FCCE7B;">*</span> inv<span style="color: #51afef;">(</span>X'X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>g<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+    Eb = Vb <span style="color: #FCCE7B;">*</span> X' <span style="color: #FCCE7B;">*</span> y
+
+    &#946; = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, <span style="color: #e69055; font-weight: bold;">0</span>, p<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+        s = &#963;&#178;<span style="color: #51afef;">[</span>i<span style="color: #51afef;">]</span>
+        &#946; = vcat<span style="color: #51afef;">(</span>&#946;, rand<span style="color: #C57BDB;">(</span>MvNormal<span style="color: #7bc275;">(</span>Eb, Symmetric<span style="color: #a991f1;">(</span>s <span style="color: #FCCE7B;">*</span> Vb<span style="color: #a991f1;">)</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>'<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">return</span> &#946;, &#963;&#178;
+<span style="color: #51afef;">end</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
+g = size<span style="color: #51afef;">(</span>df, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
+&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">1</span>
+
+y = df<span style="color: #51afef;">[</span>:, <span style="color: #a991f1;">:glu</span><span style="color: #51afef;">]</span>
+X = select<span style="color: #51afef;">(</span>df, Not<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span><span style="color: #a991f1;">:diabetes</span>, <span style="color: #a991f1;">:glu</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> Matrix
+X = <span style="color: #51afef;">[</span>ones<span style="color: #C57BDB;">(</span>size<span style="color: #7bc275;">(</span>X, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span> X<span style="color: #51afef;">]</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">add intercept</span>
+S=<span style="color: #e69055; font-weight: bold;">5000</span>
+BETA, SIGMA&#178; = lmGprior<span style="color: #51afef;">(</span>y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior confidence intervals for &#963;&#178;</span>
+ci_&#963;&#178; = quantile<span style="color: #51afef;">(</span>SIGMA&#178;, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+
+<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">posterior confidence intervals for &#946;</span>
+ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> quantile<span style="color: #C57BDB;">(</span>x, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, eachcol<span style="color: #C57BDB;">(</span>BETA<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<p>
+:RESULTS:
+</p>
+<pre class="example" id="org284baf5">
+8×4 DataFrame
+ Row │ param      ci_lower    ci_upper    ci_length
+     │ String     Float64     Float64     Float64
+─────┼───────────────────────────────────────────────
+   1 │ intercept   35.1914     69.5733     34.3819
+   2 │ npreg       -1.64525     0.306686    1.95194
+   3 │ bp          -0.01787     0.425742    0.443612
+   4 │ skin        -0.112215    0.511       0.623215
+   5 │ bmi          0.142702    1.129       0.986294
+   6 │ ped          3.36953    17.7334     14.3639
+   7 │ age          0.454045    1.09135     0.637302
+   8 │ σ²         745.993     948.869     202.875
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5817569" class="outline-2">
+<h2 id="org5817569">b)</h2>
+<div class="outline-text-2" id="text-org5817569">
+</div>
+<div id="outline-container-orgfadbf0d" class="outline-3">
+<h3 id="orgfadbf0d">Answer</h3>
+<div class="outline-text-3" id="text-orgfadbf0d">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">lpyX</span><span style="color: #51afef;">(</span>y, X; g=length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span>, &#957;&#8320;=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+
+    n = size<span style="color: #51afef;">(</span>X, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+    p = size<span style="color: #51afef;">(</span>X, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+
+    <span style="color: #51afef;">if</span> p <span style="color: #FCCE7B;">==</span><span style="color: #e69055; font-weight: bold;">0</span>
+        &#963;&#770;&#178; = mean<span style="color: #51afef;">(</span>y<span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+        H0 = zeros<span style="color: #51afef;">(</span>n, n<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">else</span>
+        fit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
+        &#963;&#770;&#178; = sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, residuals<span style="color: #7bc275;">(</span>fit<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">-</span> p<span style="color: #51afef;">)</span>
+        H0 = <span style="color: #51afef;">(</span>g<span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>g<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> X <span style="color: #FCCE7B;">*</span> inv<span style="color: #51afef;">(</span>X'X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> X'
+    <span style="color: #51afef;">end</span>
+    SS0 = y' <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>diagm<span style="color: #C57BDB;">(</span>ones<span style="color: #7bc275;">(</span>n<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> H0<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> y
+    <span style="color: #51afef;">return</span><span style="color: #51afef;">(</span>
+        <span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span>n<span style="color: #FCCE7B;">*</span>log<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">*</span>&#960;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span> logabsgamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span><span style="color: #7bc275;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">+</span>n<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> <span style="color: #FCCE7B;">-</span> logabsgamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span>&#957;&#8320;<span style="color: #C57BDB;">)[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span>p<span style="color: #FCCE7B;">*</span>log<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>g<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span>
+            <span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span>&#957;&#8320;<span style="color: #FCCE7B;">*</span>log<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span>&#957;&#8320;<span style="color: #FCCE7B;">*</span>&#963;&#770;&#178;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">+</span>n<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">*</span>log<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span><span style="color: #7bc275;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">*</span>&#963;&#770;&#178;<span style="color: #FCCE7B;">+</span>SS0<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>
+    <span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">BayesianModelAveraging</span><span style="color: #51afef;">(</span>y, X; S=<span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+    n, p = size<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span>
+    BETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p<span style="color: #51afef;">)</span>
+    Z = Matrix<span style="color: #51afef;">{</span>Int64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p<span style="color: #51afef;">)</span>
+    z = ones<span style="color: #51afef;">(</span>p<span style="color: #51afef;">)</span>
+    lpy_c = lpyX<span style="color: #51afef;">(</span>y, X<span style="color: #C57BDB;">[</span>:, findall<span style="color: #7bc275;">(</span>z .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+
+    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+        <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> shuffle<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span>:p<span style="color: #51afef;">)</span>
+            zp = copy<span style="color: #51afef;">(</span>z<span style="color: #51afef;">)</span>
+            zp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = <span style="color: #e69055; font-weight: bold;">1</span> .<span style="color: #FCCE7B;">-</span> zp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span>
+            lpy_p = lpyX<span style="color: #51afef;">(</span>y, X<span style="color: #C57BDB;">[</span>:, findall<span style="color: #7bc275;">(</span>zp .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+            r = <span style="color: #51afef;">(</span>lpy_p <span style="color: #FCCE7B;">-</span> lpy_c<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">*</span><span style="color: #51afef;">(</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #51afef;">(</span>zp<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #FCCE7B;">==</span><span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
+            z<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>Bernoulli<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #7bc275;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>exp<span style="color: #a991f1;">(</span><span style="color: #FCCE7B;">-</span>r<span style="color: #a991f1;">)</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> Int
+            <span style="color: #51afef;">if</span> z<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">==</span> zp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span>
+                lpy_c = lpy_p
+            <span style="color: #51afef;">end</span>
+        <span style="color: #51afef;">end</span>
+
+        &#946; = copy<span style="color: #51afef;">(</span>z<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">if</span> sum<span style="color: #51afef;">(</span>z<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&gt;</span> <span style="color: #e69055; font-weight: bold;">0</span>
+            &#946;<span style="color: #51afef;">[</span>findall<span style="color: #C57BDB;">(</span>z .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span> = lmGprior<span style="color: #51afef;">(</span>y, X<span style="color: #C57BDB;">[</span>:, findall<span style="color: #7bc275;">(</span>z .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">]</span>, S=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+        <span style="color: #51afef;">end</span>
+        Z<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = z
+        BETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#946;
+
+        <span style="color: #51afef;">if</span> s <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">10</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span>
+            bpm = mean<span style="color: #51afef;">(</span>BETA<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:s, :<span style="color: #C57BDB;">]</span>, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+            mse = mean<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>y <span style="color: #FCCE7B;">-</span> X <span style="color: #FCCE7B;">*</span> bpm<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+            println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"s = "</span>, s, <span style="color: #7bc275;">", mse = "</span>, mse<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">return</span> BETA, Z
+<span style="color: #51afef;">end</span>
+
+BETA2, Z = BayesianModelAveraging<span style="color: #51afef;">(</span>y, X; S=<span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
+z_prob = mean<span style="color: #51afef;">(</span>Z, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+ci_&#946;_bma = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> quantile<span style="color: #C57BDB;">(</span>x, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, eachcol<span style="color: #C57BDB;">(</span>BETA2<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+df_ci_bma = DataFrame<span style="color: #51afef;">(</span>
+    param = coef_name,
+    prob = z_prob,
+    ci_lower = map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span>, ci_&#946;_bma<span style="color: #C57BDB;">)</span>,
+    ci_upper = map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">]</span>, ci_&#946;_bma<span style="color: #C57BDB;">)</span>
+<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<p>
+:RESULTS:
+</p>
+<pre class="example" id="org5cd1505">
+7×5 DataFrame
+ Row │ param      prob     ci_lower   ci_upper   ci_length
+     │ String     Float64  Float64    Float64    Float64
+─────┼─────────────────────────────────────────────────────
+   1 │ intercept   1.0     43.3728    76.389     33.0162
+   2 │ npreg       0.0978  -1.00526    0.0        1.00526
+   3 │ bp          0.168    0.0        0.32304    0.32304
+   4 │ skin        0.0934   0.0        0.363007   0.363007
+   5 │ bmi         0.9812   0.403414   1.34051    0.937095
+   6 │ ped         0.6928   0.0       17.7104    17.7104
+   7 │ age         1.0      0.480682   1.01743    0.536749
+</pre>
+
+<p>
+\(\mathrm{Pr}(\beta_j \neq 0|\boldsymbol{y})\) is nearly 1 for intercept, bmi and age, and is around 0.1 for npreg, bp and skin.
+Compared to the results in part a), the lengths of the confidence intervals tend to be shorter (except for ped) in part b).
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./9-1.html" class="nav-prev">9.1</a>
+</p>
+
+<p class="nav-next">
+<a href="./9-3.html" class="nav-next">9.3</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

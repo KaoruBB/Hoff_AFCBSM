@@ -28,15 +28,7 @@ This is my answers of exercises on [[https://pdhoff.github.io/book/][Peter Hoff,
 
 I hope this site will help someone who will read this book.
 * Parts :ignore:
-#+INCLUDE: ./part/ch2/exercise.org
-#+INCLUDE: ./part/ch3/exercise.org
-#+INCLUDE: ./part/ch4/exercise.org
-#+INCLUDE: ./part/ch5/exercise.org
-#+INCLUDE: ./part/ch6/exercise.org
-#+INCLUDE: ./part/ch7/exercise.org
-#+INCLUDE: ./part/ch8/exercise.org
-#+INCLUDE: ./part/ch9/exercise.org
-#+INCLUDE: ./part/ch10/exercise.org
+[[file:ch2/index.org]]
 * How to contribute
 This website is a personal project I created during my master's program.
 

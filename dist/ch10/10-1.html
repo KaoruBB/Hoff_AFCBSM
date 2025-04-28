@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>6.3</title>
+<title>10.1</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
@@ -97,114 +97,100 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">6.3
+<h1 class="title">10.1
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 6</span>
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org956867f">a)</a>
-<ul>
-<li><a href="#orga264e89">answer</a></li>
-</ul>
-</li>
-<li><a href="#orgb65ea8e">b)</a>
-<ul>
-<li><a href="#org617525e">answer</a></li>
-</ul>
-</li>
+<li><a href="#org7f8b568">Answer (English)</a></li>
+<li><a href="#org5846c68">Answer (日本語)</a></li>
 </ul>
 </div>
 </div>
 <p>
 HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
 </p>
-<div id="outline-container-org956867f" class="outline-2">
-<h2 id="org956867f">a)</h2>
-<div class="outline-text-2" id="text-org956867f">
-</div>
-<div id="outline-container-orga264e89" class="outline-3">
-<h3 id="orga264e89">answer</h3>
-<div class="outline-text-3" id="text-orga264e89">
-\begin{align*}
-p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
-&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
-&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta) p(\boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
-&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, c, \beta)
-p(\boldsymbol{z} | \boldsymbol{x}, c, \beta) p(\boldsymbol{x}, c | \beta) p(\beta) \\
-&= p(\boldsymbol{y} | \boldsymbol{z}, c) p(\boldsymbol{z} | \boldsymbol{x}, \beta) p(\boldsymbol{x}) p(c) p(\beta) \\
-&\propto  p(\boldsymbol{z} | \boldsymbol{x},\beta) p(\beta) \\
-&\propto \prod_{i=1}^n \exp \left( -\frac{1}{2} (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
-&= \exp \left( -\frac{1}{2} \sum_{i=1}^n (z_i - \beta x_i)^2 \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
-&= \exp \left( -\frac{1}{2} \left( \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 \right) \right) \exp \left( -\frac{1}{2 \tau_{\beta}^2} \beta^2 \right) \\
-\end{align*}
+<div id="outline-container-org7f8b568" class="outline-2">
+<h2 id="org7f8b568">Answer (English)</h2>
+<div class="outline-text-2" id="text-org7f8b568">
+<p>
+It is obvious that the support of the proposal distribution is positive.
+Therefore, it suffices to show \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\).
+Let \(\theta_1, \theta_0, \delta \) be arbitrary positive numbers,
+and without loss of generality, assume \(\theta_1 \ge \theta_0\).
+</p>
 
 <p>
-ここで、
+When \(\theta_1 - \theta_0 \ge \delta\), \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1) = 0\) holds.
+Thus, we can only consider the case \(\theta_1 - \theta_0 < \delta \).
 </p>
-\begin{align*}
-\sum_{i=1}^n (z_i - \beta x_i)^2 + \frac{1}{\tau_{\beta}^2} \beta^2
-&= \sum_{i=1}^n z_i^2 - 2 \beta \sum_{i=1}^n x_i z_i + \beta^2 \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \beta^2 \\
-&= a \beta^2 - 2 b \beta + \sum_{i=1}^n z_i^2 \\
-\mathrm{where} \quad
-a &= \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} \\
-b &= \sum_{i=1}^n x_i z_i \\
-\end{align*}
 
 <p>
-となるので、
+(i-i) When \(\theta_0 \le \delta \),
+and \( \theta_0 - \delta < -\theta_1 \),
+\(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals either \(\theta_1\) or \(-\theta_1\).
+On the other hand, given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals either \(\theta_0\) or \(-\theta_0\) because \( \theta_1 - \delta < -\theta_0 < 0 \le \theta_0 \le \theta_1 + \delta \).
 </p>
-\begin{align*}
-p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
-&\propto \exp \left\{ -\frac{1}{2} \left( a \beta^2 - 2 b \beta \right) \right\} \\
-&= \exp \left\{ -\frac{1}{2} a \left( \beta^2 - \frac{2 b}{a} \beta + \frac{b^2}{a^2} \right) + \frac{1}{2} \frac{b^2}{a} \right\} \\
-&\propto \exp \left\{ -\frac{1}{2} a \left( \beta - \frac{b}{a} \right)^2 \right\} \\
-&= \exp \left\{ - \frac{1}{2} \left( \frac{\beta - b/a}{1/ \sqrt{a} } \right) \right\} \\
-&= \mathrm{dnorm}(\beta, b/a, 1/ \sqrt{a} ) \\
-\end{align*}
 
 <p>
-よって、
+(i-ii) When \(\theta_0 \le \delta \) and \( -\theta_1 \le \theta_0 - \delta \),
+\(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals \(\theta_1\).
+Given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals \(\theta_0\) because \(-\theta_0 \le \theta_1 - \delta < 0 \le \theta_0 \le \theta_1 + \delta \).
+Therefore, \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\) holds.
 </p>
-\begin{align*}
-\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c \sim
-\mathrm{Normal} \left( \frac{ \sum_{i=1}^n x_i z_i }{ \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2} }, \frac{1}{  \sum_{i=1}^n x_i^2 + \frac{1}{\tau_{\beta}^2}  } \right)
-\end{align*}
-</div>
-</div>
-</div>
-<div id="outline-container-orgb65ea8e" class="outline-2">
-<h2 id="orgb65ea8e">b)</h2>
-<div class="outline-text-2" id="text-orgb65ea8e">
-</div>
-<div id="outline-container-org617525e" class="outline-3">
-<h3 id="org617525e">answer</h3>
-<div class="outline-text-3" id="text-org617525e">
-\begin{align*}
-p(c | y_i = 0, x_i, z_i, \beta)
-&\propto p(y_i = 0 | z_i, c) p(c) \\
-&= p(y_i = 0 | x_i, c, \beta) p(c) \\
-&= \Phi(c - \beta x_i) p(c) \\
-\end{align*}
 
-\begin{align*}
-p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
-&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
-&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, \beta, c) p(\boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
-&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) p(c) \\
-&= \left( 1 - \Phi() \right)
-\end{align*}
+<p>
+(ii) When \(\theta_0 > \delta \),
+\((\theta_0 - \delta, \theta_0 + \delta)\) covers only positive numbers.
+Thus, \(\theta_1 \) will be proposed when \(\tilde{\theta} \) equals either \(\theta_1\).
+Conversely, given \(\theta_1\), \(\theta_0\) will be proposed when \(\tilde{\theta} \) equals \(\theta_0\) because \(\theta_1 - \delta > 0 \).
+Therefore, \(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\) holds.
+</p>
+
+<p>
+In conclusion, it holds that the proposal distribution is symmetric.
+</p>
 </div>
+</div>
+<div id="outline-container-org5846c68" class="outline-2">
+<h2 id="org5846c68">Answer (日本語)</h2>
+<div class="outline-text-2" id="text-org5846c68">
+<p>
+提案分布が正の値のみをサポートすることは明らか。したがって、\(J(\theta_1|\theta_0) = J(\theta_0 | \theta_1)\)を示せば十分。
+</p>
+
+<p>
+\(\theta_1, \theta_0, \delta \)を任意の正の数とし、一般性を失わず\(\theta_1 \ge \theta_0\)と仮定する。
+</p>
+
+<p>
+(i-i) \(\theta_0 \le \delta \)かつ\( \theta_0 - \delta < -\theta_1 \)のとき、
+\(\theta_1\)は\(\tilde{\theta} = \theta_1\)または\(\tilde{\theta} =-\theta_1\)のときに提案される。一方、\(\theta_1\)が与えられたとき、\( \theta_1 - \delta < -\theta_0 < 0 \le \theta_0 \le \theta_1 + \delta \)より\(\tilde{\theta} = \theta_0\)または\(\tilde{\theta} =-\theta_0\)のときに\(\theta_0\)が提案される。
+</p>
+
+<p>
+(i-ii) \(\theta_0 \le \delta\) かつ \( -\theta_1 \le \theta_0 - \delta \)のとき、
+\(\theta_1\)は\(\tilde{\theta} = \theta_1\)のときに提案される。一方、\(\theta_1\)が与えられたとき、\(-\theta_0 \le \theta_1 - \delta < 0 \le \theta_0 \le \theta_1 + \delta \)より\(\tilde{\theta} = \theta_0\)のときに\(\theta_0\)が提案される。
+</p>
+
+<p>
+(ii) \(\theta_0 > \delta \)のとき、\((\theta_0 - \delta, \theta_0 + \delta)\)は正の数のみをカバーする。したがって、\(\theta_1\)は\(\tilde{\theta} = \theta_1\)のときのみに提案される。逆に、\(\theta_1\)が与えられたとき、\(\theta_1 - \delta > 0 \)より\(\tilde{\theta} = \theta_0\)のときに\(\theta_0\)が提案される。
+</p>
+
+<p>
+提案分布は一様分布であることから、以上の議論により対称性が示された。
+</p>
 </div>
 </div>
 <p class="nav-prev">
-<a href="./6-2.html" class="nav-prev">6.2</a>
+<a href="../ch9/9-3.html" class="nav-prev">9.3</a>
 </p>
 
 <p class="nav-next">
-<a href="../ch7/7-1.html" class="nav-next">7.1</a>
+<a href="./10-2.html" class="nav-next">10.2</a>
 </p>
 </div>
 <div id="postamble" class="status">

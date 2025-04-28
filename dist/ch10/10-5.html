@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10.5</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">10.5
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org95b188a">a)</a>
+<ul>
+<li><a href="#org8a43e35">Answer</a>
+<ul>
+<li><a href="#orgb9e757a">sampling model</a></li>
+<li><a href="#org221c16f">prior</a></li>
+<li><a href="#org5c91245">calculation of acceptance ratio \(r\)</a></li>
+<li><a href="#orga3a0a1b">proposal distributions</a></li>
+<li><a href="#org12c1d2f">import data</a></li>
+<li><a href="#orgb21e45e">process data</a></li>
+<li><a href="#org95a473d">M-H algorithm</a></li>
+<li><a href="#org63ad9f5">run M-H algorithm</a></li>
+<li><a href="#org0fc444a">sequence \(\beta_j^{(s)}\)</a></li>
+<li><a href="#org20543b3">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</a></li>
+<li><a href="#orgb88656f">summary</a>
+<ul>
+<li><a href="#org120bbbe">日本語</a></li>
+<li><a href="#orgfc56906">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org5c91ff5">b)</a>
+<ul>
+<li><a href="#orgd216a33">Answer</a>
+<ul>
+<li><a href="#org130b432">top five most frequently occurring values of \(\gamma\)</a></li>
+<li><a href="#org2dc12a9">How good are the estimates?</a>
+<ul>
+<li><a href="#org9292191">日本語</a></li>
+<li><a href="#orgbb3f873">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org475a06a">c)</a>
+<ul>
+<li><a href="#org128a6b4">Answer</a>
+<ul>
+<li><a href="#orge70947f">posterior densities</a></li>
+<li><a href="#orgf8e5965">posterior means</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org95b188a" class="outline-2">
+<h2 id="org95b188a">a)</h2>
+<div class="outline-text-2" id="text-org95b188a">
+</div>
+<div id="outline-container-org8a43e35" class="outline-3">
+<h3 id="org8a43e35">Answer</h3>
+<div class="outline-text-3" id="text-org8a43e35">
+</div>
+<div id="outline-container-orgb9e757a" class="outline-4">
+<h4 id="orgb9e757a">sampling model</h4>
+<div class="outline-text-4" id="text-orgb9e757a">
+\begin{align*}
+Y_i &\sim \text{Bernoulli} \left(\frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) \quad (i = 1, \dots, n) \\
+\theta_i &= \beta_0 + \beta_1 \gamma_1 x_{i,1} + \beta_2 \gamma_2 x_{i,2} + \beta_3 \gamma_3 x_{i,3} + \beta_4 \gamma_4 x_{i,4} + \beta_5 \gamma_5 x_{i,5} \\
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org221c16f" class="outline-4">
+<h4 id="org221c16f">prior</h4>
+<div class="outline-text-4" id="text-org221c16f">
+\begin{align*}
+\gamma_j &\sim \text{Bernoulli}(1/2) \quad (j = 1, \dots, 5) \\
+\beta_0 &\sim \mathcal{N}(0, 16) \\
+\beta_j &\sim \mathcal{N}(0, 4) \quad (j = 1, \dots, 5) \\
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org5c91245" class="outline-4">
+<h4 id="org5c91245">calculation of acceptance ratio \(r\)</h4>
+<div class="outline-text-4" id="text-org5c91245">
+<p>
+The likelihood and log-likelihood are as follows:
+</p>
+
+\begin{align*}
+p(\bm{y} | \bm{x}, \bm{\beta}, \bm{\gamma})
+&= \prod_{i=1}^n \left( \frac{e^{\theta_i}}{1 + e^{\theta_i}} \right)^{y_i} \left( \frac{1}{1 + e^{\theta_i}} \right)^{1-y_i} \\
+\log p(\bm{y} | \bm{x}, \bm{\beta}, \bm{\gamma})
+&= \sum_{i=1}^n \left\{ y_i \log \left( \frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) + (1-y_i) \log \left( \frac{1}{1 + e^{\theta_i}} \right) \right\} \\
+&= \sum_{i=1}^n \left\{ y_i \left[ \log(e^{\theta_i}) - \log(1 + e^{\theta_i}) \right] + (1-y_i) \left[ - \log(1 + e^{\theta_i}) \right] \right\} \\
+&= \sum_{i=1}^n \left( y_i \theta_i - y_i \log(1 + e^{\theta_i}) - (1-y_i) \log(1 + e^{\theta_i}) \right) \\
+&= \sum_{i=1}^n \left( y_i \theta_i - \log(1 + e^{\theta_i}) \right) \\
+\end{align*}
+
+<p>
+For example, when updating \(\gamma_j\), the acceptance ratio is calculated as follows:
+</p>
+
+<p>
+\[
+r = \frac{ p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j^{\ast} ) p(\gamma_j^{\ast})}{ p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j^{(s)}) p(\gamma_j^{(s)}) }
+\times \frac{ J(\gamma_j^{(s)} | \gamma_j^{\ast}) }{ J(\gamma_j^{\ast} | \gamma_j^{(s)}) }
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orga3a0a1b" class="outline-4">
+<h4 id="orga3a0a1b">proposal distributions</h4>
+<div class="outline-text-4" id="text-orga3a0a1b">
+\begin{align*}
+\beta_j^{\ast} | \beta_j^{(s)} &\sim \mathcal{N}(\beta_j^{(s)}, \delta^2) \\
+\gamma_j^{\ast} | \gamma_j^{(s)} &= \begin{cases} 0 & \text{ if } \gamma_j^{(s)} = 1 \\ 1 & \text{ if } \gamma_j^{(s)} = 0 \end{cases} \\
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org12c1d2f" class="outline-4">
+<h4 id="org12c1d2f">import data</h4>
+<div class="outline-text-4" id="text-org12c1d2f">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> DataFrames
+<span style="color: #51afef;">using</span> DelimitedFiles
+<span style="color: #51afef;">using</span> Distributions
+<span style="color: #51afef;">using</span> GLM
+<span style="color: #51afef;">using</span> LinearAlgebra
+<span style="color: #51afef;">using</span> MCMCChains
+<span style="color: #51afef;">using</span> OffsetArrays
+<span style="color: #51afef;">using</span> Plots.PlotMeasures
+<span style="color: #51afef;">using</span> Random
+<span style="color: #51afef;">using</span> StatsBase
+<span style="color: #51afef;">using</span> StatsModels
+<span style="color: #51afef;">using</span> StatsPlots
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-julia">data = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
+header = data<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+df = DataFrame<span style="color: #51afef;">(</span>data<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span>, header<span style="color: #51afef;">)</span>
+
+col_int = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:glu</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:skin</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
+col_float = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span><span style="color: #51afef;">]</span>
+col_str = <span style="color: #a991f1;">:diabetes</span>
+df<span style="color: #51afef;">[</span>!,col_int<span style="color: #51afef;">]</span> = Int.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_int<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+df<span style="color: #51afef;">[</span>!,col_float<span style="color: #51afef;">]</span> = Float32.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_float<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+df<span style="color: #51afef;">[</span>!,col_str<span style="color: #51afef;">]</span> = String.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_str<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">first<span style="color: #51afef;">(</span>df, <span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb21e45e" class="outline-4">
+<h4 id="orgb21e45e">process data</h4>
+<div class="outline-text-4" id="text-orgb21e45e">
+<div class="org-src-container">
+<pre class="src src-julia">predictors = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
+X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>size<span style="color: #7bc275;">(</span>df, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, mapcols<span style="color: #C57BDB;">(</span>zscore, df<span style="color: #7bc275;">[</span>!, predictors<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span>
+    Matrix <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, :, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">align the notation with the textbook</span>
+y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x <span style="color: #FCCE7B;">==</span> <span style="color: #7bc275;">"Yes"</span> <span style="color: #51afef;">?</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #51afef;">:</span> <span style="color: #e69055; font-weight: bold;">0</span>, df<span style="color: #C57BDB;">[</span>!, <span style="color: #a991f1;">:diabetes</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> Vector
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">X<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span>, :<span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<pre class="example" id="org11b06f9">
+5×6 OffsetArray(::Matrix{Float64}, 1:5, 0:5) with eltype Float64 with indices 1:5×0:5:
+ 1.0   0.447786  -0.284774  -0.390958  -0.403331  -0.707578
+ 1.0   1.05164   -0.122308  -1.13212   -0.986707   2.17304
+ 1.0   0.447786   0.852489   0.422864  -1.00702    0.314576
+ 1.0  -1.06186    0.365091   2.1813    -0.708079  -0.521732
+ 1.0  -1.06186   -0.934639  -0.943195  -1.07378   -0.800501
+</pre>
+</div>
+</div>
+<div id="outline-container-org95a473d" class="outline-4">
+<h4 id="org95a473d">M-H algorithm</h4>
+<div class="outline-text-4" id="text-org95a473d">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_loglikelihood</span><span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
+    &#952; = parent<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>&#946;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">.*</span> <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>;&#947;<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">return</span> sum<span style="color: #51afef;">(</span>y <span style="color: #FCCE7B;">.*</span> &#952; <span style="color: #FCCE7B;">-</span> log.<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> .<span style="color: #FCCE7B;">+</span> exp.<span style="color: #7bc275;">(</span>&#952;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">update_&#946;j</span><span style="color: #51afef;">(</span>&#946;, &#947;, j, &#948;, prior_var<span style="color: #51afef;">)</span>
+    &#946;_prp = copy<span style="color: #51afef;">(</span>&#946;<span style="color: #51afef;">)</span>
+    &#946;_prp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#946;<span style="color: #7bc275;">[</span>j<span style="color: #7bc275;">]</span>, &#948;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    log_likelihood_diff = _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;_prp, &#947;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span> _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
+    log_prior_ratio = logpdf<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0</span>, sqrt<span style="color: #7bc275;">(</span>prior_var<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, &#946;_prp<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span> logpdf<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0</span>, sqrt<span style="color: #7bc275;">(</span>prior_var<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, &#946;<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">log_proposal_ratio = 0 because the proposal distribution is symmetric</span>
+    log_r = log_likelihood_diff <span style="color: #FCCE7B;">+</span> log_prior_ratio
+    <span style="color: #51afef;">return</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> log_r <span style="color: #51afef;">?</span> &#946;_prp <span style="color: #51afef;">:</span> &#946;
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">update_&#947;j</span><span style="color: #51afef;">(</span>&#946;, &#947;, j<span style="color: #51afef;">)</span>
+    &#947;_prp = copy<span style="color: #51afef;">(</span>&#947;<span style="color: #51afef;">)</span>
+    <span style="color: #5cEfFF;">J_&#947;</span><span style="color: #51afef;">(</span>x<span style="color: #51afef;">)</span> = x <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #51afef;">?</span> <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #51afef;">:</span> <span style="color: #e69055; font-weight: bold;">1</span>
+    &#947;_prp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = J_&#947;<span style="color: #51afef;">(</span>&#947;_prp<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+    log_r = _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;, &#947;_prp<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span> _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">return</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> log_r <span style="color: #51afef;">?</span> &#947;_prp <span style="color: #51afef;">:</span> &#947;
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">logit_reg_with_var_select</span><span style="color: #51afef;">(</span>y, X, &#946;_init, &#947;_init, &#948;; S=<span style="color: #e69055; font-weight: bold;">1000</span>, seed=<span style="color: #e69055; font-weight: bold;">42</span><span style="color: #51afef;">)</span>
+    Random.seed!<span style="color: #51afef;">(</span>seed<span style="color: #51afef;">)</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">initialize</span>
+    &#946; = copy<span style="color: #51afef;">(</span>&#946;_init<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    &#947; = copy<span style="color: #51afef;">(</span>&#947;_init<span style="color: #51afef;">)</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">prepare storage</span>
+    q = length<span style="color: #51afef;">(</span>&#946;<span style="color: #51afef;">)</span>
+    BETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, q<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, :, <span style="color: #e69055; font-weight: bold;">0</span>:q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    GAMMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+
+    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+        <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">0</span>:q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span>
+            prior_var = j <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #51afef;">?</span> <span style="color: #e69055; font-weight: bold;">16.0</span> <span style="color: #51afef;">:</span> <span style="color: #e69055; font-weight: bold;">4.0</span>
+            &#946; = update_&#946;j<span style="color: #51afef;">(</span>&#946;, &#947;, j, &#948;, prior_var<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">end</span>
+        <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span>
+            &#947; = update_&#947;j<span style="color: #51afef;">(</span>&#946;, &#947;, j<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">end</span>
+        BETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#946;
+        GAMMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#947;
+    <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">return</span> BETA, GAMMA
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org63ad9f5" class="outline-4">
+<h4 id="org63ad9f5">run M-H algorithm</h4>
+<div class="outline-text-4" id="text-org63ad9f5">
+<div class="org-src-container">
+<pre class="src src-julia">glmfit = glm<span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>X<span style="color: #C57BDB;">)</span>, y, Binomial<span style="color: #C57BDB;">()</span>, LogitLink<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span>
+&#946;_init = coef<span style="color: #51afef;">(</span>glmfit<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+&#947;_init = ones<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">)</span>
+&#948; = <span style="color: #e69055; font-weight: bold;">0.1</span>
+
+BETA, GAMMA = logit_reg_with_var_select<span style="color: #51afef;">(</span>y, X, &#946;_init, &#947;_init, &#948;; S=<span style="color: #e69055; font-weight: bold;">100000</span>, seed=<span style="color: #e69055; font-weight: bold;">42</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">chn_&#946; = Chains<span style="color: #51afef;">(</span>BETA, <span style="color: #C57BDB;">[</span><span style="color: #7bc275;">"&#946;0"</span>,<span style="color: #7bc275;">"&#946;1"</span>, <span style="color: #7bc275;">"&#946;2"</span>, <span style="color: #7bc275;">"&#946;3"</span>, <span style="color: #7bc275;">"&#946;4"</span>, <span style="color: #7bc275;">"&#946;5"</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org3bb7154">
+Chains MCMC chain (100000×6×1 Array{Float64, 3}):
+
+Iterations        = 1:1:100000
+Number of chains  = 1
+Samples per chain = 100000
+parameters        = β0, β1, β2, β3, β4, β5
+
+Summary Statistics
+  parameters      mean       std      mcse    ess_bulk     ess_tail      rhat   ess_per_sec
+      Symbol   Float64   Float64   Float64     Float64      Float64   Float64       Missing
+
+          β0   -0.8643    0.1074    0.0011   9840.1042   14036.6980    1.0000       missing
+          β1   -0.1809    1.6226    0.1067    248.3265     311.7660    1.0329       missing
+          β2    0.4507    1.8907    0.1242    233.2992     362.5542    1.0896       missing
+          β3    0.7011    0.1149    0.0012   9615.0141   14094.3526    1.0000       missing
+          β4    0.4211    0.3230    0.0203   2079.9963     785.9287    1.0011       missing
+          β5    0.6219    0.1437    0.0043   1145.7115    3625.2569    1.0085       missing
+
+Quantiles
+  parameters      2.5%     25.0%     50.0%     75.0%     97.5%
+      Symbol   Float64   Float64   Float64   Float64   Float64
+
+          β0   -1.0778   -0.9364   -0.8632   -0.7906   -0.6576
+          β1   -4.0152   -0.9524    0.2031    0.4246    3.1453
+          β2   -3.1593   -0.7570    0.2529    1.7502    4.1636
+          β3    0.4817    0.6228    0.6985    0.7777    0.9310
+          β4    0.2154    0.3784    0.4521    0.5261    0.6706
+          β5    0.3170    0.5285    0.6340    0.7230    0.8777
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-julia">chn_&#947; = Chains<span style="color: #51afef;">(</span>GAMMA, <span style="color: #C57BDB;">[</span><span style="color: #7bc275;">"&#947;1"</span>, <span style="color: #7bc275;">"&#947;2"</span>, <span style="color: #7bc275;">"&#947;3"</span>, <span style="color: #7bc275;">"&#947;4"</span>, <span style="color: #7bc275;">"&#947;5"</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org47c288d">
+Chains MCMC chain (100000×5×1 Array{Float64, 3}):
+
+Iterations        = 1:1:100000
+Number of chains  = 1
+Samples per chain = 100000
+parameters        = γ1, γ2, γ3, γ4, γ5
+
+Summary Statistics
+  parameters      mean       std      mcse     ess_bulk   ess_tail      rhat   ess_per_sec
+      Symbol   Float64   Float64   Float64      Float64    Float64   Float64       Missing
+
+          γ1    0.3852    0.4866    0.0228     456.4099        NaN    1.0181       missing
+          γ2    0.0570    0.2319    0.0043    2899.6368        NaN    1.0005       missing
+          γ3    1.0000    0.0000       NaN          NaN        NaN       NaN       missing
+          γ4    0.9857    0.1186    0.0079     224.7567        NaN    1.0136       missing
+          γ5    0.9995    0.0217    0.0001   21159.3116        NaN    1.0000       missing
+
+Quantiles
+  parameters      2.5%     25.0%     50.0%     75.0%     97.5%
+      Symbol   Float64   Float64   Float64   Float64   Float64
+
+          γ1    0.0000    0.0000    0.0000    1.0000    1.0000
+          γ2    0.0000    0.0000    0.0000    0.0000    1.0000
+          γ3    1.0000    1.0000    1.0000    1.0000    1.0000
+          γ4    1.0000    1.0000    1.0000    1.0000    1.0000
+          γ5    1.0000    1.0000    1.0000    1.0000    1.0000
+</pre>
+</div>
+</div>
+<div id="outline-container-org0fc444a" class="outline-4">
+<h4 id="org0fc444a">sequence \(\beta_j^{(s)}\)</h4>
+<div class="outline-text-4" id="text-org0fc444a">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">visualize the MCMC simulation results</span>
+p = plot<span style="color: #51afef;">(</span>chn_&#946;<span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch10/img/exercise10-5a-beta.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"#+NAME: beta_sequence\n[[file:./img/exercise10-5a-beta.png]]"</span>
+</pre>
+</div>
+
+<div id="org09327a0" class="figure">
+<p><img src="./fig/exercise10-5a-beta.png" alt="exercise10-5a-beta.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>traceplots of \(\beta_j\)</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org20543b3" class="outline-4">
+<h4 id="org20543b3">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</h4>
+<div class="outline-text-4" id="text-org20543b3">
+<div class="org-src-container">
+<pre class="src src-julia">beta_gamma_prod = BETA<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #51afef;">end</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">.*</span> GAMMA
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-julia">beta_gamma_prod<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span>, :<span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<pre class="example" id="orge6ac2be">
+5×5 OffsetArray(::Matrix{Float64}, 1:5, 1:5) with eltype Float64 with indices 1:5×1:5:
+ 0.193049  -0.0        0.611237  0.600768  0.584352
+ 0.218734   0.0543198  0.611237  0.539856  0.584352
+ 0.122185   0.0        0.731033  0.539856  0.538677
+ 0.215258   0.0        0.702999  0.519566  0.515501
+ 0.215258   0.0        0.686469  0.501306  0.515501
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-julia">BETA_TIMES_GAMMA = hcat<span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>BETA<span style="color: #7bc275;">[</span>:, <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, beta_gamma_prod<span style="color: #51afef;">)</span>;
+BETA_TIMES_GAMMA<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">6</span>, :<span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-julia">param_names = <span style="color: #51afef;">[</span><span style="color: #7bc275;">"&#946;0"</span>; <span style="color: #C57BDB;">[</span><span style="color: #7bc275;">"&#946;$(j)*&#947;$(j)"</span> <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">]</span>;
+chn_&#946;&#947; = Chains<span style="color: #51afef;">(</span>BETA_TIMES_GAMMA, param_names<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org33a9865">
+
+Chains MCMC chain (100000×6×1 Array{Float64, 3}):
+
+Iterations        = 1:1:100000
+Number of chains  = 1
+Samples per chain = 100000
+parameters        = β0, β1*γ1, β2*γ2, β3*γ3, β4*γ4, β5*γ5
+
+Summary Statistics
+  parameters      mean       std      mcse     ess_bulk     ess_tail      rhat   ess_per_sec
+      Symbol   Float64   Float64   Float64      Float64      Float64   Float64       Missing
+
+          β0   -0.8643    0.1074    0.0011    9840.1042   14036.6980    1.0000       missing
+       β1*γ1    0.1080    0.1586    0.0067     584.5482     461.7220    1.0174       missing
+       β2*γ2    0.0005    0.0275    0.0002   39422.3894    5534.9789    1.0005       missing
+       β3*γ3    0.7011    0.1149    0.0012    9615.0141   14094.3526    1.0000       missing
+       β4*γ4    0.4489    0.1199    0.0037    2252.0682     786.6917    1.0010       missing
+       β5*γ5    0.6217    0.1441    0.0044    1144.9386    3642.2000    1.0086       missing
+
+Quantiles
+  parameters      2.5%     25.0%     50.0%     75.0%     97.5%
+      Symbol   Float64   Float64   Float64   Float64   Float64
+
+          β0   -1.0778   -0.9364   -0.8632   -0.7906   -0.6576
+       β1*γ1    0.0000    0.0000    0.0000    0.2296    0.4768
+       β2*γ2   -0.0109    0.0000    0.0000    0.0000    0.0248
+       β3*γ3    0.4817    0.6228    0.6985    0.7777    0.9310
+       β4*γ4    0.2150    0.3784    0.4521    0.5261    0.6705
+       β5*γ5    0.3167    0.5284    0.6339    0.7230    0.8777
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-julia">p_bg = plot<span style="color: #51afef;">(</span>chn_&#946;&#947;<span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch10/img/exercise10-5b-beta-gamma.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"#+NAME: beta_gamma_sequence\n[[file:./img/exercise10-5b-beta-gamma.png]]"</span>
+</pre>
+</div>
+
+
+<div id="org0485e3f" class="figure">
+<p><img src="./fig/exercise10-5b-beta-gamma.png" alt="exercise10-5b-beta-gamma.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>traceplots of \(\beta_j \times \gamma_j\)</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb88656f" class="outline-4">
+<h4 id="orgb88656f">summary</h4>
+<div class="outline-text-4" id="text-orgb88656f">
+</div>
+<div id="outline-container-org120bbbe" class="outline-5">
+<h5 id="org120bbbe">日本語</h5>
+<div class="outline-text-5" id="text-org120bbbe">
+<p>
+MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\) のサンプルを用いて、\(\beta_j\) の系列と \(\beta_j \times \gamma_j\) の系列の混合について評価した。
+</p>
+
+<ul class="org-ul">
+<li><span class="underline">\(\beta_j\) の系列</span>:
+<ul class="org-ul">
+<li>トレースプロット(<a href="#org09327a0">1</a>) と診断統計量 (<code>chn_β</code> のサマリー) を見ると、特に \(\beta_1\) と \(\beta_2\) のチェーンは混合が悪いことが示唆された。
+<ul class="org-ul">
+<li><code>rhat</code> 値が1から離れており (それぞれ約 1.03, 1.09)、 <code>ess_bulk</code> 値も他のパラメータと比較して低い (それぞれ約 248, 233)。</li>
+<li>トレースプロットも安定していないように見える。</li>
+</ul></li>
+<li>これは、対応するインジケータ変数 \(\gamma_1\) と \(\gamma_2\) の事後平均がそれぞれ約 0.39 と 0.06 であり、シミュレーション中にこれらの変数がモデルから除外されている (\(\gamma_j=0\)) 状態が多かったためと考えられる。</li>
+<li>\(\gamma_j=0\) の場合、尤度は \(\beta_j\) に依存しなくなり、\(\beta_j\) の条件付き事後分布はその事前分布 (\(\mathcal{N}(0, 4)\)) となる。
+<ul class="org-ul">
+<li>その結果、\(\beta_1\) と \(\beta_2\) のサンプラーはデータからの情報をあまり受けずに事前分布の広い範囲を動き回り、混合が悪く見えた。</li>
+</ul></li>
+<li>一方、\(\beta_0, \beta_3, \beta_4, \beta_5\) については、対応する \(\gamma_j\) ( \(\gamma_0=1\) は固定、\(\gamma_3, \gamma_4, \gamma_5\) はほぼ常に1) が1であるため、データからの情報が反映され、混合は比較的良好であった (<code>rhat ≈ 1</code>, 高い <code>ess</code>)。</li>
+</ul></li>
+
+<li><span class="underline">\(\beta_j \times \gamma_j\) の系列</span>:
+<ul class="org-ul">
+<li>この系列は、変数 \(j\) がモデルに含まれる場合 (\(\gamma_j=1\)) の係数の効果を表し、含まれない場合 (\(\gamma_j=0\)) は効果が 0 となる。</li>
+<li>トレースプロット (<a href="#org0485e3f">2</a>) と診断統計量 (<code>chn_βγ</code> のサマリー) を見ると、こちらの系列は全体的に混合が良いことがわかった。
+<ul class="org-ul">
+<li>特に <code>β1*γ1</code> と <code>β2*γ2</code> の <code>rhat</code> 値は1に近くなり (それぞれ約 1.017, 1.0005)、 <code>ess_bulk</code> 値も改善した (それぞれ約 585, 39422)。</li>
+<li>トレースプロットも、特に <code>β2*γ2</code> は 0 付近で非常に安定している。</li>
+</ul></li>
+<li>これは、\(\gamma_j=0\) の場合に \(\beta_j \times \gamma_j\) の値が 0 に固定されるため、系列の変動が抑えられるからである。
+<ul class="org-ul">
+<li>\(\gamma_1\) や \(\gamma_2\) が 0 になる頻度が高いため、対応する積の系列は多くの時間 0 を取り、結果として混合が良く見えた。</li>
+</ul></li>
+</ul></li>
+
+<li><span class="underline">結論</span>:
+<ul class="org-ul">
+<li>変数選択モデルにおいては、係数 \(\beta_j\) のみの系列を見ると、変数がモデルに含まれない場合に事前分布の影響で混合が悪く見えることがある。</li>
+<li>そのため、チェーンの混合を評価する際には、変数のモデルへの実質的な寄与を表す \(\beta_j \times \gamma_j\) の系列も合わせて確認することが重要である。</li>
+<li>今回のケースでは、\(\beta_1 \times \gamma_1\) と \(\beta_2 \times \gamma_2\) の混合が良いことから、モデルはこれらの変数の効果（多くの場合 0 であるが、含まれる場合の効果も含む）について安定して学習していると解釈できる。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc56906" class="outline-5">
+<h5 id="orgfc56906">English</h5>
+<div class="outline-text-5" id="text-orgfc56906">
+<p>
+We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(\beta_j \times \gamma_j\) series using the samples obtained from the simulation.
+</p>
+
+<ul class="org-ul">
+<li><span class="underline">Series for \(&beta;_j$</span>:
+<ul class="org-ul">
+<li>The trace plots (<a href="#org09327a0">1</a>) and diagnostic statistics (summary of <code>chn_β</code>) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
+<ul class="org-ul">
+<li>The <code>rhat</code> values were far from 1 (approx. 1.03 and 1.09, respectively), and the <code>ess_bulk</code> values were low compared to other parameters (approx. 248 and 233, respectively).</li>
+<li>The trace plots also appeared unstable.</li>
+</ul></li>
+<li>This is likely because the posterior means of the corresponding indicator variables \(\gamma_1\) and \(\gamma_2\) were low (approx. 0.39 and 0.06, respectively), indicating that these variables were often excluded from the model (\(\gamma_j=0\)) during the simulation.</li>
+<li>When \(\gamma_j=0\), the likelihood does not depend on \(\beta_j\), and the conditional posterior distribution of \(\beta_j\) becomes its prior distribution (\(\mathcal{N}(0, 4)\)).
+<ul class="org-ul">
+<li>As a result, the samplers for \(\beta_1\) and \(\beta_2\) moved around the wide range of the prior without much influence from the data, leading to the appearance of poor mixing.</li>
+</ul></li>
+<li>In contrast, for \(\beta_0, \beta_3, \beta_4, \beta_5\), the corresponding \(\gamma_j\) (\(\gamma_0=1\) is fixed, \(\gamma_3, \gamma_4, \gamma_5\) were almost always 1) were 1, allowing the data to inform the posterior, resulting in relatively good mixing (<code>rhat</code> ≈ 1, high <code>ess</code>).</li>
+</ul></li>
+
+<li><span class="underline">Series for \(&beta;_j &times; &gamma;_j$</span>:
+<ul class="org-ul">
+<li>This series represents the coefficient&rsquo;s effect when variable \(j\) is included in the model (\(\gamma_j=1\)) and is zero when excluded (\(\gamma_j=0\)).</li>
+<li>The trace plots (<a href="#org0485e3f">2</a>) and diagnostic statistics (summary of <code>chn_βγ</code>) showed that this series generally exhibited good mixing.
+<ul class="org-ul">
+<li>In particular, the <code>rhat</code> values for <code>β1*γ1</code> and <code>β2*γ2</code> were close to 1 (approx. 1.017 and 1.0005, respectively), and the <code>ess_bulk</code> values improved (approx. 585 and 39422, respectively).</li>
+<li>The trace plots were also stable, especially for <code>β2*γ2</code>, which stayed very close to 0.</li>
+</ul></li>
+<li>This is because when \(\gamma_j=0\), the value of \(\beta_j \times \gamma_j\) is fixed at 0, reducing the series&rsquo; variability.
+<ul class="org-ul">
+<li>Since \(\gamma_1\) and \(\gamma_2\) were frequently 0, the corresponding product series took the value 0 much of the time, resulting in the appearance of good mixing.</li>
+</ul></li>
+</ul></li>
+
+<li><span class="underline">Conclusion</span>:
+<ul class="org-ul">
+<li>In variable selection models, looking only at the \(\beta_j\) series can be misleading regarding mixing, as it might appear poor due to the influence of the prior when the variable is excluded from the model.</li>
+<li>Therefore, when assessing chain mixing, it is crucial to also examine the \(\beta_j \times \gamma_j\) series, which represents the variable&rsquo;s actual contribution to the model.</li>
+<li>In this case, the good mixing of the \(\beta_1 \times \gamma_1\) and \(\beta_2 \times \gamma_2\) series suggests that the model is stably learning the effects of these variables (which are often zero, but also includes their effects when included).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5c91ff5" class="outline-2">
+<h2 id="org5c91ff5">b)</h2>
+<div class="outline-text-2" id="text-org5c91ff5">
+</div>
+<div id="outline-container-orgd216a33" class="outline-3">
+<h3 id="orgd216a33">Answer</h3>
+<div class="outline-text-3" id="text-orgd216a33">
+</div>
+<div id="outline-container-org130b432" class="outline-4">
+<h4 id="org130b432">top five most frequently occurring values of \(\gamma\)</h4>
+<div class="outline-text-4" id="text-org130b432">
+<div class="org-src-container">
+<pre class="src src-julia">gamma_tuples = <span style="color: #51afef;">[</span>tuple<span style="color: #C57BDB;">(</span>Int.<span style="color: #7bc275;">(</span>GAMMA<span style="color: #a991f1;">[</span>i, :<span style="color: #a991f1;">]</span><span style="color: #7bc275;">)</span>...<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #C57BDB;">(</span>GAMMA, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>;
+gamma_tuples<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">gamma_counts = countmap<span style="color: #51afef;">(</span>gamma_tuples<span style="color: #51afef;">)</span>;
+sorted_gamma_counts = sort<span style="color: #51afef;">(</span>collect<span style="color: #C57BDB;">(</span>gamma_counts<span style="color: #C57BDB;">)</span>, by=x<span style="color: #FCCE7B;">-&gt;</span>x<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, rev=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>;
+sorted_gamma_counts
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">sorted_gamma_counts &#12399;&#12377;&#12391;&#12395;&#35336;&#31639;&#28168;&#12415;</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">&#19978;&#20301;5&#12388;&#12434;&#21462;&#24471;</span>
+top5_gamma = sorted_gamma_counts<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">]</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">&#32207;&#12469;&#12531;&#12503;&#12523;&#25968;&#12434;&#21462;&#24471;</span>
+S = size<span style="color: #51afef;">(</span>GAMMA, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">&#19978;&#20301;5&#12388;&#12398;&#947;&#12505;&#12463;&#12488;&#12523;&#12289;&#20986;&#29694;&#22238;&#25968;&#12289;&#25512;&#23450;&#20107;&#24460;&#30906;&#29575;&#12434;&#34920;&#31034;</span>
+println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Top 5 most frequent gamma vectors, counts, and estimated posterior probabilities:"</span><span style="color: #51afef;">)</span>
+println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Total samples (S) = $(S)"</span><span style="color: #51afef;">)</span>
+println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">60</span><span style="color: #51afef;">)</span>
+println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Gamma Vector      Count   Estimated Probability (Count/S)"</span><span style="color: #51afef;">)</span>
+println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">60</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">for</span> <span style="color: #51afef;">(</span>gamma_vec, count<span style="color: #51afef;">)</span> <span style="color: #51afef;">in</span> top5_gamma
+    prob = count <span style="color: #FCCE7B;">/</span> S
+    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"$(gamma_vec)   $(rpad(count, 7)) $(round(prob, digits=4))"</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">60</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2dc12a9" class="outline-4">
+<h4 id="org2dc12a9">How good are the estimates?</h4>
+<div class="outline-text-4" id="text-org2dc12a9">
+</div>
+<div id="outline-container-org9292191" class="outline-5">
+<h5 id="org9292191">日本語</h5>
+<div class="outline-text-5" id="text-org9292191">
+<ol class="org-ol">
+<li><b>結果の解釈</b>:
+<ul class="org-ul">
+<li>上位のモデルを見ると、\(\gamma_3\) (BMI) と \(\gamma_5\) (Age) は常に1となっている。これは、これらの変数が糖尿病の予測において重要であることを強く示唆している。</li>
+<li>\(\gamma_2\) (Blood Pressure) は上位2モデル（合計確率約93%）では0であり、\(\gamma_1\) (Pregnancies) も最も確率の高いモデル（確率約58%）では0となっている。これは、これらの変数の予測への寄与が相対的に小さい可能性を示唆している。</li>
+<li>\(\gamma_4\) (Pedigree) は上位4モデルでは1だが、5番目のモデルでは0となっており、重要度は中程度かもしれない。</li>
+<li>最も確率の高いモデルは、BMI, 糖尿病の血統, 年齢 のみを含むモデル <code>γ = (0, 0, 1, 1, 1)</code> であった。</li>
+</ul></li>
+
+<li><b>推定の質の評価</b>:
+<ul class="org-ul">
+<li>MCMCの総サンプル数 (<code>S = 100,000</code>) は十分に大きい。</li>
+<li>事後確率は上位2つのモデルに非常に集中しており（合計約93%）、上位5モデルで全体の約99%を占める。このように確率が集中している場合、上位モデルの相対的な頻度の推定は比較的安定しやすい。</li>
+<li>\(\gamma\) のチェーンの診断統計量を見ると、\(\gamma_3\) と \(\gamma_5\) は常に1であり問題ない。\(\gamma_2\) の混合も良好であった (<code>rhat</code> ≈ 1.00, <code>ess_bulk</code> ≈ 2900)。\(\gamma_1\) と \(\gamma_4\) の混合は完璧ではないが (<code>rhat</code> ≈ 1.02, 1.01; <code>ess_bulk</code> ≈ 456, 225)、致命的に悪いわけではない。</li>
+<li>以上を考慮すると、特に上位2つのモデルの推定事後確率（約 0.575 と 0.354）はかなり信頼できると考えられる。3位以下のモデルの確率推定にはやや不確実性が残るものの、これらのモデルが他の多くの可能なモデルよりもはるかに確率が高いという結論は頑健である可能性が高い。</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgbb3f873" class="outline-5">
+<h5 id="orgbb3f873">English</h5>
+<div class="outline-text-5" id="text-orgbb3f873">
+<ol class="org-ol">
+<li><b>Interpretation of Results</b>:
+<ul class="org-ul">
+<li>Looking at the top models, \(\gamma_3\) (BMI) and \(\gamma_5\) (Age) are always 1. This strongly suggests that these variables are important for predicting diabetes.</li>
+<li>\(\gamma_2\) (Blood Pressure) is 0 in the top two models (total probability ≈ 93%), and \(\gamma_1\) (Pregnancies) is 0 in the most probable model (probability ≈ 58%). This suggests that the predictive contribution of these variables might be relatively small.</li>
+<li>\(\gamma_4\) (Pedigree) is 1 in the top four models but 0 in the fifth model, indicating potentially moderate importance.</li>
+<li>The most probable model was <code>γ = (0, 0, 1, 1, 1)</code>, which includes only BMI, Pedigree, and Age.</li>
+</ul></li>
+
+<li><b>Assessment of Estimate Quality</b>:
+<ul class="org-ul">
+<li>The total number of MCMC samples (<code>S = 100,000</code>) is sufficiently large.</li>
+<li>The posterior probability is highly concentrated in the top two models (totaling ≈ 93%), and the top five models account for ≈ 99% of the total probability mass. When the probability is concentrated like this, the estimation of the relative frequencies of the top models tends to be relatively stable.</li>
+<li>Examining the diagnostic statistics for the \(\gamma\) chains, \(\gamma_3\) and \(\gamma_5\) were always 1 and pose no issue. The mixing for \(\gamma_2\) was also good (<code>rhat</code> ≈ 1.00, <code>ess_bulk</code> ≈ 2900). The mixing for \(\gamma_1\) and \(\gamma_4\) was not perfect (<code>rhat</code> ≈ 1.02, 1.01; <code>ess_bulk</code> ≈ 456, 225) but not critically poor.</li>
+<li>Considering these points, the estimated posterior probabilities for the top two models (≈ 0.575 and 0.354) are likely quite reliable. While there might be slightly more uncertainty in the probability estimates for the 3rd to 5th models, the conclusion that these models are far more probable than most other possible models is likely robust.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org475a06a" class="outline-2">
+<h2 id="org475a06a">c)</h2>
+<div class="outline-text-2" id="text-org475a06a">
+</div>
+<div id="outline-container-org128a6b4" class="outline-3">
+<h3 id="org128a6b4">Answer</h3>
+<div class="outline-text-3" id="text-org128a6b4">
+</div>
+<div id="outline-container-orge70947f" class="outline-4">
+<h4 id="orge70947f">posterior densities</h4>
+<div class="outline-text-4" id="text-orge70947f">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">Plot posterior densities for &#946;j*&#947;j (j=1 to 5)</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">We select the parameters of interest from the chain object</span>
+p_density_bg = plot<span style="color: #51afef;">(</span>chn_&#946;&#947;<span style="color: #C57BDB;">[</span>:, <span style="color: #7bc275;">[</span><span style="color: #7bc275;">"&#946;$(j)*&#947;$(j)"</span> <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #7bc275;">]</span>, :<span style="color: #C57BDB;">]</span>, seriestype<span style="color: #51afef;">=</span><span style="color: #a991f1;">:density</span>, left_margin=<span style="color: #e69055; font-weight: bold;">10</span>mm<span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch10/img/exercise10-5c_density.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"#+NAME:exercise10-5c_density\n[[file:./img/exercise10-5c_density.png]]"</span>
+</pre>
+</div>
+
+<div id="orgc9be7d0" class="figure">
+<p><img src="./fig/exercise10-5c_density.png" alt="exercise10-5c_density.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf8e5965" class="outline-4">
+<h4 id="orgf8e5965">posterior means</h4>
+<div class="outline-text-4" id="text-orgf8e5965">
+<div class="org-src-container">
+<pre class="src src-julia">mean<span style="color: #51afef;">(</span>GAMMA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org0cafd45">
+1×5 Matrix{Float64}:
+ 0.38517  0.05703  1.0  0.98574  0.99953
+</pre>
+
+<ul class="org-ul">
+<li>\(\mathrm{Pr}(\gamma_1=1|\boldsymbol{x}, \boldsymbol{y}) \approx 0.385\)</li>
+<li>\(\mathrm{Pr}(\gamma_2=1|\boldsymbol{x}, \boldsymbol{y}) \approx 0.057\)</li>
+<li>\(\mathrm{Pr}(\gamma_3=1|\boldsymbol{x}, \boldsymbol{y}) \approx 1.000\)</li>
+<li>\(\mathrm{Pr}(\gamma_4=1|\boldsymbol{x}, \boldsymbol{y}) \approx 0.986\)</li>
+<li>\(\mathrm{Pr}(\gamma_5=1|\boldsymbol{x}, \boldsymbol{y}) \approx 1.000\)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./10-4.html" class="nav-prev">10.4</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

@@ -107,22 +107,22 @@
 <ul>
 <li><a href="#org0c54d47">a)</a>
 <ul>
-<li><a href="#org1abd122">answer</a></li>
+<li><a href="#org78fadb3">answer</a></li>
 </ul>
 </li>
 <li><a href="#org48d6b77">b)</a>
 <ul>
-<li><a href="#org50966bd">answer</a></li>
+<li><a href="#org62a7206">answer</a></li>
 </ul>
 </li>
 <li><a href="#org4a030ca">c)</a>
 <ul>
-<li><a href="#org042091e">answer</a></li>
+<li><a href="#org5979787">answer</a></li>
 </ul>
 </li>
 <li><a href="#org6f12dfd">d)</a>
 <ul>
-<li><a href="#orgc264369">answer</a></li>
+<li><a href="#org15a1a21">answer</a></li>
 </ul>
 </li>
 </ul>
@@ -135,9 +135,9 @@ HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日�
 <h2 id="org0c54d47">a)</h2>
 <div class="outline-text-2" id="text-org0c54d47">
 </div>
-<div id="outline-container-org1abd122" class="outline-3">
-<h3 id="org1abd122">answer</h3>
-<div class="outline-text-3" id="text-org1abd122">
+<div id="outline-container-org78fadb3" class="outline-3">
+<h3 id="org78fadb3">answer</h3>
+<div class="outline-text-3" id="text-org78fadb3">
 <div class="org-src-container">
 <pre class="src src-julia">school1 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school1.dat"</span><span style="color: #51afef;">)</span>
 school2 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school2.dat"</span><span style="color: #51afef;">)</span>
@@ -243,9 +243,9 @@ write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8323;_mc, &#963;&
 <h2 id="org48d6b77">b)</h2>
 <div class="outline-text-2" id="text-org48d6b77">
 </div>
-<div id="outline-container-org50966bd" class="outline-3">
-<h3 id="org50966bd">answer</h3>
-<div class="outline-text-3" id="text-org50966bd">
+<div id="outline-container-org62a7206" class="outline-3">
+<h3 id="org62a7206">answer</h3>
+<div class="outline-text-3" id="text-org62a7206">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;_mcs = <span style="color: #51afef;">[</span>&#952;&#8321;_mc, &#952;&#8322;_mc, &#952;&#8323;_mc<span style="color: #51afef;">]</span>
 <span style="color: #5cEfFF;">perms</span><span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> = isempty<span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> <span style="color: #51afef;">?</span> <span style="color: #51afef;">[</span>l<span style="color: #51afef;">]</span> <span style="color: #51afef;">:</span> <span style="color: #51afef;">[</span><span style="color: #C57BDB;">[</span>x; y<span style="color: #C57BDB;">]</span> <span style="color: #51afef;">for</span> x in l <span style="color: #51afef;">for</span> y <span style="color: #51afef;">in</span> perms<span style="color: #C57BDB;">(</span>setdiff<span style="color: #7bc275;">(</span>l, x<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
@@ -272,9 +272,9 @@ p(θ3 &lt; θ2 &lt; θ1) = 0.2256
 <h2 id="org4a030ca">c)</h2>
 <div class="outline-text-2" id="text-org4a030ca">
 </div>
-<div id="outline-container-org042091e" class="outline-3">
-<h3 id="org042091e">answer</h3>
-<div class="outline-text-3" id="text-org042091e">
+<div id="outline-container-org5979787" class="outline-3">
+<h3 id="org5979787">answer</h3>
+<div class="outline-text-3" id="text-org5979787">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">sample_posterior_predictive</span><span style="color: #51afef;">(</span>&#952;_mc, &#963;_mc<span style="color: #51afef;">)</span>
     y&#771;_mc = rand.<span style="color: #51afef;">(</span>Normal.<span style="color: #C57BDB;">(</span>&#952;_mc, &#963;_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -310,9 +310,9 @@ p(ỹ3 &lt; ỹ2 &lt; ỹ1) = 0.1888
 <h2 id="org6f12dfd">d)</h2>
 <div class="outline-text-2" id="text-org6f12dfd">
 </div>
-<div id="outline-container-orgc264369" class="outline-3">
-<h3 id="orgc264369">answer</h3>
-<div class="outline-text-3" id="text-orgc264369">
+<div id="outline-container-org15a1a21" class="outline-3">
+<h3 id="org15a1a21">answer</h3>
+<div class="outline-text-3" id="text-org15a1a21">
 <p>
 Using the results from the previous calculations,
 </p>

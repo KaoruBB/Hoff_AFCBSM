@@ -107,17 +107,17 @@
 <ul>
 <li><a href="#org922a8cb">a)</a>
 <ul>
-<li><a href="#org683de55">Answer</a></li>
+<li><a href="#orgb3c32ad">Answer</a></li>
 </ul>
 </li>
 <li><a href="#orgfc2e1ad">b)</a>
 <ul>
-<li><a href="#org303bb28">Answer</a></li>
+<li><a href="#org14b892d">Answer</a></li>
 </ul>
 </li>
 <li><a href="#orgd5bb191">c)</a>
 <ul>
-<li><a href="#org6278df9">Answer</a>
+<li><a href="#orga2e45d6">Answer</a>
 <ul>
 <li><a href="#org97c3a96">joint posterior distribution of \(\theta_h\) and \(\theta_w\)</a></li>
 <li><a href="#org87cfa8e">marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)</a></li>
@@ -128,7 +128,7 @@
 </li>
 <li><a href="#org2b22a41">d)</a>
 <ul>
-<li><a href="#org3bf2011">Answer</a>
+<li><a href="#org06f5588">Answer</a>
 <ul>
 <li><a href="#org72d5128">Jeffreys&rsquo; prior</a></li>
 <li><a href="#orgbec46bb">the unit information prior</a></li>
@@ -139,7 +139,7 @@
 </li>
 <li><a href="#org3ce7aa9">e)</a>
 <ul>
-<li><a href="#orgd507ab4">Answer</a>
+<li><a href="#org9ef0714">Answer</a>
 <ul>
 <li><a href="#org4e49907">Comparison of 95% Credible Intervals of couple age</a></li>
 <li><a href="#orgaff9e4f">Comparison of 95% Credible Intervals of correlation coefficient</a></li>
@@ -163,9 +163,9 @@ HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日�
 <h2 id="org922a8cb">a)</h2>
 <div class="outline-text-2" id="text-org922a8cb">
 </div>
-<div id="outline-container-org683de55" class="outline-3">
-<h3 id="org683de55">Answer</h3>
-<div class="outline-text-3" id="text-org683de55">
+<div id="outline-container-orgb3c32ad" class="outline-3">
+<h3 id="orgb3c32ad">Answer</h3>
+<div class="outline-text-3" id="text-orgb3c32ad">
 <p>
 自分のイメージでは、アメリカの平均的な夫婦の年齢は 50 歳くらいで、やや女性の方が若いと思うので、\(\mu_h = 51, \mu_h = 49\) とする。また、95%くらいで、25 歳から 75 歳くらいまでの範囲に収まると思うので、
 \(\sigma_h = \sigma_w = 12.5\) とする。夫婦の年齢の相関はかなり大きいイメージなので、0.9 になるように、
@@ -193,9 +193,9 @@ HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日�
 <h2 id="orgfc2e1ad">b)</h2>
 <div class="outline-text-2" id="text-orgfc2e1ad">
 </div>
-<div id="outline-container-org303bb28" class="outline-3">
-<h3 id="org303bb28">Answer</h3>
-<div class="outline-text-3" id="text-org303bb28">
+<div id="outline-container-org14b892d" class="outline-3">
+<h3 id="org14b892d">Answer</h3>
+<div class="outline-text-3" id="text-org14b892d">
 <div class="org-src-container">
 <pre class="src src-julia">&#956;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">51</span>, <span style="color: #e69055; font-weight: bold;">49</span><span style="color: #51afef;">]</span>
 &#923;&#8320; = <span style="color: #51afef;">[</span>
@@ -213,7 +213,7 @@ dataset3 = rand<span style="color: #51afef;">(</span>prior_dist, n<span style="c
 </div>
 
 
-<div id="org98c3c4a" class="figure">
+<div id="orge706ab2" class="figure">
 <p><img src="./fig/exercise7_4b.png" alt="exercise7_4b.png" width="600" />
 </p>
 </div>
@@ -228,9 +228,9 @@ dataset3 = rand<span style="color: #51afef;">(</span>prior_dist, n<span style="c
 <h2 id="orgd5bb191">c)</h2>
 <div class="outline-text-2" id="text-orgd5bb191">
 </div>
-<div id="outline-container-org6278df9" class="outline-3">
-<h3 id="org6278df9">Answer</h3>
-<div class="outline-text-3" id="text-org6278df9">
+<div id="outline-container-orga2e45d6" class="outline-3">
+<h3 id="orga2e45d6">Answer</h3>
+<div class="outline-text-3" id="text-orga2e45d6">
 </div>
 <div id="outline-container-org97c3a96" class="outline-4">
 <h4 id="org97c3a96">joint posterior distribution of \(\theta_h\) and \(\theta_w\)</h4>
@@ -249,7 +249,7 @@ COR = get_pos_cor<span style="color: #51afef;">(</span>SIGMA, p, S<span style="c
 </div>
 
 
-<div id="org060aa81" class="figure">
+<div id="org6d16d78" class="figure">
 <p><img src="./fig/exercise7_4c_jointdist.png" alt="exercise7_4c_jointdist.png" width="600" />
 </p>
 </div>
@@ -259,7 +259,7 @@ COR = get_pos_cor<span style="color: #51afef;">(</span>SIGMA, p, S<span style="c
 <h4 id="org87cfa8e">marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)</h4>
 <div class="outline-text-4" id="text-org87cfa8e">
 
-<div id="org1fa39fa" class="figure">
+<div id="org3c68d80" class="figure">
 <p><img src="./fig/exercise7_4c_correlation.png" alt="exercise7_4c_correlation.png" width="600" />
 </p>
 </div>
@@ -275,7 +275,7 @@ quantile<span style="color: #51afef;">(</span>COR<span style="color: #C57BDB;">[
 </pre>
 </div>
 
-<pre class="example" id="org3bbe8a7">
+<pre class="example" id="org7f3e4ec">
 2-element Vector{Float64}:
  41.82793288516493
  47.10559872633597
@@ -296,9 +296,9 @@ quantile<span style="color: #51afef;">(</span>COR<span style="color: #C57BDB;">[
 <h2 id="org2b22a41">d)</h2>
 <div class="outline-text-2" id="text-org2b22a41">
 </div>
-<div id="outline-container-org3bf2011" class="outline-3">
-<h3 id="org3bf2011">Answer</h3>
-<div class="outline-text-3" id="text-org3bf2011">
+<div id="outline-container-org06f5588" class="outline-3">
+<h3 id="org06f5588">Answer</h3>
+<div class="outline-text-3" id="text-org06f5588">
 </div>
 <div id="outline-container-org72d5128" class="outline-4">
 <h4 id="org72d5128">Jeffreys&rsquo; prior</h4>
@@ -332,7 +332,7 @@ quantile<span style="color: #51afef;">(</span>COR_J<span style="color: #C57BDB;"
 </pre>
 </div>
 
-<pre class="example" id="orgb2dedd2">
+<pre class="example" id="orgff188a2">
 julia&gt; quantile(THETA_J[:, 1], [0.025, 0.975])
 2-element Vector{Float64}:
  41.68056977372846
@@ -377,7 +377,7 @@ quantile<span style="color: #51afef;">(</span>COR_U<span style="color: #C57BDB;"
 </pre>
 </div>
 
-<pre class="example" id="orgd1b0035">
+<pre class="example" id="org1c3b0ea">
 julia&gt; quantile(THETA_U[:, 1], [0.025, 0.975])
 2-element Vector{Float64}:
 
@@ -417,7 +417,7 @@ quantile<span style="color: #51afef;">(</span>COR_D<span style="color: #C57BDB;"
 </pre>
 </div>
 
-<pre class="example" id="org4d44860">
+<pre class="example" id="orgb879342">
 julia&gt; quantile(THETA_D[:, 1], [0.025, 0.975])
 
 2-element Vector{Float64}:
@@ -442,9 +442,9 @@ julia&gt; quantile(COR_D[1, 2, :], [0.025, 0.975])
 <h2 id="org3ce7aa9">e)</h2>
 <div class="outline-text-2" id="text-org3ce7aa9">
 </div>
-<div id="outline-container-orgd507ab4" class="outline-3">
-<h3 id="orgd507ab4">Answer</h3>
-<div class="outline-text-3" id="text-orgd507ab4">
+<div id="outline-container-org9ef0714" class="outline-3">
+<h3 id="org9ef0714">Answer</h3>
+<div class="outline-text-3" id="text-org9ef0714">
 </div>
 <div id="outline-container-org4e49907" class="outline-4">
 <h4 id="org4e49907">Comparison of 95% Credible Intervals of couple age</h4>

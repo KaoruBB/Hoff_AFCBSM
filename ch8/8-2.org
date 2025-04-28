@@ -1,0 +1,194 @@
+#+TITLE: 8.2
+#+INCLUDE: setup.org
+#+STARTUP:showeverything
+* Question :noexport:
+Sensitivity analysis:
+In this exercise we will revisit the study from [[../ch5/5-2.org][Exercise 5.2]],
+in which 32 students in a science classroom were randomly assigned to one of two study methods, \(A\) and \(B\), with \(n_A = n_B = 16\).
+After several weeks of study, students were examined on the course material, and the scores are summarized by \(\{ \bar{y}_A = 75.2, s_A = 7.3 \}\), \(\{ \bar{y}_B = 77.5, s_B = 8.1 \}\).
+We will estimate \(\theta_A = \mu + \delta\) and \(\theta_B = \mu - \delta\) using the two-sample model and prior distributions of Section 8.1.
+* a)
+** Question :noexport:
+Let \(\mu \sim \text{normal}(75, 100), 1/\sigma^2 \sim \text{gamma}(1, 100) \) and
+\(\delta \sim \text{normal}(\delta_0, \tau^2_0)\).
+For each combination of \(\delta_0 \in \{ -4, -2, 0, 2, 4 \}\) and \(\tau^2_0 \in \{ 10, 50, 100, 500 \}\),
+obtain the posterior distribution of \(\mu, \delta\) and \(\sigma^2\) and compute
+1. \(\text{Pr}(\delta \lt 0 | \mathbf{Y})\);
+2. a 95% posterior confidence interval for \(\delta\);
+3. the prior and posterior correlation of \(\theta_A\) and \(\theta_B\).
+
+** Answer
+:PROPERTIES:
+:header-args: :session *julia:hoff* :eval no-export
+:END:
+
+The prior correlation of \(\theta_A\) and \(\theta_B\) is computed as follows:
+
+\begin{align*}
+\text{cov}(\theta_A, \theta_B)
+&= \text{cov}(\mu + \delta, \mu - \delta) \\
+&= E[(\mu + \delta)(\mu - \delta)] - E[\mu + \delta] E[\mu - \delta] \\
+&= E[\mu^2 - \delta^2] - (E[\mu] + E[\delta]) (E[\mu] - E[\delta]) \\
+&= E[\mu^2] - E[\delta^2] - (E[\mu]^2 - E[\delta]^2) \\
+&= \text{var}(\mu) - \text{var}(\delta) \\
+&= 100 - \tau^2_0 \\
+\text{Var}[\theta_A]
+&= \text{Var}[\mu + \delta] \\
+&= \text{Var}[\mu] + \text{Var}[\delta] + 2 \text{cov}(\mu, \delta) \\
+&= 100 + \tau^2_0 \\
+\text{Var}[\theta_B]
+&= \text{Var}[\mu - \delta] \\
+&= \text{Var}[\mu] + \text{Var}[\delta] - 2 \text{cov}(\mu, \delta) \\
+&= 100 + \tau^2_0 \\
+\text{Corr}(\theta_A, \theta_B)
+&= \frac{\text{cov}(\theta_A, \theta_B)}{\sqrt{\text{Var}[\theta_A] \text{Var}[\theta_B]}} \\
+&= \frac{100 - \tau^2_0}{100 + \tau^2_0}
+\end{align*}
+
+#+begin_src julia :exports both
+# set prior parameters
+μ₀ = 75
+γ₀² = 100
+ν₀ = 2
+σ₀² = 100
+δ₀_list = [-4, -2, 0, 2, 4]
+τ₀²_list = [10, 50, 100, 500]
+
+# set data
+n_A = 16
+n_B = 16
+ȳ_A = 75.2
+ȳ_B = 77.5
+s_A = 7.3
+s_B = 8.1
+
+function GibssSampling(S, n_A, n_B,ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²)
+    # Gibbs sampler
+    MU = Vector{Float64}(undef, S)
+    DELTA = Vector{Float64}(undef, S)
+    SIGMA = Vector{Float64}(undef, S)
+    Y1 = Vector{Float64}(undef, S)
+    Y2 = Vector{Float64}(undef, S)
+
+    # starting values
+    μ = (ȳ_A + ȳ_B) / 2
+    δ = (ȳ_A - ȳ_B) / 2
+
+    for s in 1:S
+        # update σ²
+        νₙ = ν₀ + n_A + n_B
+        νₙσₙ² = ν₀ * σ₀² +
+            n_A*(s_A^2 + ȳ_A^2 - 2*ȳ_A*(μ + δ) + (μ + δ)^2) +
+            n_B*(s_B^2 + ȳ_B^2 - 2*ȳ_B*(μ - δ) + (μ - δ)^2)
+        σ² = 1 / rand(Gamma(νₙ / 2, 2 / νₙσₙ²))
+
+        # update μ
+        γₙ² = 1 / (1 / γ₀² + (n_A + n_B) / σ²)
+        μₙ = γₙ² * (μ₀ / γ₀² + n_A*(ȳ_A - δ) / σ² + n_B*(ȳ_B + δ) / σ²)
+        μ = rand(Normal(μₙ, sqrt(γₙ²)))
+
+        # update δ
+        τₙ² = 1 / (1 / τ₀² + (n_A + n_B) / σ²)
+        δₙ = τₙ² * (δ₀ / τ₀² + n_A*(ȳ_A - μ) / σ² - n_B*(ȳ_B - μ) / σ²)
+        δ = rand(Normal(δₙ, sqrt(τₙ²)))
+
+        # save parameter values
+        MU[s] = μ
+        DELTA[s] = δ
+        SIGMA[s] = σ²
+
+        # update Ys
+        Y1[s] = rand(Normal(μ .+ δ, sqrt(σ²)))
+        Y2[s] = rand(Normal(μ .- δ, sqrt(σ²)))
+
+    end
+    return MU, DELTA, SIGMA, Y1, Y2
+end
+
+function priorCorrelation(γ₀², τ₀²)
+    (γ₀² - τ₀²) / (γ₀² + τ₀²)
+end
+
+function getPosteriorValues(
+    S, n_A, n_B, ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²)
+    MU, DELTA, SIGMA, Y1, Y2 = GibssSampling(
+        S, n_A, n_B, ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²
+    )
+    values = [
+        δ₀, τ₀²,
+        mean(DELTA .< 0),
+        quantile(DELTA, [0.025, 0.975]),
+        priorCorrelation(γ₀², τ₀²),
+        cor(MU .+ DELTA, MU .- DELTA)
+    ]
+    return values
+end
+
+S=5000
+storedf = DataFrame(
+    δ₀ = Float64[],
+    τ₀² = Float64[],
+    Pr_δ_lt_0 = Float64[],
+    δ_CI = Vector{Float64}[],
+    prior_cor = Float64[],
+    posterior_cor = Float64[]
+)
+for δ₀ in δ₀_list
+    for τ₀² in τ₀²_list
+        values = getPosteriorValues(
+            S, n_A, n_B, ȳ_A, ȳ_B, s_A, s_B, μ₀, γ₀², ν₀, σ₀², δ₀, τ₀²
+        )
+        push!(storedf, values)
+    end
+end
+storedf
+#+end_src
+
+:RESULTS:
+#+begin_example
+20×6 DataFrame
+ Row │ δ₀       τ₀²      Pr_δ_lt_0  δ_CI                  prior_cor  posterior_cor
+     │ Float64  Float64  Float64    Array…                Float64    Float64
+─────┼─────────────────────────────────────────────────────────────────────────────
+   1 │    -4.0     10.0     0.9004  [-4.40737, 0.960564]   0.818182     0.0832215
+   2 │    -4.0     50.0     0.809   [-4.07596, 1.57355]    0.333333     0.0296429
+   3 │    -4.0    100.0     0.7998  [-4.0521, 1.71576]     0.0         -0.00939503
+   4 │    -4.0    500.0     0.7886  [-4.12576, 1.81624]   -0.666667    -0.0262716
+   5 │    -2.0     10.0     0.837   [-3.92399, 1.32537]    0.818182     0.10129
+   6 │    -2.0     50.0     0.8028  [-4.05612, 1.6224]     0.333333     0.00869293
+   7 │    -2.0    100.0     0.8038  [-4.0379, 1.6864]      0.0         -0.00810778
+   8 │    -2.0    500.0     0.7888  [-4.05015, 1.76565]   -0.666667    -0.0191756
+   9 │     0.0     10.0     0.7576  [-3.48922, 1.67463]    0.818182     0.0929888
+  10 │     0.0     50.0     0.7726  [-3.923, 1.72819]      0.333333     0.00904771
+  11 │     0.0    100.0     0.7826  [-3.97522, 1.82757]    0.0         -0.0190771
+  12 │     0.0    500.0     0.7928  [-4.0154, 1.72617]    -0.666667     0.0197301
+  13 │     2.0     10.0     0.6736  [-3.22579, 2.10982]    0.818182     0.0825033
+  14 │     2.0     50.0     0.763   [-3.85493, 1.81963]    0.333333    -0.00669629
+  15 │     2.0    100.0     0.774   [-3.89927, 1.66101]    0.0         -0.0104147
+  16 │     2.0    500.0     0.7908  [-4.0372, 1.75225]    -0.666667     0.00590126
+  17 │     4.0     10.0     0.5678  [-2.83371, 2.36965]    0.818182     0.0925342
+  18 │     4.0     50.0     0.7368  [-3.65975, 1.90021]    0.333333     0.0114906
+  19 │     4.0    100.0     0.7718  [-3.86476, 1.78857]    0.0          0.0232417
+  20 │     4.0    500.0     0.7924  [-4.17904, 1.72876]   -0.666667     0.00648826
+#+end_example
+
+* b)
+** Question :noexport:
+Describe how you might use these results to convey evidence that
+\(\theta_A \lt \theta_B\) to people of a variety of prior opinions.
+
+** Answer
+The posterior probability that
+\(\theta_A \lt \theta_B \iff \delta \lt 0\)
+is over 50% for all combinations of \(\delta_0\) and \(\tau_0^2\).
+Even if we have a strong prior belief that \(\theta_A > \theta_B\),
+the posterior probability that \(\theta_A \lt \theta_B\) is still over 50%.
+(See the case of \(\delta_0 = 4\) and \(\tau_0^2 = 10\).)
+In the case of [[../ch5/5-2.org][Exercise 5.2]], where each group was modeled independently, we could not provide such strong evidence.
+
+* nav :ignore:
+#+ATTR_HTML: :class nav-prev
+[[./8-1.org][8.1]]
+
+#+ATTR_HTML: :class nav-next
+[[./8-3.org][8.3]]

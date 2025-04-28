@@ -1,0 +1,60 @@
+#+SUBTITLE: Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 9
+#+AUTHOR: Kaoru Babasaki
+#+OPTIONS: toc:4
+#+OPTIONS: H:7
+#+OPTIONS: tags:nil
+#+OPTIONS: num:nil
+#+OPTIONS: timestamp:nil
+
+#+SETUPFILE: ../org-html-themes/org/theme-readtheorg.setup
+#+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+#+HTML_HEAD: <link rel="stylesheet" href="../css/custom.css">
+
+#+LATEX_HEADER: \usepackage[backend=biber, style=ieee]{biblatex}
+#+LATEX_HEADER: \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.5cm]{geometry}
+
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \setmainjfont[Scale=0.9]{Noto Serif JP}
+#+LATEX_HEADER: \setmonojfont[Scale=0.9]{DejaVu Sans Mono}
+#+LATEX_HEADER: \setmonofont{JuliaMono}[Scale=MatchLowercase]
+#+LATEX_HEADER: \ltjsetparameter{jacharrange={-2,-3}}
+
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage{bm}
+#+LATEX_HEADER: \usepackage[legacycolonsymbols]{mathtools}
+#+LATEX_HEADER: \renewcommand{\thesection}{\hspace{-1.5em}}
+#+LATEX_HEADER: \renewcommand{\thesubsection}{\hspace{-1.5em}}
+#+LATEX_HEADER: \newcommand{\indep}{\perp \!\!\! \perp}
+#+LATEX_HEADER: \newcommand{\lt}{<}
+
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage{verbatim}
+
+# Definition
+# Probability and Expectation
+#+LATEX_HEADER: \def\E{{\mathbb{E}}}
+#+LATEX_HEADER: \def\var{{\mathrm{var}}}
+#+LATEX_HEADER: \def\Var{{\mathrm{Var}}}
+#+LATEX_HEADER: \def\Pr{{\mathrm{Pr}}}
+#+LATEX_HEADER: \def\cov{{\mathrm{cov}}}
+#+LATEX_HEADER: \def\Cov{{\mathrm{Cov}}}
+#+LATEX_HEADER: \def\indep{{\perp \!\!\! \perp}}
+
+# Matrix and Vector
+#+LATEX_HEADER: \def\by{{\boldsymbol{y}}}
+#+LATEX_HEADER: \def\bx{{\boldsymbol{x}}}
+#+LATEX_HEADER: \def\bfX{{\mathbf{X}}}
+#+LATEX_HEADER: \def\bfW{{\mathbf{W}}}
+#+LATEX_HEADER: \def\bbeta{{\boldsymbol{\beta}}}
+#+LATEX_HEADER: \def\btheta{{\boldsymbol{\theta}}}
+#+LATEX_HEADER: \def\bmu{{\boldsymbol{\mu}}}
+#+LATEX_HEADER: \def\bgamma{{\boldsymbol{\gamma}}}
+#+LATEX_HEADER: \def\bzero{{\boldsymbol{0}}}
+#+LATEX_HEADER: \newcommand{\bPsi}{\boldsymbol{\Psi}}
+
+# Function
+#+LATEX_HEADER: \def\logit{{\mathrm{logit}}}
+#+LATEX_HEADER: \def\tr{{\mathrm{tr}}}
+
+HOME -> [[file:../index.org][English]] / [[file:../index_jp.org][日本語]]

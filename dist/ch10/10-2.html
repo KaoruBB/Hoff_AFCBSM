@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10.2</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">10.2
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org9261e12">a)</a>
+<ul>
+<li><a href="#orgc174a86">Answer</a></li>
+</ul>
+</li>
+<li><a href="#orgeda0762">b)</a>
+<ul>
+<li><a href="#orgd36af6a">Answer</a></li>
+</ul>
+</li>
+<li><a href="#orgae36689">c)</a>
+<ul>
+<li><a href="#orgf8034c6">Answer</a></li>
+</ul>
+</li>
+<li><a href="#org1f3c819">d)</a>
+<ul>
+<li><a href="#org7a3cbaf">Answer</a></li>
+</ul>
+</li>
+<li><a href="#orgfc7303e">e)</a>
+<ul>
+<li><a href="#orge3d70b1">Answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org9261e12" class="outline-2">
+<h2 id="org9261e12">a)</h2>
+<div class="outline-text-2" id="text-org9261e12">
+</div>
+<div id="outline-container-orgc174a86" class="outline-3">
+<h3 id="orgc174a86">Answer</h3>
+<div class="outline-text-3" id="text-orgc174a86">
+\begin{align*}
+\prod_{i=1}^n p(y_i | \alpha, \beta, x_i)
+&= \prod_{i=1}^n \frac{\exp(\alpha + \beta x_i)^{y_i}}{1 + \exp(\alpha + \beta x_i)} \\
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-orgeda0762" class="outline-2">
+<h2 id="orgeda0762">b)</h2>
+<div class="outline-text-2" id="text-orgeda0762">
+</div>
+<div id="outline-container-orgd36af6a" class="outline-3">
+<h3 id="orgd36af6a">Answer</h3>
+<div class="outline-text-3" id="text-orgd36af6a">
+<p>
+Let \(p\) be the probability of nesting success.
+Then,
+</p>
+\begin{align*}
+\alpha + \beta x_i
+&= \text{logit } p \\
+&= \log \frac{p}{1-p}. \\
+\end{align*}
+<p>
+Thus, if we have no prior information about the probability of nesting success,
+we can set the prior expectation of \(\alpha + \beta x_i\) to 0, \(p = 0.5\).
+Also, we have no prior information about the relationship between wingspan and nesting success,
+so we can set the prior expectation of \(\beta\) to 0.
+Consequently, we can set the prior expectation of \(\alpha\) to 0.
+</p>
+
+<p>
+Next, we consider the prior variance of \(\alpha\) and \(\beta\).
+Suppose temporarily that \(\beta = 0\).
+If the prior variance of \(\alpha\) is set to \(2500\),
+\(\alpha\) ranges between \(-100\) and \(100\) for 95% probability, and
+the odds ratio should be between
+\(\exp(-100) \approx 3.7 \times 10^{-44}\) and
+\(\exp(100) \approx 2.7 \times 10^{43}\).
+This prior can be seen quite uninformative.
+Similarly, considering \(x_i\) ranges between 10 and 15,
+we can set the prior variance of \(\beta\) to 25.
+Thus, we can set the prior distribution of \(\alpha\) and \(\beta\) as follows:
+</p>
+\begin{align*}
+\alpha &\sim \mathcal{N}(0, 2500) \\
+\beta &\sim \mathcal{N}(0, 25) \\
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-orgae36689" class="outline-2">
+<h2 id="orgae36689">c)</h2>
+<div class="outline-text-2" id="text-orgae36689">
+</div>
+<div id="outline-container-orgf8034c6" class="outline-3">
+<h3 id="orgf8034c6">Answer</h3>
+<div class="outline-text-3" id="text-orgf8034c6">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">using</span> BayesPlots
+<span style="color: #51afef;">using</span> DelimitedFiles
+<span style="color: #51afef;">using</span> Distributions
+<span style="color: #51afef;">using</span> LaTeXStrings
+<span style="color: #51afef;">using</span> LinearAlgebra
+<span style="color: #51afef;">using</span> MCMCChains
+<span style="color: #51afef;">using</span> Plots
+<span style="color: #51afef;">using</span> Plots.Measures
+<span style="color: #51afef;">using</span> Random
+<span style="color: #51afef;">using</span> StatsBase
+<span style="color: #51afef;">using</span> StatsModels
+<span style="color: #51afef;">using</span> StatsPlots
+<span style="color: #51afef;">using</span> GLM
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">data = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/msparrownest.dat"</span><span style="color: #51afef;">)</span>
+y = data<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+x = data<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">add intercept</span>
+x = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>x<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, x<span style="color: #51afef;">)</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">MetropolisLogit</span><span style="color: #51afef;">(</span>S, y, x, &#946;&#8320;, &#931;&#8320;, var_prop; seed=<span style="color: #e69055; font-weight: bold;">123</span><span style="color: #51afef;">)</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">S: number of samples</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">y: response vector</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">x: predictor vector</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">&#946;&#8320;: prior mean of &#946;</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">&#931;&#8320;: prior covariance of &#946;</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">var_prop: proposal variance</span>
+
+    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">logistic</span><span style="color: #51afef;">(</span>&#968;<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">return</span> exp<span style="color: #51afef;">(</span>&#968;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">+</span> exp<span style="color: #C57BDB;">(</span>&#968;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+
+    Random.seed!<span style="color: #51afef;">(</span>seed<span style="color: #51afef;">)</span>
+    q = length<span style="color: #51afef;">(</span>&#946;&#8320;<span style="color: #51afef;">)</span>
+    BETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, q<span style="color: #51afef;">)</span>
+    acs = <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">acceptance rate</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">Initialize</span>
+    glmfit = glm<span style="color: #51afef;">(</span>x, y, Binomial<span style="color: #C57BDB;">()</span>, LogitLink<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span>
+    &#946; = coef<span style="color: #51afef;">(</span>glmfit<span style="color: #51afef;">)</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">Metropolis algorithm</span>
+    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+        p = logistic.<span style="color: #51afef;">(</span>x<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #51afef;">)</span>
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">Draw &#946;*</span>
+        &#946;_star = rand<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>&#946;, var_prop<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+        p_star = logistic.<span style="color: #51afef;">(</span>x<span style="color: #FCCE7B;">*</span>&#946;_star<span style="color: #51afef;">)</span>
+        log_r = sum<span style="color: #51afef;">(</span>logpdf.<span style="color: #C57BDB;">(</span>Bernoulli.<span style="color: #7bc275;">(</span>p_star<span style="color: #7bc275;">)</span>, y<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">+</span>
+                logpdf<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>&#946;_star, &#931;&#8320;<span style="color: #C57BDB;">)</span>, &#946;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span>
+                sum<span style="color: #51afef;">(</span>logpdf.<span style="color: #C57BDB;">(</span>Bernoulli.<span style="color: #7bc275;">(</span>p<span style="color: #7bc275;">)</span>, y<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span>
+                logpdf<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>&#946;, &#931;&#8320;<span style="color: #C57BDB;">)</span>, &#946;_star<span style="color: #51afef;">)</span>
+
+        <span style="color: #51afef;">if</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> log_r
+            &#946; = &#946;_star
+            acs <span style="color: #FCCE7B;">+=</span> <span style="color: #e69055; font-weight: bold;">1</span>
+        <span style="color: #51afef;">end</span>
+        BETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#946;
+    <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">return</span> BETA, acs<span style="color: #FCCE7B;">/</span>S
+<span style="color: #51afef;">end</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Prior</span>
+&#946;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">]</span>
+&#931;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">2500</span> <span style="color: #e69055; font-weight: bold;">0</span>; <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #e69055; font-weight: bold;">25</span><span style="color: #51afef;">]</span>
+
+S = <span style="color: #e69055; font-weight: bold;">10000</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">search best proposal variance</span>
+<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">20</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">Proposal variance</span>
+    var_prop = i<span style="color: #FCCE7B;">*</span>inv<span style="color: #51afef;">(</span>x'x<span style="color: #51afef;">)</span>
+    BETA, acs = MetropolisLogit<span style="color: #51afef;">(</span>S, y, x, &#946;&#8320;, &#931;&#8320;, var_prop<span style="color: #51afef;">)</span>
+    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"i = "</span>, i<span style="color: #51afef;">)</span>
+    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"acceptance rate = "</span>, acs<span style="color: #51afef;">)</span>
+    ess_&#945; = MCMCDiagnosticTools.ess<span style="color: #51afef;">(</span>BETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+    ess_&#946; = MCMCDiagnosticTools.ess<span style="color: #51afef;">(</span>BETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"ess_&#945; = "</span>, ess_&#945;<span style="color: #51afef;">)</span>
+    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"ess_&#946; = "</span>, ess_&#946;<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">var_prop = <span style="color: #e69055; font-weight: bold;">17</span><span style="color: #FCCE7B;">*</span>inv<span style="color: #51afef;">(</span>x'x<span style="color: #51afef;">)</span>
+BETA, acs = MetropolisLogit<span style="color: #51afef;">(</span>S, y, x, &#946;&#8320;, &#931;&#8320;, var_prop<span style="color: #51afef;">)</span>
+
+ess<span style="color: #51afef;">(</span>MCMCChains.Chains<span style="color: #C57BDB;">(</span>BETA<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="orga7fdacd">
+ESS
+  parameters         ess   ess_per_sec
+      Symbol     Float64       Missing
+
+     param_1   1261.2209       missing
+     param_2   1248.0384       missing
+</pre>
+
+
+<div id="org2c79430" class="figure">
+<p><img src="./fig/ex10-2_itr.png" alt="ex10-2_itr.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1f3c819" class="outline-2">
+<h2 id="org1f3c819">d)</h2>
+<div class="outline-text-2" id="text-org1f3c819">
+</div>
+<div id="outline-container-org7a3cbaf" class="outline-3">
+<h3 id="org7a3cbaf">Answer</h3>
+<div class="outline-text-3" id="text-org7a3cbaf">
+
+<div id="orgb7aa87b" class="figure">
+<p><img src="./fig/ex10-2d.png" alt="ex10-2d.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfc7303e" class="outline-2">
+<h2 id="orgfc7303e">e)</h2>
+<div class="outline-text-2" id="text-orgfc7303e">
+</div>
+<div id="outline-container-orge3d70b1" class="outline-3">
+<h3 id="orge3d70b1">Answer</h3>
+<div class="outline-text-3" id="text-orge3d70b1">
+<div class="org-src-container">
+<pre class="src src-julia">x_grid = <span style="color: #e69055; font-weight: bold;">10</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">15</span>
+x_grid = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>x_grid<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, x_grid<span style="color: #51afef;">)</span>
+
+<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
+f_post = logistic.<span style="color: #51afef;">(</span>x_grid<span style="color: #FCCE7B;">*</span>BETA<span style="color: #C57BDB;">[</span>burnin:<span style="color: #51afef;">end</span>, :<span style="color: #C57BDB;">]</span>'<span style="color: #51afef;">)</span>
+
+<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
+f_post_mean = mean<span style="color: #51afef;">(</span>f_post, dims=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+f_post_lower = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> quantile<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0.025</span><span style="color: #C57BDB;">)</span>, eachrow<span style="color: #C57BDB;">(</span>f_post<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+f_post_upper = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> quantile<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">)</span>, eachrow<span style="color: #C57BDB;">(</span>f_post<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+
+<div id="orga6cd7c9" class="figure">
+<p><img src="./fig/ex10-2e.png" alt="ex10-2e.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./10-1.html" class="nav-prev">10.1</a>
+</p>
+
+<p class="nav-next">
+<a href="./10-3.html" class="nav-next">10.3</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

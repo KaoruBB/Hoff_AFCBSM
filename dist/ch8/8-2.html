@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>8.2</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">8.2
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 8</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1b309a3">a)</a>
+<ul>
+<li><a href="#org830dd5c">Answer</a></li>
+</ul>
+</li>
+<li><a href="#orgca5409e">b)</a>
+<ul>
+<li><a href="#orgb49a857">Answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org1b309a3" class="outline-2">
+<h2 id="org1b309a3">a)</h2>
+<div class="outline-text-2" id="text-org1b309a3">
+</div>
+<div id="outline-container-org830dd5c" class="outline-3">
+<h3 id="org830dd5c">Answer</h3>
+<div class="outline-text-3" id="text-org830dd5c">
+<p>
+The prior correlation of \(\theta_A\) and \(\theta_B\) is computed as follows:
+</p>
+
+\begin{align*}
+\text{cov}(\theta_A, \theta_B)
+&= \text{cov}(\mu + \delta, \mu - \delta) \\
+&= E[(\mu + \delta)(\mu - \delta)] - E[\mu + \delta] E[\mu - \delta] \\
+&= E[\mu^2 - \delta^2] - (E[\mu] + E[\delta]) (E[\mu] - E[\delta]) \\
+&= E[\mu^2] - E[\delta^2] - (E[\mu]^2 - E[\delta]^2) \\
+&= \text{var}(\mu) - \text{var}(\delta) \\
+&= 100 - \tau^2_0 \\
+\text{Var}[\theta_A]
+&= \text{Var}[\mu + \delta] \\
+&= \text{Var}[\mu] + \text{Var}[\delta] + 2 \text{cov}(\mu, \delta) \\
+&= 100 + \tau^2_0 \\
+\text{Var}[\theta_B]
+&= \text{Var}[\mu - \delta] \\
+&= \text{Var}[\mu] + \text{Var}[\delta] - 2 \text{cov}(\mu, \delta) \\
+&= 100 + \tau^2_0 \\
+\text{Corr}(\theta_A, \theta_B)
+&= \frac{\text{cov}(\theta_A, \theta_B)}{\sqrt{\text{Var}[\theta_A] \text{Var}[\theta_B]}} \\
+&= \frac{100 - \tau^2_0}{100 + \tau^2_0}
+\end{align*}
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
+&#956;&#8320; = <span style="color: #e69055; font-weight: bold;">75</span>
+&#947;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">100</span>
+&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
+&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">100</span>
+&#948;&#8320;_list = <span style="color: #51afef;">[</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">4</span>, <span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">4</span><span style="color: #51afef;">]</span>
+&#964;&#8320;&#178;_list = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">50</span>, <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">500</span><span style="color: #51afef;">]</span>
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">set data</span>
+n_A = <span style="color: #e69055; font-weight: bold;">16</span>
+n_B = <span style="color: #e69055; font-weight: bold;">16</span>
+y&#772;_A = <span style="color: #e69055; font-weight: bold;">75.2</span>
+y&#772;_B = <span style="color: #e69055; font-weight: bold;">77.5</span>
+s_A = <span style="color: #e69055; font-weight: bold;">7.3</span>
+s_B = <span style="color: #e69055; font-weight: bold;">8.1</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">GibssSampling</span><span style="color: #51afef;">(</span>S, n_A, n_B,y&#772;_A, y&#772;_B, s_A, s_B, &#956;&#8320;, &#947;&#8320;&#178;, &#957;&#8320;, &#963;&#8320;&#178;, &#948;&#8320;, &#964;&#8320;&#178;<span style="color: #51afef;">)</span>
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">Gibbs sampler</span>
+    MU = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S<span style="color: #51afef;">)</span>
+    DELTA = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S<span style="color: #51afef;">)</span>
+    SIGMA = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S<span style="color: #51afef;">)</span>
+    Y1 = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S<span style="color: #51afef;">)</span>
+    Y2 = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S<span style="color: #51afef;">)</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
+    &#956; = <span style="color: #51afef;">(</span>y&#772;_A <span style="color: #FCCE7B;">+</span> y&#772;_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>
+    &#948; = <span style="color: #51afef;">(</span>y&#772;_A <span style="color: #FCCE7B;">-</span> y&#772;_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>
+
+    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#963;&#178;</span>
+        &#957;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">+</span> n_A <span style="color: #FCCE7B;">+</span> n_B
+        &#957;&#8345;&#963;&#8345;&#178; = &#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178; <span style="color: #FCCE7B;">+</span>
+            n_A<span style="color: #FCCE7B;">*</span><span style="color: #51afef;">(</span>s_A<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">+</span> y&#772;_A<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">*</span>y&#772;_A<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>&#956; <span style="color: #FCCE7B;">+</span> &#948;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span> <span style="color: #C57BDB;">(</span>&#956; <span style="color: #FCCE7B;">+</span> &#948;<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">+</span>
+            n_B<span style="color: #FCCE7B;">*</span><span style="color: #51afef;">(</span>s_B<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">+</span> y&#772;_B<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">-</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">*</span>y&#772;_B<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>&#956; <span style="color: #FCCE7B;">-</span> &#948;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span> <span style="color: #C57BDB;">(</span>&#956; <span style="color: #FCCE7B;">-</span> &#948;<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+        &#963;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#957;&#8345; <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">/</span> &#957;&#8345;&#963;&#8345;&#178;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#956;</span>
+        &#947;&#8345;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> &#947;&#8320;&#178; <span style="color: #FCCE7B;">+</span> <span style="color: #C57BDB;">(</span>n_A <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#963;&#178;<span style="color: #51afef;">)</span>
+        &#956;&#8345; = &#947;&#8345;&#178; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>&#956;&#8320; <span style="color: #FCCE7B;">/</span> &#947;&#8320;&#178; <span style="color: #FCCE7B;">+</span> n_A<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>y&#772;_A <span style="color: #FCCE7B;">-</span> &#948;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#963;&#178; <span style="color: #FCCE7B;">+</span> n_B<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>y&#772;_B <span style="color: #FCCE7B;">+</span> &#948;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#963;&#178;<span style="color: #51afef;">)</span>
+        &#956; = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#956;&#8345;, sqrt<span style="color: #7bc275;">(</span>&#947;&#8345;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#948;</span>
+        &#964;&#8345;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> &#964;&#8320;&#178; <span style="color: #FCCE7B;">+</span> <span style="color: #C57BDB;">(</span>n_A <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#963;&#178;<span style="color: #51afef;">)</span>
+        &#948;&#8345; = &#964;&#8345;&#178; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>&#948;&#8320; <span style="color: #FCCE7B;">/</span> &#964;&#8320;&#178; <span style="color: #FCCE7B;">+</span> n_A<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>y&#772;_A <span style="color: #FCCE7B;">-</span> &#956;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#963;&#178; <span style="color: #FCCE7B;">-</span> n_B<span style="color: #FCCE7B;">*</span><span style="color: #C57BDB;">(</span>y&#772;_B <span style="color: #FCCE7B;">-</span> &#956;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#963;&#178;<span style="color: #51afef;">)</span>
+        &#948; = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#948;&#8345;, sqrt<span style="color: #7bc275;">(</span>&#964;&#8345;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">save parameter values</span>
+        MU<span style="color: #51afef;">[</span>s<span style="color: #51afef;">]</span> = &#956;
+        DELTA<span style="color: #51afef;">[</span>s<span style="color: #51afef;">]</span> = &#948;
+        SIGMA<span style="color: #51afef;">[</span>s<span style="color: #51afef;">]</span> = &#963;&#178;
+
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">update Ys</span>
+        Y1<span style="color: #51afef;">[</span>s<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#956; .<span style="color: #FCCE7B;">+</span> &#948;, sqrt<span style="color: #7bc275;">(</span>&#963;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+        Y2<span style="color: #51afef;">[</span>s<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#956; .<span style="color: #FCCE7B;">-</span> &#948;, sqrt<span style="color: #7bc275;">(</span>&#963;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+
+    <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">return</span> MU, DELTA, SIGMA, Y1, Y2
+<span style="color: #51afef;">end</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">priorCorrelation</span><span style="color: #51afef;">(</span>&#947;&#8320;&#178;, &#964;&#8320;&#178;<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">(</span>&#947;&#8320;&#178; <span style="color: #FCCE7B;">-</span> &#964;&#8320;&#178;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>&#947;&#8320;&#178; <span style="color: #FCCE7B;">+</span> &#964;&#8320;&#178;<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+
+<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">getPosteriorValues</span><span style="color: #51afef;">(</span>
+    S, n_A, n_B, y&#772;_A, y&#772;_B, s_A, s_B, &#956;&#8320;, &#947;&#8320;&#178;, &#957;&#8320;, &#963;&#8320;&#178;, &#948;&#8320;, &#964;&#8320;&#178;<span style="color: #51afef;">)</span>
+    MU, DELTA, SIGMA, Y1, Y2 = GibssSampling<span style="color: #51afef;">(</span>
+        S, n_A, n_B, y&#772;_A, y&#772;_B, s_A, s_B, &#956;&#8320;, &#947;&#8320;&#178;, &#957;&#8320;, &#963;&#8320;&#178;, &#948;&#8320;, &#964;&#8320;&#178;
+    <span style="color: #51afef;">)</span>
+    values = <span style="color: #51afef;">[</span>
+        &#948;&#8320;, &#964;&#8320;&#178;,
+        mean<span style="color: #C57BDB;">(</span>DELTA .<span style="color: #FCCE7B;">&lt;</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #C57BDB;">)</span>,
+        quantile<span style="color: #C57BDB;">(</span>DELTA, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>,
+        priorCorrelation<span style="color: #C57BDB;">(</span>&#947;&#8320;&#178;, &#964;&#8320;&#178;<span style="color: #C57BDB;">)</span>,
+        cor<span style="color: #C57BDB;">(</span>MU .<span style="color: #FCCE7B;">+</span> DELTA, MU .<span style="color: #FCCE7B;">-</span> DELTA<span style="color: #C57BDB;">)</span>
+    <span style="color: #51afef;">]</span>
+    <span style="color: #51afef;">return</span> values
+<span style="color: #51afef;">end</span>
+
+S=<span style="color: #e69055; font-weight: bold;">5000</span>
+storedf = DataFrame<span style="color: #51afef;">(</span>
+    &#948;&#8320; = Float64<span style="color: #C57BDB;">[]</span>,
+    &#964;&#8320;&#178; = Float64<span style="color: #C57BDB;">[]</span>,
+    Pr_&#948;_lt_0 = Float64<span style="color: #C57BDB;">[]</span>,
+    &#948;_CI = Vector<span style="color: #C57BDB;">{</span>Float64<span style="color: #C57BDB;">}[]</span>,
+    prior_cor = Float64<span style="color: #C57BDB;">[]</span>,
+    posterior_cor = Float64<span style="color: #C57BDB;">[]</span>
+<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">for</span> &#948;&#8320; <span style="color: #51afef;">in</span> &#948;&#8320;_list
+    <span style="color: #51afef;">for</span> &#964;&#8320;&#178; <span style="color: #51afef;">in</span> &#964;&#8320;&#178;_list
+        values = getPosteriorValues<span style="color: #51afef;">(</span>
+            S, n_A, n_B, y&#772;_A, y&#772;_B, s_A, s_B, &#956;&#8320;, &#947;&#8320;&#178;, &#957;&#8320;, &#963;&#8320;&#178;, &#948;&#8320;, &#964;&#8320;&#178;
+        <span style="color: #51afef;">)</span>
+        push!<span style="color: #51afef;">(</span>storedf, values<span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+<span style="color: #51afef;">end</span>
+storedf
+</pre>
+</div>
+
+<p>
+:RESULTS:
+</p>
+<pre class="example" id="orge83630e">
+20×6 DataFrame
+ Row │ δ₀       τ₀²      Pr_δ_lt_0  δ_CI                  prior_cor  posterior_cor
+     │ Float64  Float64  Float64    Array…                Float64    Float64
+─────┼─────────────────────────────────────────────────────────────────────────────
+   1 │    -4.0     10.0     0.9004  [-4.40737, 0.960564]   0.818182     0.0832215
+   2 │    -4.0     50.0     0.809   [-4.07596, 1.57355]    0.333333     0.0296429
+   3 │    -4.0    100.0     0.7998  [-4.0521, 1.71576]     0.0         -0.00939503
+   4 │    -4.0    500.0     0.7886  [-4.12576, 1.81624]   -0.666667    -0.0262716
+   5 │    -2.0     10.0     0.837   [-3.92399, 1.32537]    0.818182     0.10129
+   6 │    -2.0     50.0     0.8028  [-4.05612, 1.6224]     0.333333     0.00869293
+   7 │    -2.0    100.0     0.8038  [-4.0379, 1.6864]      0.0         -0.00810778
+   8 │    -2.0    500.0     0.7888  [-4.05015, 1.76565]   -0.666667    -0.0191756
+   9 │     0.0     10.0     0.7576  [-3.48922, 1.67463]    0.818182     0.0929888
+  10 │     0.0     50.0     0.7726  [-3.923, 1.72819]      0.333333     0.00904771
+  11 │     0.0    100.0     0.7826  [-3.97522, 1.82757]    0.0         -0.0190771
+  12 │     0.0    500.0     0.7928  [-4.0154, 1.72617]    -0.666667     0.0197301
+  13 │     2.0     10.0     0.6736  [-3.22579, 2.10982]    0.818182     0.0825033
+  14 │     2.0     50.0     0.763   [-3.85493, 1.81963]    0.333333    -0.00669629
+  15 │     2.0    100.0     0.774   [-3.89927, 1.66101]    0.0         -0.0104147
+  16 │     2.0    500.0     0.7908  [-4.0372, 1.75225]    -0.666667     0.00590126
+  17 │     4.0     10.0     0.5678  [-2.83371, 2.36965]    0.818182     0.0925342
+  18 │     4.0     50.0     0.7368  [-3.65975, 1.90021]    0.333333     0.0114906
+  19 │     4.0    100.0     0.7718  [-3.86476, 1.78857]    0.0          0.0232417
+  20 │     4.0    500.0     0.7924  [-4.17904, 1.72876]   -0.666667     0.00648826
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgca5409e" class="outline-2">
+<h2 id="orgca5409e">b)</h2>
+<div class="outline-text-2" id="text-orgca5409e">
+</div>
+<div id="outline-container-orgb49a857" class="outline-3">
+<h3 id="orgb49a857">Answer</h3>
+<div class="outline-text-3" id="text-orgb49a857">
+<p>
+The posterior probability that
+\(\theta_A \lt \theta_B \iff \delta \lt 0\)
+is over 50% for all combinations of \(\delta_0\) and \(\tau_0^2\).
+Even if we have a strong prior belief that \(\theta_A > \theta_B\),
+the posterior probability that \(\theta_A \lt \theta_B\) is still over 50%.
+(See the case of \(\delta_0 = 4\) and \(\tau_0^2 = 10\).)
+In the case of <a href="../ch5/5-2.html">Exercise 5.2</a>, where each group was modeled independently, we could not provide such strong evidence.
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./8-1.html" class="nav-prev">8.1</a>
+</p>
+
+<p class="nav-next">
+<a href="./8-3.html" class="nav-next">8.3</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

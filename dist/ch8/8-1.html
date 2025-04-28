@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>8.1</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">8.1
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 8</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org620c98b">a)</a>
+<ul>
+<li><a href="#orge4605dd">Answer</a></li>
+</ul>
+</li>
+<li><a href="#org111c41c">b)</a>
+<ul>
+<li><a href="#org5018bd1">Answer</a></li>
+</ul>
+</li>
+<li><a href="#orgf02c1c5">c)</a>
+<ul>
+<li><a href="#org6c375d3">Answer</a></li>
+</ul>
+</li>
+<li><a href="#org77faa8a">d)</a>
+<ul>
+<li><a href="#org92bb401">Answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-org620c98b" class="outline-2">
+<h2 id="org620c98b">a)</h2>
+<div class="outline-text-2" id="text-org620c98b">
+</div>
+<div id="outline-container-orge4605dd" class="outline-3">
+<h3 id="orge4605dd">Answer</h3>
+<div class="outline-text-3" id="text-orge4605dd">
+<p>
+\( \text{Var}[y_{i,j}|\mu, \tau^2] \) is bigger because it includes both between-group and within-group variability while \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) only includes within-group variability.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org111c41c" class="outline-2">
+<h2 id="org111c41c">b)</h2>
+<div class="outline-text-2" id="text-org111c41c">
+</div>
+<div id="outline-container-org5018bd1" class="outline-3">
+<h3 id="org5018bd1">Answer</h3>
+<div class="outline-text-3" id="text-org5018bd1">
+<p>
+I think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is zero because when \(\theta_j\) is known, \(y_{i_2,j}\) tells us nothing about \(y_{i_1,j}\) more than what we already know.
+However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive because \(y_{i_2,j}\) tells us something about group-specific information \(\theta_j\) which we do not know.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf02c1c5" class="outline-2">
+<h2 id="orgf02c1c5">c)</h2>
+<div class="outline-text-2" id="text-orgf02c1c5">
+</div>
+<div id="outline-container-org6c375d3" class="outline-3">
+<h3 id="org6c375d3">Answer</h3>
+<div class="outline-text-3" id="text-org6c375d3">
+\begin{align*}
+\text{Var}[y_{i,j}|\theta_j, \sigma^2]
+&= \sigma^2 \\
+\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2]
+&= \text{Var}[\frac{1}{n_j} \sum_{i=1}^{n_j} y_{i,j} | \theta_j, \sigma^2] \\
+&= \frac{1}{n_j^2} \text{Var}[\sum_{i=1}^{n_j} y_{i,j} | \theta_j, \sigma^2] \\
+&= \frac{ \sigma^2 }{n_j} \\
+\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]
+&= E[(y_{i_1, j} - \theta_j)(y_{i_2, j} - \theta_j) | \theta_j, \sigma^2] \\
+&= E[y_{i_1, j}y_{i_2, j} - \theta_j y_{i_1, j} - \theta_j y_{i_2, j}) + \theta_j^2 | \theta_j, \sigma^2] \\
+&= E[y_{i_1, j}y_{i_2, j} | \theta_j, \sigma^2] - \theta_j E[y_{i_1, j} | \theta_j, \sigma^2] - \theta_j E[y_{i_2, j} | \theta_j, \sigma^2] + \theta_j^2 \\
+&= E[y_{i_1, j} | \theta_j, \sigma^2] E[y_{i_2, j} | \theta_j, \sigma^2] - \theta_j^2 - \theta_j^2 + \theta_j^2 \\
+&\qquad (\because  y_{i_1, j} \text{ and } y_{i_2, j} \text{ are conditionally independent given} \theta_j, \sigma^2) \\
+&= \theta_j^2 - \theta_j^2 \\
+&= 0 \\
+\end{align*}
+
+\begin{align*}
+\text{Var}[y_{i,j}|\mu, \tau^2]
+&= E \left[\text{Var}[y_{i,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2\right] + \text{Var} \left[ E[y_{i,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2\right] \\
+&= E[\text{Var}[y_{i,j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Var}[E[y_{i,j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[\sigma^2 | \mu, \tau^2] + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \sigma^2 + \tau^2 \\
+\text{Var}[\bar{y}_{\cdot, j}|\mu, \tau^2]
+&= E \left[ \text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] + \text{Var} \left[ E[\bar{y}_{\cdot, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] \\
+&= E[\text{Var}[\bar{y}_{\cdot, j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Var}[E[\bar{y}_{\cdot, j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[ \frac{ \sigma^2 }{n_j} | \mu, \tau^2] + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \frac{ \sigma^2 }{n_j} + \tau^2 \\
+\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]
+&= E \left[ \text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] + \text{Cov} \left[ E[y_{i_1, j}|\theta_j, \sigma^2, \mu, \tau^2], E[y_{i_2, j}|\theta_j, \sigma^2, \mu, \tau^2] | \mu, \tau^2 \right] \\
+&= E[\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2] | \mu, \tau^2] + \text{Cov}[E[y_{i_1, j}|\theta_j, \sigma^2], E[y_{i_2, j}|\theta_j, \sigma^2] | \mu, \tau^2] \\
+&= E[0 | \mu, \tau^2] + \text{Cov}[\theta_j, \theta_j | \mu, \tau^2] \\
+&= 0 + \text{Var}[\theta_j | \mu, \tau^2] \\
+&= \tau^2 \\
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-org77faa8a" class="outline-2">
+<h2 id="org77faa8a">d)</h2>
+<div class="outline-text-2" id="text-org77faa8a">
+</div>
+<div id="outline-container-org92bb401" class="outline-3">
+<h3 id="org92bb401">Answer</h3>
+<div class="outline-text-3" id="text-org92bb401">
+\begin{align*}
+p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ p(\theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ \int p( \mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) d \mu } \\
+&= \frac{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) }{ \int p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) d \mu } \\
+&= \frac{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\sigma^2) p(\tau^2) }{ p(\boldsymbol{y}_1, \dots, \boldsymbol{y}_m | \theta_1, \ldots, \theta_m, \sigma^2) p(\sigma^2)
+\int  p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2) d \mu } \\
+&= \frac{ p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2)}{ \int p(\theta_1, \ldots, \theta_m | \mu, \tau^2) p(\mu) p(\tau^2) d \mu } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \tau^2) }{ \int p(\mu, \theta_1, \ldots, \theta_m, \tau^2) d \mu } \\
+&= \frac{ p(\mu, \theta_1, \ldots, \theta, \tau^2) }{ p(\theta_1, \ldots, \theta_m, \tau^2) } \\
+&= p(\mu | \theta_1, \ldots, \theta_m, \tau^2) \\
+\end{align*}
+
+<p>
+This means that the \(\sigma^2, \boldsymbol{y}_1, \dots, \boldsymbol{y}_2\) give us no additional information about \(\mu\) given \(\theta_1, \ldots, \theta_m, \tau^2\).
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="../ch7/7-6.html" class="nav-prev">7.6</a>
+</p>
+
+<p class="nav-next">
+<a href="./8-2.html" class="nav-next">8.2</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>

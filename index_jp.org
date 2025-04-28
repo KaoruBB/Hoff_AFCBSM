@@ -32,16 +32,6 @@ For English site, please visit [[./index.org][here]].
 もし、間違いなどありましたら、[[間違いを見つけたら][こちら]]をご覧いただき、ご指摘いただけると幸いです。
 
 * Parts :ignore:
-#+INCLUDE: ./part/ch2/exercise.org
-#+INCLUDE: ./part/ch3/exercise.org
-#+INCLUDE: ./part/ch4/exercise.org
-#+INCLUDE: ./part/ch5/exercise.org
-#+INCLUDE: ./part/ch6/exercise.org
-#+INCLUDE: ./part/ch7/exercise.org
-#+INCLUDE: ./part/ch8/exercise.org
-#+INCLUDE: ./part/ch9/exercise.org
-#+INCLUDE: ./part/ch9/exercise.org
-#+INCLUDE: ./part/ch10/exercise.org
 
 * 間違いを見つけたら
 本サイトは、[[https://kaorubb.org/][筆者]]が修士課程のときに趣味の一環で作成したものなので、誤植や間違いが多々あるかと思います。

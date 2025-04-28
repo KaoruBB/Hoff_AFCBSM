@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10.3</title>
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<link rel="stylesheet" href="../css/custom.css">
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+// @license-end
+</script>
+<script>
+  window.MathJax = {
+    loader: {
+      load: ['[tex]/mathtools'],
+    },
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em',
+      packages: {'[+]': ['mathtools']},
+      macros: {
+        RR: ['\\ifstrempty{#1}{\\mathbb{R}}{\\mathbb{R}^{#1}}', 1, ''],
+        NN: ['\\ifstrempty{#1}{\\mathbb{N}}{\\mathbb{N}^{#1}}', 1, ''],
+        ZZ: ['\\ifstrempty{#1}{\\mathbb{Z}}{\\mathbb{Z}^{#1}}', 1, ''],
+        QQ: ['\\ifstrempty{#1}{\\mathbb{Q}}{\\mathbb{Q}^{#1}}', 1, ''],
+        CC: ['\\ifstrempty{#1}{\\mathbb{C}}{\\mathbb{C}^{#1}}', 1, ''],
+        bm: ['\\boldsymbol{#1}', 1],
+        EE: '\\mathbb{E}',
+        Lap: '\\operatorname{\\mathcal{L}}',
+        Var: '\\operatorname{Var}',
+        Cor: '\\operatorname{Cor}',
+        E: '\\operatorname{E}',
+      },
+      mathtools: {
+        pairedDelimiters: {
+          abs: ['\\lvert', '\\rvert'],
+          norm: ['\\lVert', '\\rVert'],
+          ceil: ['\\lceil', '\\rceil'],
+          floor: ['\\lfloor', '\\rfloor'],
+          round: ['\\lfloor', '\\rceil'],
+        }
+      }
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">10.3
+<br />
+<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgbb10013">a)</a>
+<ul>
+<li><a href="#org330163c">Answer</a></li>
+</ul>
+</li>
+<li><a href="#org139b95d">b)</a>
+<ul>
+<li><a href="#orge81d5fb">Answer</a></li>
+</ul>
+</li>
+<li><a href="#org3da9114">c)</a>
+<ul>
+<li><a href="#org6e3250c">Answer</a></li>
+</ul>
+</li>
+<li><a href="#orgcf6453b">d)</a>
+<ul>
+<li><a href="#org4d4098c">Answer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
+</p>
+<div id="outline-container-orgbb10013" class="outline-2">
+<h2 id="orgbb10013">a)</h2>
+<div class="outline-text-2" id="text-orgbb10013">
+</div>
+<div id="outline-container-org330163c" class="outline-3">
+<h3 id="org330163c">Answer</h3>
+<div class="outline-text-3" id="text-org330163c">
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">import</span> Pkg; Pkg.add<span style="color: #51afef;">(</span>url=<span style="color: #7bc275;">"https://github.com/KaoruBB/BayesPlots.jl"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">data = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Exercises/tplant.dat"</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org41760e6">
+20×3 Matrix{Float64}:
+ 11.8   0.0  6.39
+ 15.34  1.0  6.39
+  9.31  0.0  5.58
+ 13.7   1.0  5.58
+ 11.2   0.0  4.26
+ 14.75  1.0  4.26
+ 10.33  0.0  5.87
+ 14.38  1.0  5.87
+  9.79  0.0  3.91
+ 13.96  1.0  3.91
+  8.39  0.0  3.91
+ 12.84  1.0  3.91
+ 10.61  0.0  6.17
+ 14.87  1.0  6.17
+  8.54  0.0  3.36
+ 12.77  1.0  3.36
+  9.25  0.0  3.52
+ 13.14  1.0  3.52
+  8.86  0.0  2.02
+ 12.24  1.0  2.02
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">first column: plant height</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">second column: measurement period</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">third column: pH level</span>
+y = data<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+X = data<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">add intercept</span>
+X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>X<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, X<span style="color: #51afef;">)</span>
+df = DataFrame<span style="color: #51afef;">(</span>
+    height = y,
+    time = X<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>,
+    pH = data<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span>
+<span style="color: #51afef;">)</span>
+lmfit = lm<span style="color: #51afef;">(</span><span style="color: #C57BDB; font-weight: bold;">@formula</span><span style="color: #C57BDB;">(</span>height <span style="color: #FCCE7B;">~</span> time <span style="color: #FCCE7B;">+</span> pH<span style="color: #C57BDB;">)</span>, df<span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #7bc275;">"StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}</span>
+
+<span style="color: #7bc275;">height ~ 1 + time + pH</span>
+
+<span style="color: #7bc275;">Coefficients:</span>
+<span style="color: #7bc275;">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</span>
+<span style="color: #7bc275;">                Coef.  Std. Error      t  Pr(&gt;|t|)  Lower 95%  Upper 95%</span>
+<span style="color: #7bc275;">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</span>
+<span style="color: #7bc275;">(Intercept)  7.20869     0.589054  12.24    &lt;1e-09   5.9659     8.45149</span>
+<span style="color: #7bc275;">time         3.991       0.328003  12.17    &lt;1e-09   3.29897    4.68303</span>
+<span style="color: #7bc275;">pH           0.577752    0.120354   4.80    0.0002   0.323828   0.831676</span>
+<span style="color: #7bc275;">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;"</span>
+</pre>
+</div>
+
+<p>
+This result shows that the height of tomato plants increases by 3.99 cm per time on average.
+Also, the height of tomato plants increases by 0.58 cm when the pH level increases by 1.
+Even with a significance level of 0.01, these effects are statistically significant.
+</p>
+<p>
+この結果は、トマトの苗の高さは平均して時間あたり3.99 cmずつ増加し、
+pHレベルが1上昇すると、0.58 cm増加することを示唆している。有意水準0.01でも、有意な結果となっている。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org139b95d" class="outline-2">
+<h2 id="org139b95d">b)</h2>
+<div class="outline-text-2" id="text-org139b95d">
+</div>
+<div id="outline-container-orge81d5fb" class="outline-3">
+<h3 id="orge81d5fb">Answer</h3>
+<div class="outline-text-3" id="text-orge81d5fb">
+
+<div id="org6c4d9e7" class="figure">
+<p><img src="./fig/ex10-3b.png" alt="ex10-3b.png" />
+</p>
+</div>
+<p>
+上は残差の散布図である。同じトマトの苗は同じ色で示されており、同じ苗に関する残差に相関が見られる。これより、このデータは一般的なOLSモデルの仮定である、誤差項が独立同一に分布しているという仮定(random sampling)を満たしていないことが示唆される。この仮定からの逸脱は、回帰係数や標準誤差の妥当性を損なう。
+</p>
+
+<p>
+The scatter plot of residuals is shown above.
+The same tomato plants are indicated in the same color, and the residuals for the same plant show correlation.
+This suggests that the data do not satisfy the assumption of the ordinary least squares model that the errors are independently and identically distributed (random sampling).
+Deviation from this assumption would compromise the validity of the regression coefficients and standard errors.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3da9114" class="outline-2">
+<h2 id="org3da9114">c)</h2>
+<div class="outline-text-2" id="text-org3da9114">
+</div>
+<div id="outline-container-org6e3250c" class="outline-3">
+<h3 id="org6e3250c">Answer</h3>
+<div class="outline-text-3" id="text-org6e3250c">
+<p>
+\[
+\boldsymbol{Y} = \begin{pmatrix}
+Y_{1,1} \\ Y_{1,2} \\
+Y_{2,1} \\ Y_{2,2} \\
+\vdots \\
+Y_{n,1} \\ Y_{n,2}
+\end{pmatrix}
+\sim \text{multivariate normal} \left( \mathbf{X} \boldsymbol{\beta}, \Sigma \right)
+\]
+where
+\[
+\Sigma = \sigma^2 \mathbf{C}_{\rho}
+= \sigma^2 \begin{pmatrix}
+1 & \rho & 0 & 0 & \cdots & 0 \\
+\rho & 1 & 0 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \rho & \cdots & 0 \\
+0 & 0 & \rho & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & 0 & \cdots & 1
+\end{pmatrix}
+\]
+and \(\rho\) is the correlation between the two measurements of the same plant.
+</p>
+
+<p>
+Setting the prior distribution of \(\beta, \sigma, \rho\) as follows,
+</p>
+<ul class="org-ul">
+<li>\(\beta\):
+\[
+  \beta \sim \mathcal{N}(\boldsymbol{\beta}_0, \Sigma_0),
+  \]</li>
+<li>\(\sigma\):
+\[
+  \sigma \sim \text{inverse-gamma}( \frac{v_0}{2}, \frac{v_0 \sigma_0^2}{2} ),
+  \]</li>
+<li>\(\rho\):
+\[
+  \rho \sim \text{uniform}( 0, 1 ),
+  \]</li>
+</ul>
+<p>
+the posterior distributions of \(\beta, \sigma\) are given by
+</p>
+\begin{align*}
+\{\boldsymbol{\beta} | \boldsymbol{y}, \mathbf{X}, \sigma^2, \rho \} &\sim \text{multivariate normal}(\boldsymbol{\beta}_n, \Sigma_n), \text{ where} \\
+\Sigma_n &= \left( \mathbf{X}^{\top} \mathbf{C}_{\rho}^{-1} \mathbf{X}/\sigma^2 + \Sigma_0^{-1} \right)^{-1} \\
+\boldsymbol{\beta}_n &= \Sigma_n \left( \mathbf{X}^{\top} \mathbf{C}_{\rho}^{-1} \boldsymbol{y}/\sigma^2 + \Sigma_0^{-1} \boldsymbol{\beta}_0 \right), \text{ and} \\
+\{\sigma^2 | \boldsymbol{y}, \mathbf{X}, \boldsymbol{\beta}, \rho \} &\sim \text{inverse-gamma} \left( \frac{ \nu_0 + n }{2}, \frac{ \nu_0 + \mathrm{SSR}_{\rho} }{2} \right), \text{ where} \\
+\mathrm{SSR}_{\rho} &= \left( \boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} \right)^{\top} \mathbf{C}_{\rho}^{-1} \left( \boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} \right). \\
+\end{align*}
+
+<p>
+The posterior distribution of \(\rho\) is not analytically tractable, so we use the Metropolis algorithm to sample from the posterior distribution.
+</p>
+
+<p>
+Given \(\{\boldsymbol{\beta}^{(s)}, \sigma^{2(s)}, \rho^{(s)}\}\), we update the parameters as follows:
+</p>
+<ol class="org-ol">
+<li>Update \(\boldsymbol{\beta}\):
+Sample \(\boldsymbol{\beta}^{(s+1)} \sim \text{multivariate normal}(\boldsymbol{\beta}_n, \Sigma_n)\),
+where \(\boldsymbol{\beta}_n \) and \(\Sigma_n\) depend on \(\sigma^{2(s)}\) and \(\rho^{(s)}\).</li>
+<li>Update \(\sigma^2\):
+Sample \(\sigma^{2(s+1)} \sim \text{inverse-gamma}([\nu_0 + n]/2, [\nu_0 \sigma_0^2 + \mathrm{SSR}_{\rho}] / 2)\),
+where \(\mathrm{SSR}_{\rho}\) depends on \(\boldsymbol{\beta}^{(s+1)}\) and \(\rho^{(s)}\).</li>
+<li>Update \(\rho\):
+<ol class="org-ol">
+<li>Propose \(\rho^{\ast} \sim \text{uniform}(\rho^{(s)} - \delta, \rho^{(s)} + \delta)\).
+If \(\rho^{\ast} \lt 0\) then reassin it to be \(|\rho^{\ast}|\).
+If \(\rho^{\ast} > 1\) reassin it to be \(2 - \rho^{\ast}\).</li>
+<li>Compute the acceptance ratio
+\[ r = \frac{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{\ast} ) p(\rho^{\ast})}{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{(s)} ) p(\rho^{(s)})} \]
+and sample \(u \sim \text{uniform}(0,1)\).
+If \(u \lt r\), set \(\rho^{(s+1)} = \rho^{\ast}\), otherwise set \(\rho^{(s+1)} = \rho^{(s)}\).</li>
+</ol></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">fit_ar1_linear_model_for_repeated_individuals</span><span style="color: #51afef;">(</span>y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;; S=<span style="color: #e69055; font-weight: bold;">5000</span>, &#948;=<span style="color: #e69055; font-weight: bold;">1</span>, seed=<span style="color: #e69055; font-weight: bold;">42</span>, thin=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+
+    n, p = size<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
+    lmfit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
+    &#946; = coef<span style="color: #51afef;">(</span>lmfit<span style="color: #51afef;">)</span>
+    &#963;&#178; = sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, residuals<span style="color: #7bc275;">(</span>lmfit<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">-</span> p<span style="color: #51afef;">)</span>
+    res = residuals<span style="color: #51afef;">(</span>lmfit<span style="color: #51afef;">)</span>
+    &#961; = autocor<span style="color: #51afef;">(</span>res, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+
+    Random.seed!<span style="color: #51afef;">(</span>seed<span style="color: #51afef;">)</span>
+    OUT = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, <span style="color: #e69055; font-weight: bold;">0</span>, p<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+    ac = <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">acceptance count</span>
+
+    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_create_cor_matrix</span><span style="color: #51afef;">(</span>n<span style="color: #FCCE7B;">::Int</span>, &#961;<span style="color: #FCCE7B;">::Number</span><span style="color: #51afef;">)</span>
+        C&#7528; = zeros<span style="color: #51afef;">(</span>n, n<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n
+            <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n
+                <span style="color: #51afef;">if</span> i <span style="color: #FCCE7B;">==</span> j
+                    C&#7528;<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> = <span style="color: #e69055; font-weight: bold;">1</span>
+                <span style="color: #51afef;">elseif</span> <span style="color: #51afef;">(</span>i <span style="color: #FCCE7B;">-</span> j <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">&amp;&amp;</span> i <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">||</span> <span style="color: #51afef;">(</span>j <span style="color: #FCCE7B;">-</span> i <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">&amp;&amp;</span> j <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
+                    C&#7528;<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> = &#961;
+                <span style="color: #51afef;">end</span>
+            <span style="color: #51afef;">end</span>
+        <span style="color: #51afef;">end</span>
+        <span style="color: #51afef;">return</span> C&#7528;
+    <span style="color: #51afef;">end</span>
+
+    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_update_&#946;</span><span style="color: #51afef;">(</span>y, X, &#963;&#178;, iCor, &#931;&#8320;, &#946;&#8320;<span style="color: #51afef;">)</span>
+        V_&#946; = inv<span style="color: #51afef;">(</span>X' <span style="color: #FCCE7B;">*</span> iCor <span style="color: #FCCE7B;">*</span> X<span style="color: #FCCE7B;">/</span>&#963;&#178; <span style="color: #FCCE7B;">+</span> &#931;&#8320;<span style="color: #51afef;">)</span>
+        E_&#946; = V_&#946; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>X' <span style="color: #FCCE7B;">*</span> iCor <span style="color: #FCCE7B;">*</span> y<span style="color: #FCCE7B;">/</span>&#963;&#178; <span style="color: #FCCE7B;">+</span> inv<span style="color: #C57BDB;">(</span>&#931;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> &#946;&#8320;<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>E_&#946;, Symmetric<span style="color: #7bc275;">(</span>V_&#946;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+
+    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_update_&#963;&#178;</span><span style="color: #51afef;">(</span>y, X, &#946;, iCor, &#957;&#8320;, &#963;&#8320;&#178;<span style="color: #51afef;">)</span>
+        &#957;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">+</span> length<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
+        SSR = <span style="color: #51afef;">(</span>y <span style="color: #FCCE7B;">-</span> X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #51afef;">)</span>' <span style="color: #FCCE7B;">*</span> iCor <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>y <span style="color: #FCCE7B;">-</span> X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #51afef;">)</span>
+        &#957;&#8345;&#963;&#178;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178; <span style="color: #FCCE7B;">+</span> SSR
+        <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>InverseGamma<span style="color: #C57BDB;">(</span>&#957;&#8345; <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>, &#957;&#8345;&#963;&#178;&#8345;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="color: #51afef;">end</span>
+
+    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_update_&#961;</span><span style="color: #51afef;">(</span>&#961;, y, X, &#946;, &#963;&#178;, &#948;<span style="color: #51afef;">)</span>
+        &#961;&#8346; = rand<span style="color: #51afef;">(</span>Uniform<span style="color: #C57BDB;">(</span>&#961;<span style="color: #FCCE7B;">-</span>&#948;, &#961;<span style="color: #FCCE7B;">+</span>&#948;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> abs
+        &#961;&#8346; = minimum<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>&#961;&#8346;, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">-</span>&#961;&#8346;<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+        Cor = _create_cor_matrix<span style="color: #51afef;">(</span>n, &#961;<span style="color: #51afef;">)</span>
+        Cor&#8346; = _create_cor_matrix<span style="color: #51afef;">(</span>n, &#961;&#8346;<span style="color: #51afef;">)</span>
+        lr = <span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span><span style="color: #51afef;">(</span>
+            logdet<span style="color: #C57BDB;">(</span>Cor&#8346;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> logdet<span style="color: #C57BDB;">(</span>Cor<span style="color: #C57BDB;">)</span>  <span style="color: #FCCE7B;">+</span>
+            tr<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">(</span>y<span style="color: #FCCE7B;">-</span>X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">*</span><span style="color: #7bc275;">(</span>y<span style="color: #FCCE7B;">-</span>X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #7bc275;">)</span>' <span style="color: #FCCE7B;">*</span> <span style="color: #7bc275;">(</span>inv<span style="color: #a991f1;">(</span>Cor&#8346;<span style="color: #a991f1;">)</span> <span style="color: #FCCE7B;">-</span> inv<span style="color: #a991f1;">(</span>Cor<span style="color: #a991f1;">)</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">/</span>&#963;&#178;
+        <span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">if</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> lr
+            ac <span style="color: #FCCE7B;">+=</span> <span style="color: #e69055; font-weight: bold;">1</span>
+            <span style="color: #51afef;">return</span> &#961;&#8346;
+        <span style="color: #51afef;">else</span>
+            <span style="color: #51afef;">return</span> &#961;
+        <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">end</span>
+
+    <span style="color: #62686E;"># </span><span style="color: #62686E;">MCMC algorithm</span>
+    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
+        Cor = _create_cor_matrix<span style="color: #51afef;">(</span>n, &#961;<span style="color: #51afef;">)</span>
+        iCor = inv<span style="color: #51afef;">(</span>Cor<span style="color: #51afef;">)</span>
+
+        &#946; = _update_&#946;<span style="color: #51afef;">(</span>y, X, &#963;&#178;, iCor, &#931;&#8320;, &#946;&#8320;<span style="color: #51afef;">)</span>
+        &#963;&#178; = _update_&#963;&#178;<span style="color: #51afef;">(</span>y, X, &#946;, iCor, &#957;&#8320;, &#963;&#8320;&#178;<span style="color: #51afef;">)</span>
+        &#961; = _update_&#961;<span style="color: #51afef;">(</span>&#961;, y, X, &#946;, &#963;&#178;, &#948;<span style="color: #51afef;">)</span>
+
+        <span style="color: #62686E;"># </span><span style="color: #62686E;">store</span>
+        <span style="color: #51afef;">if</span> s <span style="color: #FCCE7B;">%</span> thin <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span>
+            <span style="color: #62686E;"># </span><span style="color: #62686E;">println(s, ac/s, &#946;, &#963;&#178;, &#961;)</span>
+            println<span style="color: #51afef;">(</span>join<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span>s, ac<span style="color: #FCCE7B;">/</span>s, &#946;, &#963;&#178;, &#961;<span style="color: #7bc275;">]</span>, <span style="color: #7bc275;">", "</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+            params = vcat<span style="color: #51afef;">(</span>&#946;, &#963;&#178;, &#961;<span style="color: #51afef;">)</span>'
+            OUT = vcat<span style="color: #51afef;">(</span>OUT, params<span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">end</span>
+    <span style="color: #51afef;">end</span>
+
+    <span style="color: #51afef;">return</span> OUT
+<span style="color: #51afef;">end</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
+&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>
+&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">1</span>
+&#931;&#8320; = diagm<span style="color: #51afef;">(</span>repeat<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">1000</span><span style="color: #7bc275;">]</span>, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+&#946;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">]</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">y = df<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>;
+X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>y<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, df<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, df<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org84ae0cd">
+
+20×3 Matrix{Float64}:
+ 1.0  0.0  6.39
+ 1.0  1.0  6.39
+ 1.0  0.0  5.58
+ 1.0  1.0  5.58
+ 1.0  0.0  4.26
+ 1.0  1.0  4.26
+ 1.0  0.0  5.87
+ 1.0  1.0  5.87
+ 1.0  0.0  3.91
+ 1.0  1.0  3.91
+ 1.0  0.0  3.91
+ 1.0  1.0  3.91
+ 1.0  0.0  6.17
+ 1.0  1.0  6.17
+ 1.0  0.0  3.36
+ 1.0  1.0  3.36
+ 1.0  0.0  3.52
+ 1.0  1.0  3.52
+ 1.0  0.0  2.02
+ 1.0  1.0  2.02
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">MCMC</span>
+S=<span style="color: #e69055; font-weight: bold;">25000</span>
+&#948;=<span style="color: #e69055; font-weight: bold;">0.1</span>
+thin=<span style="color: #e69055; font-weight: bold;">25</span>
+fitted_sample = fit_ar1_linear_model_for_repeated_individuals<span style="color: #51afef;">(</span>y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;, S=S, &#948;=&#948;, thin=thin<span style="color: #51afef;">)</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">plot<span style="color: #51afef;">(</span>
+    map<span style="color: #C57BDB;">(</span>
+        <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #7bc275;">(</span>fitted_sample, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">)</span>, <span style="color: #7bc275;">[</span><span style="color: #7bc275;">"intercept"</span>, <span style="color: #7bc275;">"&#946;&#8321;"</span>, <span style="color: #7bc275;">"&#946;&#8322;"</span>, <span style="color: #7bc275;">"&#963;&#178;"</span>, <span style="color: #7bc275;">"&#961;"</span><span style="color: #7bc275;">]</span>
+    <span style="color: #C57BDB;">)</span> <span style="color: #51afef;">do</span> i, label
+        plot<span style="color: #C57BDB;">(</span>
+            fitted_sample<span style="color: #7bc275;">[</span>:, i<span style="color: #7bc275;">]</span>,
+            xlabel=<span style="color: #7bc275;">"scan/25"</span>,
+            ylabel=label,
+            legend=<span style="color: #a991f1;">nothing</span>
+        <span style="color: #C57BDB;">)</span>
+    <span style="color: #51afef;">end</span>...,
+    layout=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">3</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">900</span>, <span style="color: #e69055; font-weight: bold;">900</span><span style="color: #C57BDB;">)</span>
+<span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../fig/ch10/ex10_3_scan.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"../../fig/ch10/ex10_3_scan.png"</span>
+</pre>
+</div>
+
+
+<div id="orgc91e8aa" class="figure">
+<p><img src="./fig/ex10_3_scan.png" alt="ex10_3_scan.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Sample paths of the parameters</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia">plot<span style="color: #51afef;">(</span>
+    map<span style="color: #C57BDB;">(</span>
+        <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #7bc275;">(</span>fitted_sample, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">)</span>, <span style="color: #7bc275;">[</span><span style="color: #7bc275;">"intercept"</span>, <span style="color: #7bc275;">"&#946;&#8321;"</span>, <span style="color: #7bc275;">"&#946;&#8322;"</span>, <span style="color: #7bc275;">"&#963;&#178;"</span>, <span style="color: #7bc275;">"&#961;"</span><span style="color: #7bc275;">]</span>
+    <span style="color: #C57BDB;">)</span> <span style="color: #51afef;">do</span> i, label
+        bar<span style="color: #C57BDB;">(</span>
+            <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">30</span>,
+            autocor<span style="color: #7bc275;">(</span>fitted_sample<span style="color: #a991f1;">[</span>:, i<span style="color: #a991f1;">]</span>, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">30</span><span style="color: #7bc275;">)</span>,
+            xlabel=<span style="color: #7bc275;">"lag/25 of $label"</span>,
+            ylabel=<span style="color: #7bc275;">"ACF"</span>,
+            legend=<span style="color: #a991f1;">false</span>
+        <span style="color: #C57BDB;">)</span>
+    <span style="color: #51afef;">end</span>...,
+    layout=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">900</span>, <span style="color: #e69055; font-weight: bold;">500</span><span style="color: #C57BDB;">)</span>, margin=<span style="color: #e69055; font-weight: bold;">5</span>mm
+<span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./../../fig/ch10/ex10_3_acf.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"./../../fig/ch10/ex10_3_acf.png"</span>
+</pre>
+</div>
+
+
+<div id="orgf4018fd" class="figure">
+<p><img src="./fig/ex10_3_acf.png" alt="ex10_3_acf.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Autocorrelation plots of the parameters</p>
+</div>
+<p>
+図<a href="#orgc91e8aa">1</a>、<a href="#orgf4018fd">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
+</p>
+<p>
+Figure <a href="#orgc91e8aa">1</a> and <a href="#orgf4018fd">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
+These results confirm that the MCMC sampling has sufficiently converged.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcf6453b" class="outline-2">
+<h2 id="orgcf6453b">d)</h2>
+<div class="outline-text-2" id="text-orgcf6453b">
+</div>
+<div id="outline-container-org4d4098c" class="outline-3">
+<h3 id="org4d4098c">Answer</h3>
+<div class="outline-text-3" id="text-org4d4098c">
+<div class="org-src-container">
+<pre class="src src-julia">figs = <span style="color: #51afef;">[]</span>
+<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">3</span>
+    fig = plot_posterior_density<span style="color: #51afef;">(</span>
+        fitted_sample<span style="color: #C57BDB;">[</span>:, i<span style="color: #C57BDB;">]</span>, bandwidth=<span style="color: #e69055; font-weight: bold;">0.1</span>, xlabel=<span style="color: #7bc275;">"&#946;"</span> <span style="color: #FCCE7B;">*</span> <span style="color: #7bc275;">"_$i"</span>
+    <span style="color: #51afef;">)</span>
+    fig = vspan!<span style="color: #51afef;">(</span>
+        fig,
+        confint<span style="color: #C57BDB;">(</span>lmfit<span style="color: #C57BDB;">)[</span>i, :<span style="color: #C57BDB;">]</span>,
+        color = <span style="color: #a991f1;">:blue</span>,
+        alpha = <span style="color: #e69055; font-weight: bold;">0.1</span>,
+        label = <span style="color: #7bc275;">"95% CI of OLS"</span>,
+        legend = i <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">3</span> <span style="color: #51afef;">?</span> <span style="color: #a991f1;">:topright</span> <span style="color: #51afef;">:</span> <span style="color: #a991f1;">nothing</span>,
+    <span style="color: #51afef;">)</span>
+    fig = vline!<span style="color: #51afef;">(</span>
+        fig,
+        <span style="color: #C57BDB;">[</span>coef<span style="color: #7bc275;">(</span>lmfit<span style="color: #7bc275;">)[</span>i<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">]</span>,
+        color = <span style="color: #a991f1;">:blue</span>,
+        linestyle = <span style="color: #a991f1;">:dash</span>,
+        label = <span style="color: #7bc275;">"OLS estimate"</span>,
+    <span style="color: #51afef;">)</span>
+    push!<span style="color: #51afef;">(</span>figs, fig<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">end</span>
+
+plot<span style="color: #51afef;">(</span>figs..., layout=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1000</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>, margin=<span style="color: #e69055; font-weight: bold;">5</span>mm<span style="color: #51afef;">)</span>
+savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../fig/ch10/ex10_3d.png"</span><span style="color: #51afef;">)</span>
+<span style="color: #7bc275;">"../../fig/ch10/ex10_3d.png"</span>
+</pre>
+</div>
+
+
+<div id="org872cc7c" class="figure">
+<p><img src="./fig/ex10_3d.png" alt="ex10_3d.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Posterior of the coefficients</p>
+</div>
+<p>
+図<a href="#org872cc7c">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
+OLSによる点推定量と95%信頼区間を示している。切片(\(\beta_1\)), timeの係数(\(\beta_2\)), pHの係数(\(\beta_3\))について、MCMCサンプリングによる事後平均とOLS推定量はほぼ一致しているが、95%信用区間とOLSの信頼区間は異なる。もし点推定値のみに関心がある場合、同様な結論が得られるが、推定値の不確実性などを考慮したい場合、今回のベイズモデルとOLSモデルの結論は大きく異なる。
+</p>
+<p>
+Figure <a href="#org872cc7c">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
+The posterior means of \(\beta_1\) and \(\beta_2\) are almost identical to the OLS estimates, but the 95% credible intervals and OLS confidence intervals differ.
+If only point estimates are of interest, similar conclusions can be drawn, but if uncertainties in the estimates are to be considered, the conclusions of the Bayesian model and the OLS model differ significantly.
+</p>
+</div>
+</div>
+</div>
+<p class="nav-prev">
+<a href="./10-2.html" class="nav-prev">10.2</a>
+</p>
+
+<p class="nav-next">
+<a href="./10-4.html" class="nav-next">10.4</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Kaoru Babasaki</p>
+<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+</div>
+</body>
+</html>
