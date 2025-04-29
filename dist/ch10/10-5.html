@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>10.5</title>
+<title>Exercise 10.5 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,59 +99,59 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">10.5
+<h1 class="title">Exercise 10.5 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 10.5 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org95b188a">a)</a>
+<li><a href="#orgbd6fd85">a)</a>
 <ul>
-<li><a href="#org8a43e35">Answer</a>
+<li><a href="#orgc308c7a">Answer</a>
 <ul>
-<li><a href="#orgb9e757a">sampling model</a></li>
-<li><a href="#org221c16f">prior</a></li>
-<li><a href="#org5c91245">calculation of acceptance ratio \(r\)</a></li>
-<li><a href="#orga3a0a1b">proposal distributions</a></li>
-<li><a href="#org12c1d2f">import data</a></li>
-<li><a href="#orgb21e45e">process data</a></li>
-<li><a href="#org95a473d">M-H algorithm</a></li>
-<li><a href="#org63ad9f5">run M-H algorithm</a></li>
-<li><a href="#org0fc444a">sequence \(\beta_j^{(s)}\)</a></li>
-<li><a href="#org20543b3">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</a></li>
-<li><a href="#orgb88656f">summary</a>
+<li><a href="#org711471b">sampling model</a></li>
+<li><a href="#orgdc023dd">prior</a></li>
+<li><a href="#org78d4211">calculation of acceptance ratio \(r\)</a></li>
+<li><a href="#orgfc087a7">proposal distributions</a></li>
+<li><a href="#org4e458f6">import data</a></li>
+<li><a href="#org217b75a">process data</a></li>
+<li><a href="#org59a1a18">M-H algorithm</a></li>
+<li><a href="#orge8402e3">run M-H algorithm</a></li>
+<li><a href="#org7581997">sequence \(\beta_j^{(s)}\)</a></li>
+<li><a href="#org7794235">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</a></li>
+<li><a href="#org4270b91">summary</a>
 <ul>
-<li><a href="#org120bbbe">日本語</a></li>
-<li><a href="#orgfc56906">English</a></li>
+<li><a href="#orga5d571d">日本語</a></li>
+<li><a href="#org798877d">English</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5c91ff5">b)</a>
+<li><a href="#org773ec55">b)</a>
 <ul>
-<li><a href="#orgd216a33">Answer</a>
+<li><a href="#org11223e2">Answer</a>
 <ul>
-<li><a href="#org130b432">top five most frequently occurring values of \(\gamma\)</a></li>
-<li><a href="#org2dc12a9">How good are the estimates?</a>
+<li><a href="#org99d99ac">top five most frequently occurring values of \(\gamma\)</a></li>
+<li><a href="#org463d8ca">How good are the estimates?</a>
 <ul>
-<li><a href="#org9292191">日本語</a></li>
-<li><a href="#orgbb3f873">English</a></li>
+<li><a href="#orgf10d4ae">日本語</a></li>
+<li><a href="#org14fae82">English</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org475a06a">c)</a>
+<li><a href="#org23824f4">c)</a>
 <ul>
-<li><a href="#org128a6b4">Answer</a>
+<li><a href="#orgcf2dd3a">Answer</a>
 <ul>
-<li><a href="#orge70947f">posterior densities</a></li>
-<li><a href="#orgf8e5965">posterior means</a></li>
+<li><a href="#org6f1d8f6">posterior densities</a></li>
+<li><a href="#org980b63e">posterior means</a></li>
 </ul>
 </li>
 </ul>
@@ -157,29 +159,26 @@
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org95b188a" class="outline-2">
-<h2 id="org95b188a">a)</h2>
-<div class="outline-text-2" id="text-org95b188a">
+<div id="outline-container-orgbd6fd85" class="outline-2">
+<h2 id="orgbd6fd85">a)</h2>
+<div class="outline-text-2" id="text-orgbd6fd85">
 </div>
-<div id="outline-container-org8a43e35" class="outline-3">
-<h3 id="org8a43e35">Answer</h3>
-<div class="outline-text-3" id="text-org8a43e35">
+<div id="outline-container-orgc308c7a" class="outline-3">
+<h3 id="orgc308c7a">Answer</h3>
+<div class="outline-text-3" id="text-orgc308c7a">
 </div>
-<div id="outline-container-orgb9e757a" class="outline-4">
-<h4 id="orgb9e757a">sampling model</h4>
-<div class="outline-text-4" id="text-orgb9e757a">
+<div id="outline-container-org711471b" class="outline-4">
+<h4 id="org711471b">sampling model</h4>
+<div class="outline-text-4" id="text-org711471b">
 \begin{align*}
 Y_i &\sim \text{Bernoulli} \left(\frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) \quad (i = 1, \dots, n) \\
 \theta_i &= \beta_0 + \beta_1 \gamma_1 x_{i,1} + \beta_2 \gamma_2 x_{i,2} + \beta_3 \gamma_3 x_{i,3} + \beta_4 \gamma_4 x_{i,4} + \beta_5 \gamma_5 x_{i,5} \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org221c16f" class="outline-4">
-<h4 id="org221c16f">prior</h4>
-<div class="outline-text-4" id="text-org221c16f">
+<div id="outline-container-orgdc023dd" class="outline-4">
+<h4 id="orgdc023dd">prior</h4>
+<div class="outline-text-4" id="text-orgdc023dd">
 \begin{align*}
 \gamma_j &\sim \text{Bernoulli}(1/2) \quad (j = 1, \dots, 5) \\
 \beta_0 &\sim \mathcal{N}(0, 16) \\
@@ -187,9 +186,9 @@ Y_i &\sim \text{Bernoulli} \left(\frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) \
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org5c91245" class="outline-4">
-<h4 id="org5c91245">calculation of acceptance ratio \(r\)</h4>
-<div class="outline-text-4" id="text-org5c91245">
+<div id="outline-container-org78d4211" class="outline-4">
+<h4 id="org78d4211">calculation of acceptance ratio \(r\)</h4>
+<div class="outline-text-4" id="text-org78d4211">
 <p>
 The likelihood and log-likelihood are as follows:
 </p>
@@ -216,18 +215,18 @@ r = \frac{ p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j
 </p>
 </div>
 </div>
-<div id="outline-container-orga3a0a1b" class="outline-4">
-<h4 id="orga3a0a1b">proposal distributions</h4>
-<div class="outline-text-4" id="text-orga3a0a1b">
+<div id="outline-container-orgfc087a7" class="outline-4">
+<h4 id="orgfc087a7">proposal distributions</h4>
+<div class="outline-text-4" id="text-orgfc087a7">
 \begin{align*}
 \beta_j^{\ast} | \beta_j^{(s)} &\sim \mathcal{N}(\beta_j^{(s)}, \delta^2) \\
 \gamma_j^{\ast} | \gamma_j^{(s)} &= \begin{cases} 0 & \text{ if } \gamma_j^{(s)} = 1 \\ 1 & \text{ if } \gamma_j^{(s)} = 0 \end{cases} \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org12c1d2f" class="outline-4">
-<h4 id="org12c1d2f">import data</h4>
-<div class="outline-text-4" id="text-org12c1d2f">
+<div id="outline-container-org4e458f6" class="outline-4">
+<h4 id="org4e458f6">import data</h4>
+<div class="outline-text-4" id="text-org4e458f6">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> DataFrames
 <span style="color: #51afef;">using</span> DelimitedFiles
@@ -265,9 +264,9 @@ df<span style="color: #51afef;">[</span>!,col_str<span style="color: #51afef;">]
 </div>
 </div>
 </div>
-<div id="outline-container-orgb21e45e" class="outline-4">
-<h4 id="orgb21e45e">process data</h4>
-<div class="outline-text-4" id="text-orgb21e45e">
+<div id="outline-container-org217b75a" class="outline-4">
+<h4 id="org217b75a">process data</h4>
+<div class="outline-text-4" id="text-org217b75a">
 <div class="org-src-container">
 <pre class="src src-julia">predictors = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
 X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>size<span style="color: #7bc275;">(</span>df, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, mapcols<span style="color: #C57BDB;">(</span>zscore, df<span style="color: #7bc275;">[</span>!, predictors<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span>
@@ -281,7 +280,7 @@ y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&g
 </pre>
 </div>
 
-<pre class="example" id="org11b06f9">
+<pre class="example" id="org6ab997e">
 5×6 OffsetArray(::Matrix{Float64}, 1:5, 0:5) with eltype Float64 with indices 1:5×0:5:
  1.0   0.447786  -0.284774  -0.390958  -0.403331  -0.707578
  1.0   1.05164   -0.122308  -1.13212   -0.986707   2.17304
@@ -291,9 +290,9 @@ y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&g
 </pre>
 </div>
 </div>
-<div id="outline-container-org95a473d" class="outline-4">
-<h4 id="org95a473d">M-H algorithm</h4>
-<div class="outline-text-4" id="text-org95a473d">
+<div id="outline-container-org59a1a18" class="outline-4">
+<h4 id="org59a1a18">M-H algorithm</h4>
+<div class="outline-text-4" id="text-org59a1a18">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_loglikelihood</span><span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
     &#952; = parent<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>&#946;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">.*</span> <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>;&#947;<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -356,9 +355,9 @@ y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&g
 </div>
 </div>
 </div>
-<div id="outline-container-org63ad9f5" class="outline-4">
-<h4 id="org63ad9f5">run M-H algorithm</h4>
-<div class="outline-text-4" id="text-org63ad9f5">
+<div id="outline-container-orge8402e3" class="outline-4">
+<h4 id="orge8402e3">run M-H algorithm</h4>
+<div class="outline-text-4" id="text-orge8402e3">
 <div class="org-src-container">
 <pre class="src src-julia">glmfit = glm<span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>X<span style="color: #C57BDB;">)</span>, y, Binomial<span style="color: #C57BDB;">()</span>, LogitLink<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span>
 &#946;_init = coef<span style="color: #51afef;">(</span>glmfit<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -374,7 +373,7 @@ BETA, GAMMA = logit_reg_with_var_select<span style="color: #51afef;">(</span>y, 
 </pre>
 </div>
 
-<pre class="example" id="org3bb7154">
+<pre class="example" id="orge26e78e">
 Chains MCMC chain (100000×6×1 Array{Float64, 3}):
 
 Iterations        = 1:1:100000
@@ -410,7 +409,7 @@ Quantiles
 </pre>
 </div>
 
-<pre class="example" id="org47c288d">
+<pre class="example" id="orgbe0d392">
 Chains MCMC chain (100000×5×1 Array{Float64, 3}):
 
 Iterations        = 1:1:100000
@@ -440,9 +439,9 @@ Quantiles
 </pre>
 </div>
 </div>
-<div id="outline-container-org0fc444a" class="outline-4">
-<h4 id="org0fc444a">sequence \(\beta_j^{(s)}\)</h4>
-<div class="outline-text-4" id="text-org0fc444a">
+<div id="outline-container-org7581997" class="outline-4">
+<h4 id="org7581997">sequence \(\beta_j^{(s)}\)</h4>
+<div class="outline-text-4" id="text-org7581997">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">visualize the MCMC simulation results</span>
 p = plot<span style="color: #51afef;">(</span>chn_&#946;<span style="color: #51afef;">)</span>
@@ -451,16 +450,16 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </pre>
 </div>
 
-<div id="org09327a0" class="figure">
+<div id="org0665777" class="figure">
 <p><img src="./fig/exercise10-5a-beta.png" alt="exercise10-5a-beta.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>traceplots of \(\beta_j\)</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org20543b3" class="outline-4">
-<h4 id="org20543b3">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</h4>
-<div class="outline-text-4" id="text-org20543b3">
+<div id="outline-container-org7794235" class="outline-4">
+<h4 id="org7794235">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</h4>
+<div class="outline-text-4" id="text-org7794235">
 <div class="org-src-container">
 <pre class="src src-julia">beta_gamma_prod = BETA<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #51afef;">end</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">.*</span> GAMMA
 </pre>
@@ -472,7 +471,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </pre>
 </div>
 
-<pre class="example" id="orge6ac2be">
+<pre class="example" id="org883bb3f">
 5×5 OffsetArray(::Matrix{Float64}, 1:5, 1:5) with eltype Float64 with indices 1:5×1:5:
  0.193049  -0.0        0.611237  0.600768  0.584352
  0.218734   0.0543198  0.611237  0.539856  0.584352
@@ -494,7 +493,7 @@ chn_&#946;&#947; = Chains<span style="color: #51afef;">(</span>BETA_TIMES_GAMMA,
 </pre>
 </div>
 
-<pre class="example" id="org33a9865">
+<pre class="example" id="org8ef4b8a">
 
 Chains MCMC chain (100000×6×1 Array{Float64, 3}):
 
@@ -534,20 +533,20 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </div>
 
 
-<div id="org0485e3f" class="figure">
+<div id="org25e52db" class="figure">
 <p><img src="./fig/exercise10-5b-beta-gamma.png" alt="exercise10-5b-beta-gamma.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>traceplots of \(\beta_j \times \gamma_j\)</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb88656f" class="outline-4">
-<h4 id="orgb88656f">summary</h4>
-<div class="outline-text-4" id="text-orgb88656f">
+<div id="outline-container-org4270b91" class="outline-4">
+<h4 id="org4270b91">summary</h4>
+<div class="outline-text-4" id="text-org4270b91">
 </div>
-<div id="outline-container-org120bbbe" class="outline-5">
-<h5 id="org120bbbe">日本語</h5>
-<div class="outline-text-5" id="text-org120bbbe">
+<div id="outline-container-orga5d571d" class="outline-5">
+<h5 id="orga5d571d">日本語</h5>
+<div class="outline-text-5" id="text-orga5d571d">
 <p>
 MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\) のサンプルを用いて、\(\beta_j\) の系列と \(\beta_j \times \gamma_j\) の系列の混合について評価した。
 </p>
@@ -555,7 +554,7 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 <ul class="org-ul">
 <li><span class="underline">\(\beta_j\) の系列</span>:
 <ul class="org-ul">
-<li>トレースプロット(<a href="#org09327a0">1</a>) と診断統計量 (<code>chn_β</code> のサマリー) を見ると、特に \(\beta_1\) と \(\beta_2\) のチェーンは混合が悪いことが示唆された。
+<li>トレースプロット(<a href="#org0665777">1</a>) と診断統計量 (<code>chn_β</code> のサマリー) を見ると、特に \(\beta_1\) と \(\beta_2\) のチェーンは混合が悪いことが示唆された。
 <ul class="org-ul">
 <li><code>rhat</code> 値が1から離れており (それぞれ約 1.03, 1.09)、 <code>ess_bulk</code> 値も他のパラメータと比較して低い (それぞれ約 248, 233)。</li>
 <li>トレースプロットも安定していないように見える。</li>
@@ -571,7 +570,7 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 <li><span class="underline">\(\beta_j \times \gamma_j\) の系列</span>:
 <ul class="org-ul">
 <li>この系列は、変数 \(j\) がモデルに含まれる場合 (\(\gamma_j=1\)) の係数の効果を表し、含まれない場合 (\(\gamma_j=0\)) は効果が 0 となる。</li>
-<li>トレースプロット (<a href="#org0485e3f">2</a>) と診断統計量 (<code>chn_βγ</code> のサマリー) を見ると、こちらの系列は全体的に混合が良いことがわかった。
+<li>トレースプロット (<a href="#org25e52db">2</a>) と診断統計量 (<code>chn_βγ</code> のサマリー) を見ると、こちらの系列は全体的に混合が良いことがわかった。
 <ul class="org-ul">
 <li>特に <code>β1*γ1</code> と <code>β2*γ2</code> の <code>rhat</code> 値は1に近くなり (それぞれ約 1.017, 1.0005)、 <code>ess_bulk</code> 値も改善した (それぞれ約 585, 39422)。</li>
 <li>トレースプロットも、特に <code>β2*γ2</code> は 0 付近で非常に安定している。</li>
@@ -591,9 +590,9 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc56906" class="outline-5">
-<h5 id="orgfc56906">English</h5>
-<div class="outline-text-5" id="text-orgfc56906">
+<div id="outline-container-org798877d" class="outline-5">
+<h5 id="org798877d">English</h5>
+<div class="outline-text-5" id="text-org798877d">
 <p>
 We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(\beta_j \times \gamma_j\) series using the samples obtained from the simulation.
 </p>
@@ -601,7 +600,7 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 <ul class="org-ul">
 <li><span class="underline">Series for \(&beta;_j$</span>:
 <ul class="org-ul">
-<li>The trace plots (<a href="#org09327a0">1</a>) and diagnostic statistics (summary of <code>chn_β</code>) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
+<li>The trace plots (<a href="#org0665777">1</a>) and diagnostic statistics (summary of <code>chn_β</code>) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
 <ul class="org-ul">
 <li>The <code>rhat</code> values were far from 1 (approx. 1.03 and 1.09, respectively), and the <code>ess_bulk</code> values were low compared to other parameters (approx. 248 and 233, respectively).</li>
 <li>The trace plots also appeared unstable.</li>
@@ -617,7 +616,7 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 <li><span class="underline">Series for \(&beta;_j &times; &gamma;_j$</span>:
 <ul class="org-ul">
 <li>This series represents the coefficient&rsquo;s effect when variable \(j\) is included in the model (\(\gamma_j=1\)) and is zero when excluded (\(\gamma_j=0\)).</li>
-<li>The trace plots (<a href="#org0485e3f">2</a>) and diagnostic statistics (summary of <code>chn_βγ</code>) showed that this series generally exhibited good mixing.
+<li>The trace plots (<a href="#org25e52db">2</a>) and diagnostic statistics (summary of <code>chn_βγ</code>) showed that this series generally exhibited good mixing.
 <ul class="org-ul">
 <li>In particular, the <code>rhat</code> values for <code>β1*γ1</code> and <code>β2*γ2</code> were close to 1 (approx. 1.017 and 1.0005, respectively), and the <code>ess_bulk</code> values improved (approx. 585 and 39422, respectively).</li>
 <li>The trace plots were also stable, especially for <code>β2*γ2</code>, which stayed very close to 0.</li>
@@ -640,17 +639,17 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 </div>
 </div>
 </div>
-<div id="outline-container-org5c91ff5" class="outline-2">
-<h2 id="org5c91ff5">b)</h2>
-<div class="outline-text-2" id="text-org5c91ff5">
+<div id="outline-container-org773ec55" class="outline-2">
+<h2 id="org773ec55">b)</h2>
+<div class="outline-text-2" id="text-org773ec55">
 </div>
-<div id="outline-container-orgd216a33" class="outline-3">
-<h3 id="orgd216a33">Answer</h3>
-<div class="outline-text-3" id="text-orgd216a33">
+<div id="outline-container-org11223e2" class="outline-3">
+<h3 id="org11223e2">Answer</h3>
+<div class="outline-text-3" id="text-org11223e2">
 </div>
-<div id="outline-container-org130b432" class="outline-4">
-<h4 id="org130b432">top five most frequently occurring values of \(\gamma\)</h4>
-<div class="outline-text-4" id="text-org130b432">
+<div id="outline-container-org99d99ac" class="outline-4">
+<h4 id="org99d99ac">top five most frequently occurring values of \(\gamma\)</h4>
+<div class="outline-text-4" id="text-org99d99ac">
 <div class="org-src-container">
 <pre class="src src-julia">gamma_tuples = <span style="color: #51afef;">[</span>tuple<span style="color: #C57BDB;">(</span>Int.<span style="color: #7bc275;">(</span>GAMMA<span style="color: #a991f1;">[</span>i, :<span style="color: #a991f1;">]</span><span style="color: #7bc275;">)</span>...<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #C57BDB;">(</span>GAMMA, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>;
 gamma_tuples<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">]</span>
@@ -687,13 +686,13 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 </div>
 </div>
 </div>
-<div id="outline-container-org2dc12a9" class="outline-4">
-<h4 id="org2dc12a9">How good are the estimates?</h4>
-<div class="outline-text-4" id="text-org2dc12a9">
+<div id="outline-container-org463d8ca" class="outline-4">
+<h4 id="org463d8ca">How good are the estimates?</h4>
+<div class="outline-text-4" id="text-org463d8ca">
 </div>
-<div id="outline-container-org9292191" class="outline-5">
-<h5 id="org9292191">日本語</h5>
-<div class="outline-text-5" id="text-org9292191">
+<div id="outline-container-orgf10d4ae" class="outline-5">
+<h5 id="orgf10d4ae">日本語</h5>
+<div class="outline-text-5" id="text-orgf10d4ae">
 <ol class="org-ol">
 <li><b>結果の解釈</b>:
 <ul class="org-ul">
@@ -713,9 +712,9 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 </ol>
 </div>
 </div>
-<div id="outline-container-orgbb3f873" class="outline-5">
-<h5 id="orgbb3f873">English</h5>
-<div class="outline-text-5" id="text-orgbb3f873">
+<div id="outline-container-org14fae82" class="outline-5">
+<h5 id="org14fae82">English</h5>
+<div class="outline-text-5" id="text-org14fae82">
 <ol class="org-ol">
 <li><b>Interpretation of Results</b>:
 <ul class="org-ul">
@@ -738,17 +737,17 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 </div>
 </div>
 </div>
-<div id="outline-container-org475a06a" class="outline-2">
-<h2 id="org475a06a">c)</h2>
-<div class="outline-text-2" id="text-org475a06a">
+<div id="outline-container-org23824f4" class="outline-2">
+<h2 id="org23824f4">c)</h2>
+<div class="outline-text-2" id="text-org23824f4">
 </div>
-<div id="outline-container-org128a6b4" class="outline-3">
-<h3 id="org128a6b4">Answer</h3>
-<div class="outline-text-3" id="text-org128a6b4">
+<div id="outline-container-orgcf2dd3a" class="outline-3">
+<h3 id="orgcf2dd3a">Answer</h3>
+<div class="outline-text-3" id="text-orgcf2dd3a">
 </div>
-<div id="outline-container-orge70947f" class="outline-4">
-<h4 id="orge70947f">posterior densities</h4>
-<div class="outline-text-4" id="text-orge70947f">
+<div id="outline-container-org6f1d8f6" class="outline-4">
+<h4 id="org6f1d8f6">posterior densities</h4>
+<div class="outline-text-4" id="text-org6f1d8f6">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">Plot posterior densities for &#946;j*&#947;j (j=1 to 5)</span>
 <span style="color: #62686E;"># </span><span style="color: #62686E;">We select the parameters of interest from the chain object</span>
@@ -758,21 +757,21 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </pre>
 </div>
 
-<div id="orgc9be7d0" class="figure">
+<div id="orga14583e" class="figure">
 <p><img src="./fig/exercise10-5c_density.png" alt="exercise10-5c_density.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8e5965" class="outline-4">
-<h4 id="orgf8e5965">posterior means</h4>
-<div class="outline-text-4" id="text-orgf8e5965">
+<div id="outline-container-org980b63e" class="outline-4">
+<h4 id="org980b63e">posterior means</h4>
+<div class="outline-text-4" id="text-org980b63e">
 <div class="org-src-container">
 <pre class="src src-julia">mean<span style="color: #51afef;">(</span>GAMMA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 
-<pre class="example" id="org0cafd45">
+<pre class="example" id="orga318bf8">
 1×5 Matrix{Float64}:
  0.38517  0.05703  1.0  0.98574  0.99953
 </pre>

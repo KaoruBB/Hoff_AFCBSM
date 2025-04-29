@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>4.4</title>
+<title>Exercise 4.4 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,37 +99,34 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">4.4
+<h1 class="title">Exercise 4.4 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 4.4 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3a18249">a)</a>
+<li><a href="#org1a25727">a)</a>
 <ul>
-<li><a href="#orgd0f737a">answer</a></li>
+<li><a href="#org841ccc6">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfcbd974">b)</a>
+<li><a href="#orga7d3597">b)</a>
 <ul>
-<li><a href="#orgcafbd53">answer</a></li>
+<li><a href="#org8550878">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org3a18249" class="outline-2">
-<h2 id="org3a18249">a)</h2>
-<div class="outline-text-2" id="text-org3a18249">
+<div id="outline-container-org1a25727" class="outline-2">
+<h2 id="org1a25727">a)</h2>
+<div class="outline-text-2" id="text-org1a25727">
 </div>
-<div id="outline-container-orgd0f737a" class="outline-3">
-<h3 id="orgd0f737a">answer</h3>
-<div class="outline-text-3" id="text-orgd0f737a">
+<div id="outline-container-org841ccc6" class="outline-3">
+<h3 id="org841ccc6">answer</h3>
+<div class="outline-text-3" id="text-org841ccc6">
 <p>
 From the result in <a href="../ch3/3-4.html">3.4 d) ii</a>, the posterior distribution when using the mixture prior distribution follows
 \(\frac{3}{4} \text{Beta}(17, 36) + \frac{1}{4} \text{Beta}(23, 30)\).
@@ -158,7 +157,7 @@ histogram<span style="color: #51afef;">(</span>
 :RESULTS:
 </p>
 
-<div id="org2932ddd" class="figure">
+<div id="org65394e8" class="figure">
 <p><img src="fig/exercise4-4a.png" alt="exercise4-4a.png" width="500" />
 </p>
 </div>
@@ -180,13 +179,13 @@ The 95% quantile-based posterior confidence interval can be approximated using s
 </div>
 </div>
 </div>
-<div id="outline-container-orgfcbd974" class="outline-2">
-<h2 id="orgfcbd974">b)</h2>
-<div class="outline-text-2" id="text-orgfcbd974">
+<div id="outline-container-orga7d3597" class="outline-2">
+<h2 id="orga7d3597">b)</h2>
+<div class="outline-text-2" id="text-orga7d3597">
 </div>
-<div id="outline-container-orgcafbd53" class="outline-3">
-<h3 id="orgcafbd53">answer</h3>
-<div class="outline-text-3" id="text-orgcafbd53">
+<div id="outline-container-org8550878" class="outline-3">
+<h3 id="org8550878">answer</h3>
+<div class="outline-text-3" id="text-org8550878">
 <div class="org-src-container">
 <pre class="src src-julia">w = <span style="color: #e69055; font-weight: bold;">0.75</span>
 
@@ -204,7 +203,7 @@ z_mc = <span style="color: #51afef;">[]</span>
 :RESULTS:
 </p>
 
-<div id="org07f3b8c" class="figure">
+<div id="orgd09d3bf" class="figure">
 <p><img src="fig/exercise4-4b.png" alt="exercise4-4b.png" width="500" />
 </p>
 </div>

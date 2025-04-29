@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>10.2</title>
+<title>Exercise 10.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,52 +99,49 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">10.2
+<h1 class="title">Exercise 10.2 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 10.2 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9261e12">a)</a>
+<li><a href="#org1d37982">a)</a>
 <ul>
-<li><a href="#orgc174a86">Answer</a></li>
+<li><a href="#org5899a34">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgeda0762">b)</a>
+<li><a href="#org75598c6">b)</a>
 <ul>
-<li><a href="#orgd36af6a">Answer</a></li>
+<li><a href="#org5112077">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgae36689">c)</a>
+<li><a href="#org8f1c4d0">c)</a>
 <ul>
-<li><a href="#orgf8034c6">Answer</a></li>
+<li><a href="#org192f589">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org1f3c819">d)</a>
+<li><a href="#org5cdbf5c">d)</a>
 <ul>
-<li><a href="#org7a3cbaf">Answer</a></li>
+<li><a href="#org344622f">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfc7303e">e)</a>
+<li><a href="#org7ef26c0">e)</a>
 <ul>
-<li><a href="#orge3d70b1">Answer</a></li>
+<li><a href="#orgd380481">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org9261e12" class="outline-2">
-<h2 id="org9261e12">a)</h2>
-<div class="outline-text-2" id="text-org9261e12">
+<div id="outline-container-org1d37982" class="outline-2">
+<h2 id="org1d37982">a)</h2>
+<div class="outline-text-2" id="text-org1d37982">
 </div>
-<div id="outline-container-orgc174a86" class="outline-3">
-<h3 id="orgc174a86">Answer</h3>
-<div class="outline-text-3" id="text-orgc174a86">
+<div id="outline-container-org5899a34" class="outline-3">
+<h3 id="org5899a34">Answer</h3>
+<div class="outline-text-3" id="text-org5899a34">
 \begin{align*}
 \prod_{i=1}^n p(y_i | \alpha, \beta, x_i)
 &= \prod_{i=1}^n \frac{\exp(\alpha + \beta x_i)^{y_i}}{1 + \exp(\alpha + \beta x_i)} \\
@@ -150,13 +149,13 @@ HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日�
 </div>
 </div>
 </div>
-<div id="outline-container-orgeda0762" class="outline-2">
-<h2 id="orgeda0762">b)</h2>
-<div class="outline-text-2" id="text-orgeda0762">
+<div id="outline-container-org75598c6" class="outline-2">
+<h2 id="org75598c6">b)</h2>
+<div class="outline-text-2" id="text-org75598c6">
 </div>
-<div id="outline-container-orgd36af6a" class="outline-3">
-<h3 id="orgd36af6a">Answer</h3>
-<div class="outline-text-3" id="text-orgd36af6a">
+<div id="outline-container-org5112077" class="outline-3">
+<h3 id="org5112077">Answer</h3>
+<div class="outline-text-3" id="text-org5112077">
 <p>
 Let \(p\) be the probability of nesting success.
 Then,
@@ -194,13 +193,13 @@ Thus, we can set the prior distribution of \(\alpha\) and \(\beta\) as follows:
 </div>
 </div>
 </div>
-<div id="outline-container-orgae36689" class="outline-2">
-<h2 id="orgae36689">c)</h2>
-<div class="outline-text-2" id="text-orgae36689">
+<div id="outline-container-org8f1c4d0" class="outline-2">
+<h2 id="org8f1c4d0">c)</h2>
+<div class="outline-text-2" id="text-org8f1c4d0">
 </div>
-<div id="outline-container-orgf8034c6" class="outline-3">
-<h3 id="orgf8034c6">Answer</h3>
-<div class="outline-text-3" id="text-orgf8034c6">
+<div id="outline-container-org192f589" class="outline-3">
+<h3 id="org192f589">Answer</h3>
+<div class="outline-text-3" id="text-org192f589">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> BayesPlots
 <span style="color: #51afef;">using</span> DelimitedFiles
@@ -295,7 +294,7 @@ ess<span style="color: #51afef;">(</span>MCMCChains.Chains<span style="color: #C
 </pre>
 </div>
 
-<pre class="example" id="orga7fdacd">
+<pre class="example" id="org32600a1">
 ESS
   parameters         ess   ess_per_sec
       Symbol     Float64       Missing
@@ -305,35 +304,35 @@ ESS
 </pre>
 
 
-<div id="org2c79430" class="figure">
+<div id="orgff64b27" class="figure">
 <p><img src="./fig/ex10-2_itr.png" alt="ex10-2_itr.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1f3c819" class="outline-2">
-<h2 id="org1f3c819">d)</h2>
-<div class="outline-text-2" id="text-org1f3c819">
+<div id="outline-container-org5cdbf5c" class="outline-2">
+<h2 id="org5cdbf5c">d)</h2>
+<div class="outline-text-2" id="text-org5cdbf5c">
 </div>
-<div id="outline-container-org7a3cbaf" class="outline-3">
-<h3 id="org7a3cbaf">Answer</h3>
-<div class="outline-text-3" id="text-org7a3cbaf">
+<div id="outline-container-org344622f" class="outline-3">
+<h3 id="org344622f">Answer</h3>
+<div class="outline-text-3" id="text-org344622f">
 
-<div id="orgb7aa87b" class="figure">
+<div id="org0b2e622" class="figure">
 <p><img src="./fig/ex10-2d.png" alt="ex10-2d.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc7303e" class="outline-2">
-<h2 id="orgfc7303e">e)</h2>
-<div class="outline-text-2" id="text-orgfc7303e">
+<div id="outline-container-org7ef26c0" class="outline-2">
+<h2 id="org7ef26c0">e)</h2>
+<div class="outline-text-2" id="text-org7ef26c0">
 </div>
-<div id="outline-container-orge3d70b1" class="outline-3">
-<h3 id="orge3d70b1">Answer</h3>
-<div class="outline-text-3" id="text-orge3d70b1">
+<div id="outline-container-orgd380481" class="outline-3">
+<h3 id="orgd380481">Answer</h3>
+<div class="outline-text-3" id="text-orgd380481">
 <div class="org-src-container">
 <pre class="src src-julia">x_grid = <span style="color: #e69055; font-weight: bold;">10</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">15</span>
 x_grid = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>x_grid<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, x_grid<span style="color: #51afef;">)</span>
@@ -349,7 +348,7 @@ f_post_upper = map<span style="color: #51afef;">(</span>x <span style="color: #F
 </div>
 
 
-<div id="orga6cd7c9" class="figure">
+<div id="org898c7b0" class="figure">
 <p><img src="./fig/ex10-2e.png" alt="ex10-2e.png" />
 </p>
 </div>

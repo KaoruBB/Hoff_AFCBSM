@@ -1,5 +1,6 @@
-#+TITLE: 3.3
-#+INCLUDE: setup.org
+#+TITLE: Exercise 3.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 3.3 解答例
+#+SETUPFILE: ../setup.org
 * Question :noexport:
 Tumor counts:
 A cancer laboratory is estimating the rate of tumorigenesis in two strains of mice, /A/ and /B/.
@@ -165,8 +166,6 @@ and model it in the form of \(p(\theta_B | \theta_A, n_0) = \text{gamma}(E[\thet
 Also, when making inferences about the B strain mice after observing data about the A strain mice,
 it is possible to model it using the posterior expectation of \(\theta_A\) as the prior expectation of \(\theta_B\).
 
-
-aaa
 * nav :ignore:
 #+ATTR_HTML: :class nav-prev
 [[./3-2.org][3.2]]

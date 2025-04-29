@@ -1,5 +1,6 @@
-#+TITLE: 2.6
-#+INCLUDE: setup.org
+#+TITLE: Exercise 2.6 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 2.6 解答例
+#+SETUPFILE: ../setup.org
 * Question :noexport:
 Conditional Independence: Suppose events /A/ and /B/ are conditionally independent given /C/, which is written \(A \perp B \mid C\).
 Show that this implies that \( A^c \perp B \mid C , \ A \perp B^c \mid C \) and \( A^c \perp B^c \mid C \), where \( A^c \) means "not /A/."

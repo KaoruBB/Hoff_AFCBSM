@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>9.3</title>
+<title>Exercise 9.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -39,42 +41,39 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">9.3
+<h1 class="title">Exercise 9.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 9</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 9.3 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc6d1516">a)</a>
+<li><a href="#orgd427b6b">a)</a>
 <ul>
-<li><a href="#orge7e8aee">Answer</a></li>
+<li><a href="#orga9aab06">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org5d07099">b)</a>
+<li><a href="#org92ae876">b)</a>
 <ul>
-<li><a href="#org43721dc">Answer</a></li>
+<li><a href="#orgbd9a7bf">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org0eeab92">c)</a>
+<li><a href="#org375f7fa">c)</a>
 <ul>
-<li><a href="#org473ef03">Answer</a></li>
+<li><a href="#org9704487">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-orgc6d1516" class="outline-2">
-<h2 id="orgc6d1516">a)</h2>
-<div class="outline-text-2" id="text-orgc6d1516">
+<div id="outline-container-orgd427b6b" class="outline-2">
+<h2 id="orgd427b6b">a)</h2>
+<div class="outline-text-2" id="text-orgd427b6b">
 </div>
-<div id="outline-container-orge7e8aee" class="outline-3">
-<h3 id="orge7e8aee">Answer</h3>
-<div class="outline-text-3" id="text-orge7e8aee">
+<div id="outline-container-orga9aab06" class="outline-3">
+<h3 id="orga9aab06">Answer</h3>
+<div class="outline-text-3" id="text-orga9aab06">
 <p>
 The result of bayesian regression using the <i>g</i>-prior is shown below:
 </p>
@@ -147,7 +146,7 @@ result_gprior = DataFrame<span style="color: #51afef;">(</span>
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org6248650">
+<pre class="example" id="orgf611dc6">
 16×5 DataFrame
  Row │ param      β̂             ci_lower    ci_upper    ci_length
      │ String     Float64       Float64     Float64     Float64
@@ -192,7 +191,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 </div>
 
-<pre class="example" id="orgcfed50d">
+<pre class="example" id="orgae85ecf">
 16×6 DataFrame
  Row │ param      β̂             pvalue      ci_lower     ci_upper    ci_length
      │ String     Float64       Float64     Float64      Float64     Float64
@@ -216,7 +215,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 
 
-<div id="org23a9fd5" class="figure">
+<div id="org8bd18e9" class="figure">
 <p><img src="./fig/ex_9-3a_coef.png" alt="ex_9-3a_coef.png" />
 </p>
 </div>
@@ -231,13 +230,13 @@ Using these types of criteria, the difference between the two results is that Po
 </div>
 </div>
 </div>
-<div id="outline-container-org5d07099" class="outline-2">
-<h2 id="org5d07099">b)</h2>
-<div class="outline-text-2" id="text-org5d07099">
+<div id="outline-container-org92ae876" class="outline-2">
+<h2 id="org92ae876">b)</h2>
+<div class="outline-text-2" id="text-org92ae876">
 </div>
-<div id="outline-container-org43721dc" class="outline-3">
-<h3 id="org43721dc">Answer</h3>
-<div class="outline-text-3" id="text-org43721dc">
+<div id="outline-container-orgbd9a7bf" class="outline-3">
+<h3 id="orgbd9a7bf">Answer</h3>
+<div class="outline-text-3" id="text-orgbd9a7bf">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
 Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
@@ -286,7 +285,7 @@ error_bayes = mean<span style="color: #51afef;">(</span><span style="color: #C57
 
 
 
-<div id="org3ce8a5d" class="figure">
+<div id="org0ce1d31" class="figure">
 <p><img src="./fig/ex_9-3b.png" alt="ex_9-3b.png" />
 </p>
 </div>
@@ -298,13 +297,13 @@ For this time, the bayesian regression predict better than the least square regr
 </div>
 </div>
 </div>
-<div id="outline-container-org0eeab92" class="outline-2">
-<h2 id="org0eeab92">c)</h2>
-<div class="outline-text-2" id="text-org0eeab92">
+<div id="outline-container-org375f7fa" class="outline-2">
+<h2 id="org375f7fa">c)</h2>
+<div class="outline-text-2" id="text-org375f7fa">
 </div>
-<div id="outline-container-org473ef03" class="outline-3">
-<h3 id="org473ef03">Answer</h3>
-<div class="outline-text-3" id="text-org473ef03">
+<div id="outline-container-org9704487" class="outline-3">
+<h3 id="org9704487">Answer</h3>
+<div class="outline-text-3" id="text-org9704487">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">computeMses</span><span style="color: #51afef;">(</span>y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
     <span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
@@ -347,7 +346,7 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 
 
 
-<div id="orga48358c" class="figure">
+<div id="orgafc0198" class="figure">
 <p><img src="./fig/ex_9-3c.png" alt="ex_9-3c.png" />
 </p>
 </div>

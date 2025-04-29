@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>4.5</title>
+<title>Exercise 4.5 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,71 +99,68 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">4.5
+<h1 class="title">Exercise 4.5 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 4.5 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdf59313">a)</a>
+<li><a href="#org9e2065e">a)</a>
 <ul>
-<li><a href="#org77b17ea">answer</a></li>
+<li><a href="#org5517e33">answer</a></li>
 </ul>
 </li>
-<li><a href="#org4dd3906">b)</a>
+<li><a href="#org2e09cca">b)</a>
 <ul>
-<li><a href="#org8ea62a7">answer</a></li>
+<li><a href="#orge19199e">answer</a></li>
 </ul>
 </li>
-<li><a href="#org0eac1de">c)</a>
+<li><a href="#org10fd759">c)</a>
 <ul>
-<li><a href="#org51874e8">i</a>
+<li><a href="#orgb706005">i</a>
 <ul>
-<li><a href="#org198dcda">answer</a></li>
+<li><a href="#org0ef6976">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfd85fcd">ii.</a>
+<li><a href="#org36c7031">ii.</a>
 <ul>
-<li><a href="#org9b0c291">answer</a></li>
+<li><a href="#org4e93aa0">answer</a></li>
 </ul>
 </li>
-<li><a href="#org5248273">iii.</a>
+<li><a href="#org4b6eb4e">iii.</a>
 <ul>
-<li><a href="#orgdf80834">answer</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org342a496">d)</a>
-<ul>
-<li><a href="#orge0dc896">answer</a>
-<ul>
-<li><a href="#orga73b954">日本語</a></li>
-<li><a href="#org8ca2192">English</a></li>
+<li><a href="#orga6eb2a7">answer</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org18321fa">e)</a>
+<li><a href="#orgdd8cf07">d)</a>
 <ul>
-<li><a href="#org4908076">Answer</a></li>
+<li><a href="#orgf4c99e0">answer</a>
+<ul>
+<li><a href="#orge0294d5">日本語</a></li>
+<li><a href="#orgf61ae56">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgfc1792b">e)</a>
+<ul>
+<li><a href="#orgbf485b3">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-orgdf59313" class="outline-2">
-<h2 id="orgdf59313">a)</h2>
-<div class="outline-text-2" id="text-orgdf59313">
+<div id="outline-container-org9e2065e" class="outline-2">
+<h2 id="org9e2065e">a)</h2>
+<div class="outline-text-2" id="text-org9e2065e">
 </div>
-<div id="outline-container-org77b17ea" class="outline-3">
-<h3 id="org77b17ea">answer</h3>
-<div class="outline-text-3" id="text-org77b17ea">
+<div id="outline-container-org5517e33" class="outline-3">
+<h3 id="org5517e33">answer</h3>
+<div class="outline-text-3" id="text-org5517e33">
 <p>
 From \(Y_i \sim \text{Poisson}(\theta X_i)\), the likelihood is
 </p>
@@ -203,13 +202,13 @@ Gamma(\(a + \sum_{i=1}^n Y_i, b + \sum_{i=1}^n X_i\))
 </div>
 </div>
 </div>
-<div id="outline-container-org4dd3906" class="outline-2">
-<h2 id="org4dd3906">b)</h2>
-<div class="outline-text-2" id="text-org4dd3906">
+<div id="outline-container-org2e09cca" class="outline-2">
+<h2 id="org2e09cca">b)</h2>
+<div class="outline-text-2" id="text-org2e09cca">
 </div>
-<div id="outline-container-org8ea62a7" class="outline-3">
-<h3 id="org8ea62a7">answer</h3>
-<div class="outline-text-3" id="text-org8ea62a7">
+<div id="outline-container-orge19199e" class="outline-3">
+<h3 id="orge19199e">answer</h3>
+<div class="outline-text-3" id="text-orge19199e">
 <div class="org-src-container">
 <pre class="src src-julia">cancer_noreact=DataFrame<span style="color: #51afef;">(</span>readdlm<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">"./Exercises/cancer_noreact.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>, <span style="color: #a991f1;">:auto</span><span style="color: #51afef;">)</span>;
 sx&#8321;, sy&#8321; = sum.<span style="color: #51afef;">(</span>eachcol<span style="color: #C57BDB;">(</span>cancer_noreact<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -248,17 +247,17 @@ From the above, the posterior distributions of \(\theta_1, \theta_2\) are as fol
 </div>
 </div>
 </div>
-<div id="outline-container-org0eac1de" class="outline-2">
-<h2 id="org0eac1de">c)</h2>
-<div class="outline-text-2" id="text-org0eac1de">
+<div id="outline-container-org10fd759" class="outline-2">
+<h2 id="org10fd759">c)</h2>
+<div class="outline-text-2" id="text-org10fd759">
 </div>
-<div id="outline-container-org51874e8" class="outline-3">
-<h3 id="org51874e8">i</h3>
-<div class="outline-text-3" id="text-org51874e8">
+<div id="outline-container-orgb706005" class="outline-3">
+<h3 id="orgb706005">i</h3>
+<div class="outline-text-3" id="text-orgb706005">
 </div>
-<div id="outline-container-org198dcda" class="outline-4">
-<h4 id="org198dcda">answer</h4>
-<div class="outline-text-4" id="text-org198dcda">
+<div id="outline-container-org0ef6976" class="outline-4">
+<h4 id="org0ef6976">answer</h4>
+<div class="outline-text-4" id="text-org0ef6976">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
 a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
@@ -331,20 +330,20 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 
 
 
-<div id="orgc726248" class="figure">
+<div id="org7528536" class="figure">
 <p><img src="fig/exercise4_5ci.png" alt="exercise4_5ci.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd85fcd" class="outline-3">
-<h3 id="orgfd85fcd">ii.</h3>
-<div class="outline-text-3" id="text-orgfd85fcd">
+<div id="outline-container-org36c7031" class="outline-3">
+<h3 id="org36c7031">ii.</h3>
+<div class="outline-text-3" id="text-org36c7031">
 </div>
-<div id="outline-container-org9b0c291" class="outline-4">
-<h4 id="org9b0c291">answer</h4>
-<div class="outline-text-4" id="text-org9b0c291">
+<div id="outline-container-org4e93aa0" class="outline-4">
+<h4 id="org4e93aa0">answer</h4>
+<div class="outline-text-4" id="text-org4e93aa0">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
 a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
@@ -417,20 +416,20 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 
 
 
-<div id="org2444cc8" class="figure">
+<div id="orgca86c46" class="figure">
 <p><img src="fig/exercise4_5cii.png" alt="exercise4_5cii.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org5248273" class="outline-3">
-<h3 id="org5248273">iii.</h3>
-<div class="outline-text-3" id="text-org5248273">
+<div id="outline-container-org4b6eb4e" class="outline-3">
+<h3 id="org4b6eb4e">iii.</h3>
+<div class="outline-text-3" id="text-org4b6eb4e">
 </div>
-<div id="outline-container-orgdf80834" class="outline-4">
-<h4 id="orgdf80834">answer</h4>
-<div class="outline-text-4" id="text-orgdf80834">
+<div id="outline-container-orga6eb2a7" class="outline-4">
+<h4 id="orga6eb2a7">answer</h4>
+<div class="outline-text-4" id="text-orga6eb2a7">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
 a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
@@ -503,7 +502,7 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 
 
 
-<div id="org0588274" class="figure">
+<div id="orgcc1d22c" class="figure">
 <p><img src="fig/exercise4_5ciii.png" alt="exercise4_5ciii.png" width="500" />
 </p>
 </div>
@@ -511,17 +510,17 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 </div>
 </div>
 </div>
-<div id="outline-container-org342a496" class="outline-2">
-<h2 id="org342a496">d)</h2>
-<div class="outline-text-2" id="text-org342a496">
+<div id="outline-container-orgdd8cf07" class="outline-2">
+<h2 id="orgdd8cf07">d)</h2>
+<div class="outline-text-2" id="text-orgdd8cf07">
 </div>
-<div id="outline-container-orge0dc896" class="outline-3">
-<h3 id="orge0dc896">answer</h3>
-<div class="outline-text-3" id="text-orge0dc896">
+<div id="outline-container-orgf4c99e0" class="outline-3">
+<h3 id="orgf4c99e0">answer</h3>
+<div class="outline-text-3" id="text-orgf4c99e0">
 </div>
-<div id="outline-container-orga73b954" class="outline-4">
-<h4 id="orga73b954">日本語</h4>
-<div class="outline-text-4" id="text-orga73b954">
+<div id="outline-container-orge0294d5" class="outline-4">
+<h4 id="orge0294d5">日本語</h4>
+<div class="outline-text-4" id="text-orge0294d5">
 <p>
 「人口が多い地域は、人口が少ない地域よりも医療が充実しており、がんになった場合の生存率が高い可能性がある」など考えることもできるので、人口規模と致死率が独立していると考えるのは必ずしも合理的であると言えない。
 </p>
@@ -533,9 +532,9 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 </p>
 </div>
 </div>
-<div id="outline-container-org8ca2192" class="outline-4">
-<h4 id="org8ca2192">English</h4>
-<div class="outline-text-4" id="text-org8ca2192">
+<div id="outline-container-orgf61ae56" class="outline-4">
+<h4 id="orgf61ae56">English</h4>
+<div class="outline-text-4" id="text-orgf61ae56">
 <p>
 It is also conceivable that &ldquo;regions with larger populations may have better healthcare compared to regions with smaller populations, potentially leading to higher survival rates in cancer cases.&rdquo;
 Therefore, assuming that population size and mortality rate are independent may not necessarily be reasonable.
@@ -548,13 +547,13 @@ Consequently, one might consider a hierarchical model, for example, by modeling 
 </div>
 </div>
 </div>
-<div id="outline-container-org18321fa" class="outline-2">
-<h2 id="org18321fa">e)</h2>
-<div class="outline-text-2" id="text-org18321fa">
+<div id="outline-container-orgfc1792b" class="outline-2">
+<h2 id="orgfc1792b">e)</h2>
+<div class="outline-text-2" id="text-orgfc1792b">
 </div>
-<div id="outline-container-org4908076" class="outline-3">
-<h3 id="org4908076">Answer</h3>
-<div class="outline-text-3" id="text-org4908076">
+<div id="outline-container-orgbf485b3" class="outline-3">
+<h3 id="orgbf485b3">Answer</h3>
+<div class="outline-text-3" id="text-orgbf485b3">
 \begin{align*}
 \theta_1 &\sim w \times \text{Beta}(a_1, b_1) + (1-w) \times \text{Beta}(a_2, b_2) \\
 \theta_2 &\sim w \times \text{Beta}(a_2, b_2) + (1-w) \times \text{Beta}(a_1, b_1)

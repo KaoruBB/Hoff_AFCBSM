@@ -1,5 +1,6 @@
-#+TITLE: 4.8
-#+INCLUDE: setup.org
+#+TITLE: Exercise 4.8 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 4.8 解答例
+#+SETUPFILE: ../setup.org
 #+STARTUP:showeverything
 * question :noexport:
 More posterior predictive checks:

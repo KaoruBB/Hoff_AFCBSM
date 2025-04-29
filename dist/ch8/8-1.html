@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>8.1</title>
+<title>Exercise 8.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,60 +99,57 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">8.1
+<h1 class="title">Exercise 8.1 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 8</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 8.1 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org620c98b">a)</a>
+<li><a href="#org47bbf2a">a)</a>
 <ul>
-<li><a href="#orge4605dd">Answer</a></li>
+<li><a href="#orgce7aa78">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org111c41c">b)</a>
+<li><a href="#org02d79da">b)</a>
 <ul>
-<li><a href="#org5018bd1">Answer</a></li>
+<li><a href="#org24cd618">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgf02c1c5">c)</a>
+<li><a href="#orgaa7f434">c)</a>
 <ul>
-<li><a href="#org6c375d3">Answer</a></li>
+<li><a href="#orge71041d">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org77faa8a">d)</a>
+<li><a href="#org66ff745">d)</a>
 <ul>
-<li><a href="#org92bb401">Answer</a></li>
+<li><a href="#org2d8f938">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org620c98b" class="outline-2">
-<h2 id="org620c98b">a)</h2>
-<div class="outline-text-2" id="text-org620c98b">
+<div id="outline-container-org47bbf2a" class="outline-2">
+<h2 id="org47bbf2a">a)</h2>
+<div class="outline-text-2" id="text-org47bbf2a">
 </div>
-<div id="outline-container-orge4605dd" class="outline-3">
-<h3 id="orge4605dd">Answer</h3>
-<div class="outline-text-3" id="text-orge4605dd">
+<div id="outline-container-orgce7aa78" class="outline-3">
+<h3 id="orgce7aa78">Answer</h3>
+<div class="outline-text-3" id="text-orgce7aa78">
 <p>
 \( \text{Var}[y_{i,j}|\mu, \tau^2] \) is bigger because it includes both between-group and within-group variability while \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) only includes within-group variability.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org111c41c" class="outline-2">
-<h2 id="org111c41c">b)</h2>
-<div class="outline-text-2" id="text-org111c41c">
+<div id="outline-container-org02d79da" class="outline-2">
+<h2 id="org02d79da">b)</h2>
+<div class="outline-text-2" id="text-org02d79da">
 </div>
-<div id="outline-container-org5018bd1" class="outline-3">
-<h3 id="org5018bd1">Answer</h3>
-<div class="outline-text-3" id="text-org5018bd1">
+<div id="outline-container-org24cd618" class="outline-3">
+<h3 id="org24cd618">Answer</h3>
+<div class="outline-text-3" id="text-org24cd618">
 <p>
 I think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is zero because when \(\theta_j\) is known, \(y_{i_2,j}\) tells us nothing about \(y_{i_1,j}\) more than what we already know.
 However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive because \(y_{i_2,j}\) tells us something about group-specific information \(\theta_j\) which we do not know.
@@ -158,13 +157,13 @@ However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive beca
 </div>
 </div>
 </div>
-<div id="outline-container-orgf02c1c5" class="outline-2">
-<h2 id="orgf02c1c5">c)</h2>
-<div class="outline-text-2" id="text-orgf02c1c5">
+<div id="outline-container-orgaa7f434" class="outline-2">
+<h2 id="orgaa7f434">c)</h2>
+<div class="outline-text-2" id="text-orgaa7f434">
 </div>
-<div id="outline-container-org6c375d3" class="outline-3">
-<h3 id="org6c375d3">Answer</h3>
-<div class="outline-text-3" id="text-org6c375d3">
+<div id="outline-container-orge71041d" class="outline-3">
+<h3 id="orge71041d">Answer</h3>
+<div class="outline-text-3" id="text-orge71041d">
 \begin{align*}
 \text{Var}[y_{i,j}|\theta_j, \sigma^2]
 &= \sigma^2 \\
@@ -203,13 +202,13 @@ However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive beca
 </div>
 </div>
 </div>
-<div id="outline-container-org77faa8a" class="outline-2">
-<h2 id="org77faa8a">d)</h2>
-<div class="outline-text-2" id="text-org77faa8a">
+<div id="outline-container-org66ff745" class="outline-2">
+<h2 id="org66ff745">d)</h2>
+<div class="outline-text-2" id="text-org66ff745">
 </div>
-<div id="outline-container-org92bb401" class="outline-3">
-<h3 id="org92bb401">Answer</h3>
-<div class="outline-text-3" id="text-org92bb401">
+<div id="outline-container-org2d8f938" class="outline-3">
+<h3 id="org2d8f938">Answer</h3>
+<div class="outline-text-3" id="text-org2d8f938">
 \begin{align*}
 p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
 &= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ p(\theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) } \\

@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>5.1</title>
+<title>Exercise 5.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,47 +99,44 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">5.1
+<h1 class="title">Exercise 5.1 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 5</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 5.1 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0c54d47">a)</a>
+<li><a href="#orgdc5a16d">a)</a>
 <ul>
-<li><a href="#org78fadb3">answer</a></li>
+<li><a href="#org439826f">answer</a></li>
 </ul>
 </li>
-<li><a href="#org48d6b77">b)</a>
+<li><a href="#org3118b61">b)</a>
 <ul>
-<li><a href="#org62a7206">answer</a></li>
+<li><a href="#org47e0294">answer</a></li>
 </ul>
 </li>
-<li><a href="#org4a030ca">c)</a>
+<li><a href="#org062366a">c)</a>
 <ul>
-<li><a href="#org5979787">answer</a></li>
+<li><a href="#org6ea36b8">answer</a></li>
 </ul>
 </li>
-<li><a href="#org6f12dfd">d)</a>
+<li><a href="#orgd3ba7a4">d)</a>
 <ul>
-<li><a href="#org15a1a21">answer</a></li>
+<li><a href="#org7c44661">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org0c54d47" class="outline-2">
-<h2 id="org0c54d47">a)</h2>
-<div class="outline-text-2" id="text-org0c54d47">
+<div id="outline-container-orgdc5a16d" class="outline-2">
+<h2 id="orgdc5a16d">a)</h2>
+<div class="outline-text-2" id="text-orgdc5a16d">
 </div>
-<div id="outline-container-org78fadb3" class="outline-3">
-<h3 id="org78fadb3">answer</h3>
-<div class="outline-text-3" id="text-org78fadb3">
+<div id="outline-container-org439826f" class="outline-3">
+<h3 id="org439826f">answer</h3>
+<div class="outline-text-3" id="text-org439826f">
 <div class="org-src-container">
 <pre class="src src-julia">school1 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school1.dat"</span><span style="color: #51afef;">)</span>
 school2 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school2.dat"</span><span style="color: #51afef;">)</span>
@@ -239,13 +238,13 @@ write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8323;_mc, &#963;&
 </div>
 </div>
 </div>
-<div id="outline-container-org48d6b77" class="outline-2">
-<h2 id="org48d6b77">b)</h2>
-<div class="outline-text-2" id="text-org48d6b77">
+<div id="outline-container-org3118b61" class="outline-2">
+<h2 id="org3118b61">b)</h2>
+<div class="outline-text-2" id="text-org3118b61">
 </div>
-<div id="outline-container-org62a7206" class="outline-3">
-<h3 id="org62a7206">answer</h3>
-<div class="outline-text-3" id="text-org62a7206">
+<div id="outline-container-org47e0294" class="outline-3">
+<h3 id="org47e0294">answer</h3>
+<div class="outline-text-3" id="text-org47e0294">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;_mcs = <span style="color: #51afef;">[</span>&#952;&#8321;_mc, &#952;&#8322;_mc, &#952;&#8323;_mc<span style="color: #51afef;">]</span>
 <span style="color: #5cEfFF;">perms</span><span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> = isempty<span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> <span style="color: #51afef;">?</span> <span style="color: #51afef;">[</span>l<span style="color: #51afef;">]</span> <span style="color: #51afef;">:</span> <span style="color: #51afef;">[</span><span style="color: #C57BDB;">[</span>x; y<span style="color: #C57BDB;">]</span> <span style="color: #51afef;">for</span> x in l <span style="color: #51afef;">for</span> y <span style="color: #51afef;">in</span> perms<span style="color: #C57BDB;">(</span>setdiff<span style="color: #7bc275;">(</span>l, x<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
@@ -268,13 +267,13 @@ p(θ3 &lt; θ2 &lt; θ1) = 0.2256
 </div>
 </div>
 </div>
-<div id="outline-container-org4a030ca" class="outline-2">
-<h2 id="org4a030ca">c)</h2>
-<div class="outline-text-2" id="text-org4a030ca">
+<div id="outline-container-org062366a" class="outline-2">
+<h2 id="org062366a">c)</h2>
+<div class="outline-text-2" id="text-org062366a">
 </div>
-<div id="outline-container-org5979787" class="outline-3">
-<h3 id="org5979787">answer</h3>
-<div class="outline-text-3" id="text-org5979787">
+<div id="outline-container-org6ea36b8" class="outline-3">
+<h3 id="org6ea36b8">answer</h3>
+<div class="outline-text-3" id="text-org6ea36b8">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">sample_posterior_predictive</span><span style="color: #51afef;">(</span>&#952;_mc, &#963;_mc<span style="color: #51afef;">)</span>
     y&#771;_mc = rand.<span style="color: #51afef;">(</span>Normal.<span style="color: #C57BDB;">(</span>&#952;_mc, &#963;_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -306,13 +305,13 @@ p(ỹ3 &lt; ỹ2 &lt; ỹ1) = 0.1888
 </div>
 </div>
 </div>
-<div id="outline-container-org6f12dfd" class="outline-2">
-<h2 id="org6f12dfd">d)</h2>
-<div class="outline-text-2" id="text-org6f12dfd">
+<div id="outline-container-orgd3ba7a4" class="outline-2">
+<h2 id="orgd3ba7a4">d)</h2>
+<div class="outline-text-2" id="text-orgd3ba7a4">
 </div>
-<div id="outline-container-org15a1a21" class="outline-3">
-<h3 id="org15a1a21">answer</h3>
-<div class="outline-text-3" id="text-org15a1a21">
+<div id="outline-container-org7c44661" class="outline-3">
+<h3 id="org7c44661">answer</h3>
+<div class="outline-text-3" id="text-org7c44661">
 <p>
 Using the results from the previous calculations,
 </p>

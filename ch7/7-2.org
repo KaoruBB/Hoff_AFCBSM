@@ -1,5 +1,6 @@
-#+TITLE: 7.2
-#+INCLUDE: setup.org
+#+TITLE: Exercise 7.2 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 7.2 解答例
+#+SETUPFILE: ../setup.org
 #+STARTUP:showeverything
 * Question :noexport:
 Unit information prior:

@@ -1,5 +1,6 @@
-#+TITLE: 2.7
-#+INCLUDE: setup.org
+#+TITLE: Exercise 2.7 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 2.7 解答例
+#+SETUPFILE: ../setup.org
 * Question :noexport:
 Coherence of bets:
 de Finetti thought of subjective probability as follows:

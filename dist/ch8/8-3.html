@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>8.3</title>
+<title>Exercise 8.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,52 +99,49 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">8.3
+<h1 class="title">Exercise 8.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 8</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 8.3 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org50e13ef">a)</a>
+<li><a href="#orgb3d5e25">a)</a>
 <ul>
-<li><a href="#org093c6f5">Answer</a></li>
+<li><a href="#orga7b3c16">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org7bf3c13">b)</a>
+<li><a href="#org9a3f492">b)</a>
 <ul>
-<li><a href="#orgc6328cf">Answer</a></li>
+<li><a href="#org4e66351">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org875feda">c)</a>
+<li><a href="#orge57153d">c)</a>
 <ul>
-<li><a href="#orga4cf08f">Answer</a></li>
+<li><a href="#orgda3854b">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orga201ea1">d)</a>
+<li><a href="#org718ddbc">d)</a>
 <ul>
-<li><a href="#orgcd0a6bf">Answer</a></li>
+<li><a href="#org8ec623a">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org7298067">e)</a>
+<li><a href="#orge562c27">e)</a>
 <ul>
-<li><a href="#orgb186617">Answer</a></li>
+<li><a href="#orgab69222">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org50e13ef" class="outline-2">
-<h2 id="org50e13ef">a)</h2>
-<div class="outline-text-2" id="text-org50e13ef">
+<div id="outline-container-orgb3d5e25" class="outline-2">
+<h2 id="orgb3d5e25">a)</h2>
+<div class="outline-text-2" id="text-orgb3d5e25">
 </div>
-<div id="outline-container-org093c6f5" class="outline-3">
-<h3 id="org093c6f5">Answer</h3>
-<div class="outline-text-3" id="text-org093c6f5">
+<div id="outline-container-orga7b3c16" class="outline-3">
+<h3 id="orga7b3c16">Answer</h3>
+<div class="outline-text-3" id="text-orga7b3c16">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 <span style="color: #51afef;">using</span> Random
@@ -230,7 +229,7 @@ MST = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51
 </div>
 
 
-<div id="org6b7f3ae" class="figure">
+<div id="org80eb432" class="figure">
 <p><img src="./fig/ex8-3_stationarity.png" alt="ex8-3_stationarity.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>stationarity plot</p>
@@ -256,13 +255,13 @@ ESS
 </div>
 </div>
 </div>
-<div id="outline-container-org7bf3c13" class="outline-2">
-<h2 id="org7bf3c13">b)</h2>
-<div class="outline-text-2" id="text-org7bf3c13">
+<div id="outline-container-org9a3f492" class="outline-2">
+<h2 id="org9a3f492">b)</h2>
+<div class="outline-text-2" id="text-org9a3f492">
 </div>
-<div id="outline-container-orgc6328cf" class="outline-3">
-<h3 id="orgc6328cf">Answer</h3>
-<div class="outline-text-3" id="text-orgc6328cf">
+<div id="outline-container-org4e66351" class="outline-3">
+<h3 id="org4e66351">Answer</h3>
+<div class="outline-text-3" id="text-org4e66351">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean and 95% confidence region for &#963;&#178;</span>
 julia<span style="color: #FCCE7B;">&gt;</span> mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -299,7 +298,7 @@ julia<span style="color: #FCCE7B;">&gt;</span> quantile<span style="color: #51af
 </div>
 
 
-<div id="org7b0df8a" class="figure">
+<div id="orgc5356e2" class="figure">
 <p><img src="./fig/ex8-3_posterior.png" alt="ex8-3_posterior.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Comparison of posterior and prior densities</p>
@@ -316,13 +315,13 @@ The following things were learned from the data:
 </div>
 </div>
 </div>
-<div id="outline-container-org875feda" class="outline-2">
-<h2 id="org875feda">c)</h2>
-<div class="outline-text-2" id="text-org875feda">
+<div id="outline-container-orge57153d" class="outline-2">
+<h2 id="orge57153d">c)</h2>
+<div class="outline-text-2" id="text-orge57153d">
 </div>
-<div id="outline-container-orga4cf08f" class="outline-3">
-<h3 id="orga4cf08f">Answer</h3>
-<div class="outline-text-3" id="text-orga4cf08f">
+<div id="outline-container-orgda3854b" class="outline-3">
+<h3 id="orgda3854b">Answer</h3>
+<div class="outline-text-3" id="text-orgda3854b">
 <div class="org-src-container">
 <pre class="src src-julia">&#963;&#178;_pri = rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span>&#963;&#8320;&#178;<span style="color: #FCCE7B;">/</span>&#957;&#8320;<span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
 &#964;&#178;_pri = rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#951;&#8320;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span>&#964;&#8320;&#178;<span style="color: #FCCE7B;">/</span>&#951;&#8320;<span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
@@ -332,7 +331,7 @@ R_pos = MST<span style="color: #51afef;">[</span>:,<span style="color: #e69055; 
 </div>
 
 
-<div id="orgf8aadbb" class="figure">
+<div id="orgc323419" class="figure">
 <p><img src="./fig/ex8-3_Rdensity.png" alt="ex8-3_Rdensity.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Prior and posterior densities of \(R\)</p>
@@ -344,13 +343,13 @@ The plot above shows that about 25% of the variance is due to between-school var
 </div>
 </div>
 </div>
-<div id="outline-container-orga201ea1" class="outline-2">
-<h2 id="orga201ea1">d)</h2>
-<div class="outline-text-2" id="text-orga201ea1">
+<div id="outline-container-org718ddbc" class="outline-2">
+<h2 id="org718ddbc">d)</h2>
+<div class="outline-text-2" id="text-org718ddbc">
 </div>
-<div id="outline-container-orgcd0a6bf" class="outline-3">
-<h3 id="orgcd0a6bf">Answer</h3>
-<div class="outline-text-3" id="text-orgcd0a6bf">
+<div id="outline-container-org8ec623a" class="outline-3">
+<h3 id="org8ec623a">Answer</h3>
+<div class="outline-text-3" id="text-org8ec623a">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior probability that &#952;&#8327; is smaller than &#952;&#8326;</span>
 mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">7</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">6</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -375,13 +374,13 @@ mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</
 </div>
 </div>
 </div>
-<div id="outline-container-org7298067" class="outline-2">
-<h2 id="org7298067">e)</h2>
-<div class="outline-text-2" id="text-org7298067">
+<div id="outline-container-orge562c27" class="outline-2">
+<h2 id="orge562c27">e)</h2>
+<div class="outline-text-2" id="text-orge562c27">
 </div>
-<div id="outline-container-orgb186617" class="outline-3">
-<h3 id="orgb186617">Answer</h3>
-<div class="outline-text-3" id="text-orgb186617">
+<div id="outline-container-orgab69222" class="outline-3">
+<h3 id="orgab69222">Answer</h3>
+<div class="outline-text-3" id="text-orgab69222">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;&#772; = mean<span style="color: #51afef;">(</span>THETA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
 fig_e = plot<span style="color: #51afef;">(</span>
@@ -394,7 +393,7 @@ fig_e
 </div>
 
 
-<div id="orgbc70b43" class="figure">
+<div id="org3b54190" class="figure">
 <p><img src="./fig/ex8-3e_scatter.png" alt="ex8-3e_scatter.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Sample averages and posterior expectations</p>
@@ -433,7 +432,7 @@ mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</sp
 </p>
 
 <p class="nav-next">
-<a href="../ch9/9-1.html" class="nav-next">8.1</a>
+<a href="../ch9/9-1.html" class="nav-next">9.1</a>
 </p>
 </div>
 <div id="postamble" class="status">

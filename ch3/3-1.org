@@ -1,5 +1,6 @@
-#+TITLE: 3.1
-#+INCLUDE: setup.org
+#+TITLE: Exercise 3.1 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 3.1 解答例
+#+SETUPFILE: ../setup.org
 * question :noexport:
 Sample survey:
 Suppose we are going to sample 100 individuals from a county (of size much larger than 100)

@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>3.8</title>
+<title>Exercise 3.8 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -39,47 +41,44 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">3.8
+<h1 class="title">Exercise 3.8 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 3</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 3.8 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdfef250">a)</a>
+<li><a href="#orga7e86e5">a)</a>
 <ul>
-<li><a href="#org581fe2d">answer</a></li>
+<li><a href="#orgc01ba48">answer</a></li>
 </ul>
 </li>
-<li><a href="#org7701fa6">b)</a>
+<li><a href="#org48de42a">b)</a>
 <ul>
-<li><a href="#org67f87bd">answer</a></li>
+<li><a href="#org9e1895e">answer</a></li>
 </ul>
 </li>
-<li><a href="#org42f59ac">c)</a>
+<li><a href="#org258b97b">c)</a>
 <ul>
-<li><a href="#orgf6ef24f">answer</a></li>
+<li><a href="#org145dc34">answer</a></li>
 </ul>
 </li>
-<li><a href="#org3d40f69">d)</a>
+<li><a href="#org3be248a">d)</a>
 <ul>
-<li><a href="#org7b4a32b">answer</a></li>
+<li><a href="#orgf33f7c1">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-orgdfef250" class="outline-2">
-<h2 id="orgdfef250">a)</h2>
-<div class="outline-text-2" id="text-orgdfef250">
+<div id="outline-container-orga7e86e5" class="outline-2">
+<h2 id="orga7e86e5">a)</h2>
+<div class="outline-text-2" id="text-orga7e86e5">
 </div>
-<div id="outline-container-org581fe2d" class="outline-3">
-<h3 id="org581fe2d">answer</h3>
-<div class="outline-text-3" id="text-org581fe2d">
+<div id="outline-container-orgc01ba48" class="outline-3">
+<h3 id="orgc01ba48">answer</h3>
+<div class="outline-text-3" id="text-orgc01ba48">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8320;_sym, b&#8320;_sym = <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">15</span>
 sym = Beta<span style="color: #51afef;">(</span>a&#8320;_sym, b&#8320;_sym<span style="color: #51afef;">)</span>
@@ -91,7 +90,7 @@ plot!<span style="color: #51afef;">(</span>asym, <span style="color: #e69055; fo
 </div>
 
 
-<div id="org6e312fb" class="figure">
+<div id="orgd86a2a4" class="figure">
 <p><img src="fig/exercise3.8apriors.jpg" alt="exercise3.8apriors.jpg" width="500" />
 </p>
 </div>
@@ -106,20 +105,20 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 
 
-<div id="org4c36749" class="figure">
+<div id="org16b9969" class="figure">
 <p><img src="fig/exercise3.8amixturemodelprior.jpg" alt="exercise3.8amixturemodelprior.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org7701fa6" class="outline-2">
-<h2 id="org7701fa6">b)</h2>
-<div class="outline-text-2" id="text-org7701fa6">
+<div id="outline-container-org48de42a" class="outline-2">
+<h2 id="org48de42a">b)</h2>
+<div class="outline-text-2" id="text-org48de42a">
 </div>
-<div id="outline-container-org67f87bd" class="outline-3">
-<h3 id="org67f87bd">answer</h3>
-<div class="outline-text-3" id="text-org67f87bd">
+<div id="outline-container-org9e1895e" class="outline-3">
+<h3 id="org9e1895e">answer</h3>
+<div class="outline-text-3" id="text-org9e1895e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -400,13 +399,13 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 </div>
 </div>
-<div id="outline-container-org42f59ac" class="outline-2">
-<h2 id="org42f59ac">c)</h2>
-<div class="outline-text-2" id="text-org42f59ac">
+<div id="outline-container-org258b97b" class="outline-2">
+<h2 id="org258b97b">c)</h2>
+<div class="outline-text-2" id="text-org258b97b">
 </div>
-<div id="outline-container-orgf6ef24f" class="outline-3">
-<h3 id="orgf6ef24f">answer</h3>
-<div class="outline-text-3" id="text-orgf6ef24f">
+<div id="outline-container-org145dc34" class="outline-3">
+<h3 id="org145dc34">answer</h3>
+<div class="outline-text-3" id="text-org145dc34">
 <div class="org-src-container">
 <pre class="src src-julia">y&#8321;, n&#8321; = <span style="color: #e69055; font-weight: bold;">23</span> , <span style="color: #e69055; font-weight: bold;">50</span>
 sym&#8321; = Beta<span style="color: #51afef;">(</span>a&#8320;_sym <span style="color: #FCCE7B;">+</span> y&#8321;, b&#8320;_sym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #51afef;">)</span>
@@ -417,20 +416,20 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 
 
-<div id="org9932224" class="figure">
+<div id="org7229f6a" class="figure">
 <p><img src="fig/exercise3.8cposterior.jpg" alt="exercise3.8cposterior.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org3d40f69" class="outline-2">
-<h2 id="org3d40f69">d)</h2>
-<div class="outline-text-2" id="text-org3d40f69">
+<div id="outline-container-org3be248a" class="outline-2">
+<h2 id="org3be248a">d)</h2>
+<div class="outline-text-2" id="text-org3be248a">
 </div>
-<div id="outline-container-org7b4a32b" class="outline-3">
-<h3 id="org7b4a32b">answer</h3>
-<div class="outline-text-3" id="text-org7b4a32b">
+<div id="outline-container-orgf33f7c1" class="outline-3">
+<h3 id="orgf33f7c1">answer</h3>
+<div class="outline-text-3" id="text-orgf33f7c1">
 <p>
 今回は、令和元年 100 円玉を使う。
 (I will use a 100 yen coin from 2019.)
@@ -710,8 +709,8 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </table>
 
 <p>
-同じ 100 円玉なので、 <a href="#org42f59ac">c)</a> で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
-(Since it is the same 100 yen coin, I will use the posterior distribution obtained in <a href="#org42f59ac">c)</a> as the prior distribution, and the posterior distribution will be as follows.)
+同じ 100 円玉なので、 <a href="#org258b97b">c)</a> で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
+(Since it is the same 100 yen coin, I will use the posterior distribution obtained in <a href="#org258b97b">c)</a> as the prior distribution, and the posterior distribution will be as follows.)
 </p>
 
 <div class="org-src-container">
@@ -724,7 +723,7 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 
 
-<div id="org77b1dd7" class="figure">
+<div id="org4f775c2" class="figure">
 <p><img src="fig/exercise3.8dposterior.jpg" alt="exercise3.8dposterior.jpg" width="500" />
 </p>
 </div>

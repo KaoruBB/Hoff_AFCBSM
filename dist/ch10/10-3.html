@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>10.3</title>
+<title>Exercise 10.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,47 +99,44 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">10.3
+<h1 class="title">Exercise 10.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 10</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 10.3 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbb10013">a)</a>
+<li><a href="#orgbf6c51c">a)</a>
 <ul>
-<li><a href="#org330163c">Answer</a></li>
+<li><a href="#org263d5a6">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org139b95d">b)</a>
+<li><a href="#org3b62237">b)</a>
 <ul>
-<li><a href="#orge81d5fb">Answer</a></li>
+<li><a href="#org8621f46">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org3da9114">c)</a>
+<li><a href="#orgec55532">c)</a>
 <ul>
-<li><a href="#org6e3250c">Answer</a></li>
+<li><a href="#orga1eb302">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcf6453b">d)</a>
+<li><a href="#orgff62e16">d)</a>
 <ul>
-<li><a href="#org4d4098c">Answer</a></li>
+<li><a href="#org49e36a1">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-orgbb10013" class="outline-2">
-<h2 id="orgbb10013">a)</h2>
-<div class="outline-text-2" id="text-orgbb10013">
+<div id="outline-container-orgbf6c51c" class="outline-2">
+<h2 id="orgbf6c51c">a)</h2>
+<div class="outline-text-2" id="text-orgbf6c51c">
 </div>
-<div id="outline-container-org330163c" class="outline-3">
-<h3 id="org330163c">Answer</h3>
-<div class="outline-text-3" id="text-org330163c">
+<div id="outline-container-org263d5a6" class="outline-3">
+<h3 id="org263d5a6">Answer</h3>
+<div class="outline-text-3" id="text-org263d5a6">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">import</span> Pkg; Pkg.add<span style="color: #51afef;">(</span>url=<span style="color: #7bc275;">"https://github.com/KaoruBB/BayesPlots.jl"</span><span style="color: #51afef;">)</span>
 </pre>
@@ -148,7 +147,7 @@ HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日�
 </pre>
 </div>
 
-<pre class="example" id="org41760e6">
+<pre class="example" id="orgfa4d0e0">
 20×3 Matrix{Float64}:
  11.8   0.0  6.39
  15.34  1.0  6.39
@@ -217,15 +216,15 @@ pHレベルが1上昇すると、0.58 cm増加することを示唆している�
 </div>
 </div>
 </div>
-<div id="outline-container-org139b95d" class="outline-2">
-<h2 id="org139b95d">b)</h2>
-<div class="outline-text-2" id="text-org139b95d">
+<div id="outline-container-org3b62237" class="outline-2">
+<h2 id="org3b62237">b)</h2>
+<div class="outline-text-2" id="text-org3b62237">
 </div>
-<div id="outline-container-orge81d5fb" class="outline-3">
-<h3 id="orge81d5fb">Answer</h3>
-<div class="outline-text-3" id="text-orge81d5fb">
+<div id="outline-container-org8621f46" class="outline-3">
+<h3 id="org8621f46">Answer</h3>
+<div class="outline-text-3" id="text-org8621f46">
 
-<div id="org6c4d9e7" class="figure">
+<div id="org3d95ca7" class="figure">
 <p><img src="./fig/ex10-3b.png" alt="ex10-3b.png" />
 </p>
 </div>
@@ -242,13 +241,13 @@ Deviation from this assumption would compromise the validity of the regression c
 </div>
 </div>
 </div>
-<div id="outline-container-org3da9114" class="outline-2">
-<h2 id="org3da9114">c)</h2>
-<div class="outline-text-2" id="text-org3da9114">
+<div id="outline-container-orgec55532" class="outline-2">
+<h2 id="orgec55532">c)</h2>
+<div class="outline-text-2" id="text-orgec55532">
 </div>
-<div id="outline-container-org6e3250c" class="outline-3">
-<h3 id="org6e3250c">Answer</h3>
-<div class="outline-text-3" id="text-org6e3250c">
+<div id="outline-container-orga1eb302" class="outline-3">
+<h3 id="orga1eb302">Answer</h3>
+<div class="outline-text-3" id="text-orga1eb302">
 <p>
 \[
 \boldsymbol{Y} = \begin{pmatrix}
@@ -426,7 +425,7 @@ X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">
 </pre>
 </div>
 
-<pre class="example" id="org84ae0cd">
+<pre class="example" id="orga897324">
 
 20×3 Matrix{Float64}:
  1.0  0.0  6.39
@@ -480,7 +479,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../.
 </div>
 
 
-<div id="orgc91e8aa" class="figure">
+<div id="org563f1f7" class="figure">
 <p><img src="./fig/ex10_3_scan.png" alt="ex10_3_scan.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Sample paths of the parameters</p>
@@ -507,28 +506,28 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./..
 </div>
 
 
-<div id="orgf4018fd" class="figure">
+<div id="orgb6b6309" class="figure">
 <p><img src="./fig/ex10_3_acf.png" alt="ex10_3_acf.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Autocorrelation plots of the parameters</p>
 </div>
 <p>
-図<a href="#orgc91e8aa">1</a>、<a href="#orgf4018fd">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
+図<a href="#org563f1f7">1</a>、<a href="#orgb6b6309">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
 </p>
 <p>
-Figure <a href="#orgc91e8aa">1</a> and <a href="#orgf4018fd">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
+Figure <a href="#org563f1f7">1</a> and <a href="#orgb6b6309">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
 These results confirm that the MCMC sampling has sufficiently converged.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf6453b" class="outline-2">
-<h2 id="orgcf6453b">d)</h2>
-<div class="outline-text-2" id="text-orgcf6453b">
+<div id="outline-container-orgff62e16" class="outline-2">
+<h2 id="orgff62e16">d)</h2>
+<div class="outline-text-2" id="text-orgff62e16">
 </div>
-<div id="outline-container-org4d4098c" class="outline-3">
-<h3 id="org4d4098c">Answer</h3>
-<div class="outline-text-3" id="text-org4d4098c">
+<div id="outline-container-org49e36a1" class="outline-3">
+<h3 id="org49e36a1">Answer</h3>
+<div class="outline-text-3" id="text-org49e36a1">
 <div class="org-src-container">
 <pre class="src src-julia">figs = <span style="color: #51afef;">[]</span>
 <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">3</span>
@@ -560,17 +559,17 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../.
 </div>
 
 
-<div id="org872cc7c" class="figure">
+<div id="org5e86ed5" class="figure">
 <p><img src="./fig/ex10_3d.png" alt="ex10_3d.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Posterior of the coefficients</p>
 </div>
 <p>
-図<a href="#org872cc7c">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
+図<a href="#org5e86ed5">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
 OLSによる点推定量と95%信頼区間を示している。切片(\(\beta_1\)), timeの係数(\(\beta_2\)), pHの係数(\(\beta_3\))について、MCMCサンプリングによる事後平均とOLS推定量はほぼ一致しているが、95%信用区間とOLSの信頼区間は異なる。もし点推定値のみに関心がある場合、同様な結論が得られるが、推定値の不確実性などを考慮したい場合、今回のベイズモデルとOLSモデルの結論は大きく異なる。
 </p>
 <p>
-Figure <a href="#org872cc7c">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
+Figure <a href="#org5e86ed5">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
 The posterior means of \(\beta_1\) and \(\beta_2\) are almost identical to the OLS estimates, but the 95% credible intervals and OLS confidence intervals differ.
 If only point estimates are of interest, similar conclusions can be drawn, but if uncertainties in the estimates are to be considered, the conclusions of the Bayesian model and the OLS model differ significantly.
 </p>

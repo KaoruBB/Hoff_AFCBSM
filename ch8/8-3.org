@@ -1,5 +1,6 @@
-#+TITLE: 8.3
-#+INCLUDE: setup.org
+#+TITLE: Exercise 8.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 8.3 解答例
+#+SETUPFILE: ../setup.org
 #+STARTUP:showeverything
 * Question :noexport:
 Hierarchical modeling:
@@ -312,4 +313,4 @@ mean(MST[:,1])
 [[./8-2.org][8.2]]
 
 #+ATTR_HTML: :class nav-next
-[[../ch9/9-1.org][8.1]]
+[[../ch9/9-1.org][9.1]]

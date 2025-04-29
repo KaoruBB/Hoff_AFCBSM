@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>4.3</title>
+<title>Exercise 4.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,37 +99,34 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">4.3
+<h1 class="title">Exercise 4.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 4.3 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2a953cd">a)</a>
+<li><a href="#org8b51666">a)</a>
 <ul>
-<li><a href="#org43078f0">answer</a></li>
+<li><a href="#orge11f4b1">answer</a></li>
 </ul>
 </li>
-<li><a href="#org389051e">b)</a>
+<li><a href="#org1b7eca0">b)</a>
 <ul>
-<li><a href="#org69e8cff">answer</a></li>
+<li><a href="#orgbfb4825">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org2a953cd" class="outline-2">
-<h2 id="org2a953cd">a)</h2>
-<div class="outline-text-2" id="text-org2a953cd">
+<div id="outline-container-org8b51666" class="outline-2">
+<h2 id="org8b51666">a)</h2>
+<div class="outline-text-2" id="text-org8b51666">
 </div>
-<div id="outline-container-org43078f0" class="outline-3">
-<h3 id="org43078f0">answer</h3>
-<div class="outline-text-3" id="text-org43078f0">
+<div id="outline-container-orge11f4b1" class="outline-3">
+<h3 id="orge11f4b1">answer</h3>
+<div class="outline-text-3" id="text-orge11f4b1">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 <span style="color: #51afef;">using</span> Random
@@ -165,7 +164,7 @@ t_mc = <span style="color: #51afef;">[]</span>
 :RESULTS:
 </p>
 
-<div id="org2c75ac1" class="figure">
+<div id="orgd8b0d2c" class="figure">
 <p><img src="fig/exercise4-3a.png" alt="exercise4-3a.png" width="500" />
 </p>
 </div>
@@ -177,13 +176,13 @@ From this, we can conclude that the Poisson model is a good fit for the populati
 </div>
 </div>
 </div>
-<div id="outline-container-org389051e" class="outline-2">
-<h2 id="org389051e">b)</h2>
-<div class="outline-text-2" id="text-org389051e">
+<div id="outline-container-org1b7eca0" class="outline-2">
+<h2 id="org1b7eca0">b)</h2>
+<div class="outline-text-2" id="text-org1b7eca0">
 </div>
-<div id="outline-container-org69e8cff" class="outline-3">
-<h3 id="org69e8cff">answer</h3>
-<div class="outline-text-3" id="text-org69e8cff">
+<div id="outline-container-orgbfb4825" class="outline-3">
+<h3 id="orgbfb4825">answer</h3>
+<div class="outline-text-3" id="text-orgbfb4825">
 <div class="org-src-container">
 <pre class="src src-julia">t_mc = <span style="color: #51afef;">[]</span>
 <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">1000</span>
@@ -200,7 +199,7 @@ From this, we can conclude that the Poisson model is a good fit for the populati
 :RESULTS:
 </p>
 
-<div id="org88e8ac5" class="figure">
+<div id="org4be11e6" class="figure">
 <p><img src="fig/exercise4-3b.png" alt="exercise4-3b.png" width="500" />
 </p>
 </div>

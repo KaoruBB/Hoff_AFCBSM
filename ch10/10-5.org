@@ -1,5 +1,6 @@
-#+TITLE: 10.5
-#+INCLUDE: setup.org
+#+TITLE: Exercise 10.5 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 10.5 解答例
+#+SETUPFILE: ../setup.org
 #+STARTUP:showeverything
 #+PROPERTY: header-args:julia :session julia_hoff :eval no-export :exports code :tangle (expand-file-name "./exercise10-5.jl")
 * Question :noexport:

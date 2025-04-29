@@ -1,5 +1,7 @@
-#+TITLE: 2.2
-#+INCLUDE: setup.org
+#+TITLE: Exercise 2.2 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 2.2 解答例
+
+#+SETUPFILE: ../setup.org
 * Answer
 ** a
 \begin{align*}

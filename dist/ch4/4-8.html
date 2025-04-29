@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>4.8</title>
+<title>Exercise 4.8 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,47 +99,44 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">4.8
+<h1 class="title">Exercise 4.8 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 4</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 4.8 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbe7995d">a)</a>
+<li><a href="#orgb4d941b">a)</a>
 <ul>
-<li><a href="#orgb1a139b">answer</a></li>
+<li><a href="#orgabb8d92">answer</a></li>
 </ul>
 </li>
-<li><a href="#org3b74020">b)</a>
+<li><a href="#orgc923f5e">b)</a>
 <ul>
-<li><a href="#orga028a41">answer</a></li>
+<li><a href="#orgbe352c5">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfac4a1e">c)</a>
+<li><a href="#org09db0d6">c)</a>
 <ul>
-<li><a href="#org05dca47">answer</a></li>
+<li><a href="#orgfe48334">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfa6c8ae">d)</a>
+<li><a href="#orga7d6c0f">d)</a>
 <ul>
-<li><a href="#org6e211d7">answer</a></li>
+<li><a href="#orgb99db0f">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-orgbe7995d" class="outline-2">
-<h2 id="orgbe7995d">a)</h2>
-<div class="outline-text-2" id="text-orgbe7995d">
+<div id="outline-container-orgb4d941b" class="outline-2">
+<h2 id="orgb4d941b">a)</h2>
+<div class="outline-text-2" id="text-orgb4d941b">
 </div>
-<div id="outline-container-orgb1a139b" class="outline-3">
-<h3 id="orgb1a139b">answer</h3>
-<div class="outline-text-3" id="text-orgb1a139b">
+<div id="outline-container-orgabb8d92" class="outline-3">
+<h3 id="orgabb8d92">answer</h3>
+<div class="outline-text-3" id="text-orgabb8d92">
 <div class="org-src-container">
 <pre class="src src-julia">menchild_bach = <span style="color: #51afef;">[]</span>
 open<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/menchild30bach.dat"</span><span style="color: #51afef;">)</span> <span style="color: #51afef;">do</span> file
@@ -178,20 +177,20 @@ y_B_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: 
 </div>
 
 
-<div id="orge85d1a7" class="figure">
+<div id="org3f19ffb" class="figure">
 <p><img src="fig/exercise4_8a.jpg" alt="exercise4_8a.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org3b74020" class="outline-2">
-<h2 id="org3b74020">b)</h2>
-<div class="outline-text-2" id="text-org3b74020">
+<div id="outline-container-orgc923f5e" class="outline-2">
+<h2 id="orgc923f5e">b)</h2>
+<div class="outline-text-2" id="text-orgc923f5e">
 </div>
-<div id="outline-container-orga028a41" class="outline-3">
-<h3 id="orga028a41">answer</h3>
-<div class="outline-text-3" id="text-orga028a41">
+<div id="outline-container-orgbe352c5" class="outline-3">
+<h3 id="orgbe352c5">answer</h3>
+<div class="outline-text-3" id="text-orgbe352c5">
 <p>
 for \(\theta_B - \theta_A\):
 </p>
@@ -226,13 +225,13 @@ for \(\hat{Y}_B - \hat{Y}_A\):
 </div>
 </div>
 </div>
-<div id="outline-container-orgfac4a1e" class="outline-2">
-<h2 id="orgfac4a1e">c)</h2>
-<div class="outline-text-2" id="text-orgfac4a1e">
+<div id="outline-container-org09db0d6" class="outline-2">
+<h2 id="org09db0d6">c)</h2>
+<div class="outline-text-2" id="text-org09db0d6">
 </div>
-<div id="outline-container-org05dca47" class="outline-3">
-<h3 id="org05dca47">answer</h3>
-<div class="outline-text-3" id="text-org05dca47">
+<div id="outline-container-orgfe48334" class="outline-3">
+<h3 id="orgfe48334">answer</h3>
+<div class="outline-text-3" id="text-orgfe48334">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320; <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span>
 </pre>
@@ -248,7 +247,7 @@ for \(\hat{Y}_B - \hat{Y}_A\):
 </p>
 
 
-<div id="org86b2955" class="figure">
+<div id="orgbfa1436" class="figure">
 <p><img src="fig/exercise4_8_c.png" alt="exercise4_8_c.png" width="500" />
 </p>
 </div>
@@ -267,13 +266,13 @@ Therefore, if the underlying population distribution indeed has peaks at <code>0
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa6c8ae" class="outline-2">
-<h2 id="orgfa6c8ae">d)</h2>
-<div class="outline-text-2" id="text-orgfa6c8ae">
+<div id="outline-container-orga7d6c0f" class="outline-2">
+<h2 id="orga7d6c0f">d)</h2>
+<div class="outline-text-2" id="text-orga7d6c0f">
 </div>
-<div id="outline-container-org6e211d7" class="outline-3">
-<h3 id="org6e211d7">answer</h3>
-<div class="outline-text-3" id="text-org6e211d7">
+<div id="outline-container-orgb99db0f" class="outline-3">
+<h3 id="orgb99db0f">answer</h3>
+<div class="outline-text-3" id="text-orgb99db0f">
 <div class="org-src-container">
 <pre class="src src-julia">obs_zero = sum<span style="color: #51afef;">(</span>menchild_nobach .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
 obs_one = sum<span style="color: #51afef;">(</span>menchild_nobach .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
@@ -288,7 +287,7 @@ num_one = <span style="color: #51afef;">[]</span>
 </div>
 
 
-<div id="org140ebae" class="figure">
+<div id="org9db1f04" class="figure">
 <p><img src="fig/exercise4_8d.png" alt="exercise4_8d.png" width="500" />
 </p>
 </div>

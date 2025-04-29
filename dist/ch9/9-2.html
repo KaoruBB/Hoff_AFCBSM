@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>9.2</title>
+<title>Exercise 9.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +17,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -97,37 +99,34 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">9.2
+<h1 class="title">Exercise 9.2 Solution - Hoff, A First Course in Bayesian Statistical Methods
 <br />
-<span class="subtitle">Answers of exercises on Hoff, A first course in Bayesian statistical methods, Chapter 9</span>
+<span class="subtitle">標準ベイズ統計学 演習問題 9.2 解答例</span>
 </h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org33d013e">a)</a>
+<li><a href="#org3790427">a)</a>
 <ul>
-<li><a href="#orgb4aa1d1">Answer</a></li>
+<li><a href="#org6a7d63c">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org5817569">b)</a>
+<li><a href="#org90e6a59">b)</a>
 <ul>
-<li><a href="#orgfadbf0d">Answer</a></li>
+<li><a href="#org1aa57bc">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-HOME -&gt; <a href="../index.html">English</a> / <a href="../index_jp.html">日本語</a>
-</p>
-<div id="outline-container-org33d013e" class="outline-2">
-<h2 id="org33d013e">a)</h2>
-<div class="outline-text-2" id="text-org33d013e">
+<div id="outline-container-org3790427" class="outline-2">
+<h2 id="org3790427">a)</h2>
+<div class="outline-text-2" id="text-org3790427">
 </div>
-<div id="outline-container-orgb4aa1d1" class="outline-3">
-<h3 id="orgb4aa1d1">Answer</h3>
-<div class="outline-text-3" id="text-orgb4aa1d1">
+<div id="outline-container-org6a7d63c" class="outline-3">
+<h3 id="org6a7d63c">Answer</h3>
+<div class="outline-text-3" id="text-org6a7d63c">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
 Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
@@ -190,7 +189,7 @@ ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org284baf5">
+<pre class="example" id="orgc81affd">
 8×4 DataFrame
  Row │ param      ci_lower    ci_upper    ci_length
      │ String     Float64     Float64     Float64
@@ -207,13 +206,13 @@ ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE
 </div>
 </div>
 </div>
-<div id="outline-container-org5817569" class="outline-2">
-<h2 id="org5817569">b)</h2>
-<div class="outline-text-2" id="text-org5817569">
+<div id="outline-container-org90e6a59" class="outline-2">
+<h2 id="org90e6a59">b)</h2>
+<div class="outline-text-2" id="text-org90e6a59">
 </div>
-<div id="outline-container-orgfadbf0d" class="outline-3">
-<h3 id="orgfadbf0d">Answer</h3>
-<div class="outline-text-3" id="text-orgfadbf0d">
+<div id="outline-container-org1aa57bc" class="outline-3">
+<h3 id="org1aa57bc">Answer</h3>
+<div class="outline-text-3" id="text-org1aa57bc">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">lpyX</span><span style="color: #51afef;">(</span>y, X; g=length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span>, &#957;&#8320;=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 
@@ -285,7 +284,7 @@ df_ci_bma = DataFrame<span style="color: #51afef;">(</span>
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org5cd1505">
+<pre class="example" id="org512bdb9">
 7×5 DataFrame
  Row │ param      prob     ci_lower   ci_upper   ci_length
      │ String     Float64  Float64    Float64    Float64

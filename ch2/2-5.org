@@ -1,5 +1,6 @@
-#+TITLE: 2.5
-#+INCLUDE: setup.org
+#+TITLE: Exercise 2.5 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 2.5 解答例
+#+SETUPFILE: ../setup.org
 * Question :noexport:
 Urns: Suppose urn /H/ is filed with 40% green balls and 60% red balls,
 and urn /T/ is filled with 60% green balls and 40% red balls.

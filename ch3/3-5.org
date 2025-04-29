@@ -1,5 +1,6 @@
-#+TITLE: 3.5
-#+INCLUDE: setup.org
+#+TITLE: Exercise 3.5 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 3.5 解答例
+#+SETUPFILE: ../setup.org
 #+STARTUP:showeverything
 * question :noexport:
 Mixtures of conjugate priors:

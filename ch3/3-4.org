@@ -1,5 +1,6 @@
-#+TITLE: 3.4
-#+INCLUDE: setup.org
+#+TITLE: Exercise 3.4 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 3.4 解答例
+#+SETUPFILE: ../setup.org
 * question :noexport:
 Mixtures of beta priors:
 Estimate the probability \(\theta\) of teen recidivism based on a study in which there were \(n = 43\) individuals released from incarceration and \(y = 15\) re-offenders within 36 months.

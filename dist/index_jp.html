@@ -44,69 +44,86 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org35e961c">このサイトについて</a></li>
-<li><a href="#org2291b16">間違いを見つけたら</a></li>
+<li><a href="#org3758107">このサイトについて</a></li>
+<li><a href="#orge92f475">解答一覧</a></li>
+<li><a href="#orgca8d0c6">間違いを見つけたら</a></li>
+<li><a href="#org399b8d0">謝辞</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org35e961c" class="outline-2">
-<h2 id="org35e961c">このサイトについて</h2>
-<div class="outline-text-2" id="text-org35e961c">
+<div id="outline-container-org3758107" class="outline-2">
+<h2 id="org3758107">このサイトについて</h2>
+<div class="outline-text-2" id="text-org3758107">
+<p>
+このサイトは、Peter Hoff 著「A First Course in Bayesian Statistical Methods」(日本語版タイトル: <a href="https://www.asakura.co.jp/detail.php?book_code=12267">標準ベイズ統計学</a>) の演習問題 (Exercise) の解答例を提供する目的で作成されました。
+</p>
+
+<p>
+ベイズ統計学を学ぶ学生、独習者の方々が、ご自身の解答を確認したり、解法を理解する手助けとなることを目指しています。
+</p>
+
+<p>
+各章・各問題ごとにページを分けて、解答、解説、そして実装コードを掲載しています。現在は主に <code>Julia</code> での実装ですが、将来的には <code>R</code> や <code>Python</code> での実装も追加していきたいと考えています（プルリクエストも歓迎します！）。
+</p>
+
 <p>
 For English site, please visit <a href="./index.html">here</a>.
 </p>
 
 <p>
-このサイトは
+<b>注意</b>: 解答は個人が作成したものであり、誤りが含まれる可能性があります。参考程度にご利用ください。間違いを見つけた場合は、後述の方法でご指摘いただけると幸いです。
 </p>
+</div>
+</div>
+<div id="outline-container-orge92f475" class="outline-2">
+<h2 id="orge92f475">解答一覧</h2>
+<div class="outline-text-2" id="text-orge92f475">
+<p>
+各章のリンクから、問題ごとの解答ページへアクセスできます。
+</p>
+
 <ul class="org-ul">
-<li><a href="https://pdhoff.github.io/book/">Peter Hoff, A First Course in Bayesian Statistical Methods</a></li>
-<li><a href="https://www.asakura.co.jp/detail.php?book_code=12267">標準ベイズ統計学</a></li>
+<li><a href="ch2/index.html">第2章</a> - 信念、確率、交換可能性</li>
 </ul>
+
+<ul class="org-ul">
+<li>第11章 - ベイズ的なモデル選択 (to be updated)</li>
+<li>第12章 - 順序データに対する潜在変数法 (to be updated)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgca8d0c6" class="outline-2">
+<h2 id="orgca8d0c6">間違いを見つけたら</h2>
+<div class="outline-text-2" id="text-orgca8d0c6">
 <p>
-の Exercise を解いたものです。
+本サイトは、著者が修士課程のときに作成を開始し、現在も更新を続けています。そのため、誤植や間違いが含まれている可能性があります。
 </p>
 
 <p>
-もし、間違いなどありましたら、<a href="#org2291b16">こちら</a>をご覧いただき、ご指摘いただけると幸いです。
+もし、間違い等を見つけた場合は、<a href="https://github.com/KaoruBB/Hoff_AFCBSM">GitHubリポジトリ</a> に Issue を立てていただくか、Pull Request を送っていただけると大変助かります。また、<a href="mailto:bbkaoru1007@keio.jp">メール</a>でのご連絡も歓迎します。
+</p>
+
+<p>
+皆様からのフィードバックが、サイト改善の励みになります。
 </p>
 </div>
 </div>
-<div id="outline-container-org2291b16" class="outline-2">
-<h2 id="org2291b16">間違いを見つけたら</h2>
-<div class="outline-text-2" id="text-org2291b16">
+<div id="outline-container-org399b8d0" class="outline-2">
+<h2 id="org399b8d0">謝辞</h2>
+<div class="outline-text-2" id="text-org399b8d0">
 <p>
-本サイトは、<a href="https://kaorubb.org/">筆者</a>が修士課程のときに趣味の一環で作成したものなので、誤植や間違いが多々あるかと思います。
+これまで、以下の皆様から誤植・間違いのご指摘をいただきました。
 </p>
 
 <p>
-また、まだ解いていない問題も多く残っており、少しずつ解いていく予定です。
+心より感謝申し上げます。
 </p>
 
-<p>
-もし、間違い等を見つけた場合は、<a href="https://github.com/KaoruBB/Hoff_AFCBSM">このリポジトリ</a> に Issueを立てていただくか、Pull Requestを送っていただけると幸いです。
-</p>
-
-<p>
-また、<a href="mailto:bbkaoru1007@keio.jp">メールにてご連絡</a> いただいても構いません。
-</p>
-
-
-<p>
-なお、これまで
-</p>
 <ul class="org-ul">
 <li>Okamoto Noriaki さん</li>
 <li>Kubota Kohsuke さん</li>
 <li>Kondo Daisuke さん</li>
 </ul>
-<p>
-から、誤植・間違いの指摘をいただきました。
-</p>
-
-<p>
-ありがとうございます。
-</p>
 </div>
 </div>
 </div>

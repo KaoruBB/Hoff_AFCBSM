@@ -9,9 +9,7 @@
 #+OPTIONS: timestamp:nil
 #+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
 #+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-#+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
-
-#+EXCLUDE_TAGS: noexport
+#+SETUPFILE: setup.org
 
 * About This Page
 
@@ -30,14 +28,14 @@ Currently, the implementations are primarily in ~Julia~, but we hope to add impl
 Access the solutions for each exercise via the chapter links below.
 
 + [[file:ch2/index.org][Chapter 2]] - Belief, probability and exchangeability
-+ [[file:ch3/index.org][Chapter 3]] - One-parameter models
-+ [[file:ch4/index.org][Chapter 4]] - Monte Carlo approximation
-+ [[file:ch5/index.org][Chapter 5]] - The normal model
-+ [[file:ch6/index.org][Chapter 6]] - Posterior approximation with the Gibbs sampler
-+ [[file:ch7/index.org][Chapter 7]] - The multivariate normal model
-+ [[file:ch8/index.org][Chapter 8]] - Group comparisons and hierarchical modeling
-+ [[file:ch9/index.org][Chapter 9]] - Linear regression
-+ [[file:ch10/index.org][Chapter 10]] - Nonconjugate priors and Metropolis-Hastings algorithms
+# + [[file:ch3/index.org][Chapter 3]] - One-parameter models
+# + [[file:ch4/index.org][Chapter 4]] - Monte Carlo approximation
+# + [[file:ch5/index.org][Chapter 5]] - The normal model
+# + [[file:ch6/index.org][Chapter 6]] - Posterior approximation with the Gibbs sampler
+# + [[file:ch7/index.org][Chapter 7]] - The multivariate normal model
+# + [[file:ch8/index.org][Chapter 8]] - Group comparisons and hierarchical modeling
+# + [[file:ch9/index.org][Chapter 9]] - Linear regression
+# + [[file:ch10/index.org][Chapter 10]] - Nonconjugate priors and Metropolis-Hastings algorithms
 + Chapter 11 - Linear and generalized linear mixed effects models (*to be updated*)
 + Chapter 12 - Latent variable methods for ordinal data (*to be updated*)
 
