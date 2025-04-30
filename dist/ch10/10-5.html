@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:28 -->
+<!-- 2025-04-30 水 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 10.5 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -110,7 +110,7 @@
 <ul>
 <li><a href="#orga21da27">a)</a>
 <ul>
-<li><a href="#orga316824">Answer</a>
+<li><a href="#org35f33fb">Answer</a>
 <ul>
 <li><a href="#orgc6dc939">sampling model</a></li>
 <li><a href="#org4f75a9c">prior</a></li>
@@ -124,8 +124,8 @@
 <li><a href="#orge5c7a86">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</a></li>
 <li><a href="#org3fd4116">summary</a>
 <ul>
-<li><a href="#org3cf67ec">日本語</a></li>
-<li><a href="#org8bea308">English</a></li>
+<li><a href="#org0cf6074">日本語</a></li>
+<li><a href="#org9660115">English</a></li>
 </ul>
 </li>
 </ul>
@@ -134,13 +134,13 @@
 </li>
 <li><a href="#org2a2cbb4">b)</a>
 <ul>
-<li><a href="#org59cc4aa">Answer</a>
+<li><a href="#org37429db">Answer</a>
 <ul>
 <li><a href="#orge4d4613">top five most frequently occurring values of \(\gamma\)</a></li>
 <li><a href="#org3ce9735">How good are the estimates?</a>
 <ul>
-<li><a href="#orgc06af71">日本語</a></li>
-<li><a href="#org9608951">English</a></li>
+<li><a href="#org971b42c">日本語</a></li>
+<li><a href="#orgf2b736e">English</a></li>
 </ul>
 </li>
 </ul>
@@ -149,7 +149,7 @@
 </li>
 <li><a href="#org4be13ee">c)</a>
 <ul>
-<li><a href="#orgc7154b0">Answer</a>
+<li><a href="#org94852d2">Answer</a>
 <ul>
 <li><a href="#org7ad8359">posterior densities</a></li>
 <li><a href="#org4abb365">posterior means</a></li>
@@ -164,9 +164,9 @@
 <h2 id="orga21da27">a)</h2>
 <div class="outline-text-2" id="text-orga21da27">
 </div>
-<div id="outline-container-orga316824" class="outline-3">
-<h3 id="orga316824">Answer</h3>
-<div class="outline-text-3" id="text-orga316824">
+<div id="outline-container-org35f33fb" class="outline-3">
+<h3 id="org35f33fb">Answer</h3>
+<div class="outline-text-3" id="text-org35f33fb">
 </div>
 <div id="outline-container-orgc6dc939" class="outline-4">
 <h4 id="orgc6dc939">sampling model</h4>
@@ -281,7 +281,7 @@ y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&g
 </pre>
 </div>
 
-<pre class="example" id="orgc411b8e">
+<pre class="example" id="orge295d9e">
 5×6 OffsetArray(::Matrix{Float64}, 1:5, 0:5) with eltype Float64 with indices 1:5×0:5:
  1.0   0.447786  -0.284774  -0.390958  -0.403331  -0.707578
  1.0   1.05164   -0.122308  -1.13212   -0.986707   2.17304
@@ -374,7 +374,7 @@ BETA, GAMMA = logit_reg_with_var_select<span style="color: #51afef;">(</span>y, 
 </pre>
 </div>
 
-<pre class="example" id="org82b9e08">
+<pre class="example" id="orgd171572">
 Chains MCMC chain (100000×6×1 Array{Float64, 3}):
 
 Iterations        = 1:1:100000
@@ -410,7 +410,7 @@ Quantiles
 </pre>
 </div>
 
-<pre class="example" id="org3917df6">
+<pre class="example" id="orgfec5f40">
 Chains MCMC chain (100000×5×1 Array{Float64, 3}):
 
 Iterations        = 1:1:100000
@@ -472,7 +472,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </pre>
 </div>
 
-<pre class="example" id="org99b6608">
+<pre class="example" id="orgfa993c6">
 5×5 OffsetArray(::Matrix{Float64}, 1:5, 1:5) with eltype Float64 with indices 1:5×1:5:
  0.193049  -0.0        0.611237  0.600768  0.584352
  0.218734   0.0543198  0.611237  0.539856  0.584352
@@ -494,7 +494,7 @@ chn_&#946;&#947; = Chains<span style="color: #51afef;">(</span>BETA_TIMES_GAMMA,
 </pre>
 </div>
 
-<pre class="example" id="orgdc03c9b">
+<pre class="example" id="orgb131a96">
 
 Chains MCMC chain (100000×6×1 Array{Float64, 3}):
 
@@ -545,9 +545,9 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 <h4 id="org3fd4116">summary</h4>
 <div class="outline-text-4" id="text-org3fd4116">
 </div>
-<div id="outline-container-org3cf67ec" class="outline-5">
-<h5 id="org3cf67ec">日本語</h5>
-<div class="outline-text-5" id="text-org3cf67ec">
+<div id="outline-container-org0cf6074" class="outline-5">
+<h5 id="org0cf6074">日本語</h5>
+<div class="outline-text-5" id="text-org0cf6074">
 <p>
 MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\) のサンプルを用いて、\(\beta_j\) の系列と \(\beta_j \times \gamma_j\) の系列の混合について評価した。
 </p>
@@ -591,15 +591,15 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 </ul>
 </div>
 </div>
-<div id="outline-container-org8bea308" class="outline-5">
-<h5 id="org8bea308">English</h5>
-<div class="outline-text-5" id="text-org8bea308">
+<div id="outline-container-org9660115" class="outline-5">
+<h5 id="org9660115">English</h5>
+<div class="outline-text-5" id="text-org9660115">
 <p>
 We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(\beta_j \times \gamma_j\) series using the samples obtained from the simulation.
 </p>
 
 <ul class="org-ul">
-<li><span class="underline">Series for \(&beta;_j$</span>:
+<li><span class="underline">Series for \(\beta_j\)</span>:
 <ul class="org-ul">
 <li>The trace plots (<a href="#orgf4fbb5c">1</a>) and diagnostic statistics (summary of <code>chn_β</code>) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
 <ul class="org-ul">
@@ -614,7 +614,7 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 <li>In contrast, for \(\beta_0, \beta_3, \beta_4, \beta_5\), the corresponding \(\gamma_j\) (\(\gamma_0=1\) is fixed, \(\gamma_3, \gamma_4, \gamma_5\) were almost always 1) were 1, allowing the data to inform the posterior, resulting in relatively good mixing (<code>rhat</code> ≈ 1, high <code>ess</code>).</li>
 </ul></li>
 
-<li><span class="underline">Series for \(&beta;_j &times; &gamma;_j$</span>:
+<li><span class="underline">Series for \(\beta_j \times \gamma_j\)</span>:
 <ul class="org-ul">
 <li>This series represents the coefficient&rsquo;s effect when variable \(j\) is included in the model (\(\gamma_j=1\)) and is zero when excluded (\(\gamma_j=0\)).</li>
 <li>The trace plots (<a href="#orgf77f117">2</a>) and diagnostic statistics (summary of <code>chn_βγ</code>) showed that this series generally exhibited good mixing.
@@ -644,9 +644,9 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 <h2 id="org2a2cbb4">b)</h2>
 <div class="outline-text-2" id="text-org2a2cbb4">
 </div>
-<div id="outline-container-org59cc4aa" class="outline-3">
-<h3 id="org59cc4aa">Answer</h3>
-<div class="outline-text-3" id="text-org59cc4aa">
+<div id="outline-container-org37429db" class="outline-3">
+<h3 id="org37429db">Answer</h3>
+<div class="outline-text-3" id="text-org37429db">
 </div>
 <div id="outline-container-orge4d4613" class="outline-4">
 <h4 id="orge4d4613">top five most frequently occurring values of \(\gamma\)</h4>
@@ -691,9 +691,9 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 <h4 id="org3ce9735">How good are the estimates?</h4>
 <div class="outline-text-4" id="text-org3ce9735">
 </div>
-<div id="outline-container-orgc06af71" class="outline-5">
-<h5 id="orgc06af71">日本語</h5>
-<div class="outline-text-5" id="text-orgc06af71">
+<div id="outline-container-org971b42c" class="outline-5">
+<h5 id="org971b42c">日本語</h5>
+<div class="outline-text-5" id="text-org971b42c">
 <ol class="org-ol">
 <li><b>結果の解釈</b>:
 <ul class="org-ul">
@@ -713,9 +713,9 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 </ol>
 </div>
 </div>
-<div id="outline-container-org9608951" class="outline-5">
-<h5 id="org9608951">English</h5>
-<div class="outline-text-5" id="text-org9608951">
+<div id="outline-container-orgf2b736e" class="outline-5">
+<h5 id="orgf2b736e">English</h5>
+<div class="outline-text-5" id="text-orgf2b736e">
 <ol class="org-ol">
 <li><b>Interpretation of Results</b>:
 <ul class="org-ul">
@@ -742,9 +742,9 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 <h2 id="org4be13ee">c)</h2>
 <div class="outline-text-2" id="text-org4be13ee">
 </div>
-<div id="outline-container-orgc7154b0" class="outline-3">
-<h3 id="orgc7154b0">Answer</h3>
-<div class="outline-text-3" id="text-orgc7154b0">
+<div id="outline-container-org94852d2" class="outline-3">
+<h3 id="org94852d2">Answer</h3>
+<div class="outline-text-3" id="text-org94852d2">
 </div>
 <div id="outline-container-org7ad8359" class="outline-4">
 <h4 id="org7ad8359">posterior densities</h4>
@@ -772,7 +772,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </pre>
 </div>
 
-<pre class="example" id="org0c5c9de">
+<pre class="example" id="orgb79196e">
 1×5 Matrix{Float64}:
  0.38517  0.05703  1.0  0.98574  0.99953
 </pre>
@@ -796,7 +796,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:28</p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:38</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

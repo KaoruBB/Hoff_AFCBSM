@@ -3,6 +3,7 @@
 #+SETUPFILE: ../setup.org
 #+STARTUP:showeverything
 #+PROPERTY: header-args:julia :session julia_hoff :eval no-export :exports code :tangle (expand-file-name "./exercise10-5.jl")
+
 * Question :noexport:
 Logistic regression variable selection:
 Consider a logistic regression model for predicting diabetes as a function of \(x1 =\) number of pregnancies, \(x2 =\) blood pressure, \(x3 =\) body mass index, \(x4 =\) diabetes pedigree and \(x5 =\) age.
@@ -583,7 +584,7 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 
 We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(\beta_j \times \gamma_j\) series using the samples obtained from the simulation.
 
-+ _Series for \(\beta_j$_:
++ _Series for \(\beta_j\)_:
     + The trace plots ([[beta_sequence]]) and diagnostic statistics (summary of ~chn_β~) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
         + The ~rhat~ values were far from 1 (approx. 1.03 and 1.09, respectively), and the ~ess_bulk~ values were low compared to other parameters (approx. 248 and 233, respectively).
         + The trace plots also appeared unstable.
@@ -592,7 +593,7 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
         + As a result, the samplers for \(\beta_1\) and \(\beta_2\) moved around the wide range of the prior without much influence from the data, leading to the appearance of poor mixing.
     + In contrast, for \(\beta_0, \beta_3, \beta_4, \beta_5\), the corresponding \(\gamma_j\) (\(\gamma_0=1\) is fixed, \(\gamma_3, \gamma_4, \gamma_5\) were almost always 1) were 1, allowing the data to inform the posterior, resulting in relatively good mixing (~rhat~ ≈ 1, high ~ess~).
 
-+ _Series for \(\beta_j \times \gamma_j$_:
++ _Series for \(\beta_j \times \gamma_j\)_:
     + This series represents the coefficient's effect when variable \(j\) is included in the model (\(\gamma_j=1\)) and is zero when excluded (\(\gamma_j=0\)).
     + The trace plots ([[beta_gamma_sequence]]) and diagnostic statistics (summary of ~chn_βγ~) showed that this series generally exhibited good mixing.
         + In particular, the ~rhat~ values for ~β1*γ1~ and ~β2*γ2~ were close to 1 (approx. 1.017 and 1.0005, respectively), and the ~ess_bulk~ values improved (approx. 585 and 39422, respectively).
