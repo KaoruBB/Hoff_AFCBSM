@@ -1,0 +1,17 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第3章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:3-1.org][Exercise 3.1]]
++ [[file:3-2.org][Exercise 3.2]]
++ [[file:3-3.org][Exercise 3.3]]
++ [[file:3-4.org][Exercise 3.4]]
++ [[file:3-5.org][Exercise 3.5]]
++ [[file:3-6.org][Exercise 3.6]]
++ [[file:3-7.org][Exercise 3.7]]
++ [[file:3-8.org][Exercise 3.8]]
++ [[file:3-9.org][Exercise 3.9]]
++ [[file:3-10.org][Exercise 3.10]]
++ [[file:3-12.org][Exercise 3.12]]
++ [[file:3-13.org][Exercise 3.13]]
++ [[file:3-14.org][Exercise 3.14]]

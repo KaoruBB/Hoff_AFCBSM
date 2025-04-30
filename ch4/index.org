@@ -1,0 +1,12 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 4 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第4章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:4-1.org][Exercise 4.1]]
++ [[file:4-2.org][Exercise 4.2]]
++ [[file:4-3.org][Exercise 4.3]]
++ [[file:4-4.org][Exercise 4.4]]
++ [[file:4-5.org][Exercise 4.5]]
++ [[file:4-6.org][Exercise 4.6]]
++ [[file:4-7.org][Exercise 4.7]]
++ [[file:4-8.org][Exercise 4.8]]

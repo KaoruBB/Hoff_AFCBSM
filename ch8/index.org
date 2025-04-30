@@ -1,0 +1,7 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 8 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第8章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:8-1.org][Exercise 8.1]]
++ [[file:8-2.org][Exercise 8.2]]
++ [[file:8-3.org][Exercise 8.3]]

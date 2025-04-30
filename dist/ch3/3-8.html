@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.8 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -49,36 +50,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga7e86e5">a)</a>
+<li><a href="#orgdde3c36">a)</a>
 <ul>
-<li><a href="#orgc01ba48">answer</a></li>
+<li><a href="#orgb420caf">answer</a></li>
 </ul>
 </li>
-<li><a href="#org48de42a">b)</a>
+<li><a href="#orgfd21461">b)</a>
 <ul>
-<li><a href="#org9e1895e">answer</a></li>
+<li><a href="#org8f1962e">answer</a></li>
 </ul>
 </li>
-<li><a href="#org258b97b">c)</a>
+<li><a href="#org4dbd495">c)</a>
 <ul>
-<li><a href="#org145dc34">answer</a></li>
+<li><a href="#orgd561c07">answer</a></li>
 </ul>
 </li>
-<li><a href="#org3be248a">d)</a>
+<li><a href="#org3b525a0">d)</a>
 <ul>
-<li><a href="#orgf33f7c1">answer</a></li>
+<li><a href="#orgad5f264">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga7e86e5" class="outline-2">
-<h2 id="orga7e86e5">a)</h2>
-<div class="outline-text-2" id="text-orga7e86e5">
+<div id="outline-container-orgdde3c36" class="outline-2">
+<h2 id="orgdde3c36">a)</h2>
+<div class="outline-text-2" id="text-orgdde3c36">
 </div>
-<div id="outline-container-orgc01ba48" class="outline-3">
-<h3 id="orgc01ba48">answer</h3>
-<div class="outline-text-3" id="text-orgc01ba48">
+<div id="outline-container-orgb420caf" class="outline-3">
+<h3 id="orgb420caf">answer</h3>
+<div class="outline-text-3" id="text-orgb420caf">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8320;_sym, b&#8320;_sym = <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">15</span>
 sym = Beta<span style="color: #51afef;">(</span>a&#8320;_sym, b&#8320;_sym<span style="color: #51afef;">)</span>
@@ -90,7 +91,7 @@ plot!<span style="color: #51afef;">(</span>asym, <span style="color: #e69055; fo
 </div>
 
 
-<div id="orgd86a2a4" class="figure">
+<div id="orga1ba2ae" class="figure">
 <p><img src="fig/exercise3.8apriors.jpg" alt="exercise3.8apriors.jpg" width="500" />
 </p>
 </div>
@@ -105,20 +106,20 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 
 
-<div id="org16b9969" class="figure">
+<div id="orgcd1fcae" class="figure">
 <p><img src="fig/exercise3.8amixturemodelprior.jpg" alt="exercise3.8amixturemodelprior.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org48de42a" class="outline-2">
-<h2 id="org48de42a">b)</h2>
-<div class="outline-text-2" id="text-org48de42a">
+<div id="outline-container-orgfd21461" class="outline-2">
+<h2 id="orgfd21461">b)</h2>
+<div class="outline-text-2" id="text-orgfd21461">
 </div>
-<div id="outline-container-org9e1895e" class="outline-3">
-<h3 id="org9e1895e">answer</h3>
-<div class="outline-text-3" id="text-org9e1895e">
+<div id="outline-container-org8f1962e" class="outline-3">
+<h3 id="org8f1962e">answer</h3>
+<div class="outline-text-3" id="text-org8f1962e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -399,13 +400,13 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 </div>
 </div>
-<div id="outline-container-org258b97b" class="outline-2">
-<h2 id="org258b97b">c)</h2>
-<div class="outline-text-2" id="text-org258b97b">
+<div id="outline-container-org4dbd495" class="outline-2">
+<h2 id="org4dbd495">c)</h2>
+<div class="outline-text-2" id="text-org4dbd495">
 </div>
-<div id="outline-container-org145dc34" class="outline-3">
-<h3 id="org145dc34">answer</h3>
-<div class="outline-text-3" id="text-org145dc34">
+<div id="outline-container-orgd561c07" class="outline-3">
+<h3 id="orgd561c07">answer</h3>
+<div class="outline-text-3" id="text-orgd561c07">
 <div class="org-src-container">
 <pre class="src src-julia">y&#8321;, n&#8321; = <span style="color: #e69055; font-weight: bold;">23</span> , <span style="color: #e69055; font-weight: bold;">50</span>
 sym&#8321; = Beta<span style="color: #51afef;">(</span>a&#8320;_sym <span style="color: #FCCE7B;">+</span> y&#8321;, b&#8320;_sym <span style="color: #FCCE7B;">+</span> n&#8321; <span style="color: #FCCE7B;">-</span> y&#8321;<span style="color: #51afef;">)</span>
@@ -416,20 +417,20 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 
 
-<div id="org7229f6a" class="figure">
+<div id="orgaa01eed" class="figure">
 <p><img src="fig/exercise3.8cposterior.jpg" alt="exercise3.8cposterior.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org3be248a" class="outline-2">
-<h2 id="org3be248a">d)</h2>
-<div class="outline-text-2" id="text-org3be248a">
+<div id="outline-container-org3b525a0" class="outline-2">
+<h2 id="org3b525a0">d)</h2>
+<div class="outline-text-2" id="text-org3b525a0">
 </div>
-<div id="outline-container-orgf33f7c1" class="outline-3">
-<h3 id="orgf33f7c1">answer</h3>
-<div class="outline-text-3" id="text-orgf33f7c1">
+<div id="outline-container-orgad5f264" class="outline-3">
+<h3 id="orgad5f264">answer</h3>
+<div class="outline-text-3" id="text-orgad5f264">
 <p>
 今回は、令和元年 100 円玉を使う。
 (I will use a 100 yen coin from 2019.)
@@ -709,8 +710,8 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </table>
 
 <p>
-同じ 100 円玉なので、 <a href="#org258b97b">c)</a> で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
-(Since it is the same 100 yen coin, I will use the posterior distribution obtained in <a href="#org258b97b">c)</a> as the prior distribution, and the posterior distribution will be as follows.)
+同じ 100 円玉なので、 <a href="#org4dbd495">c)</a> で得た事後分布を事前分布として用いると、事後分布は以下のようになる。
+(Since it is the same 100 yen coin, I will use the posterior distribution obtained in <a href="#org4dbd495">c)</a> as the prior distribution, and the posterior distribution will be as follows.)
 </p>
 
 <div class="org-src-container">
@@ -723,7 +724,7 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </div>
 
 
-<div id="org4f775c2" class="figure">
+<div id="orgf7ecaa4" class="figure">
 <p><img src="fig/exercise3.8dposterior.jpg" alt="exercise3.8dposterior.jpg" width="500" />
 </p>
 </div>
@@ -739,8 +740,18 @@ histogram<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;"
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

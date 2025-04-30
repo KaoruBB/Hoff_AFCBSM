@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.4 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,48 +108,48 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga999262">a)</a>
+<li><a href="#orgac09abe">a)</a>
 <ul>
-<li><a href="#org999e572">Answer</a></li>
+<li><a href="#org7e0cd50">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org0e356dd">b)</a>
+<li><a href="#org57e46d2">b)</a>
 <ul>
-<li><a href="#orgeda10c1">Answer</a></li>
+<li><a href="#org6a6776a">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgaef10d2">c)</a>
+<li><a href="#orgda869e9">c)</a>
 <ul>
-<li><a href="#org8ece822">Answer</a>
+<li><a href="#orgbceaf61">Answer</a>
 <ul>
-<li><a href="#org0e2f0db">joint posterior distribution of \(\theta_h\) and \(\theta_w\)</a></li>
-<li><a href="#org35f64ff">marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)</a></li>
-<li><a href="#orgfc7897f">95% posterior confidence intervals for \(\theta_h\), \(\theta_w\), and the correlation coefficient</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgace0c04">d)</a>
-<ul>
-<li><a href="#orgf62a794">Answer</a>
-<ul>
-<li><a href="#org22d2eba">Jeffreys&rsquo; prior</a></li>
-<li><a href="#org143db9b">the unit information prior</a></li>
-<li><a href="#orga585468">diffuse prior</a></li>
+<li><a href="#orgdde2bdb">joint posterior distribution of \(\theta_h\) and \(\theta_w\)</a></li>
+<li><a href="#org4934dac">marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)</a></li>
+<li><a href="#orgc17b980">95% posterior confidence intervals for \(\theta_h\), \(\theta_w\), and the correlation coefficient</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgbd0584b">e)</a>
+<li><a href="#org259b80c">d)</a>
 <ul>
-<li><a href="#org03ac030">Answer</a>
+<li><a href="#orgb8b4f73">Answer</a>
 <ul>
-<li><a href="#org6cf4c40">Comparison of 95% Credible Intervals of couple age</a></li>
-<li><a href="#org53946fa">Comparison of 95% Credible Intervals of correlation coefficient</a></li>
-<li><a href="#org444166e">Discussion</a>
+<li><a href="#org3575543">Jeffreys&rsquo; prior</a></li>
+<li><a href="#orgf94e4c1">the unit information prior</a></li>
+<li><a href="#org171ecc1">diffuse prior</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1a8a494">e)</a>
 <ul>
-<li><a href="#org36035a8">日本語</a></li>
-<li><a href="#org436cbe6">English</a></li>
+<li><a href="#orgd30f3ba">Answer</a>
+<ul>
+<li><a href="#org045e054">Comparison of 95% Credible Intervals of couple age</a></li>
+<li><a href="#orgc8fd995">Comparison of 95% Credible Intervals of correlation coefficient</a></li>
+<li><a href="#orgcc7726c">Discussion</a>
+<ul>
+<li><a href="#org06d7307">日本語</a></li>
+<li><a href="#org1332049">English</a></li>
 </ul>
 </li>
 </ul>
@@ -158,13 +159,13 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orga999262" class="outline-2">
-<h2 id="orga999262">a)</h2>
-<div class="outline-text-2" id="text-orga999262">
+<div id="outline-container-orgac09abe" class="outline-2">
+<h2 id="orgac09abe">a)</h2>
+<div class="outline-text-2" id="text-orgac09abe">
 </div>
-<div id="outline-container-org999e572" class="outline-3">
-<h3 id="org999e572">Answer</h3>
-<div class="outline-text-3" id="text-org999e572">
+<div id="outline-container-org7e0cd50" class="outline-3">
+<h3 id="org7e0cd50">Answer</h3>
+<div class="outline-text-3" id="text-org7e0cd50">
 <p>
 自分のイメージでは、アメリカの平均的な夫婦の年齢は 50 歳くらいで、やや女性の方が若いと思うので、\(\mu_h = 51, \mu_h = 49\) とする。また、95%くらいで、25 歳から 75 歳くらいまでの範囲に収まると思うので、
 \(\sigma_h = \sigma_w = 12.5\) とする。夫婦の年齢の相関はかなり大きいイメージなので、0.9 になるように、
@@ -188,13 +189,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org0e356dd" class="outline-2">
-<h2 id="org0e356dd">b)</h2>
-<div class="outline-text-2" id="text-org0e356dd">
+<div id="outline-container-org57e46d2" class="outline-2">
+<h2 id="org57e46d2">b)</h2>
+<div class="outline-text-2" id="text-org57e46d2">
 </div>
-<div id="outline-container-orgeda10c1" class="outline-3">
-<h3 id="orgeda10c1">Answer</h3>
-<div class="outline-text-3" id="text-orgeda10c1">
+<div id="outline-container-org6a6776a" class="outline-3">
+<h3 id="org6a6776a">Answer</h3>
+<div class="outline-text-3" id="text-org6a6776a">
 <div class="org-src-container">
 <pre class="src src-julia">&#956;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">51</span>, <span style="color: #e69055; font-weight: bold;">49</span><span style="color: #51afef;">]</span>
 &#923;&#8320; = <span style="color: #51afef;">[</span>
@@ -212,7 +213,7 @@ dataset3 = rand<span style="color: #51afef;">(</span>prior_dist, n<span style="c
 </div>
 
 
-<div id="orgeab2792" class="figure">
+<div id="org39817f6" class="figure">
 <p><img src="./fig/exercise7_4b.png" alt="exercise7_4b.png" width="600" />
 </p>
 </div>
@@ -223,17 +224,17 @@ dataset3 = rand<span style="color: #51afef;">(</span>prior_dist, n<span style="c
 </div>
 </div>
 </div>
-<div id="outline-container-orgaef10d2" class="outline-2">
-<h2 id="orgaef10d2">c)</h2>
-<div class="outline-text-2" id="text-orgaef10d2">
+<div id="outline-container-orgda869e9" class="outline-2">
+<h2 id="orgda869e9">c)</h2>
+<div class="outline-text-2" id="text-orgda869e9">
 </div>
-<div id="outline-container-org8ece822" class="outline-3">
-<h3 id="org8ece822">Answer</h3>
-<div class="outline-text-3" id="text-org8ece822">
+<div id="outline-container-orgbceaf61" class="outline-3">
+<h3 id="orgbceaf61">Answer</h3>
+<div class="outline-text-3" id="text-orgbceaf61">
 </div>
-<div id="outline-container-org0e2f0db" class="outline-4">
-<h4 id="org0e2f0db">joint posterior distribution of \(\theta_h\) and \(\theta_w\)</h4>
-<div class="outline-text-4" id="text-org0e2f0db">
+<div id="outline-container-orgdde2bdb" class="outline-4">
+<h4 id="orgdde2bdb">joint posterior distribution of \(\theta_h\) and \(\theta_w\)</h4>
+<div class="outline-text-4" id="text-orgdde2bdb">
 <div class="org-src-container">
 <pre class="src src-julia">agehw = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/agehw.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 
@@ -248,25 +249,25 @@ COR = get_pos_cor<span style="color: #51afef;">(</span>SIGMA, p, S<span style="c
 </div>
 
 
-<div id="org55ecb2c" class="figure">
+<div id="org4898430" class="figure">
 <p><img src="./fig/exercise7_4c_jointdist.png" alt="exercise7_4c_jointdist.png" width="600" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org35f64ff" class="outline-4">
-<h4 id="org35f64ff">marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)</h4>
-<div class="outline-text-4" id="text-org35f64ff">
+<div id="outline-container-org4934dac" class="outline-4">
+<h4 id="org4934dac">marginal posterior density of the correlation between \(Y_h\) and \(Y_w\)</h4>
+<div class="outline-text-4" id="text-org4934dac">
 
-<div id="org1a96a7a" class="figure">
+<div id="orgfb19b9b" class="figure">
 <p><img src="./fig/exercise7_4c_correlation.png" alt="exercise7_4c_correlation.png" width="600" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc7897f" class="outline-4">
-<h4 id="orgfc7897f">95% posterior confidence intervals for \(\theta_h\), \(\theta_w\), and the correlation coefficient</h4>
-<div class="outline-text-4" id="text-orgfc7897f">
+<div id="outline-container-orgc17b980" class="outline-4">
+<h4 id="orgc17b980">95% posterior confidence intervals for \(\theta_h\), \(\theta_w\), and the correlation coefficient</h4>
+<div class="outline-text-4" id="text-orgc17b980">
 <div class="org-src-container">
 <pre class="src src-julia">quantile<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
 quantile<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -274,7 +275,7 @@ quantile<span style="color: #51afef;">(</span>COR<span style="color: #C57BDB;">[
 </pre>
 </div>
 
-<pre class="example" id="org6e3a126">
+<pre class="example" id="orgd6402e9">
 2-element Vector{Float64}:
  41.82793288516493
  47.10559872633597
@@ -291,17 +292,17 @@ quantile<span style="color: #51afef;">(</span>COR<span style="color: #C57BDB;">[
 </div>
 </div>
 </div>
-<div id="outline-container-orgace0c04" class="outline-2">
-<h2 id="orgace0c04">d)</h2>
-<div class="outline-text-2" id="text-orgace0c04">
+<div id="outline-container-org259b80c" class="outline-2">
+<h2 id="org259b80c">d)</h2>
+<div class="outline-text-2" id="text-org259b80c">
 </div>
-<div id="outline-container-orgf62a794" class="outline-3">
-<h3 id="orgf62a794">Answer</h3>
-<div class="outline-text-3" id="text-orgf62a794">
+<div id="outline-container-orgb8b4f73" class="outline-3">
+<h3 id="orgb8b4f73">Answer</h3>
+<div class="outline-text-3" id="text-orgb8b4f73">
 </div>
-<div id="outline-container-org22d2eba" class="outline-4">
-<h4 id="org22d2eba">Jeffreys&rsquo; prior</h4>
-<div class="outline-text-4" id="text-org22d2eba">
+<div id="outline-container-org3575543" class="outline-4">
+<h4 id="org3575543">Jeffreys&rsquo; prior</h4>
+<div class="outline-text-4" id="text-org3575543">
 <div class="org-src-container">
 <pre class="src src-julia">
 THETA_J = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
@@ -331,7 +332,7 @@ quantile<span style="color: #51afef;">(</span>COR_J<span style="color: #C57BDB;"
 </pre>
 </div>
 
-<pre class="example" id="org01bfa49">
+<pre class="example" id="orge57b0ff">
 julia&gt; quantile(THETA_J[:, 1], [0.025, 0.975])
 2-element Vector{Float64}:
  41.68056977372846
@@ -349,9 +350,9 @@ julia&gt; quantile(COR_J[1, 2, :], [0.025, 0.975])
 </pre>
 </div>
 </div>
-<div id="outline-container-org143db9b" class="outline-4">
-<h4 id="org143db9b">the unit information prior</h4>
-<div class="outline-text-4" id="text-org143db9b">
+<div id="outline-container-orgf94e4c1" class="outline-4">
+<h4 id="orgf94e4c1">the unit information prior</h4>
+<div class="outline-text-4" id="text-orgf94e4c1">
 <div class="org-src-container">
 <pre class="src src-julia">S_y = <span style="color: #51afef;">(</span>agehw' .<span style="color: #FCCE7B;">-</span> y&#772;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>agehw' .<span style="color: #FCCE7B;">-</span> y&#772;<span style="color: #51afef;">)</span>' <span style="color: #FCCE7B;">./</span> n
 THETA_U = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
@@ -376,7 +377,7 @@ quantile<span style="color: #51afef;">(</span>COR_U<span style="color: #C57BDB;"
 </pre>
 </div>
 
-<pre class="example" id="org537a9ae">
+<pre class="example" id="org5487581">
 julia&gt; quantile(THETA_U[:, 1], [0.025, 0.975])
 2-element Vector{Float64}:
 
@@ -395,9 +396,9 @@ julia&gt; quantile(COR_U[1, 2, :], [0.025, 0.975])
 </pre>
 </div>
 </div>
-<div id="outline-container-orga585468" class="outline-4">
-<h4 id="orga585468">diffuse prior</h4>
-<div class="outline-text-4" id="text-orga585468">
+<div id="outline-container-org171ecc1" class="outline-4">
+<h4 id="org171ecc1">diffuse prior</h4>
+<div class="outline-text-4" id="text-org171ecc1">
 <div class="org-src-container">
 <pre class="src src-julia">&#956;&#8320; = zeros<span style="color: #51afef;">(</span>p<span style="color: #51afef;">)</span>
 &#923;&#8320; = <span style="color: #e69055; font-weight: bold;">10</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">5</span> <span style="color: #FCCE7B;">.*</span> Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span>I, p, p<span style="color: #51afef;">)</span>
@@ -416,7 +417,7 @@ quantile<span style="color: #51afef;">(</span>COR_D<span style="color: #C57BDB;"
 </pre>
 </div>
 
-<pre class="example" id="org80a5aee">
+<pre class="example" id="org186516f">
 julia&gt; quantile(THETA_D[:, 1], [0.025, 0.975])
 
 2-element Vector{Float64}:
@@ -437,47 +438,47 @@ julia&gt; quantile(COR_D[1, 2, :], [0.025, 0.975])
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd0584b" class="outline-2">
-<h2 id="orgbd0584b">e)</h2>
-<div class="outline-text-2" id="text-orgbd0584b">
+<div id="outline-container-org1a8a494" class="outline-2">
+<h2 id="org1a8a494">e)</h2>
+<div class="outline-text-2" id="text-org1a8a494">
 </div>
-<div id="outline-container-org03ac030" class="outline-3">
-<h3 id="org03ac030">Answer</h3>
-<div class="outline-text-3" id="text-org03ac030">
+<div id="outline-container-orgd30f3ba" class="outline-3">
+<h3 id="orgd30f3ba">Answer</h3>
+<div class="outline-text-3" id="text-orgd30f3ba">
 </div>
-<div id="outline-container-org6cf4c40" class="outline-4">
-<h4 id="org6cf4c40">Comparison of 95% Credible Intervals of couple age</h4>
-<div class="outline-text-4" id="text-org6cf4c40">
+<div id="outline-container-org045e054" class="outline-4">
+<h4 id="org045e054">Comparison of 95% Credible Intervals of couple age</h4>
+<div class="outline-text-4" id="text-org045e054">
 <p width="600">
 <img src="./fig/exercise7_4e_age.png" alt="exercise7_4e_age.png" width="600" />
 <img src="./fig/exercise7_4e_small.png" alt="exercise7_4e_small.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org53946fa" class="outline-4">
-<h4 id="org53946fa">Comparison of 95% Credible Intervals of correlation coefficient</h4>
-<div class="outline-text-4" id="text-org53946fa">
+<div id="outline-container-orgc8fd995" class="outline-4">
+<h4 id="orgc8fd995">Comparison of 95% Credible Intervals of correlation coefficient</h4>
+<div class="outline-text-4" id="text-orgc8fd995">
 <p width="600">
 <img src="./fig/exercise7_4e_cor.png" alt="exercise7_4e_cor.png" width="600" />
 <img src="./fig/exercise7_4e_small_cor.png" alt="exercise7_4e_small_cor.png" />
 </p>
 </div>
 </div>
-<div id="outline-container-org444166e" class="outline-4">
-<h4 id="org444166e">Discussion</h4>
-<div class="outline-text-4" id="text-org444166e">
+<div id="outline-container-orgcc7726c" class="outline-4">
+<h4 id="orgcc7726c">Discussion</h4>
+<div class="outline-text-4" id="text-orgcc7726c">
 </div>
-<div id="outline-container-org36035a8" class="outline-5">
-<h5 id="org36035a8">日本語</h5>
-<div class="outline-text-5" id="text-org36035a8">
+<div id="outline-container-org06d7307" class="outline-5">
+<h5 id="org06d7307">日本語</h5>
+<div class="outline-text-5" id="text-org06d7307">
 <p>
 サンプルサイズが大きい場合\((n=100)\)、事前の情報は事後分布にほとんど影響を与えなていない。一方で、サンプルサイズが小さいと\((n=25)\)、相関係数の信用区間のプロットからもわかるように、事前の情報が事後分布に与える影響が大きくなるので、事前の情報が重要になる。
 </p>
 </div>
 </div>
-<div id="outline-container-org436cbe6" class="outline-5">
-<h5 id="org436cbe6">English</h5>
-<div class="outline-text-5" id="text-org436cbe6">
+<div id="outline-container-org1332049" class="outline-5">
+<h5 id="org1332049">English</h5>
+<div class="outline-text-5" id="text-org1332049">
 <p>
 When the sample size is large (<code>n=100</code>), the prior information has almost no influence on the posterior distribution.
 On the other hand, when the sample size is small (<code>n=25</code>), as can also be seen from the plot of the credible interval for the correlation coefficient, the influence of the prior information on the posterior distribution becomes larger, making the prior information important.
@@ -496,8 +497,18 @@ On the other hand, when the sample size is small (<code>n=25</code>), as can als
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

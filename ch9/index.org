@@ -1,0 +1,7 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 9 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第9章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:9-1.org][Exercise 9.1]]
++ [[file:9-2.org][Exercise 9.2]]
++ [[file:9-3.org][Exercise 9.3]]

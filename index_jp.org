@@ -1,14 +1,6 @@
-* setup :ignore:
 #+title: 標準ベイズ統計学 演習問題 解答例
-#+AUTHOR: 馬場先 薫
-#+OPTIONS: toc:2
-#+OPTIONS: H:7
-#+OPTIONS: tags:nil
-#+OPTIONS: num:nil
-#+OPTIONS: timestamp:nil
-#+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
-#+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-#+HTML_HEAD: <link rel="stylesheet" href="css/custom.css">
+#+SUBTITLE: Solution Example - Hoff, A First Course in Bayesian Statistical Methods
+#+SETUPFILE: setup.org
 
 * このサイトについて
 
@@ -28,14 +20,14 @@ For English site, please visit [[./index.org][here]].
 各章のリンクから、問題ごとの解答ページへアクセスできます。
 
 + [[file:ch2/index.org][第2章]] - 信念、確率、交換可能性
-# + [[file:ch3/index.org][第3章]] - 二項モデルとポアソンモデル
-# + [[file:ch4/index.org][第4章]] - モンテカルロ近似
-# + [[file:ch5/index.org][第5章]] - 正規モデル
-# + [[file:ch6/index.org][第6章]] - ギブスサンプラーによる事後分布の近似
-# + [[file:ch7/index.org][第7章]] - 多変量正規モデル
-# + [[file:ch8/index.org][第8章]] - グループ比較と階層モデリング
-# + [[file:ch9/index.org][第9章]] - 線形回帰
-# + [[file:ch10/index.org][第10章]] - 非共役事前分布とメトロポリス・ヘイスティングスアルゴリズム
++ [[file:ch3/index.org][第3章]] - 二項モデルとポアソンモデル
++ [[file:ch4/index.org][第4章]] - モンテカルロ近似
++ [[file:ch5/index.org][第5章]] - 正規モデル
++ [[file:ch6/index.org][第6章]] - ギブスサンプラーによる事後分布の近似
++ [[file:ch7/index.org][第7章]] - 多変量正規モデル
++ [[file:ch8/index.org][第8章]] - グループ比較と階層モデリング
++ [[file:ch9/index.org][第9章]] - 線形回帰
++ [[file:ch10/index.org][第10章]] - 非共役事前分布とメトロポリス・ヘイスティングスアルゴリズム
 + 第11章 - ベイズ的なモデル選択 (to be updated)
 + 第12章 - 順序データに対する潜在変数法 (to be updated)
 

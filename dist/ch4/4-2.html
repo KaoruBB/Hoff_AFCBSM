@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,32 +108,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org301490d">a)</a>
+<li><a href="#orgd0e8e9d">a)</a>
 <ul>
-<li><a href="#orgf17d4bf">answer</a></li>
+<li><a href="#org980f44f">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd045388">b)</a>
+<li><a href="#orgf98c8ab">b)</a>
 <ul>
-<li><a href="#orge7a6433">answer</a></li>
+<li><a href="#org4381086">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgdd4b975">c)</a>
+<li><a href="#org0f17dda">c)</a>
 <ul>
-<li><a href="#orgc9a2071">answer a&rsquo;</a></li>
-<li><a href="#org1c9889d">answer b&rsquo;</a></li>
+<li><a href="#orgeb4dec4">answer a&rsquo;</a></li>
+<li><a href="#org95345f2">answer b&rsquo;</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org301490d" class="outline-2">
-<h2 id="org301490d">a)</h2>
-<div class="outline-text-2" id="text-org301490d">
+<div id="outline-container-orgd0e8e9d" class="outline-2">
+<h2 id="orgd0e8e9d">a)</h2>
+<div class="outline-text-2" id="text-orgd0e8e9d">
 </div>
-<div id="outline-container-orgf17d4bf" class="outline-3">
-<h3 id="orgf17d4bf">answer</h3>
-<div class="outline-text-3" id="text-orgf17d4bf">
+<div id="outline-container-org980f44f" class="outline-3">
+<h3 id="org980f44f">answer</h3>
+<div class="outline-text-3" id="text-org980f44f">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 <span style="color: #51afef;">using</span> Random
@@ -174,13 +175,13 @@ mean<span style="color: #51afef;">(</span>&#952;_B_mc .<span style="color: #FCCE
 </div>
 </div>
 </div>
-<div id="outline-container-orgd045388" class="outline-2">
-<h2 id="orgd045388">b)</h2>
-<div class="outline-text-2" id="text-orgd045388">
+<div id="outline-container-orgf98c8ab" class="outline-2">
+<h2 id="orgf98c8ab">b)</h2>
+<div class="outline-text-2" id="text-orgf98c8ab">
 </div>
-<div id="outline-container-orge7a6433" class="outline-3">
-<h3 id="orge7a6433">answer</h3>
-<div class="outline-text-3" id="text-orge7a6433">
+<div id="outline-container-org4381086" class="outline-3">
+<h3 id="org4381086">answer</h3>
+<div class="outline-text-3" id="text-org4381086">
 <div class="org-src-container">
 <pre class="src src-julia">dist_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> Gamma<span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>n <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">)</span>
 
@@ -195,20 +196,20 @@ t_mc = <span style="color: #51afef;">[]</span>
 
 
 
-<div id="org604f425" class="figure">
+<div id="org0605dc6" class="figure">
 <p><img src="fig/exercise4-2b.png" alt="exercise4-2b.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd4b975" class="outline-2">
-<h2 id="orgdd4b975">c)</h2>
-<div class="outline-text-2" id="text-orgdd4b975">
+<div id="outline-container-org0f17dda" class="outline-2">
+<h2 id="org0f17dda">c)</h2>
+<div class="outline-text-2" id="text-org0f17dda">
 </div>
-<div id="outline-container-orgc9a2071" class="outline-3">
-<h3 id="orgc9a2071">answer a&rsquo;</h3>
-<div class="outline-text-3" id="text-orgc9a2071">
+<div id="outline-container-orgeb4dec4" class="outline-3">
+<h3 id="orgeb4dec4">answer a&rsquo;</h3>
+<div class="outline-text-3" id="text-orgeb4dec4">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;_A_mc = rand<span style="color: #51afef;">(</span>dist_A, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
 &#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_B, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
@@ -233,9 +234,9 @@ mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">
 </p>
 </div>
 </div>
-<div id="outline-container-org1c9889d" class="outline-3">
-<h3 id="org1c9889d">answer b&rsquo;</h3>
-<div class="outline-text-3" id="text-org1c9889d">
+<div id="outline-container-org95345f2" class="outline-3">
+<h3 id="org95345f2">answer b&rsquo;</h3>
+<div class="outline-text-3" id="text-org95345f2">
 <div class="org-src-container">
 <pre class="src src-julia">t_mc = <span style="color: #51afef;">[]</span>
 <span style="color: #51afef;">for</span> n&#8320; <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
@@ -247,7 +248,7 @@ mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">
 </div>
 
 
-<div id="orgc61fb56" class="figure">
+<div id="orgaf109c4" class="figure">
 <p><img src="fig/exercise4-2c.png" alt="exercise4-2c.png" width="500" />
 </p>
 </div>
@@ -263,8 +264,18 @@ mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

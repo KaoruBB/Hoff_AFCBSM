@@ -1,0 +1,9 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 10 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第10章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:10-1.org][Exercise 10.1]]
++ [[file:10-2.org][Exercise 10.2]]
++ [[file:10-3.org][Exercise 10.3]]
++ [[file:10-4.org][Exercise 10.4]]
++ [[file:10-5.org][Exercise 10.5]]

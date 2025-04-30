@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.7 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,36 +108,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2b159fa">a)</a>
+<li><a href="#org373ce40">a)</a>
 <ul>
-<li><a href="#org056b453">answer</a></li>
+<li><a href="#orgb6b4f36">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgf5cc3ee">b)</a>
+<li><a href="#orgf0fc53f">b)</a>
 <ul>
-<li><a href="#orgc921123">answer</a></li>
+<li><a href="#org364cf4e">answer</a></li>
 </ul>
 </li>
-<li><a href="#org1f3f966">c)</a>
+<li><a href="#org4e93162">c)</a>
 <ul>
-<li><a href="#org9551a07">answer</a></li>
+<li><a href="#org6dd2724">answer</a></li>
 </ul>
 </li>
-<li><a href="#org7b0561f">d)</a>
+<li><a href="#org98b6846">d)</a>
 <ul>
-<li><a href="#orgd2915f1">answer</a></li>
+<li><a href="#orgf76aed3">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b159fa" class="outline-2">
-<h2 id="org2b159fa">a)</h2>
-<div class="outline-text-2" id="text-org2b159fa">
+<div id="outline-container-org373ce40" class="outline-2">
+<h2 id="org373ce40">a)</h2>
+<div class="outline-text-2" id="text-org373ce40">
 </div>
-<div id="outline-container-org056b453" class="outline-3">
-<h3 id="org056b453">answer</h3>
-<div class="outline-text-3" id="text-org056b453">
+<div id="outline-container-orgb6b4f36" class="outline-3">
+<h3 id="orgb6b4f36">answer</h3>
+<div class="outline-text-3" id="text-orgb6b4f36">
 <div class="org-src-container">
 <pre class="src src-julia">Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
 dist_inv_&#963;&#178; = Gamma<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2.5</span><span style="color: #51afef;">)</span>
@@ -160,20 +161,20 @@ y_mc = Array<span style="color: #51afef;">{</span>Float64, <span style="color: #
 </div>
 
 
-<div id="org4ce4cd6" class="figure">
+<div id="orgdc2c3d9" class="figure">
 <p><img src="fig/exercise4_7a.png" alt="exercise4_7a.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf5cc3ee" class="outline-2">
-<h2 id="orgf5cc3ee">b)</h2>
-<div class="outline-text-2" id="text-orgf5cc3ee">
+<div id="outline-container-orgf0fc53f" class="outline-2">
+<h2 id="orgf0fc53f">b)</h2>
+<div class="outline-text-2" id="text-orgf0fc53f">
 </div>
-<div id="outline-container-orgc921123" class="outline-3">
-<h3 id="orgc921123">answer</h3>
-<div class="outline-text-3" id="text-orgc921123">
+<div id="outline-container-org364cf4e" class="outline-3">
+<h3 id="org364cf4e">answer</h3>
+<div class="outline-text-3" id="text-org364cf4e">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">75% quantile</span>
 prob = <span style="color: #e69055; font-weight: bold;">0.75</span>
@@ -191,13 +192,13 @@ ci_quantile = quantile<span style="color: #51afef;">(</span>y_mc, <span style="c
 </div>
 </div>
 </div>
-<div id="outline-container-org1f3f966" class="outline-2">
-<h2 id="org1f3f966">c)</h2>
-<div class="outline-text-2" id="text-org1f3f966">
+<div id="outline-container-org4e93162" class="outline-2">
+<h2 id="org4e93162">c)</h2>
+<div class="outline-text-2" id="text-org4e93162">
 </div>
-<div id="outline-container-org9551a07" class="outline-3">
-<h3 id="org9551a07">answer</h3>
-<div class="outline-text-3" id="text-org9551a07">
+<div id="outline-container-org6dd2724" class="outline-3">
+<h3 id="org6dd2724">answer</h3>
+<div class="outline-text-3" id="text-org6dd2724">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">i</span>
 sorted_y_mc = sort<span style="color: #51afef;">(</span>y_mc<span style="color: #51afef;">)</span>
@@ -216,20 +217,20 @@ threshhold_prob = y_density_sorted<span style="color: #51afef;">[</span>threshho
 </div>
 
 
-<div id="org93a3837" class="figure">
+<div id="orgfbfc2fe" class="figure">
 <p><img src="fig/exercise4_7c.png" alt="exercise4_7c.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org7b0561f" class="outline-2">
-<h2 id="org7b0561f">d)</h2>
-<div class="outline-text-2" id="text-org7b0561f">
+<div id="outline-container-org98b6846" class="outline-2">
+<h2 id="org98b6846">d)</h2>
+<div class="outline-text-2" id="text-org98b6846">
 </div>
-<div id="outline-container-orgd2915f1" class="outline-3">
-<h3 id="orgd2915f1">answer</h3>
-<div class="outline-text-3" id="text-orgd2915f1">
+<div id="outline-container-orgf76aed3" class="outline-3">
+<h3 id="orgf76aed3">answer</h3>
+<div class="outline-text-3" id="text-orgf76aed3">
 <p>
 The model is as follows:
 </p>
@@ -275,8 +276,18 @@ Then, the empirical distribution of
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

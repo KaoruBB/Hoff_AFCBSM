@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 6.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,47 +108,47 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org32ef2ba">a)</a>
+<li><a href="#org2477e73">a)</a>
 <ul>
-<li><a href="#org4513af7">answer</a></li>
+<li><a href="#org1da0468">answer</a></li>
 </ul>
 </li>
-<li><a href="#org00fd50f">b)</a>
+<li><a href="#org9526e06">b)</a>
 <ul>
-<li><a href="#orged9d3b7">answer</a>
+<li><a href="#org2cfbd08">answer</a>
 <ul>
-<li><a href="#org21beb2e">the full conditional distribution of \( (X_1, \dots, X_n)\)</a></li>
-<li><a href="#orgcaebbe0">the full conditional distribution of \(p\)</a></li>
-<li><a href="#orgc0b4879">the full conditional distribution of \(\theta_1\)</a></li>
-<li><a href="#org7f672e6">the full conditional distribution of \(\theta_2\)</a></li>
-<li><a href="#orga229575">the full conditional distribution of \(\sigma_1^2\)</a></li>
-<li><a href="#orge67a97a">the full conditional distribution of \(\sigma_2^2\)</a></li>
+<li><a href="#org9ddbea3">the full conditional distribution of \( (X_1, \dots, X_n)\)</a></li>
+<li><a href="#org5afcff5">the full conditional distribution of \(p\)</a></li>
+<li><a href="#orgb58fd66">the full conditional distribution of \(\theta_1\)</a></li>
+<li><a href="#org18fabdc">the full conditional distribution of \(\theta_2\)</a></li>
+<li><a href="#orgc56e0b8">the full conditional distribution of \(\sigma_1^2\)</a></li>
+<li><a href="#orga6ed270">the full conditional distribution of \(\sigma_2^2\)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgcc1fae0">c)</a>
+<li><a href="#org61f221f">c)</a>
 <ul>
-<li><a href="#org3fe5255">Answer</a></li>
+<li><a href="#orgcb6f14a">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org8abb1d4">d)</a>
+<li><a href="#orge01b54d">d)</a>
 <ul>
-<li><a href="#org1c4a023">Answer</a></li>
+<li><a href="#org9f29c68">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org32ef2ba" class="outline-2">
-<h2 id="org32ef2ba">a)</h2>
-<div class="outline-text-2" id="text-org32ef2ba">
+<div id="outline-container-org2477e73" class="outline-2">
+<h2 id="org2477e73">a)</h2>
+<div class="outline-text-2" id="text-org2477e73">
 </div>
-<div id="outline-container-org4513af7" class="outline-3">
-<h3 id="org4513af7">answer</h3>
-<div class="outline-text-3" id="text-org4513af7">
+<div id="outline-container-org1da0468" class="outline-3">
+<h3 id="org1da0468">answer</h3>
+<div class="outline-text-3" id="text-org1da0468">
 
-<div id="orgfc2beb6" class="figure">
+<div id="orgcd00875" class="figure">
 <p><img src="./fig/exercise6_2a.png" alt="exercise6_2a.png" width="600" />
 </p>
 </div>
@@ -162,13 +163,13 @@ The histogram and kernel density plot above deviate from the shape of a normal d
 </div>
 </div>
 </div>
-<div id="outline-container-org00fd50f" class="outline-2">
-<h2 id="org00fd50f">b)</h2>
-<div class="outline-text-2" id="text-org00fd50f">
+<div id="outline-container-org9526e06" class="outline-2">
+<h2 id="org9526e06">b)</h2>
+<div class="outline-text-2" id="text-org9526e06">
 </div>
-<div id="outline-container-orged9d3b7" class="outline-3">
-<h3 id="orged9d3b7">answer</h3>
-<div class="outline-text-3" id="text-orged9d3b7">
+<div id="outline-container-org2cfbd08" class="outline-3">
+<h3 id="org2cfbd08">answer</h3>
+<div class="outline-text-3" id="text-org2cfbd08">
 <p>
 The joint distribution can be written as follows.
 </p>
@@ -204,9 +205,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{aligned}
 \end{equation}
 </div>
-<div id="outline-container-org21beb2e" class="outline-4">
-<h4 id="org21beb2e">the full conditional distribution of \( (X_1, \dots, X_n)\)</h4>
-<div class="outline-text-4" id="text-org21beb2e">
+<div id="outline-container-org9ddbea3" class="outline-4">
+<h4 id="org9ddbea3">the full conditional distribution of \( (X_1, \dots, X_n)\)</h4>
+<div class="outline-text-4" id="text-org9ddbea3">
 \begin{align*}
 & p(X_i = 1 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
 = & \frac{p(Y_i, X_i = 1, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) }{p(Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)} \\
@@ -238,9 +239,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgcaebbe0" class="outline-4">
-<h4 id="orgcaebbe0">the full conditional distribution of \(p\)</h4>
-<div class="outline-text-4" id="text-orgcaebbe0">
+<div id="outline-container-org5afcff5" class="outline-4">
+<h4 id="org5afcff5">the full conditional distribution of \(p\)</h4>
+<div class="outline-text-4" id="text-org5afcff5">
 \begin{align*}
 & p(p | Y_1, \dots, Y_n, X_1, \dots, X_n, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2,
@@ -253,9 +254,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgc0b4879" class="outline-4">
-<h4 id="orgc0b4879">the full conditional distribution of \(\theta_1\)</h4>
-<div class="outline-text-4" id="text-orgc0b4879">
+<div id="outline-container-orgb58fd66" class="outline-4">
+<h4 id="orgb58fd66">the full conditional distribution of \(\theta_1\)</h4>
+<div class="outline-text-4" id="text-orgb58fd66">
 \begin{align*}
 & p(\theta_1 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_2, \sigma_1^2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
@@ -278,9 +279,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 </p>
 </div>
 </div>
-<div id="outline-container-org7f672e6" class="outline-4">
-<h4 id="org7f672e6">the full conditional distribution of \(\theta_2\)</h4>
-<div class="outline-text-4" id="text-org7f672e6">
+<div id="outline-container-org18fabdc" class="outline-4">
+<h4 id="org18fabdc">the full conditional distribution of \(\theta_2\)</h4>
+<div class="outline-text-4" id="text-org18fabdc">
 <p>
 \(\theta_2\)についても同様に計算すると、
 </p>
@@ -293,9 +294,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orga229575" class="outline-4">
-<h4 id="orga229575">the full conditional distribution of \(\sigma_1^2\)</h4>
-<div class="outline-text-4" id="text-orga229575">
+<div id="outline-container-orgc56e0b8" class="outline-4">
+<h4 id="orgc56e0b8">the full conditional distribution of \(\sigma_1^2\)</h4>
+<div class="outline-text-4" id="text-orgc56e0b8">
 \begin{align*}
 & p(\sigma_1^2 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
@@ -311,9 +312,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orge67a97a" class="outline-4">
-<h4 id="orge67a97a">the full conditional distribution of \(\sigma_2^2\)</h4>
-<div class="outline-text-4" id="text-orge67a97a">
+<div id="outline-container-orga6ed270" class="outline-4">
+<h4 id="orga6ed270">the full conditional distribution of \(\sigma_2^2\)</h4>
+<div class="outline-text-4" id="text-orga6ed270">
 <p>
 \(\sigma_2^2\)についても同様に計算すると、
 </p>
@@ -328,13 +329,13 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc1fae0" class="outline-2">
-<h2 id="orgcc1fae0">c)</h2>
-<div class="outline-text-2" id="text-orgcc1fae0">
+<div id="outline-container-org61f221f" class="outline-2">
+<h2 id="org61f221f">c)</h2>
+<div class="outline-text-2" id="text-org61f221f">
 </div>
-<div id="outline-container-org3fe5255" class="outline-3">
-<h3 id="org3fe5255">Answer</h3>
-<div class="outline-text-3" id="text-org3fe5255">
+<div id="outline-container-orgcb6f14a" class="outline-3">
+<h3 id="orgcb6f14a">Answer</h3>
+<div class="outline-text-3" id="text-orgcb6f14a">
 <div class="org-src-container">
 <pre class="src src-julia">a = b = <span style="color: #e69055; font-weight: bold;">1</span>
 &#956;&#8320; = <span style="color: #e69055; font-weight: bold;">120</span>
@@ -442,7 +443,7 @@ fig
 </div>
 
 
-<div id="orgf4593b3" class="figure">
+<div id="org453348c" class="figure">
 <p><img src="./fig/exercise6_2c.png" alt="exercise6_2c.png" width="600" />
 </p>
 </div>
@@ -463,13 +464,13 @@ ESS
 </div>
 </div>
 </div>
-<div id="outline-container-org8abb1d4" class="outline-2">
-<h2 id="org8abb1d4">d)</h2>
-<div class="outline-text-2" id="text-org8abb1d4">
+<div id="outline-container-orge01b54d" class="outline-2">
+<h2 id="orge01b54d">d)</h2>
+<div class="outline-text-2" id="text-orge01b54d">
 </div>
-<div id="outline-container-org1c4a023" class="outline-3">
-<h3 id="org1c4a023">Answer</h3>
-<div class="outline-text-3" id="text-org1c4a023">
+<div id="outline-container-org9f29c68" class="outline-3">
+<h3 id="org9f29c68">Answer</h3>
+<div class="outline-text-3" id="text-org9f29c68">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">sample y function</span>
 <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_y</span><span style="color: #51afef;">(</span>p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
@@ -519,7 +520,7 @@ p = <span style="color: #e69055; font-weight: bold;">0.5</span>
 </div>
 
 
-<div id="org12d79f5" class="figure">
+<div id="orga99ed08" class="figure">
 <p><img src="./fig/exercise6_2d.png" alt="exercise6_2d.png" width="600" />
 </p>
 </div>
@@ -541,8 +542,18 @@ p = <span style="color: #e69055; font-weight: bold;">0.5</span>
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

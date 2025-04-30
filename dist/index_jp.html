@@ -3,10 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>標準ベイズ統計学 演習問題 解答例</title>
-<meta name="author" content="馬場先 薫" />
+<meta name="author" content="Kaoru Babasaki" />
+<meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
@@ -15,7 +18,7 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
      function CodeHighlightOn(elem, id)
@@ -39,21 +42,24 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">標準ベイズ統計学 演習問題 解答例</h1>
+<h1 class="title">標準ベイズ統計学 演習問題 解答例
+<br />
+<span class="subtitle">Solution Example - Hoff, A First Course in Bayesian Statistical Methods</span>
+</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3758107">このサイトについて</a></li>
-<li><a href="#orge92f475">解答一覧</a></li>
-<li><a href="#orgca8d0c6">間違いを見つけたら</a></li>
-<li><a href="#org399b8d0">謝辞</a></li>
+<li><a href="#orgce426c9">このサイトについて</a></li>
+<li><a href="#orgde47aec">解答一覧</a></li>
+<li><a href="#orgaec7d8f">間違いを見つけたら</a></li>
+<li><a href="#org94d8df4">謝辞</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3758107" class="outline-2">
-<h2 id="org3758107">このサイトについて</h2>
-<div class="outline-text-2" id="text-org3758107">
+<div id="outline-container-orgce426c9" class="outline-2">
+<h2 id="orgce426c9">このサイトについて</h2>
+<div class="outline-text-2" id="text-orgce426c9">
 <p>
 このサイトは、Peter Hoff 著「A First Course in Bayesian Statistical Methods」(日本語版タイトル: <a href="https://www.asakura.co.jp/detail.php?book_code=12267">標準ベイズ統計学</a>) の演習問題 (Exercise) の解答例を提供する目的で作成されました。
 </p>
@@ -75,26 +81,31 @@ For English site, please visit <a href="./index.html">here</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-orge92f475" class="outline-2">
-<h2 id="orge92f475">解答一覧</h2>
-<div class="outline-text-2" id="text-orge92f475">
+<div id="outline-container-orgde47aec" class="outline-2">
+<h2 id="orgde47aec">解答一覧</h2>
+<div class="outline-text-2" id="text-orgde47aec">
 <p>
 各章のリンクから、問題ごとの解答ページへアクセスできます。
 </p>
 
 <ul class="org-ul">
 <li><a href="ch2/index.html">第2章</a> - 信念、確率、交換可能性</li>
-</ul>
-
-<ul class="org-ul">
+<li><a href="ch3/index.html">第3章</a> - 二項モデルとポアソンモデル</li>
+<li><a href="ch4/index.html">第4章</a> - モンテカルロ近似</li>
+<li><a href="ch5/index.html">第5章</a> - 正規モデル</li>
+<li><a href="ch6/index.html">第6章</a> - ギブスサンプラーによる事後分布の近似</li>
+<li><a href="ch7/index.html">第7章</a> - 多変量正規モデル</li>
+<li><a href="ch8/index.html">第8章</a> - グループ比較と階層モデリング</li>
+<li><a href="ch9/index.html">第9章</a> - 線形回帰</li>
+<li><a href="ch10/index.html">第10章</a> - 非共役事前分布とメトロポリス・ヘイスティングスアルゴリズム</li>
 <li>第11章 - ベイズ的なモデル選択 (to be updated)</li>
 <li>第12章 - 順序データに対する潜在変数法 (to be updated)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgca8d0c6" class="outline-2">
-<h2 id="orgca8d0c6">間違いを見つけたら</h2>
-<div class="outline-text-2" id="text-orgca8d0c6">
+<div id="outline-container-orgaec7d8f" class="outline-2">
+<h2 id="orgaec7d8f">間違いを見つけたら</h2>
+<div class="outline-text-2" id="text-orgaec7d8f">
 <p>
 本サイトは、著者が修士課程のときに作成を開始し、現在も更新を続けています。そのため、誤植や間違いが含まれている可能性があります。
 </p>
@@ -108,9 +119,9 @@ For English site, please visit <a href="./index.html">here</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org399b8d0" class="outline-2">
-<h2 id="org399b8d0">謝辞</h2>
-<div class="outline-text-2" id="text-org399b8d0">
+<div id="outline-container-org94d8df4" class="outline-2">
+<h2 id="org94d8df4">謝辞</h2>
+<div class="outline-text-2" id="text-org94d8df4">
 <p>
 これまで、以下の皆様から誤植・間違いのご指摘をいただきました。
 </p>
@@ -128,8 +139,18 @@ For English site, please visit <a href="./index.html">here</a>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: 馬場先 薫</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

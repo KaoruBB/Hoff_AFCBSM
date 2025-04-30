@@ -1,0 +1,9 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 5 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第5章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:5-1.org][Exercise 5.1]]
++ [[file:5-2.org][Exercise 5.2]]
++ [[file:5-3.org][Exercise 5.3]]
++ [[file:5-4.org][Exercise 5.4]]
++ [[file:5-5.org][Exercise 5.5]]

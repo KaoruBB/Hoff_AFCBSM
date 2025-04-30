@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.6 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -49,26 +50,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org03a00bc">a)</a>
+<li><a href="#orgb469313">a)</a>
 <ul>
-<li><a href="#orga8faea9">Answer</a>
+<li><a href="#org25ae7bb">Answer</a>
 <ul>
-<li><a href="#orgb2619b1">preprocess &amp; Gibbs sampler</a></li>
-<li><a href="#orgf864c7f">marginal posterior distribution</a></li>
+<li><a href="#orgf0aef24">preprocess &amp; Gibbs sampler</a></li>
+<li><a href="#orgddc33be">marginal posterior distribution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgfc95043">b)</a>
+<li><a href="#orgb2a88a7">b)</a>
 <ul>
-<li><a href="#org1aa8e76">Answer</a>
+<li><a href="#org5ae61c4">Answer</a>
 <ul>
-<li><a href="#org92aa5d5">standard deviation</a></li>
-<li><a href="#orgba3faf3">correlation</a></li>
-<li><a href="#org8de6024">discussion</a>
+<li><a href="#org03bc657">standard deviation</a></li>
+<li><a href="#orgfc6f588">correlation</a></li>
+<li><a href="#org8e2f1fc">discussion</a>
 <ul>
-<li><a href="#org2ac6015">日本語</a></li>
-<li><a href="#orgf69eff1">English</a></li>
+<li><a href="#org1d559bc">日本語</a></li>
+<li><a href="#org7f759f9">English</a></li>
 </ul>
 </li>
 </ul>
@@ -78,17 +79,17 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org03a00bc" class="outline-2">
-<h2 id="org03a00bc">a)</h2>
-<div class="outline-text-2" id="text-org03a00bc">
+<div id="outline-container-orgb469313" class="outline-2">
+<h2 id="orgb469313">a)</h2>
+<div class="outline-text-2" id="text-orgb469313">
 </div>
-<div id="outline-container-orga8faea9" class="outline-3">
-<h3 id="orga8faea9">Answer</h3>
-<div class="outline-text-3" id="text-orga8faea9">
+<div id="outline-container-org25ae7bb" class="outline-3">
+<h3 id="org25ae7bb">Answer</h3>
+<div class="outline-text-3" id="text-org25ae7bb">
 </div>
-<div id="outline-container-orgb2619b1" class="outline-4">
-<h4 id="orgb2619b1">preprocess &amp; Gibbs sampler</h4>
-<div class="outline-text-4" id="text-orgb2619b1">
+<div id="outline-container-orgf0aef24" class="outline-4">
+<h4 id="orgf0aef24">preprocess &amp; Gibbs sampler</h4>
+<div class="outline-text-4" id="text-orgf0aef24">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
 Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
@@ -154,11 +155,11 @@ THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<spa
 </div>
 </div>
 </div>
-<div id="outline-container-orgf864c7f" class="outline-4">
-<h4 id="orgf864c7f">marginal posterior distribution</h4>
-<div class="outline-text-4" id="text-orgf864c7f">
+<div id="outline-container-orgddc33be" class="outline-4">
+<h4 id="orgddc33be">marginal posterior distribution</h4>
+<div class="outline-text-4" id="text-orgddc33be">
 
-<div id="org609798d" class="figure">
+<div id="orge03899a" class="figure">
 <p><img src="./fig/exercise7-6a.png" alt="exercise7-6a.png" width="800" />
 </p>
 </div>
@@ -173,7 +174,7 @@ THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<spa
 </pre>
 </div>
 
-<pre class="example" id="org0cc3ef8">
+<pre class="example" id="org5c17c6d">
 Pr(θd,1 &gt; θn,1) = 1.0
 Pr(θd,2 &gt; θn,2) = 1.0
 Pr(θd,3 &gt; θn,3) = 1.0
@@ -191,50 +192,50 @@ Pr(θd,7 &gt; θn,7) = 1.0
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc95043" class="outline-2">
-<h2 id="orgfc95043">b)</h2>
-<div class="outline-text-2" id="text-orgfc95043">
+<div id="outline-container-orgb2a88a7" class="outline-2">
+<h2 id="orgb2a88a7">b)</h2>
+<div class="outline-text-2" id="text-orgb2a88a7">
 </div>
-<div id="outline-container-org1aa8e76" class="outline-3">
-<h3 id="org1aa8e76">Answer</h3>
-<div class="outline-text-3" id="text-org1aa8e76">
+<div id="outline-container-org5ae61c4" class="outline-3">
+<h3 id="org5ae61c4">Answer</h3>
+<div class="outline-text-3" id="text-org5ae61c4">
 </div>
-<div id="outline-container-org92aa5d5" class="outline-4">
-<h4 id="org92aa5d5">standard deviation</h4>
-<div class="outline-text-4" id="text-org92aa5d5">
+<div id="outline-container-org03bc657" class="outline-4">
+<h4 id="org03bc657">standard deviation</h4>
+<div class="outline-text-4" id="text-org03bc657">
 
-<div id="org64aab2a" class="figure">
+<div id="orgbacb34c" class="figure">
 <p><img src="./fig/exercise7-6b_sd.png" alt="exercise7-6b_sd.png" width="800" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgba3faf3" class="outline-4">
-<h4 id="orgba3faf3">correlation</h4>
-<div class="outline-text-4" id="text-orgba3faf3">
+<div id="outline-container-orgfc6f588" class="outline-4">
+<h4 id="orgfc6f588">correlation</h4>
+<div class="outline-text-4" id="text-orgfc6f588">
 
-<div id="orge9e2f1a" class="figure">
+<div id="org604f6eb" class="figure">
 <p><img src="./fig/exercise7-6b_cor.png" alt="exercise7-6b_cor.png" width="800" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org8de6024" class="outline-4">
-<h4 id="org8de6024">discussion</h4>
-<div class="outline-text-4" id="text-org8de6024">
+<div id="outline-container-org8e2f1fc" class="outline-4">
+<h4 id="org8e2f1fc">discussion</h4>
+<div class="outline-text-4" id="text-org8e2f1fc">
 </div>
-<div id="outline-container-org2ac6015" class="outline-5">
-<h5 id="org2ac6015">日本語</h5>
-<div class="outline-text-5" id="text-org2ac6015">
+<div id="outline-container-org1d559bc" class="outline-5">
+<h5 id="org1d559bc">日本語</h5>
+<div class="outline-text-5" id="text-org1d559bc">
 <ul class="org-ul">
 <li>標準偏差は、糖尿病患者群の方が、やや大きい</li>
 <li>相関係数は diabetes pedigree 以外の変数に関して、非患者群の方が大きい。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf69eff1" class="outline-5">
-<h5 id="orgf69eff1">English</h5>
-<div class="outline-text-5" id="text-orgf69eff1">
+<div id="outline-container-org7f759f9" class="outline-5">
+<h5 id="org7f759f9">English</h5>
+<div class="outline-text-5" id="text-org7f759f9">
 <ul class="org-ul">
 <li>The standard deviation is slightly larger in the diabetic patient group.</li>
 <li>For variables other than <code>diabetes pedigree</code>, the correlation coefficient is larger in the non-diabetic group.</li>
@@ -253,8 +254,18 @@ Pr(θd,7 &gt; θn,7) = 1.0
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 10.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,36 +108,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbf6c51c">a)</a>
+<li><a href="#org5ad3aed">a)</a>
 <ul>
-<li><a href="#org263d5a6">Answer</a></li>
+<li><a href="#org435171a">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org3b62237">b)</a>
+<li><a href="#org4633ab7">b)</a>
 <ul>
-<li><a href="#org8621f46">Answer</a></li>
+<li><a href="#org5c90fea">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgec55532">c)</a>
+<li><a href="#org81a4b42">c)</a>
 <ul>
-<li><a href="#orga1eb302">Answer</a></li>
+<li><a href="#orgd3890c3">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgff62e16">d)</a>
+<li><a href="#orga23ef6d">d)</a>
 <ul>
-<li><a href="#org49e36a1">Answer</a></li>
+<li><a href="#orga67cb32">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf6c51c" class="outline-2">
-<h2 id="orgbf6c51c">a)</h2>
-<div class="outline-text-2" id="text-orgbf6c51c">
+<div id="outline-container-org5ad3aed" class="outline-2">
+<h2 id="org5ad3aed">a)</h2>
+<div class="outline-text-2" id="text-org5ad3aed">
 </div>
-<div id="outline-container-org263d5a6" class="outline-3">
-<h3 id="org263d5a6">Answer</h3>
-<div class="outline-text-3" id="text-org263d5a6">
+<div id="outline-container-org435171a" class="outline-3">
+<h3 id="org435171a">Answer</h3>
+<div class="outline-text-3" id="text-org435171a">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">import</span> Pkg; Pkg.add<span style="color: #51afef;">(</span>url=<span style="color: #7bc275;">"https://github.com/KaoruBB/BayesPlots.jl"</span><span style="color: #51afef;">)</span>
 </pre>
@@ -147,7 +148,7 @@
 </pre>
 </div>
 
-<pre class="example" id="orgfa4d0e0">
+<pre class="example" id="org600a9cf">
 20×3 Matrix{Float64}:
  11.8   0.0  6.39
  15.34  1.0  6.39
@@ -216,15 +217,15 @@ pHレベルが1上昇すると、0.58 cm増加することを示唆している�
 </div>
 </div>
 </div>
-<div id="outline-container-org3b62237" class="outline-2">
-<h2 id="org3b62237">b)</h2>
-<div class="outline-text-2" id="text-org3b62237">
+<div id="outline-container-org4633ab7" class="outline-2">
+<h2 id="org4633ab7">b)</h2>
+<div class="outline-text-2" id="text-org4633ab7">
 </div>
-<div id="outline-container-org8621f46" class="outline-3">
-<h3 id="org8621f46">Answer</h3>
-<div class="outline-text-3" id="text-org8621f46">
+<div id="outline-container-org5c90fea" class="outline-3">
+<h3 id="org5c90fea">Answer</h3>
+<div class="outline-text-3" id="text-org5c90fea">
 
-<div id="org3d95ca7" class="figure">
+<div id="orge1b4cf0" class="figure">
 <p><img src="./fig/ex10-3b.png" alt="ex10-3b.png" />
 </p>
 </div>
@@ -241,13 +242,13 @@ Deviation from this assumption would compromise the validity of the regression c
 </div>
 </div>
 </div>
-<div id="outline-container-orgec55532" class="outline-2">
-<h2 id="orgec55532">c)</h2>
-<div class="outline-text-2" id="text-orgec55532">
+<div id="outline-container-org81a4b42" class="outline-2">
+<h2 id="org81a4b42">c)</h2>
+<div class="outline-text-2" id="text-org81a4b42">
 </div>
-<div id="outline-container-orga1eb302" class="outline-3">
-<h3 id="orga1eb302">Answer</h3>
-<div class="outline-text-3" id="text-orga1eb302">
+<div id="outline-container-orgd3890c3" class="outline-3">
+<h3 id="orgd3890c3">Answer</h3>
+<div class="outline-text-3" id="text-orgd3890c3">
 <p>
 \[
 \boldsymbol{Y} = \begin{pmatrix}
@@ -425,7 +426,7 @@ X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">
 </pre>
 </div>
 
-<pre class="example" id="orga897324">
+<pre class="example" id="org36365fc">
 
 20×3 Matrix{Float64}:
  1.0  0.0  6.39
@@ -479,7 +480,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../.
 </div>
 
 
-<div id="org563f1f7" class="figure">
+<div id="org80a7030" class="figure">
 <p><img src="./fig/ex10_3_scan.png" alt="ex10_3_scan.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Sample paths of the parameters</p>
@@ -506,28 +507,28 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./..
 </div>
 
 
-<div id="orgb6b6309" class="figure">
+<div id="orgfd58c14" class="figure">
 <p><img src="./fig/ex10_3_acf.png" alt="ex10_3_acf.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Autocorrelation plots of the parameters</p>
 </div>
 <p>
-図<a href="#org563f1f7">1</a>、<a href="#orgb6b6309">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
+図<a href="#org80a7030">1</a>、<a href="#orgfd58c14">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
 </p>
 <p>
-Figure <a href="#org563f1f7">1</a> and <a href="#orgb6b6309">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
+Figure <a href="#org80a7030">1</a> and <a href="#orgfd58c14">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
 These results confirm that the MCMC sampling has sufficiently converged.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgff62e16" class="outline-2">
-<h2 id="orgff62e16">d)</h2>
-<div class="outline-text-2" id="text-orgff62e16">
+<div id="outline-container-orga23ef6d" class="outline-2">
+<h2 id="orga23ef6d">d)</h2>
+<div class="outline-text-2" id="text-orga23ef6d">
 </div>
-<div id="outline-container-org49e36a1" class="outline-3">
-<h3 id="org49e36a1">Answer</h3>
-<div class="outline-text-3" id="text-org49e36a1">
+<div id="outline-container-orga67cb32" class="outline-3">
+<h3 id="orga67cb32">Answer</h3>
+<div class="outline-text-3" id="text-orga67cb32">
 <div class="org-src-container">
 <pre class="src src-julia">figs = <span style="color: #51afef;">[]</span>
 <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">3</span>
@@ -559,17 +560,17 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../.
 </div>
 
 
-<div id="org5e86ed5" class="figure">
+<div id="org71a9ca4" class="figure">
 <p><img src="./fig/ex10_3d.png" alt="ex10_3d.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Posterior of the coefficients</p>
 </div>
 <p>
-図<a href="#org5e86ed5">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
+図<a href="#org71a9ca4">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
 OLSによる点推定量と95%信頼区間を示している。切片(\(\beta_1\)), timeの係数(\(\beta_2\)), pHの係数(\(\beta_3\))について、MCMCサンプリングによる事後平均とOLS推定量はほぼ一致しているが、95%信用区間とOLSの信頼区間は異なる。もし点推定値のみに関心がある場合、同様な結論が得られるが、推定値の不確実性などを考慮したい場合、今回のベイズモデルとOLSモデルの結論は大きく異なる。
 </p>
 <p>
-Figure <a href="#org5e86ed5">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
+Figure <a href="#org71a9ca4">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
 The posterior means of \(\beta_1\) and \(\beta_2\) are almost identical to the OLS estimates, but the 95% credible intervals and OLS confidence intervals differ.
 If only point estimates are of interest, similar conclusions can be drawn, but if uncertainties in the estimates are to be considered, the conclusions of the Bayesian model and the OLS model differ significantly.
 </p>
@@ -585,8 +586,18 @@ If only point estimates are of interest, similar conclusions can be drawn, but i
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:28</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

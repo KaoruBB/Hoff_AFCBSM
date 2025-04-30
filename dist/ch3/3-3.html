@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,24 +108,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5eab127">Answer</a>
+<li><a href="#orgf7a16a7">Answer</a>
 <ul>
-<li><a href="#org937f400">a)</a>
+<li><a href="#orgaca8d7e">a)</a>
 <ul>
-<li><a href="#org800f523">answer</a></li>
+<li><a href="#org91ebc36">answer</a></li>
 </ul>
 </li>
-<li><a href="#org0b0360c">b</a>
+<li><a href="#orgcf740b2">b</a>
 <ul>
-<li><a href="#orgd58d09f">answer</a></li>
+<li><a href="#org46345de">answer</a></li>
 </ul>
 </li>
-<li><a href="#org4d3ac8e">c</a>
+<li><a href="#orgdc8ad2e">c</a>
 <ul>
-<li><a href="#orgf039fdb">answer</a>
+<li><a href="#org34613d7">answer</a>
 <ul>
-<li><a href="#org2797a35">日本語</a></li>
-<li><a href="#org1169a60">English</a></li>
+<li><a href="#orga380126">日本語</a></li>
+<li><a href="#org23eb055">English</a></li>
 </ul>
 </li>
 </ul>
@@ -134,17 +135,17 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org5eab127" class="outline-2">
-<h2 id="org5eab127">Answer</h2>
-<div class="outline-text-2" id="text-org5eab127">
+<div id="outline-container-orgf7a16a7" class="outline-2">
+<h2 id="orgf7a16a7">Answer</h2>
+<div class="outline-text-2" id="text-orgf7a16a7">
 </div>
-<div id="outline-container-org937f400" class="outline-3">
-<h3 id="org937f400">a)</h3>
-<div class="outline-text-3" id="text-org937f400">
+<div id="outline-container-orgaca8d7e" class="outline-3">
+<h3 id="orgaca8d7e">a)</h3>
+<div class="outline-text-3" id="text-orgaca8d7e">
 </div>
-<div id="outline-container-org800f523" class="outline-4">
-<h4 id="org800f523">answer</h4>
-<div class="outline-text-4" id="text-org800f523">
+<div id="outline-container-org91ebc36" class="outline-4">
+<h4 id="org91ebc36">answer</h4>
+<div class="outline-text-4" id="text-org91ebc36">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 y_A = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">14</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">6</span><span style="color: #51afef;">]</span>
@@ -242,13 +243,13 @@ quantile_B = quantile.<span style="color: #51afef;">(</span>dist_B, <span style=
 </div>
 </div>
 </div>
-<div id="outline-container-org0b0360c" class="outline-3">
-<h3 id="org0b0360c">b</h3>
-<div class="outline-text-3" id="text-org0b0360c">
+<div id="outline-container-orgcf740b2" class="outline-3">
+<h3 id="orgcf740b2">b</h3>
+<div class="outline-text-3" id="text-orgcf740b2">
 </div>
-<div id="outline-container-orgd58d09f" class="outline-4">
-<h4 id="orgd58d09f">answer</h4>
-<div class="outline-text-4" id="text-orgd58d09f">
+<div id="outline-container-org46345de" class="outline-4">
+<h4 id="org46345de">answer</h4>
+<div class="outline-text-4" id="text-org46345de">
 <div class="org-src-container">
 <pre class="src src-julia">list_n&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
 exp_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">+</span> n_B <span style="color: #51afef;">)</span>
@@ -263,7 +264,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org4ab8f39" class="figure">
+<div id="orgf7f7e5c" class="figure">
 <p><img src="fig/exercise3.3bplot.jpg" alt="exercise3.3bplot.jpg" width="500" />
 </p>
 </div>
@@ -289,7 +290,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org28117d4" class="figure">
+<div id="org52bff41" class="figure">
 <p><img src="fig/exercise3.3b2plot.jpg" alt="exercise3.3b2plot.jpg" width="500" />
 </p>
 </div>
@@ -308,17 +309,17 @@ a prior distribution reflecting the belief that \(\theta_B\) is distributed clos
 </div>
 </div>
 </div>
-<div id="outline-container-org4d3ac8e" class="outline-3">
-<h3 id="org4d3ac8e">c</h3>
-<div class="outline-text-3" id="text-org4d3ac8e">
+<div id="outline-container-orgdc8ad2e" class="outline-3">
+<h3 id="orgdc8ad2e">c</h3>
+<div class="outline-text-3" id="text-orgdc8ad2e">
 </div>
-<div id="outline-container-orgf039fdb" class="outline-4">
-<h4 id="orgf039fdb">answer</h4>
-<div class="outline-text-4" id="text-orgf039fdb">
+<div id="outline-container-org34613d7" class="outline-4">
+<h4 id="org34613d7">answer</h4>
+<div class="outline-text-4" id="text-org34613d7">
 </div>
-<div id="outline-container-org2797a35" class="outline-5">
-<h5 id="org2797a35">日本語</h5>
-<div class="outline-text-5" id="text-org2797a35">
+<div id="outline-container-orga380126" class="outline-5">
+<h5 id="orga380126">日本語</h5>
+<div class="outline-text-5" id="text-orga380126">
 <p>
 B 系統のマウスは A 系統のマウスと関連性があるとされているので、
 A 系統のマウスについての腫瘍数の情報は B 系統のマウスについての腫瘍数の事前情報になり得る。よって、\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)という仮定は妥当ではなく、
@@ -329,9 +330,9 @@ B 系統のマウスと A 系統のマウスの関連の度合いに関する信
 </p>
 </div>
 </div>
-<div id="outline-container-org1169a60" class="outline-5">
-<h5 id="org1169a60">English</h5>
-<div class="outline-text-5" id="text-org1169a60">
+<div id="outline-container-org23eb055" class="outline-5">
+<h5 id="org23eb055">English</h5>
+<div class="outline-text-5" id="text-org23eb055">
 <p>
 The B strain of mice is said to be related to the A strain of mice,
 so information about the number of tumors in A strain mice can serve as prior information about the number of tumors in B strain mice.
@@ -355,8 +356,18 @@ it is possible to model it using the posterior expectation of \(\theta_A\) as th
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.9 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,51 +108,51 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5dc9e80">a)</a>
+<li><a href="#org0ef36e0">a)</a>
 <ul>
-<li><a href="#org132c012">answer</a>
+<li><a href="#org48561f7">answer</a>
 <ul>
-<li><a href="#orga60218d">日本語</a></li>
-<li><a href="#orgedc99b3">English</a></li>
-<li><a href="#org36b834f">plot</a></li>
+<li><a href="#org852008b">日本語</a></li>
+<li><a href="#org28602d5">English</a></li>
+<li><a href="#org66e4e9e">plot</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8f3816f">b)</a>
+<li><a href="#org18b054b">b)</a>
 <ul>
-<li><a href="#org32c76e1">answer</a></li>
+<li><a href="#org4a5cba5">answer</a></li>
 </ul>
 </li>
-<li><a href="#orge6f9aa8">c)</a>
+<li><a href="#org22157b9">c)</a>
 <ul>
-<li><a href="#org86afbc4">answer</a></li>
+<li><a href="#org6d1f7fa">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgdb37f8a">d)</a>
+<li><a href="#orgc797fd8">d)</a>
 <ul>
-<li><a href="#orgf2ea426">answer</a></li>
+<li><a href="#orgedb1c82">answer</a></li>
 </ul>
 </li>
-<li><a href="#org9986305">e)</a>
+<li><a href="#orgfa94bed">e)</a>
 <ul>
-<li><a href="#orga68c895">answer</a></li>
+<li><a href="#org21fdfcf">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5dc9e80" class="outline-2">
-<h2 id="org5dc9e80">a)</h2>
-<div class="outline-text-2" id="text-org5dc9e80">
+<div id="outline-container-org0ef36e0" class="outline-2">
+<h2 id="org0ef36e0">a)</h2>
+<div class="outline-text-2" id="text-org0ef36e0">
 </div>
-<div id="outline-container-org132c012" class="outline-3">
-<h3 id="org132c012">answer</h3>
-<div class="outline-text-3" id="text-org132c012">
+<div id="outline-container-org48561f7" class="outline-3">
+<h3 id="org48561f7">answer</h3>
+<div class="outline-text-3" id="text-org48561f7">
 </div>
-<div id="outline-container-orga60218d" class="outline-4">
-<h4 id="orga60218d">日本語</h4>
-<div class="outline-text-4" id="text-orga60218d">
+<div id="outline-container-org852008b" class="outline-4">
+<h4 id="org852008b">日本語</h4>
+<div class="outline-text-4" id="text-org852008b">
 <p>
 データ\(y_1, y_2, \dots, y_n\)を観測したとき、
 \(y_1, y_2, \dots, y_n \sim \text{i.i.d. Galenshore}(a, \theta)\)
@@ -190,9 +191,9 @@ p(\theta | y_1, \dots, y_n, a)
 </p>
 </div>
 </div>
-<div id="outline-container-orgedc99b3" class="outline-4">
-<h4 id="orgedc99b3">English</h4>
-<div class="outline-text-4" id="text-orgedc99b3">
+<div id="outline-container-org28602d5" class="outline-4">
+<h4 id="org28602d5">English</h4>
+<div class="outline-text-4" id="text-org28602d5">
 <p>
 When we observe data \(y_1, y_2, \dots, y_n\), assuming
 \(y_1, y_2, \dots, y_n \sim \text{i.i.d. Galenshore}(a, \theta)\),
@@ -228,9 +229,9 @@ In the following, we will use the Galenshore distribution as the prior for \(\th
 </p>
 </div>
 </div>
-<div id="outline-container-org36b834f" class="outline-4">
-<h4 id="org36b834f">plot</h4>
-<div class="outline-text-4" id="text-org36b834f">
+<div id="outline-container-org66e4e9e" class="outline-4">
+<h4 id="org66e4e9e">plot</h4>
+<div class="outline-text-4" id="text-org66e4e9e">
 <div class="org-src-container">
 <pre class="src src-julia">plot<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">3</span>,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Normal(3,2)"</span><span style="color: #51afef;">)</span>
 plot!<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span>,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Gamma(1,1)"</span><span style="color: #51afef;">)</span>
@@ -238,7 +239,7 @@ plot!<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(<
 </div>
 
 
-<div id="org1bd03a5" class="figure">
+<div id="org86b6a91" class="figure">
 <p><img src="fig/Exercise3_9a.png" alt="Exercise3_9a.png" width="500" />
 </p>
 </div>
@@ -246,13 +247,13 @@ plot!<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(<
 </div>
 </div>
 </div>
-<div id="outline-container-org8f3816f" class="outline-2">
-<h2 id="org8f3816f">b)</h2>
-<div class="outline-text-2" id="text-org8f3816f">
+<div id="outline-container-org18b054b" class="outline-2">
+<h2 id="org18b054b">b)</h2>
+<div class="outline-text-2" id="text-org18b054b">
 </div>
-<div id="outline-container-org32c76e1" class="outline-3">
-<h3 id="org32c76e1">answer</h3>
-<div class="outline-text-3" id="text-org32c76e1">
+<div id="outline-container-org4a5cba5" class="outline-3">
+<h3 id="org4a5cba5">answer</h3>
+<div class="outline-text-3" id="text-org4a5cba5">
 <p>
 Assuming the prior for \(\theta\) is Galenshore\((b, \phi)\), the posterior can be computed as follows:
 </p>
@@ -272,13 +273,13 @@ ThThus, the posterior predictive density is given by:
 </div>
 </div>
 </div>
-<div id="outline-container-orge6f9aa8" class="outline-2">
-<h2 id="orge6f9aa8">c)</h2>
-<div class="outline-text-2" id="text-orge6f9aa8">
+<div id="outline-container-org22157b9" class="outline-2">
+<h2 id="org22157b9">c)</h2>
+<div class="outline-text-2" id="text-org22157b9">
 </div>
-<div id="outline-container-org86afbc4" class="outline-3">
-<h3 id="org86afbc4">answer</h3>
-<div class="outline-text-3" id="text-org86afbc4">
+<div id="outline-container-org6d1f7fa" class="outline-3">
+<h3 id="org6d1f7fa">answer</h3>
+<div class="outline-text-3" id="text-org6d1f7fa">
 \begin{align*}
 \frac{p(\theta_a | Y_1 , \dots, Y_n)}{p(\theta_b | Y_1 , \dots, Y_n)}
 &= \frac{ \frac{2}{\Gamma(an + b)} \left( \sum_{i=1}^n y_i^2 + \phi^2 \right)^{(an+b)}
@@ -296,13 +297,13 @@ FFrom the above equation, we can see that the sufficient statistic is:
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb37f8a" class="outline-2">
-<h2 id="orgdb37f8a">d)</h2>
-<div class="outline-text-2" id="text-orgdb37f8a">
+<div id="outline-container-orgc797fd8" class="outline-2">
+<h2 id="orgc797fd8">d)</h2>
+<div class="outline-text-2" id="text-orgc797fd8">
 </div>
-<div id="outline-container-orgf2ea426" class="outline-3">
-<h3 id="orgf2ea426">answer</h3>
-<div class="outline-text-3" id="text-orgf2ea426">
+<div id="outline-container-orgedb1c82" class="outline-3">
+<h3 id="orgedb1c82">answer</h3>
+<div class="outline-text-3" id="text-orgedb1c82">
 \begin{align*}
 E[\theta | y_1, \dots, y_n]
 = \frac{ \Gamma(an+b + \frac{1}{2}) }{ \Gamma(an+b)\sqrt{\sum_{i=1}^n y_i^2 + \phi^2} }
@@ -310,13 +311,13 @@ E[\theta | y_1, \dots, y_n]
 </div>
 </div>
 </div>
-<div id="outline-container-org9986305" class="outline-2">
-<h2 id="org9986305">e)</h2>
-<div class="outline-text-2" id="text-org9986305">
+<div id="outline-container-orgfa94bed" class="outline-2">
+<h2 id="orgfa94bed">e)</h2>
+<div class="outline-text-2" id="text-orgfa94bed">
 </div>
-<div id="outline-container-orga68c895" class="outline-3">
-<h3 id="orga68c895">answer</h3>
-<div class="outline-text-3" id="text-orga68c895">
+<div id="outline-container-org21fdfcf" class="outline-3">
+<h3 id="org21fdfcf">answer</h3>
+<div class="outline-text-3" id="text-org21fdfcf">
 <p>
 Since the above is the form of a Galenshore distribution, we can conclude that:
 </p>
@@ -363,8 +364,18 @@ p(\tilde{y} | y_1, \dots, y_n)
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

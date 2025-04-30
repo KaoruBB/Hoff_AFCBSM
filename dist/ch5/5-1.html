@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 5.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -107,36 +108,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdc5a16d">a)</a>
+<li><a href="#org9ddf10e">a)</a>
 <ul>
-<li><a href="#org439826f">answer</a></li>
+<li><a href="#org16f5343">answer</a></li>
 </ul>
 </li>
-<li><a href="#org3118b61">b)</a>
+<li><a href="#org3222851">b)</a>
 <ul>
-<li><a href="#org47e0294">answer</a></li>
+<li><a href="#org1b7ef06">answer</a></li>
 </ul>
 </li>
-<li><a href="#org062366a">c)</a>
+<li><a href="#org3bcee21">c)</a>
 <ul>
-<li><a href="#org6ea36b8">answer</a></li>
+<li><a href="#org2833ef5">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd3ba7a4">d)</a>
+<li><a href="#org7564be1">d)</a>
 <ul>
-<li><a href="#org7c44661">answer</a></li>
+<li><a href="#orgd21b6a3">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdc5a16d" class="outline-2">
-<h2 id="orgdc5a16d">a)</h2>
-<div class="outline-text-2" id="text-orgdc5a16d">
+<div id="outline-container-org9ddf10e" class="outline-2">
+<h2 id="org9ddf10e">a)</h2>
+<div class="outline-text-2" id="text-org9ddf10e">
 </div>
-<div id="outline-container-org439826f" class="outline-3">
-<h3 id="org439826f">answer</h3>
-<div class="outline-text-3" id="text-org439826f">
+<div id="outline-container-org16f5343" class="outline-3">
+<h3 id="org16f5343">answer</h3>
+<div class="outline-text-3" id="text-org16f5343">
 <div class="org-src-container">
 <pre class="src src-julia">school1 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school1.dat"</span><span style="color: #51afef;">)</span>
 school2 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school2.dat"</span><span style="color: #51afef;">)</span>
@@ -238,13 +239,13 @@ write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8323;_mc, &#963;&
 </div>
 </div>
 </div>
-<div id="outline-container-org3118b61" class="outline-2">
-<h2 id="org3118b61">b)</h2>
-<div class="outline-text-2" id="text-org3118b61">
+<div id="outline-container-org3222851" class="outline-2">
+<h2 id="org3222851">b)</h2>
+<div class="outline-text-2" id="text-org3222851">
 </div>
-<div id="outline-container-org47e0294" class="outline-3">
-<h3 id="org47e0294">answer</h3>
-<div class="outline-text-3" id="text-org47e0294">
+<div id="outline-container-org1b7ef06" class="outline-3">
+<h3 id="org1b7ef06">answer</h3>
+<div class="outline-text-3" id="text-org1b7ef06">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;_mcs = <span style="color: #51afef;">[</span>&#952;&#8321;_mc, &#952;&#8322;_mc, &#952;&#8323;_mc<span style="color: #51afef;">]</span>
 <span style="color: #5cEfFF;">perms</span><span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> = isempty<span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> <span style="color: #51afef;">?</span> <span style="color: #51afef;">[</span>l<span style="color: #51afef;">]</span> <span style="color: #51afef;">:</span> <span style="color: #51afef;">[</span><span style="color: #C57BDB;">[</span>x; y<span style="color: #C57BDB;">]</span> <span style="color: #51afef;">for</span> x in l <span style="color: #51afef;">for</span> y <span style="color: #51afef;">in</span> perms<span style="color: #C57BDB;">(</span>setdiff<span style="color: #7bc275;">(</span>l, x<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
@@ -267,13 +268,13 @@ p(θ3 &lt; θ2 &lt; θ1) = 0.2256
 </div>
 </div>
 </div>
-<div id="outline-container-org062366a" class="outline-2">
-<h2 id="org062366a">c)</h2>
-<div class="outline-text-2" id="text-org062366a">
+<div id="outline-container-org3bcee21" class="outline-2">
+<h2 id="org3bcee21">c)</h2>
+<div class="outline-text-2" id="text-org3bcee21">
 </div>
-<div id="outline-container-org6ea36b8" class="outline-3">
-<h3 id="org6ea36b8">answer</h3>
-<div class="outline-text-3" id="text-org6ea36b8">
+<div id="outline-container-org2833ef5" class="outline-3">
+<h3 id="org2833ef5">answer</h3>
+<div class="outline-text-3" id="text-org2833ef5">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">sample_posterior_predictive</span><span style="color: #51afef;">(</span>&#952;_mc, &#963;_mc<span style="color: #51afef;">)</span>
     y&#771;_mc = rand.<span style="color: #51afef;">(</span>Normal.<span style="color: #C57BDB;">(</span>&#952;_mc, &#963;_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -305,13 +306,13 @@ p(ỹ3 &lt; ỹ2 &lt; ỹ1) = 0.1888
 </div>
 </div>
 </div>
-<div id="outline-container-orgd3ba7a4" class="outline-2">
-<h2 id="orgd3ba7a4">d)</h2>
-<div class="outline-text-2" id="text-orgd3ba7a4">
+<div id="outline-container-org7564be1" class="outline-2">
+<h2 id="org7564be1">d)</h2>
+<div class="outline-text-2" id="text-org7564be1">
 </div>
-<div id="outline-container-org7c44661" class="outline-3">
-<h3 id="org7c44661">answer</h3>
-<div class="outline-text-3" id="text-org7c44661">
+<div id="outline-container-orgd21b6a3" class="outline-3">
+<h3 id="orgd21b6a3">answer</h3>
+<div class="outline-text-3" id="text-orgd21b6a3">
 <p>
 Using the results from the previous calculations,
 </p>
@@ -336,8 +337,18 @@ Pr(\tilde{Y}_1 > \tilde{Y}_2, \tilde{Y}_1 > \tilde{Y}_3 | \text{data})
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

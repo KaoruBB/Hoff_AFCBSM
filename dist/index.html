@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-04-30 水 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Answers of exercises on Hoff, A first course in Bayesian statistical methods</title>
-<meta name="author" content="Kaoru Babasaki Kaoru Babasaki" />
+<title>Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
+<meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
 <meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -48,21 +42,24 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Answers of exercises on Hoff, A first course in Bayesian statistical methods</h1>
+<h1 class="title">Solution Example - Hoff, A First Course in Bayesian Statistical Methods
+<br />
+<span class="subtitle">標準ベイズ統計学 演習問題 解答例</span>
+</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org196b422">About This Page</a></li>
-<li><a href="#orgec232c8">List of Solutions</a></li>
-<li><a href="#org97f0ded">Contribution &amp; Feedback</a></li>
-<li><a href="#orgb5e8601">Acknowledgements</a></li>
+<li><a href="#orgddabd96">About This Page</a></li>
+<li><a href="#org5933011">List of Solutions</a></li>
+<li><a href="#org8950b3d">Contribution &amp; Feedback</a></li>
+<li><a href="#org5489a22">Acknowledgements</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org196b422" class="outline-2">
-<h2 id="org196b422">About This Page</h2>
-<div class="outline-text-2" id="text-org196b422">
+<div id="outline-container-orgddabd96" class="outline-2">
+<h2 id="orgddabd96">About This Page</h2>
+<div class="outline-text-2" id="text-orgddabd96">
 <p>
 This site provides example solutions to the exercises in Peter Hoff&rsquo;s excellent book, &ldquo;<a href="https://pdhoff.github.io/book/">A First Course in Bayesian Statistical Methods</a>&rdquo;.
 </p>
@@ -85,26 +82,31 @@ Currently, the implementations are primarily in <code>Julia</code>, but we hope 
 </p>
 </div>
 </div>
-<div id="outline-container-orgec232c8" class="outline-2">
-<h2 id="orgec232c8">List of Solutions</h2>
-<div class="outline-text-2" id="text-orgec232c8">
+<div id="outline-container-org5933011" class="outline-2">
+<h2 id="org5933011">List of Solutions</h2>
+<div class="outline-text-2" id="text-org5933011">
 <p>
 Access the solutions for each exercise via the chapter links below.
 </p>
 
 <ul class="org-ul">
 <li><a href="ch2/index.html">Chapter 2</a> - Belief, probability and exchangeability</li>
-</ul>
-
-<ul class="org-ul">
+<li><a href="ch3/index.html">Chapter 3</a> - One-parameter models</li>
+<li><a href="ch4/index.html">Chapter 4</a> - Monte Carlo approximation</li>
+<li><a href="ch5/index.html">Chapter 5</a> - The normal model</li>
+<li><a href="ch6/index.html">Chapter 6</a> - Posterior approximation with the Gibbs sampler</li>
+<li><a href="ch7/index.html">Chapter 7</a> - The multivariate normal model</li>
+<li><a href="ch8/index.html">Chapter 8</a> - Group comparisons and hierarchical modeling</li>
+<li><a href="ch9/index.html">Chapter 9</a> - Linear regression</li>
+<li><a href="ch10/index.html">Chapter 10</a> - Nonconjugate priors and Metropolis-Hastings algorithms</li>
 <li>Chapter 11 - Linear and generalized linear mixed effects models (<b>to be updated</b>)</li>
 <li>Chapter 12 - Latent variable methods for ordinal data (<b>to be updated</b>)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org97f0ded" class="outline-2">
-<h2 id="org97f0ded">Contribution &amp; Feedback</h2>
-<div class="outline-text-2" id="text-org97f0ded">
+<div id="outline-container-org8950b3d" class="outline-2">
+<h2 id="org8950b3d">Contribution &amp; Feedback</h2>
+<div class="outline-text-2" id="text-org8950b3d">
 <p>
 This website was started as a personal project during my master&rsquo;s program and is still under development.
 As such, there may be typos, inaccuracies, or other errors.
@@ -120,9 +122,9 @@ Your feedback is greatly appreciated and helps improve the site.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb5e8601" class="outline-2">
-<h2 id="orgb5e8601">Acknowledgements</h2>
-<div class="outline-text-2" id="text-orgb5e8601">
+<div id="outline-container-org5489a22" class="outline-2">
+<h2 id="org5489a22">Acknowledgements</h2>
+<div class="outline-text-2" id="text-org5489a22">
 <p>
 I would like to thank the following individuals for pointing out typos and errors:
 </p>
@@ -136,8 +138,18 @@ I would like to thank the following individuals for pointing out typos and error
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Kaoru Babasaki Kaoru Babasaki</p>
-<p class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+
+                                                <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
+                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p style="margin-bottom: 0em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <a href="/index.html">Home</a> |
+                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    </a>
+                                                </p>
 </div>
 </body>
 </html>

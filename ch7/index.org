@@ -1,0 +1,10 @@
+#+SETUPFILE: ../setup.org
+#+TITLE: Chapter 7 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 第7章 解答例
+* 演習問題一覧 (Exercise List)
++ [[file:7-1.org][Exercise 7.1]]
++ [[file:7-2.org][Exercise 7.2]]
++ [[file:7-3.org][Exercise 7.3]]
++ [[file:7-4.org][Exercise 7.4]]
++ [[file:7-5.org][Exercise 7.5]]
++ [[file:7-6.org][Exercise 7.6]]
