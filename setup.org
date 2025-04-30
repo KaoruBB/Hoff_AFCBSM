@@ -6,7 +6,7 @@
 #+OPTIONS: H:7
 #+OPTIONS: tags:nil
 #+OPTIONS: num:nil
-#+OPTIONS: timestamp:nil
+#+OPTIONS: timestamp:t
 
 #+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
 
@@ -22,5 +22,3 @@
   mathescape,
   fontsize=\footnotesize}
 #+END_EXPORT
-
-# HOME -> [[file:./index.org][English]] / [[file:./index_jp.org][日本語]]
