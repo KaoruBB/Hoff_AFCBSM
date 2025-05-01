@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:27 -->
+<!-- 2025-05-01 木 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -108,26 +108,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2232185">a)</a>
+<li><a href="#orgf70fc42">a)</a>
 <ul>
-<li><a href="#org0dbdd70">Answer</a></li>
+<li><a href="#orgd292e6b">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org57529f8">b)</a>
+<li><a href="#orge5da776">b)</a>
 <ul>
-<li><a href="#org861c21f">Answer</a></li>
+<li><a href="#org463a500">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2232185" class="outline-2">
-<h2 id="org2232185">a)</h2>
-<div class="outline-text-2" id="text-org2232185">
+<div id="outline-container-orgf70fc42" class="outline-2">
+<h2 id="orgf70fc42">a)</h2>
+<div class="outline-text-2" id="text-orgf70fc42">
 </div>
-<div id="outline-container-org0dbdd70" class="outline-3">
-<h3 id="org0dbdd70">Answer</h3>
-<div class="outline-text-3" id="text-org0dbdd70">
+<div id="outline-container-orgd292e6b" class="outline-3">
+<h3 id="orgd292e6b">Answer</h3>
+<div class="outline-text-3" id="text-orgd292e6b">
 <p>
 The prior information means that the line \(\beta_1 + \beta_2 x\) should produce values between 22 and 24 when \(x\) is between 1 and 6.
 A little algebra shows that we need a prior distribution on \((\beta_1, \beta_2)\) such that
@@ -211,20 +211,20 @@ swimmer 4: 23.44
 
 
 
-<div id="orgf2a5f8f" class="figure">
+<div id="org6368666" class="figure">
 <p><img src="./fig/ex9-1_posterior_predictive.png" alt="ex9-1_posterior_predictive.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org57529f8" class="outline-2">
-<h2 id="org57529f8">b)</h2>
-<div class="outline-text-2" id="text-org57529f8">
+<div id="outline-container-orge5da776" class="outline-2">
+<h2 id="orge5da776">b)</h2>
+<div class="outline-text-2" id="text-orge5da776">
 </div>
-<div id="outline-container-org861c21f" class="outline-3">
-<h3 id="org861c21f">Answer</h3>
-<div class="outline-text-3" id="text-org861c21f">
+<div id="outline-container-org463a500" class="outline-3">
+<h3 id="org463a500">Answer</h3>
+<div class="outline-text-3" id="text-org463a500">
 <div class="org-src-container">
 <pre class="src src-julia">ind_fastest = mapslices<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x .<span style="color: #FCCE7B;">==</span> minimum<span style="color: #C57BDB;">(</span>x<span style="color: #C57BDB;">)</span>, Y_PRED, dims=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
 mean<span style="color: #51afef;">(</span>ind_fastest, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
@@ -258,14 +258,14 @@ Swimmer 1 will be the fastest with probability 0.4184, so I recommend that the c
 <div id="postamble" class="status">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
-                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
                                                 <p style="margin-bottom: 0em;">
-                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
                                                     <a href="/index_jp.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
                                                 </p>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:27 -->
+<!-- 2025-05-01 木 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -50,31 +50,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3a9d217">a)</a>
+<li><a href="#org3264ef7">a)</a>
 <ul>
-<li><a href="#org443723f">Answer</a></li>
+<li><a href="#org1570be6">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org60005b5">b)</a>
+<li><a href="#org572cccf">b)</a>
 <ul>
-<li><a href="#org933d40a">Answer</a></li>
+<li><a href="#org0b6196e">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org81f6af8">c)</a>
+<li><a href="#org3b9da94">c)</a>
 <ul>
-<li><a href="#org193f83d">Answer</a></li>
+<li><a href="#org8e437ec">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3a9d217" class="outline-2">
-<h2 id="org3a9d217">a)</h2>
-<div class="outline-text-2" id="text-org3a9d217">
+<div id="outline-container-org3264ef7" class="outline-2">
+<h2 id="org3264ef7">a)</h2>
+<div class="outline-text-2" id="text-org3264ef7">
 </div>
-<div id="outline-container-org443723f" class="outline-3">
-<h3 id="org443723f">Answer</h3>
-<div class="outline-text-3" id="text-org443723f">
+<div id="outline-container-org1570be6" class="outline-3">
+<h3 id="org1570be6">Answer</h3>
+<div class="outline-text-3" id="text-org1570be6">
 <p>
 The result of bayesian regression using the <i>g</i>-prior is shown below:
 </p>
@@ -147,7 +147,7 @@ result_gprior = DataFrame<span style="color: #51afef;">(</span>
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org423acc2">
+<pre class="example" id="orgfa822a4">
 16×5 DataFrame
  Row │ param      β̂             ci_lower    ci_upper    ci_length
      │ String     Float64       Float64     Float64     Float64
@@ -192,7 +192,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 </div>
 
-<pre class="example" id="orgb606ca0">
+<pre class="example" id="orga460176">
 16×6 DataFrame
  Row │ param      β̂             pvalue      ci_lower     ci_upper    ci_length
      │ String     Float64       Float64     Float64      Float64     Float64
@@ -216,7 +216,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 
 
-<div id="org7b30179" class="figure">
+<div id="org52c135d" class="figure">
 <p><img src="./fig/ex_9-3a_coef.png" alt="ex_9-3a_coef.png" />
 </p>
 </div>
@@ -231,13 +231,13 @@ Using these types of criteria, the difference between the two results is that Po
 </div>
 </div>
 </div>
-<div id="outline-container-org60005b5" class="outline-2">
-<h2 id="org60005b5">b)</h2>
-<div class="outline-text-2" id="text-org60005b5">
+<div id="outline-container-org572cccf" class="outline-2">
+<h2 id="org572cccf">b)</h2>
+<div class="outline-text-2" id="text-org572cccf">
 </div>
-<div id="outline-container-org933d40a" class="outline-3">
-<h3 id="org933d40a">Answer</h3>
-<div class="outline-text-3" id="text-org933d40a">
+<div id="outline-container-org0b6196e" class="outline-3">
+<h3 id="org0b6196e">Answer</h3>
+<div class="outline-text-3" id="text-org0b6196e">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
 Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
@@ -286,7 +286,7 @@ error_bayes = mean<span style="color: #51afef;">(</span><span style="color: #C57
 
 
 
-<div id="orgb194238" class="figure">
+<div id="orgb310522" class="figure">
 <p><img src="./fig/ex_9-3b.png" alt="ex_9-3b.png" />
 </p>
 </div>
@@ -298,13 +298,13 @@ For this time, the bayesian regression predict better than the least square regr
 </div>
 </div>
 </div>
-<div id="outline-container-org81f6af8" class="outline-2">
-<h2 id="org81f6af8">c)</h2>
-<div class="outline-text-2" id="text-org81f6af8">
+<div id="outline-container-org3b9da94" class="outline-2">
+<h2 id="org3b9da94">c)</h2>
+<div class="outline-text-2" id="text-org3b9da94">
 </div>
-<div id="outline-container-org193f83d" class="outline-3">
-<h3 id="org193f83d">Answer</h3>
-<div class="outline-text-3" id="text-org193f83d">
+<div id="outline-container-org8e437ec" class="outline-3">
+<h3 id="org8e437ec">Answer</h3>
+<div class="outline-text-3" id="text-org8e437ec">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">computeMses</span><span style="color: #51afef;">(</span>y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
     <span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
@@ -347,7 +347,7 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 
 
 
-<div id="orgc5bc30f" class="figure">
+<div id="org77d698f" class="figure">
 <p><img src="./fig/ex_9-3c.png" alt="ex_9-3c.png" />
 </p>
 </div>
@@ -365,14 +365,14 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 <div id="postamble" class="status">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
-                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
                                                 <p style="margin-bottom: 0em;">
-                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
                                                     <a href="/index_jp.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
                                                 </p>
 </div>

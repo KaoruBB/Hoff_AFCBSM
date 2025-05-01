@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:27 -->
+<!-- 2025-05-01 木 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -108,26 +108,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org888c524">a)</a>
+<li><a href="#orgfbe2c54">a)</a>
 <ul>
-<li><a href="#orgaf34165">Answer</a></li>
+<li><a href="#org7467733">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgb64e8f5">b)</a>
+<li><a href="#org83f13a6">b)</a>
 <ul>
-<li><a href="#org58b400e">Answer</a></li>
+<li><a href="#org590399b">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org888c524" class="outline-2">
-<h2 id="org888c524">a)</h2>
-<div class="outline-text-2" id="text-org888c524">
+<div id="outline-container-orgfbe2c54" class="outline-2">
+<h2 id="orgfbe2c54">a)</h2>
+<div class="outline-text-2" id="text-orgfbe2c54">
 </div>
-<div id="outline-container-orgaf34165" class="outline-3">
-<h3 id="orgaf34165">Answer</h3>
-<div class="outline-text-3" id="text-orgaf34165">
+<div id="outline-container-org7467733" class="outline-3">
+<h3 id="org7467733">Answer</h3>
+<div class="outline-text-3" id="text-org7467733">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
 Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
@@ -190,7 +190,7 @@ ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org2f82a89">
+<pre class="example" id="org35f5e28">
 8×4 DataFrame
  Row │ param      ci_lower    ci_upper    ci_length
      │ String     Float64     Float64     Float64
@@ -207,13 +207,13 @@ ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE
 </div>
 </div>
 </div>
-<div id="outline-container-orgb64e8f5" class="outline-2">
-<h2 id="orgb64e8f5">b)</h2>
-<div class="outline-text-2" id="text-orgb64e8f5">
+<div id="outline-container-org83f13a6" class="outline-2">
+<h2 id="org83f13a6">b)</h2>
+<div class="outline-text-2" id="text-org83f13a6">
 </div>
-<div id="outline-container-org58b400e" class="outline-3">
-<h3 id="org58b400e">Answer</h3>
-<div class="outline-text-3" id="text-org58b400e">
+<div id="outline-container-org590399b" class="outline-3">
+<h3 id="org590399b">Answer</h3>
+<div class="outline-text-3" id="text-org590399b">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">lpyX</span><span style="color: #51afef;">(</span>y, X; g=length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span>, &#957;&#8320;=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 
@@ -285,7 +285,7 @@ df_ci_bma = DataFrame<span style="color: #51afef;">(</span>
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org750ee20">
+<pre class="example" id="org68fc325">
 7×5 DataFrame
  Row │ param      prob     ci_lower   ci_upper   ci_length
      │ String     Float64  Float64    Float64    Float64
@@ -317,14 +317,14 @@ Compared to the results in part a), the lengths of the confidence intervals tend
 <div id="postamble" class="status">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
-                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
                                                 <p style="margin-bottom: 0em;">
-                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
                                                     <a href="/index_jp.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
                                                 </p>
 </div>

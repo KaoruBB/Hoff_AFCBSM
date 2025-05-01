@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:27 -->
+<!-- 2025-05-01 木 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.5 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -108,60 +108,60 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2995be2">a)</a>
+<li><a href="#org8612b97">a)</a>
 <ul>
-<li><a href="#orga12aa3e">answer</a></li>
+<li><a href="#org92ace45">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgccb4194">b)</a>
+<li><a href="#org2e4fbc7">b)</a>
 <ul>
-<li><a href="#orgc240660">answer</a></li>
+<li><a href="#orgd3b443e">answer</a></li>
 </ul>
 </li>
-<li><a href="#org9a85843">c)</a>
+<li><a href="#orge37dc29">c)</a>
 <ul>
-<li><a href="#org0cf2c72">i</a>
+<li><a href="#org6242350">i</a>
 <ul>
-<li><a href="#orgf77b1fc">answer</a></li>
+<li><a href="#org4b543a6">answer</a></li>
 </ul>
 </li>
-<li><a href="#org602178f">ii.</a>
+<li><a href="#org84d9b13">ii.</a>
 <ul>
-<li><a href="#orgfe423df">answer</a></li>
+<li><a href="#org200a215">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcff24bf">iii.</a>
+<li><a href="#org7013dac">iii.</a>
 <ul>
-<li><a href="#orgf98c7cd">answer</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org30c76da">d)</a>
-<ul>
-<li><a href="#org7d18b32">answer</a>
-<ul>
-<li><a href="#orgb084136">日本語</a></li>
-<li><a href="#org87d0c8d">English</a></li>
+<li><a href="#org6538769">answer</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd80a82f">e)</a>
+<li><a href="#org6d72974">d)</a>
 <ul>
-<li><a href="#org5ec0738">Answer</a></li>
+<li><a href="#org6ce171e">answer</a>
+<ul>
+<li><a href="#org86d8a61">日本語</a></li>
+<li><a href="#org3fbae45">English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc26679e">e)</a>
+<ul>
+<li><a href="#org67b3b7d">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2995be2" class="outline-2">
-<h2 id="org2995be2">a)</h2>
-<div class="outline-text-2" id="text-org2995be2">
+<div id="outline-container-org8612b97" class="outline-2">
+<h2 id="org8612b97">a)</h2>
+<div class="outline-text-2" id="text-org8612b97">
 </div>
-<div id="outline-container-orga12aa3e" class="outline-3">
-<h3 id="orga12aa3e">answer</h3>
-<div class="outline-text-3" id="text-orga12aa3e">
+<div id="outline-container-org92ace45" class="outline-3">
+<h3 id="org92ace45">answer</h3>
+<div class="outline-text-3" id="text-org92ace45">
 <p>
 From \(Y_i \sim \text{Poisson}(\theta X_i)\), the likelihood is
 </p>
@@ -203,13 +203,13 @@ Gamma(\(a + \sum_{i=1}^n Y_i, b + \sum_{i=1}^n X_i\))
 </div>
 </div>
 </div>
-<div id="outline-container-orgccb4194" class="outline-2">
-<h2 id="orgccb4194">b)</h2>
-<div class="outline-text-2" id="text-orgccb4194">
+<div id="outline-container-org2e4fbc7" class="outline-2">
+<h2 id="org2e4fbc7">b)</h2>
+<div class="outline-text-2" id="text-org2e4fbc7">
 </div>
-<div id="outline-container-orgc240660" class="outline-3">
-<h3 id="orgc240660">answer</h3>
-<div class="outline-text-3" id="text-orgc240660">
+<div id="outline-container-orgd3b443e" class="outline-3">
+<h3 id="orgd3b443e">answer</h3>
+<div class="outline-text-3" id="text-orgd3b443e">
 <div class="org-src-container">
 <pre class="src src-julia">cancer_noreact=DataFrame<span style="color: #51afef;">(</span>readdlm<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">"./Exercises/cancer_noreact.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>, <span style="color: #a991f1;">:auto</span><span style="color: #51afef;">)</span>;
 sx&#8321;, sy&#8321; = sum.<span style="color: #51afef;">(</span>eachcol<span style="color: #C57BDB;">(</span>cancer_noreact<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -248,17 +248,17 @@ From the above, the posterior distributions of \(\theta_1, \theta_2\) are as fol
 </div>
 </div>
 </div>
-<div id="outline-container-org9a85843" class="outline-2">
-<h2 id="org9a85843">c)</h2>
-<div class="outline-text-2" id="text-org9a85843">
+<div id="outline-container-orge37dc29" class="outline-2">
+<h2 id="orge37dc29">c)</h2>
+<div class="outline-text-2" id="text-orge37dc29">
 </div>
-<div id="outline-container-org0cf2c72" class="outline-3">
-<h3 id="org0cf2c72">i</h3>
-<div class="outline-text-3" id="text-org0cf2c72">
+<div id="outline-container-org6242350" class="outline-3">
+<h3 id="org6242350">i</h3>
+<div class="outline-text-3" id="text-org6242350">
 </div>
-<div id="outline-container-orgf77b1fc" class="outline-4">
-<h4 id="orgf77b1fc">answer</h4>
-<div class="outline-text-4" id="text-orgf77b1fc">
+<div id="outline-container-org4b543a6" class="outline-4">
+<h4 id="org4b543a6">answer</h4>
+<div class="outline-text-4" id="text-org4b543a6">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
 a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
@@ -331,20 +331,20 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 
 
 
-<div id="orge61d6f0" class="figure">
+<div id="orgfeae8ad" class="figure">
 <p><img src="fig/exercise4_5ci.png" alt="exercise4_5ci.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org602178f" class="outline-3">
-<h3 id="org602178f">ii.</h3>
-<div class="outline-text-3" id="text-org602178f">
+<div id="outline-container-org84d9b13" class="outline-3">
+<h3 id="org84d9b13">ii.</h3>
+<div class="outline-text-3" id="text-org84d9b13">
 </div>
-<div id="outline-container-orgfe423df" class="outline-4">
-<h4 id="orgfe423df">answer</h4>
-<div class="outline-text-4" id="text-orgfe423df">
+<div id="outline-container-org200a215" class="outline-4">
+<h4 id="org200a215">answer</h4>
+<div class="outline-text-4" id="text-org200a215">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #e69055; font-weight: bold;">100</span>, <span style="color: #e69055; font-weight: bold;">100</span>
 a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
@@ -417,20 +417,20 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 
 
 
-<div id="orgc78cf43" class="figure">
+<div id="org2da1180" class="figure">
 <p><img src="fig/exercise4_5cii.png" alt="exercise4_5cii.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcff24bf" class="outline-3">
-<h3 id="orgcff24bf">iii.</h3>
-<div class="outline-text-3" id="text-orgcff24bf">
+<div id="outline-container-org7013dac" class="outline-3">
+<h3 id="org7013dac">iii.</h3>
+<div class="outline-text-3" id="text-org7013dac">
 </div>
-<div id="outline-container-orgf98c7cd" class="outline-4">
-<h4 id="orgf98c7cd">answer</h4>
-<div class="outline-text-4" id="text-orgf98c7cd">
+<div id="outline-container-org6538769" class="outline-4">
+<h4 id="org6538769">answer</h4>
+<div class="outline-text-4" id="text-org6538769">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8321;, b&#8321; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
 a&#8322;, b&#8322; = <span style="color: #e69055; font-weight: bold;">2.2</span> , <span style="color: #e69055; font-weight: bold;">1</span>
@@ -503,7 +503,7 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 
 
 
-<div id="org3ecfee2" class="figure">
+<div id="org4ee0895" class="figure">
 <p><img src="fig/exercise4_5ciii.png" alt="exercise4_5ciii.png" width="500" />
 </p>
 </div>
@@ -511,17 +511,17 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 </div>
 </div>
 </div>
-<div id="outline-container-org30c76da" class="outline-2">
-<h2 id="org30c76da">d)</h2>
-<div class="outline-text-2" id="text-org30c76da">
+<div id="outline-container-org6d72974" class="outline-2">
+<h2 id="org6d72974">d)</h2>
+<div class="outline-text-2" id="text-org6d72974">
 </div>
-<div id="outline-container-org7d18b32" class="outline-3">
-<h3 id="org7d18b32">answer</h3>
-<div class="outline-text-3" id="text-org7d18b32">
+<div id="outline-container-org6ce171e" class="outline-3">
+<h3 id="org6ce171e">answer</h3>
+<div class="outline-text-3" id="text-org6ce171e">
 </div>
-<div id="outline-container-orgb084136" class="outline-4">
-<h4 id="orgb084136">日本語</h4>
-<div class="outline-text-4" id="text-orgb084136">
+<div id="outline-container-org86d8a61" class="outline-4">
+<h4 id="org86d8a61">日本語</h4>
+<div class="outline-text-4" id="text-org86d8a61">
 <p>
 「人口が多い地域は、人口が少ない地域よりも医療が充実しており、がんになった場合の生存率が高い可能性がある」など考えることもできるので、人口規模と致死率が独立していると考えるのは必ずしも合理的であると言えない。
 </p>
@@ -533,9 +533,9 @@ ci_2 = round.<span style="color: #51afef;">(</span>quantile.<span style="color: 
 </p>
 </div>
 </div>
-<div id="outline-container-org87d0c8d" class="outline-4">
-<h4 id="org87d0c8d">English</h4>
-<div class="outline-text-4" id="text-org87d0c8d">
+<div id="outline-container-org3fbae45" class="outline-4">
+<h4 id="org3fbae45">English</h4>
+<div class="outline-text-4" id="text-org3fbae45">
 <p>
 It is also conceivable that &ldquo;regions with larger populations may have better healthcare compared to regions with smaller populations, potentially leading to higher survival rates in cancer cases.&rdquo;
 Therefore, assuming that population size and mortality rate are independent may not necessarily be reasonable.
@@ -548,13 +548,13 @@ Consequently, one might consider a hierarchical model, for example, by modeling 
 </div>
 </div>
 </div>
-<div id="outline-container-orgd80a82f" class="outline-2">
-<h2 id="orgd80a82f">e)</h2>
-<div class="outline-text-2" id="text-orgd80a82f">
+<div id="outline-container-orgc26679e" class="outline-2">
+<h2 id="orgc26679e">e)</h2>
+<div class="outline-text-2" id="text-orgc26679e">
 </div>
-<div id="outline-container-org5ec0738" class="outline-3">
-<h3 id="org5ec0738">Answer</h3>
-<div class="outline-text-3" id="text-org5ec0738">
+<div id="outline-container-org67b3b7d" class="outline-3">
+<h3 id="org67b3b7d">Answer</h3>
+<div class="outline-text-3" id="text-org67b3b7d">
 \begin{align*}
 \theta_1 &\sim w \times \text{Beta}(a_1, b_1) + (1-w) \times \text{Beta}(a_2, b_2) \\
 \theta_2 &\sim w \times \text{Beta}(a_2, b_2) + (1-w) \times \text{Beta}(a_1, b_1)
@@ -581,14 +581,14 @@ Consequently, one might consider a hierarchical model, for example, by modeling 
 <div id="postamble" class="status">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
-                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
                                                 <p style="margin-bottom: 0em;">
-                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
                                                     <a href="/index_jp.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
                                                 </p>
 </div>

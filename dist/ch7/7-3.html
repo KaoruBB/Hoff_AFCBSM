@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:27 -->
+<!-- 2025-05-01 木 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -108,31 +108,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgea3aa62">a)</a>
+<li><a href="#org10c883c">a)</a>
 <ul>
-<li><a href="#orgec92e0a">Answer</a></li>
+<li><a href="#org6bd5e9e">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org38d34cc">b)</a>
+<li><a href="#orgad26b4a">b)</a>
 <ul>
-<li><a href="#org508fc31">Answer</a></li>
+<li><a href="#org5c8c779">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org1c9eeb5">c)</a>
+<li><a href="#org28f7c73">c)</a>
 <ul>
-<li><a href="#org9b019ee">Answer</a></li>
+<li><a href="#org90956b2">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgea3aa62" class="outline-2">
-<h2 id="orgea3aa62">a)</h2>
-<div class="outline-text-2" id="text-orgea3aa62">
+<div id="outline-container-org10c883c" class="outline-2">
+<h2 id="org10c883c">a)</h2>
+<div class="outline-text-2" id="text-org10c883c">
 </div>
-<div id="outline-container-orgec92e0a" class="outline-3">
-<h3 id="orgec92e0a">Answer</h3>
-<div class="outline-text-3" id="text-orgec92e0a">
+<div id="outline-container-org6bd5e9e" class="outline-3">
+<h3 id="org6bd5e9e">Answer</h3>
+<div class="outline-text-3" id="text-org6bd5e9e">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">import</span> Pkg; Pkg.activate<span style="color: #51afef;">(</span><span style="color: #7bc275;">".."</span><span style="color: #51afef;">)</span>
 <span style="color: #51afef;">using</span> DelimitedFiles
@@ -186,15 +186,15 @@ THETA_orange, SIGMA_orange = bivariate_gibbs<span style="color: #51afef;">(</spa
 </div>
 </div>
 </div>
-<div id="outline-container-org38d34cc" class="outline-2">
-<h2 id="org38d34cc">b)</h2>
-<div class="outline-text-2" id="text-org38d34cc">
+<div id="outline-container-orgad26b4a" class="outline-2">
+<h2 id="orgad26b4a">b)</h2>
+<div class="outline-text-2" id="text-orgad26b4a">
 </div>
-<div id="outline-container-org508fc31" class="outline-3">
-<h3 id="org508fc31">Answer</h3>
-<div class="outline-text-3" id="text-org508fc31">
+<div id="outline-container-org5c8c779" class="outline-3">
+<h3 id="org5c8c779">Answer</h3>
+<div class="outline-text-3" id="text-org5c8c779">
 
-<div id="org88f3a37" class="figure">
+<div id="org17703c5" class="figure">
 <p><img src="./fig/exercise7_3b.png" alt="exercise7_3b.png" width="600" />
 </p>
 </div>
@@ -208,13 +208,13 @@ THETA_orange, SIGMA_orange = bivariate_gibbs<span style="color: #51afef;">(</spa
 </div>
 </div>
 </div>
-<div id="outline-container-org1c9eeb5" class="outline-2">
-<h2 id="org1c9eeb5">c)</h2>
-<div class="outline-text-2" id="text-org1c9eeb5">
+<div id="outline-container-org28f7c73" class="outline-2">
+<h2 id="org28f7c73">c)</h2>
+<div class="outline-text-2" id="text-org28f7c73">
 </div>
-<div id="outline-container-org9b019ee" class="outline-3">
-<h3 id="org9b019ee">Answer</h3>
-<div class="outline-text-3" id="text-org9b019ee">
+<div id="outline-container-org90956b2" class="outline-3">
+<h3 id="org90956b2">Answer</h3>
+<div class="outline-text-3" id="text-org90956b2">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">get_pos_cor</span><span style="color: #51afef;">(</span>SIGMA, p, S<span style="color: #51afef;">)</span>
     COR = Array<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, p, p, S<span style="color: #51afef;">)</span>
@@ -231,7 +231,7 @@ COR_mc_orange = get_pos_cor<span style="color: #51afef;">(</span>SIGMA_orange, p
 </div>
 
 
-<div id="org0e9939d" class="figure">
+<div id="org1b34af8" class="figure">
 <p><img src="./fig/exercise7_3c.png" alt="exercise7_3c.png" width="600" />
 </p>
 </div>
@@ -264,14 +264,14 @@ COR_mc_orange = get_pos_cor<span style="color: #51afef;">(</span>SIGMA_orange, p
 <div id="postamble" class="status">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
-                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:27</p>
+                                                <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
                                                 <p style="margin-bottom: 0em;">
-                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
                                                     <a href="/index_jp.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
                                                 </p>
 </div>

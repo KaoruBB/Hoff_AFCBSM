@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-04-30 水 15:28 -->
+<!-- 2025-05-01 木 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 10.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -108,41 +108,41 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3ab24a5">a)</a>
+<li><a href="#orga66694b">a)</a>
 <ul>
-<li><a href="#orga175ba6">Answer</a></li>
+<li><a href="#orgcdd050a">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org894b603">b)</a>
+<li><a href="#org670f4b4">b)</a>
 <ul>
-<li><a href="#orga1badad">Answer</a></li>
+<li><a href="#org18a8649">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgc7cf865">c)</a>
+<li><a href="#org0615223">c)</a>
 <ul>
-<li><a href="#orgb82755b">Answer</a></li>
+<li><a href="#org36954e8">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org43fcb9e">d)</a>
+<li><a href="#orgae62c3e">d)</a>
 <ul>
-<li><a href="#org5491cdb">Answer</a></li>
+<li><a href="#org16a92ca">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org583d723">e)</a>
+<li><a href="#orgff59dcc">e)</a>
 <ul>
-<li><a href="#org8685b35">Answer</a></li>
+<li><a href="#org455da69">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ab24a5" class="outline-2">
-<h2 id="org3ab24a5">a)</h2>
-<div class="outline-text-2" id="text-org3ab24a5">
+<div id="outline-container-orga66694b" class="outline-2">
+<h2 id="orga66694b">a)</h2>
+<div class="outline-text-2" id="text-orga66694b">
 </div>
-<div id="outline-container-orga175ba6" class="outline-3">
-<h3 id="orga175ba6">Answer</h3>
-<div class="outline-text-3" id="text-orga175ba6">
+<div id="outline-container-orgcdd050a" class="outline-3">
+<h3 id="orgcdd050a">Answer</h3>
+<div class="outline-text-3" id="text-orgcdd050a">
 \begin{align*}
 \prod_{i=1}^n p(y_i | \alpha, \beta, x_i)
 &= \prod_{i=1}^n \frac{\exp(\alpha + \beta x_i)^{y_i}}{1 + \exp(\alpha + \beta x_i)} \\
@@ -150,13 +150,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org894b603" class="outline-2">
-<h2 id="org894b603">b)</h2>
-<div class="outline-text-2" id="text-org894b603">
+<div id="outline-container-org670f4b4" class="outline-2">
+<h2 id="org670f4b4">b)</h2>
+<div class="outline-text-2" id="text-org670f4b4">
 </div>
-<div id="outline-container-orga1badad" class="outline-3">
-<h3 id="orga1badad">Answer</h3>
-<div class="outline-text-3" id="text-orga1badad">
+<div id="outline-container-org18a8649" class="outline-3">
+<h3 id="org18a8649">Answer</h3>
+<div class="outline-text-3" id="text-org18a8649">
 <p>
 Let \(p\) be the probability of nesting success.
 Then,
@@ -194,13 +194,13 @@ Thus, we can set the prior distribution of \(\alpha\) and \(\beta\) as follows:
 </div>
 </div>
 </div>
-<div id="outline-container-orgc7cf865" class="outline-2">
-<h2 id="orgc7cf865">c)</h2>
-<div class="outline-text-2" id="text-orgc7cf865">
+<div id="outline-container-org0615223" class="outline-2">
+<h2 id="org0615223">c)</h2>
+<div class="outline-text-2" id="text-org0615223">
 </div>
-<div id="outline-container-orgb82755b" class="outline-3">
-<h3 id="orgb82755b">Answer</h3>
-<div class="outline-text-3" id="text-orgb82755b">
+<div id="outline-container-org36954e8" class="outline-3">
+<h3 id="org36954e8">Answer</h3>
+<div class="outline-text-3" id="text-org36954e8">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> BayesPlots
 <span style="color: #51afef;">using</span> DelimitedFiles
@@ -295,7 +295,7 @@ ess<span style="color: #51afef;">(</span>MCMCChains.Chains<span style="color: #C
 </pre>
 </div>
 
-<pre class="example" id="orgc5acdc4">
+<pre class="example" id="orgcc5c415">
 ESS
   parameters         ess   ess_per_sec
       Symbol     Float64       Missing
@@ -305,35 +305,35 @@ ESS
 </pre>
 
 
-<div id="orge3599f5" class="figure">
+<div id="org99f6591" class="figure">
 <p><img src="./fig/ex10-2_itr.png" alt="ex10-2_itr.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org43fcb9e" class="outline-2">
-<h2 id="org43fcb9e">d)</h2>
-<div class="outline-text-2" id="text-org43fcb9e">
+<div id="outline-container-orgae62c3e" class="outline-2">
+<h2 id="orgae62c3e">d)</h2>
+<div class="outline-text-2" id="text-orgae62c3e">
 </div>
-<div id="outline-container-org5491cdb" class="outline-3">
-<h3 id="org5491cdb">Answer</h3>
-<div class="outline-text-3" id="text-org5491cdb">
+<div id="outline-container-org16a92ca" class="outline-3">
+<h3 id="org16a92ca">Answer</h3>
+<div class="outline-text-3" id="text-org16a92ca">
 
-<div id="orgeb57c56" class="figure">
+<div id="org2f78e57" class="figure">
 <p><img src="./fig/ex10-2d.png" alt="ex10-2d.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org583d723" class="outline-2">
-<h2 id="org583d723">e)</h2>
-<div class="outline-text-2" id="text-org583d723">
+<div id="outline-container-orgff59dcc" class="outline-2">
+<h2 id="orgff59dcc">e)</h2>
+<div class="outline-text-2" id="text-orgff59dcc">
 </div>
-<div id="outline-container-org8685b35" class="outline-3">
-<h3 id="org8685b35">Answer</h3>
-<div class="outline-text-3" id="text-org8685b35">
+<div id="outline-container-org455da69" class="outline-3">
+<h3 id="org455da69">Answer</h3>
+<div class="outline-text-3" id="text-org455da69">
 <div class="org-src-container">
 <pre class="src src-julia">x_grid = <span style="color: #e69055; font-weight: bold;">10</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">15</span>
 x_grid = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>x_grid<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, x_grid<span style="color: #51afef;">)</span>
@@ -349,7 +349,7 @@ f_post_upper = map<span style="color: #51afef;">(</span>x <span style="color: #F
 </div>
 
 
-<div id="org8149af0" class="figure">
+<div id="org1a4dbf9" class="figure">
 <p><img src="./fig/ex10-2e.png" alt="ex10-2e.png" />
 </p>
 </div>
@@ -367,14 +367,14 @@ f_post_upper = map<span style="color: #51afef;">(</span>x <span style="color: #F
 <div id="postamble" class="status">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
-                                                <p style="margin-bottom: 0em; class="email">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-04-30 水 15:28</p>
+                                                <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
+                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
                                                 <p style="margin-bottom: 0em;">
-                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
                                                     <a href="/index_jp.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
+                                                    <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
                                                 </p>
 </div>
