@@ -1,5 +1,5 @@
-#+HTML_HEAD: <link rel="alternate" hreflang="ja" href="./index-ja.html" />
-#+HTML_HEAD: <link rel="alternate" hreflang="en" href="./index.html" />
+#+HTML_HEAD: <link rel="alternate" hreflang="ja" href="https://hoff-exercise.kaorubb.org/index-ja.html" />
+#+HTML_HEAD: <link rel="alternate" hreflang="en" href="https://hoff-exercise.kaorubb.org/index.html" />
 #+title: 標準ベイズ統計学 演習問題 解答例
 #+SUBTITLE: Solution Examples - Hoff, A First Course in Bayesian Statistical Methods
 #+LANGUAGE: ja
