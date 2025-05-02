@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 2.7 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 2.7 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 2.7 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 2.7 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 2.7 解答例</span>
 </h1>
@@ -115,28 +115,28 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orged7bb0a">Answer (English)</a>
+<li><a href="#orgad55dc1">Answer (English)</a>
 <ul>
-<li><a href="#org18fbf0f">a</a></li>
-<li><a href="#org80ffdb6">b</a></li>
+<li><a href="#orga8b79d5">a</a></li>
+<li><a href="#org4165270">b</a></li>
 </ul>
 </li>
-<li><a href="#org0e11638">解答 (日本語)</a>
+<li><a href="#orge5e6090">解答 (日本語)</a>
 <ul>
-<li><a href="#org01ce4cf">a</a></li>
-<li><a href="#orgb1fcaf2">b</a></li>
+<li><a href="#orge0370a7">a</a></li>
+<li><a href="#org4e8de88">b</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orged7bb0a" class="outline-2">
-<h2 id="orged7bb0a">Answer (English)</h2>
-<div class="outline-text-2" id="text-orged7bb0a">
+<div id="outline-container-orgad55dc1" class="outline-2">
+<h2 id="orgad55dc1">Answer (English)</h2>
+<div class="outline-text-2" id="text-orgad55dc1">
 </div>
-<div id="outline-container-org18fbf0f" class="outline-3">
-<h3 id="org18fbf0f">a</h3>
-<div class="outline-text-3" id="text-org18fbf0f">
+<div id="outline-container-orga8b79d5" class="outline-3">
+<h3 id="orga8b79d5">a</h3>
+<div class="outline-text-3" id="text-orga8b79d5">
 <p>
 Suppose you set \(p(E) > 1\).
 If you <b>take</b> \(p(E)\) from someone and agree to give them $1 if <i>E</i> occurs:
@@ -152,9 +152,9 @@ of whether <i>E</i> occurs or not. A rational person would want to avoid a guara
 </p>
 </div>
 </div>
-<div id="outline-container-org80ffdb6" class="outline-3">
-<h3 id="org80ffdb6">b</h3>
-<div class="outline-text-3" id="text-org80ffdb6">
+<div id="outline-container-org4165270" class="outline-3">
+<h3 id="org4165270">b</h3>
+<div class="outline-text-3" id="text-org4165270">
 <p>
 Consider two bets simultaneously:
 </p>
@@ -203,13 +203,13 @@ that: \[1 - p(E) - p(E^c) = 0\] \[p(E) + p(E^c) = 1\] Thus, it is a good idea
 </div>
 </div>
 </div>
-<div id="outline-container-org0e11638" class="outline-2">
-<h2 id="org0e11638">解答 (日本語)</h2>
-<div class="outline-text-2" id="text-org0e11638">
+<div id="outline-container-orge5e6090" class="outline-2">
+<h2 id="orge5e6090">解答 (日本語)</h2>
+<div class="outline-text-2" id="text-orge5e6090">
 </div>
-<div id="outline-container-org01ce4cf" class="outline-3">
-<h3 id="org01ce4cf">a</h3>
-<div class="outline-text-3" id="text-org01ce4cf">
+<div id="outline-container-orge0370a7" class="outline-3">
+<h3 id="orge0370a7">a</h3>
+<div class="outline-text-3" id="text-orge0370a7">
 <p>
 もし\(p(E) > 1\)なら、収支は
 \(E\)が起こると、\(1 - p(E) < 0\)、
@@ -227,9 +227,9 @@ E が起こらないと、\(-p(E) < 0 \)となる。
 </p>
 </div>
 </div>
-<div id="outline-container-orgb1fcaf2" class="outline-3">
-<h3 id="orgb1fcaf2">b</h3>
-<div class="outline-text-3" id="text-orgb1fcaf2">
+<div id="outline-container-org4e8de88" class="outline-3">
+<h3 id="org4e8de88">b</h3>
+<div class="outline-text-3" id="text-org4e8de88">
 <p>
 \(p(E) \le 1\) を任意に固定する。このとき、参加者の収支は、
 \(E\)が起こると、\(1 - p(E) \ge 0 \)、
@@ -278,11 +278,11 @@ E が起こらないと、\(-p(E) < 0 \)となる。
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

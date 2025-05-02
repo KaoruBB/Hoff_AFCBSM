@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 3.7 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 3.7 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 3.7 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 3.7 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 3.7 解答例</span>
 </h1>
@@ -115,24 +115,24 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6185cc3">Answer</a>
+<li><a href="#org31a471b">Answer</a>
 <ul>
-<li><a href="#orge8c1e91">a)</a></li>
-<li><a href="#org3adfa3b">b)</a>
+<li><a href="#org9b2b942">a)</a></li>
+<li><a href="#org4ea0b67">b)</a>
 <ul>
-<li><a href="#orged9c864">answer: b) i.</a></li>
-<li><a href="#org80ef8a8">answer: b) ii.</a></li>
-<li><a href="#org4ca340b">answer: b) iii.</a></li>
+<li><a href="#org6f9f9a3">answer: b) i.</a></li>
+<li><a href="#org4b88a63">answer: b) ii.</a></li>
+<li><a href="#org98005b6">answer: b) iii.</a></li>
 </ul>
 </li>
-<li><a href="#orgaa0b985">c)</a>
+<li><a href="#orgee4eac3">c)</a>
 <ul>
-<li><a href="#org4418853">answer</a></li>
+<li><a href="#org8cf4ff2">answer</a></li>
 </ul>
 </li>
-<li><a href="#org5d48d72">d)</a>
+<li><a href="#org6653763">d)</a>
 <ul>
-<li><a href="#orga86106b">answer:</a></li>
+<li><a href="#org539c637">answer:</a></li>
 </ul>
 </li>
 </ul>
@@ -140,13 +140,13 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-org6185cc3" class="outline-2">
-<h2 id="org6185cc3">Answer</h2>
-<div class="outline-text-2" id="text-org6185cc3">
+<div id="outline-container-org31a471b" class="outline-2">
+<h2 id="org31a471b">Answer</h2>
+<div class="outline-text-2" id="text-org31a471b">
 </div>
-<div id="outline-container-orge8c1e91" class="outline-3">
-<h3 id="orge8c1e91">a)</h3>
-<div class="outline-text-3" id="text-orge8c1e91">
+<div id="outline-container-org9b2b942" class="outline-3">
+<h3 id="org9b2b942">a)</h3>
+<div class="outline-text-3" id="text-org9b2b942">
 <p>
 事前分布は一様分布 Beta(1, 1)より、事後分布は Beta(3, 14)となる。
 (The prior distribution is a uniform distribution Beta(1, 1), so the posterior distribution is Beta(3, 14).)
@@ -192,21 +192,21 @@ Posterior standard deviation :  0.08985442539129099
 
 
 
-<div id="org7047a65" class="figure">
+<div id="orgf989da8" class="figure">
 <p><img src="fig/exercise3.7aposteriorplot.jpg" alt="exercise3.7aposteriorplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3adfa3b" class="outline-3">
-<h3 id="org3adfa3b">b)</h3>
-<div class="outline-text-3" id="text-org3adfa3b">
+<div id="outline-container-org4ea0b67" class="outline-3">
+<h3 id="org4ea0b67">b)</h3>
+<div class="outline-text-3" id="text-org4ea0b67">
 </div>
-<div id="outline-container-orged9c864" class="outline-4">
-<h4 id="orged9c864">answer: b) i.</h4>
-<div class="outline-text-4" id="text-orged9c864">
+<div id="outline-container-org6f9f9a3" class="outline-4">
+<h4 id="org6f9f9a3">answer: b) i.</h4>
+<div class="outline-text-4" id="text-org6f9f9a3">
 \begin{equation}
-\label{org1d32c58}
+\label{org3b9b2c5}
 \text{Pr}\left(Y_1 \in A_1, Y_2 \in A_2 \mid \theta \right)
 = \text{Pr}\left(Y_1 \in A_1 \mid \theta \right) \text{Pr}\left(Y_2 \in A_2 \mid \theta \right)
 \end{equation}
@@ -238,14 +238,14 @@ Proof:
 \end{align*}
 
 <p>
-これを\((Y_1, Y_2)\)の同時分布について一般化すると、(\eqref{org1d32c58})が導かれる。
+これを\((Y_1, Y_2)\)の同時分布について一般化すると、(\eqref{org3b9b2c5})が導かれる。
 (This can be generalized to the joint distribution of \((Y_1, Y_2)\).)
 </p>
 </div>
 </div>
-<div id="outline-container-org80ef8a8" class="outline-4">
-<h4 id="org80ef8a8">answer: b) ii.</h4>
-<div class="outline-text-4" id="text-org80ef8a8">
+<div id="outline-container-org4b88a63" class="outline-4">
+<h4 id="org4b88a63">answer: b) ii.</h4>
+<div class="outline-text-4" id="text-org4b88a63">
 \begin{align*}
 \text{Pr}\left( Y_2 = y_2 \mid Y_1 = 2 \right)
 &= \int_0^1 \text{Pr}\left( Y_2 = y_2 \mid \theta \right) p(\theta \mid Y_1 = 2) d \theta \\
@@ -255,9 +255,9 @@ Proof:
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org4ca340b" class="outline-4">
-<h4 id="org4ca340b">answer: b) iii.</h4>
-<div class="outline-text-4" id="text-org4ca340b">
+<div id="outline-container-org98005b6" class="outline-4">
+<h4 id="org98005b6">answer: b) iii.</h4>
+<div class="outline-text-4" id="text-org98005b6">
 \begin{align*}
 \int_0^1 \theta^{y_2 + 3 - 1} (1 - \theta)^{292 - y_2 - 1} d \theta
 &= \frac{\Gamma(y_2 + 3) \Gamma(292 - y_2)}{\Gamma((y_2 + 3) + (292-y_2) )}  \\
@@ -274,15 +274,15 @@ Proof:
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa0b985" class="outline-3">
-<h3 id="orgaa0b985">c)</h3>
-<div class="outline-text-3" id="text-orgaa0b985">
+<div id="outline-container-orgee4eac3" class="outline-3">
+<h3 id="orgee4eac3">c)</h3>
+<div class="outline-text-3" id="text-orgee4eac3">
 </div>
-<div id="outline-container-org4418853" class="outline-4">
-<h4 id="org4418853">answer</h4>
-<div class="outline-text-4" id="text-org4418853">
+<div id="outline-container-org8cf4ff2" class="outline-4">
+<h4 id="org8cf4ff2">answer</h4>
+<div class="outline-text-4" id="text-org8cf4ff2">
 <p>
-<a href="#org4ca340b">b)iiiの答え</a>に\(y_2 = 0, 1, \dots\) を代入することもできるが、
+<a href="#org98005b6">b)iiiの答え</a>に\(y_2 = 0, 1, \dots\) を代入することもできるが、
 </p>
 
 \begin{align*}
@@ -308,20 +308,20 @@ xlabel!<span style="color: #51afef;">(</span><span style="color: #7bc275;">"y&#8
 </div>
 
 
-<div id="org9e53887" class="figure">
+<div id="orgdac9333" class="figure">
 <p><img src="fig/3.7cbetabinomial.jpg" alt="3.7cbetabinomial.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org5d48d72" class="outline-3">
-<h3 id="org5d48d72">d)</h3>
-<div class="outline-text-3" id="text-org5d48d72">
+<div id="outline-container-org6653763" class="outline-3">
+<h3 id="org6653763">d)</h3>
+<div class="outline-text-3" id="text-org6653763">
 </div>
-<div id="outline-container-orga86106b" class="outline-4">
-<h4 id="orga86106b">answer:</h4>
-<div class="outline-text-4" id="text-orga86106b">
+<div id="outline-container-org539c637" class="outline-4">
+<h4 id="org539c637">answer:</h4>
+<div class="outline-text-4" id="text-org539c637">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;&#770; = <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">//</span> <span style="color: #e69055; font-weight: bold;">15</span>
 plot<span style="color: #51afef;">(</span>Binomial<span style="color: #C57BDB;">(</span>n&#8322;, &#952;&#770;<span style="color: #C57BDB;">)</span>, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">278</span>, label=<span style="color: #a991f1;">nothing</span>, xlabel=<span style="color: #7bc275;">"y&#8322;"</span><span style="color: #51afef;">)</span>
@@ -329,7 +329,7 @@ plot<span style="color: #51afef;">(</span>Binomial<span style="color: #C57BDB;">
 </div>
 
 
-<div id="org0c5e086" class="figure">
+<div id="org477d992" class="figure">
 <p><img src="fig/exercise3.7dbinomial.jpg" alt="exercise3.7dbinomial.jpg" width="500" />
 </p>
 </div>
@@ -349,16 +349,16 @@ mean: 37.06666666666666, std: 5.667843015155276
 
 
 <p>
-<a href="#orgaa0b985">c)</a> との比較:
+<a href="#orgee4eac3">c)</a> との比較:
 </p>
 
 <p>
-mode は <a href="#orgaa0b985">c)</a> が 34, で上の分布が 37 と、かなり近いが、cの分布の方がかなり裾の広い分布（分散が大きい分布）となっていることがわかる。これは、1回目のデータが得られたあとの\(\theta\)の事後分布の不確実性が c)の分布に反映されているためである。逆に、上の分布には 1 回目のデータのサンプルサイズ（データの妥当性）が反映されていないため、予測には c の分布を使うのがよいと考えられる。
+mode は <a href="#orgee4eac3">c)</a> が 34, で上の分布が 37 と、かなり近いが、cの分布の方がかなり裾の広い分布（分散が大きい分布）となっていることがわかる。これは、1回目のデータが得られたあとの\(\theta\)の事後分布の不確実性が c)の分布に反映されているためである。逆に、上の分布には 1 回目のデータのサンプルサイズ（データの妥当性）が反映されていないため、予測には c の分布を使うのがよいと考えられる。
 </p>
 
 <p>
-(Comparison with <a href="#orgaa0b985">c)</a>:
-The mode of <a href="#orgaa0b985">c)</a> is 34, while the mode of the above distribution is 37, which are quite close.
+(Comparison with <a href="#orgee4eac3">c)</a>:
+The mode of <a href="#orgee4eac3">c)</a> is 34, while the mode of the above distribution is 37, which are quite close.
 However, it can be seen that the distribution of c) has a much wider tail (larger variance).
 This is because the uncertainty of \(\theta\) after obtaining the first data is reflected in the distribution of c).
 </p>
@@ -378,11 +378,11 @@ This is because the uncertainty of \(\theta\) after obtaining the first data is 
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

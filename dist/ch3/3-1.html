@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 3.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 3.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 3.1 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 3.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 3.1 解答例</span>
 </h1>
@@ -115,31 +115,31 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org22d2d66">Answer</a>
+<li><a href="#org49b80d3">Answer</a>
 <ul>
-<li><a href="#orgfb58aeb">a</a>
+<li><a href="#orgc381668">a</a>
 <ul>
-<li><a href="#orgd96cff2">Answer</a></li>
+<li><a href="#org5b4bcaf">Answer</a></li>
 </ul>
 </li>
 <li><a href="#3.1B">b</a>
 <ul>
-<li><a href="#org37d7770">Answer</a></li>
+<li><a href="#org300a8da">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfcff78c">c</a>
+<li><a href="#orgf31c2c7">c</a>
 <ul>
-<li><a href="#org8087362">Answer</a></li>
+<li><a href="#org4c1e12c">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd37fce4">d</a>
+<li><a href="#orgee8be02">d</a>
 <ul>
-<li><a href="#org7163dc2">Answer</a></li>
+<li><a href="#org579c16d">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org3c1e690">e</a>
+<li><a href="#orge88fa2c">e</a>
 <ul>
-<li><a href="#orge1045a8">Answer</a></li>
+<li><a href="#orgcf16b33">Answer</a></li>
 </ul>
 </li>
 </ul>
@@ -147,17 +147,17 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-org22d2d66" class="outline-2">
-<h2 id="org22d2d66">Answer</h2>
-<div class="outline-text-2" id="text-org22d2d66">
+<div id="outline-container-org49b80d3" class="outline-2">
+<h2 id="org49b80d3">Answer</h2>
+<div class="outline-text-2" id="text-org49b80d3">
 </div>
-<div id="outline-container-orgfb58aeb" class="outline-3">
-<h3 id="orgfb58aeb">a</h3>
-<div class="outline-text-3" id="text-orgfb58aeb">
+<div id="outline-container-orgc381668" class="outline-3">
+<h3 id="orgc381668">a</h3>
+<div class="outline-text-3" id="text-orgc381668">
 </div>
-<div id="outline-container-orgd96cff2" class="outline-4">
-<h4 id="orgd96cff2">Answer</h4>
-<div class="outline-text-4" id="text-orgd96cff2">
+<div id="outline-container-org5b4bcaf" class="outline-4">
+<h4 id="org5b4bcaf">Answer</h4>
+<div class="outline-text-4" id="text-org5b4bcaf">
 \begin{align*}
 & \text{Pr}(Y_1 = y_1, \dots , Y_{100}=y_{100} \mid \theta) \\
 = &\text{Pr}(Y_1 = y_1 \mid \theta) \cdot \text{Pr}(Y_2 = y_2 \mid \theta) \cdot \dots \cdot \text{Pr}(Y_{100} = y_{100} \mid \theta)
@@ -177,9 +177,9 @@ gtag('config', 'GT-M6XHKK2R');
 <h3 id="3.1B">b</h3>
 <div class="outline-text-3" id="text-3.1B">
 </div>
-<div id="outline-container-org37d7770" class="outline-4">
-<h4 id="org37d7770">Answer</h4>
-<div class="outline-text-4" id="text-org37d7770">
+<div id="outline-container-org300a8da" class="outline-4">
+<h4 id="org300a8da">Answer</h4>
+<div class="outline-text-4" id="text-org300a8da">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">begin</span>
 <span style="color: #51afef;">using</span> Plots
@@ -196,7 +196,7 @@ pdf_for_&#952;s = map<span style="color: #51afef;">(</span>&#952; <span style="c
 </pre>
 </div>
 
-<pre class="example" id="orge9ff5c1">
+<pre class="example" id="orgf6b0955">
 11-element Vector{Float64}:
  0.0
  4.107156919234531e-31
@@ -228,20 +228,20 @@ bar<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="orgbaa6698" class="figure">
+<div id="org957f078" class="figure">
 <p><img src="fig/3.1bbar.jpg" alt="3.1bbar.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfcff78c" class="outline-3">
-<h3 id="orgfcff78c">c</h3>
-<div class="outline-text-3" id="text-orgfcff78c">
+<div id="outline-container-orgf31c2c7" class="outline-3">
+<h3 id="orgf31c2c7">c</h3>
+<div class="outline-text-3" id="text-orgf31c2c7">
 </div>
-<div id="outline-container-org8087362" class="outline-4">
-<h4 id="org8087362">Answer</h4>
-<div class="outline-text-4" id="text-org8087362">
+<div id="outline-container-org4c1e12c" class="outline-4">
+<h4 id="org4c1e12c">Answer</h4>
+<div class="outline-text-4" id="text-org4c1e12c">
 \begin{align*}
 p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 &= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{p(\sum_{i=1}^{100} Y_i = 57)} \\
@@ -262,7 +262,7 @@ p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 </pre>
 </div>
 
-<pre class="example" id="org4b81e36">
+<pre class="example" id="org72eb58e">
 11-element Vector{Float64}:
  0.0
  4.153700946664936e-30
@@ -293,20 +293,20 @@ p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 
 
 
-<div id="org27582cb" class="figure">
+<div id="orgb319b4d" class="figure">
 <p><img src="fig/ex3.1cplot.jpg" alt="ex3.1cplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd37fce4" class="outline-3">
-<h3 id="orgd37fce4">d</h3>
-<div class="outline-text-3" id="text-orgd37fce4">
+<div id="outline-container-orgee8be02" class="outline-3">
+<h3 id="orgee8be02">d</h3>
+<div class="outline-text-3" id="text-orgee8be02">
 </div>
-<div id="outline-container-org7163dc2" class="outline-4">
-<h4 id="org7163dc2">Answer</h4>
-<div class="outline-text-4" id="text-org7163dc2">
+<div id="outline-container-org579c16d" class="outline-4">
+<h4 id="org579c16d">Answer</h4>
+<div class="outline-text-4" id="text-org579c16d">
 \begin{align*}
 p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
 &= \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
@@ -338,20 +338,20 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org1a9aa94" class="figure">
+<div id="orgb9fdd30" class="figure">
 <p><img src="fig/hoffexercise3.1dplot.jpg" alt="hoffexercise3.1dplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org3c1e690" class="outline-3">
-<h3 id="org3c1e690">e</h3>
-<div class="outline-text-3" id="text-org3c1e690">
+<div id="outline-container-orge88fa2c" class="outline-3">
+<h3 id="orge88fa2c">e</h3>
+<div class="outline-text-3" id="text-orge88fa2c">
 </div>
-<div id="outline-container-orge1045a8" class="outline-4">
-<h4 id="orge1045a8">Answer</h4>
-<div class="outline-text-4" id="text-orge1045a8">
+<div id="outline-container-orgcf16b33" class="outline-4">
+<h4 id="orgcf16b33">Answer</h4>
+<div class="outline-text-4" id="text-orgcf16b33">
 <div class="org-src-container">
 <pre class="src src-julia">plot<span style="color: #51afef;">(</span>
     Beta<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>n<span style="color: #FCCE7B;">-</span>y<span style="color: #C57BDB;">)</span>,
@@ -365,7 +365,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org31f2f28" class="figure">
+<div id="org09cfe41" class="figure">
 <p><img src="fig/exercise3.1eplot.jpg" alt="exercise3.1eplot.jpg" width="500" />
 </p>
 </div>
@@ -395,11 +395,11 @@ As you can see from the code, 3.1c is normalized so that the sum of the probabil
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

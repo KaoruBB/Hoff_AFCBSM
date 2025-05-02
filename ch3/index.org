@@ -1,5 +1,5 @@
 #+SETUPFILE: ../setup.org
-#+TITLE: Chapter 3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+TITLE: Chapter 3 Solution Examples - Hoff, A First Course in Bayesian Statistical Methods
 #+SUBTITLE: 標準ベイズ統計学 第3章 解答例
 * 演習問題一覧 (Exercise List)
 + [[file:3-1.org][Exercise 3.1]]

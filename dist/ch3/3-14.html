@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 3.14 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 3.14 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 3.14 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 3.14 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 3.14 解答例</span>
 </h1>
@@ -115,28 +115,28 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc2a6546">a)</a>
+<li><a href="#org992df44">a)</a>
 <ul>
-<li><a href="#orgfcf96e1">answer</a></li>
+<li><a href="#org53319c0">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcdc4030">b)</a>
+<li><a href="#org13155fe">b)</a>
 <ul>
-<li><a href="#org49c30ac">answer</a></li>
+<li><a href="#orgdca1dcf">answer</a></li>
 </ul>
 </li>
-<li><a href="#orge9d46a1">c)</a>
+<li><a href="#org8c4779e">c)</a>
 <ul>
-<li><a href="#org0fd9f44">answer</a></li>
+<li><a href="#org1abbd1f">answer</a></li>
 </ul>
 </li>
-<li><a href="#org2b83e2b">d)</a>
+<li><a href="#org355c453">d)</a>
 <ul>
-<li><a href="#org90d1281">answer</a>
+<li><a href="#orgecdcb51">answer</a>
 <ul>
-<li><a href="#orga8871bf">a&rsquo;)</a></li>
-<li><a href="#org8176687">b&rsquo;)</a></li>
-<li><a href="#org63381f2">c&rsquo;)</a></li>
+<li><a href="#orgd508a6c">a&rsquo;)</a></li>
+<li><a href="#org17175fe">b&rsquo;)</a></li>
+<li><a href="#orgebd6767">c&rsquo;)</a></li>
 </ul>
 </li>
 </ul>
@@ -144,13 +144,13 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2a6546" class="outline-2">
-<h2 id="orgc2a6546">a)</h2>
-<div class="outline-text-2" id="text-orgc2a6546">
+<div id="outline-container-org992df44" class="outline-2">
+<h2 id="org992df44">a)</h2>
+<div class="outline-text-2" id="text-org992df44">
 </div>
-<div id="outline-container-orgfcf96e1" class="outline-3">
-<h3 id="orgfcf96e1">answer</h3>
-<div class="outline-text-3" id="text-orgfcf96e1">
+<div id="outline-container-org53319c0" class="outline-3">
+<h3 id="org53319c0">answer</h3>
+<div class="outline-text-3" id="text-org53319c0">
 \begin{align*}
 l(\theta \mid \boldsymbol{y})
 &= \sum_{i=1}^n \log p(y_i \mid \theta) \\
@@ -205,13 +205,13 @@ therefore the following holds.
 </div>
 </div>
 </div>
-<div id="outline-container-orgcdc4030" class="outline-2">
-<h2 id="orgcdc4030">b)</h2>
-<div class="outline-text-2" id="text-orgcdc4030">
+<div id="outline-container-org13155fe" class="outline-2">
+<h2 id="org13155fe">b)</h2>
+<div class="outline-text-2" id="text-org13155fe">
 </div>
-<div id="outline-container-org49c30ac" class="outline-3">
-<h3 id="org49c30ac">answer</h3>
-<div class="outline-text-3" id="text-org49c30ac">
+<div id="outline-container-orgdca1dcf" class="outline-3">
+<h3 id="orgdca1dcf">answer</h3>
+<div class="outline-text-3" id="text-orgdca1dcf">
 \begin{align*}
 & \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
 \Leftrightarrow \quad & \log p_U (\theta) = \frac{\left( \sum_{i=1}^n y_i \right) \log \theta + \left( n - \sum_{i=1}^n y_i \right) \log (1 - \theta) }{n} + c \\
@@ -246,13 +246,13 @@ and
 </div>
 </div>
 </div>
-<div id="outline-container-orge9d46a1" class="outline-2">
-<h2 id="orge9d46a1">c)</h2>
-<div class="outline-text-2" id="text-orge9d46a1">
+<div id="outline-container-org8c4779e" class="outline-2">
+<h2 id="org8c4779e">c)</h2>
+<div class="outline-text-2" id="text-org8c4779e">
 </div>
-<div id="outline-container-org0fd9f44" class="outline-3">
-<h3 id="org0fd9f44">answer</h3>
-<div class="outline-text-3" id="text-org0fd9f44">
+<div id="outline-container-org1abbd1f" class="outline-3">
+<h3 id="org1abbd1f">answer</h3>
+<div class="outline-text-3" id="text-org1abbd1f">
 \begin{align*}
 p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
 &\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} + \sum_{i=1}^n y_i}
@@ -268,17 +268,17 @@ We can consider this as a posterior distribution for \(\theta\).
 </div>
 </div>
 </div>
-<div id="outline-container-org2b83e2b" class="outline-2">
-<h2 id="org2b83e2b">d)</h2>
-<div class="outline-text-2" id="text-org2b83e2b">
+<div id="outline-container-org355c453" class="outline-2">
+<h2 id="org355c453">d)</h2>
+<div class="outline-text-2" id="text-org355c453">
 </div>
-<div id="outline-container-org90d1281" class="outline-3">
-<h3 id="org90d1281">answer</h3>
-<div class="outline-text-3" id="text-org90d1281">
+<div id="outline-container-orgecdcb51" class="outline-3">
+<h3 id="orgecdcb51">answer</h3>
+<div class="outline-text-3" id="text-orgecdcb51">
 </div>
-<div id="outline-container-orga8871bf" class="outline-4">
-<h4 id="orga8871bf">a&rsquo;)</h4>
-<div class="outline-text-4" id="text-orga8871bf">
+<div id="outline-container-orgd508a6c" class="outline-4">
+<h4 id="orgd508a6c">a&rsquo;)</h4>
+<div class="outline-text-4" id="text-orgd508a6c">
 \begin{align*}
 l(\theta \mid \boldsymbol{y})
 &= \sum_{i=1}^n \log p(y_i \mid \theta) \\
@@ -330,9 +330,9 @@ therefore the following holds.
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org8176687" class="outline-4">
-<h4 id="org8176687">b&rsquo;)</h4>
-<div class="outline-text-4" id="text-org8176687">
+<div id="outline-container-org17175fe" class="outline-4">
+<h4 id="org17175fe">b&rsquo;)</h4>
+<div class="outline-text-4" id="text-org17175fe">
 \begin{align*}
 & \log p_U (\theta) = \frac{l(\theta \mid \boldsymbol{y})}{n} + c \\
 \Leftrightarrow \quad & \log p_U (\theta) = \frac{\log \theta \sum_{i=1}^n y_i - n \theta - \sum_{i=1}^n \log y_i!}{n} + c \\
@@ -367,9 +367,9 @@ and
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org63381f2" class="outline-4">
-<h4 id="org63381f2">c&rsquo;)</h4>
-<div class="outline-text-4" id="text-org63381f2">
+<div id="outline-container-orgebd6767" class="outline-4">
+<h4 id="orgebd6767">c&rsquo;)</h4>
+<div class="outline-text-4" id="text-orgebd6767">
 \begin{align*}
 p_U (\theta) \times p(y_1, \dots, y_n \mid \theta )
 &\propto \theta^{\frac{\sum_{i=1}^n y_i}{n} } e^{- \theta}
@@ -397,11 +397,11 @@ We can consider this as a posterior distribution for \(\theta\).
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

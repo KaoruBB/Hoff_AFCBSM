@@ -1,16 +1,3 @@
-#+AUTHOR: Kaoru Babasaki
-#+KEYWORDS: Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答
-#+DESCRIPTION: Solutions to exercises from Peter Hoff's "A First Course in Bayesian Statistical Methods" (標準ベイズ統計学).
-
-#+OPTIONS: toc:4
-#+OPTIONS: H:7
-#+OPTIONS: tags:nil
-#+OPTIONS: num:nil
-#+OPTIONS: timestamp:t
-
-#+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
-
-
 #+HTML_HEAD: <!-- Google tag (gtag.js) -->
 #+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 #+HTML_HEAD: <script>
@@ -20,6 +7,17 @@
 #+HTML_HEAD:   gtag('config', 'GT-M6XHKK2R');
 #+HTML_HEAD: </script>
 
+#+AUTHOR: Kaoru Babasaki
+#+KEYWORDS: Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答
+#+DESCRIPTION: Solutions to exercises from Peter Hoff's "A First Course in Bayesian Statistical Methods" (標準ベイズ統計学).
+
+#+OPTIONS: toc:4
+#+OPTIONS: H:7
+#+OPTIONS: tags:nil
+#+OPTIONS: num:nil
+#+OPTIONS: timestamp:t
+
+#+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
 #+HTML_HEAD: <link rel="stylesheet" href="/css/custom.css">
 
 #+EXCLUDE_TAGS: noexport

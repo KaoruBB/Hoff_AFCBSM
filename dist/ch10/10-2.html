@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 10.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 10.2 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 10.2 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 10.2 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 10.2 解答例</span>
 </h1>
@@ -115,41 +115,41 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4796f3c">a)</a>
+<li><a href="#org55fb372">a)</a>
 <ul>
-<li><a href="#orgfa049be">Answer</a></li>
+<li><a href="#org2c5daef">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org9706f1b">b)</a>
+<li><a href="#orga0bcb69">b)</a>
 <ul>
-<li><a href="#org2de57ed">Answer</a></li>
+<li><a href="#org9f41ae4">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org748f9d1">c)</a>
+<li><a href="#org7c9ac68">c)</a>
 <ul>
-<li><a href="#orgc1b039a">Answer</a></li>
+<li><a href="#org6432ace">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org133fd0a">d)</a>
+<li><a href="#orgc64aae2">d)</a>
 <ul>
-<li><a href="#orgae0c9e0">Answer</a></li>
+<li><a href="#orgde18f8d">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgc42694a">e)</a>
+<li><a href="#org51178bf">e)</a>
 <ul>
-<li><a href="#orge746273">Answer</a></li>
+<li><a href="#org213c92e">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4796f3c" class="outline-2">
-<h2 id="org4796f3c">a)</h2>
-<div class="outline-text-2" id="text-org4796f3c">
+<div id="outline-container-org55fb372" class="outline-2">
+<h2 id="org55fb372">a)</h2>
+<div class="outline-text-2" id="text-org55fb372">
 </div>
-<div id="outline-container-orgfa049be" class="outline-3">
-<h3 id="orgfa049be">Answer</h3>
-<div class="outline-text-3" id="text-orgfa049be">
+<div id="outline-container-org2c5daef" class="outline-3">
+<h3 id="org2c5daef">Answer</h3>
+<div class="outline-text-3" id="text-org2c5daef">
 \begin{align*}
 \prod_{i=1}^n p(y_i | \alpha, \beta, x_i)
 &= \prod_{i=1}^n \frac{\exp(\alpha + \beta x_i)^{y_i}}{1 + \exp(\alpha + \beta x_i)} \\
@@ -157,13 +157,13 @@ gtag('config', 'GT-M6XHKK2R');
 </div>
 </div>
 </div>
-<div id="outline-container-org9706f1b" class="outline-2">
-<h2 id="org9706f1b">b)</h2>
-<div class="outline-text-2" id="text-org9706f1b">
+<div id="outline-container-orga0bcb69" class="outline-2">
+<h2 id="orga0bcb69">b)</h2>
+<div class="outline-text-2" id="text-orga0bcb69">
 </div>
-<div id="outline-container-org2de57ed" class="outline-3">
-<h3 id="org2de57ed">Answer</h3>
-<div class="outline-text-3" id="text-org2de57ed">
+<div id="outline-container-org9f41ae4" class="outline-3">
+<h3 id="org9f41ae4">Answer</h3>
+<div class="outline-text-3" id="text-org9f41ae4">
 <p>
 Let \(p\) be the probability of nesting success.
 Then,
@@ -201,13 +201,13 @@ Thus, we can set the prior distribution of \(\alpha\) and \(\beta\) as follows:
 </div>
 </div>
 </div>
-<div id="outline-container-org748f9d1" class="outline-2">
-<h2 id="org748f9d1">c)</h2>
-<div class="outline-text-2" id="text-org748f9d1">
+<div id="outline-container-org7c9ac68" class="outline-2">
+<h2 id="org7c9ac68">c)</h2>
+<div class="outline-text-2" id="text-org7c9ac68">
 </div>
-<div id="outline-container-orgc1b039a" class="outline-3">
-<h3 id="orgc1b039a">Answer</h3>
-<div class="outline-text-3" id="text-orgc1b039a">
+<div id="outline-container-org6432ace" class="outline-3">
+<h3 id="org6432ace">Answer</h3>
+<div class="outline-text-3" id="text-org6432ace">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> BayesPlots
 <span style="color: #51afef;">using</span> DelimitedFiles
@@ -302,7 +302,7 @@ ess<span style="color: #51afef;">(</span>MCMCChains.Chains<span style="color: #C
 </pre>
 </div>
 
-<pre class="example" id="org45de8d4">
+<pre class="example" id="orga8107b6">
 ESS
   parameters         ess   ess_per_sec
       Symbol     Float64       Missing
@@ -312,35 +312,35 @@ ESS
 </pre>
 
 
-<div id="orgf27ad3e" class="figure">
+<div id="orgd20ac82" class="figure">
 <p><img src="./fig/ex10-2_itr.png" alt="ex10-2_itr.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org133fd0a" class="outline-2">
-<h2 id="org133fd0a">d)</h2>
-<div class="outline-text-2" id="text-org133fd0a">
+<div id="outline-container-orgc64aae2" class="outline-2">
+<h2 id="orgc64aae2">d)</h2>
+<div class="outline-text-2" id="text-orgc64aae2">
 </div>
-<div id="outline-container-orgae0c9e0" class="outline-3">
-<h3 id="orgae0c9e0">Answer</h3>
-<div class="outline-text-3" id="text-orgae0c9e0">
+<div id="outline-container-orgde18f8d" class="outline-3">
+<h3 id="orgde18f8d">Answer</h3>
+<div class="outline-text-3" id="text-orgde18f8d">
 
-<div id="org29a338d" class="figure">
+<div id="orgdbd9812" class="figure">
 <p><img src="./fig/ex10-2d.png" alt="ex10-2d.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc42694a" class="outline-2">
-<h2 id="orgc42694a">e)</h2>
-<div class="outline-text-2" id="text-orgc42694a">
+<div id="outline-container-org51178bf" class="outline-2">
+<h2 id="org51178bf">e)</h2>
+<div class="outline-text-2" id="text-org51178bf">
 </div>
-<div id="outline-container-orge746273" class="outline-3">
-<h3 id="orge746273">Answer</h3>
-<div class="outline-text-3" id="text-orge746273">
+<div id="outline-container-org213c92e" class="outline-3">
+<h3 id="org213c92e">Answer</h3>
+<div class="outline-text-3" id="text-org213c92e">
 <div class="org-src-container">
 <pre class="src src-julia">x_grid = <span style="color: #e69055; font-weight: bold;">10</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">15</span>
 x_grid = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>x_grid<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, x_grid<span style="color: #51afef;">)</span>
@@ -356,7 +356,7 @@ f_post_upper = map<span style="color: #51afef;">(</span>x <span style="color: #F
 </div>
 
 
-<div id="orga1fcd78" class="figure">
+<div id="org081da4e" class="figure">
 <p><img src="./fig/ex10-2e.png" alt="ex10-2e.png" />
 </p>
 </div>
@@ -375,11 +375,11 @@ f_post_upper = map<span style="color: #51afef;">(</span>x <span style="color: #F
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

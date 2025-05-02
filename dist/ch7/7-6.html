@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 7.6 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 7.6 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -49,7 +49,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 7.6 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 7.6 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 7.6 解答例</span>
 </h1>
@@ -57,26 +57,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org463d557">a)</a>
+<li><a href="#org5032b3d">a)</a>
 <ul>
-<li><a href="#org6585c9b">Answer</a>
+<li><a href="#org78cafc2">Answer</a>
 <ul>
-<li><a href="#org5b60f95">preprocess &amp; Gibbs sampler</a></li>
-<li><a href="#org3e38d90">marginal posterior distribution</a></li>
+<li><a href="#org640661b">preprocess &amp; Gibbs sampler</a></li>
+<li><a href="#org1073551">marginal posterior distribution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgcc65a27">b)</a>
+<li><a href="#org4275972">b)</a>
 <ul>
-<li><a href="#org373b869">Answer</a>
+<li><a href="#orgbb67000">Answer</a>
 <ul>
-<li><a href="#orgec4217c">standard deviation</a></li>
-<li><a href="#orgc1c87bb">correlation</a></li>
-<li><a href="#orgb94c1c5">discussion</a>
+<li><a href="#org2e15b88">standard deviation</a></li>
+<li><a href="#org61d1482">correlation</a></li>
+<li><a href="#org01caa03">discussion</a>
 <ul>
-<li><a href="#org6320b05">日本語</a></li>
-<li><a href="#org69baac2">English</a></li>
+<li><a href="#org99f41b6">日本語</a></li>
+<li><a href="#orga089e1a">English</a></li>
 </ul>
 </li>
 </ul>
@@ -86,17 +86,17 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-org463d557" class="outline-2">
-<h2 id="org463d557">a)</h2>
-<div class="outline-text-2" id="text-org463d557">
+<div id="outline-container-org5032b3d" class="outline-2">
+<h2 id="org5032b3d">a)</h2>
+<div class="outline-text-2" id="text-org5032b3d">
 </div>
-<div id="outline-container-org6585c9b" class="outline-3">
-<h3 id="org6585c9b">Answer</h3>
-<div class="outline-text-3" id="text-org6585c9b">
+<div id="outline-container-org78cafc2" class="outline-3">
+<h3 id="org78cafc2">Answer</h3>
+<div class="outline-text-3" id="text-org78cafc2">
 </div>
-<div id="outline-container-org5b60f95" class="outline-4">
-<h4 id="org5b60f95">preprocess &amp; Gibbs sampler</h4>
-<div class="outline-text-4" id="text-org5b60f95">
+<div id="outline-container-org640661b" class="outline-4">
+<h4 id="org640661b">preprocess &amp; Gibbs sampler</h4>
+<div class="outline-text-4" id="text-org640661b">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
 Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
@@ -162,11 +162,11 @@ THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<spa
 </div>
 </div>
 </div>
-<div id="outline-container-org3e38d90" class="outline-4">
-<h4 id="org3e38d90">marginal posterior distribution</h4>
-<div class="outline-text-4" id="text-org3e38d90">
+<div id="outline-container-org1073551" class="outline-4">
+<h4 id="org1073551">marginal posterior distribution</h4>
+<div class="outline-text-4" id="text-org1073551">
 
-<div id="orgae97517" class="figure">
+<div id="org3375ce9" class="figure">
 <p><img src="./fig/exercise7-6a.png" alt="exercise7-6a.png" width="800" />
 </p>
 </div>
@@ -181,7 +181,7 @@ THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<spa
 </pre>
 </div>
 
-<pre class="example" id="orgb3dd4ea">
+<pre class="example" id="org0fa4c58">
 Pr(θd,1 &gt; θn,1) = 1.0
 Pr(θd,2 &gt; θn,2) = 1.0
 Pr(θd,3 &gt; θn,3) = 1.0
@@ -199,50 +199,50 @@ Pr(θd,7 &gt; θn,7) = 1.0
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc65a27" class="outline-2">
-<h2 id="orgcc65a27">b)</h2>
-<div class="outline-text-2" id="text-orgcc65a27">
+<div id="outline-container-org4275972" class="outline-2">
+<h2 id="org4275972">b)</h2>
+<div class="outline-text-2" id="text-org4275972">
 </div>
-<div id="outline-container-org373b869" class="outline-3">
-<h3 id="org373b869">Answer</h3>
-<div class="outline-text-3" id="text-org373b869">
+<div id="outline-container-orgbb67000" class="outline-3">
+<h3 id="orgbb67000">Answer</h3>
+<div class="outline-text-3" id="text-orgbb67000">
 </div>
-<div id="outline-container-orgec4217c" class="outline-4">
-<h4 id="orgec4217c">standard deviation</h4>
-<div class="outline-text-4" id="text-orgec4217c">
+<div id="outline-container-org2e15b88" class="outline-4">
+<h4 id="org2e15b88">standard deviation</h4>
+<div class="outline-text-4" id="text-org2e15b88">
 
-<div id="org5860bd0" class="figure">
+<div id="org071099c" class="figure">
 <p><img src="./fig/exercise7-6b_sd.png" alt="exercise7-6b_sd.png" width="800" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc1c87bb" class="outline-4">
-<h4 id="orgc1c87bb">correlation</h4>
-<div class="outline-text-4" id="text-orgc1c87bb">
+<div id="outline-container-org61d1482" class="outline-4">
+<h4 id="org61d1482">correlation</h4>
+<div class="outline-text-4" id="text-org61d1482">
 
-<div id="orgdfdc87d" class="figure">
+<div id="org97e89ea" class="figure">
 <p><img src="./fig/exercise7-6b_cor.png" alt="exercise7-6b_cor.png" width="800" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb94c1c5" class="outline-4">
-<h4 id="orgb94c1c5">discussion</h4>
-<div class="outline-text-4" id="text-orgb94c1c5">
+<div id="outline-container-org01caa03" class="outline-4">
+<h4 id="org01caa03">discussion</h4>
+<div class="outline-text-4" id="text-org01caa03">
 </div>
-<div id="outline-container-org6320b05" class="outline-5">
-<h5 id="org6320b05">日本語</h5>
-<div class="outline-text-5" id="text-org6320b05">
+<div id="outline-container-org99f41b6" class="outline-5">
+<h5 id="org99f41b6">日本語</h5>
+<div class="outline-text-5" id="text-org99f41b6">
 <ul class="org-ul">
 <li>標準偏差は、糖尿病患者群の方が、やや大きい</li>
 <li>相関係数は diabetes pedigree 以外の変数に関して、非患者群の方が大きい。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org69baac2" class="outline-5">
-<h5 id="org69baac2">English</h5>
-<div class="outline-text-5" id="text-org69baac2">
+<div id="outline-container-orga089e1a" class="outline-5">
+<h5 id="orga089e1a">English</h5>
+<div class="outline-text-5" id="text-orga089e1a">
 <ul class="org-ul">
 <li>The standard deviation is slightly larger in the diabetic patient group.</li>
 <li>For variables other than <code>diabetes pedigree</code>, the correlation coefficient is larger in the non-diabetic group.</li>
@@ -264,11 +264,11 @@ Pr(θd,7 &gt; θn,7) = 1.0
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

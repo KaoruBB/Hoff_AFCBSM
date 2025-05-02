@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 6.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 6.2 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 6.2 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 6.2 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 6.2 解答例</span>
 </h1>
@@ -115,47 +115,47 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2fcf425">a)</a>
+<li><a href="#orgcb441c1">a)</a>
 <ul>
-<li><a href="#orgdf0a7e7">answer</a></li>
+<li><a href="#orge46a8ce">answer</a></li>
 </ul>
 </li>
-<li><a href="#org7adcc4f">b)</a>
+<li><a href="#orgd1dab5f">b)</a>
 <ul>
-<li><a href="#orgbecc79d">answer</a>
+<li><a href="#orge4c1998">answer</a>
 <ul>
-<li><a href="#org87bbcae">the full conditional distribution of \( (X_1, \dots, X_n)\)</a></li>
-<li><a href="#orgb3d0e9b">the full conditional distribution of \(p\)</a></li>
-<li><a href="#org6de9d94">the full conditional distribution of \(\theta_1\)</a></li>
-<li><a href="#org39b90a2">the full conditional distribution of \(\theta_2\)</a></li>
-<li><a href="#orga773ee9">the full conditional distribution of \(\sigma_1^2\)</a></li>
-<li><a href="#org6f3b379">the full conditional distribution of \(\sigma_2^2\)</a></li>
+<li><a href="#orgcd88a95">the full conditional distribution of \( (X_1, \dots, X_n)\)</a></li>
+<li><a href="#orge4837e1">the full conditional distribution of \(p\)</a></li>
+<li><a href="#org98c49b5">the full conditional distribution of \(\theta_1\)</a></li>
+<li><a href="#org596cab0">the full conditional distribution of \(\theta_2\)</a></li>
+<li><a href="#org859be5e">the full conditional distribution of \(\sigma_1^2\)</a></li>
+<li><a href="#orgc16f6e5">the full conditional distribution of \(\sigma_2^2\)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd37cd4e">c)</a>
+<li><a href="#org59dce71">c)</a>
 <ul>
-<li><a href="#orgd7c8971">Answer</a></li>
+<li><a href="#org92aa0f7">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org93956a6">d)</a>
+<li><a href="#org38adbb9">d)</a>
 <ul>
-<li><a href="#org85b502a">Answer</a></li>
+<li><a href="#org17c578f">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2fcf425" class="outline-2">
-<h2 id="org2fcf425">a)</h2>
-<div class="outline-text-2" id="text-org2fcf425">
+<div id="outline-container-orgcb441c1" class="outline-2">
+<h2 id="orgcb441c1">a)</h2>
+<div class="outline-text-2" id="text-orgcb441c1">
 </div>
-<div id="outline-container-orgdf0a7e7" class="outline-3">
-<h3 id="orgdf0a7e7">answer</h3>
-<div class="outline-text-3" id="text-orgdf0a7e7">
+<div id="outline-container-orge46a8ce" class="outline-3">
+<h3 id="orge46a8ce">answer</h3>
+<div class="outline-text-3" id="text-orge46a8ce">
 
-<div id="org760cc3a" class="figure">
+<div id="org10f712d" class="figure">
 <p><img src="./fig/exercise6_2a.png" alt="exercise6_2a.png" width="600" />
 </p>
 </div>
@@ -170,13 +170,13 @@ The histogram and kernel density plot above deviate from the shape of a normal d
 </div>
 </div>
 </div>
-<div id="outline-container-org7adcc4f" class="outline-2">
-<h2 id="org7adcc4f">b)</h2>
-<div class="outline-text-2" id="text-org7adcc4f">
+<div id="outline-container-orgd1dab5f" class="outline-2">
+<h2 id="orgd1dab5f">b)</h2>
+<div class="outline-text-2" id="text-orgd1dab5f">
 </div>
-<div id="outline-container-orgbecc79d" class="outline-3">
-<h3 id="orgbecc79d">answer</h3>
-<div class="outline-text-3" id="text-orgbecc79d">
+<div id="outline-container-orge4c1998" class="outline-3">
+<h3 id="orge4c1998">answer</h3>
+<div class="outline-text-3" id="text-orge4c1998">
 <p>
 The joint distribution can be written as follows.
 </p>
@@ -212,9 +212,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{aligned}
 \end{equation}
 </div>
-<div id="outline-container-org87bbcae" class="outline-4">
-<h4 id="org87bbcae">the full conditional distribution of \( (X_1, \dots, X_n)\)</h4>
-<div class="outline-text-4" id="text-org87bbcae">
+<div id="outline-container-orgcd88a95" class="outline-4">
+<h4 id="orgcd88a95">the full conditional distribution of \( (X_1, \dots, X_n)\)</h4>
+<div class="outline-text-4" id="text-orgcd88a95">
 \begin{align*}
 & p(X_i = 1 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
 = & \frac{p(Y_i, X_i = 1, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) }{p(Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)} \\
@@ -246,9 +246,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgb3d0e9b" class="outline-4">
-<h4 id="orgb3d0e9b">the full conditional distribution of \(p\)</h4>
-<div class="outline-text-4" id="text-orgb3d0e9b">
+<div id="outline-container-orge4837e1" class="outline-4">
+<h4 id="orge4837e1">the full conditional distribution of \(p\)</h4>
+<div class="outline-text-4" id="text-orge4837e1">
 \begin{align*}
 & p(p | Y_1, \dots, Y_n, X_1, \dots, X_n, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2,
@@ -261,9 +261,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org6de9d94" class="outline-4">
-<h4 id="org6de9d94">the full conditional distribution of \(\theta_1\)</h4>
-<div class="outline-text-4" id="text-org6de9d94">
+<div id="outline-container-org98c49b5" class="outline-4">
+<h4 id="org98c49b5">the full conditional distribution of \(\theta_1\)</h4>
+<div class="outline-text-4" id="text-org98c49b5">
 \begin{align*}
 & p(\theta_1 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_2, \sigma_1^2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
@@ -286,9 +286,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 </p>
 </div>
 </div>
-<div id="outline-container-org39b90a2" class="outline-4">
-<h4 id="org39b90a2">the full conditional distribution of \(\theta_2\)</h4>
-<div class="outline-text-4" id="text-org39b90a2">
+<div id="outline-container-org596cab0" class="outline-4">
+<h4 id="org596cab0">the full conditional distribution of \(\theta_2\)</h4>
+<div class="outline-text-4" id="text-org596cab0">
 <p>
 \(\theta_2\)についても同様に計算すると、
 </p>
@@ -301,9 +301,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orga773ee9" class="outline-4">
-<h4 id="orga773ee9">the full conditional distribution of \(\sigma_1^2\)</h4>
-<div class="outline-text-4" id="text-orga773ee9">
+<div id="outline-container-org859be5e" class="outline-4">
+<h4 id="org859be5e">the full conditional distribution of \(\sigma_1^2\)</h4>
+<div class="outline-text-4" id="text-org859be5e">
 \begin{align*}
 & p(\sigma_1^2 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
@@ -319,9 +319,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org6f3b379" class="outline-4">
-<h4 id="org6f3b379">the full conditional distribution of \(\sigma_2^2\)</h4>
-<div class="outline-text-4" id="text-org6f3b379">
+<div id="outline-container-orgc16f6e5" class="outline-4">
+<h4 id="orgc16f6e5">the full conditional distribution of \(\sigma_2^2\)</h4>
+<div class="outline-text-4" id="text-orgc16f6e5">
 <p>
 \(\sigma_2^2\)についても同様に計算すると、
 </p>
@@ -336,13 +336,13 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 </div>
 </div>
 </div>
-<div id="outline-container-orgd37cd4e" class="outline-2">
-<h2 id="orgd37cd4e">c)</h2>
-<div class="outline-text-2" id="text-orgd37cd4e">
+<div id="outline-container-org59dce71" class="outline-2">
+<h2 id="org59dce71">c)</h2>
+<div class="outline-text-2" id="text-org59dce71">
 </div>
-<div id="outline-container-orgd7c8971" class="outline-3">
-<h3 id="orgd7c8971">Answer</h3>
-<div class="outline-text-3" id="text-orgd7c8971">
+<div id="outline-container-org92aa0f7" class="outline-3">
+<h3 id="org92aa0f7">Answer</h3>
+<div class="outline-text-3" id="text-org92aa0f7">
 <div class="org-src-container">
 <pre class="src src-julia">a = b = <span style="color: #e69055; font-weight: bold;">1</span>
 &#956;&#8320; = <span style="color: #e69055; font-weight: bold;">120</span>
@@ -450,7 +450,7 @@ fig
 </div>
 
 
-<div id="org756bedf" class="figure">
+<div id="org67634d2" class="figure">
 <p><img src="./fig/exercise6_2c.png" alt="exercise6_2c.png" width="600" />
 </p>
 </div>
@@ -471,13 +471,13 @@ ESS
 </div>
 </div>
 </div>
-<div id="outline-container-org93956a6" class="outline-2">
-<h2 id="org93956a6">d)</h2>
-<div class="outline-text-2" id="text-org93956a6">
+<div id="outline-container-org38adbb9" class="outline-2">
+<h2 id="org38adbb9">d)</h2>
+<div class="outline-text-2" id="text-org38adbb9">
 </div>
-<div id="outline-container-org85b502a" class="outline-3">
-<h3 id="org85b502a">Answer</h3>
-<div class="outline-text-3" id="text-org85b502a">
+<div id="outline-container-org17c578f" class="outline-3">
+<h3 id="org17c578f">Answer</h3>
+<div class="outline-text-3" id="text-org17c578f">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">sample y function</span>
 <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_y</span><span style="color: #51afef;">(</span>p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
@@ -527,7 +527,7 @@ p = <span style="color: #e69055; font-weight: bold;">0.5</span>
 </div>
 
 
-<div id="org63d3f45" class="figure">
+<div id="orgdb3fddc" class="figure">
 <p><img src="./fig/exercise6_2d.png" alt="exercise6_2d.png" width="600" />
 </p>
 </div>
@@ -552,11 +552,11 @@ p = <span style="color: #e69055; font-weight: bold;">0.5</span>
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

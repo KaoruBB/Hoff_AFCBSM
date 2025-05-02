@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 8.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 8.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 8.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 8.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 8.3 解答例</span>
 </h1>
@@ -115,41 +115,41 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfa578cf">a)</a>
+<li><a href="#org4ba0109">a)</a>
 <ul>
-<li><a href="#org813dc61">Answer</a></li>
+<li><a href="#org58cfcee">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcba63ae">b)</a>
+<li><a href="#org6afdac9">b)</a>
 <ul>
-<li><a href="#org36cdcd4">Answer</a></li>
+<li><a href="#org93ecd94">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcf584a3">c)</a>
+<li><a href="#org8a63776">c)</a>
 <ul>
-<li><a href="#org834f6d3">Answer</a></li>
+<li><a href="#orgb4ce180">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org1a9aef4">d)</a>
+<li><a href="#orgba50c7c">d)</a>
 <ul>
-<li><a href="#org4eb5fef">Answer</a></li>
+<li><a href="#org31c48e1">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org3ba2e91">e)</a>
+<li><a href="#org2b7b76c">e)</a>
 <ul>
-<li><a href="#org455e98f">Answer</a></li>
+<li><a href="#org41d110d">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfa578cf" class="outline-2">
-<h2 id="orgfa578cf">a)</h2>
-<div class="outline-text-2" id="text-orgfa578cf">
+<div id="outline-container-org4ba0109" class="outline-2">
+<h2 id="org4ba0109">a)</h2>
+<div class="outline-text-2" id="text-org4ba0109">
 </div>
-<div id="outline-container-org813dc61" class="outline-3">
-<h3 id="org813dc61">Answer</h3>
-<div class="outline-text-3" id="text-org813dc61">
+<div id="outline-container-org58cfcee" class="outline-3">
+<h3 id="org58cfcee">Answer</h3>
+<div class="outline-text-3" id="text-org58cfcee">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 <span style="color: #51afef;">using</span> Random
@@ -237,7 +237,7 @@ MST = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51
 </div>
 
 
-<div id="org7febf4f" class="figure">
+<div id="orgfa8170b" class="figure">
 <p><img src="./fig/ex8-3_stationarity.png" alt="ex8-3_stationarity.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>stationarity plot</p>
@@ -263,13 +263,13 @@ ESS
 </div>
 </div>
 </div>
-<div id="outline-container-orgcba63ae" class="outline-2">
-<h2 id="orgcba63ae">b)</h2>
-<div class="outline-text-2" id="text-orgcba63ae">
+<div id="outline-container-org6afdac9" class="outline-2">
+<h2 id="org6afdac9">b)</h2>
+<div class="outline-text-2" id="text-org6afdac9">
 </div>
-<div id="outline-container-org36cdcd4" class="outline-3">
-<h3 id="org36cdcd4">Answer</h3>
-<div class="outline-text-3" id="text-org36cdcd4">
+<div id="outline-container-org93ecd94" class="outline-3">
+<h3 id="org93ecd94">Answer</h3>
+<div class="outline-text-3" id="text-org93ecd94">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean and 95% confidence region for &#963;&#178;</span>
 julia<span style="color: #FCCE7B;">&gt;</span> mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -306,7 +306,7 @@ julia<span style="color: #FCCE7B;">&gt;</span> quantile<span style="color: #51af
 </div>
 
 
-<div id="org838a4c0" class="figure">
+<div id="org17870dd" class="figure">
 <p><img src="./fig/ex8-3_posterior.png" alt="ex8-3_posterior.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Comparison of posterior and prior densities</p>
@@ -323,13 +323,13 @@ The following things were learned from the data:
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf584a3" class="outline-2">
-<h2 id="orgcf584a3">c)</h2>
-<div class="outline-text-2" id="text-orgcf584a3">
+<div id="outline-container-org8a63776" class="outline-2">
+<h2 id="org8a63776">c)</h2>
+<div class="outline-text-2" id="text-org8a63776">
 </div>
-<div id="outline-container-org834f6d3" class="outline-3">
-<h3 id="org834f6d3">Answer</h3>
-<div class="outline-text-3" id="text-org834f6d3">
+<div id="outline-container-orgb4ce180" class="outline-3">
+<h3 id="orgb4ce180">Answer</h3>
+<div class="outline-text-3" id="text-orgb4ce180">
 <div class="org-src-container">
 <pre class="src src-julia">&#963;&#178;_pri = rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span>&#963;&#8320;&#178;<span style="color: #FCCE7B;">/</span>&#957;&#8320;<span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
 &#964;&#178;_pri = rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#951;&#8320;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span>&#964;&#8320;&#178;<span style="color: #FCCE7B;">/</span>&#951;&#8320;<span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
@@ -339,7 +339,7 @@ R_pos = MST<span style="color: #51afef;">[</span>:,<span style="color: #e69055; 
 </div>
 
 
-<div id="org3ea3503" class="figure">
+<div id="orgc838797" class="figure">
 <p><img src="./fig/ex8-3_Rdensity.png" alt="ex8-3_Rdensity.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Prior and posterior densities of \(R\)</p>
@@ -351,13 +351,13 @@ The plot above shows that about 25% of the variance is due to between-school var
 </div>
 </div>
 </div>
-<div id="outline-container-org1a9aef4" class="outline-2">
-<h2 id="org1a9aef4">d)</h2>
-<div class="outline-text-2" id="text-org1a9aef4">
+<div id="outline-container-orgba50c7c" class="outline-2">
+<h2 id="orgba50c7c">d)</h2>
+<div class="outline-text-2" id="text-orgba50c7c">
 </div>
-<div id="outline-container-org4eb5fef" class="outline-3">
-<h3 id="org4eb5fef">Answer</h3>
-<div class="outline-text-3" id="text-org4eb5fef">
+<div id="outline-container-org31c48e1" class="outline-3">
+<h3 id="org31c48e1">Answer</h3>
+<div class="outline-text-3" id="text-org31c48e1">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior probability that &#952;&#8327; is smaller than &#952;&#8326;</span>
 mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">7</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">6</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -382,13 +382,13 @@ mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</
 </div>
 </div>
 </div>
-<div id="outline-container-org3ba2e91" class="outline-2">
-<h2 id="org3ba2e91">e)</h2>
-<div class="outline-text-2" id="text-org3ba2e91">
+<div id="outline-container-org2b7b76c" class="outline-2">
+<h2 id="org2b7b76c">e)</h2>
+<div class="outline-text-2" id="text-org2b7b76c">
 </div>
-<div id="outline-container-org455e98f" class="outline-3">
-<h3 id="org455e98f">Answer</h3>
-<div class="outline-text-3" id="text-org455e98f">
+<div id="outline-container-org41d110d" class="outline-3">
+<h3 id="org41d110d">Answer</h3>
+<div class="outline-text-3" id="text-org41d110d">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;&#772; = mean<span style="color: #51afef;">(</span>THETA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
 fig_e = plot<span style="color: #51afef;">(</span>
@@ -401,7 +401,7 @@ fig_e
 </div>
 
 
-<div id="org12380cc" class="figure">
+<div id="orged995be" class="figure">
 <p><img src="./fig/ex8-3e_scatter.png" alt="ex8-3e_scatter.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Sample averages and posterior expectations</p>
@@ -447,11 +447,11 @@ mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</sp
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

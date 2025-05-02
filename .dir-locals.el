@@ -16,7 +16,7 @@
                                                 <p style=\"margin-bottom: 0em;\">
                                                     <img src=\"/icons/house-color-icon.svg\" alt=\"home\" style=\"height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;\">
                                                     <a href=\"/index.html\">Home</a> |
-                                                    <a href=\"/index_jp.html\">ホーム</a> |
+                                                    <a href=\"/index-ja.html\">ホーム</a> |
                                                     <a href=\"https://github.com/KaoruBB/Hoff_AFCBSM\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"View source on GitHub\">
                                                     <img src=\"/icons/github-mark-white.svg\" alt=\"GitHub\" style=\"height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;\">
                                                     </a>

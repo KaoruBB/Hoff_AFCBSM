@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 4.8 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 4.8 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 4.8 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 4.8 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 4.8 解答例</span>
 </h1>
@@ -115,36 +115,36 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc80daab">a)</a>
+<li><a href="#org1b29ec3">a)</a>
 <ul>
-<li><a href="#org0265565">answer</a></li>
+<li><a href="#org385b85a">answer</a></li>
 </ul>
 </li>
-<li><a href="#orge1bda9f">b)</a>
+<li><a href="#orgb7ffb0a">b)</a>
 <ul>
-<li><a href="#org599ad37">answer</a></li>
+<li><a href="#orgf429206">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgfb5e42d">c)</a>
+<li><a href="#orgd240694">c)</a>
 <ul>
-<li><a href="#org2d8fc91">answer</a></li>
+<li><a href="#org745398d">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcc70e3e">d)</a>
+<li><a href="#org9b53339">d)</a>
 <ul>
-<li><a href="#org13e765b">answer</a></li>
+<li><a href="#orgc540d35">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc80daab" class="outline-2">
-<h2 id="orgc80daab">a)</h2>
-<div class="outline-text-2" id="text-orgc80daab">
+<div id="outline-container-org1b29ec3" class="outline-2">
+<h2 id="org1b29ec3">a)</h2>
+<div class="outline-text-2" id="text-org1b29ec3">
 </div>
-<div id="outline-container-org0265565" class="outline-3">
-<h3 id="org0265565">answer</h3>
-<div class="outline-text-3" id="text-org0265565">
+<div id="outline-container-org385b85a" class="outline-3">
+<h3 id="org385b85a">answer</h3>
+<div class="outline-text-3" id="text-org385b85a">
 <div class="org-src-container">
 <pre class="src src-julia">menchild_bach = <span style="color: #51afef;">[]</span>
 open<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/menchild30bach.dat"</span><span style="color: #51afef;">)</span> <span style="color: #51afef;">do</span> file
@@ -185,20 +185,20 @@ y_B_mc = rand.<span style="color: #51afef;">(</span>Poisson.<span style="color: 
 </div>
 
 
-<div id="orge1306ca" class="figure">
+<div id="org87b9157" class="figure">
 <p><img src="fig/exercise4_8a.jpg" alt="exercise4_8a.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orge1bda9f" class="outline-2">
-<h2 id="orge1bda9f">b)</h2>
-<div class="outline-text-2" id="text-orge1bda9f">
+<div id="outline-container-orgb7ffb0a" class="outline-2">
+<h2 id="orgb7ffb0a">b)</h2>
+<div class="outline-text-2" id="text-orgb7ffb0a">
 </div>
-<div id="outline-container-org599ad37" class="outline-3">
-<h3 id="org599ad37">answer</h3>
-<div class="outline-text-3" id="text-org599ad37">
+<div id="outline-container-orgf429206" class="outline-3">
+<h3 id="orgf429206">answer</h3>
+<div class="outline-text-3" id="text-orgf429206">
 <p>
 for \(\theta_B - \theta_A\):
 </p>
@@ -233,13 +233,13 @@ for \(\hat{Y}_B - \hat{Y}_A\):
 </div>
 </div>
 </div>
-<div id="outline-container-orgfb5e42d" class="outline-2">
-<h2 id="orgfb5e42d">c)</h2>
-<div class="outline-text-2" id="text-orgfb5e42d">
+<div id="outline-container-orgd240694" class="outline-2">
+<h2 id="orgd240694">c)</h2>
+<div class="outline-text-2" id="text-orgd240694">
 </div>
-<div id="outline-container-org2d8fc91" class="outline-3">
-<h3 id="org2d8fc91">answer</h3>
-<div class="outline-text-3" id="text-org2d8fc91">
+<div id="outline-container-org745398d" class="outline-3">
+<h3 id="org745398d">answer</h3>
+<div class="outline-text-3" id="text-org745398d">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">(</span>a&#8320; <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320; <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span>
 </pre>
@@ -255,7 +255,7 @@ for \(\hat{Y}_B - \hat{Y}_A\):
 </p>
 
 
-<div id="org102fa1b" class="figure">
+<div id="org0b2f0cd" class="figure">
 <p><img src="fig/exercise4_8_c.png" alt="exercise4_8_c.png" width="500" />
 </p>
 </div>
@@ -274,13 +274,13 @@ Therefore, if the underlying population distribution indeed has peaks at <code>0
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc70e3e" class="outline-2">
-<h2 id="orgcc70e3e">d)</h2>
-<div class="outline-text-2" id="text-orgcc70e3e">
+<div id="outline-container-org9b53339" class="outline-2">
+<h2 id="org9b53339">d)</h2>
+<div class="outline-text-2" id="text-org9b53339">
 </div>
-<div id="outline-container-org13e765b" class="outline-3">
-<h3 id="org13e765b">answer</h3>
-<div class="outline-text-3" id="text-org13e765b">
+<div id="outline-container-orgc540d35" class="outline-3">
+<h3 id="orgc540d35">answer</h3>
+<div class="outline-text-3" id="text-orgc540d35">
 <div class="org-src-container">
 <pre class="src src-julia">obs_zero = sum<span style="color: #51afef;">(</span>menchild_nobach .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
 obs_one = sum<span style="color: #51afef;">(</span>menchild_nobach .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
@@ -295,7 +295,7 @@ num_one = <span style="color: #51afef;">[]</span>
 </div>
 
 
-<div id="orgbfb0657" class="figure">
+<div id="org84e86bc" class="figure">
 <p><img src="fig/exercise4_8d.png" alt="exercise4_8d.png" width="500" />
 </p>
 </div>
@@ -323,11 +323,11 @@ Therefore, the <code>Poisson</code> model is considered inappropriate.
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

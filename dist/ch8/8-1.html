@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 8.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 8.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 8.1 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 8.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 8.1 解答例</span>
 </h1>
@@ -115,49 +115,49 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9c7fd3f">a)</a>
+<li><a href="#orge46703d">a)</a>
 <ul>
-<li><a href="#orgade1ee8">Answer</a></li>
+<li><a href="#orgd5c638e">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org7b36b3c">b)</a>
+<li><a href="#orgb6d3e78">b)</a>
 <ul>
-<li><a href="#org7107b03">Answer</a></li>
+<li><a href="#org7db26d2">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgc27b64c">c)</a>
+<li><a href="#org02abe00">c)</a>
 <ul>
-<li><a href="#orgca85d65">Answer</a></li>
+<li><a href="#org1b560ab">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgeda4ce6">d)</a>
+<li><a href="#orga4202f5">d)</a>
 <ul>
-<li><a href="#orge654581">Answer</a></li>
+<li><a href="#orgd39a75e">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9c7fd3f" class="outline-2">
-<h2 id="org9c7fd3f">a)</h2>
-<div class="outline-text-2" id="text-org9c7fd3f">
+<div id="outline-container-orge46703d" class="outline-2">
+<h2 id="orge46703d">a)</h2>
+<div class="outline-text-2" id="text-orge46703d">
 </div>
-<div id="outline-container-orgade1ee8" class="outline-3">
-<h3 id="orgade1ee8">Answer</h3>
-<div class="outline-text-3" id="text-orgade1ee8">
+<div id="outline-container-orgd5c638e" class="outline-3">
+<h3 id="orgd5c638e">Answer</h3>
+<div class="outline-text-3" id="text-orgd5c638e">
 <p>
 \( \text{Var}[y_{i,j}|\mu, \tau^2] \) is bigger because it includes both between-group and within-group variability while \( \text{Var}[y_{i,j}|\theta_j, \sigma^2] \) only includes within-group variability.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org7b36b3c" class="outline-2">
-<h2 id="org7b36b3c">b)</h2>
-<div class="outline-text-2" id="text-org7b36b3c">
+<div id="outline-container-orgb6d3e78" class="outline-2">
+<h2 id="orgb6d3e78">b)</h2>
+<div class="outline-text-2" id="text-orgb6d3e78">
 </div>
-<div id="outline-container-org7107b03" class="outline-3">
-<h3 id="org7107b03">Answer</h3>
-<div class="outline-text-3" id="text-org7107b03">
+<div id="outline-container-org7db26d2" class="outline-3">
+<h3 id="org7db26d2">Answer</h3>
+<div class="outline-text-3" id="text-org7db26d2">
 <p>
 I think \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\theta_j, \sigma^2]\) is zero because when \(\theta_j\) is known, \(y_{i_2,j}\) tells us nothing about \(y_{i_1,j}\) more than what we already know.
 However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive because \(y_{i_2,j}\) tells us something about group-specific information \(\theta_j\) which we do not know.
@@ -165,13 +165,13 @@ However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive beca
 </div>
 </div>
 </div>
-<div id="outline-container-orgc27b64c" class="outline-2">
-<h2 id="orgc27b64c">c)</h2>
-<div class="outline-text-2" id="text-orgc27b64c">
+<div id="outline-container-org02abe00" class="outline-2">
+<h2 id="org02abe00">c)</h2>
+<div class="outline-text-2" id="text-org02abe00">
 </div>
-<div id="outline-container-orgca85d65" class="outline-3">
-<h3 id="orgca85d65">Answer</h3>
-<div class="outline-text-3" id="text-orgca85d65">
+<div id="outline-container-org1b560ab" class="outline-3">
+<h3 id="org1b560ab">Answer</h3>
+<div class="outline-text-3" id="text-org1b560ab">
 \begin{align*}
 \text{Var}[y_{i,j}|\theta_j, \sigma^2]
 &= \sigma^2 \\
@@ -210,13 +210,13 @@ However, \(\text{Cov}[y_{i_1, j}, y_{i_2,j}|\mu, \tau^2]\) will be positive beca
 </div>
 </div>
 </div>
-<div id="outline-container-orgeda4ce6" class="outline-2">
-<h2 id="orgeda4ce6">d)</h2>
-<div class="outline-text-2" id="text-orgeda4ce6">
+<div id="outline-container-orga4202f5" class="outline-2">
+<h2 id="orga4202f5">d)</h2>
+<div class="outline-text-2" id="text-orga4202f5">
 </div>
-<div id="outline-container-orge654581" class="outline-3">
-<h3 id="orge654581">Answer</h3>
-<div class="outline-text-3" id="text-orge654581">
+<div id="outline-container-orgd39a75e" class="outline-3">
+<h3 id="orgd39a75e">Answer</h3>
+<div class="outline-text-3" id="text-orgd39a75e">
 \begin{align*}
 p(\mu | \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m)
 &= \frac{ p(\mu, \theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) }{ p(\theta_1, \ldots, \theta_m, \sigma^2, \tau^2, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_m) } \\
@@ -248,11 +248,11 @@ This means that the \(\sigma^2, \boldsymbol{y}_1, \dots, \boldsymbol{y}_2\) give
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

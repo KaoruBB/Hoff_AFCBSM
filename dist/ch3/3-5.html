@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 3.5 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 3.5 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 3.5 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 3.5 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 3.5 解答例</span>
 </h1>
@@ -115,22 +115,22 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga97ffe0">Answer</a>
+<li><a href="#org59f8fde">Answer</a>
 <ul>
-<li><a href="#orgd706527">a)</a></li>
-<li><a href="#org2b5777a">b)</a></li>
+<li><a href="#orga218d85">a)</a></li>
+<li><a href="#orga80ac8f">b)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga97ffe0" class="outline-2">
-<h2 id="orga97ffe0">Answer</h2>
-<div class="outline-text-2" id="text-orga97ffe0">
+<div id="outline-container-org59f8fde" class="outline-2">
+<h2 id="org59f8fde">Answer</h2>
+<div class="outline-text-2" id="text-org59f8fde">
 </div>
-<div id="outline-container-orgd706527" class="outline-3">
-<h3 id="orgd706527">a)</h3>
-<div class="outline-text-3" id="text-orgd706527">
+<div id="outline-container-orga218d85" class="outline-3">
+<h3 id="orga218d85">a)</h3>
+<div class="outline-text-3" id="text-orga218d85">
 \begin{align*}
 p(\theta \mid y_1, \dots, y_n)
 &\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
@@ -147,9 +147,9 @@ where \(\bar{t}(\boldsymbol{y}) = \frac{\sum t(y_i)}{n}\)
 </p>
 </div>
 </div>
-<div id="outline-container-org2b5777a" class="outline-3">
-<h3 id="org2b5777a">b)</h3>
-<div class="outline-text-3" id="text-org2b5777a">
+<div id="outline-container-orga80ac8f" class="outline-3">
+<h3 id="orga80ac8f">b)</h3>
+<div class="outline-text-3" id="text-orga80ac8f">
 \begin{align*}
 p(\theta \mid y_1, \dots, y_n)
 &\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
@@ -179,11 +179,11 @@ p(\theta \mid y_1, \dots, y_n)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

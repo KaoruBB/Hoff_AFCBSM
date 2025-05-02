@@ -1,6 +1,8 @@
-#+title: Solution Example - Hoff, A First Course in Bayesian Statistical Methods
-#+SUBTITLE: 標準ベイズ統計学 演習問題 解答例
 #+SETUPFILE: setup.org
+#+HTML_HEAD: <link rel="alternate" hreflang="en" href="./index.html" />
+#+HTML_HEAD: <link rel="alternate" hreflang="ja" href="./index-ja.html" />
+#+title: Solution Examples - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 解答例
 
 * About This Page
 

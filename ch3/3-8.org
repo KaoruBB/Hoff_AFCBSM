@@ -1,4 +1,4 @@
-#+TITLE: Exercise 3.8 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+TITLE: Exercise 3.8 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 #+SUBTITLE: 標準ベイズ統計学 演習問題 3.8 解答例
 #+SETUPFILE: ../setup.org
 #+STARTUP:showeverything

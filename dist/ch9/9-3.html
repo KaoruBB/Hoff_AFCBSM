@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 9.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 9.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -49,7 +49,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 9.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 9.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 9.3 解答例</span>
 </h1>
@@ -57,31 +57,31 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcdc510e">a)</a>
+<li><a href="#org91c8efa">a)</a>
 <ul>
-<li><a href="#orgb735a3a">Answer</a></li>
+<li><a href="#org702e537">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd20224e">b)</a>
+<li><a href="#orgd320ba3">b)</a>
 <ul>
-<li><a href="#org3f83bb7">Answer</a></li>
+<li><a href="#orgd495fc3">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org0254e80">c)</a>
+<li><a href="#org4567b78">c)</a>
 <ul>
-<li><a href="#org9e2b4fe">Answer</a></li>
+<li><a href="#org90f0f89">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcdc510e" class="outline-2">
-<h2 id="orgcdc510e">a)</h2>
-<div class="outline-text-2" id="text-orgcdc510e">
+<div id="outline-container-org91c8efa" class="outline-2">
+<h2 id="org91c8efa">a)</h2>
+<div class="outline-text-2" id="text-org91c8efa">
 </div>
-<div id="outline-container-orgb735a3a" class="outline-3">
-<h3 id="orgb735a3a">Answer</h3>
-<div class="outline-text-3" id="text-orgb735a3a">
+<div id="outline-container-org702e537" class="outline-3">
+<h3 id="org702e537">Answer</h3>
+<div class="outline-text-3" id="text-org702e537">
 <p>
 The result of bayesian regression using the <i>g</i>-prior is shown below:
 </p>
@@ -154,7 +154,7 @@ result_gprior = DataFrame<span style="color: #51afef;">(</span>
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="orgb9e6357">
+<pre class="example" id="org6a66710">
 16×5 DataFrame
  Row │ param      β̂             ci_lower    ci_upper    ci_length
      │ String     Float64       Float64     Float64     Float64
@@ -199,7 +199,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 </div>
 
-<pre class="example" id="org9b1c5b7">
+<pre class="example" id="orgd449dc2">
 16×6 DataFrame
  Row │ param      β̂             pvalue      ci_lower     ci_upper    ci_length
      │ String     Float64       Float64     Float64      Float64     Float64
@@ -223,7 +223,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 
 
-<div id="orgb2420d8" class="figure">
+<div id="org32d6f4d" class="figure">
 <p><img src="./fig/ex_9-3a_coef.png" alt="ex_9-3a_coef.png" />
 </p>
 </div>
@@ -238,13 +238,13 @@ Using these types of criteria, the difference between the two results is that Po
 </div>
 </div>
 </div>
-<div id="outline-container-orgd20224e" class="outline-2">
-<h2 id="orgd20224e">b)</h2>
-<div class="outline-text-2" id="text-orgd20224e">
+<div id="outline-container-orgd320ba3" class="outline-2">
+<h2 id="orgd320ba3">b)</h2>
+<div class="outline-text-2" id="text-orgd320ba3">
 </div>
-<div id="outline-container-org3f83bb7" class="outline-3">
-<h3 id="org3f83bb7">Answer</h3>
-<div class="outline-text-3" id="text-org3f83bb7">
+<div id="outline-container-orgd495fc3" class="outline-3">
+<h3 id="orgd495fc3">Answer</h3>
+<div class="outline-text-3" id="text-orgd495fc3">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
 Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
@@ -293,7 +293,7 @@ error_bayes = mean<span style="color: #51afef;">(</span><span style="color: #C57
 
 
 
-<div id="orgf2094b4" class="figure">
+<div id="orgf6f9cf3" class="figure">
 <p><img src="./fig/ex_9-3b.png" alt="ex_9-3b.png" />
 </p>
 </div>
@@ -305,13 +305,13 @@ For this time, the bayesian regression predict better than the least square regr
 </div>
 </div>
 </div>
-<div id="outline-container-org0254e80" class="outline-2">
-<h2 id="org0254e80">c)</h2>
-<div class="outline-text-2" id="text-org0254e80">
+<div id="outline-container-org4567b78" class="outline-2">
+<h2 id="org4567b78">c)</h2>
+<div class="outline-text-2" id="text-org4567b78">
 </div>
-<div id="outline-container-org9e2b4fe" class="outline-3">
-<h3 id="org9e2b4fe">Answer</h3>
-<div class="outline-text-3" id="text-org9e2b4fe">
+<div id="outline-container-org90f0f89" class="outline-3">
+<h3 id="org90f0f89">Answer</h3>
+<div class="outline-text-3" id="text-org90f0f89">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">computeMses</span><span style="color: #51afef;">(</span>y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
     <span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
@@ -354,7 +354,7 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 
 
 
-<div id="org3c7b730" class="figure">
+<div id="org3fd140e" class="figure">
 <p><img src="./fig/ex_9-3c.png" alt="ex_9-3c.png" />
 </p>
 </div>
@@ -373,11 +373,11 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

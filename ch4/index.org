@@ -1,5 +1,5 @@
 #+SETUPFILE: ../setup.org
-#+TITLE: Chapter 4 Solution - Hoff, A First Course in Bayesian Statistical Methods
+#+TITLE: Chapter 4 Solution Examples - Hoff, A First Course in Bayesian Statistical Methods
 #+SUBTITLE: 標準ベイズ統計学 第4章 解答例
 * 演習問題一覧 (Exercise List)
 + [[file:4-1.org][Exercise 4.1]]

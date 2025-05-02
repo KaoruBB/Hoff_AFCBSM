@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 5.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 5.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 5.3 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 5.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 5.3 解答例</span>
 </h1>
@@ -115,22 +115,22 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1166327">answer</a>
+<li><a href="#org874ad8d">answer</a>
 <ul>
-<li><a href="#org277c587">marginal posterior distribution of \(\theta\)</a></li>
-<li><a href="#org4728896">marginal posterior distribution of \(\tilde{\sigma}^2\)</a></li>
+<li><a href="#org323a724">marginal posterior distribution of \(\theta\)</a></li>
+<li><a href="#orgf02b14f">marginal posterior distribution of \(\tilde{\sigma}^2\)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1166327" class="outline-2">
-<h2 id="org1166327">answer</h2>
-<div class="outline-text-2" id="text-org1166327">
+<div id="outline-container-org874ad8d" class="outline-2">
+<h2 id="org874ad8d">answer</h2>
+<div class="outline-text-2" id="text-org874ad8d">
 </div>
-<div id="outline-container-org277c587" class="outline-3">
-<h3 id="org277c587">marginal posterior distribution of \(\theta\)</h3>
-<div class="outline-text-3" id="text-org277c587">
+<div id="outline-container-org323a724" class="outline-3">
+<h3 id="org323a724">marginal posterior distribution of \(\theta\)</h3>
+<div class="outline-text-3" id="text-org323a724">
 \begin{align*}
 p(\theta | y_1, \dots, y_n)
 &= \int_0^{\infty} p(\theta, \sigma^2 | y_1, \dots, y_n) d\sigma^2 \\
@@ -165,9 +165,9 @@ where
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org4728896" class="outline-3">
-<h3 id="org4728896">marginal posterior distribution of \(\tilde{\sigma}^2\)</h3>
-<div class="outline-text-3" id="text-org4728896">
+<div id="outline-container-orgf02b14f" class="outline-3">
+<h3 id="orgf02b14f">marginal posterior distribution of \(\tilde{\sigma}^2\)</h3>
+<div class="outline-text-3" id="text-orgf02b14f">
 <p>
 \(\sigma^2\)の marginal posterior distribution は、
 </p>
@@ -304,11 +304,11 @@ p( \tilde{\sigma}^2 | y_1, \dots, y_n)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>

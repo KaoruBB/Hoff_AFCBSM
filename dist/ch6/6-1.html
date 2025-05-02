@@ -3,20 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 15:10 -->
+<!-- 2025-05-02 金 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Exercise 6.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
+<title>Exercise 6.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
 <meta name="author" content="Kaoru Babasaki" />
 <meta name="description" content="Solutions to exercises from Peter Hoff's &quot;A First Course in Bayesian Statistical Methods&quot; (標準ベイズ統計学)." />
-<meta name="keywords" content="Bayesian Statistics, Hoff, Exercise Answers, 標準ベイズ統計学, 解答" />
+<meta name="keywords" content="Bayesian Statistics, Hoff, Bayes, Exercise, Answers, 標準ベイズ, 演習問題, 解答" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
 <script>
@@ -25,6 +19,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -107,7 +107,7 @@ gtag('config', 'GT-M6XHKK2R');
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Exercise 6.1 Solution - Hoff, A First Course in Bayesian Statistical Methods
+<h1 class="title">Exercise 6.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 <br />
 <span class="subtitle">標準ベイズ統計学 演習問題 6.1 解答例</span>
 </h1>
@@ -115,36 +115,36 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge9ad694">a)</a>
+<li><a href="#org5c64e49">a)</a>
 <ul>
-<li><a href="#org40406f5">answer</a></li>
+<li><a href="#org4970ce2">answer</a></li>
 </ul>
 </li>
-<li><a href="#org5906d1d">b)</a>
+<li><a href="#org99507de">b)</a>
 <ul>
-<li><a href="#org3c986e1">answer</a></li>
+<li><a href="#org959f4c2">answer</a></li>
 </ul>
 </li>
-<li><a href="#org243a06f">c)</a>
+<li><a href="#orgf24b6d5">c)</a>
 <ul>
-<li><a href="#org5b80ac7">answer</a></li>
+<li><a href="#org4b8fbc6">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgf05d348">d)</a>
+<li><a href="#orgec60ab6">d)</a>
 <ul>
-<li><a href="#orgd2c665e">answer</a></li>
+<li><a href="#orgb4004ea">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge9ad694" class="outline-2">
-<h2 id="orge9ad694">a)</h2>
-<div class="outline-text-2" id="text-orge9ad694">
+<div id="outline-container-org5c64e49" class="outline-2">
+<h2 id="org5c64e49">a)</h2>
+<div class="outline-text-2" id="text-org5c64e49">
 </div>
-<div id="outline-container-org40406f5" class="outline-3">
-<h3 id="org40406f5">answer</h3>
-<div class="outline-text-3" id="text-org40406f5">
+<div id="outline-container-org4970ce2" class="outline-3">
+<h3 id="org4970ce2">answer</h3>
+<div class="outline-text-3" id="text-org4970ce2">
 \begin{align*}
 E[\theta_A \theta_B]
 &= E[\theta \theta \gamma] \\
@@ -185,13 +185,13 @@ Therefore, \(\theta_A\) and \(\theta_B\) are not independent.)
 </div>
 </div>
 </div>
-<div id="outline-container-org5906d1d" class="outline-2">
-<h2 id="org5906d1d">b)</h2>
-<div class="outline-text-2" id="text-org5906d1d">
+<div id="outline-container-org99507de" class="outline-2">
+<h2 id="org99507de">b)</h2>
+<div class="outline-text-2" id="text-org99507de">
 </div>
-<div id="outline-container-org3c986e1" class="outline-3">
-<h3 id="org3c986e1">answer</h3>
-<div class="outline-text-3" id="text-org3c986e1">
+<div id="outline-container-org959f4c2" class="outline-3">
+<h3 id="org959f4c2">answer</h3>
+<div class="outline-text-3" id="text-org959f4c2">
 \begin{align*}
 p(\theta | \boldsymbol{y}_A, \boldsymbol{y}_B, \gamma)
 &\propto p( \boldsymbol{y}_A , \boldsymbol{y}_B, \theta, \gamma) \\
@@ -207,13 +207,13 @@ p(\theta | \boldsymbol{y}_A, \boldsymbol{y}_B, \gamma)
 </div>
 </div>
 </div>
-<div id="outline-container-org243a06f" class="outline-2">
-<h2 id="org243a06f">c)</h2>
-<div class="outline-text-2" id="text-org243a06f">
+<div id="outline-container-orgf24b6d5" class="outline-2">
+<h2 id="orgf24b6d5">c)</h2>
+<div class="outline-text-2" id="text-orgf24b6d5">
 </div>
-<div id="outline-container-org5b80ac7" class="outline-3">
-<h3 id="org5b80ac7">answer</h3>
-<div class="outline-text-3" id="text-org5b80ac7">
+<div id="outline-container-org4b8fbc6" class="outline-3">
+<h3 id="org4b8fbc6">answer</h3>
+<div class="outline-text-3" id="text-org4b8fbc6">
 \begin{align*}
 p(\gamma | \boldsymbol{y}_A, \boldsymbol{y}_B, \theta)
 &\propto p( \boldsymbol{y}_A , \boldsymbol{y}_B, \theta, \gamma) \\
@@ -227,13 +227,13 @@ p(\gamma | \boldsymbol{y}_A, \boldsymbol{y}_B, \theta)
 </div>
 </div>
 </div>
-<div id="outline-container-orgf05d348" class="outline-2">
-<h2 id="orgf05d348">d)</h2>
-<div class="outline-text-2" id="text-orgf05d348">
+<div id="outline-container-orgec60ab6" class="outline-2">
+<h2 id="orgec60ab6">d)</h2>
+<div class="outline-text-2" id="text-orgec60ab6">
 </div>
-<div id="outline-container-orgd2c665e" class="outline-3">
-<h3 id="orgd2c665e">answer</h3>
-<div class="outline-text-3" id="text-orgd2c665e">
+<div id="outline-container-orgb4004ea" class="outline-3">
+<h3 id="orgb4004ea">answer</h3>
+<div class="outline-text-3" id="text-orgb4004ea">
 <div class="org-src-container">
 <pre class="src src-julia">menchild_bach = <span style="color: #51afef;">[]</span>
 open<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/menchild30bach.dat"</span><span style="color: #51afef;">)</span> <span style="color: #51afef;">do</span> file
@@ -310,7 +310,7 @@ exp_diff
 
 
 
-<div id="orgeff726a" class="figure">
+<div id="org9fbdfc1" class="figure">
 <p><img src="./fig/exercise6_1d.png" alt="exercise6_1d.png" width="600px" />
 </p>
 </div>
@@ -341,11 +341,11 @@ From the graph above, it can also be seen that as \(a_{\gamma} = b_{\gamma} \) i
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
-                                                    <a href="/index_jp.html">ホーム</a> |
+                                                    <a href="/index-ja.html">ホーム</a> |
                                                     <a href="https://github.com/KaoruBB/Hoff_AFCBSM" target="_blank" rel="noopener noreferrer" title="View source on GitHub">
                                                     <img src="/icons/github-mark-white.svg" alt="GitHub" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     </a>
