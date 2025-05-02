@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.4 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,31 +115,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9084f8d">Answer</a>
+<li><a href="#org59696e2">Answer</a>
 <ul>
-<li><a href="#org2eadf3f">a</a></li>
-<li><a href="#org91b6804">b</a></li>
-<li><a href="#org11b61ff">c</a></li>
-<li><a href="#org65ccd86">d</a>
+<li><a href="#org7fd1412">a</a></li>
+<li><a href="#org7b0417d">b</a></li>
+<li><a href="#orgb538d12">c</a></li>
+<li><a href="#orge5d8e79">d</a>
 <ul>
-<li><a href="#org702cf95">i</a></li>
-<li><a href="#org42064c0">ii</a></li>
-<li><a href="#org41bcec5">iii</a></li>
+<li><a href="#org0dba219">i</a></li>
+<li><a href="#orgb39cbfc">ii</a></li>
+<li><a href="#org7431f22">iii</a></li>
 </ul>
 </li>
-<li><a href="#orgcd8fa6c">e</a></li>
+<li><a href="#org70af286">e</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9084f8d" class="outline-2">
-<h2 id="org9084f8d">Answer</h2>
-<div class="outline-text-2" id="text-org9084f8d">
+<div id="outline-container-org59696e2" class="outline-2">
+<h2 id="org59696e2">Answer</h2>
+<div class="outline-text-2" id="text-org59696e2">
 </div>
-<div id="outline-container-org2eadf3f" class="outline-3">
-<h3 id="org2eadf3f">a</h3>
-<div class="outline-text-3" id="text-org2eadf3f">
+<div id="outline-container-org7fd1412" class="outline-3">
+<h3 id="org7fd1412">a</h3>
+<div class="outline-text-3" id="text-org7fd1412">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 <span style="color: #51afef;">using</span> Plots
@@ -159,7 +166,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org83dea95" class="figure">
+<div id="org6cf4383" class="figure">
 <p><img src="../../fig/ch3/exercise3.4aplot1.jpg" alt="exercise3.4aplot1.jpg" width="500" />
 </p>
 </div>
@@ -187,7 +194,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="orga49f931" class="figure">
+<div id="org3811473" class="figure">
 <p><img src="../../fig/ch3/exercise3.4aplot2.jpg" alt="exercise3.4aplot2.jpg" width="500" />
 </p>
 </div>
@@ -216,7 +223,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org16e6086" class="figure">
+<div id="org8765fa2" class="figure">
 <p><img src="../../fig/ch3/exercise3.4aposterior.jpg" alt="exercise3.4aposterior.jpg" width="500" />
 </p>
 </div>
@@ -272,9 +279,9 @@ quantile<span style="color: #51afef;">(</span>posterior_dist, <span style="color
 </pre>
 </div>
 </div>
-<div id="outline-container-org91b6804" class="outline-3">
-<h3 id="org91b6804">b</h3>
-<div class="outline-text-3" id="text-org91b6804">
+<div id="outline-container-org7b0417d" class="outline-3">
+<h3 id="org7b0417d">b</h3>
+<div class="outline-text-3" id="text-org7b0417d">
 <div class="org-src-container">
 <pre class="src src-julia">a&#8320;_b = <span style="color: #e69055; font-weight: bold;">8</span>
 b&#8320;_b = <span style="color: #e69055; font-weight: bold;">2</span>
@@ -296,7 +303,7 @@ plot<span style="color: #51afef;">(</span>
 
 
 
-<div id="org09da53a" class="figure">
+<div id="orgd88de38" class="figure">
 <p><img src="../../fig/ch3/exercise3.4bprior.jpg" alt="exercise3.4bprior.jpg" width="500" />
 </p>
 </div>
@@ -326,7 +333,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org39b3c81" class="figure">
+<div id="org3cc9cb5" class="figure">
 <p><img src="../../fig/ch3/exercise3.4bposterior.jpg" alt="exercise3.4bposterior.jpg" width="500" />
 </p>
 </div>
@@ -382,9 +389,9 @@ quantile<span style="color: #51afef;">(</span>posterior_dist_b, <span style="col
 </pre>
 </div>
 </div>
-<div id="outline-container-org11b61ff" class="outline-3">
-<h3 id="org11b61ff">c</h3>
-<div class="outline-text-3" id="text-org11b61ff">
+<div id="outline-container-orgb538d12" class="outline-3">
+<h3 id="orgb538d12">c</h3>
+<div class="outline-text-3" id="text-orgb538d12">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> SpecialFunctions
 prior_mix = &#952; <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">//</span><span style="color: #e69055; font-weight: bold;">4</span> <span style="color: #FCCE7B;">*</span> gamma<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">10</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>gamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> gamma<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">8</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">3</span> <span style="color: #FCCE7B;">*</span> &#952; <span style="color: #FCCE7B;">*</span> <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#952;<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">7</span> <span style="color: #FCCE7B;">+</span> &#952;<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">7</span> <span style="color: #FCCE7B;">*</span> <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> &#952;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
@@ -407,26 +414,26 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org0f6a798" class="figure">
+<div id="orgdc0a4c6" class="figure">
 <p><img src="../../fig/ch3/exercise3.4cmixprior.jpg" alt="exercise3.4cmixprior.jpg" width="500" />
 </p>
 </div>
 
 <p>
-<a href="#org2eadf3f">a</a>や<a href="#org91b6804">b</a>の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
+<a href="#org7fd1412">a</a>や<a href="#org7b0417d">b</a>の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
 </p>
 </div>
 </div>
-<div id="outline-container-org65ccd86" class="outline-3">
-<h3 id="org65ccd86">d</h3>
-<div class="outline-text-3" id="text-org65ccd86">
+<div id="outline-container-orge5d8e79" class="outline-3">
+<h3 id="orge5d8e79">d</h3>
+<div class="outline-text-3" id="text-orge5d8e79">
 <p>
 For the prior in c):
 </p>
 </div>
-<div id="outline-container-org702cf95" class="outline-4">
-<h4 id="org702cf95">i</h4>
-<div class="outline-text-4" id="text-org702cf95">
+<div id="outline-container-org0dba219" class="outline-4">
+<h4 id="org0dba219">i</h4>
+<div class="outline-text-4" id="text-org0dba219">
 <p>
 Write out mathematically \(p(\theta) \times p(y \mid \theta)\) and simplify as much as possible.
 </p>
@@ -443,9 +450,9 @@ p(\theta) \times p(y \mid \theta)
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org42064c0" class="outline-4">
-<h4 id="org42064c0">ii</h4>
-<div class="outline-text-4" id="text-org42064c0">
+<div id="outline-container-orgb39cbfc" class="outline-4">
+<h4 id="orgb39cbfc">ii</h4>
+<div class="outline-text-4" id="text-orgb39cbfc">
 <p>
 The posterior distribution is a mixture of two distributions you know.
 Identify these distributions.
@@ -460,13 +467,13 @@ Beta(17, 36) and Beta(23, 30)
 </p>
 </div>
 </div>
-<div id="outline-container-org41bcec5" class="outline-4">
-<h4 id="org41bcec5">iii</h4>
-<div class="outline-text-4" id="text-org41bcec5">
+<div id="outline-container-org7431f22" class="outline-4">
+<h4 id="org7431f22">iii</h4>
+<div class="outline-text-4" id="text-org7431f22">
 <p>
 On a computer, calculate and plot \(p(\theta) \times p(y \mid \theta)\)
 for a variety of \(\theta\) values.
-Also find (approximately) the posterior mode, and discuss its relation to the modes in <a href="#org2eadf3f">a)</a> and <a href="#org91b6804">b)</a>.
+Also find (approximately) the posterior mode, and discuss its relation to the modes in <a href="#org7fd1412">a)</a> and <a href="#org7b0417d">b)</a>.
 </p>
 
 <p>
@@ -487,7 +494,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="orgb276aa9" class="figure">
+<div id="org7147af5" class="figure">
 <p><img src="../../fig/ch3/exercise3.4diiiplot.jpg" alt="exercise3.4diiiplot.jpg" width="500" />
 </p>
 </div>
@@ -499,16 +506,16 @@ xs<span style="color: #51afef;">[</span>argmax<span style="color: #C57BDB;">(</s
 </div>
 
 <p>
-<a href="#org2eadf3f">a)</a> の mode が 0.313,<a href="#org91b6804">b)</a>の mode が 0.431 であったので、この事後 mode はその中間（かなり a より)に位置している。
+<a href="#org7fd1412">a)</a> の mode が 0.313,<a href="#org7b0417d">b)</a>の mode が 0.431 であったので、この事後 mode はその中間（かなり a より)に位置している。
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcd8fa6c" class="outline-3">
-<h3 id="orgcd8fa6c">e</h3>
-<div class="outline-text-3" id="text-orgcd8fa6c">
+<div id="outline-container-org70af286" class="outline-3">
+<h3 id="org70af286">e</h3>
+<div class="outline-text-3" id="text-org70af286">
 <p>
-Find a general formula for the weights of the mixture distribution in <a href="#org42064c0">d)ii</a>,
+Find a general formula for the weights of the mixture distribution in <a href="#orgb39cbfc">d)ii</a>,
 and provide an interpretation for their values.
 </p>
 
@@ -549,7 +556,7 @@ p(\theta \mid y)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

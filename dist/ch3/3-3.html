@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.3 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,24 +115,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb081f0c">Answer</a>
+<li><a href="#org3923756">Answer</a>
 <ul>
-<li><a href="#orgf70d721">a)</a>
+<li><a href="#org9ebdee7">a)</a>
 <ul>
-<li><a href="#orgd336c9b">answer</a></li>
+<li><a href="#org53231e0">answer</a></li>
 </ul>
 </li>
-<li><a href="#org039ba9d">b</a>
+<li><a href="#orgce1a5c7">b</a>
 <ul>
-<li><a href="#orga6b6863">answer</a></li>
+<li><a href="#org40ed57a">answer</a></li>
 </ul>
 </li>
-<li><a href="#org6fe13d1">c</a>
+<li><a href="#org7f3ccf3">c</a>
 <ul>
-<li><a href="#org8e2158e">answer</a>
+<li><a href="#orgb9ca810">answer</a>
 <ul>
-<li><a href="#org8c67523">日本語</a></li>
-<li><a href="#org34b4747">English</a></li>
+<li><a href="#orgc8d2bf6">日本語</a></li>
+<li><a href="#org8d07fb0">English</a></li>
 </ul>
 </li>
 </ul>
@@ -135,17 +142,17 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb081f0c" class="outline-2">
-<h2 id="orgb081f0c">Answer</h2>
-<div class="outline-text-2" id="text-orgb081f0c">
+<div id="outline-container-org3923756" class="outline-2">
+<h2 id="org3923756">Answer</h2>
+<div class="outline-text-2" id="text-org3923756">
 </div>
-<div id="outline-container-orgf70d721" class="outline-3">
-<h3 id="orgf70d721">a)</h3>
-<div class="outline-text-3" id="text-orgf70d721">
+<div id="outline-container-org9ebdee7" class="outline-3">
+<h3 id="org9ebdee7">a)</h3>
+<div class="outline-text-3" id="text-org9ebdee7">
 </div>
-<div id="outline-container-orgd336c9b" class="outline-4">
-<h4 id="orgd336c9b">answer</h4>
-<div class="outline-text-4" id="text-orgd336c9b">
+<div id="outline-container-org53231e0" class="outline-4">
+<h4 id="org53231e0">answer</h4>
+<div class="outline-text-4" id="text-org53231e0">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 y_A = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">14</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">6</span><span style="color: #51afef;">]</span>
@@ -243,13 +250,13 @@ quantile_B = quantile.<span style="color: #51afef;">(</span>dist_B, <span style=
 </div>
 </div>
 </div>
-<div id="outline-container-org039ba9d" class="outline-3">
-<h3 id="org039ba9d">b</h3>
-<div class="outline-text-3" id="text-org039ba9d">
+<div id="outline-container-orgce1a5c7" class="outline-3">
+<h3 id="orgce1a5c7">b</h3>
+<div class="outline-text-3" id="text-orgce1a5c7">
 </div>
-<div id="outline-container-orga6b6863" class="outline-4">
-<h4 id="orga6b6863">answer</h4>
-<div class="outline-text-4" id="text-orga6b6863">
+<div id="outline-container-org40ed57a" class="outline-4">
+<h4 id="org40ed57a">answer</h4>
+<div class="outline-text-4" id="text-org40ed57a">
 <div class="org-src-container">
 <pre class="src src-julia">list_n&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
 exp_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">+</span> n_B <span style="color: #51afef;">)</span>
@@ -264,7 +271,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org3959ee4" class="figure">
+<div id="org1bda449" class="figure">
 <p><img src="fig/exercise3.3bplot.jpg" alt="exercise3.3bplot.jpg" width="500" />
 </p>
 </div>
@@ -290,7 +297,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org67d5d46" class="figure">
+<div id="org3387bad" class="figure">
 <p><img src="fig/exercise3.3b2plot.jpg" alt="exercise3.3b2plot.jpg" width="500" />
 </p>
 </div>
@@ -309,17 +316,17 @@ a prior distribution reflecting the belief that \(\theta_B\) is distributed clos
 </div>
 </div>
 </div>
-<div id="outline-container-org6fe13d1" class="outline-3">
-<h3 id="org6fe13d1">c</h3>
-<div class="outline-text-3" id="text-org6fe13d1">
+<div id="outline-container-org7f3ccf3" class="outline-3">
+<h3 id="org7f3ccf3">c</h3>
+<div class="outline-text-3" id="text-org7f3ccf3">
 </div>
-<div id="outline-container-org8e2158e" class="outline-4">
-<h4 id="org8e2158e">answer</h4>
-<div class="outline-text-4" id="text-org8e2158e">
+<div id="outline-container-orgb9ca810" class="outline-4">
+<h4 id="orgb9ca810">answer</h4>
+<div class="outline-text-4" id="text-orgb9ca810">
 </div>
-<div id="outline-container-org8c67523" class="outline-5">
-<h5 id="org8c67523">日本語</h5>
-<div class="outline-text-5" id="text-org8c67523">
+<div id="outline-container-orgc8d2bf6" class="outline-5">
+<h5 id="orgc8d2bf6">日本語</h5>
+<div class="outline-text-5" id="text-orgc8d2bf6">
 <p>
 B 系統のマウスは A 系統のマウスと関連性があるとされているので、
 A 系統のマウスについての腫瘍数の情報は B 系統のマウスについての腫瘍数の事前情報になり得る。よって、\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)という仮定は妥当ではなく、
@@ -330,9 +337,9 @@ B 系統のマウスと A 系統のマウスの関連の度合いに関する信
 </p>
 </div>
 </div>
-<div id="outline-container-org34b4747" class="outline-5">
-<h5 id="org34b4747">English</h5>
-<div class="outline-text-5" id="text-org34b4747">
+<div id="outline-container-org8d07fb0" class="outline-5">
+<h5 id="org8d07fb0">English</h5>
+<div class="outline-text-5" id="text-org8d07fb0">
 <p>
 The B strain of mice is said to be related to the A strain of mice,
 so information about the number of tumors in A strain mice can serve as prior information about the number of tumors in B strain mice.
@@ -359,7 +366,7 @@ it is possible to model it using the posterior expectation of \(\theta_A\) as th
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

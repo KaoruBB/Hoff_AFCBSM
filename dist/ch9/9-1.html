@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,26 +115,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf70fc42">a)</a>
+<li><a href="#org752f61e">a)</a>
 <ul>
-<li><a href="#orgd292e6b">Answer</a></li>
+<li><a href="#org75db034">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orge5da776">b)</a>
+<li><a href="#org107dd90">b)</a>
 <ul>
-<li><a href="#org463a500">Answer</a></li>
+<li><a href="#org0e02b5e">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf70fc42" class="outline-2">
-<h2 id="orgf70fc42">a)</h2>
-<div class="outline-text-2" id="text-orgf70fc42">
+<div id="outline-container-org752f61e" class="outline-2">
+<h2 id="org752f61e">a)</h2>
+<div class="outline-text-2" id="text-org752f61e">
 </div>
-<div id="outline-container-orgd292e6b" class="outline-3">
-<h3 id="orgd292e6b">Answer</h3>
-<div class="outline-text-3" id="text-orgd292e6b">
+<div id="outline-container-org75db034" class="outline-3">
+<h3 id="org75db034">Answer</h3>
+<div class="outline-text-3" id="text-org75db034">
 <p>
 The prior information means that the line \(\beta_1 + \beta_2 x\) should produce values between 22 and 24 when \(x\) is between 1 and 6.
 A little algebra shows that we need a prior distribution on \((\beta_1, \beta_2)\) such that
@@ -211,20 +218,20 @@ swimmer 4: 23.44
 
 
 
-<div id="org6368666" class="figure">
+<div id="org9272b40" class="figure">
 <p><img src="./fig/ex9-1_posterior_predictive.png" alt="ex9-1_posterior_predictive.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orge5da776" class="outline-2">
-<h2 id="orge5da776">b)</h2>
-<div class="outline-text-2" id="text-orge5da776">
+<div id="outline-container-org107dd90" class="outline-2">
+<h2 id="org107dd90">b)</h2>
+<div class="outline-text-2" id="text-org107dd90">
 </div>
-<div id="outline-container-org463a500" class="outline-3">
-<h3 id="org463a500">Answer</h3>
-<div class="outline-text-3" id="text-org463a500">
+<div id="outline-container-org0e02b5e" class="outline-3">
+<h3 id="org0e02b5e">Answer</h3>
+<div class="outline-text-3" id="text-org0e02b5e">
 <div class="org-src-container">
 <pre class="src src-julia">ind_fastest = mapslices<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x .<span style="color: #FCCE7B;">==</span> minimum<span style="color: #C57BDB;">(</span>x<span style="color: #C57BDB;">)</span>, Y_PRED, dims=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
 mean<span style="color: #51afef;">(</span>ind_fastest, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
@@ -259,7 +266,7 @@ Swimmer 1 will be the fastest with probability 0.4184, so I recommend that the c
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

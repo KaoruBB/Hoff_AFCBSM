@@ -10,7 +10,16 @@
 
 #+SETUPFILE: ./org-html-themes/org/theme-readtheorg.setup
 
-#+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+
+#+HTML_HEAD: <!-- Google tag (gtag.js) -->
+#+HTML_HEAD: <script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+#+HTML_HEAD: <script>
+#+HTML_HEAD:   window.dataLayer = window.dataLayer || [];
+#+HTML_HEAD:   function gtag(){dataLayer.push(arguments);}
+#+HTML_HEAD:   gtag('js', new Date());
+#+HTML_HEAD:   gtag('config', 'GT-M6XHKK2R');
+#+HTML_HEAD: </script>
+
 #+HTML_HEAD: <link rel="stylesheet" href="/css/custom.css">
 
 #+EXCLUDE_TAGS: noexport

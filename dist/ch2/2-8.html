@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 2.8 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,76 +115,76 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbf77047">Answer (English)</a>
+<li><a href="#org2a304b6">Answer (English)</a>
 <ul>
-<li><a href="#orgf50f09d">a: Distribution of Religions in Sri Lanka</a>
+<li><a href="#org0706a8a">a: Distribution of Religions in Sri Lanka</a>
 <ul>
-<li><a href="#org35d0c92">i: Pr(person <i>x</i> is Hindu)</a></li>
-<li><a href="#org7ce8d12">ii: Pr(\(x = 6452859\))</a></li>
-<li><a href="#orgfb64b55">iii: Pr(Person <i>x</i> is Hindu \(\mid x = 6452859\))</a></li>
+<li><a href="#org6d27b64">i: Pr(person <i>x</i> is Hindu)</a></li>
+<li><a href="#org2979abb">ii: Pr(\(x = 6452859\))</a></li>
+<li><a href="#org5807e27">iii: Pr(Person <i>x</i> is Hindu \(\mid x = 6452859\))</a></li>
 </ul>
 </li>
-<li><a href="#orgd910b0d">b: Coin Flipping</a>
+<li><a href="#orga5bf145">b: Coin Flipping</a>
 <ul>
-<li><a href="#orgc4791d6">i: Pr(θ = 1/3)</a></li>
+<li><a href="#orgfd07efc">i: Pr(θ = 1/3)</a></li>
 </ul>
 </li>
-<li><a href="#orgdce2ee3">ii: Pr(the first coin flip will result in a heads)</a></li>
-<li><a href="#orgfb92390">iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))</a></li>
-<li><a href="#orgf1cf8f4">c: Pr(the flip has resulted in a heads)</a></li>
+<li><a href="#org6974140">ii: Pr(the first coin flip will result in a heads)</a></li>
+<li><a href="#orgc12236b">iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))</a></li>
+<li><a href="#org40e22a5">c: Pr(the flip has resulted in a heads)</a></li>
 </ul>
 </li>
-<li><a href="#orgee6a6b9">解答 (日本語)</a>
+<li><a href="#org080b4f6">解答 (日本語)</a>
 <ul>
-<li><a href="#org220d10f">a: スリランカの宗教分布</a>
+<li><a href="#org3e91d4f">a: スリランカの宗教分布</a>
 <ul>
-<li><a href="#orgb3c7c8c">i: Pr(xがヒンズー教徒)</a></li>
-<li><a href="#org3c9d02a">ii: Pr(x = 6452859)</a></li>
-<li><a href="#org843b074">iii: Pr(xがヒンズー教徒 | x = 6452859)</a></li>
+<li><a href="#org2c97cef">i: Pr(xがヒンズー教徒)</a></li>
+<li><a href="#org87e5404">ii: Pr(x = 6452859)</a></li>
+<li><a href="#orgda8395b">iii: Pr(xがヒンズー教徒 | x = 6452859)</a></li>
 </ul>
 </li>
-<li><a href="#org51cb435">b: コイン投げ</a>
+<li><a href="#org7df52aa">b: コイン投げ</a>
 <ul>
-<li><a href="#orgb72034b">i: Pr(θ = 1/3)</a></li>
-<li><a href="#org2c7f576">ii: Pr(最初のコイン投げで表が出る)</a></li>
-<li><a href="#org51edeec">iii: Pr(最初のコイン投げで表が出る | θ = 1/3)</a></li>
+<li><a href="#orgccf122a">i: Pr(θ = 1/3)</a></li>
+<li><a href="#orgcf30968">ii: Pr(最初のコイン投げで表が出る)</a></li>
+<li><a href="#org2cdeaa5">iii: Pr(最初のコイン投げで表が出る | θ = 1/3)</a></li>
 </ul>
 </li>
-<li><a href="#org3778bbc">c: Pr(すでに投げられたコインの結果が表)</a></li>
+<li><a href="#org726e16d">c: Pr(すでに投げられたコインの結果が表)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf77047" class="outline-2">
-<h2 id="orgbf77047">Answer (English)</h2>
-<div class="outline-text-2" id="text-orgbf77047">
+<div id="outline-container-org2a304b6" class="outline-2">
+<h2 id="org2a304b6">Answer (English)</h2>
+<div class="outline-text-2" id="text-org2a304b6">
 </div>
-<div id="outline-container-orgf50f09d" class="outline-3">
-<h3 id="orgf50f09d">a: Distribution of Religions in Sri Lanka</h3>
-<div class="outline-text-3" id="text-orgf50f09d">
+<div id="outline-container-org0706a8a" class="outline-3">
+<h3 id="org0706a8a">a: Distribution of Religions in Sri Lanka</h3>
+<div class="outline-text-3" id="text-org0706a8a">
 </div>
-<div id="outline-container-org35d0c92" class="outline-4">
-<h4 id="org35d0c92">i: Pr(person <i>x</i> is Hindu)</h4>
-<div class="outline-text-4" id="text-org35d0c92">
+<div id="outline-container-org6d27b64" class="outline-4">
+<h4 id="org6d27b64">i: Pr(person <i>x</i> is Hindu)</h4>
+<div class="outline-text-4" id="text-org6d27b64">
 <ul class="org-ul">
 <li><i>Frequency Interpretation:</i> The proportion of Hindus in the sample as the total number of sampled individuals (<i>K</i>) approaches infinity. (Calculated as the number of observed Hindus divided by <i>K</i>).</li>
 <li><i>Subjective Interpretation:</i> Our <b>degree of belief</b> that a person <i>x</i> is Hindu, <b>before</b> the specific individual is selected.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7ce8d12" class="outline-4">
-<h4 id="org7ce8d12">ii: Pr(\(x = 6452859\))</h4>
-<div class="outline-text-4" id="text-org7ce8d12">
+<div id="outline-container-org2979abb" class="outline-4">
+<h4 id="org2979abb">ii: Pr(\(x = 6452859\))</h4>
+<div class="outline-text-4" id="text-org2979abb">
 <ul class="org-ul">
 <li><i>Frequency Interpretation:</i> The proportion of times the number 6452859 is drawn when sampling with replacement from the numbers 1 to <i>K</i> infinitely many times.</li>
 <li><i>Subjective Interpretation:</i> Our <b>degree of belief</b> that the selected number will be 6452859, <b>before</b> the sampling occurs.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb64b55" class="outline-4">
-<h4 id="orgfb64b55">iii: Pr(Person <i>x</i> is Hindu \(\mid x = 6452859\))</h4>
-<div class="outline-text-4" id="text-orgfb64b55">
+<div id="outline-container-org5807e27" class="outline-4">
+<h4 id="org5807e27">iii: Pr(Person <i>x</i> is Hindu \(\mid x = 6452859\))</h4>
+<div class="outline-text-4" id="text-org5807e27">
 <ul class="org-ul">
 <li><i>Frequency Interpretation:</i> Among all the instances where <code>x = 6452859</code> occurs in an infinite series of draws with replacement from 1 to <i>K</i>, the proportion of those instances where person <code>x</code> is Hindu. (Since <code>x = 6452859</code> refers to a specific individual whose religion is fixed, this proportion will be either 0 or 1).</li>
 <li><i>Subjective Interpretation:</i> Our <b>degree of belief</b> that the specific individual (number 6452859) is Hindu, <b>after</b> we know that <code>x = 6452859</code>. The probability reflects our <b>state of knowledge</b>. (If we know the person&rsquo;s religion, the degree of belief is 0 or 1. If we do not know, we might use information from the general population distribution, e.g., 15%).</li>
@@ -185,13 +192,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgd910b0d" class="outline-3">
-<h3 id="orgd910b0d">b: Coin Flipping</h3>
-<div class="outline-text-3" id="text-orgd910b0d">
+<div id="outline-container-orga5bf145" class="outline-3">
+<h3 id="orga5bf145">b: Coin Flipping</h3>
+<div class="outline-text-3" id="text-orga5bf145">
 </div>
-<div id="outline-container-orgc4791d6" class="outline-4">
-<h4 id="orgc4791d6">i: Pr(θ = 1/3)</h4>
-<div class="outline-text-4" id="text-orgc4791d6">
+<div id="outline-container-orgfd07efc" class="outline-4">
+<h4 id="orgfd07efc">i: Pr(θ = 1/3)</h4>
+<div class="outline-text-4" id="text-orgfd07efc">
 <p>
 This probability represents the probability assigned to the proposition that &ldquo;the long-run relative frequency of heads (<code>θ</code>) when flipping a specific quarter infinitely many times is <b>exactly</b> 1/3&rdquo;. Two main interpretations can be considered:
 </p>
@@ -229,9 +236,9 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </div>
 </div>
 </div>
-<div id="outline-container-orgdce2ee3" class="outline-3">
-<h3 id="orgdce2ee3">ii: Pr(the first coin flip will result in a heads)</h3>
-<div class="outline-text-3" id="text-orgdce2ee3">
+<div id="outline-container-org6974140" class="outline-3">
+<h3 id="org6974140">ii: Pr(the first coin flip will result in a heads)</h3>
+<div class="outline-text-3" id="text-org6974140">
 <ul class="org-ul">
 <li><i>Subjective Probability Interpretation:</i>
 <ul class="org-ul">
@@ -249,9 +256,9 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb92390" class="outline-3">
-<h3 id="orgfb92390">iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))</h3>
-<div class="outline-text-3" id="text-orgfb92390">
+<div id="outline-container-orgc12236b" class="outline-3">
+<h3 id="orgc12236b">iii: Pr(the first coin flip will result in a heads \(\mid \theta = 1/3\))</h3>
+<div class="outline-text-3" id="text-orgc12236b">
 <ul class="org-ul">
 <li><i>Subjective Probability Interpretation:</i>
 <ul class="org-ul">
@@ -265,9 +272,9 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf1cf8f4" class="outline-3">
-<h3 id="orgf1cf8f4">c: Pr(the flip has resulted in a heads)</h3>
-<div class="outline-text-3" id="text-orgf1cf8f4">
+<div id="outline-container-org40e22a5" class="outline-3">
+<h3 id="org40e22a5">c: Pr(the flip has resulted in a heads)</h3>
+<div class="outline-text-3" id="text-org40e22a5">
 <ul class="org-ul">
 <li><i>Subjective Probability Interpretation:</i> Our <b>current degree of belief</b> that the outcome of the flipped coin is heads.</li>
 <li><i>Frequentist Interpretation:</i> Since the result is already determined, it simply represents whether the outcome was actually heads (1) or not (0).</li>
@@ -275,35 +282,35 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </div>
 </div>
 </div>
-<div id="outline-container-orgee6a6b9" class="outline-2">
-<h2 id="orgee6a6b9">解答 (日本語)</h2>
-<div class="outline-text-2" id="text-orgee6a6b9">
+<div id="outline-container-org080b4f6" class="outline-2">
+<h2 id="org080b4f6">解答 (日本語)</h2>
+<div class="outline-text-2" id="text-org080b4f6">
 </div>
-<div id="outline-container-org220d10f" class="outline-3">
-<h3 id="org220d10f">a: スリランカの宗教分布</h3>
-<div class="outline-text-3" id="text-org220d10f">
+<div id="outline-container-org3e91d4f" class="outline-3">
+<h3 id="org3e91d4f">a: スリランカの宗教分布</h3>
+<div class="outline-text-3" id="text-org3e91d4f">
 </div>
-<div id="outline-container-orgb3c7c8c" class="outline-4">
-<h4 id="orgb3c7c8c">i: Pr(xがヒンズー教徒)</h4>
-<div class="outline-text-4" id="text-orgb3c7c8c">
+<div id="outline-container-org2c97cef" class="outline-4">
+<h4 id="org2c97cef">i: Pr(xがヒンズー教徒)</h4>
+<div class="outline-text-4" id="text-org2c97cef">
 <ul class="org-ul">
 <li><b>頻度主義的解釈:</b> K を無限大に近づけたときの標本中のヒンズー教徒の割合。 (観測されたヒンズー教徒の人数を K で割ったもの)</li>
 <li><b>主観確率的解釈:</b> 特定の個人 <i>x</i> が選ばれる <b>前</b> に、その人がヒンドゥー教徒であるということに対する、私たちの <b>信念の度合い</b></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3c9d02a" class="outline-4">
-<h4 id="org3c9d02a">ii: Pr(x = 6452859)</h4>
-<div class="outline-text-4" id="text-org3c9d02a">
+<div id="outline-container-org87e5404" class="outline-4">
+<h4 id="org87e5404">ii: Pr(x = 6452859)</h4>
+<div class="outline-text-4" id="text-org87e5404">
 <ul class="org-ul">
 <li><b>頻度主義的解釈:</b> 1 から K の中から x を無限回復元抽出したとき、xが 6452859 である割合。</li>
 <li><b>主観確率的解釈:</b> サンプリングが行われる <b>前</b> に、選ばれる番号が 6452859 であるということに対する、私たちの <b>信念の度合い</b></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org843b074" class="outline-4">
-<h4 id="org843b074">iii: Pr(xがヒンズー教徒 | x = 6452859)</h4>
-<div class="outline-text-4" id="text-org843b074">
+<div id="outline-container-orgda8395b" class="outline-4">
+<h4 id="orgda8395b">iii: Pr(xがヒンズー教徒 | x = 6452859)</h4>
+<div class="outline-text-4" id="text-orgda8395b">
 <ul class="org-ul">
 <li><b>頻度主義的解釈:</b>
 1 から K の中から x を無限回復元抽出したときに x が 6452859 であるという事象のうち、 x がヒンズー教徒である割合。
@@ -315,13 +322,13 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </div>
 </div>
 </div>
-<div id="outline-container-org51cb435" class="outline-3">
-<h3 id="org51cb435">b: コイン投げ</h3>
-<div class="outline-text-3" id="text-org51cb435">
+<div id="outline-container-org7df52aa" class="outline-3">
+<h3 id="org7df52aa">b: コイン投げ</h3>
+<div class="outline-text-3" id="text-org7df52aa">
 </div>
-<div id="outline-container-orgb72034b" class="outline-4">
-<h4 id="orgb72034b">i: Pr(θ = 1/3)</h4>
-<div class="outline-text-4" id="text-orgb72034b">
+<div id="outline-container-orgccf122a" class="outline-4">
+<h4 id="orgccf122a">i: Pr(θ = 1/3)</h4>
+<div class="outline-text-4" id="text-orgccf122a">
 <p>
 この確率は、「特定のクォーター（硬貨）を無限回投げたときの表が出る長期的な相対頻度 \(\theta\) が、 <b>正確に</b> 1/3 である」という命題に対する確率である。これには主に二つの解釈が考えられる。
 </p>
@@ -348,9 +355,9 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </ul>
 </div>
 </div>
-<div id="outline-container-org2c7f576" class="outline-4">
-<h4 id="org2c7f576">ii: Pr(最初のコイン投げで表が出る)</h4>
-<div class="outline-text-4" id="text-org2c7f576">
+<div id="outline-container-orgcf30968" class="outline-4">
+<h4 id="orgcf30968">ii: Pr(最初のコイン投げで表が出る)</h4>
+<div class="outline-text-4" id="text-orgcf30968">
 <ul class="org-ul">
 <li><b>主観確率的解釈:</b> <b>次に行う（最初の）</b> コイン投げの結果が表になることに対する、私たちの <b>現在の信念の度合い</b>
 <ul class="org-ul">
@@ -364,9 +371,9 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </ul>
 </div>
 </div>
-<div id="outline-container-org51edeec" class="outline-4">
-<h4 id="org51edeec">iii: Pr(最初のコイン投げで表が出る | θ = 1/3)</h4>
-<div class="outline-text-4" id="text-org51edeec">
+<div id="outline-container-org2cdeaa5" class="outline-4">
+<h4 id="org2cdeaa5">iii: Pr(最初のコイン投げで表が出る | θ = 1/3)</h4>
+<div class="outline-text-4" id="text-org2cdeaa5">
 <ul class="org-ul">
 <li><b>主観確率的解釈:</b> 長期的に見た表が出る相対頻度\(\theta = 1/3\) という情報を知ったうえで、最初のコイン投げの結果が表になることに対する私たちの <b>現在の信念の度合い</b></li>
 <li><b>頻度主義的解釈:</b> 長期的に見た表が出る相対頻度\(\theta = 1/3\)の25セント硬貨を何度も投げる世界線を無限に考えたとき、最初のコイン投げで表が出る世界線の割合</li>
@@ -374,9 +381,9 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 </div>
 </div>
 </div>
-<div id="outline-container-org3778bbc" class="outline-3">
-<h3 id="org3778bbc">c: Pr(すでに投げられたコインの結果が表)</h3>
-<div class="outline-text-3" id="text-org3778bbc">
+<div id="outline-container-org726e16d" class="outline-3">
+<h3 id="org726e16d">c: Pr(すでに投げられたコインの結果が表)</h3>
+<div class="outline-text-3" id="text-org726e16d">
 <ul class="org-ul">
 <li><b>主観確率的解釈:</b> 投げられたコインの結果が表であることに対する私たちの <b>現在の信念の度合い</b></li>
 <li><b>頻度主義的解釈:</b> すでに結果が決まっているので、単に結果が表であったどうか(0 または 1) ということを表す</li>
@@ -396,7 +403,7 @@ However, in the standard case where <code>θ</code> is considered a continuous q
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

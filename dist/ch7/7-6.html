@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.6 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -50,26 +57,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1c238d6">a)</a>
+<li><a href="#org463d557">a)</a>
 <ul>
-<li><a href="#orgbf72f7d">Answer</a>
+<li><a href="#org6585c9b">Answer</a>
 <ul>
-<li><a href="#orga58b60b">preprocess &amp; Gibbs sampler</a></li>
-<li><a href="#org6dd4adf">marginal posterior distribution</a></li>
+<li><a href="#org5b60f95">preprocess &amp; Gibbs sampler</a></li>
+<li><a href="#org3e38d90">marginal posterior distribution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8db1ebc">b)</a>
+<li><a href="#orgcc65a27">b)</a>
 <ul>
-<li><a href="#org4605d2b">Answer</a>
+<li><a href="#org373b869">Answer</a>
 <ul>
-<li><a href="#org05ee011">standard deviation</a></li>
-<li><a href="#org1bd1b92">correlation</a></li>
-<li><a href="#orgb54120f">discussion</a>
+<li><a href="#orgec4217c">standard deviation</a></li>
+<li><a href="#orgc1c87bb">correlation</a></li>
+<li><a href="#orgb94c1c5">discussion</a>
 <ul>
-<li><a href="#orgf061895">日本語</a></li>
-<li><a href="#org7e92ff0">English</a></li>
+<li><a href="#org6320b05">日本語</a></li>
+<li><a href="#org69baac2">English</a></li>
 </ul>
 </li>
 </ul>
@@ -79,17 +86,17 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org1c238d6" class="outline-2">
-<h2 id="org1c238d6">a)</h2>
-<div class="outline-text-2" id="text-org1c238d6">
+<div id="outline-container-org463d557" class="outline-2">
+<h2 id="org463d557">a)</h2>
+<div class="outline-text-2" id="text-org463d557">
 </div>
-<div id="outline-container-orgbf72f7d" class="outline-3">
-<h3 id="orgbf72f7d">Answer</h3>
-<div class="outline-text-3" id="text-orgbf72f7d">
+<div id="outline-container-org6585c9b" class="outline-3">
+<h3 id="org6585c9b">Answer</h3>
+<div class="outline-text-3" id="text-org6585c9b">
 </div>
-<div id="outline-container-orga58b60b" class="outline-4">
-<h4 id="orga58b60b">preprocess &amp; Gibbs sampler</h4>
-<div class="outline-text-4" id="text-orga58b60b">
+<div id="outline-container-org5b60f95" class="outline-4">
+<h4 id="org5b60f95">preprocess &amp; Gibbs sampler</h4>
+<div class="outline-text-4" id="text-org5b60f95">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
 Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
@@ -155,11 +162,11 @@ THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<spa
 </div>
 </div>
 </div>
-<div id="outline-container-org6dd4adf" class="outline-4">
-<h4 id="org6dd4adf">marginal posterior distribution</h4>
-<div class="outline-text-4" id="text-org6dd4adf">
+<div id="outline-container-org3e38d90" class="outline-4">
+<h4 id="org3e38d90">marginal posterior distribution</h4>
+<div class="outline-text-4" id="text-org3e38d90">
 
-<div id="org436067f" class="figure">
+<div id="orgae97517" class="figure">
 <p><img src="./fig/exercise7-6a.png" alt="exercise7-6a.png" width="800" />
 </p>
 </div>
@@ -174,7 +181,7 @@ THETA_n, SIGMA_n = getPosterior<span style="color: #51afef;">(</span>df_n, S<spa
 </pre>
 </div>
 
-<pre class="example" id="orga452def">
+<pre class="example" id="orgb3dd4ea">
 Pr(θd,1 &gt; θn,1) = 1.0
 Pr(θd,2 &gt; θn,2) = 1.0
 Pr(θd,3 &gt; θn,3) = 1.0
@@ -192,50 +199,50 @@ Pr(θd,7 &gt; θn,7) = 1.0
 </div>
 </div>
 </div>
-<div id="outline-container-org8db1ebc" class="outline-2">
-<h2 id="org8db1ebc">b)</h2>
-<div class="outline-text-2" id="text-org8db1ebc">
+<div id="outline-container-orgcc65a27" class="outline-2">
+<h2 id="orgcc65a27">b)</h2>
+<div class="outline-text-2" id="text-orgcc65a27">
 </div>
-<div id="outline-container-org4605d2b" class="outline-3">
-<h3 id="org4605d2b">Answer</h3>
-<div class="outline-text-3" id="text-org4605d2b">
+<div id="outline-container-org373b869" class="outline-3">
+<h3 id="org373b869">Answer</h3>
+<div class="outline-text-3" id="text-org373b869">
 </div>
-<div id="outline-container-org05ee011" class="outline-4">
-<h4 id="org05ee011">standard deviation</h4>
-<div class="outline-text-4" id="text-org05ee011">
+<div id="outline-container-orgec4217c" class="outline-4">
+<h4 id="orgec4217c">standard deviation</h4>
+<div class="outline-text-4" id="text-orgec4217c">
 
-<div id="org1ddea01" class="figure">
+<div id="org5860bd0" class="figure">
 <p><img src="./fig/exercise7-6b_sd.png" alt="exercise7-6b_sd.png" width="800" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1bd1b92" class="outline-4">
-<h4 id="org1bd1b92">correlation</h4>
-<div class="outline-text-4" id="text-org1bd1b92">
+<div id="outline-container-orgc1c87bb" class="outline-4">
+<h4 id="orgc1c87bb">correlation</h4>
+<div class="outline-text-4" id="text-orgc1c87bb">
 
-<div id="orgb0eb4b2" class="figure">
+<div id="orgdfdc87d" class="figure">
 <p><img src="./fig/exercise7-6b_cor.png" alt="exercise7-6b_cor.png" width="800" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb54120f" class="outline-4">
-<h4 id="orgb54120f">discussion</h4>
-<div class="outline-text-4" id="text-orgb54120f">
+<div id="outline-container-orgb94c1c5" class="outline-4">
+<h4 id="orgb94c1c5">discussion</h4>
+<div class="outline-text-4" id="text-orgb94c1c5">
 </div>
-<div id="outline-container-orgf061895" class="outline-5">
-<h5 id="orgf061895">日本語</h5>
-<div class="outline-text-5" id="text-orgf061895">
+<div id="outline-container-org6320b05" class="outline-5">
+<h5 id="org6320b05">日本語</h5>
+<div class="outline-text-5" id="text-org6320b05">
 <ul class="org-ul">
 <li>標準偏差は、糖尿病患者群の方が、やや大きい</li>
 <li>相関係数は diabetes pedigree 以外の変数に関して、非患者群の方が大きい。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7e92ff0" class="outline-5">
-<h5 id="org7e92ff0">English</h5>
-<div class="outline-text-5" id="text-org7e92ff0">
+<div id="outline-container-org69baac2" class="outline-5">
+<h5 id="org69baac2">English</h5>
+<div class="outline-text-5" id="text-org69baac2">
 <ul class="org-ul">
 <li>The standard deviation is slightly larger in the diabetic patient group.</li>
 <li>For variables other than <code>diabetes pedigree</code>, the correlation coefficient is larger in the non-diabetic group.</li>
@@ -257,7 +264,7 @@ Pr(θd,7 &gt; θn,7) = 1.0
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

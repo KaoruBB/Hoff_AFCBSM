@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.5 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -50,26 +57,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0302a83">a)</a>
+<li><a href="#org39e516a">a)</a>
 <ul>
-<li><a href="#org51b1a05">Answer</a></li>
+<li><a href="#orgf8267c9">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org5463168">b)</a>
+<li><a href="#orgefbd2b1">b)</a>
 <ul>
-<li><a href="#org3649f5d">Answer</a></li>
+<li><a href="#org8aee60b">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgee66235">c)</a>
+<li><a href="#orgeaf0397">c)</a>
 <ul>
-<li><a href="#org4e48230">Answer</a>
+<li><a href="#orga08b496">Answer</a>
 <ul>
-<li><a href="#org39ae1a0">Gibbs sampler</a></li>
-<li><a href="#orgd323187">Posterior mean and confidence interval</a></li>
-<li><a href="#org1e45c5f">discussion</a>
+<li><a href="#org0ec71a9">Gibbs sampler</a></li>
+<li><a href="#org955bd64">Posterior mean and confidence interval</a></li>
+<li><a href="#org9379c11">discussion</a>
 <ul>
-<li><a href="#org21e6401">日本語</a></li>
-<li><a href="#org5d2d0e2">English</a></li>
+<li><a href="#orgfd1b802">日本語</a></li>
+<li><a href="#org0174f30">English</a></li>
 </ul>
 </li>
 </ul>
@@ -79,13 +86,13 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org0302a83" class="outline-2">
-<h2 id="org0302a83">a)</h2>
-<div class="outline-text-2" id="text-org0302a83">
+<div id="outline-container-org39e516a" class="outline-2">
+<h2 id="org39e516a">a)</h2>
+<div class="outline-text-2" id="text-org39e516a">
 </div>
-<div id="outline-container-org51b1a05" class="outline-3">
-<h3 id="org51b1a05">Answer</h3>
-<div class="outline-text-3" id="text-org51b1a05">
+<div id="outline-container-orgf8267c9" class="outline-3">
+<h3 id="orgf8267c9">Answer</h3>
+<div class="outline-text-3" id="text-orgf8267c9">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/interexp.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">parse_matrix</span><span style="color: #51afef;">(</span>input_matrix<span style="color: #51afef;">)</span>
@@ -138,13 +145,13 @@ julia<span style="color: #FCCE7B;">&gt;</span> &#963;&#770;&#178;_B
 </div>
 </div>
 </div>
-<div id="outline-container-org5463168" class="outline-2">
-<h2 id="org5463168">b)</h2>
-<div class="outline-text-2" id="text-org5463168">
+<div id="outline-container-orgefbd2b1" class="outline-2">
+<h2 id="orgefbd2b1">b)</h2>
+<div class="outline-text-2" id="text-orgefbd2b1">
 </div>
-<div id="outline-container-org3649f5d" class="outline-3">
-<h3 id="org3649f5d">Answer</h3>
-<div class="outline-text-3" id="text-org3649f5d">
+<div id="outline-container-org8aee60b" class="outline-3">
+<h3 id="org8aee60b">Answer</h3>
+<div class="outline-text-3" id="text-org8aee60b">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">impute</span><span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
     nrow = size<span style="color: #51afef;">(</span>Y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
@@ -172,7 +179,7 @@ OneSampleTTest<span style="color: #51afef;">(</span>Y_imp<span style="color: #C5
 <p>
 :+RESULTS:
 </p>
-<pre class="example" id="org54bc5ef">
+<pre class="example" id="orga45eb2a">
 One sample t-test
 -----------------
 Population details:
@@ -194,17 +201,17 @@ Details:
 </div>
 </div>
 </div>
-<div id="outline-container-orgee66235" class="outline-2">
-<h2 id="orgee66235">c)</h2>
-<div class="outline-text-2" id="text-orgee66235">
+<div id="outline-container-orgeaf0397" class="outline-2">
+<h2 id="orgeaf0397">c)</h2>
+<div class="outline-text-2" id="text-orgeaf0397">
 </div>
-<div id="outline-container-org4e48230" class="outline-3">
-<h3 id="org4e48230">Answer</h3>
-<div class="outline-text-3" id="text-org4e48230">
+<div id="outline-container-orga08b496" class="outline-3">
+<h3 id="orga08b496">Answer</h3>
+<div class="outline-text-3" id="text-orga08b496">
 </div>
-<div id="outline-container-org39ae1a0" class="outline-4">
-<h4 id="org39ae1a0">Gibbs sampler</h4>
-<div class="outline-text-4" id="text-org39ae1a0">
+<div id="outline-container-org0ec71a9" class="outline-4">
+<h4 id="org0ec71a9">Gibbs sampler</h4>
+<div class="outline-text-4" id="text-org0ec71a9">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">impute_Gibbs_Jeffreys</span><span style="color: #51afef;">(</span>S, Y, Y_full, &#931;_init<span style="color: #51afef;">)</span>
     n, p = size<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
@@ -253,9 +260,9 @@ THETA, SIGMA, Y_MISS = impute_Gibbs_Jeffreys<span style="color: #51afef;">(</spa
 </div>
 </div>
 </div>
-<div id="outline-container-orgd323187" class="outline-4">
-<h4 id="orgd323187">Posterior mean and confidence interval</h4>
-<div class="outline-text-4" id="text-orgd323187">
+<div id="outline-container-org955bd64" class="outline-4">
+<h4 id="org955bd64">Posterior mean and confidence interval</h4>
+<div class="outline-text-4" id="text-org955bd64">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean</span>
 mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">-</span> THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
@@ -280,21 +287,21 @@ quantile<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;"
 </pre>
 </div>
 </div>
-<div id="outline-container-org1e45c5f" class="outline-4">
-<h4 id="org1e45c5f">discussion</h4>
-<div class="outline-text-4" id="text-org1e45c5f">
+<div id="outline-container-org9379c11" class="outline-4">
+<h4 id="org9379c11">discussion</h4>
+<div class="outline-text-4" id="text-org9379c11">
 </div>
-<div id="outline-container-org21e6401" class="outline-5">
-<h5 id="org21e6401">日本語</h5>
-<div class="outline-text-5" id="text-org21e6401">
+<div id="outline-container-orgfd1b802" class="outline-5">
+<h5 id="orgfd1b802">日本語</h5>
+<div class="outline-text-5" id="text-orgfd1b802">
 <p>
 b)で行った t 検定では、有意水準 5%で帰無仮説が棄却され、刺激 A と刺激 B の反応時間には有意な差があることが示唆される結果になったが、ベイズ推定による代入法では、差の事後分布の 95%信用区間が 0 を含んでおり、必ずしも刺激 A と刺激 B の反応時間に有意な差があるとは言えない結果になった。
 </p>
 </div>
 </div>
-<div id="outline-container-org5d2d0e2" class="outline-5">
-<h5 id="org5d2d0e2">English</h5>
-<div class="outline-text-5" id="text-org5d2d0e2">
+<div id="outline-container-org0174f30" class="outline-5">
+<h5 id="org0174f30">English</h5>
+<div class="outline-text-5" id="text-org0174f30">
 <p>
 In the t-test performed in b), the null hypothesis was rejected at the <code>5%</code> significance level, suggesting a significant difference between the reaction times for stimulus A and stimulus B.
 However, with the Bayesian estimation approach (imputation method), the <code>95%</code> credible interval for the posterior distribution of the difference included 0. This result suggests that there is not necessarily a significant difference in reaction times between stimulus A and stimulus B.
@@ -316,7 +323,7 @@ However, with the Bayesian estimation approach (imputation method), the <code>95
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

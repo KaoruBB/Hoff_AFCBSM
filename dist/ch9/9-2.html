@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,26 +115,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfbe2c54">a)</a>
+<li><a href="#org738b2cc">a)</a>
 <ul>
-<li><a href="#org7467733">Answer</a></li>
+<li><a href="#org04dab10">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org83f13a6">b)</a>
+<li><a href="#org7112407">b)</a>
 <ul>
-<li><a href="#org590399b">Answer</a></li>
+<li><a href="#org6039665">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfbe2c54" class="outline-2">
-<h2 id="orgfbe2c54">a)</h2>
-<div class="outline-text-2" id="text-orgfbe2c54">
+<div id="outline-container-org738b2cc" class="outline-2">
+<h2 id="org738b2cc">a)</h2>
+<div class="outline-text-2" id="text-org738b2cc">
 </div>
-<div id="outline-container-org7467733" class="outline-3">
-<h3 id="org7467733">Answer</h3>
-<div class="outline-text-3" id="text-org7467733">
+<div id="outline-container-org04dab10" class="outline-3">
+<h3 id="org04dab10">Answer</h3>
+<div class="outline-text-3" id="text-org04dab10">
 <div class="org-src-container">
 <pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
 Y = Y_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
@@ -190,7 +197,7 @@ ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org35f5e28">
+<pre class="example" id="orgb6b5625">
 8×4 DataFrame
  Row │ param      ci_lower    ci_upper    ci_length
      │ String     Float64     Float64     Float64
@@ -207,13 +214,13 @@ ci_&#946; = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE
 </div>
 </div>
 </div>
-<div id="outline-container-org83f13a6" class="outline-2">
-<h2 id="org83f13a6">b)</h2>
-<div class="outline-text-2" id="text-org83f13a6">
+<div id="outline-container-org7112407" class="outline-2">
+<h2 id="org7112407">b)</h2>
+<div class="outline-text-2" id="text-org7112407">
 </div>
-<div id="outline-container-org590399b" class="outline-3">
-<h3 id="org590399b">Answer</h3>
-<div class="outline-text-3" id="text-org590399b">
+<div id="outline-container-org6039665" class="outline-3">
+<h3 id="org6039665">Answer</h3>
+<div class="outline-text-3" id="text-org6039665">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">lpyX</span><span style="color: #51afef;">(</span>y, X; g=length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span>, &#957;&#8320;=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
 
@@ -285,7 +292,7 @@ df_ci_bma = DataFrame<span style="color: #51afef;">(</span>
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org68fc325">
+<pre class="example" id="orgd915da7">
 7×5 DataFrame
  Row │ param      prob     ci_lower   ci_upper   ci_length
      │ String     Float64  Float64    Float64    Float64
@@ -318,7 +325,7 @@ Compared to the results in part a), the lengths of the confidence intervals tend
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

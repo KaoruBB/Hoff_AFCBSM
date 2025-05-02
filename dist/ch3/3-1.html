@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.1 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,31 +115,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5c14276">Answer</a>
+<li><a href="#org22d2d66">Answer</a>
 <ul>
-<li><a href="#org8bac733">a</a>
+<li><a href="#orgfb58aeb">a</a>
 <ul>
-<li><a href="#orgec4e14b">Answer</a></li>
+<li><a href="#orgd96cff2">Answer</a></li>
 </ul>
 </li>
 <li><a href="#3.1B">b</a>
 <ul>
-<li><a href="#org48604e0">Answer</a></li>
+<li><a href="#org37d7770">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org57e23f5">c</a>
+<li><a href="#orgfcff78c">c</a>
 <ul>
-<li><a href="#orga531427">Answer</a></li>
+<li><a href="#org8087362">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org6bb444e">d</a>
+<li><a href="#orgd37fce4">d</a>
 <ul>
-<li><a href="#org0bf0c28">Answer</a></li>
+<li><a href="#org7163dc2">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org1a4e9ad">e</a>
+<li><a href="#org3c1e690">e</a>
 <ul>
-<li><a href="#orga93dd47">Answer</a></li>
+<li><a href="#orge1045a8">Answer</a></li>
 </ul>
 </li>
 </ul>
@@ -140,17 +147,17 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org5c14276" class="outline-2">
-<h2 id="org5c14276">Answer</h2>
-<div class="outline-text-2" id="text-org5c14276">
+<div id="outline-container-org22d2d66" class="outline-2">
+<h2 id="org22d2d66">Answer</h2>
+<div class="outline-text-2" id="text-org22d2d66">
 </div>
-<div id="outline-container-org8bac733" class="outline-3">
-<h3 id="org8bac733">a</h3>
-<div class="outline-text-3" id="text-org8bac733">
+<div id="outline-container-orgfb58aeb" class="outline-3">
+<h3 id="orgfb58aeb">a</h3>
+<div class="outline-text-3" id="text-orgfb58aeb">
 </div>
-<div id="outline-container-orgec4e14b" class="outline-4">
-<h4 id="orgec4e14b">Answer</h4>
-<div class="outline-text-4" id="text-orgec4e14b">
+<div id="outline-container-orgd96cff2" class="outline-4">
+<h4 id="orgd96cff2">Answer</h4>
+<div class="outline-text-4" id="text-orgd96cff2">
 \begin{align*}
 & \text{Pr}(Y_1 = y_1, \dots , Y_{100}=y_{100} \mid \theta) \\
 = &\text{Pr}(Y_1 = y_1 \mid \theta) \cdot \text{Pr}(Y_2 = y_2 \mid \theta) \cdot \dots \cdot \text{Pr}(Y_{100} = y_{100} \mid \theta)
@@ -170,9 +177,9 @@
 <h3 id="3.1B">b</h3>
 <div class="outline-text-3" id="text-3.1B">
 </div>
-<div id="outline-container-org48604e0" class="outline-4">
-<h4 id="org48604e0">Answer</h4>
-<div class="outline-text-4" id="text-org48604e0">
+<div id="outline-container-org37d7770" class="outline-4">
+<h4 id="org37d7770">Answer</h4>
+<div class="outline-text-4" id="text-org37d7770">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">begin</span>
 <span style="color: #51afef;">using</span> Plots
@@ -189,7 +196,7 @@ pdf_for_&#952;s = map<span style="color: #51afef;">(</span>&#952; <span style="c
 </pre>
 </div>
 
-<pre class="example" id="org0bcaf90">
+<pre class="example" id="orge9ff5c1">
 11-element Vector{Float64}:
  0.0
  4.107156919234531e-31
@@ -221,20 +228,20 @@ bar<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="orgca71100" class="figure">
+<div id="orgbaa6698" class="figure">
 <p><img src="fig/3.1bbar.jpg" alt="3.1bbar.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org57e23f5" class="outline-3">
-<h3 id="org57e23f5">c</h3>
-<div class="outline-text-3" id="text-org57e23f5">
+<div id="outline-container-orgfcff78c" class="outline-3">
+<h3 id="orgfcff78c">c</h3>
+<div class="outline-text-3" id="text-orgfcff78c">
 </div>
-<div id="outline-container-orga531427" class="outline-4">
-<h4 id="orga531427">Answer</h4>
-<div class="outline-text-4" id="text-orga531427">
+<div id="outline-container-org8087362" class="outline-4">
+<h4 id="org8087362">Answer</h4>
+<div class="outline-text-4" id="text-org8087362">
 \begin{align*}
 p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 &= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{p(\sum_{i=1}^{100} Y_i = 57)} \\
@@ -255,7 +262,7 @@ p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 </pre>
 </div>
 
-<pre class="example" id="org487b786">
+<pre class="example" id="org4b81e36">
 11-element Vector{Float64}:
  0.0
  4.153700946664936e-30
@@ -286,20 +293,20 @@ p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 
 
 
-<div id="org525f9f5" class="figure">
+<div id="org27582cb" class="figure">
 <p><img src="fig/ex3.1cplot.jpg" alt="ex3.1cplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org6bb444e" class="outline-3">
-<h3 id="org6bb444e">d</h3>
-<div class="outline-text-3" id="text-org6bb444e">
+<div id="outline-container-orgd37fce4" class="outline-3">
+<h3 id="orgd37fce4">d</h3>
+<div class="outline-text-3" id="text-orgd37fce4">
 </div>
-<div id="outline-container-org0bf0c28" class="outline-4">
-<h4 id="org0bf0c28">Answer</h4>
-<div class="outline-text-4" id="text-org0bf0c28">
+<div id="outline-container-org7163dc2" class="outline-4">
+<h4 id="org7163dc2">Answer</h4>
+<div class="outline-text-4" id="text-org7163dc2">
 \begin{align*}
 p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
 &= \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
@@ -331,20 +338,20 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org8240c46" class="figure">
+<div id="org1a9aa94" class="figure">
 <p><img src="fig/hoffexercise3.1dplot.jpg" alt="hoffexercise3.1dplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1a4e9ad" class="outline-3">
-<h3 id="org1a4e9ad">e</h3>
-<div class="outline-text-3" id="text-org1a4e9ad">
+<div id="outline-container-org3c1e690" class="outline-3">
+<h3 id="org3c1e690">e</h3>
+<div class="outline-text-3" id="text-org3c1e690">
 </div>
-<div id="outline-container-orga93dd47" class="outline-4">
-<h4 id="orga93dd47">Answer</h4>
-<div class="outline-text-4" id="text-orga93dd47">
+<div id="outline-container-orge1045a8" class="outline-4">
+<h4 id="orge1045a8">Answer</h4>
+<div class="outline-text-4" id="text-orge1045a8">
 <div class="org-src-container">
 <pre class="src src-julia">plot<span style="color: #51afef;">(</span>
     Beta<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>n<span style="color: #FCCE7B;">-</span>y<span style="color: #C57BDB;">)</span>,
@@ -358,7 +365,7 @@ plot<span style="color: #51afef;">(</span>
 </div>
 
 
-<div id="org8025ab4" class="figure">
+<div id="org31f2f28" class="figure">
 <p><img src="fig/exercise3.1eplot.jpg" alt="exercise3.1eplot.jpg" width="500" />
 </p>
 </div>
@@ -388,7 +395,7 @@ As you can see from the code, 3.1c is normalized so that the sum of the probabil
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

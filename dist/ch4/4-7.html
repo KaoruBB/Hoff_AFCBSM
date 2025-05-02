@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.7 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,36 +115,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc2beecb">a)</a>
+<li><a href="#org450ff91">a)</a>
 <ul>
-<li><a href="#orged93068">answer</a></li>
+<li><a href="#org35f73fd">answer</a></li>
 </ul>
 </li>
-<li><a href="#org8edf114">b)</a>
+<li><a href="#org5dbe483">b)</a>
 <ul>
-<li><a href="#org0bf01ef">answer</a></li>
+<li><a href="#org3518a15">answer</a></li>
 </ul>
 </li>
-<li><a href="#org20680db">c)</a>
+<li><a href="#orgac5ea6c">c)</a>
 <ul>
-<li><a href="#orgae40ff6">answer</a></li>
+<li><a href="#org9b5ec4a">answer</a></li>
 </ul>
 </li>
-<li><a href="#orga75f9a4">d)</a>
+<li><a href="#org1404665">d)</a>
 <ul>
-<li><a href="#orgdb2e11d">answer</a></li>
+<li><a href="#org08fb7ab">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2beecb" class="outline-2">
-<h2 id="orgc2beecb">a)</h2>
-<div class="outline-text-2" id="text-orgc2beecb">
+<div id="outline-container-org450ff91" class="outline-2">
+<h2 id="org450ff91">a)</h2>
+<div class="outline-text-2" id="text-org450ff91">
 </div>
-<div id="outline-container-orged93068" class="outline-3">
-<h3 id="orged93068">answer</h3>
-<div class="outline-text-3" id="text-orged93068">
+<div id="outline-container-org35f73fd" class="outline-3">
+<h3 id="org35f73fd">answer</h3>
+<div class="outline-text-3" id="text-org35f73fd">
 <div class="org-src-container">
 <pre class="src src-julia">Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
 dist_inv_&#963;&#178; = Gamma<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2.5</span><span style="color: #51afef;">)</span>
@@ -161,20 +168,20 @@ y_mc = Array<span style="color: #51afef;">{</span>Float64, <span style="color: #
 </div>
 
 
-<div id="org23dafee" class="figure">
+<div id="orgca37042" class="figure">
 <p><img src="fig/exercise4_7a.png" alt="exercise4_7a.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org8edf114" class="outline-2">
-<h2 id="org8edf114">b)</h2>
-<div class="outline-text-2" id="text-org8edf114">
+<div id="outline-container-org5dbe483" class="outline-2">
+<h2 id="org5dbe483">b)</h2>
+<div class="outline-text-2" id="text-org5dbe483">
 </div>
-<div id="outline-container-org0bf01ef" class="outline-3">
-<h3 id="org0bf01ef">answer</h3>
-<div class="outline-text-3" id="text-org0bf01ef">
+<div id="outline-container-org3518a15" class="outline-3">
+<h3 id="org3518a15">answer</h3>
+<div class="outline-text-3" id="text-org3518a15">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">75% quantile</span>
 prob = <span style="color: #e69055; font-weight: bold;">0.75</span>
@@ -192,13 +199,13 @@ ci_quantile = quantile<span style="color: #51afef;">(</span>y_mc, <span style="c
 </div>
 </div>
 </div>
-<div id="outline-container-org20680db" class="outline-2">
-<h2 id="org20680db">c)</h2>
-<div class="outline-text-2" id="text-org20680db">
+<div id="outline-container-orgac5ea6c" class="outline-2">
+<h2 id="orgac5ea6c">c)</h2>
+<div class="outline-text-2" id="text-orgac5ea6c">
 </div>
-<div id="outline-container-orgae40ff6" class="outline-3">
-<h3 id="orgae40ff6">answer</h3>
-<div class="outline-text-3" id="text-orgae40ff6">
+<div id="outline-container-org9b5ec4a" class="outline-3">
+<h3 id="org9b5ec4a">answer</h3>
+<div class="outline-text-3" id="text-org9b5ec4a">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">i</span>
 sorted_y_mc = sort<span style="color: #51afef;">(</span>y_mc<span style="color: #51afef;">)</span>
@@ -217,20 +224,20 @@ threshhold_prob = y_density_sorted<span style="color: #51afef;">[</span>threshho
 </div>
 
 
-<div id="orgc686970" class="figure">
+<div id="orge0df412" class="figure">
 <p><img src="fig/exercise4_7c.png" alt="exercise4_7c.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orga75f9a4" class="outline-2">
-<h2 id="orga75f9a4">d)</h2>
-<div class="outline-text-2" id="text-orga75f9a4">
+<div id="outline-container-org1404665" class="outline-2">
+<h2 id="org1404665">d)</h2>
+<div class="outline-text-2" id="text-org1404665">
 </div>
-<div id="outline-container-orgdb2e11d" class="outline-3">
-<h3 id="orgdb2e11d">answer</h3>
-<div class="outline-text-3" id="text-orgdb2e11d">
+<div id="outline-container-org08fb7ab" class="outline-3">
+<h3 id="org08fb7ab">answer</h3>
+<div class="outline-text-3" id="text-org08fb7ab">
 <p>
 The model is as follows:
 </p>
@@ -279,7 +286,7 @@ Then, the empirical distribution of
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

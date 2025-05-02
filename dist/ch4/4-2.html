@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-01 木 16:25 -->
+<!-- 2025-05-02 金 15:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.2 Solution - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -17,7 +17,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3P7FTH247"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z3P7FTH247'); </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GT-M6XHKK2R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GT-M6XHKK2R');
+</script>
 <link rel="stylesheet" href="/css/custom.css">
 <script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -108,32 +115,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6b23034">a)</a>
+<li><a href="#org25e5153">a)</a>
 <ul>
-<li><a href="#org4790d3f">answer</a></li>
+<li><a href="#org1445a0a">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgafb5ee1">b)</a>
+<li><a href="#org7060b24">b)</a>
 <ul>
-<li><a href="#org5872594">answer</a></li>
+<li><a href="#orgcdb297c">answer</a></li>
 </ul>
 </li>
-<li><a href="#org69105b8">c)</a>
+<li><a href="#org4b91ed6">c)</a>
 <ul>
-<li><a href="#org799ae83">answer a&rsquo;</a></li>
-<li><a href="#org2b33e1e">answer b&rsquo;</a></li>
+<li><a href="#org952c81d">answer a&rsquo;</a></li>
+<li><a href="#org3beea86">answer b&rsquo;</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6b23034" class="outline-2">
-<h2 id="org6b23034">a)</h2>
-<div class="outline-text-2" id="text-org6b23034">
+<div id="outline-container-org25e5153" class="outline-2">
+<h2 id="org25e5153">a)</h2>
+<div class="outline-text-2" id="text-org25e5153">
 </div>
-<div id="outline-container-org4790d3f" class="outline-3">
-<h3 id="org4790d3f">answer</h3>
-<div class="outline-text-3" id="text-org4790d3f">
+<div id="outline-container-org1445a0a" class="outline-3">
+<h3 id="org1445a0a">answer</h3>
+<div class="outline-text-3" id="text-org1445a0a">
 <div class="org-src-container">
 <pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
 <span style="color: #51afef;">using</span> Random
@@ -175,13 +182,13 @@ mean<span style="color: #51afef;">(</span>&#952;_B_mc .<span style="color: #FCCE
 </div>
 </div>
 </div>
-<div id="outline-container-orgafb5ee1" class="outline-2">
-<h2 id="orgafb5ee1">b)</h2>
-<div class="outline-text-2" id="text-orgafb5ee1">
+<div id="outline-container-org7060b24" class="outline-2">
+<h2 id="org7060b24">b)</h2>
+<div class="outline-text-2" id="text-org7060b24">
 </div>
-<div id="outline-container-org5872594" class="outline-3">
-<h3 id="org5872594">answer</h3>
-<div class="outline-text-3" id="text-org5872594">
+<div id="outline-container-orgcdb297c" class="outline-3">
+<h3 id="orgcdb297c">answer</h3>
+<div class="outline-text-3" id="text-orgcdb297c">
 <div class="org-src-container">
 <pre class="src src-julia">dist_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> Gamma<span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>n <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">)</span>
 
@@ -196,20 +203,20 @@ t_mc = <span style="color: #51afef;">[]</span>
 
 
 
-<div id="orga7a7e3b" class="figure">
+<div id="orgd6e6a07" class="figure">
 <p><img src="fig/exercise4-2b.png" alt="exercise4-2b.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org69105b8" class="outline-2">
-<h2 id="org69105b8">c)</h2>
-<div class="outline-text-2" id="text-org69105b8">
+<div id="outline-container-org4b91ed6" class="outline-2">
+<h2 id="org4b91ed6">c)</h2>
+<div class="outline-text-2" id="text-org4b91ed6">
 </div>
-<div id="outline-container-org799ae83" class="outline-3">
-<h3 id="org799ae83">answer a&rsquo;</h3>
-<div class="outline-text-3" id="text-org799ae83">
+<div id="outline-container-org952c81d" class="outline-3">
+<h3 id="org952c81d">answer a&rsquo;</h3>
+<div class="outline-text-3" id="text-org952c81d">
 <div class="org-src-container">
 <pre class="src src-julia">&#952;_A_mc = rand<span style="color: #51afef;">(</span>dist_A, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
 &#952;_B_mc = rand<span style="color: #51afef;">(</span>dist_B, <span style="color: #e69055; font-weight: bold;">10000</span><span style="color: #51afef;">)</span>
@@ -234,9 +241,9 @@ mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">
 </p>
 </div>
 </div>
-<div id="outline-container-org2b33e1e" class="outline-3">
-<h3 id="org2b33e1e">answer b&rsquo;</h3>
-<div class="outline-text-3" id="text-org2b33e1e">
+<div id="outline-container-org3beea86" class="outline-3">
+<h3 id="org3beea86">answer b&rsquo;</h3>
+<div class="outline-text-3" id="text-org3beea86">
 <div class="org-src-container">
 <pre class="src src-julia">t_mc = <span style="color: #51afef;">[]</span>
 <span style="color: #51afef;">for</span> n&#8320; <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
@@ -248,7 +255,7 @@ mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">
 </div>
 
 
-<div id="org28ab7f9" class="figure">
+<div id="org4c56e12" class="figure">
 <p><img src="fig/exercise4-2c.png" alt="exercise4-2c.png" width="500" />
 </p>
 </div>
@@ -267,7 +274,7 @@ mean<span style="color: #51afef;">(</span>y_A_mc .<span style="color: #FCCE7B;">
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-01 木 16:25</p>
+                                                <p class="date">Last Updated: 2025-05-02 金 15:10</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
