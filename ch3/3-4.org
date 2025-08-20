@@ -341,7 +341,6 @@ and provide an interpretation for their values.
 
 *** answer :ignore:
 The posterior distribution is calculated as follows:
-
 \begin{align*}
 p(\theta \mid y)
 &= \frac{p(y \mid \theta) p(\theta)}{p(y)} \\
@@ -349,12 +348,36 @@ p(\theta \mid y)
 &= \begin{pmatrix} n \\ y \end{pmatrix} \theta^y (1-\theta)^{n-y} \times
 \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} \left[3 \theta (1-\theta)^7 + \theta^7 (1-\theta)\right] \\
 & \propto 3 \theta^{y+1} (1-\theta)^{n-y+7} + \theta^{y+7} (1-\theta)^{n-y+1} \\
-& \propto \frac{3}{4} \theta^{y+2-1} (1-\theta)^{n-y+8-1} + \frac{1}{4} \theta^{y+8-1} (1-\theta)^{n-y+2-1} \\
-&= \frac{3}{4} \text{dbeta}(y+2, n-y+8) + \frac{1}{4} \text{dbeta}(y+8, n-y+2)
 \end{align*}
 
-となる。
-よって事後分布は、Beta(y+2, n-y+8) と Beta(y+8, n-y+2)を 3 対 1 の重みをつけて混合させたものが事後分布となる。
+
+As the normalizing constant \(C\) is given by:
+\begin{align*}
+C &= \int_0^1 \left[ 3 \theta^{y+1} (1-\theta)^{n-y+7} + \theta^{y+7} (1-\theta)^{n-y+1} \right] d\theta \\
+&= 3 \int_0^1 \theta^{(y+2)-1} (1-\theta)^{(n-y+8)-1} d\theta + \int_0^1 \theta^{(y+8)-1} (1-\theta)^{(n-y+2)-1} d\theta \\
+&= 3 \cdot \frac{\Gamma(y+2) \Gamma(n-y+8)}{\Gamma(n+10)} + \frac{\Gamma(y+8) \Gamma(n-y+2)}{\Gamma(n+10)} \\
+&= \frac{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)}{\Gamma(n+10)} \\
+\end{align*}
+the posterior distribution can be expressed as:
+\begin{align*}
+p(\theta \mid y)
+&= \frac{1}{C} \left[ 3 \theta^{y+1} (1-\theta)^{n-y+7} + \theta^{y+7} (1-\theta)^{n-y+1} \right] \\
+&= \frac{\Gamma(n+10)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot 3 \theta^{y+1} (1-\theta)^{n-y+7} + \frac{\Gamma(n+10)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \theta^{y+7} (1-\theta)^{n-y+1} \\
+&= \frac{3 \Gamma(y+2) \Gamma(n-y+8)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \mathrm{dbeta}(\theta, y+2, n-y+8) + \frac{\Gamma(y+8) \Gamma(n-y+2)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \mathrm{dbeta}(\theta, y+8, n-y+2) \\
+\end{align*}
+
+
+The posterior weights represent the updated probability of each model being correct after observing the data \((y, n)\).
+The formula embodies the principle: Posterior Belief ∝ Prior Belief × Evidence.
+
+Each weight's numerator is a product of two key components:
+
+1. Prior Belief: The coefficients 3 and 1 reflect our initial assumption that beta(2,8) was three times more likely to be correct than beta(8,2).
+2. Evidence from Data: The Gamma function terms, such as \(\Gamma(y+2)\Gamma(n-y+8)\), are proportional to the marginal likelihood.
+   This value quantifies how well the observed data $(y, n)$ is explained by each model.
+   A model that fits the data better will have a larger evidence term.
+
+In short, the posterior weight for each distribution is determined by its initial credibility combined with the strength of support it receives from the data.
 
 * nav :ignore:
 #+ATTR_HTML: :class nav-prev
