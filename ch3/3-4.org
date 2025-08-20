@@ -4,11 +4,17 @@
 * question :noexport:
 Mixtures of beta priors:
 Estimate the probability \(\theta\) of teen recidivism based on a study in which there were \(n = 43\) individuals released from incarceration and \(y = 15\) re-offenders within 36 months.
-* Answer
+* Answer :ignore:
 ** a
 :PROPERTIES:
 :ID:       7ca3e17b-cb8f-4b98-90df-0d77ce181a12
 :END:
+*** question :noexport:
+Using a beta(2,8) prior for \(\theta\), plot \(p(\theta)\), \(p(y|\theta)\) adn \(p(\theta|y)\) as functions of \(\theta\).
+Find the posterior mean, mode, and standard deviation of \(\theta\).
+Find a 95% quantile-based confidence interval.
+
+*** answer :ignore:
 #+begin_src julia :exports code
 using Distributions
 using Plots
@@ -22,7 +28,6 @@ y = 15
 
 #+RESULTS:
 : 15
-
 
 #+begin_src julia
 # prior
@@ -38,14 +43,11 @@ plot(
 #+ATTR_HTML: :width 500
 [[file:../../fig/ch3/exercise3.4aplot1.jpg]]
 
-\(y \sim \text{binomial}(43, \theta)\)より、\(p(\theta \mid y)\)を\(\theta\)の関数としてプロットすると以下のようになる。
-
 #+begin_src julia
 θ = 0:0.01:1.0
-# 全てのθで計算
 pdf_for_θs = map(θ -> pdf(Binomial(n, θ), y), θ)
 
-# plot
+# plot p(y|θ)
 plot(
     θ, pdf_for_θs,
     xlabel = "θ", ylabel = "p(y|θ)",
@@ -128,6 +130,11 @@ quantile(posterior_dist, [0.025, 0.975])
 :PROPERTIES:
 :ID:       3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5
 :END:
+*** question :noexport:
+Repeat a), but using a beta(8,2) prior for \(\theta\).
+
+*** answer :ignore:
+
 #+begin_src julia :exports code
 a₀_b = 8
 b₀_b = 2
@@ -223,6 +230,15 @@ quantile(posterior_dist_b, [0.025, 0.975])
 :PROPERTIES:
 :ID:       02109ca5-ab30-448e-94ce-678e2b8540d1
 :END:
+
+*** question :noexport:
+Consider the following prior distribution for \(\theta\):
+\[p(\theta) = \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} [3 \theta (1-\theta)^7 + \theta^7 (1-\theta)],\]
+which is a 75-25% mixture of a beta (2,8) and a beta (8,2) prior distribution.
+Plot this prior distribution and compare it to the priors in a) and b).
+Describe what sort of prior opinion this may represent.
+
+*** answer :ignore:
 #+begin_src julia
 using SpecialFunctions
 prior_mix = θ -> 1//4 * gamma(10) / (gamma(2) * gamma(8)) * (3 * θ * (1 - θ)^7 + θ^7 * (1 - θ))
@@ -247,14 +263,19 @@ plot(
 #+ATTR_HTML: :width 500
 [[file:../../fig/ch3/exercise3.4cmixprior.jpg]]
 
-[[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a]]や[[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b]]の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。
+[[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]]や[[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]]の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。
 この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
+
+This prior distribution has two peaks, indicating a belief that the recidivism rate is either high or low, rather than being centered around a moderate value like the priors in [[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]] and [[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]].
+
 ** d
+*** question :noexport:
 For the prior in c):
 *** i
+**** question :noexport:
 Write out mathematically \(p(\theta) \times p(y \mid \theta)\) and simplify as much as possible.
 
-Answer:
+**** answer :ignore:
 
 \begin{align*}
 p(\theta) \times p(y \mid \theta)
@@ -266,21 +287,25 @@ p(\theta) \times p(y \mid \theta)
 :PROPERTIES:
 :ID:       de979953-989c-4e64-b67f-57f4443d2d39
 :END:
+
+**** question :noexport:
+
 The posterior distribution is a mixture of two distributions you know.
 Identify these distributions.
 
-Answer:
+**** answer :ignore:
 
 Beta(17, 36) and Beta(23, 30)
 *** iii
 :PROPERTIES:
 :ID:       67191524-e772-4522-9b70-ecaae9260902
 :END:
+**** question :noexport:
 On a computer, calculate and plot \(p(\theta) \times p(y \mid \theta)\)
 for a variety of \(\theta\) values.
 Also find (approximately) the posterior mode, and discuss its relation to the modes in [[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]] and [[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]].
 
-Answer:
+**** answer :ignore:
 
 #+begin_src julia
 cond_prob = θ -> pdf(Binomial(n, θ), y)
@@ -307,15 +332,15 @@ xs[argmax(prior_times_cond_prob.(xs))]
 #+RESULTS:
 : 0.314
 
-[[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]] の mode が 0.313,[[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]]の mode が 0.431 であったので、この事後 mode はその中間（かなり a より)に位置している。
+The mode of [[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]] is 0.313 and the mode of [[id:3654b4ad-59d8-4c15-bcf8-8d30fbaf64c5][b)]] is 0.431, so this posterior mode is located in between, closer to [[id:7ca3e17b-cb8f-4b98-90df-0d77ce181a12][a)]].
 
 ** e
+*** question :noexport:
 Find a general formula for the weights of the mixture distribution in [[id:de979953-989c-4e64-b67f-57f4443d2d39][d)ii]],
 and provide an interpretation for their values.
 
-Answer:
-
-\(n ,y\)一般に対し、事後分布は
+*** answer :ignore:
+The posterior distribution is calculated as follows:
 
 \begin{align*}
 p(\theta \mid y)
