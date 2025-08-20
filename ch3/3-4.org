@@ -362,8 +362,10 @@ the posterior distribution can be expressed as:
 \begin{align*}
 p(\theta \mid y)
 &= \frac{1}{C} \left[ 3 \theta^{y+1} (1-\theta)^{n-y+7} + \theta^{y+7} (1-\theta)^{n-y+1} \right] \\
-&= \frac{\Gamma(n+10)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot 3 \theta^{y+1} (1-\theta)^{n-y+7} + \frac{\Gamma(n+10)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \theta^{y+7} (1-\theta)^{n-y+1} \\
-&= \frac{3 \Gamma(y+2) \Gamma(n-y+8)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \mathrm{dbeta}(\theta, y+2, n-y+8) + \frac{\Gamma(y+8) \Gamma(n-y+2)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \mathrm{dbeta}(\theta, y+8, n-y+2) \\
+&= \frac{\Gamma(n+10) \cdot \Gamma(y+2) \Gamma(n-y+8)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \frac{3 \theta^{y+1} (1-\theta)^{n-y+7}}{\Gamma(y+2) \Gamma(n-y+8)} \\
+&\quad+ \frac{\Gamma(n+10) \cdot \Gamma(y+8) \Gamma(n-y+2)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \frac{\theta^{y+7} (1-\theta)^{n-y+1}}{\Gamma(y+8) \Gamma(n-y+2)} \\
+&= \frac{3 \Gamma(y+2) \Gamma(n-y+8)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \mathrm{dbeta}(\theta, y+2, n-y+8) \\
+&\quad+ \frac{\Gamma(y+8) \Gamma(n-y+2)}{3\Gamma(y+2) \Gamma(n-y+8) + \Gamma(y+8) \Gamma(n-y+2)} \cdot \mathrm{dbeta}(\theta, y+8, n-y+2) \\
 \end{align*}
 
 
@@ -373,9 +375,7 @@ The formula embodies the principle: Posterior Belief ∝ Prior Belief × Evidenc
 Each weight's numerator is a product of two key components:
 
 1. Prior Belief: The coefficients 3 and 1 reflect our initial assumption that beta(2,8) was three times more likely to be correct than beta(8,2).
-2. Evidence from Data: The Gamma function terms, such as \(\Gamma(y+2)\Gamma(n-y+8)\), are proportional to the marginal likelihood.
-   This value quantifies how well the observed data $(y, n)$ is explained by each model.
-   A model that fits the data better will have a larger evidence term.
+2. Evidence from Data: The Gamma function terms \(\Gamma(y+2) \Gamma(n-y+8)\) and \(\Gamma(y+8) \Gamma(n-y+2)\) are the decisive parts that determine which distribution gains more support from the data. A distribution that better aligns with the data will have a larger value.
 
 In short, the posterior weight for each distribution is determined by its initial credibility combined with the strength of support it receives from the data.
 
