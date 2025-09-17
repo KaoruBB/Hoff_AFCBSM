@@ -1,6 +1,8 @@
 #+TITLE: Exercise 3.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods
 #+SUBTITLE: 標準ベイズ統計学 演習問題 3.3 解答例
 #+SETUPFILE: ../setup.org
+#+PROPERTY: header-args:julia :session julia_hoff :eval no-export :exports code
+
 * Question :noexport:
 Tumor counts:
 A cancer laboratory is estimating the rate of tumorigenesis in two strains of mice, /A/ and /B/.
@@ -26,9 +28,12 @@ distribution for each group and the following prior distribution:
 \]
 
 *** answer
-
 #+begin_src julia :export code
 using Distributions
+using LaTeXStrings
+using Plots
+using StatsPlots
+
 y_A = [12, 9, 12, 14, 13, 13, 15, 8, 15, 6]
 y_B = [11, 11, 10, 9, 9, 8, 7, 10, 6, 8, 8, 9, 7]
 
@@ -98,47 +103,78 @@ der for the posterior expectation of \(\theta_B\) to be close to that of \(\thet
 
 *** answer
 
-#+begin_src julia
-list_n₀ = 1:50
-exp_θ_B = n -> (a₀_B*n + sy_B) / (n + n_B )
+\(\theta_A\) の事後期待値は、a) の結果から \(E[\theta_A|y_A] = 11.85\) である。
+一方、\(\theta_B \) の事後期待値は \(n_0\) の関数として次のように表される。
 
-# Plot
-plot(
-    list_n₀, exp_θ_B.(list_n₀), label="Expected value of θ_B",
-    xlabel="n₀", ylabel=L"\theta_B", legend=nothing,
-    title="Expected value of θ_B as a function of n₀"
-)
+(The posterior expectation of \(\theta_A\) is \(E[\theta_A|y_A] = 11.85\) from part a).
+The posterior expectation of \(\theta_B\) as a function of \(n_0\) is given by:
+
+\[
+E[\theta_B|y_B, n_0] = \frac{12n_0 + \sum y_B}{n_0 + n_B} = \frac{12n_0 + 113}{n_0 + 13}
+\]
+
+これらの期待値が等しくなる \(n_0\) を求めると、
+
+(Solving for \(n_0\) where these expectations are equal:)
+
+\begin{align*}
+11.85 &= \frac{12n_0 + 113}{n_0 + 13} \\
+11.85(n_0 + 13) &= 12n_0 + 113 \\
+11.85n_0 + 154.05 &= 12n_0 + 113 \\
+41.05 &= 0.15n_0 \\
+n_0 &= \frac{41.05}{0.15} \approx 273.67
+\end{align*}
+
+したがって、\(n_0 \approx 274\) のとき、2つの期待値はほぼ等しくなる。
+
+Thus, when \(n_0 \approx 274\), the two expectations are approximately equal.)
+
+#+begin_src julia :results value raw :exports both
+list_n₀ = 1:500
+exp_θ_B = n -> (a₀_B * n + sy_B) / (n + n_B)
+
+plot(list_n₀, exp_θ_B.(list_n₀), label=L"E[\theta_B|y_B, n_0]",
+     xlabel=L"n_0", ylabel="Posterior Expectation",
+     legend=:bottomright,
+     title="Posterior Expectation of θ_B as a function of n₀")
+hline!([mean_A], linestyle=:dash, label=L"E[\theta_A|y_A]")
+savefig("./ch3/fig/ex3-3b1.svg")
+"[[file:./fig/ex3-3b1.svg]]"
 #+end_src
 
-#+ATTR_HTML: :width 500
-[[file:fig/exercise3.3bplot.jpg]]
+#+RESULTS:
+[[file:./fig/ex3-3b1.svg]]
 
+上の図から、\(n_0\)が大きくなるにつれて、\(\theta_B\)の事後期待値は事前期待値である12に近づいていくことがわかる。
+\(n_0 \approx 274\) で2つの事後期待値はほぼ等しくなる。このときの\(\theta_B\)の事前分布は以下の通りである。
 
-\(n_0 = 35\)くらいで、\(\theta_B\)の期待値が\(\theta_A\)の期待値を上回る。
-この時の\(\theta_B\)の事前分布のプロットは以下の通り。
+(From the figure above, it can be seen that as \(n_0\) increases, the posterior expectation of \(\theta_B\) approaches its prior expectation of 12.
+The two posterior expectations become almost equal at \(n_0 \approx 274\). The prior distribution of \(\theta_B\) at this time is as follows.)
 
-(The expected value of \(\theta_B\) exceeds that of \(\theta_A\) when \(n_0 = 35\).
-The plot of the prior distribution of \(\theta_B\) at this time is as follows.)
-
-#+begin_src julia :exports code
-n = 35
-plot(
-    Gamma(a₀_B*n + sy_B, 1/(n + n_B))
-    , label=L"Prior distribution of \theta_B when n_0 = $n"
-    , legend=false
-)
+#+begin_src julia :results value raw :exports both
+n₀_val = 274
+prior_B_dist = Gamma(a₀_B * n₀_val, 1/n₀_val)
+plot(prior_B_dist, label=L"Prior for $\theta_B$ with $n_0=274$",
+     xlabel=L"\theta_B", ylabel="Density",
+     legend=:topleft,
+     title="Prior Distribution of θ_B")
+savefig("./ch3/fig/ex3-3b2.svg")
+"[[file:./fig/ex3-3b2.svg]]"
 #+end_src
 
-#+ATTR_HTML: :width 500
-[[file:fig/exercise3.3b2plot.jpg]]
+#+RESULTS:
+[[./fig/ex3-3b2.svg]]
 
 上の分布を見ればわかるように、
 \(\theta_B\)の事後期待値が\(\theta_A\)の事後期待値と同じくらいになるためには、
-\(\theta_B\)がかなりの確率で 11 の近くに分布しているという信念を反映した事前分布が必要。
+「\(\theta_B\)の平均は12である」という強い信念を反映した事前分布が必要となる。
+\(n_0\)は事前分布の「サンプルサイズ」と解釈でき、これが大きいほど、事前情報がデータによる更新を上回り、事後期待値は事前期待値に近づく。
 
-(As can be seen from the distribution above,
-in order for the posterior expectation of \(\theta_B\) to be similar to that of \(\theta_A\),
-a prior distribution reflecting the belief that \(\theta_B\) is distributed close to 11 with a high probability is required.)
+(As can be seen from the distribution above, 
+in order for the posterior expectation of \(\theta_B\) to be similar to that of \(\theta_A\), 
+a prior distribution reflecting a strong belief that "the mean of \(\theta_B\) is 12" is required.
+\(n_0\) can be interpreted as the "sample size" of the prior distribution. The larger \(n_0\) is, the more the prior information outweighs the update by the data, and the posterior expectation approaches the prior expectation.)
+
 
 ** c
 *** Question :noexport:

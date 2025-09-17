@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2025-09-17 水 14:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -115,24 +115,24 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1b01643">Answer</a>
+<li><a href="#org0c44e09">Answer</a>
 <ul>
-<li><a href="#org7a2afbb">a)</a>
+<li><a href="#org510bb23">a)</a>
 <ul>
-<li><a href="#org54c555f">answer</a></li>
+<li><a href="#org01ca9f7">answer</a></li>
 </ul>
 </li>
-<li><a href="#org887c8b8">b</a>
+<li><a href="#org586322f">b</a>
 <ul>
-<li><a href="#orgfed9741">answer</a></li>
+<li><a href="#org5e4319a">answer</a></li>
 </ul>
 </li>
-<li><a href="#org189dad7">c</a>
+<li><a href="#org87fad25">c</a>
 <ul>
-<li><a href="#orgde8e2b6">answer</a>
+<li><a href="#org8a8825e">answer</a>
 <ul>
-<li><a href="#org6f72d6a">日本語</a></li>
-<li><a href="#org87ed086">English</a></li>
+<li><a href="#org2db4bde">日本語</a></li>
+<li><a href="#orgbbf3858">English</a></li>
 </ul>
 </li>
 </ul>
@@ -142,41 +142,45 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-org1b01643" class="outline-2">
-<h2 id="org1b01643">Answer</h2>
-<div class="outline-text-2" id="text-org1b01643">
+<div id="outline-container-org0c44e09" class="outline-2">
+<h2 id="org0c44e09">Answer</h2>
+<div class="outline-text-2" id="text-org0c44e09">
 </div>
-<div id="outline-container-org7a2afbb" class="outline-3">
-<h3 id="org7a2afbb">a)</h3>
-<div class="outline-text-3" id="text-org7a2afbb">
+<div id="outline-container-org510bb23" class="outline-3">
+<h3 id="org510bb23">a)</h3>
+<div class="outline-text-3" id="text-org510bb23">
 </div>
-<div id="outline-container-org54c555f" class="outline-4">
-<h4 id="org54c555f">answer</h4>
-<div class="outline-text-4" id="text-org54c555f">
+<div id="outline-container-org01ca9f7" class="outline-4">
+<h4 id="org01ca9f7">answer</h4>
+<div class="outline-text-4" id="text-org01ca9f7">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
-y_A = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">12</span>, <span style="color: #e69055; font-weight: bold;">14</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">13</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">15</span>, <span style="color: #e69055; font-weight: bold;">6</span><span style="color: #51afef;">]</span>
-y_B = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">11</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">7</span>, <span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">6</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">8</span>, <span style="color: #e69055; font-weight: bold;">9</span>, <span style="color: #e69055; font-weight: bold;">7</span><span style="color: #51afef;">]</span>
+<pre class="src src-julia"><span style="color: #bb9af7;">using</span> Distributions
+<span style="color: #bb9af7;">using</span> LaTeXStrings
+<span style="color: #bb9af7;">using</span> Plots
+<span style="color: #bb9af7;">using</span> StatsPlots
 
-n_A, sy_A = length<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_A<span style="color: #51afef;">)</span>
-n_B, sy_B = length<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span> , sum<span style="color: #51afef;">(</span>y_B<span style="color: #51afef;">)</span>
+y_A = [12, 9, 12, 14, 13, 13, 15, 8, 15, 6]
+y_B = [11, 11, 10, 9, 9, 8, 7, 10, 6, 8, 8, 9, 7]
 
-a&#8320;_A = <span style="color: #e69055; font-weight: bold;">120</span>
-b&#8320;_A = <span style="color: #e69055; font-weight: bold;">10</span>
-a&#8320;_B = <span style="color: #e69055; font-weight: bold;">12</span>
-b&#8320;_B = <span style="color: #e69055; font-weight: bold;">1</span>
+n_A, sy_A = length(y_A) , sum(y_A)
+n_B, sy_B = length(y_B) , sum(y_B)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Posterior distributions</span>
-dist_A = Gamma<span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-dist_B = Gamma<span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+a&#8320;_A = 120
+b&#8320;_A = 10
+a&#8320;_B = 12
+b&#8320;_B = 1
+
+<span style="color: #51587a;"># </span><span style="color: #51587a;">Posterior distributions
+</span>dist_A = Gamma(a&#8320;_A <span style="color: #c0caf5;">+</span> sy_A, 1<span style="color: #c0caf5;">/</span>(b&#8320;_A <span style="color: #c0caf5;">+</span> n_A))
+dist_B = Gamma(a&#8320;_B <span style="color: #c0caf5;">+</span> sy_B, 1<span style="color: #c0caf5;">/</span>(b&#8320;_B <span style="color: #c0caf5;">+</span> n_B))
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">mean_A = <span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #51afef;">)</span>
-mean_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior mean of A:  $mean_A"</span>
- , <span style="color: #7bc275;">"Posterior mean of B:  $mean_B"</span><span style="color: #51afef;">]</span>
+<pre class="src src-julia">mean_A = (a&#8320;_A <span style="color: #c0caf5;">+</span> sy_A) <span style="color: #c0caf5;">/</span> (b&#8320;_A <span style="color: #c0caf5;">+</span> n_A)
+mean_B = (a&#8320;_B <span style="color: #c0caf5;">+</span> sy_B) <span style="color: #c0caf5;">/</span> (b&#8320;_B <span style="color: #c0caf5;">+</span> n_B)
+[<span style="color: #9ece6a;">"Posterior mean of A:  $mean_A"</span>
+ , <span style="color: #9ece6a;">"Posterior mean of B:  $mean_B"</span>]
 </pre>
 </div>
 
@@ -198,10 +202,10 @@ mean_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #F
 </table>
 
 <div class="org-src-container">
-<pre class="src src-julia">var_A = <span style="color: #51afef;">(</span>a&#8320;_A <span style="color: #FCCE7B;">+</span> sy_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_A <span style="color: #FCCE7B;">+</span> n_A<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
-var_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>b&#8320;_B <span style="color: #FCCE7B;">+</span> n_B<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
-<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior variance of A:  $var_A"</span>
- , <span style="color: #7bc275;">"Posterior variance of B:  $var_B"</span><span style="color: #51afef;">]</span>
+<pre class="src src-julia">var_A = (a&#8320;_A <span style="color: #c0caf5;">+</span> sy_A) <span style="color: #c0caf5;">/</span> (b&#8320;_A <span style="color: #c0caf5;">+</span> n_A)<span style="color: #c0caf5;">^</span>2
+var_B = (a&#8320;_B <span style="color: #c0caf5;">+</span> sy_B) <span style="color: #c0caf5;">/</span> (b&#8320;_B <span style="color: #c0caf5;">+</span> n_B)<span style="color: #c0caf5;">^</span>2
+[<span style="color: #9ece6a;">"Posterior variance of A:  $var_A"</span>
+ , <span style="color: #9ece6a;">"Posterior variance of B:  $var_B"</span>]
 </pre>
 </div>
 
@@ -223,11 +227,11 @@ var_B = <span style="color: #51afef;">(</span>a&#8320;_B <span style="color: #FC
 </table>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">95% quantile-based confidence intervals</span>
-quantile_A = quantile.<span style="color: #51afef;">(</span>dist_A, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-quantile_B = quantile.<span style="color: #51afef;">(</span>dist_B, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">[</span><span style="color: #7bc275;">"Posterior 95% quantile of A:  $quantile_A"</span>
- , <span style="color: #7bc275;">"Posterior 95% quantile of B:  $quantile_B"</span><span style="color: #51afef;">]</span>
+<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">95% quantile-based confidence intervals
+</span>quantile_A = quantile.(dist_A, [0.025, 0.975])
+quantile_B = quantile.(dist_B, [0.025, 0.975])
+[<span style="color: #9ece6a;">"Posterior 95% quantile of A:  $quantile_A"</span>
+ , <span style="color: #9ece6a;">"Posterior 95% quantile of B:  $quantile_B"</span>]
 </pre>
 </div>
 
@@ -250,83 +254,126 @@ quantile_B = quantile.<span style="color: #51afef;">(</span>dist_B, <span style=
 </div>
 </div>
 </div>
-<div id="outline-container-org887c8b8" class="outline-3">
-<h3 id="org887c8b8">b</h3>
-<div class="outline-text-3" id="text-org887c8b8">
+<div id="outline-container-org586322f" class="outline-3">
+<h3 id="org586322f">b</h3>
+<div class="outline-text-3" id="text-org586322f">
 </div>
-<div id="outline-container-orgfed9741" class="outline-4">
-<h4 id="orgfed9741">answer</h4>
-<div class="outline-text-4" id="text-orgfed9741">
-<div class="org-src-container">
-<pre class="src src-julia">list_n&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">50</span>
-exp_&#952;_B = n <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #51afef;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">+</span> n_B <span style="color: #51afef;">)</span>
+<div id="outline-container-org5e4319a" class="outline-4">
+<h4 id="org5e4319a">answer</h4>
+<div class="outline-text-4" id="text-org5e4319a">
+<p>
+\(\theta_A\) の事後期待値は、a) の結果から \(E[\theta_A|y_A] = 11.85\) である。一方、\(\theta_B \) の事後期待値は \(n_0\) の関数として次のように表される。
+</p>
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Plot</span>
-plot<span style="color: #51afef;">(</span>
-    list_n&#8320;, exp_&#952;_B.<span style="color: #C57BDB;">(</span>list_n&#8320;<span style="color: #C57BDB;">)</span>, label=<span style="color: #7bc275;">"Expected value of &#952;_B"</span>,
-    xlabel=<span style="color: #7bc275;">"n&#8320;"</span>, ylabel=L<span style="color: #7bc275;">"\theta_B"</span>, legend=<span style="color: #a991f1;">nothing</span>,
-    title=<span style="color: #7bc275;">"Expected value of &#952;_B as a function of n&#8320;"</span>
-<span style="color: #51afef;">)</span>
+<p>
+(The posterior expectation of \(\theta_A\) is \(E[\theta_A|y_A] = 11.85\) from part a).
+The posterior expectation of \(\theta_B\) as a function of \(n_0\) is given by:
+</p>
+
+<p>
+\[
+E[\theta_B|y_B, n_0] = \frac{12n_0 + \sum y_B}{n_0 + n_B} = \frac{12n_0 + 113}{n_0 + 13}
+\]
+</p>
+
+<p>
+これらの期待値が等しくなる \(n_0\) を求めると、
+</p>
+
+<p>
+(Solving for \(n_0\) where these expectations are equal:)
+</p>
+
+\begin{align*}
+11.85 &= \frac{12n_0 + 113}{n_0 + 13} \\
+11.85(n_0 + 13) &= 12n_0 + 113 \\
+11.85n_0 + 154.05 &= 12n_0 + 113 \\
+41.05 &= 0.15n_0 \\
+n_0 &= \frac{41.05}{0.15} \approx 273.67
+\end{align*}
+
+<p>
+したがって、\(n_0 \approx 274\) のとき、2つの期待値はほぼ等しくなる。
+</p>
+
+<p>
+Thus, when \(n_0 \approx 274\), the two expectations are approximately equal.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-julia">list_n&#8320; = 1:500
+exp_&#952;_B = n <span style="color: #c0caf5;">-&gt;</span> (a&#8320;_B <span style="color: #c0caf5;">*</span> n <span style="color: #c0caf5;">+</span> sy_B) <span style="color: #c0caf5;">/</span> (n <span style="color: #c0caf5;">+</span> n_B)
+
+plot(list_n&#8320;, exp_&#952;_B.(list_n&#8320;), label=L<span style="color: #9ece6a;">"E[\theta_B|y_B, n_0]"</span>,
+     xlabel=L<span style="color: #9ece6a;">"n_0"</span>, ylabel=<span style="color: #9ece6a;">"Posterior Expectation"</span>,
+     legend=<span style="color: #ff9e64;">:bottomright</span>,
+     title=<span style="color: #9ece6a;">"Posterior Expectation of &#952;_B as a function of n&#8320;"</span>)
+hline!([mean_A], linestyle=<span style="color: #ff9e64;">:dash</span>, label=L<span style="color: #9ece6a;">"E[\theta_A|y_A]"</span>)
+savefig(<span style="color: #9ece6a;">"./ch3/fig/ex3-3b1.svg"</span>)
+<span style="color: #9ece6a;">"[[file:./fig/ex3-3b1.svg]]"</span>
 </pre>
 </div>
 
 
-<div id="org2a621af" class="figure">
-<p><img src="fig/exercise3.3bplot.jpg" alt="exercise3.3bplot.jpg" width="500" />
+<div id="org900ba96" class="figure">
+<p><img src="./fig/ex3-3b1.svg" alt="ex3-3b1.svg" class="org-svg" />
 </p>
 </div>
 
-
 <p>
-\(n_0 = 35\)くらいで、\(\theta_B\)の期待値が\(\theta_A\)の期待値を上回る。この時の\(\theta_B\)の事前分布のプロットは以下の通り。
+上の図から、\(n_0\)が大きくなるにつれて、\(\theta_B\)の事後期待値は事前期待値である12に近づいていくことがわかる。
+\(n_0 \approx 274\) で2つの事後期待値はほぼ等しくなる。このときの\(\theta_B\)の事前分布は以下の通りである。
 </p>
 
 <p>
-(The expected value of \(\theta_B\) exceeds that of \(\theta_A\) when \(n_0 = 35\).
-The plot of the prior distribution of \(\theta_B\) at this time is as follows.)
+(From the figure above, it can be seen that as \(n_0\) increases, the posterior expectation of \(\theta_B\) approaches its prior expectation of 12.
+The two posterior expectations become almost equal at \(n_0 \approx 274\). The prior distribution of \(\theta_B\) at this time is as follows.)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia">n = <span style="color: #e69055; font-weight: bold;">35</span>
-plot<span style="color: #51afef;">(</span>
-    Gamma<span style="color: #C57BDB;">(</span>a&#8320;_B<span style="color: #FCCE7B;">*</span>n <span style="color: #FCCE7B;">+</span> sy_B, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #7bc275;">(</span>n <span style="color: #FCCE7B;">+</span> n_B<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>
-    , label=L<span style="color: #7bc275;">"Prior distribution of \theta_B when n_0 = $n"</span>
-    , legend=<span style="color: #a991f1;">false</span>
-<span style="color: #51afef;">)</span>
+<pre class="src src-julia">n&#8320;_val = 274
+prior_B_dist = Gamma(a&#8320;_B <span style="color: #c0caf5;">*</span> n&#8320;_val, 1<span style="color: #c0caf5;">/</span>n&#8320;_val)
+plot(prior_B_dist, label=L<span style="color: #9ece6a;">"Prior for $\theta_B$ with $n_0=274$"</span>,
+     xlabel=L<span style="color: #9ece6a;">"\theta_B"</span>, ylabel=<span style="color: #9ece6a;">"Density"</span>,
+     legend=<span style="color: #ff9e64;">:topleft</span>,
+     title=<span style="color: #9ece6a;">"Prior Distribution of &#952;_B"</span>)
+savefig(<span style="color: #9ece6a;">"./ch3/fig/ex3-3b2.svg"</span>)
+<span style="color: #9ece6a;">"[[file:./fig/ex3-3b2.svg]]"</span>
 </pre>
 </div>
 
 
-<div id="org5f53b69" class="figure">
-<p><img src="fig/exercise3.3b2plot.jpg" alt="exercise3.3b2plot.jpg" width="500" />
+<div id="org6a70e78" class="figure">
+<p><img src="./fig/ex3-3b2.svg" alt="ex3-3b2.svg" class="org-svg" />
 </p>
 </div>
 
 <p>
 上の分布を見ればわかるように、
-\(\theta_B\)の事後期待値が\(\theta_A\)の事後期待値と同じくらいになるためには、
-\(\theta_B\)がかなりの確率で 11 の近くに分布しているという信念を反映した事前分布が必要。
+\(\theta_B\)の事後期待値が\(\theta_A\)の事後期待値と同じくらいになるためには、「\(\theta_B\)の平均は12である」という強い信念を反映した事前分布が必要となる。
+\(n_0\)は事前分布の「サンプルサイズ」と解釈でき、これが大きいほど、事前情報がデータによる更新を上回り、事後期待値は事前期待値に近づく。
 </p>
 
 <p>
-(As can be seen from the distribution above,
-in order for the posterior expectation of \(\theta_B\) to be similar to that of \(\theta_A\),
-a prior distribution reflecting the belief that \(\theta_B\) is distributed close to 11 with a high probability is required.)
+(As can be seen from the distribution above, 
+in order for the posterior expectation of \(\theta_B\) to be similar to that of \(\theta_A\), 
+a prior distribution reflecting a strong belief that &ldquo;the mean of \(\theta_B\) is 12&rdquo; is required.
+\(n_0\) can be interpreted as the &ldquo;sample size&rdquo; of the prior distribution. The larger \(n_0\) is, the more the prior information outweighs the update by the data, and the posterior expectation approaches the prior expectation.)
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org189dad7" class="outline-3">
-<h3 id="org189dad7">c</h3>
-<div class="outline-text-3" id="text-org189dad7">
+<div id="outline-container-org87fad25" class="outline-3">
+<h3 id="org87fad25">c</h3>
+<div class="outline-text-3" id="text-org87fad25">
 </div>
-<div id="outline-container-orgde8e2b6" class="outline-4">
-<h4 id="orgde8e2b6">answer</h4>
-<div class="outline-text-4" id="text-orgde8e2b6">
+<div id="outline-container-org8a8825e" class="outline-4">
+<h4 id="org8a8825e">answer</h4>
+<div class="outline-text-4" id="text-org8a8825e">
 </div>
-<div id="outline-container-org6f72d6a" class="outline-5">
-<h5 id="org6f72d6a">日本語</h5>
-<div class="outline-text-5" id="text-org6f72d6a">
+<div id="outline-container-org2db4bde" class="outline-5">
+<h5 id="org2db4bde">日本語</h5>
+<div class="outline-text-5" id="text-org2db4bde">
 <p>
 B 系統のマウスは A 系統のマウスと関連性があるとされているので、
 A 系統のマウスについての腫瘍数の情報は B 系統のマウスについての腫瘍数の事前情報になり得る。よって、\(p(\theta_A, \theta_B) = p(\theta_A) \times p(\theta_B)\)という仮定は妥当ではなく、
@@ -337,9 +384,9 @@ B 系統のマウスと A 系統のマウスの関連の度合いに関する信
 </p>
 </div>
 </div>
-<div id="outline-container-org87ed086" class="outline-5">
-<h5 id="org87ed086">English</h5>
-<div class="outline-text-5" id="text-org87ed086">
+<div id="outline-container-orgbbf3858" class="outline-5">
+<h5 id="orgbbf3858">English</h5>
+<div class="outline-text-5" id="text-orgbbf3858">
 <p>
 The B strain of mice is said to be related to the A strain of mice,
 so information about the number of tumors in A strain mice can serve as prior information about the number of tumors in B strain mice.
@@ -366,7 +413,7 @@ it is possible to model it using the posterior expectation of \(\theta_A\) as th
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2025-09-17 水 14:57</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
