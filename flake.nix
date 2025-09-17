@@ -32,6 +32,7 @@
             export JULIA_DEPOT_PATH="$PWD/.julia"
             export JULIA_PROJECT="@."
 
+            julia -e 'using Pkg; Pkg.instantiate()'
             # julia -e 'using Pkg; Pkg.add(["Package1", "Package2"])'
           '';
         };
