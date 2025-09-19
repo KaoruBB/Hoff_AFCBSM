@@ -44,10 +44,5 @@ For English site, please visit [[./index.org][here]].
    皆様からのフィードバックが、サイト改善の励みになります。
 
 * 謝辞
-   これまで、以下の皆様から誤植・間違いのご指摘をいただきました。
-
-   心より感謝申し上げます。
-
-   + Okamoto Noriaki さん
-   + Kubota Kohsuke さん
-   + Kondo Daisuke さん
+本プロジェクトにご協力いただいた皆様に感謝申し上げます。
+貢献者の完全なリストについては、[[file:Contributors.md][貢献者のページ]]をご覧ください。

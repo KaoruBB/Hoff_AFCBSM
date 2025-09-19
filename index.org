@@ -42,8 +42,5 @@ You can also [[mailto:bbkaoru1007@keio.jp][contact me by email]].
 Your feedback is greatly appreciated and helps improve the site.
 
 * Acknowledgements
-I would like to thank the following individuals for pointing out typos and errors:
-
-+ Okamoto Noriaki
-+ Kubota Kohsuke
-+ Kondo Daisuke
+I would like to thank everyone who has contributed to this project.
+For a full list of contributors, please see the [[file:Contributors.md][Contributors page]].
