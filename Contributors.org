@@ -1,0 +1,12 @@
+#+SETUPFILE: setup.org
+#+title: Solution Examples - Hoff, A First Course in Bayesian Statistical Methods
+#+SUBTITLE: 標準ベイズ統計学 演習問題 解答例
+* Contributors
+
+We would like to thank the following individuals for their contributions to this project, such as pointing out typos and errors.
+
+- Okamoto Noriaki
+- [[https://kkubota.com/][Kubota Kohsuke]]
+- Kondo Daisuke
+- [[https://github.com/Isaac7777-cpu][Isaac Leong]]
+- Masataka Hayashi
