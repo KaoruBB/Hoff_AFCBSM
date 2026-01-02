@@ -38,38 +38,37 @@ as
 and recall that
 \(\log p_U(\theta | \psi) + \log p_U(\psi) \).
 ** answer
-
 \begin{align*}
 l(\theta, \psi | \boldsymbol{y})
 &= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \\
 &= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \left( \sum_{i=1}^n (y_i - \bar{y} )^2 + n (\bar{y} - \theta )^2 \right) \\
 &= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi -
-\frac{\psi}{2} n s^2 - \frac{\psi}{2} n (\bar{y} - \theta )^2 \\
+\frac{\psi}{2} (n - 1) s^2 - \frac{\psi}{2} n (\bar{y} - \theta )^2 \\
 \end{align*}
 
-従って、
+Therefore,
 \begin{align*}
 \log p_U(\theta, \psi)
 &= \frac{l(\theta, \psi | \boldsymbol{y})}{n} + c \\
 &= - \frac{1}{2} \log (2\pi) + \frac{1}{2} \log \psi -
-\frac{\psi}{2} s^2 - \frac{\psi}{2} (\bar{y} - \theta )^2 + c \\
+\frac{\psi}{2} \frac{n-1}{n} s^2 - \frac{\psi}{2} (\bar{y} - \theta )^2 + c \\
 \end{align*}
-となるので、
+Thus,
 \begin{align*}
 p_U(\theta, \psi)
 &= (2 \pi)^{- \frac{1}{2} } \psi^{ \frac{1}{2} }
-\exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \exp \left( - \frac{\psi}{2} (\bar{y} - \theta )^2 \right)
 \exp \left( c \right) \\
 &\propto
 \psi^{ \frac{1}{2} }
 \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ 1 - 1} \exp \left( - \frac{s^2}{2} \psi \right) \\
+\psi^{ 1 - 1} \exp \left( - \frac{n-1}{2n} s^2 \psi \right) \\
 &\propto
 \text{dnormal}(\theta, \bar{y}, \psi^{-1})
 \times
-\text{dgamma}(\psi, 1, \frac{s^2}{2})
+\text{dgamma}(\psi, 1, \frac{n-1}{2n} s^2)
 \end{align*}
 * c)
 ** Question :noexport:
@@ -86,34 +85,34 @@ p_U(\theta, \psi | \boldsymbol{y})
 &\propto
 p_U(\theta, \psi) \times p( y_1, \ldots, y_n | \theta, \psi) \\
 &\propto
-\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \times
 \psi^{ \frac{n}{2} } \exp \left( - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \right) \\
 &=
-\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \times
 \psi^{ \frac{n}{2} } \exp \left( - \frac{\psi}{2} \left( \sum_{i=1}^n (y_i - \bar{y} )^2 + n (\bar{y} - \theta )^2 \right) \right) \\
 &=
-\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{n + 3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\psi^{ \frac{n}{2}} \exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \times
-\exp \left( - \frac{n s^2}{2} \psi \right) \times  \exp \left( - \frac{\psi}{2} n (\bar{y} - \theta )^2 \right) \\
+\exp \left( - \frac{(n-1) s^2}{2} \psi \right) \times  \exp \left( - \frac{\psi}{2} n (\bar{y} - \theta )^2 \right) \\
 &=
-\exp \left( - \frac{ (n + 1) \psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{ (n + 1) \psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{n + 3}{2} - 1} \exp \left( - \frac{(n + 1) s^2}{2} \psi \right) \\
+\psi^{\frac{n + 2}{2} - 1} \exp \left( - \left( \frac{n-1}{2n} + \frac{n-1}{2} \right) s^2 \psi \right) \\
 &\propto
 \text{dnormal}(\theta, \bar{y}, \frac{1}{(n + 1)\psi})
 \times
-\text{dgamma}(\psi, \frac{n + 3}{2}, \frac{(n + 1) s^2}{2})
+\text{dgamma}(\psi, \frac{n + 2}{2}, \frac{n^2 - 1}{2n} s^2)
 \end{align*}
 
-上式より、joint density は posterior density になっていることが確認できた。
+From the above equation, the joint density is recognized as the product of a Normal density (conditional on \(\psi\)) and a Gamma density. Since these are standard probability distributions known to integrate to 1, their product defines a proper joint density. Thus, it constitutes a valid posterior density.
 
 * nav :ignore:
 #+ATTR_HTML: :class nav-prev

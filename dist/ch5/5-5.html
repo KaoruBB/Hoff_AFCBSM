@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-01-02 金 09:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 5.5 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -115,31 +115,31 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge3a09ba">a)</a>
+<li><a href="#org77f757a">a)</a>
 <ul>
-<li><a href="#org9728aad">answer</a></li>
+<li><a href="#org09c7fc5">answer</a></li>
 </ul>
 </li>
-<li><a href="#org692f34f">b)</a>
+<li><a href="#org4e4730b">b)</a>
 <ul>
-<li><a href="#org70d2d4f">answer</a></li>
+<li><a href="#org62f93db">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgdad9c6e">c)</a>
+<li><a href="#org630621d">c)</a>
 <ul>
-<li><a href="#orgb9c7875">answer</a></li>
+<li><a href="#org40a357e">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge3a09ba" class="outline-2">
-<h2 id="orge3a09ba">a)</h2>
-<div class="outline-text-2" id="text-orge3a09ba">
+<div id="outline-container-org77f757a" class="outline-2">
+<h2 id="org77f757a">a)</h2>
+<div class="outline-text-2" id="text-org77f757a">
 </div>
-<div id="outline-container-org9728aad" class="outline-3">
-<h3 id="org9728aad">answer</h3>
-<div class="outline-text-3" id="text-org9728aad">
+<div id="outline-container-org09c7fc5" class="outline-3">
+<h3 id="org09c7fc5">answer</h3>
+<div class="outline-text-3" id="text-org09c7fc5">
 \begin{align*}
 l(\theta, \psi | \boldsymbol{y})
 &= \sum_{i=1}^n \log p(y_i | \theta, \psi) \\
@@ -151,93 +151,93 @@ l(\theta, \psi | \boldsymbol{y})
 </div>
 </div>
 </div>
-<div id="outline-container-org692f34f" class="outline-2">
-<h2 id="org692f34f">b)</h2>
-<div class="outline-text-2" id="text-org692f34f">
+<div id="outline-container-org4e4730b" class="outline-2">
+<h2 id="org4e4730b">b)</h2>
+<div class="outline-text-2" id="text-org4e4730b">
 </div>
-<div id="outline-container-org70d2d4f" class="outline-3">
-<h3 id="org70d2d4f">answer</h3>
-<div class="outline-text-3" id="text-org70d2d4f">
+<div id="outline-container-org62f93db" class="outline-3">
+<h3 id="org62f93db">answer</h3>
+<div class="outline-text-3" id="text-org62f93db">
 \begin{align*}
 l(\theta, \psi | \boldsymbol{y})
 &= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \\
 &= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi - \frac{\psi}{2} \left( \sum_{i=1}^n (y_i - \bar{y} )^2 + n (\bar{y} - \theta )^2 \right) \\
 &= - \frac{n}{2} \log (2\pi) + \frac{n}{2} \log \psi -
-\frac{\psi}{2} n s^2 - \frac{\psi}{2} n (\bar{y} - \theta )^2 \\
+\frac{\psi}{2} (n - 1) s^2 - \frac{\psi}{2} n (\bar{y} - \theta )^2 \\
 \end{align*}
 
 <p>
-従って、
+Therefore,
 </p>
 \begin{align*}
 \log p_U(\theta, \psi)
 &= \frac{l(\theta, \psi | \boldsymbol{y})}{n} + c \\
 &= - \frac{1}{2} \log (2\pi) + \frac{1}{2} \log \psi -
-\frac{\psi}{2} s^2 - \frac{\psi}{2} (\bar{y} - \theta )^2 + c \\
+\frac{\psi}{2} \frac{n-1}{n} s^2 - \frac{\psi}{2} (\bar{y} - \theta )^2 + c \\
 \end{align*}
 <p>
-となるので、
+Thus,
 </p>
 \begin{align*}
 p_U(\theta, \psi)
 &= (2 \pi)^{- \frac{1}{2} } \psi^{ \frac{1}{2} }
-\exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \exp \left( - \frac{\psi}{2} (\bar{y} - \theta )^2 \right)
 \exp \left( c \right) \\
 &\propto
 \psi^{ \frac{1}{2} }
 \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ 1 - 1} \exp \left( - \frac{s^2}{2} \psi \right) \\
+\psi^{ 1 - 1} \exp \left( - \frac{n-1}{2n} s^2 \psi \right) \\
 &\propto
 \text{dnormal}(\theta, \bar{y}, \psi^{-1})
 \times
-\text{dgamma}(\psi, 1, \frac{s^2}{2})
+\text{dgamma}(\psi, 1, \frac{n-1}{2n} s^2)
 \end{align*}
 </div>
 </div>
 </div>
-<div id="outline-container-orgdad9c6e" class="outline-2">
-<h2 id="orgdad9c6e">c)</h2>
-<div class="outline-text-2" id="text-orgdad9c6e">
+<div id="outline-container-org630621d" class="outline-2">
+<h2 id="org630621d">c)</h2>
+<div class="outline-text-2" id="text-org630621d">
 </div>
-<div id="outline-container-orgb9c7875" class="outline-3">
-<h3 id="orgb9c7875">answer</h3>
-<div class="outline-text-3" id="text-orgb9c7875">
+<div id="outline-container-org40a357e" class="outline-3">
+<h3 id="org40a357e">answer</h3>
+<div class="outline-text-3" id="text-org40a357e">
 \begin{align*}
 p_U(\theta, \psi | \boldsymbol{y})
 &\propto
 p_U(\theta, \psi) \times p( y_1, \ldots, y_n | \theta, \psi) \\
 &\propto
-\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \times
 \psi^{ \frac{n}{2} } \exp \left( - \frac{\psi}{2} \sum_{i=1}^n (y_i - \theta )^2 \right) \\
 &=
-\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \times
 \psi^{ \frac{n}{2} } \exp \left( - \frac{\psi}{2} \left( \sum_{i=1}^n (y_i - \bar{y} )^2 + n (\bar{y} - \theta )^2 \right) \right) \\
 &=
-\exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{\psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{n + 3}{2} - 1} \exp \left( - \frac{s^2}{2} \psi \right)
+\psi^{ \frac{n}{2}} \exp \left( - \frac{n-1}{2n} s^2 \psi \right)
 \times
-\exp \left( - \frac{n s^2}{2} \psi \right) \times  \exp \left( - \frac{\psi}{2} n (\bar{y} - \theta )^2 \right) \\
+\exp \left( - \frac{(n-1) s^2}{2} \psi \right) \times  \exp \left( - \frac{\psi}{2} n (\bar{y} - \theta )^2 \right) \\
 &=
-\exp \left( - \frac{ (n + 1) \psi}{2} ( \theta - \bar{y} )^2 \right)
+\psi^{ \frac{1}{2}} \exp \left( - \frac{ (n + 1) \psi}{2} ( \theta - \bar{y} )^2 \right)
 \times
-\psi^{ \frac{n + 3}{2} - 1} \exp \left( - \frac{(n + 1) s^2}{2} \psi \right) \\
+\psi^{\frac{n + 2}{2} - 1} \exp \left( - \left( \frac{n-1}{2n} + \frac{n-1}{2} \right) s^2 \psi \right) \\
 &\propto
 \text{dnormal}(\theta, \bar{y}, \frac{1}{(n + 1)\psi})
 \times
-\text{dgamma}(\psi, \frac{n + 3}{2}, \frac{(n + 1) s^2}{2})
+\text{dgamma}(\psi, \frac{n + 2}{2}, \frac{n^2 - 1}{2n} s^2)
 \end{align*}
 
 <p>
-上式より、joint density は posterior density になっていることが確認できた。
+From the above equation, the joint density is recognized as the product of a Normal density (conditional on \(\psi\)) and a Gamma density. Since these are standard probability distributions known to integrate to 1, their product defines a proper joint density. Thus, it constitutes a valid posterior density.
 </p>
 </div>
 </div>
@@ -254,7 +254,7 @@ p_U(\theta, \psi) \times p( y_1, \ldots, y_n | \theta, \psi) \\
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-01-02 金 09:30</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
