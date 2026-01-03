@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-01-03 土 13:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -115,68 +115,69 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd1ef605">a)</a>
+<li><a href="#org3650370">a)</a>
 <ul>
-<li><a href="#org4976718">Answer</a></li>
+<li><a href="#orge853aa9">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org459843e">b)</a>
+<li><a href="#org73b85ff">b)</a>
 <ul>
-<li><a href="#org893274c">Answer</a></li>
+<li><a href="#org130d614">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd1ef605" class="outline-2">
-<h2 id="orgd1ef605">a)</h2>
-<div class="outline-text-2" id="text-orgd1ef605">
+<div id="outline-container-org3650370" class="outline-2">
+<h2 id="org3650370">a)</h2>
+<div class="outline-text-2" id="text-org3650370">
 </div>
-<div id="outline-container-org4976718" class="outline-3">
-<h3 id="org4976718">Answer</h3>
-<div class="outline-text-3" id="text-org4976718">
+<div id="outline-container-orge853aa9" class="outline-3">
+<h3 id="orge853aa9">Answer</h3>
+<div class="outline-text-3" id="text-orge853aa9">
 <p>
-\(p_J\)が確率密度関数であるためには、
-\(\int \int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} d\Sigma = 1\)
-である必要があるが、
-\(\int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} = \infty\)
-であるため、\(p_J\)は確率密度関数ではない。
+For \(p_J\) to be a probability density function, it must satisfy
+\(\int \int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} d\Sigma = 1\).
+</p>
+
+<p>
+However, \(\int p_J(\boldsymbol{\theta}, \Sigma) d\boldsymbol{\theta} = \infty\),
+so \(p_J\) cannot be a proper probability density function.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org459843e" class="outline-2">
-<h2 id="org459843e">b)</h2>
-<div class="outline-text-2" id="text-org459843e">
+<div id="outline-container-org73b85ff" class="outline-2">
+<h2 id="org73b85ff">b)</h2>
+<div class="outline-text-2" id="text-org73b85ff">
 </div>
-<div id="outline-container-org893274c" class="outline-3">
-<h3 id="org893274c">Answer</h3>
-<div class="outline-text-3" id="text-org893274c">
+<div id="outline-container-org130d614" class="outline-3">
+<h3 id="org130d614">Answer</h3>
+<div class="outline-text-3" id="text-org130d614">
 \begin{align*}
 p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
 &\propto p_J(\boldsymbol{\theta}, \Sigma) \times p(\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n | \boldsymbol{\theta}, \Sigma) \\
 &\propto |\Sigma|^{-(p+2)/2} \times |\Sigma|^{-n/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
 &= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
-\\
+&= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y} + \bar{y} - \boldsymbol{\theta}) \right\} \\
+&= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n \left[ (\boldsymbol{y}_i - \bar{y})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y}) + 2(\boldsymbol{y}_i - \bar{y})^T \Sigma^{-1} (\bar{y} - \boldsymbol{\theta}) + (\bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\bar{y} - \boldsymbol{\theta}) \right] \right\} \\
+&= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \left[ \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y}) + 2 \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y})^T \Sigma^{-1} (\bar{y} - \boldsymbol{\theta}) + n(\bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\bar{y} - \boldsymbol{\theta}) \right] \right\} \\
+&= |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \left[ \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y})^T \Sigma^{-1} (\boldsymbol{y}_i - \bar{y}) + n(\bar{y} - \boldsymbol{\theta})^T \Sigma^{-1} (\bar{y} - \boldsymbol{\theta}) \right] \right\} \\
+&= |\Sigma|^{-\frac{1}{2}} \exp \left\{ -\frac{1}{2} (\boldsymbol{\theta} - \bar{y})^T \left( \frac{\Sigma}{n} \right)^{-1} (\boldsymbol{\theta} - \bar{y}) \right\} \times |\Sigma|^{-\frac{n + p + 1}{2}} \exp \left\{ -\frac{1}{2} \text{tr}(S \Sigma^{-1}) \right\} \\
+&\quad \text{where} \quad S = \sum_{i=1}^n (\boldsymbol{y}_i - \bar{y})(\boldsymbol{y}_i - \bar{y})^T
+\end{align*}
+
+<p>
+Thus, we have
+</p>
+\begin{align*}
 p_J(\boldsymbol{\theta} | \Sigma, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
-&\propto p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n) \\
-&\propto \exp\left\{ - \frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i^T - \boldsymbol{\theta}^T) \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
-&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i^T \Sigma^{-1} - \boldsymbol{\theta}^T \Sigma^{-1}) (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
-&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n \left( \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{y}_i - \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{\theta} - \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{y}_i + \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{\theta} \right) \right\} \\
-&= \exp\left\{ - \frac{1}{2} \sum_{i=1}^n \left( \boldsymbol{y}_i^T \Sigma^{-1} \boldsymbol{y}_i - 2 \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{y}_i + \boldsymbol{\theta}^T \Sigma^{-1} \boldsymbol{\theta} \right) \right\} \\
-&\propto \exp\left\{ - \frac{1}{2} \boldsymbol{\theta}^T \boldsymbol{A}_1 \boldsymbol{\theta} + \boldsymbol{\theta}^T \boldsymbol{b}_1 \right\},
-\quad \text{where} \quad
-\boldsymbol{A}_1 = n \Sigma^{-1}, \
-\boldsymbol{b}_1 = n \Sigma^{-1} \bar{\boldsymbol{y} }  \\
-&\propto \text{dmultivariate normal}( \bar{\boldsymbol{y} }, \Sigma/n) \\
+&\propto \exp \left\{ -\frac{1}{2} (\boldsymbol{\theta} - \bar{y})^T \left( \frac{\Sigma}{n} \right)^{-1} (\boldsymbol{\theta} - \bar{y}) \right\} \\
+&\propto \text{dmultivariate normal}(\bar{y}, \Sigma/n), \\
 \\
-p_J(\Sigma | \boldsymbol{\theta}, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
-&\propto p_J(\boldsymbol{\theta}, \Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n) \\
-&\propto |\Sigma|^{-(p+n+2)/2} \exp \left\{ -\frac{1}{2} \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta})^T \Sigma^{-1} (\boldsymbol{y}_i - \boldsymbol{\theta}) \right\} \\
-&\propto |\Sigma|^{-(n+1 + p + 1)/2}
-\exp \left\{ -\frac{1}{2} \text{tr}(S_{\theta} \Sigma^{-1}) \right\} \quad
-\text{where} \quad S_{\theta} = \sum_{i=1}^n (\boldsymbol{y}_i - \boldsymbol{\theta}) (\boldsymbol{y}_i - \boldsymbol{\theta})^T \\
-&\propto \text{dinverse Wishart}(n+1, S_{\theta}^{-1})
+p_J(\Sigma | \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
+&\propto |\Sigma|^{-\frac{n + p + 1}{2}} \exp \left\{ -\frac{1}{2} \text{tr}(S \Sigma^{-1}) \right\} \\
+&\propto \text{dinverse Wishart}(n, S^{-1}).
 \end{align*}
 </div>
 </div>
@@ -193,7 +194,7 @@ p_J(\Sigma | \boldsymbol{\theta}, \boldsymbol{y}_1, \ldots, \boldsymbol{y}_n)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-01-03 土 13:23</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
