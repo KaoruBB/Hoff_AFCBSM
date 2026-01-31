@@ -64,7 +64,7 @@ Reparameterize the binomial sampling model with \(\psi = \log \frac{\theta}{1-\t
 \( p(y \mid \psi) = \begin{pmatrix} n \\ y \end{pmatrix} e^{\psi y} (1+e^{\psi})^{-n} \).
 Obtain Jeffrey's prior distribution \(p_J(\psi)\) for this model.
 ** answer
-これは [[id:a80c926c-fbd9-4a95-b5e3-dd4d42ae0faf][3.10 a)]] と同じ変換であることに注意。
+これは [[./3-10.org::*a)][3.10 a)]] と同じ変換であることに注意。
 
 \begin{align*}
 \log p(Y \mid \psi)

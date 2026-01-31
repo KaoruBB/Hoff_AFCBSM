@@ -9,9 +9,6 @@ and let \(h\) be the inverse of \(g\) so that \(\theta = h(\psi)\).
 If \(p_{\theta}(\theta)\) is the probability density of \(\theta\), then the probability density of \(\psi\) induced by \(p_{\theta}\) is given by
 \(p_{\psi} (\psi) = p_{\theta}(h(\psi)) \times \mid \frac{dh}{d \psi} \mid\).
 * a)
-:PROPERTIES:
-:ID:       a80c926c-fbd9-4a95-b5e3-dd4d42ae0faf
-:END:
 ** question :noexport:
 Let \(\theta \sim \text{beta}(a,b)\) and let \(\psi = \log \left[ \frac{\theta}{1 - \theta} \right]\).
 Obtain the form of \(p_{\psi}\) and plot it for the case that \(a = b = 1\).
