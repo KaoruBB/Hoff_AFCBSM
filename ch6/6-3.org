@@ -65,21 +65,39 @@ show that \(p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)\) is a 
 Similarly, show that \(p(z_i | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}_{-i}, \beta, c)\) is proportional to a normal density but constrained to be either above \(c\) or below \(c\), depending on \(y_i\).
 
 ** answer
-
-\begin{align*}
-p(c | y_i = 0, x_i, z_i, \beta)
-&\propto p(y_i = 0 | z_i, c) p(c) \\
-&= p(y_i = 0 | x_i, c, \beta) p(c) \\
-&= \Phi(c - \beta x_i) p(c) \\
-\end{align*}
-
+From
+\[
+p(y_i \mid z_i, c)
+= \mathbf{1}\{y_i=1, z_i>c\}\,\mathbf{1}\{y_i=0, z_i\le c\},
+\]
+we obtain
 \begin{align*}
 p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
-&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
-&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, \beta, c) p(\boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
-&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) p(c) \\
-&= \left( 1 - \Phi() \right)
+&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) \, p(c) \\
+&= \left( \prod_{i=1}^n \mathbf{1}\{y_i=1, z_i>c\} \, \mathbf{1}\{y_i=0, z_i \le c\} \right) p(c) \\
+&= \mathbf{1}\left\{ \max_{i:y_i=0} z_i \le c < \min_{i:y_i=1} z_i \right\} \mathrm{dnorm}(c, 0, \tau_c) \\
+&= \mathrm{dtruncatednorm}\left(c, 0, \tau_c, \max_{i:y_i=0} z_i,\ \min_{i:y_i=1} z_i \right) \\
 \end{align*}
+
+Similarly,
+\begin{align*}
+p(z_i | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}_{-i}, \beta, c)
+&\propto p(y_i | z_i, c) \, p(z_i | x_i, \beta) \\
+&= \mathbf{1}\{y_i=1, z_i>c\} \, \mathbf{1}\{y_i=0, z_i \le c\} \, \mathrm{dnorm}(z_i, \beta x_i, 1) \\
+&= \begin{cases}
+\mathrm{dtruncatednorm}(z_i, \beta x_i, 1, c, \infty) & \text{if } y_i = 1 \\
+\mathrm{dtruncatednorm}(z_i, \beta x_i, 1, -\infty, c) & \text{if } y_i = 0
+\end{cases} \\
+\end{align*}
+
+* c) coming soon...
+** question :noexport:
+Letting \(\tau_{\beta}^2 = \tau_c^2 = 16\), implement a Gibbs sampleing scheme that approximates the joint posterior distribution of \(\boldsymbol{Z}, \beta\), and \(c\) (a method for sampling from constrained normal distributions is outlined in Section 12.1.1).
+Run the Gibbs sampler long enough so that the effective sample sizes of all unknowns parameters are greater than 1,000 (including the \(Z_i\)'s).
+Compute the autocorrelation functions of the parameters and discuss the mixing of the Markov chain.
+* d) coming soon...
+** question :noexport:
+Obtain 95% posterior confidence interval for \(\beta\), as well as \(\mathrm{Pr}(\beta > 0 \mid \boldsymbol{y}, \boldsymbol{x})\).
 
 * nav :ignore:
 #+ATTR_HTML: :class nav-prev

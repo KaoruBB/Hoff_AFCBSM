@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-01-31 土 17:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 6.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -115,26 +115,28 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org427b48e">a)</a>
+<li><a href="#org4899ad2">a)</a>
 <ul>
-<li><a href="#org39547ea">answer</a></li>
+<li><a href="#org18341ae">answer</a></li>
 </ul>
 </li>
-<li><a href="#org1877f93">b)</a>
+<li><a href="#orgd80b96d">b)</a>
 <ul>
-<li><a href="#org45deb28">answer</a></li>
+<li><a href="#orgc89d6ef">answer</a></li>
 </ul>
 </li>
+<li><a href="#org9a2c11d">c) coming soon&#x2026;</a></li>
+<li><a href="#orga7dc8ec">d) coming soon&#x2026;</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org427b48e" class="outline-2">
-<h2 id="org427b48e">a)</h2>
-<div class="outline-text-2" id="text-org427b48e">
+<div id="outline-container-org4899ad2" class="outline-2">
+<h2 id="org4899ad2">a)</h2>
+<div class="outline-text-2" id="text-org4899ad2">
 </div>
-<div id="outline-container-org39547ea" class="outline-3">
-<h3 id="org39547ea">answer</h3>
-<div class="outline-text-3" id="text-org39547ea">
+<div id="outline-container-org18341ae" class="outline-3">
+<h3 id="org18341ae">answer</h3>
+<div class="outline-text-3" id="text-org18341ae">
 \begin{align*}
 p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
 &\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c | \beta) p(\beta) \\
@@ -182,29 +184,49 @@ p(\beta | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, c)
 </div>
 </div>
 </div>
-<div id="outline-container-org1877f93" class="outline-2">
-<h2 id="org1877f93">b)</h2>
-<div class="outline-text-2" id="text-org1877f93">
+<div id="outline-container-orgd80b96d" class="outline-2">
+<h2 id="orgd80b96d">b)</h2>
+<div class="outline-text-2" id="text-orgd80b96d">
 </div>
-<div id="outline-container-org45deb28" class="outline-3">
-<h3 id="org45deb28">answer</h3>
-<div class="outline-text-3" id="text-org45deb28">
-\begin{align*}
-p(c | y_i = 0, x_i, z_i, \beta)
-&\propto p(y_i = 0 | z_i, c) p(c) \\
-&= p(y_i = 0 | x_i, c, \beta) p(c) \\
-&= \Phi(c - \beta x_i) p(c) \\
-\end{align*}
-
+<div id="outline-container-orgc89d6ef" class="outline-3">
+<h3 id="orgc89d6ef">answer</h3>
+<div class="outline-text-3" id="text-orgc89d6ef">
+<p>
+From
+\[
+p(y_i \mid z_i, c)
+= \mathbf{1}\{y_i=1, z_i>c\}\,\mathbf{1}\{y_i=0, z_i\le c\},
+\]
+we obtain
+</p>
 \begin{align*}
 p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
-&\propto p(\boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
-&= p(\boldsymbol{y} | \boldsymbol{x}, \boldsymbol{z}, \beta, c) p(\boldsymbol{x}, \boldsymbol{z}, \beta | c) p(c) \\
-&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) p(c) \\
-&= \left( 1 - \Phi() \right)
+&\propto p(\boldsymbol{y} | \boldsymbol{z}, c) \, p(c) \\
+&= \left( \prod_{i=1}^n \mathbf{1}\{y_i=1, z_i>c\} \, \mathbf{1}\{y_i=0, z_i \le c\} \right) p(c) \\
+&= \mathbf{1}\left\{ \max_{i:y_i=0} z_i \le c < \min_{i:y_i=1} z_i \right\} \mathrm{dnorm}(c, 0, \tau_c) \\
+&= \mathrm{dtruncatednorm}\left(c, 0, \tau_c, \max_{i:y_i=0} z_i,\ \min_{i:y_i=1} z_i \right) \\
+\end{align*}
+
+<p>
+Similarly,
+</p>
+\begin{align*}
+p(z_i | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}_{-i}, \beta, c)
+&\propto p(y_i | z_i, c) \, p(z_i | x_i, \beta) \\
+&= \mathbf{1}\{y_i=1, z_i>c\} \, \mathbf{1}\{y_i=0, z_i \le c\} \, \mathrm{dnorm}(z_i, \beta x_i, 1) \\
+&= \begin{cases}
+\mathrm{dtruncatednorm}(z_i, \beta x_i, 1, c, \infty) & \text{if } y_i = 1 \\
+\mathrm{dtruncatednorm}(z_i, \beta x_i, 1, -\infty, c) & \text{if } y_i = 0
+\end{cases} \\
 \end{align*}
 </div>
 </div>
+</div>
+<div id="outline-container-org9a2c11d" class="outline-2">
+<h2 id="org9a2c11d">c) coming soon&#x2026;</h2>
+</div>
+<div id="outline-container-orga7dc8ec" class="outline-2">
+<h2 id="orga7dc8ec">d) coming soon&#x2026;</h2>
 </div>
 <p class="nav-prev">
 <a href="./6-2.html" class="nav-prev">6.2</a>
@@ -218,7 +240,7 @@ p(c | \boldsymbol{y}, \boldsymbol{x}, \boldsymbol{z}, \beta)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-01-31 土 17:06</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
