@@ -11,3 +11,4 @@ We would like to thank the following individuals for their contributions to this
 - [[https://github.com/Isaac7777-cpu][Isaac Leong]]
 - Masataka Hayashi
 - [[https://github.com/shishir-909][Shishir Rao]] 
+- Yury Yatsynovich
