@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-03-21 土 19:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.5 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -115,54 +115,120 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org59f8fde">Answer</a>
+<li><a href="#orgd673233">Answer</a>
 <ul>
-<li><a href="#orga218d85">a)</a></li>
-<li><a href="#orga80ac8f">b)</a></li>
+<li><a href="#orga239768">a)</a></li>
+<li><a href="#org0704fe0">b)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org59f8fde" class="outline-2">
-<h2 id="org59f8fde">Answer</h2>
-<div class="outline-text-2" id="text-org59f8fde">
+<div id="outline-container-orgd673233" class="outline-2">
+<h2 id="orgd673233">Answer</h2>
+<div class="outline-text-2" id="text-orgd673233">
 </div>
-<div id="outline-container-orga218d85" class="outline-3">
-<h3 id="orga218d85">a)</h3>
-<div class="outline-text-3" id="text-orga218d85">
+<div id="outline-container-orga239768" class="outline-3">
+<h3 id="orga239768">a)</h3>
+<div class="outline-text-3" id="text-orga239768">
+<p>
+The posterior distribution is proportional to the product of the prior mixture and the likelihood:
+</p>
 \begin{align*}
 p(\theta \mid y_1, \dots, y_n)
 &\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
-&= \sum_{k=1}^K w_k p_k(\theta \mid n_k, n_k t_k) \prod_{i=1}^n p(y_i \mid \theta) \\
-&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \prod_{i=1}^n c(\theta) h(y_i) \exp \{\theta t(y_i)\} \\
-&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \prod_{i=1}^n h(y_i) \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
-&\propto \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \theta} \times \left( c(\theta)^n \times \exp \{\theta \sum_{i=1}^n t(y_i)\} \right) \\
-&= \sum_{k=1}^K w_k \kappa_k(n_k, t_k) c(\theta)^{n_k + n} \exp \left\{ \theta \times \left[ n_k t_k + \sum_{i=1}^n t(y_i) \right] \right\} \\
-&\propto \sum_{k=1}^K w_k p_k (\theta \mid n_k + n, \frac{n_k t_k + n \bar{t}(\boldsymbol{y})}{n_k + n})
+&= \sum_{k=1}^K w_k p_k(\theta) p(y_1, \dots, y_n \mid \theta)
 \end{align*}
 
 <p>
-where \(\bar{t}(\boldsymbol{y}) = \frac{\sum t(y_i)}{n}\)
+Note that for each component:
+</p>
+\begin{align*}
+w_k p_k(\theta) p(y_1, \dots, y_n \mid \theta)
+&= w_k \kappa_k(n_k, t_k) c(\theta)^{n_k} e^{n_k t_k \phi(\theta)} \times \prod_{i=1}^n c(\theta) h(y_i) \exp \{\phi(\theta) t(y_i)\} \\
+&= w_k \kappa_k(n_k, t_k) \prod_{i=1}^n h(y_i) \times c(\theta)^{n_k+n} e^{ \phi(\theta) (n_k t_k + \sum t(y_i))}  \\
+&= w_k \underbrace{ \left(\prod_{i=1}^n h(y_i)\right)\frac{\kappa_k(n_k,t_k)}{\kappa_k(n_k+n,t_k^\ast)}}_{ m_k(\bm y)}
+\;\times\;
+\underbrace{\kappa_k(n_k+n,t_k^\ast)\,c(\theta)^{n_k+n}e^{ \phi(\theta) (n_k t_k+\sum t(y_i))}}_{p_k(\theta\mid \bm y)} \\
+&= w_k m_k(\bm y) p_k(\theta\mid \bm y)
+\end{align*}
+<p>
+where
+\[
+t_k^\ast = \frac{n_k t_k + n \bar{t}(\bm{y})}{n_k + n}, \quad \bar{t}(\bm{y}) = \frac{1}{n} \sum_{i=1}^n t(y_i)
+\]
+</p>
+
+<p>
+Thus, the posterior becomes:
+</p>
+\begin{align*}
+p(\theta \mid y_1, \dots, y_n)
+&\propto \sum_{k=1}^K w_k m_k(\bm y) p_k(\theta\mid \bm y)
+\end{align*}
+<p>
+Normalizing the weights so that they sum to unity, we obtain:
+\[
+p(\theta \mid y_1, \dots, y_n) = \sum_{k=1}^K w_k' p_k(\theta\mid \bm y) \quad
+\text{where} \quad w_k' = \frac{w_k m_k(\bm y)}{\sum_{j=1}^K w_j m_j(\bm y)}
+\]
 </p>
 </div>
 </div>
-<div id="outline-container-orga80ac8f" class="outline-3">
-<h3 id="orga80ac8f">b)</h3>
-<div class="outline-text-3" id="text-orga80ac8f">
+<div id="outline-container-org0704fe0" class="outline-3">
+<h3 id="org0704fe0">b)</h3>
+<div class="outline-text-3" id="text-org0704fe0">
+<p>
+This is a special case of part (a).
+The Poisson probability mass function is:
+\[p(y \mid \theta) = \frac{\theta^y e^{-\theta}}{y!}\]
+To express this in the general form of an exponential family, we rewrite \(\theta^y\) as \(\exp(y \log \theta)\):
+\[
+p(y \mid \theta)
+= \underbrace{ \frac{1}{y!} }_{h(y)}
+\times \underbrace{e^{-\theta}}_{c(\theta)}
+\times \exp\{ \underbrace{\log \theta}_{\phi(\theta)}
+\times \underbrace{y}_{t(y)} \}
+\]
+</p>
+
+<p>
+Furthermore, the Gamma prior is given by
+\(p_k(\theta \mid a_k, b_k) = \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1} \exp \left( - b_k \theta \right)\).
+Comparing this to the conjugate prior form in (a):
+</p>
 \begin{align*}
-p(\theta \mid y_1, \dots, y_n)
-&\propto \tilde{p}(\theta) p(y_1, \dots, y_n \mid \theta) \\
-&= \sum_{k=1}^K w_k p_k(\theta \mid a_k, b_k) \times \prod_{i=1}^n p(y_i \mid \theta) \\
-&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
-\exp \left( - b_k \theta \right)
-\times \prod_{i=1}^n \frac{\theta^{y_i} e^{- \theta } }{y_i!} \\
-&\propto \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k-1}
-\exp \left( - b_k \theta \right)
-\times \theta^{\sum_{i=1}^n y_i} \exp \left( - n \theta \right) \\
-&= \sum_{k=1}^K w_k \frac{b_k^{a_k}}{\Gamma(a_k)} \theta^{a_k + \sum y_i - 1}
-\exp \left( - (b_k + n) \theta \right) \\
-&\propto \sum_{k=1}^K w_k \text{dgamma}(\theta \mid a_k + \sum y_i, b_k + n)
+t(y_i) &= y_i \\
+\phi(\theta) &= \log \theta\\
+c(\theta)  &= e^{-\theta} \\
+h(y_i) &= \frac{1}{y_i!} \\
+n_k    &= b_k, \quad n_k t_k = a_k - 1
+\end{align*}
+<p>
+Substituting these into the expression for \(m_k(\bm{y})\):
+\[
+m_k(\bm{y})
+= \left(\prod_{i=1}^n h(y_i)\right)\frac{\kappa_k(n_k,t_k)}{\kappa_k(n_k+n,t_k^\ast)} 
+= \left(\prod_{i=1}^n \frac{1}{y_i!}\right) \frac{b_k^{a_k}}{\Gamma(a_k)} \frac{\Gamma(a_k + \sum y_i)}{(b_k + n)^{a_k + \sum y_i}}
+\]
+</p>
+
+<p>
+Then the posterior distribution is:
+\[
+p(\theta \mid y_1, \dots, y_n) = \sum_{k=1}^K w'_k p_k(\theta\mid \bm y),
+\]
+where
+</p>
+\begin{align*}
+p_k(\theta \mid \bm y)
+&\propto \left( e^{-\theta} \right)^{b_k+n} \times \exp \left\{ \log \theta \left(a_k - 1 + \sum y_i \right) \right\} \\
+&= \theta^{a_k + \sum y_i - 1} \exp \left\{ - (b_k + n) \theta \right\} \\
+&\propto \text{dgamma}(\theta \mid a_k + \sum y_i, b_k + n),
+\\ \\
+w'_k
+&= \frac{w_k m^{\ast}_k(\bm y)}{\sum_{j=1}^K w_j m^{\ast}_j(\bm y)}, \quad
+m^{\ast}_k(\bm y) = \frac{b_k^{a_k}}{\Gamma(a_k)} \frac{\Gamma(a_k + \sum y_i)}{(b_k + n)^{a_k + \sum y_i}}.
 \end{align*}
 </div>
 </div>
@@ -179,7 +245,7 @@ p(\theta \mid y_1, \dots, y_n)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-03-21 土 19:43</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
