@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 土 16:58 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.10 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,26 +95,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc2d6581">a)</a>
+<li><a href="#org20fd0c6">a)</a>
 <ul>
-<li><a href="#org9a58a54">answer</a></li>
+<li><a href="#org97caf97">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgacec5da">b)</a>
+<li><a href="#org31fbbf0">b)</a>
 <ul>
-<li><a href="#org7a992ff">answer</a></li>
+<li><a href="#org1be2c60">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2d6581" class="outline-2">
-<h2 id="orgc2d6581">a)</h2>
-<div class="outline-text-2" id="text-orgc2d6581">
+<div id="outline-container-org20fd0c6" class="outline-2">
+<h2 id="org20fd0c6">a)</h2>
+<div class="outline-text-2" id="text-org20fd0c6">
 </div>
-<div id="outline-container-org9a58a54" class="outline-3">
-<h3 id="org9a58a54">answer</h3>
-<div class="outline-text-3" id="text-org9a58a54">
+<div id="outline-container-org97caf97" class="outline-3">
+<h3 id="org97caf97">answer</h3>
+<div class="outline-text-3" id="text-org97caf97">
 \begin{align*}
 &\psi = \log \left[ \frac{\theta}{1 - \theta} \right] \\
 \Leftrightarrow \quad & e^{\psi} = \frac{\theta}{1 - \theta} \\
@@ -166,32 +146,32 @@ p_{\psi} (\psi)
 
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #bb9af7;">using</span> Plots
-<span style="color: #bb9af7;">using</span> SpecialFunctions
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> Plots
+<span style="font-weight: bold;">using</span> SpecialFunctions
 a, b = 1, 1
-p_&#968; = &#968; <span style="color: #c0caf5;">-&gt;</span> exp(&#968;)<span style="color: #c0caf5;">^</span>a <span style="color: #c0caf5;">*</span> (1 <span style="color: #c0caf5;">+</span> exp(&#968;))<span style="color: #c0caf5;">^</span>(<span style="color: #c0caf5;">-</span>b) <span style="color: #c0caf5;">/</span> beta(a,b)
-&#968;s = range(<span style="color: #c0caf5;">-</span>10, 10, length=100)
-p = plot(&#968;s, p_&#968;.(&#968;s), xlabel=<span style="color: #9ece6a;">"&#968;"</span>, ylabel=<span style="color: #9ece6a;">"p(&#968;)"</span>, label=<span style="color: #9ece6a;">"p(&#968;)"</span>)
-savefig(p, <span style="color: #9ece6a;">"fig/excersise3-10a.png"</span>)
-<span style="color: #9ece6a;">"fig/excersise3-10a.png"</span>
-</pre>
+p_&#968; = &#968; -&gt; exp(&#968;)^a * (1 + exp(&#968;))^(-b) / beta(a,b)
+&#968;s = range(-10, 10, length=100)
+p = plot(&#968;s, p_&#968;.(&#968;s), xlabel=<span style="font-style: italic;">"&#968;"</span>, ylabel=<span style="font-style: italic;">"p(&#968;)"</span>, label=<span style="font-style: italic;">"p(&#968;)"</span>)
+savefig(p, <span style="font-style: italic;">"fig/excersise3-10a.png"</span>)
+<span style="font-style: italic;">"fig/excersise3-10a.png"</span>
+</code></pre>
 </div>
 
 
-<div id="org2cf6a8c" class="figure">
+<div id="org22043e1" class="figure">
 <p><img src="fig/excersise3-10a.png" alt="excersise3-10a.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgacec5da" class="outline-2">
-<h2 id="orgacec5da">b)</h2>
-<div class="outline-text-2" id="text-orgacec5da">
+<div id="outline-container-org31fbbf0" class="outline-2">
+<h2 id="org31fbbf0">b)</h2>
+<div class="outline-text-2" id="text-org31fbbf0">
 </div>
-<div id="outline-container-org7a992ff" class="outline-3">
-<h3 id="org7a992ff">answer</h3>
-<div class="outline-text-3" id="text-org7a992ff">
+<div id="outline-container-org1be2c60" class="outline-3">
+<h3 id="org1be2c60">answer</h3>
+<div class="outline-text-3" id="text-org1be2c60">
 \begin{align*}
 &\psi = \log \theta \\
 \Leftrightarrow \quad & \theta = e^{\psi} =: h(\psi)
@@ -218,19 +198,19 @@ p_{\psi} (\psi)
 \end{align*}
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #bb9af7;">using</span> Plots
-<span style="color: #bb9af7;">using</span> SpecialFunctions
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> Plots
+<span style="font-weight: bold;">using</span> SpecialFunctions
 a, b = 1, 1
-p_&#968; = &#968; <span style="color: #c0caf5;">-&gt;</span> b<span style="color: #c0caf5;">^</span>a<span style="color: #c0caf5;">/</span>gamma(a) <span style="color: #c0caf5;">*</span> exp(&#968;<span style="color: #c0caf5;">*</span>a <span style="color: #c0caf5;">-</span> b<span style="color: #c0caf5;">*</span>exp(&#968;))
-&#968;s = range(<span style="color: #c0caf5;">-</span>10, 10, length=100)
-p = plot(&#968;s, p_&#968;.(&#968;s), xlabel=<span style="color: #9ece6a;">"&#968;"</span>, ylabel=<span style="color: #9ece6a;">"p(&#968;)"</span>, label=<span style="color: #9ece6a;">"p(&#968;)"</span>)
-savefig(p, <span style="color: #9ece6a;">"fig/excersise3-10b.png"</span>)
-<span style="color: #9ece6a;">"fig/excersise3-10b.png"</span>
-</pre>
+p_&#968; = &#968; -&gt; b^a/gamma(a) * exp(&#968;*a - b*exp(&#968;))
+&#968;s = range(-10, 10, length=100)
+p = plot(&#968;s, p_&#968;.(&#968;s), xlabel=<span style="font-style: italic;">"&#968;"</span>, ylabel=<span style="font-style: italic;">"p(&#968;)"</span>, label=<span style="font-style: italic;">"p(&#968;)"</span>)
+savefig(p, <span style="font-style: italic;">"fig/excersise3-10b.png"</span>)
+<span style="font-style: italic;">"fig/excersise3-10b.png"</span>
+</code></pre>
 </div>
 
 
-<div id="org807af5c" class="figure">
+<div id="org13b3bfa" class="figure">
 <p><img src="fig/excersise3-10b.png" alt="excersise3-10b.png" width="500" />
 </p>
 </div>
@@ -249,7 +229,7 @@ savefig(p, <span style="color: #9ece6a;">"fig/excersise3-10b.png"</span>)
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2026-01-31 土 16:58</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

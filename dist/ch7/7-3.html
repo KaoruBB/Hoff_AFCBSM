@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,93 +95,93 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org91397f8">a)</a>
+<li><a href="#org80450bd">a)</a>
 <ul>
-<li><a href="#orge07b8e7">Answer</a></li>
+<li><a href="#org621d0f8">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org2aae581">b)</a>
+<li><a href="#org65be6a0">b)</a>
 <ul>
-<li><a href="#org3b445fe">Answer</a></li>
+<li><a href="#org4e40b68">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd3ec179">c)</a>
+<li><a href="#org2841c28">c)</a>
 <ul>
-<li><a href="#org56aefe8">Answer</a></li>
+<li><a href="#org7d37d8a">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org91397f8" class="outline-2">
-<h2 id="org91397f8">a)</h2>
-<div class="outline-text-2" id="text-org91397f8">
+<div id="outline-container-org80450bd" class="outline-2">
+<h2 id="org80450bd">a)</h2>
+<div class="outline-text-2" id="text-org80450bd">
 </div>
-<div id="outline-container-orge07b8e7" class="outline-3">
-<h3 id="orge07b8e7">Answer</h3>
-<div class="outline-text-3" id="text-orge07b8e7">
+<div id="outline-container-org621d0f8" class="outline-3">
+<h3 id="org621d0f8">Answer</h3>
+<div class="outline-text-3" id="text-org621d0f8">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">import</span> Pkg; Pkg.activate<span style="color: #51afef;">(</span><span style="color: #7bc275;">".."</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">using</span> DelimitedFiles
-<span style="color: #51afef;">using</span> Distributions
-<span style="color: #51afef;">using</span> LinearAlgebra
-<span style="color: #51afef;">using</span> StatsBase
+<pre class="src src-julia"><code><span style="font-weight: bold;">import</span> Pkg; Pkg.activate(<span style="font-style: italic;">".."</span>)
+<span style="font-weight: bold;">using</span> DelimitedFiles
+<span style="font-weight: bold;">using</span> Distributions
+<span style="font-weight: bold;">using</span> LinearAlgebra
+<span style="font-weight: bold;">using</span> StatsBase
 
-bluecrab = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/bluecrab.dat"</span><span style="color: #51afef;">)</span>
-orangecrap = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/orangecrab.dat"</span><span style="color: #51afef;">)</span>
+bluecrab = readdlm(<span style="font-style: italic;">"../../Exercises/bluecrab.dat"</span>)
+orangecrap = readdlm(<span style="font-style: italic;">"../../Exercises/orangecrab.dat"</span>)
 
-&#956;_blue = mean<span style="color: #51afef;">(</span>bluecrab, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-&#956;_orange = mean<span style="color: #51afef;">(</span>orangecrap, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+&#956;_blue = mean(bluecrab, dims=1) |&gt; vec
+&#956;_orange = mean(orangecrap, dims=1) |&gt; vec
 
-&#923;_blue = S_blue = cov<span style="color: #51afef;">(</span>bluecrab<span style="color: #51afef;">)</span>
-&#923;_orange = S_orange = cov<span style="color: #51afef;">(</span>orangecrap<span style="color: #51afef;">)</span>
+&#923;_blue = S_blue = cov(bluecrab)
+&#923;_orange = S_orange = cov(orangecrap)
 
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">4</span>
+&#957;&#8320; = 4
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Gibbs sampler</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">bivariate_gibbs</span><span style="color: #51afef;">(</span>S, &#931;_init, &#956;&#8320;, &#923;&#8320;, S&#8320;, &#957;&#8320;, Y<span style="color: #51afef;">)</span>
-    THETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-    SIGMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">4</span><span style="color: #51afef;">)</span>
-    n = size<span style="color: #51afef;">(</span>Y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Gibbs sampler
+</span><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">bivariate_gibbs</span>(S, &#931;_init, &#956;&#8320;, &#923;&#8320;, S&#8320;, &#957;&#8320;, Y)
+    THETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 2)
+    SIGMA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 4)
+    n = size(Y, 1)
     &#931; = &#931;_init
-    y&#772; = mean<span style="color: #51afef;">(</span>Y, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#952;</span>
-        &#923;n = inv<span style="color: #51afef;">(</span> inv<span style="color: #C57BDB;">(</span>&#923;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">*</span> inv<span style="color: #C57BDB;">(</span>&#931;<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">)</span>
-        &#956;n = &#923;n <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span> inv<span style="color: #C57BDB;">(</span>&#923;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> &#956;&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">*</span> inv<span style="color: #C57BDB;">(</span>&#931;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> y&#772; <span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-        dist = MvNormal<span style="color: #51afef;">(</span>&#956;n, Symmetric<span style="color: #C57BDB;">(</span>&#923;n<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-        &#952; = rand<span style="color: #51afef;">(</span>dist<span style="color: #51afef;">)</span>
+    y&#772; = mean(Y, dims=1) |&gt; vec
+    <span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update &#952;
+</span>        &#923;n = inv( inv(&#923;&#8320;) + n * inv(&#931;) )
+        &#956;n = &#923;n * ( inv(&#923;&#8320;) * &#956;&#8320; + n * inv(&#931;) * y&#772; ) |&gt; vec
+        dist = MvNormal(&#956;n, Symmetric(&#923;n))
+        &#952; = rand(dist)
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#931;</span>
-        Sn = S&#8320; <span style="color: #FCCE7B;">+</span> <span style="color: #51afef;">(</span>Y' .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>Y' .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span>'
-        &#931; = rand<span style="color: #51afef;">(</span>InverseWishart<span style="color: #C57BDB;">(</span>n <span style="color: #FCCE7B;">+</span> &#957;&#8320;, Sn<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update &#931;
+</span>        Sn = S&#8320; + (Y' .- &#952;) * (Y' .- &#952;)'
+        &#931; = rand(InverseWishart(n + &#957;&#8320;, Sn))
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">save results</span>
-        THETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span>
-        SIGMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>&#931;<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> THETA, SIGMA
-<span style="color: #51afef;">end</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">save results
+</span>        THETA[s, :] = vec(&#952;)
+        SIGMA[s, :] = vec(&#931;)
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> THETA, SIGMA
+<span style="font-weight: bold;">end</span>
 
-S = <span style="color: #e69055; font-weight: bold;">10000</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Blue crab</span>
-THETA_blue, SIGMA_blue = bivariate_gibbs<span style="color: #51afef;">(</span>S, &#923;_blue, &#956;_blue, &#923;_blue, S_blue, &#957;&#8320;, bluecrab<span style="color: #51afef;">)</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Orange crab</span>
-THETA_orange, SIGMA_orange = bivariate_gibbs<span style="color: #51afef;">(</span>S, &#923;_orange, &#956;_orange, &#923;_orange, S_orange, &#957;&#8320;, orangecrap<span style="color: #51afef;">)</span>
-</pre>
+S = 10000
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Blue crab
+</span>THETA_blue, SIGMA_blue = bivariate_gibbs(S, &#923;_blue, &#956;_blue, &#923;_blue, S_blue, &#957;&#8320;, bluecrab)
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Orange crab
+</span>THETA_orange, SIGMA_orange = bivariate_gibbs(S, &#923;_orange, &#956;_orange, &#923;_orange, S_orange, &#957;&#8320;, orangecrap)
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org2aae581" class="outline-2">
-<h2 id="org2aae581">b)</h2>
-<div class="outline-text-2" id="text-org2aae581">
+<div id="outline-container-org65be6a0" class="outline-2">
+<h2 id="org65be6a0">b)</h2>
+<div class="outline-text-2" id="text-org65be6a0">
 </div>
-<div id="outline-container-org3b445fe" class="outline-3">
-<h3 id="org3b445fe">Answer</h3>
-<div class="outline-text-3" id="text-org3b445fe">
+<div id="outline-container-org4e40b68" class="outline-3">
+<h3 id="org4e40b68">Answer</h3>
+<div class="outline-text-3" id="text-org4e40b68">
 
-<div id="org67d7d0a" class="figure">
+<div id="orgb9ddcb7" class="figure">
 <p><img src="./fig/exercise7_3b.png" alt="exercise7_3b.png" width="600" />
 </p>
 </div>
@@ -215,43 +195,42 @@ THETA_orange, SIGMA_orange = bivariate_gibbs<span style="color: #51afef;">(</spa
 </div>
 </div>
 </div>
-<div id="outline-container-orgd3ec179" class="outline-2">
-<h2 id="orgd3ec179">c)</h2>
-<div class="outline-text-2" id="text-orgd3ec179">
+<div id="outline-container-org2841c28" class="outline-2">
+<h2 id="org2841c28">c)</h2>
+<div class="outline-text-2" id="text-org2841c28">
 </div>
-<div id="outline-container-org56aefe8" class="outline-3">
-<h3 id="org56aefe8">Answer</h3>
-<div class="outline-text-3" id="text-org56aefe8">
+<div id="outline-container-org7d37d8a" class="outline-3">
+<h3 id="org7d37d8a">Answer</h3>
+<div class="outline-text-3" id="text-org7d37d8a">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">get_pos_cor</span><span style="color: #51afef;">(</span>SIGMA, p, S<span style="color: #51afef;">)</span>
-    COR = Array<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, p, p, S<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        Sig = reshape<span style="color: #51afef;">(</span>SIGMA<span style="color: #C57BDB;">[</span>s, :<span style="color: #C57BDB;">]</span>, p, p<span style="color: #51afef;">)</span>
-        COR<span style="color: #51afef;">[</span>:, :, s<span style="color: #51afef;">]</span> = Sig <span style="color: #FCCE7B;">./</span> sqrt.<span style="color: #51afef;">(</span>diag<span style="color: #C57BDB;">(</span>Sig<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> diag<span style="color: #C57BDB;">(</span>Sig<span style="color: #C57BDB;">)</span>'<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> COR
-<span style="color: #51afef;">end</span>
-p = bluecrab <span style="color: #FCCE7B;">|&gt;</span> size <span style="color: #FCCE7B;">|&gt;</span> last
-COR_mc_blue = get_pos_cor<span style="color: #51afef;">(</span>SIGMA_blue, p, S<span style="color: #51afef;">)</span>
-COR_mc_orange = get_pos_cor<span style="color: #51afef;">(</span>SIGMA_orange, p, S<span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">get_pos_cor</span>(SIGMA, p, S)
+    COR = Array{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, p, p, S)
+    <span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+        Sig = reshape(SIGMA[s, :], p, p)
+        COR[:, :, s] = Sig ./ sqrt.(diag(Sig) * diag(Sig)')
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> COR
+<span style="font-weight: bold;">end</span>
+p = bluecrab |&gt; size |&gt; last
+COR_mc_blue = get_pos_cor(SIGMA_blue, p, S)
+COR_mc_orange = get_pos_cor(SIGMA_orange, p, S)
+</code></pre>
 </div>
 
 
-<div id="org7ecc148" class="figure">
+<div id="orge1f606c" class="figure">
 <p><img src="./fig/exercise7_3c.png" alt="exercise7_3c.png" width="600" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">mean<span style="color: #51afef;">(</span>COR_mc_blue<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">2</span>, :<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> COR_mc_orange<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">2</span>, :<span style="color: #C57BDB;">]</span> <span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>mean(COR_mc_blue[1, 2, :] .&lt; COR_mc_orange[1, 2, :] )
+</code></pre>
 </div>
 
 <pre class="example">
 0.9893
 </pre>
-
 
 <ul class="org-ul">
 <li>オレンジの方がブルーに比べて、幅と深さの相関が強い。
@@ -272,7 +251,7 @@ COR_mc_orange = get_pos_cor<span style="color: #51afef;">(</span>SIGMA_orange, p
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

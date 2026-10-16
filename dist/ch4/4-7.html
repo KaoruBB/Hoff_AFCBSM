@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.7 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,80 +95,80 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd93cb77">a)</a>
+<li><a href="#org5c2d146">a)</a>
 <ul>
-<li><a href="#orgaf3a302">answer</a></li>
+<li><a href="#orga8d09e2">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgcbbcd54">b)</a>
+<li><a href="#org2ddafa4">b)</a>
 <ul>
-<li><a href="#org1f57164">answer</a></li>
+<li><a href="#org370540c">answer</a></li>
 </ul>
 </li>
-<li><a href="#org07e384b">c)</a>
+<li><a href="#org1037198">c)</a>
 <ul>
-<li><a href="#org42f6735">answer</a></li>
+<li><a href="#org5885435">answer</a></li>
 </ul>
 </li>
-<li><a href="#org1ffe3e0">d)</a>
+<li><a href="#org9da9975">d)</a>
 <ul>
-<li><a href="#org2c3a85d">answer</a></li>
+<li><a href="#org1a69467">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd93cb77" class="outline-2">
-<h2 id="orgd93cb77">a)</h2>
-<div class="outline-text-2" id="text-orgd93cb77">
+<div id="outline-container-org5c2d146" class="outline-2">
+<h2 id="org5c2d146">a)</h2>
+<div class="outline-text-2" id="text-org5c2d146">
 </div>
-<div id="outline-container-orgaf3a302" class="outline-3">
-<h3 id="orgaf3a302">answer</h3>
-<div class="outline-text-3" id="text-orgaf3a302">
+<div id="outline-container-orga8d09e2" class="outline-3">
+<h3 id="orga8d09e2">answer</h3>
+<div class="outline-text-3" id="text-orga8d09e2">
 <div class="org-src-container">
-<pre class="src src-julia">Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
-dist_inv_&#963;&#178; = Gamma<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">10</span>, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2.5</span><span style="color: #51afef;">)</span>
-dist_&#952; = &#963;&#178; <span style="color: #FCCE7B;">-&gt;</span> Normal<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">4.1</span>, &#963;&#178;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">20</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code>Random.seed!(1234)
+dist_inv_&#963;&#178; = Gamma(10, 1/2.5)
+dist_&#952; = &#963;&#178; -&gt; Normal(4.1, &#963;&#178;/20)
 
-&#960; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">0.31</span>, <span style="color: #e69055; font-weight: bold;">0.46</span>, <span style="color: #e69055; font-weight: bold;">0.23</span><span style="color: #51afef;">]</span>
-t = Multinomial<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span>, &#960;<span style="color: #51afef;">)</span>
-dist_list = <span style="color: #51afef;">(</span>&#952;, &#963;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-&gt;</span> <span style="color: #51afef;">[</span>Normal<span style="color: #C57BDB;">(</span>&#952;, &#963;<span style="color: #C57BDB;">)</span>, Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">2</span>&#952;, <span style="color: #e69055; font-weight: bold;">2</span>&#963;<span style="color: #C57BDB;">)</span>, Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">3</span>&#952;, <span style="color: #e69055; font-weight: bold;">3</span>&#963;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
-y_mc = Array<span style="color: #51afef;">{</span>Float64, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">}()</span>
-<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5000</span>
-    inv_&#963;&#178; = rand<span style="color: #51afef;">(</span>dist_inv_&#963;&#178;<span style="color: #51afef;">)</span>
-    &#963;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> inv_&#963;&#178;
-    &#963; = sqrt<span style="color: #51afef;">(</span>&#963;&#178;<span style="color: #51afef;">)</span>
-    &#952; = rand<span style="color: #51afef;">(</span>dist_&#952;<span style="color: #C57BDB;">(</span>&#963;&#178;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    w = rand<span style="color: #51afef;">(</span>t<span style="color: #51afef;">)</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span>
-    dist_pred = dist_list<span style="color: #51afef;">(</span>&#952;, &#963;<span style="color: #51afef;">)[</span>w<span style="color: #51afef;">][</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
-    y = rand<span style="color: #51afef;">(</span>dist_pred<span style="color: #51afef;">)</span>
-    append!<span style="color: #51afef;">(</span>y_mc, y<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+&#960; = [0.31, 0.46, 0.23]
+t = Multinomial(1, &#960;)
+dist_list = (&#952;, &#963;) -&gt; [Normal(&#952;, &#963;), Normal(2&#952;, 2&#963;), Normal(3&#952;, 3&#963;)]
+y_mc = Array{Float64, 1}()
+<span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:5000
+    inv_&#963;&#178; = rand(dist_inv_&#963;&#178;)
+    &#963;&#178; = 1 / inv_&#963;&#178;
+    &#963; = sqrt(&#963;&#178;)
+    &#952; = rand(dist_&#952;(&#963;&#178;))
+    w = rand(t) .== 1
+    dist_pred = dist_list(&#952;, &#963;)[w][1]
+    y = rand(dist_pred)
+    append!(y_mc, y)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 
-<div id="orgd2d2c18" class="figure">
+<div id="org762603f" class="figure">
 <p><img src="fig/exercise4_7a.png" alt="exercise4_7a.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcbbcd54" class="outline-2">
-<h2 id="orgcbbcd54">b)</h2>
-<div class="outline-text-2" id="text-orgcbbcd54">
+<div id="outline-container-org2ddafa4" class="outline-2">
+<h2 id="org2ddafa4">b)</h2>
+<div class="outline-text-2" id="text-org2ddafa4">
 </div>
-<div id="outline-container-org1f57164" class="outline-3">
-<h3 id="org1f57164">answer</h3>
-<div class="outline-text-3" id="text-org1f57164">
+<div id="outline-container-org370540c" class="outline-3">
+<h3 id="org370540c">answer</h3>
+<div class="outline-text-3" id="text-org370540c">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">75% quantile</span>
-prob = <span style="color: #e69055; font-weight: bold;">0.75</span>
-lower = <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> prob<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>
-upper = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> lower
-ci_quantile = quantile<span style="color: #51afef;">(</span>y_mc, <span style="color: #C57BDB;">[</span>lower, upper<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">75% quantile
+</span>prob = 0.75
+lower = (1 - prob) / 2
+upper = 1 - lower
+ci_quantile = quantile(y_mc, [lower, upper])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -199,45 +179,45 @@ ci_quantile = quantile<span style="color: #51afef;">(</span>y_mc, <span style="c
 </div>
 </div>
 </div>
-<div id="outline-container-org07e384b" class="outline-2">
-<h2 id="org07e384b">c)</h2>
-<div class="outline-text-2" id="text-org07e384b">
+<div id="outline-container-org1037198" class="outline-2">
+<h2 id="org1037198">c)</h2>
+<div class="outline-text-2" id="text-org1037198">
 </div>
-<div id="outline-container-org42f6735" class="outline-3">
-<h3 id="org42f6735">answer</h3>
-<div class="outline-text-3" id="text-org42f6735">
+<div id="outline-container-org5885435" class="outline-3">
+<h3 id="org5885435">answer</h3>
+<div class="outline-text-3" id="text-org5885435">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">i</span>
-sorted_y_mc = sort<span style="color: #51afef;">(</span>y_mc<span style="color: #51afef;">)</span>
-y_density = kerneldensity<span style="color: #51afef;">(</span>y_mc<span style="color: #51afef;">)</span>
-y_density_normalized = y_density <span style="color: #FCCE7B;">./</span> sum<span style="color: #51afef;">(</span>y_density<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">i
+</span>sorted_y_mc = sort(y_mc)
+y_density = kerneldensity(y_mc)
+y_density_normalized = y_density ./ sum(y_density)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">ii</span>
-y_density_sorted = sort<span style="color: #51afef;">(</span>y_density_normalized, rev=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">ii
+</span>y_density_sorted = sort(y_density_normalized, rev=<span style="font-weight: bold; text-decoration: underline;">true</span>)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">iii</span>
-y_density_sorted_cumsum = cumsum<span style="color: #51afef;">(</span>y_density_sorted<span style="color: #51afef;">)</span>
-threshhold_cumsum_idx = findfirst<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x <span style="color: #FCCE7B;">&gt;</span> prob, y_density_sorted_cumsum<span style="color: #51afef;">)</span>
-y_density_sorted_cumsum<span style="color: #51afef;">[</span>threshhold_cumsum_idx<span style="color: #51afef;">]</span>
-threshhold_prob = y_density_sorted<span style="color: #51afef;">[</span>threshhold_cumsum_idx<span style="color: #51afef;">]</span>
-</pre>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">iii
+</span>y_density_sorted_cumsum = cumsum(y_density_sorted)
+threshhold_cumsum_idx = findfirst(x -&gt; x &gt; prob, y_density_sorted_cumsum)
+y_density_sorted_cumsum[threshhold_cumsum_idx]
+threshhold_prob = y_density_sorted[threshhold_cumsum_idx]
+</code></pre>
 </div>
 
 
-<div id="org36ce34c" class="figure">
+<div id="org5dfa104" class="figure">
 <p><img src="fig/exercise4_7c.png" alt="exercise4_7c.png" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1ffe3e0" class="outline-2">
-<h2 id="org1ffe3e0">d)</h2>
-<div class="outline-text-2" id="text-org1ffe3e0">
+<div id="outline-container-org9da9975" class="outline-2">
+<h2 id="org9da9975">d)</h2>
+<div class="outline-text-2" id="text-org9da9975">
 </div>
-<div id="outline-container-org2c3a85d" class="outline-3">
-<h3 id="org2c3a85d">answer</h3>
-<div class="outline-text-3" id="text-org2c3a85d">
+<div id="outline-container-org1a69467" class="outline-3">
+<h3 id="org1a69467">answer</h3>
+<div class="outline-text-3" id="text-org1a69467">
 <p>
 The model is as follows:
 </p>
@@ -286,7 +266,7 @@ Then, the empirical distribution of
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

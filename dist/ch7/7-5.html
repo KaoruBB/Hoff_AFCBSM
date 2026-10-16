@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 7.5 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 </head>
 <body>
 <div id="content" class="content">
@@ -57,26 +37,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb8f7523">a)</a>
+<li><a href="#org77d35d4">a)</a>
 <ul>
-<li><a href="#orgffaeef2">Answer</a></li>
+<li><a href="#orged550e6">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org0e5af97">b)</a>
+<li><a href="#orgefde7d2">b)</a>
 <ul>
-<li><a href="#org02a137f">Answer</a></li>
+<li><a href="#orgb020a55">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd56aa82">c)</a>
+<li><a href="#orgb15dc8e">c)</a>
 <ul>
-<li><a href="#orgbc947dd">Answer</a>
+<li><a href="#orge104e43">Answer</a>
 <ul>
-<li><a href="#org43f11d4">Gibbs sampler</a></li>
-<li><a href="#orgb1fb994">Posterior mean and confidence interval</a></li>
-<li><a href="#orgdf047c1">discussion</a>
+<li><a href="#orgfd5e44a">Gibbs sampler</a></li>
+<li><a href="#org4f89728">Posterior mean and confidence interval</a></li>
+<li><a href="#org1101ef8">discussion</a>
 <ul>
-<li><a href="#org9bb4c4e">日本語</a></li>
-<li><a href="#org4a5a7af">English</a></li>
+<li><a href="#orgec05a71">日本語</a></li>
+<li><a href="#org524420d">English</a></li>
 </ul>
 </li>
 </ul>
@@ -86,100 +66,100 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb8f7523" class="outline-2">
-<h2 id="orgb8f7523">a)</h2>
-<div class="outline-text-2" id="text-orgb8f7523">
+<div id="outline-container-org77d35d4" class="outline-2">
+<h2 id="org77d35d4">a)</h2>
+<div class="outline-text-2" id="text-org77d35d4">
 </div>
-<div id="outline-container-orgffaeef2" class="outline-3">
-<h3 id="orgffaeef2">Answer</h3>
-<div class="outline-text-3" id="text-orgffaeef2">
+<div id="outline-container-orged550e6" class="outline-3">
+<h3 id="orged550e6">Answer</h3>
+<div class="outline-text-3" id="text-orged550e6">
 <div class="org-src-container">
-<pre class="src src-julia">Y_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/interexp.dat"</span>, skipstart=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">parse_matrix</span><span style="color: #51afef;">(</span>input_matrix<span style="color: #51afef;">)</span>
-    nrow, ncol = size<span style="color: #51afef;">(</span>input_matrix<span style="color: #51afef;">)</span>
-    output_matrix = Matrix<span style="color: #51afef;">{</span>Union<span style="color: #C57BDB;">{</span>Missing, Float64<span style="color: #C57BDB;">}</span><span style="color: #51afef;">}(</span><span style="color: #a991f1;">missing</span>, nrow, ncol<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code>Y_src = readdlm(<span style="font-style: italic;">"../../Exercises/interexp.dat"</span>, skipstart=1)
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">parse_matrix</span>(input_matrix)
+    nrow, ncol = size(input_matrix)
+    output_matrix = Matrix{Union{Missing, Float64}}(<span style="font-weight: bold; text-decoration: underline;">missing</span>, nrow, ncol)
 
-    <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:nrow
-        <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:ncol
-            <span style="color: #51afef;">if</span> input_matrix<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">==</span> <span style="color: #7bc275;">"NA"</span>
-                output_matrix<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> = <span style="color: #a991f1;">missing</span>
-            <span style="color: #51afef;">else</span>
-                output_matrix<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> = Float64<span style="color: #51afef;">(</span>input_matrix<span style="color: #C57BDB;">[</span>i, j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-            <span style="color: #51afef;">end</span>
-        <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> output_matrix
-<span style="color: #51afef;">end</span>
-Y = parse_matrix<span style="color: #51afef;">(</span>Y_src<span style="color: #51afef;">)</span>
-&#952;&#770;_A = mean<span style="color: #51afef;">(</span>skipmissing<span style="color: #C57BDB;">(</span>Y<span style="color: #7bc275;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-&#952;&#770;_B = mean<span style="color: #51afef;">(</span>skipmissing<span style="color: #C57BDB;">(</span>Y<span style="color: #7bc275;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-&#963;&#770;&#178;_A = var<span style="color: #51afef;">(</span>skipmissing<span style="color: #C57BDB;">(</span>Y<span style="color: #7bc275;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-&#963;&#770;&#178;_B = var<span style="color: #51afef;">(</span>skipmissing<span style="color: #C57BDB;">(</span>Y<span style="color: #7bc275;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:nrow
+        <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:ncol
+            <span style="font-weight: bold;">if</span> input_matrix[i, j] == <span style="font-style: italic;">"NA"</span>
+                output_matrix[i, j] = <span style="font-weight: bold; text-decoration: underline;">missing</span>
+            <span style="font-weight: bold;">else</span>
+                output_matrix[i, j] = Float64(input_matrix[i, j])
+            <span style="font-weight: bold;">end</span>
+        <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> output_matrix
+<span style="font-weight: bold;">end</span>
+Y = parse_matrix(Y_src)
+&#952;&#770;_A = mean(skipmissing(Y[:, 1]))
+&#952;&#770;_B = mean(skipmissing(Y[:, 2]))
+&#963;&#770;&#178;_A = var(skipmissing(Y[:, 1]))
+&#963;&#770;&#178;_B = var(skipmissing(Y[:, 2]))
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">get index of not missing</span>
-ind_A = ismissing.<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-ind_B = ismissing.<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-Y_comp = Y<span style="color: #51afef;">[</span>ind_A.<span style="color: #FCCE7B;">+</span>ind_B.<span style="color: #FCCE7B;">==</span><span style="color: #e69055; font-weight: bold;">0</span>, :<span style="color: #51afef;">]</span>
-&#961;&#770; = cor<span style="color: #51afef;">(</span>Y_comp<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span>, Y_comp<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">get index of not missing
+</span>ind_A = ismissing.(Y[:, 1])
+ind_B = ismissing.(Y[:, 2])
+Y_comp = Y[ind_A.+ind_B.==0, :]
+&#961;&#770; = cor(Y_comp[:, 1], Y_comp[:, 2])
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">julia<span style="color: #FCCE7B;">&gt;</span> &#952;&#770;_A
+<pre class="src src-julia"><code>julia&gt; &#952;&#770;_A
 
-<span style="color: #e69055; font-weight: bold;">24.200487804878044</span>
+24.200487804878044
 
-julia<span style="color: #FCCE7B;">&gt;</span> &#952;&#770;_B
-<span style="color: #e69055; font-weight: bold;">24.805348837209298</span>
+julia&gt; &#952;&#770;_B
+24.805348837209298
 
-julia<span style="color: #FCCE7B;">&gt;</span> &#961;&#770;
-<span style="color: #e69055; font-weight: bold;">0.6164509013184667</span>
+julia&gt; &#961;&#770;
+0.6164509013184667
 
-julia<span style="color: #FCCE7B;">&gt;</span> &#963;&#770;&#178;_A
-<span style="color: #e69055; font-weight: bold;">4.092799756097562</span>
+julia&gt; &#963;&#770;&#178;_A
+4.092799756097562
 
-julia<span style="color: #FCCE7B;">&gt;</span> &#963;&#770;&#178;_B
-<span style="color: #e69055; font-weight: bold;">4.69157785160576</span>
-</pre>
+julia&gt; &#963;&#770;&#178;_B
+4.69157785160576
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org0e5af97" class="outline-2">
-<h2 id="org0e5af97">b)</h2>
-<div class="outline-text-2" id="text-org0e5af97">
+<div id="outline-container-orgefde7d2" class="outline-2">
+<h2 id="orgefde7d2">b)</h2>
+<div class="outline-text-2" id="text-orgefde7d2">
 </div>
-<div id="outline-container-org02a137f" class="outline-3">
-<h3 id="org02a137f">Answer</h3>
-<div class="outline-text-3" id="text-org02a137f">
+<div id="outline-container-orgb020a55" class="outline-3">
+<h3 id="orgb020a55">Answer</h3>
+<div class="outline-text-3" id="text-orgb020a55">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">impute</span><span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
-    nrow = size<span style="color: #51afef;">(</span>Y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-    Y_imp = copy<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">impute</span>(Y)
+    nrow = size(Y, 1)
+    Y_imp = copy(Y)
 
-    <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:nrow
-        <span style="color: #51afef;">if</span> ismissing<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>i, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-            Y_imp<span style="color: #51afef;">[</span>i, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span> = &#952;&#770;_A <span style="color: #FCCE7B;">+</span> <span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>i, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span> <span style="color: #FCCE7B;">-</span> &#952;&#770;_B<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> &#961;&#770; <span style="color: #FCCE7B;">*</span> sqrt<span style="color: #51afef;">(</span>&#963;&#770;&#178;_A <span style="color: #FCCE7B;">/</span> &#963;&#770;&#178;_B<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">end</span>
-        <span style="color: #51afef;">if</span> ismissing<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>i, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-            Y_imp<span style="color: #51afef;">[</span>i, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> = &#952;&#770;_B <span style="color: #FCCE7B;">+</span> <span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>i, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> <span style="color: #FCCE7B;">-</span> &#952;&#770;_A<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> &#961;&#770; <span style="color: #FCCE7B;">*</span> sqrt<span style="color: #51afef;">(</span>&#963;&#770;&#178;_B <span style="color: #FCCE7B;">/</span> &#963;&#770;&#178;_A<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> Y_imp
-<span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:nrow
+        <span style="font-weight: bold;">if</span> ismissing(Y[i, 1])
+            Y_imp[i, 1] = &#952;&#770;_A + (Y[i, 2] - &#952;&#770;_B) * &#961;&#770; * sqrt(&#963;&#770;&#178;_A / &#963;&#770;&#178;_B)
+        <span style="font-weight: bold;">end</span>
+        <span style="font-weight: bold;">if</span> ismissing(Y[i, 2])
+            Y_imp[i, 2] = &#952;&#770;_B + (Y[i, 1] - &#952;&#770;_A) * &#961;&#770; * sqrt(&#963;&#770;&#178;_B / &#963;&#770;&#178;_A)
+        <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> Y_imp
+<span style="font-weight: bold;">end</span>
 
-Y_imp = impute<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
+Y_imp = impute(Y)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Do a paired sample t-test</span>
-<span style="color: #51afef;">using</span> HypothesisTests
-OneSampleTTest<span style="color: #51afef;">(</span>Y_imp<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">-</span> Y_imp<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Do a paired sample t-test
+</span><span style="font-weight: bold;">using</span> HypothesisTests
+OneSampleTTest(Y_imp[:, 1] .- Y_imp[:, 2])
+</code></pre>
 </div>
 
 <p>
 :+RESULTS:
 </p>
-<pre class="example" id="org9eb4d36">
+<pre class="example" id="org02e92d3">
 One sample t-test
 -----------------
 Population details:
@@ -201,83 +181,82 @@ Details:
 </div>
 </div>
 </div>
-<div id="outline-container-orgd56aa82" class="outline-2">
-<h2 id="orgd56aa82">c)</h2>
-<div class="outline-text-2" id="text-orgd56aa82">
+<div id="outline-container-orgb15dc8e" class="outline-2">
+<h2 id="orgb15dc8e">c)</h2>
+<div class="outline-text-2" id="text-orgb15dc8e">
 </div>
-<div id="outline-container-orgbc947dd" class="outline-3">
-<h3 id="orgbc947dd">Answer</h3>
-<div class="outline-text-3" id="text-orgbc947dd">
+<div id="outline-container-orge104e43" class="outline-3">
+<h3 id="orge104e43">Answer</h3>
+<div class="outline-text-3" id="text-orge104e43">
 </div>
-<div id="outline-container-org43f11d4" class="outline-4">
-<h4 id="org43f11d4">Gibbs sampler</h4>
-<div class="outline-text-4" id="text-org43f11d4">
+<div id="outline-container-orgfd5e44a" class="outline-4">
+<h4 id="orgfd5e44a">Gibbs sampler</h4>
+<div class="outline-text-4" id="text-orgfd5e44a">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">impute_Gibbs_Jeffreys</span><span style="color: #51afef;">(</span>S, Y, Y_full, &#931;_init<span style="color: #51afef;">)</span>
-    n, p = size<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
-    O = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">.*</span> .!ismissing.<span style="color: #51afef;">(</span>Y<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">impute_Gibbs_Jeffreys</span>(S, Y, Y_full, &#931;_init)
+    n, p = size(Y)
+    O = 1 .* .!ismissing.(Y)
 
-    THETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p<span style="color: #51afef;">)</span>
-    SIGMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p <span style="color: #FCCE7B;">*</span> p<span style="color: #51afef;">)</span>
-    Y_MISS = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, sum<span style="color: #C57BDB;">(</span>ismissing.<span style="color: #7bc275;">(</span>Y<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    THETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, p)
+    SIGMA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, p * p)
+    Y_MISS = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, sum(ismissing.(Y)))
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">initialize</span>
-    &#931; = &#931;_init
-    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#952;</span>
-        y&#772; = mean<span style="color: #51afef;">(</span>Y_full, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-        &#952; = rand<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>y&#772;, Symmetric<span style="color: #7bc275;">(</span>&#931; <span style="color: #FCCE7B;">./</span> n<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">initialize
+</span>    &#931; = &#931;_init
+    <span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update &#952;
+</span>        y&#772; = mean(Y_full, dims=1) |&gt; vec
+        &#952; = rand(MvNormal(y&#772;, Symmetric(&#931; ./ n)))
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#931;</span>
-        S_&#952; = <span style="color: #51afef;">(</span>Y_full' .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>Y_full' .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span>'
-        &#931; = rand<span style="color: #51afef;">(</span>InverseWishart<span style="color: #C57BDB;">(</span>n <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">1</span>, S_&#952;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update &#931;
+</span>        S_&#952; = (Y_full' .- &#952;) * (Y_full' .- &#952;)'
+        &#931; = rand(InverseWishart(n + 1, S_&#952;))
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update missing data</span>
-        <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n
-            b = <span style="color: #51afef;">(</span>O<span style="color: #C57BDB;">[</span>i, :<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
-            a = <span style="color: #51afef;">(</span>O<span style="color: #C57BDB;">[</span>i, :<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-            iSa = inv<span style="color: #51afef;">(</span>&#931;<span style="color: #C57BDB;">[</span>a, a<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-            &#946;j = &#931;<span style="color: #51afef;">[</span>b, a<span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">*</span> iSa
-            &#931;j = &#931;<span style="color: #51afef;">[</span>b, b<span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">-</span> &#931;<span style="color: #51afef;">[</span>b, a<span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">*</span> iSa <span style="color: #FCCE7B;">*</span> &#931;<span style="color: #51afef;">[</span>a, b<span style="color: #51afef;">]</span>
-            &#952;j = &#952;<span style="color: #51afef;">[</span>b<span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">+</span> &#946;j <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span> Y_full<span style="color: #C57BDB;">[</span>i, a<span style="color: #C57BDB;">]</span> <span style="color: #FCCE7B;">-</span> &#952;<span style="color: #C57BDB;">[</span>a<span style="color: #C57BDB;">]</span> <span style="color: #51afef;">)</span>
-            Y_full<span style="color: #51afef;">[</span>i, b<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>&#952;j, Symmetric<span style="color: #7bc275;">(</span>&#931;j<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">end</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update missing data
+</span>        <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:n
+            b = (O[i, :] .== 0)
+            a = (O[i, :] .== 1)
+            iSa = inv(&#931;[a, a])
+            &#946;j = &#931;[b, a] * iSa
+            &#931;j = &#931;[b, b] - &#931;[b, a] * iSa * &#931;[a, b]
+            &#952;j = &#952;[b] + &#946;j * ( Y_full[i, a] - &#952;[a] )
+            Y_full[i, b] = rand(MvNormal(&#952;j, Symmetric(&#931;j)))
+        <span style="font-weight: bold;">end</span>
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">store</span>
-        THETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span>
-        SIGMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>&#931;<span style="color: #51afef;">)</span>
-        Y_MISS<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = vec<span style="color: #51afef;">(</span>Y_full<span style="color: #C57BDB;">[</span>O .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> THETA, SIGMA, Y_MISS
-<span style="color: #51afef;">end</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">store
+</span>        THETA[s, :] = vec(&#952;)
+        SIGMA[s, :] = vec(&#931;)
+        Y_MISS[s, :] = vec(Y_full[O .== 0])
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> THETA, SIGMA, Y_MISS
+<span style="font-weight: bold;">end</span>
 
-S = <span style="color: #e69055; font-weight: bold;">10000</span>
-Y_full = Float64.<span style="color: #51afef;">(</span>Y_imp<span style="color: #51afef;">)</span>
-&#931;_init = cov<span style="color: #51afef;">(</span>Y_full<span style="color: #51afef;">)</span>
+S = 10000
+Y_full = Float64.(Y_imp)
+&#931;_init = cov(Y_full)
 
-THETA, SIGMA, Y_MISS = impute_Gibbs_Jeffreys<span style="color: #51afef;">(</span>S, Y, Y_full, &#931;_init<span style="color: #51afef;">)</span>
-</pre>
+THETA, SIGMA, Y_MISS = impute_Gibbs_Jeffreys(S, Y, Y_full, &#931;_init)
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb1fb994" class="outline-4">
-<h4 id="orgb1fb994">Posterior mean and confidence interval</h4>
-<div class="outline-text-4" id="text-orgb1fb994">
+<div id="outline-container-org4f89728" class="outline-4">
+<h4 id="org4f89728">Posterior mean and confidence interval</h4>
+<div class="outline-text-4" id="text-org4f89728">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean</span>
-mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">-</span> THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean
+</span>mean(THETA[:, 1] .- THETA[:, 2])
+</code></pre>
 </div>
 
 <pre class="example">
 -0.6129730482663495
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior confidence interval</span>
-quantile<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">-</span> THETA<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior confidence interval
+</span>quantile(THETA[:, 1] .- THETA[:, 2], [0.025, 0.975])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -287,21 +266,22 @@ quantile<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;"
 </pre>
 </div>
 </div>
-<div id="outline-container-orgdf047c1" class="outline-4">
-<h4 id="orgdf047c1">discussion</h4>
-<div class="outline-text-4" id="text-orgdf047c1">
+<div id="outline-container-org1101ef8" class="outline-4">
+<h4 id="org1101ef8">discussion</h4>
+<div class="outline-text-4" id="text-org1101ef8">
 </div>
-<div id="outline-container-org9bb4c4e" class="outline-5">
-<h5 id="org9bb4c4e">日本語</h5>
-<div class="outline-text-5" id="text-org9bb4c4e">
+<div id="outline-container-orgec05a71" class="outline-5">
+<h5 id="orgec05a71">日本語</h5>
+<div class="outline-text-5" id="text-orgec05a71">
 <p>
-b)で行った t 検定では、有意水準 5%で帰無仮説が棄却され、刺激 A と刺激 B の反応時間には有意な差があることが示唆される結果になったが、ベイズ推定による代入法では、差の事後分布の 95%信用区間が 0 を含んでおり、必ずしも刺激 A と刺激 B の反応時間に有意な差があるとは言えない結果になった。
+b)で行った t 検定では、有意水準 5%で帰無仮説が棄却され、刺激 A と刺激 B の反応時間には有意な差があることが示唆される結果になったが、
+ベイズ推定による代入法では、差の事後分布の 95%信用区間が 0 を含んでおり、必ずしも刺激 A と刺激 B の反応時間に有意な差があるとは言えない結果になった。
 </p>
 </div>
 </div>
-<div id="outline-container-org4a5a7af" class="outline-5">
-<h5 id="org4a5a7af">English</h5>
-<div class="outline-text-5" id="text-org4a5a7af">
+<div id="outline-container-org524420d" class="outline-5">
+<h5 id="org524420d">English</h5>
+<div class="outline-text-5" id="text-org524420d">
 <p>
 In the t-test performed in b), the null hypothesis was rejected at the <code>5%</code> significance level, suggesting a significant difference between the reaction times for stimulus A and stimulus B.
 However, with the Bayesian estimation approach (imputation method), the <code>95%</code> credible interval for the posterior distribution of the difference included 0. This result suggests that there is not necessarily a significant difference in reaction times between stimulus A and stimulus B.
@@ -323,7 +303,7 @@ However, with the Bayesian estimation approach (imputation method), the <code>95
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

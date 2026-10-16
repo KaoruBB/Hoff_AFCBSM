@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 </head>
 <body>
 <div id="content" class="content">
@@ -57,104 +37,104 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org91c8efa">a)</a>
+<li><a href="#orgb089e9f">a)</a>
 <ul>
-<li><a href="#org702e537">Answer</a></li>
+<li><a href="#org185224f">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd320ba3">b)</a>
+<li><a href="#org01393ec">b)</a>
 <ul>
-<li><a href="#orgd495fc3">Answer</a></li>
+<li><a href="#org7c8401d">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org4567b78">c)</a>
+<li><a href="#org6a8d47d">c)</a>
 <ul>
-<li><a href="#org90f0f89">Answer</a></li>
+<li><a href="#org18b84a0">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org91c8efa" class="outline-2">
-<h2 id="org91c8efa">a)</h2>
-<div class="outline-text-2" id="text-org91c8efa">
+<div id="outline-container-orgb089e9f" class="outline-2">
+<h2 id="orgb089e9f">a)</h2>
+<div class="outline-text-2" id="text-orgb089e9f">
 </div>
-<div id="outline-container-org702e537" class="outline-3">
-<h3 id="org702e537">Answer</h3>
-<div class="outline-text-3" id="text-org702e537">
+<div id="outline-container-org185224f" class="outline-3">
+<h3 id="org185224f">Answer</h3>
+<div class="outline-text-3" id="text-org185224f">
 <p>
 The result of bayesian regression using the <i>g</i>-prior is shown below:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia">crime_src = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/crime.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
-crime = crime_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
-header = crime_src<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+<pre class="src src-julia"><code>crime_src = readdlm(<span style="font-style: italic;">"../../Exercises/crime.dat"</span>, header=<span style="font-weight: bold; text-decoration: underline;">true</span>)
+crime = crime_src[1]
+header = crime_src[2] |&gt; vec
 
-df = DataFrame<span style="color: #51afef;">(</span>crime, header<span style="color: #51afef;">)</span>
+df = DataFrame(crime, header)
 
-<span style="color: #51afef;">using</span> GLM
+<span style="font-weight: bold;">using</span> GLM
 
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">ResidualSE</span><span style="color: #51afef;">(</span>y,X<span style="color: #51afef;">)</span>
-    fit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">return</span> sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, residuals<span style="color: #7bc275;">(</span>fit<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>size<span style="color: #C57BDB;">(</span>X, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> size<span style="color: #C57BDB;">(</span>X, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">ResidualSE</span>(y,X)
+    fit = lm(X, y)
+    <span style="font-weight: bold;">return</span> sum(map(x -&gt; x^2, residuals(fit))) / (size(X, 1) - size(X, 2))
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">lmGprior</span><span style="color: #51afef;">(</span>y, X; g=length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span>, &#957;&#8320;=<span style="color: #e69055; font-weight: bold;">1</span>, &#963;&#8320;&#178;=ResidualSE<span style="color: #C57BDB;">(</span>y,X<span style="color: #C57BDB;">)</span>, S=<span style="color: #e69055; font-weight: bold;">1000</span><span style="color: #51afef;">)</span>
-    n, p = size<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">lmGprior</span>(y, X; g=length(y), &#957;&#8320;=1, &#963;&#8320;&#178;=ResidualSE(y,X), S=1000)
+    n, p = size(X)
 
-    Hg = <span style="color: #51afef;">(</span>g<span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>g<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> X <span style="color: #FCCE7B;">*</span> inv<span style="color: #51afef;">(</span>X'X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> X'
-    SSRg = y' <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>diagm<span style="color: #C57BDB;">(</span>ones<span style="color: #7bc275;">(</span>n<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> Hg<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> y
-    &#963;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">./</span> rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">+</span>n<span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">/</span><span style="color: #7bc275;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">*</span>&#963;&#8320;&#178;<span style="color: #FCCE7B;">+</span>SSRg<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
+    Hg = (g/(g+1)) * X * inv(X'X) * X'
+    SSRg = y' * (diagm(ones(n)) - Hg) * y
+    &#963;&#178; = 1 ./ rand(Gamma((&#957;&#8320;+n)/2, 2/(&#957;&#8320;*&#963;&#8320;&#178;+SSRg)), S)
 
-    Vb = g <span style="color: #FCCE7B;">*</span> inv<span style="color: #51afef;">(</span>X'X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>g<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-    Eb = Vb <span style="color: #FCCE7B;">*</span> X' <span style="color: #FCCE7B;">*</span> y
+    Vb = g * inv(X'X) /(g+1)
+    Eb = Vb * X' * y
 
-    &#946; = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, <span style="color: #e69055; font-weight: bold;">0</span>, p<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        s = &#963;&#178;<span style="color: #51afef;">[</span>i<span style="color: #51afef;">]</span>
-        &#946; = vcat<span style="color: #51afef;">(</span>&#946;, rand<span style="color: #C57BDB;">(</span>MvNormal<span style="color: #7bc275;">(</span>Eb, Symmetric<span style="color: #a991f1;">(</span>s <span style="color: #FCCE7B;">*</span> Vb<span style="color: #a991f1;">)</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>'<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> &#946;, &#963;&#178;
-<span style="color: #51afef;">end</span>
+    &#946; = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, 0, p)
+    <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:S
+        s = &#963;&#178;[i]
+        &#946; = vcat(&#946;, rand(MvNormal(Eb, Symmetric(s * Vb)))')
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> &#946;, &#963;&#178;
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
-n = size<span style="color: #51afef;">(</span>df, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">set prior parameters
+</span>n = size(df, 1)
 g = n
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
-&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">1</span>
+&#957;&#8320; = 2
+&#963;&#8320;&#178; = 1
 
-y = df<span style="color: #51afef;">[</span>:, <span style="color: #a991f1;">:y</span><span style="color: #51afef;">]</span>
-X = select<span style="color: #51afef;">(</span>df, Not<span style="color: #C57BDB;">(</span><span style="color: #a991f1;">:y</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> Matrix
-X = <span style="color: #51afef;">[</span>ones<span style="color: #C57BDB;">(</span>size<span style="color: #7bc275;">(</span>X, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span> X<span style="color: #51afef;">]</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">add intercept</span>
-p = size<span style="color: #51afef;">(</span>X, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-S=<span style="color: #e69055; font-weight: bold;">5000</span>
-BETA, SIGMA&#178; = lmGprior<span style="color: #51afef;">(</span>y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
+y = df[:, <span style="font-weight: bold; text-decoration: underline;">:y</span>]
+X = select(df, Not(<span style="font-weight: bold; text-decoration: underline;">:y</span>)) |&gt; Matrix
+X = [ones(size(X, 1)) X] <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">add intercept
+</span>p = size(X, 2)
+S=5000
+BETA, SIGMA&#178; = lmGprior(y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean for &#946;</span>
-&#946;&#770;_gprior = mean<span style="color: #51afef;">(</span>BETA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean for &#946;
+</span>&#946;&#770;_gprior = mean(BETA, dims=1) |&gt; vec
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">posterior confidence intervals for &#946;</span>
-ci_gprior = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> quantile<span style="color: #C57BDB;">(</span>x, <span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, eachcol<span style="color: #C57BDB;">(</span>BETA<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior confidence intervals for &#946;
+</span>ci_gprior = map(x -&gt; quantile(x, [0.025, 0.975]), eachcol(BETA))
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">store results</span>
-coef_name = names<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>:, Not<span style="color: #7bc275;">(</span><span style="color: #a991f1;">:y</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-coef_name = <span style="color: #51afef;">[</span><span style="color: #7bc275;">"intercept"</span>, coef_name...<span style="color: #51afef;">]</span>
-result_gprior = DataFrame<span style="color: #51afef;">(</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">store results
+</span>coef_name = names(df[:, Not(<span style="font-weight: bold; text-decoration: underline;">:y</span>)]) |&gt; vec
+coef_name = [<span style="font-style: italic;">"intercept"</span>, coef_name...]
+result_gprior = DataFrame(
     param = coef_name,
     &#946;&#770; = &#946;&#770;_gprior,
-    ci_lower = map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span>, ci_gprior<span style="color: #C57BDB;">)</span>,
-    ci_upper = map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">]</span>, ci_gprior<span style="color: #C57BDB;">)</span>
-<span style="color: #51afef;">)</span>
-<span style="color: #C57BDB; font-weight: bold;">@transform!</span><span style="color: #51afef;">(</span>result_gprior, <span style="color: #a991f1;">:ci_length</span> = <span style="color: #a991f1;">:ci_upper</span> <span style="color: #FCCE7B;">-</span> <span style="color: #a991f1;">:ci_lower</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+    ci_lower = map(x -&gt; x[1], ci_gprior),
+    ci_upper = map(x -&gt; x[2], ci_gprior)
+)
+<span style="font-weight: bold;">@transform!</span>(result_gprior, <span style="font-weight: bold; text-decoration: underline;">:ci_length</span> = <span style="font-weight: bold; text-decoration: underline;">:ci_upper</span> - <span style="font-weight: bold; text-decoration: underline;">:ci_lower</span>)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <p>
 :RESULTS:
 </p>
-<pre class="example" id="org6a66710">
+<pre class="example" id="orge38472c">
 16×5 DataFrame
  Row │ param      β̂             ci_lower    ci_upper    ci_length
      │ String     Float64       Float64     Float64     Float64
@@ -182,24 +162,24 @@ The result of least square estimation is shown below:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">least square estimates</span>
-olsfit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">least square estimates
+</span>olsfit = lm(X, y)
 
-tstat = coef<span style="color: #51afef;">(</span>olsfit<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">./</span> stderror<span style="color: #51afef;">(</span>olsfit<span style="color: #51afef;">)</span>
-pval = <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> .<span style="color: #FCCE7B;">-</span> cdf.<span style="color: #C57BDB;">(</span>Normal<span style="color: #7bc275;">()</span>, abs.<span style="color: #7bc275;">(</span>tstat<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+tstat = coef(olsfit) ./ stderror(olsfit)
+pval = 2 * (1 .- cdf.(Normal(), abs.(tstat)))
 
-result_ols = DataFrame<span style="color: #51afef;">(</span>
+result_ols = DataFrame(
     param = coef_name,
-    &#946;&#770; = coef<span style="color: #C57BDB;">(</span>olsfit<span style="color: #C57BDB;">)</span>,
+    &#946;&#770; = coef(olsfit),
     pvalue = pval,
-    ci_lower = confint<span style="color: #C57BDB;">(</span>olsfit<span style="color: #C57BDB;">)[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span>,
-    ci_upper = confint<span style="color: #C57BDB;">(</span>olsfit<span style="color: #C57BDB;">)[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>
-<span style="color: #51afef;">)</span>
-<span style="color: #C57BDB; font-weight: bold;">@transform!</span><span style="color: #51afef;">(</span>result_ols, <span style="color: #a991f1;">:ci_length</span> = <span style="color: #a991f1;">:ci_upper</span> <span style="color: #FCCE7B;">-</span> <span style="color: #a991f1;">:ci_lower</span><span style="color: #51afef;">)</span>
-</pre>
+    ci_lower = confint(olsfit)[:, 1],
+    ci_upper = confint(olsfit)[:, 2]
+)
+<span style="font-weight: bold;">@transform!</span>(result_ols, <span style="font-weight: bold; text-decoration: underline;">:ci_length</span> = <span style="font-weight: bold; text-decoration: underline;">:ci_upper</span> - <span style="font-weight: bold; text-decoration: underline;">:ci_lower</span>)
+</code></pre>
 </div>
 
-<pre class="example" id="orgd449dc2">
+<pre class="example" id="org37154bc">
 16×6 DataFrame
  Row │ param      β̂             pvalue      ci_lower     ci_upper    ci_length
      │ String     Float64       Float64     Float64      Float64     Float64
@@ -223,7 +203,7 @@ result_ols = DataFrame<span style="color: #51afef;">(</span>
 </pre>
 
 
-<div id="org32d6f4d" class="figure">
+<div id="orgc6e4292" class="figure">
 <p><img src="./fig/ex_9-3a_coef.png" alt="ex_9-3a_coef.png" />
 </p>
 </div>
@@ -238,33 +218,33 @@ Using these types of criteria, the difference between the two results is that Po
 </div>
 </div>
 </div>
-<div id="outline-container-orgd320ba3" class="outline-2">
-<h2 id="orgd320ba3">b)</h2>
-<div class="outline-text-2" id="text-orgd320ba3">
+<div id="outline-container-org01393ec" class="outline-2">
+<h2 id="org01393ec">b)</h2>
+<div class="outline-text-2" id="text-org01393ec">
 </div>
-<div id="outline-container-orgd495fc3" class="outline-3">
-<h3 id="orgd495fc3">Answer</h3>
-<div class="outline-text-3" id="text-orgd495fc3">
+<div id="outline-container-org7c8401d" class="outline-3">
+<h3 id="org7c8401d">Answer</h3>
+<div class="outline-text-3" id="text-org7c8401d">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
-Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
-i_te = sample<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span>:n, div<span style="color: #C57BDB;">(</span>n, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span>, replace=<span style="color: #a991f1;">false</span><span style="color: #51afef;">)</span>
-i_tr = setdiff<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span>:n, i_te<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">split data into training and test set
+</span>Random.seed!(1234)
+i_te = sample(1:n, div(n, 2), replace=<span style="font-weight: bold; text-decoration: underline;">false</span>)
+i_tr = setdiff(1:n, i_te)
 
-y_tr = y<span style="color: #51afef;">[</span>i_tr<span style="color: #51afef;">]</span>
-y_te = y<span style="color: #51afef;">[</span>i_te<span style="color: #51afef;">]</span>
-X_tr = X<span style="color: #51afef;">[</span>i_tr, :<span style="color: #51afef;">]</span>
-X_te = X<span style="color: #51afef;">[</span>i_te, :<span style="color: #51afef;">]</span>
-</pre>
+y_tr = y[i_tr]
+y_te = y[i_te]
+X_tr = X[i_tr, :]
+X_te = X[i_te, :]
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">OLS</span>
-olsfit = lm<span style="color: #51afef;">(</span>X_tr, y_tr<span style="color: #51afef;">)</span>
-&#946;&#770;_ols = coef<span style="color: #51afef;">(</span>olsfit<span style="color: #51afef;">)</span>
-y&#770;_ols = X_te <span style="color: #FCCE7B;">*</span> &#946;&#770;_ols
-error_ols = mean<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>y_te <span style="color: #FCCE7B;">-</span> y&#770;_ols<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">OLS
+</span>olsfit = lm(X_tr, y_tr)
+&#946;&#770;_ols = coef(olsfit)
+y&#770;_ols = X_te * &#946;&#770;_ols
+error_ols = mean((y_te - y&#770;_ols).^2)
+</code></pre>
 </div>
 
 <p>
@@ -274,14 +254,13 @@ error_ols = mean<span style="color: #51afef;">(</span><span style="color: #C57BD
 0.6155918321208247
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">Bayesian</span>
-BETA, SIGMA&#178; = lmGprior<span style="color: #51afef;">(</span>y_tr, X_tr; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
-&#946;&#770;_bayes = mean<span style="color: #51afef;">(</span>BETA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-y&#770;_bayes = X_te <span style="color: #FCCE7B;">*</span> &#946;&#770;_bayes
-error_bayes = mean<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>y_te <span style="color: #FCCE7B;">-</span> y&#770;_bayes<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Bayesian
+</span>BETA, SIGMA&#178; = lmGprior(y_tr, X_tr; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S)
+&#946;&#770;_bayes = mean(BETA, dims=1) |&gt; vec
+y&#770;_bayes = X_te * &#946;&#770;_bayes
+error_bayes = mean((y_te - y&#770;_bayes).^2)
+</code></pre>
 </div>
 
 <p>
@@ -292,8 +271,7 @@ error_bayes = mean<span style="color: #51afef;">(</span><span style="color: #C57
 </pre>
 
 
-
-<div id="orgf6f9cf3" class="figure">
+<div id="orge31ba36" class="figure">
 <p><img src="./fig/ex_9-3b.png" alt="ex_9-3b.png" />
 </p>
 </div>
@@ -305,44 +283,44 @@ For this time, the bayesian regression predict better than the least square regr
 </div>
 </div>
 </div>
-<div id="outline-container-org4567b78" class="outline-2">
-<h2 id="org4567b78">c)</h2>
-<div class="outline-text-2" id="text-org4567b78">
+<div id="outline-container-org6a8d47d" class="outline-2">
+<h2 id="org6a8d47d">c)</h2>
+<div class="outline-text-2" id="text-org6a8d47d">
 </div>
-<div id="outline-container-org90f0f89" class="outline-3">
-<h3 id="org90f0f89">Answer</h3>
-<div class="outline-text-3" id="text-org90f0f89">
+<div id="outline-container-org18b84a0" class="outline-3">
+<h3 id="org18b84a0">Answer</h3>
+<div class="outline-text-3" id="text-org18b84a0">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">computeMses</span><span style="color: #51afef;">(</span>y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">split data into training and test set</span>
-    y_tr, y_te, X_tr, X_te = splitData<span style="color: #51afef;">(</span>y, X<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">computeMses</span>(y, X; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S)
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">split data into training and test set
+</span>    y_tr, y_te, X_tr, X_te = splitData(y, X)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">OLS</span>
-    olsfit = lm<span style="color: #51afef;">(</span>X_tr, y_tr<span style="color: #51afef;">)</span>
-    &#946;&#770;_ols = coef<span style="color: #51afef;">(</span>olsfit<span style="color: #51afef;">)</span>
-    y&#770;_ols = X_te <span style="color: #FCCE7B;">*</span> &#946;&#770;_ols
-    error_ols = mean<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>y_te <span style="color: #FCCE7B;">-</span> y&#770;_ols<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">OLS
+</span>    olsfit = lm(X_tr, y_tr)
+    &#946;&#770;_ols = coef(olsfit)
+    y&#770;_ols = X_te * &#946;&#770;_ols
+    error_ols = mean((y_te - y&#770;_ols).^2)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">Bayesian</span>
-    BETA, SIGMA&#178; = lmGprior<span style="color: #51afef;">(</span>y_tr, X_tr; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
-    &#946;&#770;_bayes = mean<span style="color: #51afef;">(</span>BETA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-    y&#770;_bayes = X_te <span style="color: #FCCE7B;">*</span> &#946;&#770;_bayes
-    error_bayes = mean<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>y_te <span style="color: #FCCE7B;">-</span> y&#770;_bayes<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Bayesian
+</span>    BETA, SIGMA&#178; = lmGprior(y_tr, X_tr; g=g, &#957;&#8320;=&#957;&#8320;, &#963;&#8320;&#178;=&#963;&#8320;&#178;, S=S)
+    &#946;&#770;_bayes = mean(BETA, dims=1) |&gt; vec
+    y&#770;_bayes = X_te * &#946;&#770;_bayes
+    error_bayes = mean((y_te - y&#770;_bayes).^2)
 
-    <span style="color: #51afef;">return</span> error_ols, error_bayes
-<span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">return</span> error_ols, error_bayes
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">compute MSEs</span>
-n_sim = <span style="color: #e69055; font-weight: bold;">1000</span>
-error_ols = zeros<span style="color: #51afef;">(</span>n_sim<span style="color: #51afef;">)</span>
-error_bayes = zeros<span style="color: #51afef;">(</span>n_sim<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n_sim
-    error_ols<span style="color: #51afef;">[</span>i<span style="color: #51afef;">]</span>, error_bayes<span style="color: #51afef;">[</span>i<span style="color: #51afef;">]</span> = computeMses<span style="color: #51afef;">(</span>y, X<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">compute MSEs
+</span>n_sim = 1000
+error_ols = zeros(n_sim)
+error_bayes = zeros(n_sim)
+<span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:n_sim
+    error_ols[i], error_bayes[i] = computeMses(y, X)
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">average MSEs</span>
-mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;">)</span>, mean<span style="color: #51afef;">(</span>error_bayes<span style="color: #51afef;">)</span>
-</pre>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">average MSEs
+</span>mean(error_ols), mean(error_bayes)
+</code></pre>
 </div>
 
 <p>
@@ -353,8 +331,7 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 </pre>
 
 
-
-<div id="org3fd140e" class="figure">
+<div id="org15d8a4f" class="figure">
 <p><img src="./fig/ex_9-3c.png" alt="ex_9-3c.png" />
 </p>
 </div>
@@ -373,7 +350,7 @@ mean<span style="color: #51afef;">(</span>error_ols<span style="color: #51afef;"
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

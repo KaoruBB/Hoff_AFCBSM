@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 4.4 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,26 +95,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0caa9f4">a)</a>
+<li><a href="#org58c67b3">a)</a>
 <ul>
-<li><a href="#orgdcb9aa1">answer</a></li>
+<li><a href="#orga8b049f">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgda34c89">b)</a>
+<li><a href="#orgec0b087">b)</a>
 <ul>
-<li><a href="#org4cde3a6">answer</a></li>
+<li><a href="#org00a2172">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0caa9f4" class="outline-2">
-<h2 id="org0caa9f4">a)</h2>
-<div class="outline-text-2" id="text-org0caa9f4">
+<div id="outline-container-org58c67b3" class="outline-2">
+<h2 id="org58c67b3">a)</h2>
+<div class="outline-text-2" id="text-org58c67b3">
 </div>
-<div id="outline-container-orgdcb9aa1" class="outline-3">
-<h3 id="orgdcb9aa1">answer</h3>
-<div class="outline-text-3" id="text-orgdcb9aa1">
+<div id="outline-container-orga8b049f" class="outline-3">
+<h3 id="orga8b049f">answer</h3>
+<div class="outline-text-3" id="text-orga8b049f">
 <p>
 From the result in <a href="../ch3/3-4.html">3.4 d) ii</a>, the posterior distribution when using the mixture prior distribution follows
 \(\frac{3}{4} \text{Beta}(17, 36) + \frac{1}{4} \text{Beta}(23, 30)\).
@@ -145,27 +125,27 @@ The plot is as follows.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
-<span style="color: #51afef;">using</span> Random
-<span style="color: #51afef;">using</span> LaTeXStrings
-<span style="color: #51afef;">using</span> Plots
-mm = MixtureModel<span style="color: #51afef;">(</span>
-    <span style="color: #C57BDB;">[</span>Beta<span style="color: #7bc275;">(</span><span style="color: #e69055; font-weight: bold;">17</span>, <span style="color: #e69055; font-weight: bold;">36</span><span style="color: #7bc275;">)</span>, Beta<span style="color: #7bc275;">(</span><span style="color: #e69055; font-weight: bold;">23</span>, <span style="color: #e69055; font-weight: bold;">30</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">]</span>,
-    <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.75</span>, <span style="color: #e69055; font-weight: bold;">0.25</span><span style="color: #C57BDB;">]</span>
-<span style="color: #51afef;">)</span>
-mm_samples = rand<span style="color: #51afef;">(</span>mm, <span style="color: #e69055; font-weight: bold;">10</span>_000_000<span style="color: #51afef;">)</span>
-histogram<span style="color: #51afef;">(</span>
-    mm_samples, label=<span style="color: #7bc275;">"mixture model posterior"</span>
-    , bins=<span style="color: #e69055; font-weight: bold;">1000</span>, normalize=<span style="color: #a991f1;">:pdf</span>, xlabel=<span style="color: #7bc275;">"&#952;"</span>, ylabel=L<span style="color: #7bc275;">"p(\theta \mid y)"</span>
-<span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> Distributions
+<span style="font-weight: bold;">using</span> Random
+<span style="font-weight: bold;">using</span> LaTeXStrings
+<span style="font-weight: bold;">using</span> Plots
+mm = MixtureModel(
+    [Beta(17, 36), Beta(23, 30)],
+    [0.75, 0.25]
+)
+mm_samples = rand(mm, 10_000_000)
+histogram(
+    mm_samples, label=<span style="font-style: italic;">"mixture model posterior"</span>
+    , bins=1000, normalize=<span style="font-weight: bold; text-decoration: underline;">:pdf</span>, xlabel=<span style="font-style: italic;">"&#952;"</span>, ylabel=L<span style="font-style: italic;">"p(\theta \mid y)"</span>
+)
+</code></pre>
 </div>
 
 <p>
 :RESULTS:
 </p>
 
-<div id="org27d4b97" class="figure">
+<div id="orgb26a8b5" class="figure">
 <p><img src="fig/exercise4-4a.png" alt="exercise4-4a.png" width="500" />
 </p>
 </div>
@@ -175,8 +155,8 @@ The 95% quantile-based posterior confidence interval can be approximated using s
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia">quantile<span style="color: #51afef;">(</span>mm_samples, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>quantile(mm_samples, [0.025, 0.975])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -187,31 +167,31 @@ The 95% quantile-based posterior confidence interval can be approximated using s
 </div>
 </div>
 </div>
-<div id="outline-container-orgda34c89" class="outline-2">
-<h2 id="orgda34c89">b)</h2>
-<div class="outline-text-2" id="text-orgda34c89">
+<div id="outline-container-orgec0b087" class="outline-2">
+<h2 id="orgec0b087">b)</h2>
+<div class="outline-text-2" id="text-orgec0b087">
 </div>
-<div id="outline-container-org4cde3a6" class="outline-3">
-<h3 id="org4cde3a6">answer</h3>
-<div class="outline-text-3" id="text-org4cde3a6">
+<div id="outline-container-org00a2172" class="outline-3">
+<h3 id="org00a2172">answer</h3>
+<div class="outline-text-3" id="text-org00a2172">
 <div class="org-src-container">
-<pre class="src src-julia">w = <span style="color: #e69055; font-weight: bold;">0.75</span>
+<pre class="src src-julia"><code>w = 0.75
 
-z_mc = <span style="color: #51afef;">[]</span>
-<span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">10</span>_000_000
-    x = rand<span style="color: #51afef;">(</span>Bernoulli<span style="color: #C57BDB;">(</span>w<span style="color: #C57BDB;">)</span>, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-    dist = x <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #51afef;">?</span> Beta<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">17</span>, <span style="color: #e69055; font-weight: bold;">36</span><span style="color: #51afef;">)</span> <span style="color: #51afef;">:</span> Beta<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">23</span>, <span style="color: #e69055; font-weight: bold;">30</span><span style="color: #51afef;">)</span>
-    z = rand<span style="color: #51afef;">(</span>dist<span style="color: #51afef;">)</span>
-    append!<span style="color: #51afef;">(</span>z_mc, z<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+z_mc = []
+<span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:10_000_000
+    x = rand(Bernoulli(w), 1)
+    dist = x == 1 <span style="font-weight: bold;">?</span> Beta(17, 36) <span style="font-weight: bold;">:</span> Beta(23, 30)
+    z = rand(dist)
+    append!(z_mc, z)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <p>
 :RESULTS:
 </p>
 
-<div id="orgcf7a16b" class="figure">
+<div id="orgbf36ab6" class="figure">
 <p><img src="fig/exercise4-4b.png" alt="exercise4-4b.png" width="500" />
 </p>
 </div>
@@ -235,7 +215,7 @@ z_mc = <span style="color: #51afef;">[]</span>
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

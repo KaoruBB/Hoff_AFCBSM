@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2025-09-19 金 16:13 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>標準ベイズ統計学 演習問題 解答例</title>
@@ -21,33 +21,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 </head>
 <body>
 <div id="content" class="content">
@@ -59,16 +39,16 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org121688d">このサイトについて</a></li>
-<li><a href="#org40fea42">解答一覧</a></li>
-<li><a href="#org3f57009">間違いを見つけたら</a></li>
-<li><a href="#org10a4d70">謝辞</a></li>
+<li><a href="#org0c77a57">このサイトについて</a></li>
+<li><a href="#orge4a62fd">解答一覧</a></li>
+<li><a href="#org249e801">間違いを見つけたら</a></li>
+<li><a href="#org3df7bb9">謝辞</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org121688d" class="outline-2">
-<h2 id="org121688d">このサイトについて</h2>
-<div class="outline-text-2" id="text-org121688d">
+<div id="outline-container-org0c77a57" class="outline-2">
+<h2 id="org0c77a57">このサイトについて</h2>
+<div class="outline-text-2" id="text-org0c77a57">
 <p>
 このサイトは、Peter Hoff 著「A First Course in Bayesian Statistical Methods」(日本語版タイトル: <a href="https://www.asakura.co.jp/detail.php?book_code=12267">標準ベイズ統計学</a>) の演習問題 (Exercise) の解答例を提供する目的で作成されました。
 </p>
@@ -78,7 +58,8 @@ gtag('config', 'GT-M6XHKK2R');
 </p>
 
 <p>
-各章・各問題ごとにページを分けて、解答、解説、そして実装コードを掲載しています。現在は主に <code>Julia</code> での実装ですが、将来的には <code>R</code> や <code>Python</code> での実装も追加していきたいと考えています（プルリクエストも歓迎します！）。
+各章・各問題ごとにページを分けて、解答、解説、そして実装コードを掲載しています。
+現在は主に <code>Julia</code> での実装ですが、将来的には <code>R</code> や <code>Python</code> での実装も追加していきたいと考えています（プルリクエストも歓迎します！）。
 </p>
 
 <p>
@@ -86,13 +67,14 @@ For English site, please visit <a href="./index.html">here</a>.
 </p>
 
 <p>
-<b>注意</b>: 解答は個人が作成したものであり、誤りが含まれる可能性があります。参考程度にご利用ください。間違いを見つけた場合は、後述の方法でご指摘いただけると幸いです。
+<b>注意</b>: 解答は個人が作成したものであり、誤りが含まれる可能性があります。
+参考程度にご利用ください。間違いを見つけた場合は、後述の方法でご指摘いただけると幸いです。
 </p>
 </div>
 </div>
-<div id="outline-container-org40fea42" class="outline-2">
-<h2 id="org40fea42">解答一覧</h2>
-<div class="outline-text-2" id="text-org40fea42">
+<div id="outline-container-orge4a62fd" class="outline-2">
+<h2 id="orge4a62fd">解答一覧</h2>
+<div class="outline-text-2" id="text-orge4a62fd">
 <p>
 各章のリンクから、問題ごとの解答ページへアクセスできます。
 </p>
@@ -112,15 +94,17 @@ For English site, please visit <a href="./index.html">here</a>.
 </ul>
 </div>
 </div>
-<div id="outline-container-org3f57009" class="outline-2">
-<h2 id="org3f57009">間違いを見つけたら</h2>
-<div class="outline-text-2" id="text-org3f57009">
+<div id="outline-container-org249e801" class="outline-2">
+<h2 id="org249e801">間違いを見つけたら</h2>
+<div class="outline-text-2" id="text-org249e801">
 <p>
-本サイトは、著者が修士課程のときに作成を開始し、現在も更新を続けています。そのため、誤植や間違いが含まれている可能性があります。
+本サイトは、著者が修士課程のときに作成を開始し、現在も更新を続けています。
+そのため、誤植や間違いが含まれている可能性があります。
 </p>
 
 <p>
-もし、間違い等を見つけた場合は、<a href="https://github.com/KaoruBB/Hoff_AFCBSM">GitHubリポジトリ</a> に Issue を立てていただくか、Pull Request を送っていただけると大変助かります。また、<a href="mailto:bbkaoru1007@keio.jp">メール</a>でのご連絡も歓迎します。
+もし、間違い等を見つけた場合は、<a href="https://github.com/KaoruBB/Hoff_AFCBSM">GitHubリポジトリ</a> に Issue を立てていただくか、Pull Request を送っていただけると大変助かります。
+また、<a href="mailto:bbkaoru1007@keio.jp">メール</a>でのご連絡も歓迎します。
 </p>
 
 <p>
@@ -128,11 +112,12 @@ For English site, please visit <a href="./index.html">here</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org10a4d70" class="outline-2">
-<h2 id="org10a4d70">謝辞</h2>
-<div class="outline-text-2" id="text-org10a4d70">
+<div id="outline-container-org3df7bb9" class="outline-2">
+<h2 id="org3df7bb9">謝辞</h2>
+<div class="outline-text-2" id="text-org3df7bb9">
 <p>
-本プロジェクトにご協力いただいた皆様に感謝申し上げます。貢献者の完全なリストについては、<a href="Contributors.html">貢献者のページ</a>をご覧ください。
+本プロジェクトにご協力いただいた皆様に感謝申し上げます。
+貢献者の完全なリストについては、<a href="Contributors.html">貢献者のページ</a>をご覧ください。
 </p>
 </div>
 </div>
@@ -141,7 +126,7 @@ For English site, please visit <a href="./index.html">here</a>.
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-09-19 金 16:13</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

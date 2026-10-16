@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 9.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,26 +95,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga10916a">a)</a>
+<li><a href="#org1315a6d">a)</a>
 <ul>
-<li><a href="#orgd44caad">Answer</a></li>
+<li><a href="#org37fdeea">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgac93c8a">b)</a>
+<li><a href="#org53110d9">b)</a>
 <ul>
-<li><a href="#org230ab0c">Answer</a></li>
+<li><a href="#org97b63ac">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga10916a" class="outline-2">
-<h2 id="orga10916a">a)</h2>
-<div class="outline-text-2" id="text-orga10916a">
+<div id="outline-container-org1315a6d" class="outline-2">
+<h2 id="org1315a6d">a)</h2>
+<div class="outline-text-2" id="text-org1315a6d">
 </div>
-<div id="outline-container-orgd44caad" class="outline-3">
-<h3 id="orgd44caad">Answer</h3>
-<div class="outline-text-3" id="text-orgd44caad">
+<div id="outline-container-org37fdeea" class="outline-3">
+<h3 id="org37fdeea">Answer</h3>
+<div class="outline-text-3" id="text-org37fdeea">
 <p>
 The prior information means that the line \(\beta_1 + \beta_2 x\) should produce values between 22 and 24 when \(x\) is between 1 and 6.
 A little algebra shows that we need a prior distribution on \((\beta_1, \beta_2)\) such that
@@ -144,66 +124,66 @@ For \(\nu_0\) and \(\sigma_0^2\), we could take \(\nu_0 = 2\) and \(\sigma_0^2 =
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">read data</span>
-swim = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/swim.dat"</span>, header=<span style="color: #a991f1;">false</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">read data
+</span>swim = readdlm(<span style="font-style: italic;">"../../Exercises/swim.dat"</span>, header=<span style="font-weight: bold; text-decoration: underline;">false</span>)
 
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">regressionSemiconjugatePrior</span><span style="color: #51afef;">(</span>y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;; S=<span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>
-    n, p = size<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">regressionSemiconjugatePrior</span>(y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;; S=5000)
+    n, p = size(X)
 
-    BETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, p<span style="color: #51afef;">)</span>
-    SIGMA&#178; = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S<span style="color: #51afef;">)</span>
+    BETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, p)
+    SIGMA&#178; = Vector{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
-    olsfit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
-    &#946; = coef<span style="color: #51afef;">(</span>olsfit<span style="color: #51afef;">)</span>
-    &#963;&#178; = sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, residuals<span style="color: #7bc275;">(</span>olsfit<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">-</span> p<span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">starting values
+</span>    olsfit = lm(X, y)
+    &#946; = coef(olsfit)
+    &#963;&#178; = sum(map(x -&gt; x^2, residuals(olsfit))) / (n - p)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">MCMC algorithm</span>
-    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#946;</span>
-        V = inv<span style="color: #51afef;">(</span>inv<span style="color: #C57BDB;">(</span>&#931;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">+</span> X'X <span style="color: #FCCE7B;">/</span> &#963;&#178;<span style="color: #51afef;">)</span>
-        E = V <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>inv<span style="color: #C57BDB;">(</span>&#931;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> &#946;&#8320; <span style="color: #FCCE7B;">+</span> X'y <span style="color: #FCCE7B;">/</span> &#963;&#178;<span style="color: #51afef;">)</span>
-        &#946; = rand<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>E, Symmetric<span style="color: #7bc275;">(</span>V<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">MCMC algorithm
+</span>    <span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update &#946;
+</span>        V = inv(inv(&#931;&#8320;) + X'X / &#963;&#178;)
+        E = V * (inv(&#931;&#8320;) * &#946;&#8320; + X'y / &#963;&#178;)
+        &#946; = rand(MvNormal(E, Symmetric(V)))
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">update &#963;&#178;</span>
-        &#957;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">+</span> n
-        SSR = sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, y <span style="color: #FCCE7B;">-</span> X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-        &#957;&#8345;&#963;&#178;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178; <span style="color: #FCCE7B;">+</span> SSR
-        &#963;&#178; = rand<span style="color: #51afef;">(</span>InverseGamma<span style="color: #C57BDB;">(</span>&#957;&#8345; <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">/</span>&#957;&#8345;&#963;&#178;&#8345;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">update &#963;&#178;
+</span>        &#957;&#8345; = &#957;&#8320; + n
+        SSR = sum(map(x -&gt; x^2, y - X*&#946;))
+        &#957;&#8345;&#963;&#178;&#8345; = &#957;&#8320; * &#963;&#8320;&#178; + SSR
+        &#963;&#178; = rand(InverseGamma(&#957;&#8345; / 2, 2/&#957;&#8345;&#963;&#178;&#8345;))
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">store</span>
-        BETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#946;
-        SIGMA&#178;<span style="color: #51afef;">[</span>s<span style="color: #51afef;">]</span> = &#963;&#178;
-    <span style="color: #51afef;">end</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">store
+</span>        BETA[s, :] = &#946;
+        SIGMA&#178;[s] = &#963;&#178;
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #51afef;">return</span> BETA, SIGMA&#178;
-<span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">return</span> BETA, SIGMA&#178;
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
-&#946;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">23</span>, <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">]</span>
-&#931;&#8320; = diagm<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span><span style="color: #7bc275;">(</span><span style="color: #e69055; font-weight: bold;">17</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">5</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #7bc275;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">5</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
-&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">0.5</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">set prior parameters
+</span>&#946;&#8320; = [23, 0]
+&#931;&#8320; = diagm([(17/5)^2, (1/5)^2])
+&#957;&#8320; = 2
+&#963;&#8320;&#178; = 0.5
 
-S = <span style="color: #e69055; font-weight: bold;">5000</span>
+S = 5000
 
-Y_PRED = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, size<span style="color: #C57BDB;">(</span>swim,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-fig = plot<span style="color: #51afef;">(</span>
-    title=<span style="color: #7bc275;">"posterior predictive distribution"</span>, xlabel=<span style="color: #7bc275;">"time"</span>, ylabel=<span style="color: #7bc275;">"density"</span>
-    , size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">800</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>, margin=<span style="color: #e69055; font-weight: bold;">3</span>mm
-<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #51afef;">(</span>swim,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-    y = swim<span style="color: #51afef;">[</span>i, :<span style="color: #51afef;">]</span>
-    X = <span style="color: #51afef;">[</span>repeat<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span>, length<span style="color: #7bc275;">(</span>y<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span> <span style="color: #e69055; font-weight: bold;">1</span>:length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
-    BETA, SIGMA&#178; = regressionSemiconjugatePrior<span style="color: #51afef;">(</span>y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;, S=S<span style="color: #51afef;">)</span>
-    &#956;_ypred = BETA<span style="color: #51afef;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span> .<span style="color: #FCCE7B;">+</span> BETA<span style="color: #51afef;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>length<span style="color: #C57BDB;">(</span>y<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-    ypred = rand.<span style="color: #51afef;">(</span>Normal.<span style="color: #C57BDB;">(</span>&#956;_ypred, sqrt.<span style="color: #7bc275;">(</span>SIGMA&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    Y_PRED<span style="color: #51afef;">[</span>:, i<span style="color: #51afef;">]</span> = ypred
-    fig = density!<span style="color: #51afef;">(</span>fig, ypred, label=<span style="color: #7bc275;">"swimmer $i"</span><span style="color: #51afef;">)</span>
-    ypred_mean = ypred <span style="color: #FCCE7B;">|&gt;</span> mean <span style="color: #FCCE7B;">|&gt;</span> x <span style="color: #FCCE7B;">-&gt;</span> round<span style="color: #51afef;">(</span>x, digits=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"swimmer $i: "</span>, ypred_mean<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+Y_PRED = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, size(swim,1))
+fig = plot(
+    title=<span style="font-style: italic;">"posterior predictive distribution"</span>, xlabel=<span style="font-style: italic;">"time"</span>, ylabel=<span style="font-style: italic;">"density"</span>
+    , size=(800, 400), margin=3mm
+)
+<span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:size(swim,1)
+    y = swim[i, :]
+    X = [repeat([1], length(y)) 1:length(y)]
+    BETA, SIGMA&#178; = regressionSemiconjugatePrior(y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;, S=S)
+    &#956;_ypred = BETA[:,1] .+ BETA[:,2] * (length(y)+1)
+    ypred = rand.(Normal.(&#956;_ypred, sqrt.(SIGMA&#178;)))
+    Y_PRED[:, i] = ypred
+    fig = density!(fig, ypred, label=<span style="font-style: italic;">"swimmer $i"</span>)
+    ypred_mean = ypred |&gt; mean |&gt; x -&gt; round(x, digits=2)
+    println(<span style="font-style: italic;">"swimmer $i: "</span>, ypred_mean)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <p>
@@ -217,25 +197,24 @@ swimmer 4: 23.44
 </pre>
 
 
-
-<div id="orgcf330dd" class="figure">
+<div id="org492bb95" class="figure">
 <p><img src="./fig/ex9-1_posterior_predictive.png" alt="ex9-1_posterior_predictive.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgac93c8a" class="outline-2">
-<h2 id="orgac93c8a">b)</h2>
-<div class="outline-text-2" id="text-orgac93c8a">
+<div id="outline-container-org53110d9" class="outline-2">
+<h2 id="org53110d9">b)</h2>
+<div class="outline-text-2" id="text-org53110d9">
 </div>
-<div id="outline-container-org230ab0c" class="outline-3">
-<h3 id="org230ab0c">Answer</h3>
-<div class="outline-text-3" id="text-org230ab0c">
+<div id="outline-container-org97b63ac" class="outline-3">
+<h3 id="org97b63ac">Answer</h3>
+<div class="outline-text-3" id="text-org97b63ac">
 <div class="org-src-container">
-<pre class="src src-julia">ind_fastest = mapslices<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x .<span style="color: #FCCE7B;">==</span> minimum<span style="color: #C57BDB;">(</span>x<span style="color: #C57BDB;">)</span>, Y_PRED, dims=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-mean<span style="color: #51afef;">(</span>ind_fastest, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>ind_fastest = mapslices(x -&gt; x .== minimum(x), Y_PRED, dims=2)
+mean(ind_fastest, dims=1)
+</code></pre>
 </div>
 
 <p>
@@ -245,7 +224,6 @@ mean<span style="color: #51afef;">(</span>ind_fastest, dims=<span style="color: 
 1×4 Matrix{Float64}:
  0.4184  0.1064  0.3504  0.1248
 </pre>
-
 
 <p>
 The probability that each swimmer is the fastest is shown above.
@@ -266,7 +244,7 @@ Swimmer 1 will be the fastest with probability 0.4184, so I recommend that the c
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

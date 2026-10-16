@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,31 +95,31 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org49b80d3">Answer</a>
+<li><a href="#orgf08f928">Answer</a>
 <ul>
-<li><a href="#orgc381668">a</a>
+<li><a href="#org2d887e7">a</a>
 <ul>
-<li><a href="#org5b4bcaf">Answer</a></li>
+<li><a href="#orgebbab18">Answer</a></li>
 </ul>
 </li>
 <li><a href="#3.1B">b</a>
 <ul>
-<li><a href="#org300a8da">Answer</a></li>
+<li><a href="#org755b587">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgf31c2c7">c</a>
+<li><a href="#org51baa5a">c</a>
 <ul>
-<li><a href="#org4c1e12c">Answer</a></li>
+<li><a href="#org9058c31">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgee8be02">d</a>
+<li><a href="#org9ee5b62">d</a>
 <ul>
-<li><a href="#org579c16d">Answer</a></li>
+<li><a href="#org1545966">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orge88fa2c">e</a>
+<li><a href="#org8727aea">e</a>
 <ul>
-<li><a href="#orgcf16b33">Answer</a></li>
+<li><a href="#orgb5e62a7">Answer</a></li>
 </ul>
 </li>
 </ul>
@@ -147,17 +127,17 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-org49b80d3" class="outline-2">
-<h2 id="org49b80d3">Answer</h2>
-<div class="outline-text-2" id="text-org49b80d3">
+<div id="outline-container-orgf08f928" class="outline-2">
+<h2 id="orgf08f928">Answer</h2>
+<div class="outline-text-2" id="text-orgf08f928">
 </div>
-<div id="outline-container-orgc381668" class="outline-3">
-<h3 id="orgc381668">a</h3>
-<div class="outline-text-3" id="text-orgc381668">
+<div id="outline-container-org2d887e7" class="outline-3">
+<h3 id="org2d887e7">a</h3>
+<div class="outline-text-3" id="text-org2d887e7">
 </div>
-<div id="outline-container-org5b4bcaf" class="outline-4">
-<h4 id="org5b4bcaf">Answer</h4>
-<div class="outline-text-4" id="text-org5b4bcaf">
+<div id="outline-container-orgebbab18" class="outline-4">
+<h4 id="orgebbab18">Answer</h4>
+<div class="outline-text-4" id="text-orgebbab18">
 \begin{align*}
 & \text{Pr}(Y_1 = y_1, \dots , Y_{100}=y_{100} \mid \theta) \\
 = &\text{Pr}(Y_1 = y_1 \mid \theta) \cdot \text{Pr}(Y_2 = y_2 \mid \theta) \cdot \dots \cdot \text{Pr}(Y_{100} = y_{100} \mid \theta)
@@ -177,26 +157,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h3 id="3.1B">b</h3>
 <div class="outline-text-3" id="text-3.1B">
 </div>
-<div id="outline-container-org300a8da" class="outline-4">
-<h4 id="org300a8da">Answer</h4>
-<div class="outline-text-4" id="text-org300a8da">
+<div id="outline-container-org755b587" class="outline-4">
+<h4 id="org755b587">Answer</h4>
+<div class="outline-text-4" id="text-org755b587">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">begin</span>
-<span style="color: #51afef;">using</span> Plots
-<span style="color: #51afef;">using</span> Plots.PlotMeasures
-<span style="color: #51afef;">using</span> Distributions
+<pre class="src src-julia"><code><span style="font-weight: bold;">begin</span>
+<span style="font-weight: bold;">using</span> Plots
+<span style="font-weight: bold;">using</span> Plots.PlotMeasures
+<span style="font-weight: bold;">using</span> Distributions
 
-&#952; = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
-n = <span style="color: #e69055; font-weight: bold;">100</span>
-y = <span style="color: #e69055; font-weight: bold;">57</span>
+&#952; = 0:0.1:1.0
+n = 100
+y = 57
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">&#20840;&#12390;&#12398;&#952;&#12391;&#35336;&#31639;</span>
-pdf_for_&#952;s = map<span style="color: #51afef;">(</span>&#952; <span style="color: #FCCE7B;">-&gt;</span> pdf<span style="color: #C57BDB;">(</span>Binomial<span style="color: #7bc275;">(</span>n, &#952;<span style="color: #7bc275;">)</span>, y<span style="color: #C57BDB;">)</span>, &#952;<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">&#20840;&#12390;&#12398;&#952;&#12391;&#35336;&#31639;
+</span>pdf_for_&#952;s = map(&#952; -&gt; pdf(Binomial(n, &#952;), y), &#952;)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
-<pre class="example" id="orgf6b0955">
+<pre class="example" id="org4fec4c8">
 11-element Vector{Float64}:
  0.0
  4.107156919234531e-31
@@ -213,35 +193,35 @@ pdf_for_&#952;s = map<span style="color: #51afef;">(</span>&#952; <span style="c
 
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">plot</span>
-bar<span style="color: #51afef;">(</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">plot
+</span>bar(
     &#952;, pdf_for_&#952;s,
-    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(y|&#952;)"</span>,
-    title = <span style="color: #7bc275;">"p(y=$y|&#952;) for each &#952;"</span>,
-    label = <span style="color: #7bc275;">"p(y=$y|&#952;)"</span>,
-    legend = <span style="color: #a991f1;">:topleft</span>,
-    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
-    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
-    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
-<span style="color: #51afef;">)</span>
-</pre>
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = <span style="font-style: italic;">"p(y|&#952;)"</span>,
+    title = <span style="font-style: italic;">"p(y=$y|&#952;) for each &#952;"</span>,
+    label = <span style="font-style: italic;">"p(y=$y|&#952;)"</span>,
+    legend = <span style="font-weight: bold; text-decoration: underline;">:topleft</span>,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+</code></pre>
 </div>
 
 
-<div id="org957f078" class="figure">
+<div id="org4c0ef7b" class="figure">
 <p><img src="fig/3.1bbar.jpg" alt="3.1bbar.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf31c2c7" class="outline-3">
-<h3 id="orgf31c2c7">c</h3>
-<div class="outline-text-3" id="text-orgf31c2c7">
+<div id="outline-container-org51baa5a" class="outline-3">
+<h3 id="org51baa5a">c</h3>
+<div class="outline-text-3" id="text-org51baa5a">
 </div>
-<div id="outline-container-org4c1e12c" class="outline-4">
-<h4 id="org4c1e12c">Answer</h4>
-<div class="outline-text-4" id="text-org4c1e12c">
+<div id="outline-container-org9058c31" class="outline-4">
+<h4 id="org9058c31">Answer</h4>
+<div class="outline-text-4" id="text-org9058c31">
 \begin{align*}
 p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 &= \frac{p(\sum_{i=1}^{100} Y_i = 57 \mid \theta) p(\theta)}{p(\sum_{i=1}^{100} Y_i = 57)} \\
@@ -258,11 +238,11 @@ p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 
 
 <div class="org-src-container">
-<pre class="src src-julia">posterior_for_&#952;s = pdf_for_&#952;s <span style="color: #FCCE7B;">./</span> sum<span style="color: #51afef;">(</span>pdf_for_&#952;s<span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>posterior_for_&#952;s = pdf_for_&#952;s ./ sum(pdf_for_&#952;s)
+</code></pre>
 </div>
 
-<pre class="example" id="org72eb58e">
+<pre class="example" id="orgce3fa5d">
 11-element Vector{Float64}:
  0.0
  4.153700946664936e-30
@@ -278,35 +258,35 @@ p(\theta \mid \sum_{i=1}^{100} Y_i = 57)
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-julia">bar<span style="color: #51afef;">(</span>
+<pre class="src src-julia"><code>bar(
     &#952;, posterior_for_&#952;s,
-    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(&#952;|y)"</span>,
-    title = <span style="color: #7bc275;">"p(&#952;|y=$y) for each &#952;"</span>,
-    label = <span style="color: #7bc275;">"p(&#952;|y=$y)"</span>,
-    legend = <span style="color: #a991f1;">:topleft</span>,
-    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
-    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
-    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
-<span style="color: #51afef;">)</span>
-</pre>
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = <span style="font-style: italic;">"p(&#952;|y)"</span>,
+    title = <span style="font-style: italic;">"p(&#952;|y=$y) for each &#952;"</span>,
+    label = <span style="font-style: italic;">"p(&#952;|y=$y)"</span>,
+    legend = <span style="font-weight: bold; text-decoration: underline;">:topleft</span>,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+</code></pre>
 </div>
 
 
 
-<div id="orgb319b4d" class="figure">
+<div id="org644cb80" class="figure">
 <p><img src="fig/ex3.1cplot.jpg" alt="ex3.1cplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgee8be02" class="outline-3">
-<h3 id="orgee8be02">d</h3>
-<div class="outline-text-3" id="text-orgee8be02">
+<div id="outline-container-org9ee5b62" class="outline-3">
+<h3 id="org9ee5b62">d</h3>
+<div class="outline-text-3" id="text-org9ee5b62">
 </div>
-<div id="outline-container-org579c16d" class="outline-4">
-<h4 id="org579c16d">Answer</h4>
-<div class="outline-text-4" id="text-org579c16d">
+<div id="outline-container-org1545966" class="outline-4">
+<h4 id="org1545966">Answer</h4>
+<div class="outline-text-4" id="text-org1545966">
 \begin{align*}
 p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
 &= \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
@@ -321,57 +301,59 @@ p(\theta) \times \text{Pr}(\sum_{i=1}^n Y_i = 57 \mid \theta)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia">posterior = x <span style="color: #FCCE7B;">-&gt;</span> pdf<span style="color: #51afef;">(</span>Binomial<span style="color: #C57BDB;">(</span>n, x<span style="color: #C57BDB;">)</span>, y<span style="color: #51afef;">)</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">plot</span>
-xs = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.01</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
-plot<span style="color: #51afef;">(</span>
-    xs, posterior.<span style="color: #C57BDB;">(</span>xs<span style="color: #C57BDB;">)</span>,
-    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = L<span style="color: #7bc275;">"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)"</span>,
-    title = L<span style="color: #7bc275;">"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)"</span>,
-    label = <span style="color: #7bc275;">"p(&#952;|y=$y)"</span>,
-    legend = <span style="color: #a991f1;">:topleft</span>,
-    size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
-    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
-    , xticks = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">0.1</span>:<span style="color: #e69055; font-weight: bold;">1.0</span>
-<span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>posterior = x -&gt; pdf(Binomial(n, x), y)
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">plot
+</span>xs = 0:0.01:1.0
+plot(
+    xs, posterior.(xs),
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = L<span style="font-style: italic;">"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)"</span>,
+    title = L<span style="font-style: italic;">"p(\theta) \times Pr(\sum_{i=1}^n Y_i = 57 \mid \theta)"</span>,
+    label = <span style="font-style: italic;">"p(&#952;|y=$y)"</span>,
+    legend = <span style="font-weight: bold; text-decoration: underline;">:topleft</span>,
+    size = (600, 400)
+    , margin = 5mm
+    , xticks = 0:0.1:1.0
+)
+</code></pre>
 </div>
 
 
-<div id="orgb9fdd30" class="figure">
+<div id="orgf51cf10" class="figure">
 <p><img src="fig/hoffexercise3.1dplot.jpg" alt="hoffexercise3.1dplot.jpg" width="500" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orge88fa2c" class="outline-3">
-<h3 id="orge88fa2c">e</h3>
-<div class="outline-text-3" id="text-orge88fa2c">
+<div id="outline-container-org8727aea" class="outline-3">
+<h3 id="org8727aea">e</h3>
+<div class="outline-text-3" id="text-org8727aea">
 </div>
-<div id="outline-container-orgcf16b33" class="outline-4">
-<h4 id="orgcf16b33">Answer</h4>
-<div class="outline-text-4" id="text-orgcf16b33">
+<div id="outline-container-orgb5e62a7" class="outline-4">
+<h4 id="orgb5e62a7">Answer</h4>
+<div class="outline-text-4" id="text-orgb5e62a7">
 <div class="org-src-container">
-<pre class="src src-julia">plot<span style="color: #51afef;">(</span>
-    Beta<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>y, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">+</span>n<span style="color: #FCCE7B;">-</span>y<span style="color: #C57BDB;">)</span>,
-    xlabel = <span style="color: #7bc275;">"&#952;"</span>, ylabel = <span style="color: #7bc275;">"p(&#952;|y)"</span>,
-    title = <span style="color: #7bc275;">"Beta(1+$y, 1+$n-$y)"</span>,
-    label = <span style="color: #a991f1;">nothing</span>
-    , size = <span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">600</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>
-    , margin = <span style="color: #e69055; font-weight: bold;">5</span>mm
-<span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>plot(
+    Beta(1+y, 1+n-y),
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = <span style="font-style: italic;">"p(&#952;|y)"</span>,
+    title = <span style="font-style: italic;">"Beta(1+$y, 1+$n-$y)"</span>,
+    label = <span style="font-weight: bold; text-decoration: underline;">nothing</span>
+    , size = (600, 400)
+    , margin = 5mm
+)
+</code></pre>
 </div>
 
 
-<div id="org09cfe41" class="figure">
+<div id="org725338c" class="figure">
 <p><img src="fig/exercise3.1eplot.jpg" alt="exercise3.1eplot.jpg" width="500" />
 </p>
 </div>
 
 <p>
-d と e は同じ形状で、dを正規化したのが e。また、c, b のグラフは、パラメータ\(\theta\)を 11 個の値をとる離散変数として扱っているもので、同じ形状をしている。コードを見ればわかるように、それぞれの確率の和が 1 になるように正規化しているのが c である。
+d と e は同じ形状で、dを正規化したのが e。
+また、c, b のグラフは、パラメータ\(\theta\)を 11 個の値をとる離散変数として扱っているもので、同じ形状をしている。
+コードを見ればわかるように、それぞれの確率の和が 1 になるように正規化しているのが c である。
 </p>
 
 <p>
@@ -395,7 +377,7 @@ As you can see from the code, 3.1c is normalized so that the sum of the probabil
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

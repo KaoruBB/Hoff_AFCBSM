@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-21 木 07:23 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 3.4 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,72 +95,72 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org765ba5f">a</a></li>
-<li><a href="#orgc6eff77">b</a></li>
-<li><a href="#org69fd5ca">c</a></li>
-<li><a href="#org603016d">d</a>
+<li><a href="#org2c08506">a</a></li>
+<li><a href="#org8841946">b</a></li>
+<li><a href="#orgff00619">c</a></li>
+<li><a href="#org59aefd5">d</a>
 <ul>
-<li><a href="#orge1875bd">i</a></li>
-<li><a href="#orgd005742">ii</a></li>
-<li><a href="#orge9b62d0">iii</a></li>
+<li><a href="#org566db2c">i</a></li>
+<li><a href="#orgec02ebc">ii</a></li>
+<li><a href="#org966a1f6">iii</a></li>
 </ul>
 </li>
-<li><a href="#org61644f5">e</a></li>
+<li><a href="#org78be27e">e</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org765ba5f" class="outline-2">
-<h2 id="org765ba5f">a</h2>
-<div class="outline-text-2" id="text-org765ba5f">
+<div id="outline-container-org2c08506" class="outline-2">
+<h2 id="org2c08506">a</h2>
+<div class="outline-text-2" id="text-org2c08506">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #bb9af7;">using</span> Distributions
-<span style="color: #bb9af7;">using</span> Plots
-<span style="color: #bb9af7;">using</span> StatsPlots
-<span style="color: #bb9af7;">using</span> LaTeXStrings
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> Distributions
+<span style="font-weight: bold;">using</span> Plots
+<span style="font-weight: bold;">using</span> StatsPlots
+<span style="font-weight: bold;">using</span> LaTeXStrings
 a&#8320; = 2
 b&#8320; = 8
 n = 43
 y = 15
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">prior</span>
-plot(
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">prior
+</span>plot(
     Beta(a&#8320;, b&#8320;),
-    title=L<span style="color: #9ece6a;">"p(\theta)"</span>,
-    xlabel=L<span style="color: #9ece6a;">"\theta"</span>,
-    ylabel=L<span style="color: #9ece6a;">"p(\theta)"</span>,
-    legend=<span style="color: #ff9e64;">false</span>,
+    title=L<span style="font-style: italic;">"p(\theta)"</span>,
+    xlabel=L<span style="font-style: italic;">"\theta"</span>,
+    ylabel=L<span style="font-style: italic;">"p(\theta)"</span>,
+    legend=<span style="font-weight: bold; text-decoration: underline;">false</span>,
 )
-</pre>
+</code></pre>
 </div>
 
 
-<div id="org4407080" class="figure">
+<div id="org5226b7e" class="figure">
 <p><img src="../../fig/ch3/exercise3.4aplot1.jpg" alt="exercise3.4aplot1.jpg" width="500" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">&#952; = 0:0.01:1.0
-pdf_for_&#952;s = map(&#952; <span style="color: #c0caf5;">-&gt;</span> pdf(Binomial(n, &#952;), y), &#952;)
+<pre class="src src-julia"><code>&#952; = 0:0.01:1.0
+pdf_for_&#952;s = map(&#952; -&gt; pdf(Binomial(n, &#952;), y), &#952;)
 
-<span style="color: #51587a;"># </span><span style="color: #51587a;">plot p(y|&#952;)</span>
-plot(
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">plot p(y|&#952;)
+</span>plot(
     &#952;, pdf_for_&#952;s,
-    xlabel = <span style="color: #9ece6a;">"&#952;"</span>, ylabel = <span style="color: #9ece6a;">"p(y|&#952;)"</span>,
-    title = <span style="color: #9ece6a;">"p(y=$y|&#952;) as a function of &#952;"</span>,
-    legend = <span style="color: #ff9e64;">false</span>,
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = <span style="font-style: italic;">"p(y|&#952;)"</span>,
+    title = <span style="font-style: italic;">"p(y=$y|&#952;) as a function of &#952;"</span>,
+    legend = <span style="font-weight: bold; text-decoration: underline;">false</span>,
     size = (600, 400)
     , margin = 5mm
     , xticks = 0:0.1:1.0
 )
-</pre>
+</code></pre>
 </div>
 
 
-<div id="orgc40f793" class="figure">
+<div id="orgb9971dd" class="figure">
 <p><img src="../../fig/ch3/exercise3.4aplot2.jpg" alt="exercise3.4aplot2.jpg" width="500" />
 </p>
 </div>
@@ -196,65 +176,62 @@ p(\theta \mid y)
 \end{align*}
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior</span>
-posterior_dist = Beta(a&#8320; <span style="color: #c0caf5;">+</span> y, b&#8320; <span style="color: #c0caf5;">+</span> n <span style="color: #c0caf5;">-</span> y)
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior
+</span>posterior_dist = Beta(a&#8320; + y, b&#8320; + n - y)
 plot(
     posterior_dist,
-    title=L<span style="color: #9ece6a;">"p(\theta|y)"</span>,
-    xlabel=L<span style="color: #9ece6a;">"\theta"</span>,
-    ylabel=L<span style="color: #9ece6a;">"p(\theta|y)"</span>,
-    legend=<span style="color: #ff9e64;">false</span>,
+    title=L<span style="font-style: italic;">"p(\theta|y)"</span>,
+    xlabel=L<span style="font-style: italic;">"\theta"</span>,
+    ylabel=L<span style="font-style: italic;">"p(\theta|y)"</span>,
+    legend=<span style="font-weight: bold; text-decoration: underline;">false</span>,
 )
-</pre>
+</code></pre>
 </div>
 
 
-<div id="orgc7ea2e1" class="figure">
+<div id="org697e825" class="figure">
 <p><img src="../../fig/ch3/exercise3.4aposterior.jpg" alt="exercise3.4aposterior.jpg" width="500" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior mean</span>
-mean(posterior_dist)
-&#956; = (a&#8320; <span style="color: #c0caf5;">+</span> y)<span style="color: #c0caf5;">/</span>(a&#8320; <span style="color: #c0caf5;">+</span> b&#8320; <span style="color: #c0caf5;">+</span> n)
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean
+</span>mean(posterior_dist)
+&#956; = (a&#8320; + y)/(a&#8320; + b&#8320; + n)
+</code></pre>
 </div>
 
 <pre class="example">
 0.32075471698113206
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior mode</span>
-mode(posterior_dist)
-(a&#8320; <span style="color: #c0caf5;">+</span> y <span style="color: #c0caf5;">-</span> 1)<span style="color: #c0caf5;">/</span>(a&#8320; <span style="color: #c0caf5;">+</span> b&#8320; <span style="color: #c0caf5;">+</span> n <span style="color: #c0caf5;">-</span> 2)
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mode
+</span>mode(posterior_dist)
+(a&#8320; + y - 1)/(a&#8320; + b&#8320; + n - 2)
+</code></pre>
 </div>
 
 <pre class="example">
 0.3137254901960784
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior standard deviation</span>
-std(posterior_dist)
-var = (&#956;<span style="color: #c0caf5;">*</span>(1 <span style="color: #c0caf5;">-</span> &#956;))<span style="color: #c0caf5;">/</span>(a&#8320; <span style="color: #c0caf5;">+</span> b&#8320; <span style="color: #c0caf5;">+</span> n <span style="color: #c0caf5;">+</span> 1)
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior standard deviation
+</span>std(posterior_dist)
+var = (&#956;*(1 - &#956;))/(a&#8320; + b&#8320; + n + 1)
 sqrt(var)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 0.0635188989834093
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior 95% interval</span>
-quantile(posterior_dist, [0.025, 0.975])
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior 95% interval
+</span>quantile(posterior_dist, [0.025, 0.975])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -265,31 +242,31 @@ quantile(posterior_dist, [0.025, 0.975])
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc6eff77" class="outline-2">
-<h2 id="orgc6eff77">b</h2>
-<div class="outline-text-2" id="text-orgc6eff77">
+<div id="outline-container-org8841946" class="outline-2">
+<h2 id="org8841946">b</h2>
+<div class="outline-text-2" id="text-org8841946">
 <div class="org-src-container">
-<pre class="src src-julia">a&#8320;_b = 8
+<pre class="src src-julia"><code>a&#8320;_b = 8
 b&#8320;_b = 2
-</pre>
+</code></pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">prior</span>
-plot(
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">prior
+</span>plot(
     Beta(a&#8320;_b, b&#8320;_b),
-    title=L<span style="color: #9ece6a;">"p(\theta)"</span>,
-    xlabel=L<span style="color: #9ece6a;">"\theta"</span>,
-    ylabel=L<span style="color: #9ece6a;">"p(\theta)"</span>,
-    legend=<span style="color: #ff9e64;">false</span>,
+    title=L<span style="font-style: italic;">"p(\theta)"</span>,
+    xlabel=L<span style="font-style: italic;">"\theta"</span>,
+    ylabel=L<span style="font-style: italic;">"p(\theta)"</span>,
+    legend=<span style="font-weight: bold; text-decoration: underline;">false</span>,
 )
-</pre>
+</code></pre>
 </div>
 
 
 
-<div id="org0dda6ae" class="figure">
+<div id="orgc69273f" class="figure">
 <p><img src="../../fig/ch3/exercise3.4bprior.jpg" alt="exercise3.4bprior.jpg" width="500" />
 </p>
 </div>
@@ -306,65 +283,62 @@ p(\theta \mid y)
 \end{align*}
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior</span>
-posterior_dist_b = Beta(a&#8320;_b <span style="color: #c0caf5;">+</span> y, b&#8320;_b <span style="color: #c0caf5;">+</span> n <span style="color: #c0caf5;">-</span> y)
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior
+</span>posterior_dist_b = Beta(a&#8320;_b + y, b&#8320;_b + n - y)
 plot(
     posterior_dist_b,
-    title=L<span style="color: #9ece6a;">"p(\theta|y)"</span>,
-    xlabel=L<span style="color: #9ece6a;">"\theta"</span>,
-    ylabel=L<span style="color: #9ece6a;">"p(\theta|y)"</span>,
-    legend=<span style="color: #ff9e64;">false</span>,
+    title=L<span style="font-style: italic;">"p(\theta|y)"</span>,
+    xlabel=L<span style="font-style: italic;">"\theta"</span>,
+    ylabel=L<span style="font-style: italic;">"p(\theta|y)"</span>,
+    legend=<span style="font-weight: bold; text-decoration: underline;">false</span>,
 )
-</pre>
+</code></pre>
 </div>
 
 
-<div id="orga786e5e" class="figure">
+<div id="org219f255" class="figure">
 <p><img src="../../fig/ch3/exercise3.4bposterior.jpg" alt="exercise3.4bposterior.jpg" width="500" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior mean</span>
-mean(posterior_dist_b)
-&#956;_b = (a&#8320;_b <span style="color: #c0caf5;">+</span> y)<span style="color: #c0caf5;">/</span>(a&#8320;_b <span style="color: #c0caf5;">+</span> b&#8320;_b <span style="color: #c0caf5;">+</span> n)
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean
+</span>mean(posterior_dist_b)
+&#956;_b = (a&#8320;_b + y)/(a&#8320;_b + b&#8320;_b + n)
+</code></pre>
 </div>
 
 <pre class="example">
 0.4339622641509434
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior mode</span>
-mode(posterior_dist_b)
-(a&#8320;_b <span style="color: #c0caf5;">+</span> y <span style="color: #c0caf5;">-</span> 1)<span style="color: #c0caf5;">/</span>(a&#8320;_b <span style="color: #c0caf5;">+</span> b&#8320;_b <span style="color: #c0caf5;">+</span> n <span style="color: #c0caf5;">-</span> 2)
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mode
+</span>mode(posterior_dist_b)
+(a&#8320;_b + y - 1)/(a&#8320;_b + b&#8320;_b + n - 2)
+</code></pre>
 </div>
 
 <pre class="example">
 0.43137254901960786
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior standard deviation</span>
-std(posterior_dist_b)
-var_b = (&#956;_b<span style="color: #c0caf5;">*</span>(1 <span style="color: #c0caf5;">-</span> &#956;_b))<span style="color: #c0caf5;">/</span>(a&#8320;_b <span style="color: #c0caf5;">+</span> b&#8320;_b <span style="color: #c0caf5;">+</span> n <span style="color: #c0caf5;">+</span> 1)
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior standard deviation
+</span>std(posterior_dist_b)
+var_b = (&#956;_b*(1 - &#956;_b))/(a&#8320;_b + b&#8320;_b + n + 1)
 sqrt(var_b)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 0.06744531631926798
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">posterior 95% interval</span>
-quantile(posterior_dist_b, [0.025, 0.975])
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior 95% interval
+</span>quantile(posterior_dist_b, [0.025, 0.975])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -375,52 +349,53 @@ quantile(posterior_dist_b, [0.025, 0.975])
 </pre>
 </div>
 </div>
-<div id="outline-container-org69fd5ca" class="outline-2">
-<h2 id="org69fd5ca">c</h2>
-<div class="outline-text-2" id="text-org69fd5ca">
+<div id="outline-container-orgff00619" class="outline-2">
+<h2 id="orgff00619">c</h2>
+<div class="outline-text-2" id="text-orgff00619">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #bb9af7;">using</span> SpecialFunctions
-prior_mix = &#952; <span style="color: #c0caf5;">-&gt;</span> 1<span style="color: #c0caf5;">//</span>4 <span style="color: #c0caf5;">*</span> gamma(10) <span style="color: #c0caf5;">/</span> (gamma(2) <span style="color: #c0caf5;">*</span> gamma(8)) <span style="color: #c0caf5;">*</span> (3 <span style="color: #c0caf5;">*</span> &#952; <span style="color: #c0caf5;">*</span> (1 <span style="color: #c0caf5;">-</span> &#952;)<span style="color: #c0caf5;">^</span>7 <span style="color: #c0caf5;">+</span> &#952;<span style="color: #c0caf5;">^</span>7 <span style="color: #c0caf5;">*</span> (1 <span style="color: #c0caf5;">-</span> &#952;))
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> SpecialFunctions
+prior_mix = &#952; -&gt; 1//4 * gamma(10) / (gamma(2) * gamma(8)) * (3 * &#952; * (1 - &#952;)^7 + &#952;^7 * (1 - &#952;))
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">xs = 0:0.01:1.0
+<pre class="src src-julia"><code>xs = 0:0.01:1.0
 plot(
     xs, prior_mix.(xs),
-    xlabel = <span style="color: #9ece6a;">"&#952;"</span>, ylabel = <span style="color: #9ece6a;">"p(&#952;)"</span>,
-    title = <span style="color: #9ece6a;">"mixture of a beta(2,8) and a beta(8,2) prior distribution"</span>,
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = <span style="font-style: italic;">"p(&#952;)"</span>,
+    title = <span style="font-style: italic;">"mixture of a beta(2,8) and a beta(8,2) prior distribution"</span>,
     titlefontsize = 12,
-    legend = <span style="color: #ff9e64;">false</span>,
+    legend = <span style="font-weight: bold; text-decoration: underline;">false</span>,
     size = (600, 400)
     , margin = 5mm
     , xticks = 0:0.1:1.0
 )
-</pre>
+</code></pre>
 </div>
 
 
-<div id="org68c0b0b" class="figure">
+<div id="orgdfb2c2d" class="figure">
 <p><img src="../../fig/ch3/exercise3.4cmixprior.jpg" alt="exercise3.4cmixprior.jpg" width="500" />
 </p>
 </div>
 
 <p>
-<a href="#org765ba5f">a)</a>や<a href="#orgc6eff77">b)</a>の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
+<a href="#org2c08506">a)</a>や<a href="#org8841946">b)</a>の事前分布と異なり、上の分布は 2 つの山を持った形状になっている。
+この事前分布は、再犯率は高いか低いかのどちらかに偏っているという信念を表している。
 </p>
 
 <p>
-This prior distribution has two peaks, indicating a belief that the recidivism rate is either high or low, rather than being centered around a moderate value like the priors in <a href="#org765ba5f">a)</a> and <a href="#orgc6eff77">b)</a>.
+This prior distribution has two peaks, indicating a belief that the recidivism rate is either high or low, rather than being centered around a moderate value like the priors in <a href="#org2c08506">a)</a> and <a href="#org8841946">b)</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org603016d" class="outline-2">
-<h2 id="org603016d">d</h2>
-<div class="outline-text-2" id="text-org603016d">
+<div id="outline-container-org59aefd5" class="outline-2">
+<h2 id="org59aefd5">d</h2>
+<div class="outline-text-2" id="text-org59aefd5">
 </div>
-<div id="outline-container-orge1875bd" class="outline-3">
-<h3 id="orge1875bd">i</h3>
-<div class="outline-text-3" id="text-orge1875bd">
+<div id="outline-container-org566db2c" class="outline-3">
+<h3 id="org566db2c">i</h3>
+<div class="outline-text-3" id="text-org566db2c">
 \begin{align*}
 p(\theta) \times p(y \mid \theta)
 &= \frac{1}{4} \frac{\Gamma(10)}{\Gamma(2)\Gamma(8)} [3 \theta (1-\theta)^7 + \theta^7 (1-\theta)] \times \begin{pmatrix} 43 \\ 15 \end{pmatrix} \theta^{15} (1-\theta)^{28} \\
@@ -429,51 +404,51 @@ p(\theta) \times p(y \mid \theta)
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgd005742" class="outline-3">
-<h3 id="orgd005742">ii</h3>
-<div class="outline-text-3" id="text-orgd005742">
+<div id="outline-container-orgec02ebc" class="outline-3">
+<h3 id="orgec02ebc">ii</h3>
+<div class="outline-text-3" id="text-orgec02ebc">
 <p>
 Beta(17, 36) and Beta(23, 30)
 </p>
 </div>
 </div>
-<div id="outline-container-orge9b62d0" class="outline-3">
-<h3 id="orge9b62d0">iii</h3>
-<div class="outline-text-3" id="text-orge9b62d0">
+<div id="outline-container-org966a1f6" class="outline-3">
+<h3 id="org966a1f6">iii</h3>
+<div class="outline-text-3" id="text-org966a1f6">
 <div class="org-src-container">
-<pre class="src src-julia">cond_prob = &#952; <span style="color: #c0caf5;">-&gt;</span> pdf(Binomial(n, &#952;), y)
-prior_times_cond_prob = &#952; <span style="color: #c0caf5;">-&gt;</span> prior_mix(&#952;) <span style="color: #c0caf5;">*</span> cond_prob(&#952;)
+<pre class="src src-julia"><code>cond_prob = &#952; -&gt; pdf(Binomial(n, &#952;), y)
+prior_times_cond_prob = &#952; -&gt; prior_mix(&#952;) * cond_prob(&#952;)
 xs = 0:0.001:1.0
 plot(
     xs, prior_times_cond_prob.(xs),
-    xlabel = <span style="color: #9ece6a;">"&#952;"</span>, ylabel = <span style="color: #9ece6a;">"p(&#952;) &#215; p(&#952;|y)"</span>,
-    title = <span style="color: #9ece6a;">"p(&#952;) &#215; p(&#952;|y)"</span>,
-    legend = <span style="color: #ff9e64;">false</span>,
+    xlabel = <span style="font-style: italic;">"&#952;"</span>, ylabel = <span style="font-style: italic;">"p(&#952;) &#215; p(&#952;|y)"</span>,
+    title = <span style="font-style: italic;">"p(&#952;) &#215; p(&#952;|y)"</span>,
+    legend = <span style="font-weight: bold; text-decoration: underline;">false</span>,
 )
-</pre>
+</code></pre>
 </div>
 
 
-<div id="orga37caa6" class="figure">
+<div id="org79a665f" class="figure">
 <p><img src="../../fig/ch3/exercise3.4diiiplot.jpg" alt="exercise3.4diiiplot.jpg" width="500" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51587a;"># </span><span style="color: #51587a;">prior_times_cond_prob&#12364;&#26368;&#22823;&#12395;&#12394;&#12427;&#952;</span>
-xs[argmax(prior_times_cond_prob.(xs))]
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">prior_times_cond_prob&#12364;&#26368;&#22823;&#12395;&#12394;&#12427;&#952;
+</span>xs[argmax(prior_times_cond_prob.(xs))]
+</code></pre>
 </div>
 
 <p>
-The mode of <a href="#org765ba5f">a)</a> is 0.313 and the mode of <a href="#orgc6eff77">b)</a> is 0.431, so this posterior mode is located in between, closer to <a href="#org765ba5f">a)</a>.
+The mode of <a href="#org2c08506">a)</a> is 0.313 and the mode of <a href="#org8841946">b)</a> is 0.431, so this posterior mode is located in between, closer to <a href="#org2c08506">a)</a>.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org61644f5" class="outline-2">
-<h2 id="org61644f5">e</h2>
-<div class="outline-text-2" id="text-org61644f5">
+<div id="outline-container-org78be27e" class="outline-2">
+<h2 id="org78be27e">e</h2>
+<div class="outline-text-2" id="text-org78be27e">
 <p>
 The posterior distribution is calculated as follows:
 </p>
@@ -540,7 +515,7 @@ In short, the posterior weight for each distribution is determined by its initia
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-08-21 木 07:23</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

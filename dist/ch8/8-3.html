@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 8.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,140 +95,140 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4ba0109">a)</a>
+<li><a href="#org92a77fa">a)</a>
 <ul>
-<li><a href="#org58cfcee">Answer</a></li>
+<li><a href="#org102fc37">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org6afdac9">b)</a>
+<li><a href="#org778fbec">b)</a>
 <ul>
-<li><a href="#org93ecd94">Answer</a></li>
+<li><a href="#orgd2da86b">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org8a63776">c)</a>
+<li><a href="#org40bd09a">c)</a>
 <ul>
-<li><a href="#orgb4ce180">Answer</a></li>
+<li><a href="#orge096bc8">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgba50c7c">d)</a>
+<li><a href="#orgf99879f">d)</a>
 <ul>
-<li><a href="#org31c48e1">Answer</a></li>
+<li><a href="#orgf50ddb6">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org2b7b76c">e)</a>
+<li><a href="#orge1c9ff0">e)</a>
 <ul>
-<li><a href="#org41d110d">Answer</a></li>
+<li><a href="#org609ab62">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4ba0109" class="outline-2">
-<h2 id="org4ba0109">a)</h2>
-<div class="outline-text-2" id="text-org4ba0109">
+<div id="outline-container-org92a77fa" class="outline-2">
+<h2 id="org92a77fa">a)</h2>
+<div class="outline-text-2" id="text-org92a77fa">
 </div>
-<div id="outline-container-org58cfcee" class="outline-3">
-<h3 id="org58cfcee">Answer</h3>
-<div class="outline-text-3" id="text-org58cfcee">
+<div id="outline-container-org102fc37" class="outline-3">
+<h3 id="org102fc37">Answer</h3>
+<div class="outline-text-3" id="text-org102fc37">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">using</span> Distributions
-<span style="color: #51afef;">using</span> Random
-<span style="color: #51afef;">using</span> LaTeXStrings
-<span style="color: #51afef;">using</span> Plots, StatsPlots
-<span style="color: #51afef;">using</span> Plots.Measures
-<span style="color: #51afef;">using</span> CSV, DataFrames
-<span style="color: #51afef;">using</span> DelimitedFiles
-<span style="color: #51afef;">using</span> StatsBase
-<span style="color: #51afef;">using</span> SpecialFunctions
-Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1234</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> Distributions
+<span style="font-weight: bold;">using</span> Random
+<span style="font-weight: bold;">using</span> LaTeXStrings
+<span style="font-weight: bold;">using</span> Plots, StatsPlots
+<span style="font-weight: bold;">using</span> Plots.Measures
+<span style="font-weight: bold;">using</span> CSV, DataFrames
+<span style="font-weight: bold;">using</span> DelimitedFiles
+<span style="font-weight: bold;">using</span> StatsBase
+<span style="font-weight: bold;">using</span> SpecialFunctions
+Random.seed!(1234)
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">read data</span>
-Y = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, <span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">8</span>
-    school = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../Exercises/school$i.dat"</span><span style="color: #51afef;">)</span>
-    Y = vcat<span style="color: #51afef;">(</span>Y, hcat<span style="color: #C57BDB;">(</span>repeat<span style="color: #7bc275;">(</span><span style="color: #a991f1;">[</span>i<span style="color: #a991f1;">]</span>, size<span style="color: #a991f1;">(</span>school, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #a991f1;">)</span><span style="color: #7bc275;">)</span>, school<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">read data
+</span>Y = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, 0, 2)
+<span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:8
+    school = readdlm(<span style="font-style: italic;">"../../Exercises/school$i.dat"</span>)
+    Y = vcat(Y, hcat(repeat([i], size(school, 1)), school))
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
-&#956;&#8320; = <span style="color: #e69055; font-weight: bold;">7</span>
-&#947;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">5</span>
-&#964;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">10</span>
-&#951;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
-&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">10</span>
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">set prior parameters
+</span>&#956;&#8320; = 7
+&#947;&#8320;&#178; = 5
+&#964;&#8320;&#178; = 10
+&#951;&#8320; = 2
+&#963;&#8320;&#178; = 10
+&#957;&#8320; = 2
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
-m = length<span style="color: #51afef;">(</span>unique<span style="color: #C57BDB;">(</span>Y<span style="color: #7bc275;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-n = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, m<span style="color: #51afef;">)</span>
-y&#772; = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, m<span style="color: #51afef;">)</span>
-sv = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, m<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:m
-    y&#772;<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = mean<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>Y<span style="color: #7bc275;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> j, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    sv<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = var<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>Y<span style="color: #7bc275;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> j, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    n<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = length<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>Y<span style="color: #7bc275;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> j, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">starting values
+</span>m = length(unique(Y[:,1]))
+n = Vector{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, m)
+y&#772; = Vector{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, m)
+sv = Vector{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, m)
+<span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:m
+    y&#772;[j] = mean(Y[Y[:,1] .== j, 2])
+    sv[j] = var(Y[Y[:,1] .== j, 2])
+    n[j] = length(Y[Y[:,1] .== j, 2])
+<span style="font-weight: bold;">end</span>
 
-&#952; = copy<span style="color: #51afef;">(</span>y&#772;<span style="color: #51afef;">)</span>
-&#963;&#178; = mean<span style="color: #51afef;">(</span>sv<span style="color: #51afef;">)</span>
-&#956; = mean<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span>
-&#964;&#178; = var<span style="color: #51afef;">(</span>&#952;<span style="color: #51afef;">)</span>
+&#952; = copy(y&#772;)
+&#963;&#178; = mean(sv)
+&#956; = mean(&#952;)
+&#964;&#178; = var(&#952;)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">setup MCMC</span>
-Random.seed!<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-S = <span style="color: #e69055; font-weight: bold;">5000</span>
-THETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, m<span style="color: #51afef;">)</span>
-MST = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">setup MCMC
+</span>Random.seed!(1)
+S = 5000
+THETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, m)
+MST = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 3)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">MCMC algorithm</span>
-<span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">sample new values of the &#952;s</span>
-    <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:m
-        v_&#952; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span> <span style="color: #FCCE7B;">/</span> &#963;&#178; <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> &#964;&#178;<span style="color: #51afef;">)</span>
-        E_&#952; = v_&#952; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>n<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #FCCE7B;">*</span>y&#772;<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #FCCE7B;">/</span>&#963;&#178; <span style="color: #FCCE7B;">+</span> &#956;<span style="color: #FCCE7B;">/</span>&#964;&#178;<span style="color: #51afef;">)</span>
-        &#952;<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>E_&#952;, sqrt<span style="color: #7bc275;">(</span>v_&#952;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">MCMC algorithm
+</span><span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample new values of the &#952;s
+</span>    <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:m
+        v_&#952; = 1 / (n[j] / &#963;&#178; + 1 / &#964;&#178;)
+        E_&#952; = v_&#952; * (n[j]*y&#772;[j]/&#963;&#178; + &#956;/&#964;&#178;)
+        &#952;[j] = rand(Normal(E_&#952;, sqrt(v_&#952;)))
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">sample new value of &#963;&#178;</span>
-    &#957;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">+</span> sum<span style="color: #51afef;">(</span>n<span style="color: #51afef;">)</span>
-    ss = &#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178;
-    <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:m
-        ss <span style="color: #FCCE7B;">+=</span> sum<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>Y<span style="color: #7bc275;">[</span>Y<span style="color: #a991f1;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #a991f1;">]</span> .<span style="color: #FCCE7B;">==</span> j, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">-</span> &#952;<span style="color: #7bc275;">[</span>j<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-    &#963;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#957;&#8345; <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">/</span>ss<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample new value of &#963;&#178;
+</span>    &#957;&#8345; = &#957;&#8320; + sum(n)
+    ss = &#957;&#8320; * &#963;&#8320;&#178;
+    <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:m
+        ss += sum((Y[Y[:,1] .== j, 2] .- &#952;[j]).^2)
+    <span style="font-weight: bold;">end</span>
+    &#963;&#178; = 1 / rand(Gamma(&#957;&#8345; / 2, 2/ss))
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">sample a new value of &#956;</span>
-    v_&#956; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>m<span style="color: #FCCE7B;">/</span>&#964;&#178; <span style="color: #FCCE7B;">+</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span>&#947;&#8320;&#178;<span style="color: #51afef;">)</span>
-    E_&#956; = v_&#956; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>m <span style="color: #FCCE7B;">*</span> mean<span style="color: #C57BDB;">(</span>&#952;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">/</span> &#964;&#178; <span style="color: #FCCE7B;">+</span> &#956;&#8320; <span style="color: #FCCE7B;">/</span> &#947;&#8320;&#178;<span style="color: #51afef;">)</span>
-    &#956; = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>E_&#956;, sqrt<span style="color: #7bc275;">(</span>v_&#956;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample a new value of &#956;
+</span>    v_&#956; = 1 / (m/&#964;&#178; + 1/&#947;&#8320;&#178;)
+    E_&#956; = v_&#956; * (m * mean(&#952;) / &#964;&#178; + &#956;&#8320; / &#947;&#8320;&#178;)
+    &#956; = rand(Normal(E_&#956;, sqrt(v_&#956;)))
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">sample a new value of &#964;&#178;</span>
-    etam = &#951;&#8320; <span style="color: #FCCE7B;">+</span> m
-    ss = &#951;&#8320; <span style="color: #FCCE7B;">*</span> &#964;&#8320;&#178; <span style="color: #FCCE7B;">+</span> sum<span style="color: #51afef;">(</span><span style="color: #C57BDB;">(</span>&#952; .<span style="color: #FCCE7B;">-</span> &#956;<span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">.^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-    &#964;&#178; = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">/</span> rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>etam<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">/</span>ss<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample a new value of &#964;&#178;
+</span>    etam = &#951;&#8320; + m
+    ss = &#951;&#8320; * &#964;&#8320;&#178; + sum((&#952; .- &#956;).^2)
+    &#964;&#178; = 1 / rand(Gamma(etam/2, 2/ss))
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">store results</span>
-    THETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#952;
-    MST<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = <span style="color: #51afef;">[</span>&#956;, &#963;&#178;, &#964;&#178;<span style="color: #51afef;">]</span>
-<span style="color: #51afef;">end</span>
-</pre>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">store results
+</span>    THETA[s, :] = &#952;
+    MST[s, :] = [&#956;, &#963;&#178;, &#964;&#178;]
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 
-<div id="orgfa8170b" class="figure">
+<div id="orgecf3a85" class="figure">
 <p><img src="./fig/ex8-3_stationarity.png" alt="ex8-3_stationarity.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>stationarity plot</p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">using</span> MCMCDiagnosticTools
-<span style="color: #51afef;">using</span> MCMCChains
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> MCMCDiagnosticTools
+<span style="font-weight: bold;">using</span> MCMCChains
 
-ess<span style="color: #51afef;">(</span>MCMCChains.Chains<span style="color: #C57BDB;">(</span>MST<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-</pre>
+ess(MCMCChains.Chains(MST))
+</code></pre>
 </div>
 
 <pre class="example">
@@ -263,50 +243,50 @@ ESS
 </div>
 </div>
 </div>
-<div id="outline-container-org6afdac9" class="outline-2">
-<h2 id="org6afdac9">b)</h2>
-<div class="outline-text-2" id="text-org6afdac9">
+<div id="outline-container-org778fbec" class="outline-2">
+<h2 id="org778fbec">b)</h2>
+<div class="outline-text-2" id="text-org778fbec">
 </div>
-<div id="outline-container-org93ecd94" class="outline-3">
-<h3 id="org93ecd94">Answer</h3>
-<div class="outline-text-3" id="text-org93ecd94">
+<div id="outline-container-orgd2da86b" class="outline-3">
+<h3 id="orgd2da86b">Answer</h3>
+<div class="outline-text-3" id="text-orgd2da86b">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean and 95% confidence region for &#963;&#178;</span>
-julia<span style="color: #FCCE7B;">&gt;</span> mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #e69055; font-weight: bold;">14.413317696499103</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean and 95% confidence region for &#963;&#178;
+</span>julia&gt; mean(MST[:,2])
+14.413317696499103
 
-julia<span style="color: #FCCE7B;">&gt;</span> quantile<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">-</span>element Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}</span>:
- <span style="color: #e69055; font-weight: bold;">11.733606090321313</span>
- <span style="color: #e69055; font-weight: bold;">17.92710379952854</span>
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean and 95% confidence region for &#956;</span>
-julia<span style="color: #FCCE7B;">&gt;</span> mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #e69055; font-weight: bold;">7.587311747784735</span>
-
-julia<span style="color: #FCCE7B;">&gt;</span> quantile<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">-</span>element Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}</span>:
- <span style="color: #e69055; font-weight: bold;">5.910059688648781</span>
- <span style="color: #e69055; font-weight: bold;">9.160791496009686</span>
-</pre>
+julia&gt; quantile(MST[:,2], [0.025, 0.975])
+2-element Vector{Float64}:
+ 11.733606090321313
+ 17.92710379952854
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">julia<span style="color: #FCCE7B;">&gt;</span> mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #e69055; font-weight: bold;">5.478604048700004</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean and 95% confidence region for &#956;
+</span>julia&gt; mean(MST[:,1])
+7.587311747784735
 
-julia<span style="color: #FCCE7B;">&gt;</span> quantile<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span>, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">0.025</span>, <span style="color: #e69055; font-weight: bold;">0.975</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">-</span>element Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}</span>:
-  <span style="color: #e69055; font-weight: bold;">1.9240022529423977</span>
- <span style="color: #e69055; font-weight: bold;">14.101516261365546</span>
-</pre>
+julia&gt; quantile(MST[:,1], [0.025, 0.975])
+2-element Vector{Float64}:
+ 5.910059688648781
+ 9.160791496009686
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-julia"><code>julia&gt; mean(MST[:,3])
+5.478604048700004
+
+julia&gt; quantile(MST[:,3], [0.025, 0.975])
+2-element Vector{Float64}:
+  1.9240022529423977
+ 14.101516261365546
+</code></pre>
 </div>
 
 
-<div id="org17870dd" class="figure">
+<div id="orgbb9cd6b" class="figure">
 <p><img src="./fig/ex8-3_posterior.png" alt="ex8-3_posterior.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Comparison of posterior and prior densities</p>
@@ -323,23 +303,23 @@ The following things were learned from the data:
 </div>
 </div>
 </div>
-<div id="outline-container-org8a63776" class="outline-2">
-<h2 id="org8a63776">c)</h2>
-<div class="outline-text-2" id="text-org8a63776">
+<div id="outline-container-org40bd09a" class="outline-2">
+<h2 id="org40bd09a">c)</h2>
+<div class="outline-text-2" id="text-org40bd09a">
 </div>
-<div id="outline-container-orgb4ce180" class="outline-3">
-<h3 id="orgb4ce180">Answer</h3>
-<div class="outline-text-3" id="text-orgb4ce180">
+<div id="outline-container-orge096bc8" class="outline-3">
+<h3 id="orge096bc8">Answer</h3>
+<div class="outline-text-3" id="text-orge096bc8">
 <div class="org-src-container">
-<pre class="src src-julia">&#963;&#178;_pri = rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#957;&#8320;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span>&#963;&#8320;&#178;<span style="color: #FCCE7B;">/</span>&#957;&#8320;<span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
-&#964;&#178;_pri = rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#951;&#8320;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span>&#964;&#8320;&#178;<span style="color: #FCCE7B;">/</span>&#951;&#8320;<span style="color: #C57BDB;">)</span>, S<span style="color: #51afef;">)</span>
-R_pri = &#964;&#178;_pri <span style="color: #FCCE7B;">./</span> <span style="color: #51afef;">(</span>&#963;&#178;_pri .<span style="color: #FCCE7B;">+</span> &#964;&#178;_pri<span style="color: #51afef;">)</span>
-R_pos = MST<span style="color: #51afef;">[</span>:,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">./</span><span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">+</span> MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>&#963;&#178;_pri = rand(Gamma(&#957;&#8320;/2, 2&#963;&#8320;&#178;/&#957;&#8320;), S)
+&#964;&#178;_pri = rand(Gamma(&#951;&#8320;/2, 2&#964;&#8320;&#178;/&#951;&#8320;), S)
+R_pri = &#964;&#178;_pri ./ (&#963;&#178;_pri .+ &#964;&#178;_pri)
+R_pos = MST[:,3] ./(MST[:,2] .+ MST[:,3])
+</code></pre>
 </div>
 
 
-<div id="orgc838797" class="figure">
+<div id="org1648b2c" class="figure">
 <p><img src="./fig/ex8-3_Rdensity.png" alt="ex8-3_Rdensity.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Prior and posterior densities of \(R\)</p>
@@ -351,17 +331,17 @@ The plot above shows that about 25% of the variance is due to between-school var
 </div>
 </div>
 </div>
-<div id="outline-container-orgba50c7c" class="outline-2">
-<h2 id="orgba50c7c">d)</h2>
-<div class="outline-text-2" id="text-orgba50c7c">
+<div id="outline-container-orgf99879f" class="outline-2">
+<h2 id="orgf99879f">d)</h2>
+<div class="outline-text-2" id="text-orgf99879f">
 </div>
-<div id="outline-container-org31c48e1" class="outline-3">
-<h3 id="org31c48e1">Answer</h3>
-<div class="outline-text-3" id="text-org31c48e1">
+<div id="outline-container-orgf50ddb6" class="outline-3">
+<h3 id="orgf50ddb6">Answer</h3>
+<div class="outline-text-3" id="text-orgf50ddb6">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior probability that &#952;&#8327; is smaller than &#952;&#8326;</span>
-mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">7</span><span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">6</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior probability that &#952;&#8327; is smaller than &#952;&#8326;
+</span>mean(THETA[:,7] .&lt; THETA[:,6])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -369,11 +349,10 @@ mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</
 </pre>
 
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior probability that &#952;&#8327; is the smallest of all the &#952;&#8217;s</span>
-mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">7</span><span style="color: #C57BDB;">]</span> .&#8804; minimum<span style="color: #C57BDB;">(</span>THETA, dims=<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior probability that &#952;&#8327; is the smallest of all the &#952;&#8217;s
+</span>mean(THETA[:,7] .&#8804; minimum(THETA, dims=2))
+</code></pre>
 </div>
 
 <pre class="example">
@@ -382,26 +361,26 @@ mean<span style="color: #51afef;">(</span>THETA<span style="color: #C57BDB;">[</
 </div>
 </div>
 </div>
-<div id="outline-container-org2b7b76c" class="outline-2">
-<h2 id="org2b7b76c">e)</h2>
-<div class="outline-text-2" id="text-org2b7b76c">
+<div id="outline-container-orge1c9ff0" class="outline-2">
+<h2 id="orge1c9ff0">e)</h2>
+<div class="outline-text-2" id="text-orge1c9ff0">
 </div>
-<div id="outline-container-org41d110d" class="outline-3">
-<h3 id="org41d110d">Answer</h3>
-<div class="outline-text-3" id="text-org41d110d">
+<div id="outline-container-org609ab62" class="outline-3">
+<h3 id="org609ab62">Answer</h3>
+<div class="outline-text-3" id="text-org609ab62">
 <div class="org-src-container">
-<pre class="src src-julia">&#952;&#772; = mean<span style="color: #51afef;">(</span>THETA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-fig_e = plot<span style="color: #51afef;">(</span>
-    y&#772;, &#952;&#772;, seriestype=<span style="color: #a991f1;">:scatter</span>, xlabel=L<span style="color: #7bc275;">"\bar{y}_i"</span>, ylabel=L<span style="color: #7bc275;">"\theta_i"</span>, legend=<span style="color: #a991f1;">:none</span>,
-    xlims=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">6</span>,<span style="color: #e69055; font-weight: bold;">11</span><span style="color: #C57BDB;">)</span>, ylims=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">6</span>,<span style="color: #e69055; font-weight: bold;">11</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">400</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>, margin=<span style="color: #e69055; font-weight: bold;">5</span>mm, alpha=<span style="color: #e69055; font-weight: bold;">0.5</span>
-<span style="color: #51afef;">)</span>
-fig_e = plot!<span style="color: #51afef;">(</span>fig_e, x<span style="color: #FCCE7B;">-&gt;</span>x, color=<span style="color: #a991f1;">:red</span>, linewidth=<span style="color: #e69055; font-weight: bold;">1</span>,alpha=<span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code>&#952;&#772; = mean(THETA, dims=1) |&gt; vec
+fig_e = plot(
+    y&#772;, &#952;&#772;, seriestype=<span style="font-weight: bold; text-decoration: underline;">:scatter</span>, xlabel=L<span style="font-style: italic;">"\bar{y}_i"</span>, ylabel=L<span style="font-style: italic;">"\theta_i"</span>, legend=<span style="font-weight: bold; text-decoration: underline;">:none</span>,
+    xlims=(6,11), ylims=(6,11), size=(400, 400), margin=5mm, alpha=0.5
+)
+fig_e = plot!(fig_e, x-&gt;x, color=<span style="font-weight: bold; text-decoration: underline;">:red</span>, linewidth=1,alpha=0.5)
 fig_e
-</pre>
+</code></pre>
 </div>
 
 
-<div id="orged995be" class="figure">
+<div id="org5d9ea8a" class="figure">
 <p><img src="./fig/ex8-3e_scatter.png" alt="ex8-3e_scatter.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Sample averages and posterior expectations</p>
@@ -413,20 +392,19 @@ For the schools with small sample averages, the posterior expectations tend to b
 </p>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">sample mean of all observations</span>
-mean<span style="color: #51afef;">(</span>Y<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample mean of all observations
+</span>mean(Y[:,2])
+</code></pre>
 </div>
 
 <pre class="example">
 7.6912777777777785
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">posterior mean of &#956;</span>
-mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">posterior mean of &#956;
+</span>mean(MST[:,1])
+</code></pre>
 </div>
 
 <pre class="example">
@@ -447,7 +425,7 @@ mean<span style="color: #51afef;">(</span>MST<span style="color: #C57BDB;">[</sp
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

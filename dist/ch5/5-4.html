@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 5.4 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,26 +95,26 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf26a822">a)</a>
+<li><a href="#orgfc6a2f8">a)</a>
 <ul>
-<li><a href="#orgb4433ef">answer</a></li>
+<li><a href="#org44026e7">answer</a></li>
 </ul>
 </li>
-<li><a href="#org0facb02">b)</a>
+<li><a href="#orgd9f91c7">b)</a>
 <ul>
-<li><a href="#org88786cd">answer</a></li>
+<li><a href="#orgb04f082">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf26a822" class="outline-2">
-<h2 id="orgf26a822">a)</h2>
-<div class="outline-text-2" id="text-orgf26a822">
+<div id="outline-container-orgfc6a2f8" class="outline-2">
+<h2 id="orgfc6a2f8">a)</h2>
+<div class="outline-text-2" id="text-orgfc6a2f8">
 </div>
-<div id="outline-container-orgb4433ef" class="outline-3">
-<h3 id="orgb4433ef">answer</h3>
-<div class="outline-text-3" id="text-orgb4433ef">
+<div id="outline-container-org44026e7" class="outline-3">
+<h3 id="org44026e7">answer</h3>
+<div class="outline-text-3" id="text-org44026e7">
 <p>
 対数尤度は、
 </p>
@@ -148,7 +128,8 @@ gtag('config', 'GT-M6XHKK2R');
 &= - \frac{n}{2} \log (2 \pi ) - \frac{n}{2} \log (\sigma^2) - \frac{1}{2 \sigma^2} (\sum_{i=1}^n y_i^2 - 2 \theta \sum_{i=1}^n y_i + n \theta^2) \\
 \end{align*}
 <p>
-と表せる。従って、\(\theta, \sigma^2\)による一回微分はそれぞれ、
+と表せる。
+従って、\(\theta, \sigma^2\)による一回微分はそれぞれ、
 </p>
 \begin{align*}
 \ell_{\theta}
@@ -159,7 +140,8 @@ gtag('config', 'GT-M6XHKK2R');
 &= - \frac{n}{2 \sigma^2} + \frac{1}{2 (\sigma^2)^2} (\sum_{i=1}^n y_i^2 - 2 \theta \sum_{i=1}^n y_i + n \theta^2) \\
 \end{align*}
 <p>
-となる。よって、
+となる。
+よって、
 </p>
 
 \begin{align*}
@@ -189,13 +171,13 @@ p_J(\theta, \sigma^2)
 </div>
 </div>
 </div>
-<div id="outline-container-org0facb02" class="outline-2">
-<h2 id="org0facb02">b)</h2>
-<div class="outline-text-2" id="text-org0facb02">
+<div id="outline-container-orgd9f91c7" class="outline-2">
+<h2 id="orgd9f91c7">b)</h2>
+<div class="outline-text-2" id="text-orgd9f91c7">
 </div>
-<div id="outline-container-org88786cd" class="outline-3">
-<h3 id="org88786cd">answer</h3>
-<div class="outline-text-3" id="text-org88786cd">
+<div id="outline-container-orgb04f082" class="outline-3">
+<h3 id="orgb04f082">answer</h3>
+<div class="outline-text-3" id="text-orgb04f082">
 \begin{align*}
 p_J(\theta, \sigma^2 | \boldsymbol{y})
 &= p_J(\theta, \sigma^2) p(\boldsymbol{y} | \theta, \sigma^2) \\
@@ -240,7 +222,7 @@ where \(\bar{y^2} = \frac{1}{n} \sum_{i=1}^n y_i^2\) and \(s^2 = \frac{1}{n-1} \
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

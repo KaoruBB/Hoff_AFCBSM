@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 10.5 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,51 +95,51 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf8785de">a)</a>
+<li><a href="#org6687eaa">a)</a>
 <ul>
-<li><a href="#org6552ec7">Answer</a>
+<li><a href="#org8cbae09">Answer</a>
 <ul>
-<li><a href="#org35c1380">sampling model</a></li>
-<li><a href="#org2221ae6">prior</a></li>
-<li><a href="#org034fd37">calculation of acceptance ratio \(r\)</a></li>
-<li><a href="#orgd1050fb">proposal distributions</a></li>
-<li><a href="#orgd7ee515">import data</a></li>
-<li><a href="#orgd05cf38">process data</a></li>
-<li><a href="#orgb65dd27">M-H algorithm</a></li>
-<li><a href="#orgf2bf59b">run M-H algorithm</a></li>
-<li><a href="#org3bea1d4">sequence \(\beta_j^{(s)}\)</a></li>
-<li><a href="#org5a0f6ee">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</a></li>
-<li><a href="#orgb678925">summary</a>
+<li><a href="#org3799a58">sampling model</a></li>
+<li><a href="#org2c765e6">prior</a></li>
+<li><a href="#orgce81b74">calculation of acceptance ratio \(r\)</a></li>
+<li><a href="#org95c9f1b">proposal distributions</a></li>
+<li><a href="#orgb950c43">import data</a></li>
+<li><a href="#orgdc4ecaf">process data</a></li>
+<li><a href="#org17142e5">M-H algorithm</a></li>
+<li><a href="#orgab4bed7">run M-H algorithm</a></li>
+<li><a href="#orgf5f4e65">sequence \(\beta_j^{(s)}\)</a></li>
+<li><a href="#org363dbf7">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</a></li>
+<li><a href="#orgabc5587">summary</a>
 <ul>
-<li><a href="#orgb8b5e5f">日本語</a></li>
-<li><a href="#org2887964">English</a></li>
+<li><a href="#org0a55145">日本語</a></li>
+<li><a href="#org2ef9f61">English</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgfd67fed">b)</a>
+<li><a href="#orgc8c10b2">b)</a>
 <ul>
-<li><a href="#org04f2608">Answer</a>
+<li><a href="#org4ff01b8">Answer</a>
 <ul>
-<li><a href="#orgd4ec2f4">top five most frequently occurring values of \(\gamma\)</a></li>
-<li><a href="#org44e6ce8">How good are the estimates?</a>
+<li><a href="#org74f78be">top five most frequently occurring values of \(\gamma\)</a></li>
+<li><a href="#orgb896521">How good are the estimates?</a>
 <ul>
-<li><a href="#orge27388c">日本語</a></li>
-<li><a href="#orgc7f5c88">English</a></li>
+<li><a href="#org01c5587">日本語</a></li>
+<li><a href="#org476f734">English</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5a6483a">c)</a>
+<li><a href="#org8147875">c)</a>
 <ul>
-<li><a href="#orge5e3a50">Answer</a>
+<li><a href="#orgffd2d55">Answer</a>
 <ul>
-<li><a href="#orge64a445">posterior densities</a></li>
-<li><a href="#org374f06f">posterior means</a></li>
+<li><a href="#org7fc7222">posterior densities</a></li>
+<li><a href="#org9343078">posterior means</a></li>
 </ul>
 </li>
 </ul>
@@ -167,26 +147,26 @@ gtag('config', 'GT-M6XHKK2R');
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf8785de" class="outline-2">
-<h2 id="orgf8785de">a)</h2>
-<div class="outline-text-2" id="text-orgf8785de">
+<div id="outline-container-org6687eaa" class="outline-2">
+<h2 id="org6687eaa">a)</h2>
+<div class="outline-text-2" id="text-org6687eaa">
 </div>
-<div id="outline-container-org6552ec7" class="outline-3">
-<h3 id="org6552ec7">Answer</h3>
-<div class="outline-text-3" id="text-org6552ec7">
+<div id="outline-container-org8cbae09" class="outline-3">
+<h3 id="org8cbae09">Answer</h3>
+<div class="outline-text-3" id="text-org8cbae09">
 </div>
-<div id="outline-container-org35c1380" class="outline-4">
-<h4 id="org35c1380">sampling model</h4>
-<div class="outline-text-4" id="text-org35c1380">
+<div id="outline-container-org3799a58" class="outline-4">
+<h4 id="org3799a58">sampling model</h4>
+<div class="outline-text-4" id="text-org3799a58">
 \begin{align*}
 Y_i &\sim \text{Bernoulli} \left(\frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) \quad (i = 1, \dots, n) \\
 \theta_i &= \beta_0 + \beta_1 \gamma_1 x_{i,1} + \beta_2 \gamma_2 x_{i,2} + \beta_3 \gamma_3 x_{i,3} + \beta_4 \gamma_4 x_{i,4} + \beta_5 \gamma_5 x_{i,5} \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org2221ae6" class="outline-4">
-<h4 id="org2221ae6">prior</h4>
-<div class="outline-text-4" id="text-org2221ae6">
+<div id="outline-container-org2c765e6" class="outline-4">
+<h4 id="org2c765e6">prior</h4>
+<div class="outline-text-4" id="text-org2c765e6">
 \begin{align*}
 \gamma_j &\sim \text{Bernoulli}(1/2) \quad (j = 1, \dots, 5) \\
 \beta_0 &\sim \mathcal{N}(0, 16) \\
@@ -194,9 +174,9 @@ Y_i &\sim \text{Bernoulli} \left(\frac{e^{\theta_i}}{1 + e^{\theta_i}} \right) \
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org034fd37" class="outline-4">
-<h4 id="org034fd37">calculation of acceptance ratio \(r\)</h4>
-<div class="outline-text-4" id="text-org034fd37">
+<div id="outline-container-orgce81b74" class="outline-4">
+<h4 id="orgce81b74">calculation of acceptance ratio \(r\)</h4>
+<div class="outline-text-4" id="text-orgce81b74">
 <p>
 The likelihood and log-likelihood are as follows:
 </p>
@@ -223,72 +203,72 @@ r = \frac{ p(\bm{y} | \bm{x}, \bm{\beta}^{(s)}, \bm{\gamma}^{(s)}_{-j}, \gamma_j
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1050fb" class="outline-4">
-<h4 id="orgd1050fb">proposal distributions</h4>
-<div class="outline-text-4" id="text-orgd1050fb">
+<div id="outline-container-org95c9f1b" class="outline-4">
+<h4 id="org95c9f1b">proposal distributions</h4>
+<div class="outline-text-4" id="text-org95c9f1b">
 \begin{align*}
 \beta_j^{\ast} | \beta_j^{(s)} &\sim \mathcal{N}(\beta_j^{(s)}, \delta^2) \\
 \gamma_j^{\ast} | \gamma_j^{(s)} &= \begin{cases} 0 & \text{ if } \gamma_j^{(s)} = 1 \\ 1 & \text{ if } \gamma_j^{(s)} = 0 \end{cases} \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgd7ee515" class="outline-4">
-<h4 id="orgd7ee515">import data</h4>
-<div class="outline-text-4" id="text-orgd7ee515">
+<div id="outline-container-orgb950c43" class="outline-4">
+<h4 id="orgb950c43">import data</h4>
+<div class="outline-text-4" id="text-orgb950c43">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">using</span> DataFrames
-<span style="color: #51afef;">using</span> DelimitedFiles
-<span style="color: #51afef;">using</span> Distributions
-<span style="color: #51afef;">using</span> GLM
-<span style="color: #51afef;">using</span> LinearAlgebra
-<span style="color: #51afef;">using</span> MCMCChains
-<span style="color: #51afef;">using</span> OffsetArrays
-<span style="color: #51afef;">using</span> Plots.PlotMeasures
-<span style="color: #51afef;">using</span> Random
-<span style="color: #51afef;">using</span> StatsBase
-<span style="color: #51afef;">using</span> StatsModels
-<span style="color: #51afef;">using</span> StatsPlots
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">using</span> DataFrames
+<span style="font-weight: bold;">using</span> DelimitedFiles
+<span style="font-weight: bold;">using</span> Distributions
+<span style="font-weight: bold;">using</span> GLM
+<span style="font-weight: bold;">using</span> LinearAlgebra
+<span style="font-weight: bold;">using</span> MCMCChains
+<span style="font-weight: bold;">using</span> OffsetArrays
+<span style="font-weight: bold;">using</span> Plots.PlotMeasures
+<span style="font-weight: bold;">using</span> Random
+<span style="font-weight: bold;">using</span> StatsBase
+<span style="font-weight: bold;">using</span> StatsModels
+<span style="font-weight: bold;">using</span> StatsPlots
+</code></pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-julia">data = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/azdiabetes.dat"</span>, header=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>
-header = data<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">|&gt;</span> vec
-df = DataFrame<span style="color: #51afef;">(</span>data<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span>, header<span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code>data = readdlm(<span style="font-style: italic;">"./Exercises/azdiabetes.dat"</span>, header=<span style="font-weight: bold; text-decoration: underline;">true</span>)
+header = data[2] |&gt; vec
+df = DataFrame(data[1], header)
 
-col_int = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:glu</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:skin</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
-col_float = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span><span style="color: #51afef;">]</span>
-col_str = <span style="color: #a991f1;">:diabetes</span>
-df<span style="color: #51afef;">[</span>!,col_int<span style="color: #51afef;">]</span> = Int.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_int<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-df<span style="color: #51afef;">[</span>!,col_float<span style="color: #51afef;">]</span> = Float32.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_float<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-df<span style="color: #51afef;">[</span>!,col_str<span style="color: #51afef;">]</span> = String.<span style="color: #51afef;">(</span>df<span style="color: #C57BDB;">[</span>!,col_str<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-julia">first<span style="color: #51afef;">(</span>df, <span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd05cf38" class="outline-4">
-<h4 id="orgd05cf38">process data</h4>
-<div class="outline-text-4" id="text-orgd05cf38">
-<div class="org-src-container">
-<pre class="src src-julia">predictors = <span style="color: #51afef;">[</span><span style="color: #a991f1;">:npreg</span>, <span style="color: #a991f1;">:bp</span>, <span style="color: #a991f1;">:bmi</span>, <span style="color: #a991f1;">:ped</span>, <span style="color: #a991f1;">:age</span><span style="color: #51afef;">]</span>
-X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>size<span style="color: #7bc275;">(</span>df, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, mapcols<span style="color: #C57BDB;">(</span>zscore, df<span style="color: #7bc275;">[</span>!, predictors<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span>
-    Matrix <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, :, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">align the notation with the textbook</span>
-y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x <span style="color: #FCCE7B;">==</span> <span style="color: #7bc275;">"Yes"</span> <span style="color: #51afef;">?</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #51afef;">:</span> <span style="color: #e69055; font-weight: bold;">0</span>, df<span style="color: #C57BDB;">[</span>!, <span style="color: #a991f1;">:diabetes</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> Vector
-</pre>
+col_int = [<span style="font-weight: bold; text-decoration: underline;">:npreg</span>, <span style="font-weight: bold; text-decoration: underline;">:glu</span>, <span style="font-weight: bold; text-decoration: underline;">:bp</span>, <span style="font-weight: bold; text-decoration: underline;">:skin</span>, <span style="font-weight: bold; text-decoration: underline;">:age</span>]
+col_float = [<span style="font-weight: bold; text-decoration: underline;">:bmi</span>, <span style="font-weight: bold; text-decoration: underline;">:ped</span>]
+col_str = <span style="font-weight: bold; text-decoration: underline;">:diabetes</span>
+df[!,col_int] = Int.(df[!,col_int])
+df[!,col_float] = Float32.(df[!,col_float])
+df[!,col_str] = String.(df[!,col_str])
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">X<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span>, :<span style="color: #51afef;">]</span>
-</pre>
+<pre class="src src-julia"><code>first(df, 5)
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdc4ecaf" class="outline-4">
+<h4 id="orgdc4ecaf">process data</h4>
+<div class="outline-text-4" id="text-orgdc4ecaf">
+<div class="org-src-container">
+<pre class="src src-julia"><code>predictors = [<span style="font-weight: bold; text-decoration: underline;">:npreg</span>, <span style="font-weight: bold; text-decoration: underline;">:bp</span>, <span style="font-weight: bold; text-decoration: underline;">:bmi</span>, <span style="font-weight: bold; text-decoration: underline;">:ped</span>, <span style="font-weight: bold; text-decoration: underline;">:age</span>]
+X = hcat(ones(size(df, 1)), mapcols(zscore, df[!, predictors])) |&gt;
+    Matrix |&gt; (x -&gt; OffsetArray(x, :, 0:size(x, 2)-1)) <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">align the notation with the textbook
+</span>y = map(x -&gt; x == <span style="font-style: italic;">"Yes"</span> <span style="font-weight: bold;">?</span> 1 <span style="font-weight: bold;">:</span> 0, df[!, <span style="font-weight: bold; text-decoration: underline;">:diabetes</span>]) |&gt; Vector
+</code></pre>
 </div>
 
-<pre class="example" id="org3b6a6b4">
+<div class="org-src-container">
+<pre class="src src-julia"><code>X[1:5, :]
+</code></pre>
+</div>
+
+<pre class="example" id="org73ce2a7">
 5×6 OffsetArray(::Matrix{Float64}, 1:5, 0:5) with eltype Float64 with indices 1:5×0:5:
  1.0   0.447786  -0.284774  -0.390958  -0.403331  -0.707578
  1.0   1.05164   -0.122308  -1.13212   -0.986707   2.17304
@@ -298,90 +278,90 @@ y = map<span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&g
 </pre>
 </div>
 </div>
-<div id="outline-container-orgb65dd27" class="outline-4">
-<h4 id="orgb65dd27">M-H algorithm</h4>
-<div class="outline-text-4" id="text-orgb65dd27">
+<div id="outline-container-org17142e5" class="outline-4">
+<h4 id="org17142e5">M-H algorithm</h4>
+<div class="outline-text-4" id="text-org17142e5">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_loglikelihood</span><span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
-    &#952; = parent<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>&#946;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">.*</span> <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>;&#947;<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">return</span> sum<span style="color: #51afef;">(</span>y <span style="color: #FCCE7B;">.*</span> &#952; <span style="color: #FCCE7B;">-</span> log.<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span> .<span style="color: #FCCE7B;">+</span> exp.<span style="color: #7bc275;">(</span>&#952;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">update_&#946;j</span><span style="color: #51afef;">(</span>&#946;, &#947;, j, &#948;, prior_var<span style="color: #51afef;">)</span>
-    &#946;_prp = copy<span style="color: #51afef;">(</span>&#946;<span style="color: #51afef;">)</span>
-    &#946;_prp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#946;<span style="color: #7bc275;">[</span>j<span style="color: #7bc275;">]</span>, &#948;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    log_likelihood_diff = _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;_prp, &#947;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span> _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
-    log_prior_ratio = logpdf<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0</span>, sqrt<span style="color: #7bc275;">(</span>prior_var<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, &#946;_prp<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span> logpdf<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">0</span>, sqrt<span style="color: #7bc275;">(</span>prior_var<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, &#946;<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">log_proposal_ratio = 0 because the proposal distribution is symmetric</span>
-    log_r = log_likelihood_diff <span style="color: #FCCE7B;">+</span> log_prior_ratio
-    <span style="color: #51afef;">return</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> log_r <span style="color: #51afef;">?</span> &#946;_prp <span style="color: #51afef;">:</span> &#946;
-<span style="color: #51afef;">end</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">_loglikelihood</span>(y, X, &#946;, &#947;)
+    &#952; = parent(X) * (parent(&#946;) .* [1;&#947;])
+    <span style="font-weight: bold;">return</span> sum(y .* &#952; - log.(1 .+ exp.(&#952;)))
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">update_&#947;j</span><span style="color: #51afef;">(</span>&#946;, &#947;, j<span style="color: #51afef;">)</span>
-    &#947;_prp = copy<span style="color: #51afef;">(</span>&#947;<span style="color: #51afef;">)</span>
-    <span style="color: #5cEfFF;">J_&#947;</span><span style="color: #51afef;">(</span>x<span style="color: #51afef;">)</span> = x <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #51afef;">?</span> <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #51afef;">:</span> <span style="color: #e69055; font-weight: bold;">1</span>
-    &#947;_prp<span style="color: #51afef;">[</span>j<span style="color: #51afef;">]</span> = J_&#947;<span style="color: #51afef;">(</span>&#947;_prp<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    log_r = _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;, &#947;_prp<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">-</span> _loglikelihood<span style="color: #51afef;">(</span>y, X, &#946;, &#947;<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">return</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> log_r <span style="color: #51afef;">?</span> &#947;_prp <span style="color: #51afef;">:</span> &#947;
-<span style="color: #51afef;">end</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">update_&#946;j</span>(&#946;, &#947;, j, &#948;, prior_var)
+    &#946;_prp = copy(&#946;)
+    &#946;_prp[j] = rand(Normal(&#946;[j], &#948;))
+    log_likelihood_diff = _loglikelihood(y, X, &#946;_prp, &#947;) - _loglikelihood(y, X, &#946;, &#947;)
+    log_prior_ratio = logpdf(Normal(0, sqrt(prior_var)), &#946;_prp[j]) - logpdf(Normal(0, sqrt(prior_var)), &#946;[j])
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">log_proposal_ratio = 0 because the proposal distribution is symmetric
+</span>    log_r = log_likelihood_diff + log_prior_ratio
+    <span style="font-weight: bold;">return</span> log(rand()) &lt; log_r <span style="font-weight: bold;">?</span> &#946;_prp <span style="font-weight: bold;">:</span> &#946;
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">logit_reg_with_var_select</span><span style="color: #51afef;">(</span>y, X, &#946;_init, &#947;_init, &#948;; S=<span style="color: #e69055; font-weight: bold;">1000</span>, seed=<span style="color: #e69055; font-weight: bold;">42</span><span style="color: #51afef;">)</span>
-    Random.seed!<span style="color: #51afef;">(</span>seed<span style="color: #51afef;">)</span>
-
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">initialize</span>
-    &#946; = copy<span style="color: #51afef;">(</span>&#946;_init<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    &#947; = copy<span style="color: #51afef;">(</span>&#947;_init<span style="color: #51afef;">)</span>
-
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">prepare storage</span>
-    q = length<span style="color: #51afef;">(</span>&#946;<span style="color: #51afef;">)</span>
-    BETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, q<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, :, <span style="color: #e69055; font-weight: bold;">0</span>:q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    GAMMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-
-    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">0</span>:q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span>
-            prior_var = j <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #51afef;">?</span> <span style="color: #e69055; font-weight: bold;">16.0</span> <span style="color: #51afef;">:</span> <span style="color: #e69055; font-weight: bold;">4.0</span>
-            &#946; = update_&#946;j<span style="color: #51afef;">(</span>&#946;, &#947;, j, &#948;, prior_var<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">end</span>
-        <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:q<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span>
-            &#947; = update_&#947;j<span style="color: #51afef;">(</span>&#946;, &#947;, j<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">end</span>
-        BETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#946;
-        GAMMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = &#947;
-    <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">return</span> BETA, GAMMA
-<span style="color: #51afef;">end</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgf2bf59b" class="outline-4">
-<h4 id="orgf2bf59b">run M-H algorithm</h4>
-<div class="outline-text-4" id="text-orgf2bf59b">
-<div class="org-src-container">
-<pre class="src src-julia">glmfit = glm<span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>X<span style="color: #C57BDB;">)</span>, y, Binomial<span style="color: #C57BDB;">()</span>, LogitLink<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span>
-&#946;_init = coef<span style="color: #51afef;">(</span>glmfit<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> <span style="color: #51afef;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> OffsetArray<span style="color: #C57BDB;">(</span>x, <span style="color: #e69055; font-weight: bold;">0</span>:size<span style="color: #7bc275;">(</span>x, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-&#947;_init = ones<span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">)</span>
-&#948; = <span style="color: #e69055; font-weight: bold;">0.1</span>
-
-BETA, GAMMA = logit_reg_with_var_select<span style="color: #51afef;">(</span>y, X, &#946;_init, &#947;_init, &#948;; S=<span style="color: #e69055; font-weight: bold;">100000</span>, seed=<span style="color: #e69055; font-weight: bold;">42</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">update_&#947;j</span>(&#946;, &#947;, j)
+    &#947;_prp = copy(&#947;)
+    <span style="font-weight: bold;">J_&#947;</span>(x) = x == 1 <span style="font-weight: bold;">?</span> 0 <span style="font-weight: bold;">:</span> 1
+    &#947;_prp[j] = J_&#947;(&#947;_prp[j])
+    log_r = _loglikelihood(y, X, &#946;, &#947;_prp) - _loglikelihood(y, X, &#946;, &#947;)
+    <span style="font-weight: bold;">return</span> log(rand()) &lt; log_r <span style="font-weight: bold;">?</span> &#947;_prp <span style="font-weight: bold;">:</span> &#947;
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">chn_&#946; = Chains<span style="color: #51afef;">(</span>BETA, <span style="color: #C57BDB;">[</span><span style="color: #7bc275;">"&#946;0"</span>,<span style="color: #7bc275;">"&#946;1"</span>, <span style="color: #7bc275;">"&#946;2"</span>, <span style="color: #7bc275;">"&#946;3"</span>, <span style="color: #7bc275;">"&#946;4"</span>, <span style="color: #7bc275;">"&#946;5"</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">logit_reg_with_var_select</span>(y, X, &#946;_init, &#947;_init, &#948;; S=1000, seed=42)
+    Random.seed!(seed)
+
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">initialize
+</span>    &#946; = copy(&#946;_init) |&gt; (x -&gt; OffsetArray(x, 0:size(x, 1)-1))
+    &#947; = copy(&#947;_init)
+
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">prepare storage
+</span>    q = length(&#946;)
+    BETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, q) |&gt; (x -&gt; OffsetArray(x, :, 0:q-1))
+    GAMMA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, q-1)
+
+    <span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+        <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 0:q-1
+            prior_var = j == 0 <span style="font-weight: bold;">?</span> 16.0 <span style="font-weight: bold;">:</span> 4.0
+            &#946; = update_&#946;j(&#946;, &#947;, j, &#948;, prior_var)
+        <span style="font-weight: bold;">end</span>
+        <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:q-1
+            &#947; = update_&#947;j(&#946;, &#947;, j)
+        <span style="font-weight: bold;">end</span>
+        BETA[s, :] = &#946;
+        GAMMA[s, :] = &#947;
+    <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">return</span> BETA, GAMMA
+<span style="font-weight: bold;">end</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgab4bed7" class="outline-4">
+<h4 id="orgab4bed7">run M-H algorithm</h4>
+<div class="outline-text-4" id="text-orgab4bed7">
+<div class="org-src-container">
+<pre class="src src-julia"><code>glmfit = glm(parent(X), y, Binomial(), LogitLink())
+&#946;_init = coef(glmfit) |&gt; (x -&gt; OffsetArray(x, 0:size(x, 1)-1))
+&#947;_init = ones(5)
+&#948; = 0.1
+
+BETA, GAMMA = logit_reg_with_var_select(y, X, &#946;_init, &#947;_init, &#948;; S=100000, seed=42)
+</code></pre>
 </div>
 
-<pre class="example" id="org29304c3">
+<div class="org-src-container">
+<pre class="src src-julia"><code>chn_&#946; = Chains(BETA, [<span style="font-style: italic;">"&#946;0"</span>,<span style="font-style: italic;">"&#946;1"</span>, <span style="font-style: italic;">"&#946;2"</span>, <span style="font-style: italic;">"&#946;3"</span>, <span style="font-style: italic;">"&#946;4"</span>, <span style="font-style: italic;">"&#946;5"</span>])
+</code></pre>
+</div>
+
+<pre class="example" id="org320037e">
 Chains MCMC chain (100000×6×1 Array{Float64, 3}):
 
 Iterations        = 1:1:100000
@@ -413,11 +393,11 @@ Quantiles
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-julia">chn_&#947; = Chains<span style="color: #51afef;">(</span>GAMMA, <span style="color: #C57BDB;">[</span><span style="color: #7bc275;">"&#947;1"</span>, <span style="color: #7bc275;">"&#947;2"</span>, <span style="color: #7bc275;">"&#947;3"</span>, <span style="color: #7bc275;">"&#947;4"</span>, <span style="color: #7bc275;">"&#947;5"</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>chn_&#947; = Chains(GAMMA, [<span style="font-style: italic;">"&#947;1"</span>, <span style="font-style: italic;">"&#947;2"</span>, <span style="font-style: italic;">"&#947;3"</span>, <span style="font-style: italic;">"&#947;4"</span>, <span style="font-style: italic;">"&#947;5"</span>])
+</code></pre>
 </div>
 
-<pre class="example" id="org3366cc0">
+<pre class="example" id="org8b1e764">
 Chains MCMC chain (100000×5×1 Array{Float64, 3}):
 
 Iterations        = 1:1:100000
@@ -447,39 +427,39 @@ Quantiles
 </pre>
 </div>
 </div>
-<div id="outline-container-org3bea1d4" class="outline-4">
-<h4 id="org3bea1d4">sequence \(\beta_j^{(s)}\)</h4>
-<div class="outline-text-4" id="text-org3bea1d4">
+<div id="outline-container-orgf5f4e65" class="outline-4">
+<h4 id="orgf5f4e65">sequence \(\beta_j^{(s)}\)</h4>
+<div class="outline-text-4" id="text-orgf5f4e65">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">visualize the MCMC simulation results</span>
-p = plot<span style="color: #51afef;">(</span>chn_&#946;<span style="color: #51afef;">)</span>
-savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch10/img/exercise10-5a-beta.png"</span><span style="color: #51afef;">)</span>
-<span style="color: #7bc275;">"#+NAME: beta_sequence\n[[file:./img/exercise10-5a-beta.png]]"</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">visualize the MCMC simulation results
+</span>p = plot(chn_&#946;)
+savefig(<span style="font-style: italic;">"./ch10/img/exercise10-5a-beta.png"</span>)
+<span style="font-style: italic;">"#+NAME: beta_sequence\n[[file:./img/exercise10-5a-beta.png]]"</span>
+</code></pre>
 </div>
 
-<div id="org1974b9f" class="figure">
+<div id="orgc26e106" class="figure">
 <p><img src="./fig/exercise10-5a-beta.png" alt="exercise10-5a-beta.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>traceplots of \(\beta_j\)</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org5a0f6ee" class="outline-4">
-<h4 id="org5a0f6ee">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</h4>
-<div class="outline-text-4" id="text-org5a0f6ee">
+<div id="outline-container-org363dbf7" class="outline-4">
+<h4 id="org363dbf7">sequence \(\beta_j^{(s)} \times \gamma_j^{(s)}\)</h4>
+<div class="outline-text-4" id="text-org363dbf7">
 <div class="org-src-container">
-<pre class="src src-julia">beta_gamma_prod = BETA<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #51afef;">end</span><span style="color: #51afef;">]</span> <span style="color: #FCCE7B;">.*</span> GAMMA
-</pre>
+<pre class="src src-julia"><code>beta_gamma_prod = BETA[:, 1:<span style="font-weight: bold;">end</span>] .* GAMMA
+</code></pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-julia">beta_gamma_prod<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span>, :<span style="color: #51afef;">]</span>
-</pre>
+<pre class="src src-julia"><code>beta_gamma_prod[1:5, :]
+</code></pre>
 </div>
 
-<pre class="example" id="org9c3ce3c">
+<pre class="example" id="org9ccf3fe">
 5×5 OffsetArray(::Matrix{Float64}, 1:5, 1:5) with eltype Float64 with indices 1:5×1:5:
  0.193049  -0.0        0.611237  0.600768  0.584352
  0.218734   0.0543198  0.611237  0.539856  0.584352
@@ -489,19 +469,19 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-julia">BETA_TIMES_GAMMA = hcat<span style="color: #51afef;">(</span>parent<span style="color: #C57BDB;">(</span>BETA<span style="color: #7bc275;">[</span>:, <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, beta_gamma_prod<span style="color: #51afef;">)</span>;
-BETA_TIMES_GAMMA<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">6</span>, :<span style="color: #51afef;">]</span>
-</pre>
+<pre class="src src-julia"><code>BETA_TIMES_GAMMA = hcat(parent(BETA[:, 0]), beta_gamma_prod);
+BETA_TIMES_GAMMA[1:6, :]
+</code></pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-julia">param_names = <span style="color: #51afef;">[</span><span style="color: #7bc275;">"&#946;0"</span>; <span style="color: #C57BDB;">[</span><span style="color: #7bc275;">"&#946;$(j)*&#947;$(j)"</span> <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">]</span>;
-chn_&#946;&#947; = Chains<span style="color: #51afef;">(</span>BETA_TIMES_GAMMA, param_names<span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>param_names = [<span style="font-style: italic;">"&#946;0"</span>; [<span style="font-style: italic;">"&#946;$(j)*&#947;$(j)"</span> <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:5]];
+chn_&#946;&#947; = Chains(BETA_TIMES_GAMMA, param_names)
+</code></pre>
 </div>
 
-<pre class="example" id="orga6233de">
+<pre class="example" id="org9b1a079">
 
 Chains MCMC chain (100000×6×1 Array{Float64, 3}):
 
@@ -534,27 +514,27 @@ Quantiles
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-julia">p_bg = plot<span style="color: #51afef;">(</span>chn_&#946;&#947;<span style="color: #51afef;">)</span>
-savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch10/img/exercise10-5b-beta-gamma.png"</span><span style="color: #51afef;">)</span>
-<span style="color: #7bc275;">"#+NAME: beta_gamma_sequence\n[[file:./img/exercise10-5b-beta-gamma.png]]"</span>
-</pre>
+<pre class="src src-julia"><code>p_bg = plot(chn_&#946;&#947;)
+savefig(<span style="font-style: italic;">"./ch10/img/exercise10-5b-beta-gamma.png"</span>)
+<span style="font-style: italic;">"#+NAME: beta_gamma_sequence\n[[file:./img/exercise10-5b-beta-gamma.png]]"</span>
+</code></pre>
 </div>
 
 
-<div id="org47e8855" class="figure">
+<div id="org0a1db1c" class="figure">
 <p><img src="./fig/exercise10-5b-beta-gamma.png" alt="exercise10-5b-beta-gamma.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>traceplots of \(\beta_j \times \gamma_j\)</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb678925" class="outline-4">
-<h4 id="orgb678925">summary</h4>
-<div class="outline-text-4" id="text-orgb678925">
+<div id="outline-container-orgabc5587" class="outline-4">
+<h4 id="orgabc5587">summary</h4>
+<div class="outline-text-4" id="text-orgabc5587">
 </div>
-<div id="outline-container-orgb8b5e5f" class="outline-5">
-<h5 id="orgb8b5e5f">日本語</h5>
-<div class="outline-text-5" id="text-orgb8b5e5f">
+<div id="outline-container-org0a55145" class="outline-5">
+<h5 id="org0a55145">日本語</h5>
+<div class="outline-text-5" id="text-org0a55145">
 <p>
 MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\) のサンプルを用いて、\(\beta_j\) の系列と \(\beta_j \times \gamma_j\) の系列の混合について評価した。
 </p>
@@ -562,7 +542,7 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 <ul class="org-ul">
 <li><span class="underline">\(\beta_j\) の系列</span>:
 <ul class="org-ul">
-<li>トレースプロット(<a href="#org1974b9f">1</a>) と診断統計量 (<code>chn_β</code> のサマリー) を見ると、特に \(\beta_1\) と \(\beta_2\) のチェーンは混合が悪いことが示唆された。
+<li>トレースプロット(<a href="#orgc26e106">1</a>) と診断統計量 (<code>chn_β</code> のサマリー) を見ると、特に \(\beta_1\) と \(\beta_2\) のチェーンは混合が悪いことが示唆された。
 <ul class="org-ul">
 <li><code>rhat</code> 値が1から離れており (それぞれ約 1.03, 1.09)、 <code>ess_bulk</code> 値も他のパラメータと比較して低い (それぞれ約 248, 233)。</li>
 <li>トレースプロットも安定していないように見える。</li>
@@ -578,7 +558,7 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 <li><span class="underline">\(\beta_j \times \gamma_j\) の系列</span>:
 <ul class="org-ul">
 <li>この系列は、変数 \(j\) がモデルに含まれる場合 (\(\gamma_j=1\)) の係数の効果を表し、含まれない場合 (\(\gamma_j=0\)) は効果が 0 となる。</li>
-<li>トレースプロット (<a href="#org47e8855">2</a>) と診断統計量 (<code>chn_βγ</code> のサマリー) を見ると、こちらの系列は全体的に混合が良いことがわかった。
+<li>トレースプロット (<a href="#org0a1db1c">2</a>) と診断統計量 (<code>chn_βγ</code> のサマリー) を見ると、こちらの系列は全体的に混合が良いことがわかった。
 <ul class="org-ul">
 <li>特に <code>β1*γ1</code> と <code>β2*γ2</code> の <code>rhat</code> 値は1に近くなり (それぞれ約 1.017, 1.0005)、 <code>ess_bulk</code> 値も改善した (それぞれ約 585, 39422)。</li>
 <li>トレースプロットも、特に <code>β2*γ2</code> は 0 付近で非常に安定している。</li>
@@ -598,9 +578,9 @@ MCMCシミュレーションによって得られた \(\beta_j\) と \(\gamma_j\
 </ul>
 </div>
 </div>
-<div id="outline-container-org2887964" class="outline-5">
-<h5 id="org2887964">English</h5>
-<div class="outline-text-5" id="text-org2887964">
+<div id="outline-container-org2ef9f61" class="outline-5">
+<h5 id="org2ef9f61">English</h5>
+<div class="outline-text-5" id="text-org2ef9f61">
 <p>
 We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(\beta_j \times \gamma_j\) series using the samples obtained from the simulation.
 </p>
@@ -608,7 +588,7 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 <ul class="org-ul">
 <li><span class="underline">Series for \(\beta_j\)</span>:
 <ul class="org-ul">
-<li>The trace plots (<a href="#org1974b9f">1</a>) and diagnostic statistics (summary of <code>chn_β</code>) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
+<li>The trace plots (<a href="#orgc26e106">1</a>) and diagnostic statistics (summary of <code>chn_β</code>) suggested poor mixing, especially for the \(\beta_1\) and \(\beta_2\) chains.
 <ul class="org-ul">
 <li>The <code>rhat</code> values were far from 1 (approx. 1.03 and 1.09, respectively), and the <code>ess_bulk</code> values were low compared to other parameters (approx. 248 and 233, respectively).</li>
 <li>The trace plots also appeared unstable.</li>
@@ -624,7 +604,7 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 <li><span class="underline">Series for \(\beta_j \times \gamma_j\)</span>:
 <ul class="org-ul">
 <li>This series represents the coefficient&rsquo;s effect when variable \(j\) is included in the model (\(\gamma_j=1\)) and is zero when excluded (\(\gamma_j=0\)).</li>
-<li>The trace plots (<a href="#org47e8855">2</a>) and diagnostic statistics (summary of <code>chn_βγ</code>) showed that this series generally exhibited good mixing.
+<li>The trace plots (<a href="#org0a1db1c">2</a>) and diagnostic statistics (summary of <code>chn_βγ</code>) showed that this series generally exhibited good mixing.
 <ul class="org-ul">
 <li>In particular, the <code>rhat</code> values for <code>β1*γ1</code> and <code>β2*γ2</code> were close to 1 (approx. 1.017 and 1.0005, respectively), and the <code>ess_bulk</code> values improved (approx. 585 and 39422, respectively).</li>
 <li>The trace plots were also stable, especially for <code>β2*γ2</code>, which stayed very close to 0.</li>
@@ -647,60 +627,60 @@ We evaluated the mixing of the MCMC chains for the \(\beta_j\) series and the \(
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd67fed" class="outline-2">
-<h2 id="orgfd67fed">b)</h2>
-<div class="outline-text-2" id="text-orgfd67fed">
+<div id="outline-container-orgc8c10b2" class="outline-2">
+<h2 id="orgc8c10b2">b)</h2>
+<div class="outline-text-2" id="text-orgc8c10b2">
 </div>
-<div id="outline-container-org04f2608" class="outline-3">
-<h3 id="org04f2608">Answer</h3>
-<div class="outline-text-3" id="text-org04f2608">
+<div id="outline-container-org4ff01b8" class="outline-3">
+<h3 id="org4ff01b8">Answer</h3>
+<div class="outline-text-3" id="text-org4ff01b8">
 </div>
-<div id="outline-container-orgd4ec2f4" class="outline-4">
-<h4 id="orgd4ec2f4">top five most frequently occurring values of \(\gamma\)</h4>
-<div class="outline-text-4" id="text-orgd4ec2f4">
+<div id="outline-container-org74f78be" class="outline-4">
+<h4 id="org74f78be">top five most frequently occurring values of \(\gamma\)</h4>
+<div class="outline-text-4" id="text-org74f78be">
 <div class="org-src-container">
-<pre class="src src-julia">gamma_tuples = <span style="color: #51afef;">[</span>tuple<span style="color: #C57BDB;">(</span>Int.<span style="color: #7bc275;">(</span>GAMMA<span style="color: #a991f1;">[</span>i, :<span style="color: #a991f1;">]</span><span style="color: #7bc275;">)</span>...<span style="color: #C57BDB;">)</span> <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #C57BDB;">(</span>GAMMA, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>;
-gamma_tuples<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">]</span>
-</pre>
+<pre class="src src-julia"><code>gamma_tuples = [tuple(Int.(GAMMA[i, :])...) <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:size(GAMMA, 1)];
+gamma_tuples[1:5]
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">gamma_counts = countmap<span style="color: #51afef;">(</span>gamma_tuples<span style="color: #51afef;">)</span>;
-sorted_gamma_counts = sort<span style="color: #51afef;">(</span>collect<span style="color: #C57BDB;">(</span>gamma_counts<span style="color: #C57BDB;">)</span>, by=x<span style="color: #FCCE7B;">-&gt;</span>x<span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, rev=<span style="color: #a991f1;">true</span><span style="color: #51afef;">)</span>;
+<pre class="src src-julia"><code>gamma_counts = countmap(gamma_tuples);
+sorted_gamma_counts = sort(collect(gamma_counts), by=x-&gt;x[2], rev=<span style="font-weight: bold; text-decoration: underline;">true</span>);
 sorted_gamma_counts
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">sorted_gamma_counts &#12399;&#12377;&#12391;&#12395;&#35336;&#31639;&#28168;&#12415;</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">&#19978;&#20301;5&#12388;&#12434;&#21462;&#24471;</span>
-top5_gamma = sorted_gamma_counts<span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #51afef;">]</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sorted_gamma_counts &#12399;&#12377;&#12391;&#12395;&#35336;&#31639;&#28168;&#12415;
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">&#19978;&#20301;5&#12388;&#12434;&#21462;&#24471;
+</span>top5_gamma = sorted_gamma_counts[1:5]
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">&#32207;&#12469;&#12531;&#12503;&#12523;&#25968;&#12434;&#21462;&#24471;</span>
-S = size<span style="color: #51afef;">(</span>GAMMA, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">&#32207;&#12469;&#12531;&#12503;&#12523;&#25968;&#12434;&#21462;&#24471;
+</span>S = size(GAMMA, 1)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">&#19978;&#20301;5&#12388;&#12398;&#947;&#12505;&#12463;&#12488;&#12523;&#12289;&#20986;&#29694;&#22238;&#25968;&#12289;&#25512;&#23450;&#20107;&#24460;&#30906;&#29575;&#12434;&#34920;&#31034;</span>
-println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Top 5 most frequent gamma vectors, counts, and estimated posterior probabilities:"</span><span style="color: #51afef;">)</span>
-println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Total samples (S) = $(S)"</span><span style="color: #51afef;">)</span>
-println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">60</span><span style="color: #51afef;">)</span>
-println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Gamma Vector      Count   Estimated Probability (Count/S)"</span><span style="color: #51afef;">)</span>
-println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">60</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">for</span> <span style="color: #51afef;">(</span>gamma_vec, count<span style="color: #51afef;">)</span> <span style="color: #51afef;">in</span> top5_gamma
-    prob = count <span style="color: #FCCE7B;">/</span> S
-    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"$(gamma_vec)   $(rpad(count, 7)) $(round(prob, digits=4))"</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">60</span><span style="color: #51afef;">)</span>
-</pre>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">&#19978;&#20301;5&#12388;&#12398;&#947;&#12505;&#12463;&#12488;&#12523;&#12289;&#20986;&#29694;&#22238;&#25968;&#12289;&#25512;&#23450;&#20107;&#24460;&#30906;&#29575;&#12434;&#34920;&#31034;
+</span>println(<span style="font-style: italic;">"Top 5 most frequent gamma vectors, counts, and estimated posterior probabilities:"</span>)
+println(<span style="font-style: italic;">"Total samples (S) = $(S)"</span>)
+println(<span style="font-style: italic;">"-"</span>^60)
+println(<span style="font-style: italic;">"Gamma Vector      Count   Estimated Probability (Count/S)"</span>)
+println(<span style="font-style: italic;">"-"</span>^60)
+<span style="font-weight: bold;">for</span> (gamma_vec, count) <span style="font-weight: bold;">in</span> top5_gamma
+    prob = count / S
+    println(<span style="font-style: italic;">"$(gamma_vec)   $(rpad(count, 7)) $(round(prob, digits=4))"</span>)
+<span style="font-weight: bold;">end</span>
+println(<span style="font-style: italic;">"-"</span>^60)
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org44e6ce8" class="outline-4">
-<h4 id="org44e6ce8">How good are the estimates?</h4>
-<div class="outline-text-4" id="text-org44e6ce8">
+<div id="outline-container-orgb896521" class="outline-4">
+<h4 id="orgb896521">How good are the estimates?</h4>
+<div class="outline-text-4" id="text-orgb896521">
 </div>
-<div id="outline-container-orge27388c" class="outline-5">
-<h5 id="orge27388c">日本語</h5>
-<div class="outline-text-5" id="text-orge27388c">
+<div id="outline-container-org01c5587" class="outline-5">
+<h5 id="org01c5587">日本語</h5>
+<div class="outline-text-5" id="text-org01c5587">
 <ol class="org-ol">
 <li><b>結果の解釈</b>:
 <ul class="org-ul">
@@ -720,9 +700,9 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 </ol>
 </div>
 </div>
-<div id="outline-container-orgc7f5c88" class="outline-5">
-<h5 id="orgc7f5c88">English</h5>
-<div class="outline-text-5" id="text-orgc7f5c88">
+<div id="outline-container-org476f734" class="outline-5">
+<h5 id="org476f734">English</h5>
+<div class="outline-text-5" id="text-org476f734">
 <ol class="org-ol">
 <li><b>Interpretation of Results</b>:
 <ul class="org-ul">
@@ -745,41 +725,41 @@ println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"-"</
 </div>
 </div>
 </div>
-<div id="outline-container-org5a6483a" class="outline-2">
-<h2 id="org5a6483a">c)</h2>
-<div class="outline-text-2" id="text-org5a6483a">
+<div id="outline-container-org8147875" class="outline-2">
+<h2 id="org8147875">c)</h2>
+<div class="outline-text-2" id="text-org8147875">
 </div>
-<div id="outline-container-orge5e3a50" class="outline-3">
-<h3 id="orge5e3a50">Answer</h3>
-<div class="outline-text-3" id="text-orge5e3a50">
+<div id="outline-container-orgffd2d55" class="outline-3">
+<h3 id="orgffd2d55">Answer</h3>
+<div class="outline-text-3" id="text-orgffd2d55">
 </div>
-<div id="outline-container-orge64a445" class="outline-4">
-<h4 id="orge64a445">posterior densities</h4>
-<div class="outline-text-4" id="text-orge64a445">
+<div id="outline-container-org7fc7222" class="outline-4">
+<h4 id="org7fc7222">posterior densities</h4>
+<div class="outline-text-4" id="text-org7fc7222">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">Plot posterior densities for &#946;j*&#947;j (j=1 to 5)</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">We select the parameters of interest from the chain object</span>
-p_density_bg = plot<span style="color: #51afef;">(</span>chn_&#946;&#947;<span style="color: #C57BDB;">[</span>:, <span style="color: #7bc275;">[</span><span style="color: #7bc275;">"&#946;$(j)*&#947;$(j)"</span> <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">5</span><span style="color: #7bc275;">]</span>, :<span style="color: #C57BDB;">]</span>, seriestype<span style="color: #51afef;">=</span><span style="color: #a991f1;">:density</span>, left_margin=<span style="color: #e69055; font-weight: bold;">10</span>mm<span style="color: #51afef;">)</span>
-savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch10/img/exercise10-5c_density.png"</span><span style="color: #51afef;">)</span>
-<span style="color: #7bc275;">"#+NAME:exercise10-5c_density\n[[file:./img/exercise10-5c_density.png]]"</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Plot posterior densities for &#946;j*&#947;j (j=1 to 5)
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">We select the parameters of interest from the chain object
+</span>p_density_bg = plot(chn_&#946;&#947;[:, [<span style="font-style: italic;">"&#946;$(j)*&#947;$(j)"</span> <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:5], :], seriestype<span style="font-weight: bold;">=</span><span style="font-weight: bold; text-decoration: underline;">:density</span>, left_margin=10mm)
+savefig(<span style="font-style: italic;">"./ch10/img/exercise10-5c_density.png"</span>)
+<span style="font-style: italic;">"#+NAME:exercise10-5c_density\n[[file:./img/exercise10-5c_density.png]]"</span>
+</code></pre>
 </div>
 
-<div id="org3e3b0e3" class="figure">
+<div id="orgec1ebae" class="figure">
 <p><img src="./fig/exercise10-5c_density.png" alt="exercise10-5c_density.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org374f06f" class="outline-4">
-<h4 id="org374f06f">posterior means</h4>
-<div class="outline-text-4" id="text-org374f06f">
+<div id="outline-container-org9343078" class="outline-4">
+<h4 id="org9343078">posterior means</h4>
+<div class="outline-text-4" id="text-org9343078">
 <div class="org-src-container">
-<pre class="src src-julia">mean<span style="color: #51afef;">(</span>GAMMA, dims=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>mean(GAMMA, dims=1)
+</code></pre>
 </div>
 
-<pre class="example" id="org2af542d">
+<pre class="example" id="org3d285e3">
 1×5 Matrix{Float64}:
  0.38517  0.05703  1.0  0.98574  0.99953
 </pre>
@@ -803,7 +783,7 @@ savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./ch
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

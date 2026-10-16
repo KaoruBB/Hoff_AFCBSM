@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 5.1 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,99 +95,99 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org95ebb33">a)</a>
+<li><a href="#orga71f0de">a)</a>
 <ul>
-<li><a href="#org9b6cd05">answer</a></li>
+<li><a href="#org3541a12">answer</a></li>
 </ul>
 </li>
-<li><a href="#org1d68216">b)</a>
+<li><a href="#org66f0eff">b)</a>
 <ul>
-<li><a href="#org5773ee2">answer</a></li>
+<li><a href="#orge27f62c">answer</a></li>
 </ul>
 </li>
-<li><a href="#org3c641a8">c)</a>
+<li><a href="#orgbd29fbf">c)</a>
 <ul>
-<li><a href="#orgdc383cf">answer</a></li>
+<li><a href="#org68f7804">answer</a></li>
 </ul>
 </li>
-<li><a href="#org2ed5015">d)</a>
+<li><a href="#org39ff459">d)</a>
 <ul>
-<li><a href="#org740a224">answer</a></li>
+<li><a href="#orge4c8fa6">answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org95ebb33" class="outline-2">
-<h2 id="org95ebb33">a)</h2>
-<div class="outline-text-2" id="text-org95ebb33">
+<div id="outline-container-orga71f0de" class="outline-2">
+<h2 id="orga71f0de">a)</h2>
+<div class="outline-text-2" id="text-orga71f0de">
 </div>
-<div id="outline-container-org9b6cd05" class="outline-3">
-<h3 id="org9b6cd05">answer</h3>
-<div class="outline-text-3" id="text-org9b6cd05">
+<div id="outline-container-org3541a12" class="outline-3">
+<h3 id="org3541a12">answer</h3>
+<div class="outline-text-3" id="text-org3541a12">
 <div class="org-src-container">
-<pre class="src src-julia">school1 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school1.dat"</span><span style="color: #51afef;">)</span>
-school2 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school2.dat"</span><span style="color: #51afef;">)</span>
-school3 = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./Exercises/school3.dat"</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code>school1 = readdlm(<span style="font-style: italic;">"./Exercises/school1.dat"</span>)
+school2 = readdlm(<span style="font-style: italic;">"./Exercises/school2.dat"</span>)
+school3 = readdlm(<span style="font-style: italic;">"./Exercises/school3.dat"</span>)
 
-<span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
-&#956;&#8320; = <span style="color: #e69055; font-weight: bold;">5</span>
-&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">4</span>
-&#954;&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">2</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">set prior parameters
+</span>&#956;&#8320; = 5
+&#963;&#8320;&#178; = 4
+&#954;&#8320; = 1
+&#957;&#8320; = 2
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-n1 = length<span style="color: #51afef;">(</span>school1<span style="color: #51afef;">)</span>
-n2 = length<span style="color: #51afef;">(</span>school2<span style="color: #51afef;">)</span>
-n3 = length<span style="color: #51afef;">(</span>school3<span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span>n1 = length(school1)
+n2 = length(school2)
+n3 = length(school3)
 
-y&#772;&#8321; = mean<span style="color: #51afef;">(</span>school1<span style="color: #51afef;">)</span>
-y&#772;&#8322; = mean<span style="color: #51afef;">(</span>school2<span style="color: #51afef;">)</span>
-y&#772;&#8323; = mean<span style="color: #51afef;">(</span>school3<span style="color: #51afef;">)</span>
+y&#772;&#8321; = mean(school1)
+y&#772;&#8322; = mean(school2)
+y&#772;&#8323; = mean(school3)
 
-s&#8321;&#178; = var<span style="color: #51afef;">(</span>school1<span style="color: #51afef;">)</span>
-s&#8322;&#178; = var<span style="color: #51afef;">(</span>school2<span style="color: #51afef;">)</span>
-s&#8323;&#178; = var<span style="color: #51afef;">(</span>school3<span style="color: #51afef;">)</span>
+s&#8321;&#178; = var(school1)
+s&#8322;&#178; = var(school2)
+s&#8323;&#178; = var(school3)
 
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">calc_posterior_param</span><span style="color: #51afef;">(</span>n, y&#772;, s&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;<span style="color: #51afef;">)</span>
-    &#954;n = &#954;&#8320; <span style="color: #FCCE7B;">+</span> n
-    &#957;n = &#957;&#8320; <span style="color: #FCCE7B;">+</span> n
-    &#956;n =  <span style="color: #51afef;">(</span>&#954;&#8320; <span style="color: #FCCE7B;">*</span> &#956;&#8320; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">*</span> y&#772;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> &#954;n
-    &#963;&#178;n = <span style="color: #51afef;">(</span>&#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178; <span style="color: #FCCE7B;">+</span> <span style="color: #C57BDB;">(</span>n<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> s&#178; <span style="color: #FCCE7B;">+</span> <span style="color: #C57BDB;">(</span>&#954;&#8320; <span style="color: #FCCE7B;">*</span> n <span style="color: #FCCE7B;">*</span> <span style="color: #7bc275;">(</span>y&#772; <span style="color: #FCCE7B;">-</span> &#956;&#8320;<span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">/</span> &#954;n <span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> &#957;n
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">calc_posterior_param</span>(n, y&#772;, s&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;)
+    &#954;n = &#954;&#8320; + n
+    &#957;n = &#957;&#8320; + n
+    &#956;n =  (&#954;&#8320; * &#956;&#8320; + n * y&#772;) / &#954;n
+    &#963;&#178;n = (&#957;&#8320; * &#963;&#8320;&#178; + (n-1) * s&#178; + (&#954;&#8320; * n * (y&#772; - &#956;&#8320;)^2)/ &#954;n ) / &#957;n
 
-    <span style="color: #51afef;">return</span> &#954;n, &#957;n, &#956;n, &#963;&#178;n
-<span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">return</span> &#954;n, &#957;n, &#956;n, &#963;&#178;n
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">calc_mc</span><span style="color: #51afef;">(</span>n, y&#772;, s&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, n_mc<span style="color: #51afef;">)</span>
-    &#954;n, &#957;n, &#956;n, &#963;&#178;n = calc_posterior_param<span style="color: #51afef;">(</span>n, y&#772;, s&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;<span style="color: #51afef;">)</span>
-    dist_inverse_&#963;&#178; = Gamma<span style="color: #51afef;">(</span>&#957;n<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">/</span><span style="color: #C57BDB;">(</span>&#957;n <span style="color: #FCCE7B;">*</span> &#963;&#178;n<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    &#963;&#178;_mc = rand<span style="color: #51afef;">(</span>dist_inverse_&#963;&#178;, n_mc<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">.^</span> <span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">calc_mc</span>(n, y&#772;, s&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, n_mc)
+    &#954;n, &#957;n, &#956;n, &#963;&#178;n = calc_posterior_param(n, y&#772;, s&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;)
+    dist_inverse_&#963;&#178; = Gamma(&#957;n/2, 2/(&#957;n * &#963;&#178;n))
+    &#963;&#178;_mc = rand(dist_inverse_&#963;&#178;, n_mc) .^ -1
 
-    calc_&#952;_mc = &#963;&#178; <span style="color: #FCCE7B;">-&gt;</span> rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#956;n, sqrt<span style="color: #7bc275;">(</span>&#963;&#178;<span style="color: #FCCE7B;">/</span>&#954;n<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    &#952;_mc = calc_&#952;_mc.<span style="color: #51afef;">(</span>&#963;&#178;_mc<span style="color: #51afef;">)</span>
+    calc_&#952;_mc = &#963;&#178; -&gt; rand(Normal(&#956;n, sqrt(&#963;&#178;/&#954;n)))
+    &#952;_mc = calc_&#952;_mc.(&#963;&#178;_mc)
 
-    <span style="color: #51afef;">return</span> &#952;_mc, sqrt.<span style="color: #51afef;">(</span>&#963;&#178;_mc<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">return</span> &#952;_mc, sqrt.(&#963;&#178;_mc)
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">write_quantile_ci</span><span style="color: #51afef;">(</span>&#952;_mc, &#963;_mc, ci<span style="color: #51afef;">)</span>
-    lower = <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> ci<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>
-    upper = <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> lower
-    &#952;_quantile = round.<span style="color: #51afef;">(</span>quantile<span style="color: #C57BDB;">(</span>&#952;_mc, <span style="color: #7bc275;">[</span>lower, upper<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #51afef;">)</span>
-    &#963;_quantile = round.<span style="color: #51afef;">(</span>quantile<span style="color: #C57BDB;">(</span>&#963;_mc, <span style="color: #7bc275;">[</span>lower, upper<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span>, digits=<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold;">function</span> <span style="font-weight: bold;">write_quantile_ci</span>(&#952;_mc, &#963;_mc, ci)
+    lower = (1 - ci) / 2
+    upper = 1 - lower
+    &#952;_quantile = round.(quantile(&#952;_mc, [lower, upper]), digits=3)
+    &#963;_quantile = round.(quantile(&#963;_mc, [lower, upper]), digits=3)
 
-    res = <span style="color: #51afef;">[</span><span style="color: #7bc275;">"$(&#952;_quantile[1]) &lt; &#952; &lt; $(&#952;_quantile[2])"</span>
-            ,<span style="color: #7bc275;">"$(&#963;_quantile[1]) &lt; &#963; &lt; $(&#963;_quantile[2])"</span><span style="color: #51afef;">]</span>
-    <span style="color: #51afef;">return</span> res
-<span style="color: #51afef;">end</span>
+    res = [<span style="font-style: italic;">"$(&#952;_quantile[1]) &lt; &#952; &lt; $(&#952;_quantile[2])"</span>
+            ,<span style="font-style: italic;">"$(&#963;_quantile[1]) &lt; &#963; &lt; $(&#963;_quantile[2])"</span>]
+    <span style="font-weight: bold;">return</span> res
+<span style="font-weight: bold;">end</span>
 
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">School 1</span>
-&#952;&#8321;_mc, &#963;&#8321;_mc = calc_mc<span style="color: #51afef;">(</span>n1, y&#772;&#8321;, s&#8321;&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>;
-write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8321;_mc, &#963;&#8321;_mc, <span style="color: #e69055; font-weight: bold;">0.95</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">School 1
+</span>&#952;&#8321;_mc, &#963;&#8321;_mc = calc_mc(n1, y&#772;&#8321;, s&#8321;&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, 5000);
+write_quantile_ci(&#952;&#8321;_mc, &#963;&#8321;_mc, 0.95)
+</code></pre>
 </div>
 
 <pre class="example">
@@ -216,12 +196,11 @@ write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8321;_mc, &#963;&
  "2.985 &lt; σ &lt; 5.181"
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">School 2</span>
-&#952;&#8322;_mc, &#963;&#8322;_mc = calc_mc<span style="color: #51afef;">(</span>n2, y&#772;&#8322;, s&#8322;&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>;
-write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8322;_mc, &#963;&#8322;_mc, <span style="color: #e69055; font-weight: bold;">0.95</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">School 2
+</span>&#952;&#8322;_mc, &#963;&#8322;_mc = calc_mc(n2, y&#772;&#8322;, s&#8322;&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, 5000);
+write_quantile_ci(&#952;&#8322;_mc, &#963;&#8322;_mc, 0.95)
+</code></pre>
 </div>
 
 <pre class="example">
@@ -230,12 +209,11 @@ write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8322;_mc, &#963;&
  "3.356 &lt; σ &lt; 5.91"
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">School 3</span>
-&#952;&#8323;_mc, &#963;&#8323;_mc = calc_mc<span style="color: #51afef;">(</span>n3, y&#772;&#8323;, s&#8323;&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, <span style="color: #e69055; font-weight: bold;">5000</span><span style="color: #51afef;">)</span>;
-write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8323;_mc, &#963;&#8323;_mc, <span style="color: #e69055; font-weight: bold;">0.95</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">School 3
+</span>&#952;&#8323;_mc, &#963;&#8323;_mc = calc_mc(n3, y&#772;&#8323;, s&#8323;&#178;, &#956;&#8320;, &#963;&#8320;&#178;, &#954;&#8320;, &#957;&#8320;, 5000);
+write_quantile_ci(&#952;&#8323;_mc, &#963;&#8323;_mc, 0.95)
+</code></pre>
 </div>
 
 <pre class="example">
@@ -246,22 +224,22 @@ write_quantile_ci<span style="color: #51afef;">(</span>&#952;&#8323;_mc, &#963;&
 </div>
 </div>
 </div>
-<div id="outline-container-org1d68216" class="outline-2">
-<h2 id="org1d68216">b)</h2>
-<div class="outline-text-2" id="text-org1d68216">
+<div id="outline-container-org66f0eff" class="outline-2">
+<h2 id="org66f0eff">b)</h2>
+<div class="outline-text-2" id="text-org66f0eff">
 </div>
-<div id="outline-container-org5773ee2" class="outline-3">
-<h3 id="org5773ee2">answer</h3>
-<div class="outline-text-3" id="text-org5773ee2">
+<div id="outline-container-orge27f62c" class="outline-3">
+<h3 id="orge27f62c">answer</h3>
+<div class="outline-text-3" id="text-orge27f62c">
 <div class="org-src-container">
-<pre class="src src-julia">&#952;_mcs = <span style="color: #51afef;">[</span>&#952;&#8321;_mc, &#952;&#8322;_mc, &#952;&#8323;_mc<span style="color: #51afef;">]</span>
-<span style="color: #5cEfFF;">perms</span><span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> = isempty<span style="color: #51afef;">(</span>l<span style="color: #51afef;">)</span> <span style="color: #51afef;">?</span> <span style="color: #51afef;">[</span>l<span style="color: #51afef;">]</span> <span style="color: #51afef;">:</span> <span style="color: #51afef;">[</span><span style="color: #C57BDB;">[</span>x; y<span style="color: #C57BDB;">]</span> <span style="color: #51afef;">for</span> x in l <span style="color: #51afef;">for</span> y <span style="color: #51afef;">in</span> perms<span style="color: #C57BDB;">(</span>setdiff<span style="color: #7bc275;">(</span>l, x<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">]</span>
-<span style="color: #51afef;">for</span> perm <span style="color: #51afef;">in</span> perms<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>,<span style="color: #e69055; font-weight: bold;">2</span>,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code>&#952;_mcs = [&#952;&#8321;_mc, &#952;&#8322;_mc, &#952;&#8323;_mc]
+<span style="font-weight: bold;">perms</span>(l) = isempty(l) <span style="font-weight: bold;">?</span> [l] <span style="font-weight: bold;">:</span> [[x; y] <span style="font-weight: bold;">for</span> x in l <span style="font-weight: bold;">for</span> y <span style="font-weight: bold;">in</span> perms(setdiff(l, x))]
+<span style="font-weight: bold;">for</span> perm <span style="font-weight: bold;">in</span> perms([1,2,3])
     i, j, k = perm
-    p = mean<span style="color: #51afef;">(</span>&#952;_mcs<span style="color: #C57BDB;">[</span>i<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> &#952;_mcs<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> &#952;_mcs<span style="color: #C57BDB;">[</span>k<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"p(&#952;$i &lt; &#952;$j &lt; &#952;$k) = $p"</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+    p = mean(&#952;_mcs[i] .&lt; &#952;_mcs[j] .&lt; &#952;_mcs[k])
+    println(<span style="font-style: italic;">"p(&#952;$i &lt; &#952;$j &lt; &#952;$k) = $p"</span>)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -275,31 +253,31 @@ p(θ3 &lt; θ2 &lt; θ1) = 0.2256
 </div>
 </div>
 </div>
-<div id="outline-container-org3c641a8" class="outline-2">
-<h2 id="org3c641a8">c)</h2>
-<div class="outline-text-2" id="text-org3c641a8">
+<div id="outline-container-orgbd29fbf" class="outline-2">
+<h2 id="orgbd29fbf">c)</h2>
+<div class="outline-text-2" id="text-orgbd29fbf">
 </div>
-<div id="outline-container-orgdc383cf" class="outline-3">
-<h3 id="orgdc383cf">answer</h3>
-<div class="outline-text-3" id="text-orgdc383cf">
+<div id="outline-container-org68f7804" class="outline-3">
+<h3 id="org68f7804">answer</h3>
+<div class="outline-text-3" id="text-org68f7804">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">sample_posterior_predictive</span><span style="color: #51afef;">(</span>&#952;_mc, &#963;_mc<span style="color: #51afef;">)</span>
-    y&#771;_mc = rand.<span style="color: #51afef;">(</span>Normal.<span style="color: #C57BDB;">(</span>&#952;_mc, &#963;_mc<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">return</span> y&#771;_mc
-<span style="color: #51afef;">end</span>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">sample_posterior_predictive</span>(&#952;_mc, &#963;_mc)
+    y&#771;_mc = rand.(Normal.(&#952;_mc, &#963;_mc))
+    <span style="font-weight: bold;">return</span> y&#771;_mc
+<span style="font-weight: bold;">end</span>
 
-y&#771;&#8321;_mc = sample_posterior_predictive<span style="color: #51afef;">(</span>&#952;&#8321;_mc, &#963;&#8321;_mc<span style="color: #51afef;">)</span>
-y&#771;&#8322;_mc = sample_posterior_predictive<span style="color: #51afef;">(</span>&#952;&#8322;_mc, &#963;&#8322;_mc<span style="color: #51afef;">)</span>
-y&#771;&#8323;_mc = sample_posterior_predictive<span style="color: #51afef;">(</span>&#952;&#8323;_mc, &#963;&#8323;_mc<span style="color: #51afef;">)</span>
+y&#771;&#8321;_mc = sample_posterior_predictive(&#952;&#8321;_mc, &#963;&#8321;_mc)
+y&#771;&#8322;_mc = sample_posterior_predictive(&#952;&#8322;_mc, &#963;&#8322;_mc)
+y&#771;&#8323;_mc = sample_posterior_predictive(&#952;&#8323;_mc, &#963;&#8323;_mc)
 
-y&#771;_mcs = <span style="color: #51afef;">[</span>y&#771;&#8321;_mc, y&#771;&#8322;_mc, y&#771;&#8323;_mc<span style="color: #51afef;">]</span>
+y&#771;_mcs = [y&#771;&#8321;_mc, y&#771;&#8322;_mc, y&#771;&#8323;_mc]
 
-<span style="color: #51afef;">for</span> perm <span style="color: #51afef;">in</span> perms<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span>,<span style="color: #e69055; font-weight: bold;">2</span>,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold;">for</span> perm <span style="font-weight: bold;">in</span> perms([1,2,3])
     i, j, k = perm
-    p = mean<span style="color: #51afef;">(</span>y&#771;_mcs<span style="color: #C57BDB;">[</span>i<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> y&#771;_mcs<span style="color: #C57BDB;">[</span>j<span style="color: #C57BDB;">]</span> .<span style="color: #FCCE7B;">&lt;</span> y&#771;_mcs<span style="color: #C57BDB;">[</span>k<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"p(y&#771;$i &lt; y&#771;$j &lt; y&#771;$k) = $p"</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+    p = mean(y&#771;_mcs[i] .&lt; y&#771;_mcs[j] .&lt; y&#771;_mcs[k])
+    println(<span style="font-style: italic;">"p(y&#771;$i &lt; y&#771;$j &lt; y&#771;$k) = $p"</span>)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -313,13 +291,13 @@ p(ỹ3 &lt; ỹ2 &lt; ỹ1) = 0.1888
 </div>
 </div>
 </div>
-<div id="outline-container-org2ed5015" class="outline-2">
-<h2 id="org2ed5015">d)</h2>
-<div class="outline-text-2" id="text-org2ed5015">
+<div id="outline-container-org39ff459" class="outline-2">
+<h2 id="org39ff459">d)</h2>
+<div class="outline-text-2" id="text-org39ff459">
 </div>
-<div id="outline-container-org740a224" class="outline-3">
-<h3 id="org740a224">answer</h3>
-<div class="outline-text-3" id="text-org740a224">
+<div id="outline-container-orge4c8fa6" class="outline-3">
+<h3 id="orge4c8fa6">answer</h3>
+<div class="outline-text-3" id="text-orge4c8fa6">
 <p>
 Using the results from the previous calculations,
 </p>
@@ -347,7 +325,7 @@ Pr(\tilde{Y}_1 > \tilde{Y}_2, \tilde{Y}_1 > \tilde{Y}_3 | \text{data})
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

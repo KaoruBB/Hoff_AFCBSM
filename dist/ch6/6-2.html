@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 6.2 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,47 +95,47 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcb441c1">a)</a>
+<li><a href="#orgf59aa1f">a)</a>
 <ul>
-<li><a href="#orge46a8ce">answer</a></li>
+<li><a href="#org8ff7668">answer</a></li>
 </ul>
 </li>
-<li><a href="#orgd1dab5f">b)</a>
+<li><a href="#org78afe47">b)</a>
 <ul>
-<li><a href="#orge4c1998">answer</a>
+<li><a href="#org6b01261">answer</a>
 <ul>
-<li><a href="#orgcd88a95">the full conditional distribution of \( (X_1, \dots, X_n)\)</a></li>
-<li><a href="#orge4837e1">the full conditional distribution of \(p\)</a></li>
-<li><a href="#org98c49b5">the full conditional distribution of \(\theta_1\)</a></li>
-<li><a href="#org596cab0">the full conditional distribution of \(\theta_2\)</a></li>
-<li><a href="#org859be5e">the full conditional distribution of \(\sigma_1^2\)</a></li>
-<li><a href="#orgc16f6e5">the full conditional distribution of \(\sigma_2^2\)</a></li>
+<li><a href="#orgb6e5890">the full conditional distribution of \( (X_1, \dots, X_n)\)</a></li>
+<li><a href="#orga207105">the full conditional distribution of \(p\)</a></li>
+<li><a href="#org728cb5c">the full conditional distribution of \(\theta_1\)</a></li>
+<li><a href="#orgf470f24">the full conditional distribution of \(\theta_2\)</a></li>
+<li><a href="#org74b8bc8">the full conditional distribution of \(\sigma_1^2\)</a></li>
+<li><a href="#orgacff7a4">the full conditional distribution of \(\sigma_2^2\)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org59dce71">c)</a>
+<li><a href="#org6fb303a">c)</a>
 <ul>
-<li><a href="#org92aa0f7">Answer</a></li>
+<li><a href="#org0f8b10e">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org38adbb9">d)</a>
+<li><a href="#org25af6b4">d)</a>
 <ul>
-<li><a href="#org17c578f">Answer</a></li>
+<li><a href="#org5570bde">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcb441c1" class="outline-2">
-<h2 id="orgcb441c1">a)</h2>
-<div class="outline-text-2" id="text-orgcb441c1">
+<div id="outline-container-orgf59aa1f" class="outline-2">
+<h2 id="orgf59aa1f">a)</h2>
+<div class="outline-text-2" id="text-orgf59aa1f">
 </div>
-<div id="outline-container-orge46a8ce" class="outline-3">
-<h3 id="orge46a8ce">answer</h3>
-<div class="outline-text-3" id="text-orge46a8ce">
+<div id="outline-container-org8ff7668" class="outline-3">
+<h3 id="org8ff7668">answer</h3>
+<div class="outline-text-3" id="text-org8ff7668">
 
-<div id="org10f712d" class="figure">
+<div id="orgbce5715" class="figure">
 <p><img src="./fig/exercise6_2a.png" alt="exercise6_2a.png" width="600" />
 </p>
 </div>
@@ -170,13 +150,13 @@ The histogram and kernel density plot above deviate from the shape of a normal d
 </div>
 </div>
 </div>
-<div id="outline-container-orgd1dab5f" class="outline-2">
-<h2 id="orgd1dab5f">b)</h2>
-<div class="outline-text-2" id="text-orgd1dab5f">
+<div id="outline-container-org78afe47" class="outline-2">
+<h2 id="org78afe47">b)</h2>
+<div class="outline-text-2" id="text-org78afe47">
 </div>
-<div id="outline-container-orge4c1998" class="outline-3">
-<h3 id="orge4c1998">answer</h3>
-<div class="outline-text-3" id="text-orge4c1998">
+<div id="outline-container-org6b01261" class="outline-3">
+<h3 id="org6b01261">answer</h3>
+<div class="outline-text-3" id="text-org6b01261">
 <p>
 The joint distribution can be written as follows.
 </p>
@@ -212,9 +192,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{aligned}
 \end{equation}
 </div>
-<div id="outline-container-orgcd88a95" class="outline-4">
-<h4 id="orgcd88a95">the full conditional distribution of \( (X_1, \dots, X_n)\)</h4>
-<div class="outline-text-4" id="text-orgcd88a95">
+<div id="outline-container-orgb6e5890" class="outline-4">
+<h4 id="orgb6e5890">the full conditional distribution of \( (X_1, \dots, X_n)\)</h4>
+<div class="outline-text-4" id="text-orgb6e5890">
 \begin{align*}
 & p(X_i = 1 | Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
 = & \frac{p(Y_i, X_i = 1, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) }{p(Y_i, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2)} \\
@@ -246,9 +226,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orge4837e1" class="outline-4">
-<h4 id="orge4837e1">the full conditional distribution of \(p\)</h4>
-<div class="outline-text-4" id="text-orge4837e1">
+<div id="outline-container-orga207105" class="outline-4">
+<h4 id="orga207105">the full conditional distribution of \(p\)</h4>
+<div class="outline-text-4" id="text-orga207105">
 \begin{align*}
 & p(p | Y_1, \dots, Y_n, X_1, \dots, X_n, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2,
@@ -261,9 +241,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org98c49b5" class="outline-4">
-<h4 id="org98c49b5">the full conditional distribution of \(\theta_1\)</h4>
-<div class="outline-text-4" id="text-org98c49b5">
+<div id="outline-container-org728cb5c" class="outline-4">
+<h4 id="org728cb5c">the full conditional distribution of \(\theta_1\)</h4>
+<div class="outline-text-4" id="text-org728cb5c">
 \begin{align*}
 & p(\theta_1 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_2, \sigma_1^2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
@@ -286,9 +266,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 </p>
 </div>
 </div>
-<div id="outline-container-org596cab0" class="outline-4">
-<h4 id="org596cab0">the full conditional distribution of \(\theta_2\)</h4>
-<div class="outline-text-4" id="text-org596cab0">
+<div id="outline-container-orgf470f24" class="outline-4">
+<h4 id="orgf470f24">the full conditional distribution of \(\theta_2\)</h4>
+<div class="outline-text-4" id="text-orgf470f24">
 <p>
 \(\theta_2\)についても同様に計算すると、
 </p>
@@ -301,9 +281,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org859be5e" class="outline-4">
-<h4 id="org859be5e">the full conditional distribution of \(\sigma_1^2\)</h4>
-<div class="outline-text-4" id="text-org859be5e">
+<div id="outline-container-org74b8bc8" class="outline-4">
+<h4 id="org74b8bc8">the full conditional distribution of \(\sigma_1^2\)</h4>
+<div class="outline-text-4" id="text-org74b8bc8">
 \begin{align*}
 & p(\sigma_1^2 | Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_2^2) \\
 \propto & p( Y_1, \dots, Y_n, X_1, \dots, X_n, p, \theta_1, \theta_2, \sigma_1^2, \sigma_2^2) \\
@@ -319,9 +299,9 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgc16f6e5" class="outline-4">
-<h4 id="orgc16f6e5">the full conditional distribution of \(\sigma_2^2\)</h4>
-<div class="outline-text-4" id="text-orgc16f6e5">
+<div id="outline-container-orgacff7a4" class="outline-4">
+<h4 id="orgacff7a4">the full conditional distribution of \(\sigma_2^2\)</h4>
+<div class="outline-text-4" id="text-orgacff7a4">
 <p>
 \(\sigma_2^2\)についても同様に計算すると、
 </p>
@@ -336,128 +316,128 @@ p(X_i | p) p(p) p(\theta_1) p(\theta_2) p(\sigma_1^2) p(\sigma_2^2) \\
 </div>
 </div>
 </div>
-<div id="outline-container-org59dce71" class="outline-2">
-<h2 id="org59dce71">c)</h2>
-<div class="outline-text-2" id="text-org59dce71">
+<div id="outline-container-org6fb303a" class="outline-2">
+<h2 id="org6fb303a">c)</h2>
+<div class="outline-text-2" id="text-org6fb303a">
 </div>
-<div id="outline-container-org92aa0f7" class="outline-3">
-<h3 id="org92aa0f7">Answer</h3>
-<div class="outline-text-3" id="text-org92aa0f7">
+<div id="outline-container-org0f8b10e" class="outline-3">
+<h3 id="org0f8b10e">Answer</h3>
+<div class="outline-text-3" id="text-org0f8b10e">
 <div class="org-src-container">
-<pre class="src src-julia">a = b = <span style="color: #e69055; font-weight: bold;">1</span>
-&#956;&#8320; = <span style="color: #e69055; font-weight: bold;">120</span>
-&#964;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">200</span>
-&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">1000</span>
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">10</span>
-S = <span style="color: #e69055; font-weight: bold;">10000</span>
+<pre class="src src-julia"><code>a = b = 1
+&#956;&#8320; = 120
+&#964;&#8320;&#178; = 200
+&#963;&#8320;&#178; = 1000
+&#957;&#8320; = 10
+S = 10000
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_X</span><span style="color: #51afef;">(</span>y, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">rand_X</span>(y, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">probability of Xi = 1</span>
-    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">bin_prob</span><span style="color: #51afef;">(</span>yi, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
-        p1 = p <span style="color: #FCCE7B;">*</span> pdf<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#952;&#8321;, sqrt<span style="color: #7bc275;">(</span>&#963;&#8321;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, yi<span style="color: #51afef;">)</span>
-        p2 = <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">-</span> p<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> pdf<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#952;&#8322;, sqrt<span style="color: #7bc275;">(</span>&#963;&#8322;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, yi<span style="color: #51afef;">)</span>
-        prob = p1<span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span>p1 <span style="color: #FCCE7B;">+</span> p2<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">probability of Xi = 1
+</span>    <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">bin_prob</span>(yi, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)
+        p1 = p * pdf(Normal(&#952;&#8321;, sqrt(&#963;&#8321;&#178;)), yi)
+        p2 = (1 - p) * pdf(Normal(&#952;&#8322;, sqrt(&#963;&#8322;&#178;)), yi)
+        prob = p1/(p1 + p2)
+    <span style="font-weight: bold;">end</span>
 
-    n = length<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-    X = Vector<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, n<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n
-        X<span style="color: #51afef;">[</span>i<span style="color: #51afef;">]</span> =  <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">-</span> rand<span style="color: #51afef;">(</span>Bernoulli<span style="color: #C57BDB;">(</span>bin_prob<span style="color: #7bc275;">(</span>y<span style="color: #a991f1;">[</span>i<span style="color: #a991f1;">]</span>, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
+    n = length(y)
+    X = Vector{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, n)
+    <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:n
+        X[i] =  2 - rand(Bernoulli(bin_prob(y[i], p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)))
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #51afef;">return</span> X
-<span style="color: #51afef;">end</span>
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_p</span><span style="color: #51afef;">(</span>X, a, b<span style="color: #51afef;">)</span>
-    n1 = sum<span style="color: #51afef;">(</span>X .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
-    n2 = sum<span style="color: #51afef;">(</span>X .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>Beta<span style="color: #C57BDB;">(</span>a <span style="color: #FCCE7B;">+</span> n1, b <span style="color: #FCCE7B;">+</span> n2<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">return</span> X
+<span style="font-weight: bold;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">rand_p</span>(X, a, b)
+    n1 = sum(X .== 1)
+    n2 = sum(X .== 2)
+    <span style="font-weight: bold;">return</span> rand(Beta(a + n1, b + n2))
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_&#952;</span><span style="color: #51afef;">(</span>&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#178;, y<span style="color: #51afef;">)</span>
-    n = length<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-    y&#772; = mean<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-    &#956;n = <span style="color: #51afef;">(</span>&#956;&#8320;<span style="color: #FCCE7B;">/</span>&#964;&#8320;&#178; <span style="color: #FCCE7B;">+</span> y&#772; <span style="color: #FCCE7B;">*</span> n<span style="color: #FCCE7B;">/</span>&#963;&#178;<span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span>&#964;&#8320;&#178; <span style="color: #FCCE7B;">+</span> n<span style="color: #FCCE7B;">/</span>&#963;&#178;<span style="color: #51afef;">)</span>
-    &#964;n&#178; = <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #51afef;">(</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span>&#964;&#8320;&#178; <span style="color: #FCCE7B;">+</span> n<span style="color: #FCCE7B;">/</span>&#963;&#178;<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#956;n, sqrt<span style="color: #7bc275;">(</span>&#964;n&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">rand_&#952;</span>(&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#178;, y)
+    n = length(y)
+    y&#772; = mean(y)
+    &#956;n = (&#956;&#8320;/&#964;&#8320;&#178; + y&#772; * n/&#963;&#178;) / (1/&#964;&#8320;&#178; + n/&#963;&#178;)
+    &#964;n&#178; = 1/(1/&#964;&#8320;&#178; + n/&#963;&#178;)
+    <span style="font-weight: bold;">return</span> rand(Normal(&#956;n, sqrt(&#964;n&#178;)))
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_&#963;&#178;</span><span style="color: #51afef;">(</span>&#952;, &#957;&#8320;, &#963;&#8320;&#178;, y<span style="color: #51afef;">)</span>
-    n = length<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-    y&#772; = mean<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-    s&#178; = var<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-    ns&#178; = <span style="color: #51afef;">(</span>n<span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">*</span> s&#178; <span style="color: #FCCE7B;">+</span> n <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>y&#772; <span style="color: #FCCE7B;">-</span> &#952;<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>
-    &#957;n = &#957;&#8320; <span style="color: #FCCE7B;">+</span> n
-    &#963;n&#178; = <span style="color: #51afef;">(</span>&#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178; <span style="color: #FCCE7B;">+</span> ns&#178;<span style="color: #51afef;">)</span><span style="color: #FCCE7B;">/</span>&#957;n
-    &#945; = &#957;n<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>
-    &#946; = &#957;n <span style="color: #FCCE7B;">*</span> &#963;n&#178;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span>
-    <span style="color: #51afef;">return</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span>rand<span style="color: #51afef;">(</span>Gamma<span style="color: #C57BDB;">(</span>&#945;, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span>&#946;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">rand_&#963;&#178;</span>(&#952;, &#957;&#8320;, &#963;&#8320;&#178;, y)
+    n = length(y)
+    y&#772; = mean(y)
+    s&#178; = var(y)
+    ns&#178; = (n-1) * s&#178; + n * (y&#772; - &#952;)^2
+    &#957;n = &#957;&#8320; + n
+    &#963;n&#178; = (&#957;&#8320; * &#963;&#8320;&#178; + ns&#178;)/&#957;n
+    &#945; = &#957;n/2
+    &#946; = &#957;n * &#963;n&#178;/2
+    <span style="font-weight: bold;">return</span> 1/rand(Gamma(&#945;, 1/&#946;))
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-mean_y = mean<span style="color: #51afef;">(</span>data<span style="color: #51afef;">)</span>
-var_y = var<span style="color: #51afef;">(</span>data<span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span>mean_y = mean(data)
+var_y = var(data)
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Gibbs Sampler</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Gibbs Sampler
+</span>
+THETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 2)
+SIGMA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 2)
+P = []
+X_MC = Matrix{Int}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, length(data))
 
-THETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-SIGMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-P = <span style="color: #51afef;">[]</span>
-X_MC = Matrix<span style="color: #51afef;">{</span>Int<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, length<span style="color: #C57BDB;">(</span>data<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-
-<span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
-&#952;&#8321; = &#952;&#8322; = mean_y
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">starting values
+</span>&#952;&#8321; = &#952;&#8322; = mean_y
 &#963;&#8321;&#178; = &#963;&#8322;&#178; = var_y
-p = <span style="color: #e69055; font-weight: bold;">0.5</span>
+p = 0.5
 
-<span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-    X_MC<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = rand_X<span style="color: #51afef;">(</span>data, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
-    p = rand_p<span style="color: #51afef;">(</span>X_MC<span style="color: #C57BDB;">[</span>s, :<span style="color: #C57BDB;">]</span>, a, b<span style="color: #51afef;">)</span>
-    &#952;&#8321; = rand_&#952;<span style="color: #51afef;">(</span>&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8321;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    &#952;&#8322; = rand_&#952;<span style="color: #51afef;">(</span>&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8322;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    &#963;&#8321;&#178; = rand_&#963;&#178;<span style="color: #51afef;">(</span>&#952;&#8321;, &#957;&#8320;, &#963;&#8320;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    &#963;&#8322;&#178; = rand_&#963;&#178;<span style="color: #51afef;">(</span>&#952;&#8322;, &#957;&#8320;, &#963;&#8320;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    THETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = <span style="color: #51afef;">[</span>&#952;&#8321;, &#952;&#8322;<span style="color: #51afef;">]</span>
-    SIGMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = <span style="color: #51afef;">[</span>&#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">]</span>
-    push!<span style="color: #51afef;">(</span>P, p<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">if</span> s <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">1000</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span>
-        println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Iteration: $s done"</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-<span style="color: #51afef;">end</span>
+<span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+    X_MC[s, :] = rand_X(data, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)
+    p = rand_p(X_MC[s, :], a, b)
+    &#952;&#8321; = rand_&#952;(&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8321;&#178;, data[X_MC[s, :] .== 1])
+    &#952;&#8322; = rand_&#952;(&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8322;&#178;, data[X_MC[s, :] .== 2])
+    &#963;&#8321;&#178; = rand_&#963;&#178;(&#952;&#8321;, &#957;&#8320;, &#963;&#8320;&#178;, data[X_MC[s, :] .== 1])
+    &#963;&#8322;&#178; = rand_&#963;&#178;(&#952;&#8322;, &#957;&#8320;, &#963;&#8320;&#178;, data[X_MC[s, :] .== 2])
+    THETA[s, :] = [&#952;&#8321;, &#952;&#8322;]
+    SIGMA[s, :] = [&#963;&#8321;&#178;, &#963;&#8322;&#178;]
+    push!(P, p)
+    <span style="font-weight: bold;">if</span> s % 1000 == 0
+        println(<span style="font-style: italic;">"Iteration: $s done"</span>)
+    <span style="font-weight: bold;">end</span>
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">get smaller one for each row</span>
-THETA1 = mapslices<span style="color: #51afef;">(</span>minimum, THETA, dims = <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-THETA2 = mapslices<span style="color: #51afef;">(</span>maximum, THETA, dims = <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">get smaller one for each row
+</span>THETA1 = mapslices(minimum, THETA, dims = 2)
+THETA2 = mapslices(maximum, THETA, dims = 2)
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">autocorrelation plot</span>
-lags = <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">100</span>
-fig = plot<span style="color: #51afef;">(</span>
-    lags, autocor<span style="color: #C57BDB;">(</span>THETA1, lags<span style="color: #C57BDB;">)</span>, label = L<span style="color: #7bc275;">"\theta_1^(s)"</span>,
-    xlabel = <span style="color: #7bc275;">"Lag"</span>, ylabel = <span style="color: #7bc275;">"Autocorrelation"</span>, title = <span style="color: #7bc275;">"Autocorrelation Plot"</span>
-<span style="color: #51afef;">)</span>
-fig = plot!<span style="color: #51afef;">(</span>
-    lags, autocor<span style="color: #C57BDB;">(</span>THETA2, lags<span style="color: #C57BDB;">)</span>, label = L<span style="color: #7bc275;">"\theta_2^(s)"</span>,
-<span style="color: #51afef;">)</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">autocorrelation plot
+</span>lags = 0:100
+fig = plot(
+    lags, autocor(THETA1, lags), label = L<span style="font-style: italic;">"\theta_1^(s)"</span>,
+    xlabel = <span style="font-style: italic;">"Lag"</span>, ylabel = <span style="font-style: italic;">"Autocorrelation"</span>, title = <span style="font-style: italic;">"Autocorrelation Plot"</span>
+)
+fig = plot!(
+    lags, autocor(THETA2, lags), label = L<span style="font-style: italic;">"\theta_2^(s)"</span>,
+)
 fig
-</pre>
+</code></pre>
 </div>
 
 
-<div id="org67634d2" class="figure">
+<div id="orgb61db23" class="figure">
 <p><img src="./fig/exercise6_2c.png" alt="exercise6_2c.png" width="600" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">ess<span style="color: #51afef;">(</span>Chains<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span>THETA1 THETA2<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>ess(Chains([THETA1 THETA2]))
+</code></pre>
 </div>
 
 <pre class="example">
@@ -471,63 +451,63 @@ ESS
 </div>
 </div>
 </div>
-<div id="outline-container-org38adbb9" class="outline-2">
-<h2 id="org38adbb9">d)</h2>
-<div class="outline-text-2" id="text-org38adbb9">
+<div id="outline-container-org25af6b4" class="outline-2">
+<h2 id="org25af6b4">d)</h2>
+<div class="outline-text-2" id="text-org25af6b4">
 </div>
-<div id="outline-container-org17c578f" class="outline-3">
-<h3 id="org17c578f">Answer</h3>
-<div class="outline-text-3" id="text-org17c578f">
+<div id="outline-container-org5570bde" class="outline-3">
+<h3 id="org5570bde">Answer</h3>
+<div class="outline-text-3" id="text-org5570bde">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">sample y function</span>
-<span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">rand_y</span><span style="color: #51afef;">(</span>p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
-    x = <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">-</span> rand<span style="color: #51afef;">(</span>Bernoulli<span style="color: #C57BDB;">(</span>p<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">if</span> x <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span>
-        <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#952;&#8321;, sqrt<span style="color: #7bc275;">(</span>&#963;&#8321;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">else</span>
-        <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>Normal<span style="color: #C57BDB;">(</span>&#952;&#8322;, sqrt<span style="color: #7bc275;">(</span>&#963;&#8322;&#178;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-<span style="color: #51afef;">end</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample y function
+</span><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">rand_y</span>(p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)
+    x = 2 - rand(Bernoulli(p))
+    <span style="font-weight: bold;">if</span> x == 1
+        <span style="font-weight: bold;">return</span> rand(Normal(&#952;&#8321;, sqrt(&#963;&#8321;&#178;)))
+    <span style="font-weight: bold;">else</span>
+        <span style="font-weight: bold;">return</span> rand(Normal(&#952;&#8322;, sqrt(&#963;&#8322;&#178;)))
+    <span style="font-weight: bold;">end</span>
+<span style="font-weight: bold;">end</span>
 
-<span style="color: #62686E; text-decoration: overline;"># </span><span style="color: #62686E; text-decoration: overline;">%%</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">Gibbs Sampler</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">%%
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Gibbs Sampler
+</span>
+THETA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 2)
+SIGMA = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, 2)
+P = []
+X_MC = Matrix{Int}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, S, length(data))
+Y = []
 
-THETA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-SIGMA = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-P = <span style="color: #51afef;">[]</span>
-X_MC = Matrix<span style="color: #51afef;">{</span>Int<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, S, length<span style="color: #C57BDB;">(</span>data<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-Y = <span style="color: #51afef;">[]</span>
-
-<span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
-&#952;&#8321; = &#952;&#8322; = mean_y
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">starting values
+</span>&#952;&#8321; = &#952;&#8322; = mean_y
 &#963;&#8321;&#178; = &#963;&#8322;&#178; = var_y
-p = <span style="color: #e69055; font-weight: bold;">0.5</span>
+p = 0.5
 
-<span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-    X_MC<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = rand_X<span style="color: #51afef;">(</span>data, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">if</span> s <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">1000</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span>
-        println<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Iteration: $s"</span><span style="color: #51afef;">)</span>
-        tmp = X_MC<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span>
-        println<span style="color: #51afef;">(</span>sum<span style="color: #C57BDB;">(</span>tmp .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">)</span>,<span style="color: #7bc275;">", "</span>, sum<span style="color: #C57BDB;">(</span>tmp .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
-    p = rand_p<span style="color: #51afef;">(</span>X_MC<span style="color: #C57BDB;">[</span>s, :<span style="color: #C57BDB;">]</span>, a, b<span style="color: #51afef;">)</span>
-    &#952;&#8321; = rand_&#952;<span style="color: #51afef;">(</span>&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8321;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    &#952;&#8322; = rand_&#952;<span style="color: #51afef;">(</span>&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8322;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    &#963;&#8321;&#178; = rand_&#963;&#178;<span style="color: #51afef;">(</span>&#952;&#8321;, &#957;&#8320;, &#963;&#8320;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    &#963;&#8322;&#178; = rand_&#963;&#178;<span style="color: #51afef;">(</span>&#952;&#8322;, &#957;&#8320;, &#963;&#8320;&#178;, data<span style="color: #C57BDB;">[</span>X_MC<span style="color: #7bc275;">[</span>s, :<span style="color: #7bc275;">]</span> .<span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-    THETA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = <span style="color: #51afef;">[</span>&#952;&#8321;, &#952;&#8322;<span style="color: #51afef;">]</span>
-    SIGMA<span style="color: #51afef;">[</span>s, :<span style="color: #51afef;">]</span> = <span style="color: #51afef;">[</span>&#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">]</span>
-    push!<span style="color: #51afef;">(</span>P, p<span style="color: #51afef;">)</span>
+<span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+    X_MC[s, :] = rand_X(data, p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)
+    <span style="font-weight: bold;">if</span> s % 1000 == 0
+        println(<span style="font-style: italic;">"Iteration: $s"</span>)
+        tmp = X_MC[s, :]
+        println(sum(tmp .== 1),<span style="font-style: italic;">", "</span>, sum(tmp .== 2))
+    <span style="font-weight: bold;">end</span>
+    p = rand_p(X_MC[s, :], a, b)
+    &#952;&#8321; = rand_&#952;(&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8321;&#178;, data[X_MC[s, :] .== 1])
+    &#952;&#8322; = rand_&#952;(&#956;&#8320;, &#964;&#8320;&#178;, &#963;&#8322;&#178;, data[X_MC[s, :] .== 2])
+    &#963;&#8321;&#178; = rand_&#963;&#178;(&#952;&#8321;, &#957;&#8320;, &#963;&#8320;&#178;, data[X_MC[s, :] .== 1])
+    &#963;&#8322;&#178; = rand_&#963;&#178;(&#952;&#8322;, &#957;&#8320;, &#963;&#8320;&#178;, data[X_MC[s, :] .== 2])
+    THETA[s, :] = [&#952;&#8321;, &#952;&#8322;]
+    SIGMA[s, :] = [&#963;&#8321;&#178;, &#963;&#8322;&#178;]
+    push!(P, p)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">sample y</span>
-    y = rand_y<span style="color: #51afef;">(</span>p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;<span style="color: #51afef;">)</span>
-    push!<span style="color: #51afef;">(</span>Y, y<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
-</pre>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sample y
+</span>    y = rand_y(p, &#952;&#8321;, &#952;&#8322;, &#963;&#8321;&#178;, &#963;&#8322;&#178;)
+    push!(Y, y)
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 
-<div id="orgdb3fddc" class="figure">
+<div id="orge426187" class="figure">
 <p><img src="./fig/exercise6_2d.png" alt="exercise6_2d.png" width="600" />
 </p>
 </div>
@@ -552,7 +532,7 @@ p = <span style="color: #e69055; font-weight: bold;">0.5</span>
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |

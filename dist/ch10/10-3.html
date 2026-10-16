@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-02 金 16:29 -->
+<!-- 2026-10-17 Sat 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercise 10.3 Solution Example - Hoff, A First Course in Bayesian Statistical Methods</title>
@@ -19,33 +19,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'GT-M6XHKK2R');
 </script>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <link rel="stylesheet" href="/css/custom.css">
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
 <script>
   window.MathJax = {
     loader: {
@@ -115,47 +95,47 @@ gtag('config', 'GT-M6XHKK2R');
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org15033da">a)</a>
+<li><a href="#org571df28">a)</a>
 <ul>
-<li><a href="#orgfc51c95">Answer</a></li>
+<li><a href="#org9b1c0f7">Answer</a></li>
 </ul>
 </li>
-<li><a href="#org41b8bd8">b)</a>
+<li><a href="#orga92f537">b)</a>
 <ul>
-<li><a href="#org516876c">Answer</a></li>
+<li><a href="#org4e54792">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orga5cbcb9">c)</a>
+<li><a href="#org5668f5a">c)</a>
 <ul>
-<li><a href="#org9757bcb">Answer</a></li>
+<li><a href="#org89cf04a">Answer</a></li>
 </ul>
 </li>
-<li><a href="#orgbced0a7">d)</a>
+<li><a href="#org040e098">d)</a>
 <ul>
-<li><a href="#orgc11a68e">Answer</a></li>
+<li><a href="#org3791816">Answer</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org15033da" class="outline-2">
-<h2 id="org15033da">a)</h2>
-<div class="outline-text-2" id="text-org15033da">
+<div id="outline-container-org571df28" class="outline-2">
+<h2 id="org571df28">a)</h2>
+<div class="outline-text-2" id="text-org571df28">
 </div>
-<div id="outline-container-orgfc51c95" class="outline-3">
-<h3 id="orgfc51c95">Answer</h3>
-<div class="outline-text-3" id="text-orgfc51c95">
+<div id="outline-container-org9b1c0f7" class="outline-3">
+<h3 id="org9b1c0f7">Answer</h3>
+<div class="outline-text-3" id="text-org9b1c0f7">
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">import</span> Pkg; Pkg.add<span style="color: #51afef;">(</span>url=<span style="color: #7bc275;">"https://github.com/KaoruBB/BayesPlots.jl"</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold;">import</span> Pkg; Pkg.add(url=<span style="font-style: italic;">"https://github.com/KaoruBB/BayesPlots.jl"</span>)
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">data = readdlm<span style="color: #51afef;">(</span><span style="color: #7bc275;">"Exercises/tplant.dat"</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>data = readdlm(<span style="font-style: italic;">"Exercises/tplant.dat"</span>)
+</code></pre>
 </div>
 
-<pre class="example" id="org033c87a">
+<pre class="example" id="orgade1feb">
 20×3 Matrix{Float64}:
  11.8   0.0  6.39
  15.34  1.0  6.39
@@ -180,36 +160,36 @@ gtag('config', 'GT-M6XHKK2R');
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">first column: plant height</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">second column: measurement period</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">third column: pH level</span>
-y = data<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
-X = data<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">]</span>
-<span style="color: #62686E;"># </span><span style="color: #62686E;">add intercept</span>
-X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>X<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, X<span style="color: #51afef;">)</span>
-df = DataFrame<span style="color: #51afef;">(</span>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">first column: plant height
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">second column: measurement period
+</span><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">third column: pH level
+</span>y = data[:, 1]
+X = data[:, 2]
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">add intercept
+</span>X = hcat(ones(length(X)), X)
+df = DataFrame(
     height = y,
-    time = X<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>,
-    pH = data<span style="color: #C57BDB;">[</span>:, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span>
-<span style="color: #51afef;">)</span>
-lmfit = lm<span style="color: #51afef;">(</span><span style="color: #C57BDB; font-weight: bold;">@formula</span><span style="color: #C57BDB;">(</span>height <span style="color: #FCCE7B;">~</span> time <span style="color: #FCCE7B;">+</span> pH<span style="color: #C57BDB;">)</span>, df<span style="color: #51afef;">)</span>
-</pre>
+    time = X[:, 2],
+    pH = data[:, 3]
+)
+lmfit = lm(<span style="font-weight: bold;">@formula</span>(height ~ time + pH), df)
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #7bc275;">"StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}</span>
+<pre class="src src-julia"><code><span style="font-style: italic;">"StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}
 
-<span style="color: #7bc275;">height ~ 1 + time + pH</span>
+height ~ 1 + time + pH
 
-<span style="color: #7bc275;">Coefficients:</span>
-<span style="color: #7bc275;">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</span>
-<span style="color: #7bc275;">                Coef.  Std. Error      t  Pr(&gt;|t|)  Lower 95%  Upper 95%</span>
-<span style="color: #7bc275;">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</span>
-<span style="color: #7bc275;">(Intercept)  7.20869     0.589054  12.24    &lt;1e-09   5.9659     8.45149</span>
-<span style="color: #7bc275;">time         3.991       0.328003  12.17    &lt;1e-09   3.29897    4.68303</span>
-<span style="color: #7bc275;">pH           0.577752    0.120354   4.80    0.0002   0.323828   0.831676</span>
-<span style="color: #7bc275;">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;"</span>
-</pre>
+Coefficients:
+&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+                Coef.  Std. Error      t  Pr(&gt;|t|)  Lower 95%  Upper 95%
+&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+(Intercept)  7.20869     0.589054  12.24    &lt;1e-09   5.9659     8.45149
+time         3.991       0.328003  12.17    &lt;1e-09   3.29897    4.68303
+pH           0.577752    0.120354   4.80    0.0002   0.323828   0.831676
+&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;"</span>
+</code></pre>
 </div>
 
 <p>
@@ -219,25 +199,30 @@ Even with a significance level of 0.01, these effects are statistically signific
 </p>
 <p>
 この結果は、トマトの苗の高さは平均して時間あたり3.99 cmずつ増加し、
-pHレベルが1上昇すると、0.58 cm増加することを示唆している。有意水準0.01でも、有意な結果となっている。
+pHレベルが1上昇すると、0.58 cm増加することを示唆している。
+有意水準0.01でも、有意な結果となっている。
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org41b8bd8" class="outline-2">
-<h2 id="org41b8bd8">b)</h2>
-<div class="outline-text-2" id="text-org41b8bd8">
+<div id="outline-container-orga92f537" class="outline-2">
+<h2 id="orga92f537">b)</h2>
+<div class="outline-text-2" id="text-orga92f537">
 </div>
-<div id="outline-container-org516876c" class="outline-3">
-<h3 id="org516876c">Answer</h3>
-<div class="outline-text-3" id="text-org516876c">
+<div id="outline-container-org4e54792" class="outline-3">
+<h3 id="org4e54792">Answer</h3>
+<div class="outline-text-3" id="text-org4e54792">
 
-<div id="orgc64d1cc" class="figure">
+<div id="org1ab2060" class="figure">
 <p><img src="./fig/ex10-3b.png" alt="ex10-3b.png" />
 </p>
 </div>
 <p>
-上は残差の散布図である。同じトマトの苗は同じ色で示されており、同じ苗に関する残差に相関が見られる。これより、このデータは一般的なOLSモデルの仮定である、誤差項が独立同一に分布しているという仮定(random sampling)を満たしていないことが示唆される。この仮定からの逸脱は、回帰係数や標準誤差の妥当性を損なう。
+上は残差の散布図である。
+同じトマトの苗は同じ色で示されており、同じ苗に関する残差に相関が見られる。
+これより、このデータは一般的なOLSモデルの仮定である、
+誤差項が独立同一に分布しているという仮定(random sampling)を満たしていないことが示唆される。
+この仮定からの逸脱は、回帰係数や標準誤差の妥当性を損なう。
 </p>
 
 <p>
@@ -249,13 +234,13 @@ Deviation from this assumption would compromise the validity of the regression c
 </div>
 </div>
 </div>
-<div id="outline-container-orga5cbcb9" class="outline-2">
-<h2 id="orga5cbcb9">c)</h2>
-<div class="outline-text-2" id="text-orga5cbcb9">
+<div id="outline-container-org5668f5a" class="outline-2">
+<h2 id="org5668f5a">c)</h2>
+<div class="outline-text-2" id="text-org5668f5a">
 </div>
-<div id="outline-container-org9757bcb" class="outline-3">
-<h3 id="org9757bcb">Answer</h3>
-<div class="outline-text-3" id="text-org9757bcb">
+<div id="outline-container-org89cf04a" class="outline-3">
+<h3 id="org89cf04a">Answer</h3>
+<div class="outline-text-3" id="text-org89cf04a">
 <p>
 \[
 \boldsymbol{Y} = \begin{pmatrix}
@@ -324,116 +309,114 @@ where \(\boldsymbol{\beta}_n \) and \(\Sigma_n\) depend on \(\sigma^{2(s)}\) and
 Sample \(\sigma^{2(s+1)} \sim \text{inverse-gamma}([\nu_0 + n]/2, [\nu_0 \sigma_0^2 + \mathrm{SSR}_{\rho}] / 2)\),
 where \(\mathrm{SSR}_{\rho}\) depends on \(\boldsymbol{\beta}^{(s+1)}\) and \(\rho^{(s)}\).</li>
 <li>Update \(\rho\):
-<ol class="org-ol">
-<li>Propose \(\rho^{\ast} \sim \text{uniform}(\rho^{(s)} - \delta, \rho^{(s)} + \delta)\).
-If \(\rho^{\ast} \lt 0\) then reassin it to be \(|\rho^{\ast}|\).
-If \(\rho^{\ast} > 1\) reassin it to be \(2 - \rho^{\ast}\).</li>
-<li>Compute the acceptance ratio
-\[ r = \frac{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{\ast} ) p(\rho^{\ast})}{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{(s)} ) p(\rho^{(s)})} \]
-and sample \(u \sim \text{uniform}(0,1)\).
-If \(u \lt r\), set \(\rho^{(s+1)} = \rho^{\ast}\), otherwise set \(\rho^{(s+1)} = \rho^{(s)}\).</li>
-</ol></li>
+a. Propose \(\rho^{\ast} \sim \text{uniform}(\rho^{(s)} - \delta, \rho^{(s)} + \delta)\).
+   If \(\rho^{\ast} \lt 0\) then reassin it to be \(|\rho^{\ast}|\).
+   If \(\rho^{\ast} > 1\) reassin it to be \(2 - \rho^{\ast}\).
+b. Compute the acceptance ratio
+   \[ r = \frac{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{\ast} ) p(\rho^{\ast})}{ p(\boldsymbol{y} | \mathbf{X}, \boldsymbol{\beta}^{(s+1)}, \sigma^{2(s+1)}, \rho^{(s)} ) p(\rho^{(s)})} \]
+   and sample \(u \sim \text{uniform}(0,1)\).
+   If \(u \lt r\), set \(\rho^{(s+1)} = \rho^{\ast}\), otherwise set \(\rho^{(s+1)} = \rho^{(s)}\).</li>
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">fit_ar1_linear_model_for_repeated_individuals</span><span style="color: #51afef;">(</span>y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;; S=<span style="color: #e69055; font-weight: bold;">5000</span>, &#948;=<span style="color: #e69055; font-weight: bold;">1</span>, seed=<span style="color: #e69055; font-weight: bold;">42</span>, thin=<span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">)</span>
+<pre class="src src-julia"><code><span style="font-weight: bold;">function</span> <span style="font-weight: bold;">fit_ar1_linear_model_for_repeated_individuals</span>(y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;; S=5000, &#948;=1, seed=42, thin=1)
 
-    n, p = size<span style="color: #51afef;">(</span>X<span style="color: #51afef;">)</span>
+    n, p = size(X)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">starting values</span>
-    lmfit = lm<span style="color: #51afef;">(</span>X, y<span style="color: #51afef;">)</span>
-    &#946; = coef<span style="color: #51afef;">(</span>lmfit<span style="color: #51afef;">)</span>
-    &#963;&#178; = sum<span style="color: #51afef;">(</span>map<span style="color: #C57BDB;">(</span>x <span style="color: #FCCE7B;">-&gt;</span> x<span style="color: #FCCE7B;">^</span><span style="color: #e69055; font-weight: bold;">2</span>, residuals<span style="color: #7bc275;">(</span>lmfit<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">/</span> <span style="color: #51afef;">(</span>n <span style="color: #FCCE7B;">-</span> p<span style="color: #51afef;">)</span>
-    res = residuals<span style="color: #51afef;">(</span>lmfit<span style="color: #51afef;">)</span>
-    &#961; = autocor<span style="color: #51afef;">(</span>res, <span style="color: #C57BDB;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">starting values
+</span>    lmfit = lm(X, y)
+    &#946; = coef(lmfit)
+    &#963;&#178; = sum(map(x -&gt; x^2, residuals(lmfit))) / (n - p)
+    res = residuals(lmfit)
+    &#961; = autocor(res, [1])[1]
 
-    Random.seed!<span style="color: #51afef;">(</span>seed<span style="color: #51afef;">)</span>
-    OUT = Matrix<span style="color: #51afef;">{</span>Float64<span style="color: #51afef;">}(</span><span style="color: #a991f1;">undef</span>, <span style="color: #e69055; font-weight: bold;">0</span>, p<span style="color: #FCCE7B;">+</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #51afef;">)</span>
-    ac = <span style="color: #e69055; font-weight: bold;">0</span> <span style="color: #62686E;"># </span><span style="color: #62686E;">acceptance count</span>
+    Random.seed!(seed)
+    OUT = Matrix{Float64}(<span style="font-weight: bold; text-decoration: underline;">undef</span>, 0, p+2)
+    ac = 0 <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">acceptance count
+</span>
+    <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">_create_cor_matrix</span>(n::<span style="font-weight: bold; text-decoration: underline;">Int</span>, &#961;::<span style="font-weight: bold; text-decoration: underline;">Number</span>)
+        C&#7528; = zeros(n, n)
+        <span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:n
+            <span style="font-weight: bold;">for</span> j <span style="font-weight: bold;">in</span> 1:n
+                <span style="font-weight: bold;">if</span> i == j
+                    C&#7528;[i, j] = 1
+                <span style="font-weight: bold;">elseif</span> (i - j == 1 &amp;&amp; i % 2 == 0) || (j - i == 1 &amp;&amp; j % 2 == 0)
+                    C&#7528;[i, j] = &#961;
+                <span style="font-weight: bold;">end</span>
+            <span style="font-weight: bold;">end</span>
+        <span style="font-weight: bold;">end</span>
+        <span style="font-weight: bold;">return</span> C&#7528;
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_create_cor_matrix</span><span style="color: #51afef;">(</span>n<span style="color: #FCCE7B;">::Int</span>, &#961;<span style="color: #FCCE7B;">::Number</span><span style="color: #51afef;">)</span>
-        C&#7528; = zeros<span style="color: #51afef;">(</span>n, n<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n
-            <span style="color: #51afef;">for</span> j <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:n
-                <span style="color: #51afef;">if</span> i <span style="color: #FCCE7B;">==</span> j
-                    C&#7528;<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> = <span style="color: #e69055; font-weight: bold;">1</span>
-                <span style="color: #51afef;">elseif</span> <span style="color: #51afef;">(</span>i <span style="color: #FCCE7B;">-</span> j <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">&amp;&amp;</span> i <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">||</span> <span style="color: #51afef;">(</span>j <span style="color: #FCCE7B;">-</span> i <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">1</span> <span style="color: #FCCE7B;">&amp;&amp;</span> j <span style="color: #FCCE7B;">%</span> <span style="color: #e69055; font-weight: bold;">2</span> <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">)</span>
-                    C&#7528;<span style="color: #51afef;">[</span>i, j<span style="color: #51afef;">]</span> = &#961;
-                <span style="color: #51afef;">end</span>
-            <span style="color: #51afef;">end</span>
-        <span style="color: #51afef;">end</span>
-        <span style="color: #51afef;">return</span> C&#7528;
-    <span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">_update_&#946;</span>(y, X, &#963;&#178;, iCor, &#931;&#8320;, &#946;&#8320;)
+        V_&#946; = inv(X' * iCor * X/&#963;&#178; + &#931;&#8320;)
+        E_&#946; = V_&#946; * (X' * iCor * y/&#963;&#178; + inv(&#931;&#8320;) * &#946;&#8320;)
+        <span style="font-weight: bold;">return</span> rand(MvNormal(E_&#946;, Symmetric(V_&#946;)))
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_update_&#946;</span><span style="color: #51afef;">(</span>y, X, &#963;&#178;, iCor, &#931;&#8320;, &#946;&#8320;<span style="color: #51afef;">)</span>
-        V_&#946; = inv<span style="color: #51afef;">(</span>X' <span style="color: #FCCE7B;">*</span> iCor <span style="color: #FCCE7B;">*</span> X<span style="color: #FCCE7B;">/</span>&#963;&#178; <span style="color: #FCCE7B;">+</span> &#931;&#8320;<span style="color: #51afef;">)</span>
-        E_&#946; = V_&#946; <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>X' <span style="color: #FCCE7B;">*</span> iCor <span style="color: #FCCE7B;">*</span> y<span style="color: #FCCE7B;">/</span>&#963;&#178; <span style="color: #FCCE7B;">+</span> inv<span style="color: #C57BDB;">(</span>&#931;&#8320;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">*</span> &#946;&#8320;<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>MvNormal<span style="color: #C57BDB;">(</span>E_&#946;, Symmetric<span style="color: #7bc275;">(</span>V_&#946;<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">_update_&#963;&#178;</span>(y, X, &#946;, iCor, &#957;&#8320;, &#963;&#8320;&#178;)
+        &#957;&#8345; = &#957;&#8320; + length(y)
+        SSR = (y - X*&#946;)' * iCor * (y - X*&#946;)
+        &#957;&#8345;&#963;&#178;&#8345; = &#957;&#8320; * &#963;&#8320;&#178; + SSR
+        <span style="font-weight: bold;">return</span> rand(InverseGamma(&#957;&#8345; / 2, &#957;&#8345;&#963;&#178;&#8345;/2))
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_update_&#963;&#178;</span><span style="color: #51afef;">(</span>y, X, &#946;, iCor, &#957;&#8320;, &#963;&#8320;&#178;<span style="color: #51afef;">)</span>
-        &#957;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">+</span> length<span style="color: #51afef;">(</span>y<span style="color: #51afef;">)</span>
-        SSR = <span style="color: #51afef;">(</span>y <span style="color: #FCCE7B;">-</span> X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #51afef;">)</span>' <span style="color: #FCCE7B;">*</span> iCor <span style="color: #FCCE7B;">*</span> <span style="color: #51afef;">(</span>y <span style="color: #FCCE7B;">-</span> X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #51afef;">)</span>
-        &#957;&#8345;&#963;&#178;&#8345; = &#957;&#8320; <span style="color: #FCCE7B;">*</span> &#963;&#8320;&#178; <span style="color: #FCCE7B;">+</span> SSR
-        <span style="color: #51afef;">return</span> rand<span style="color: #51afef;">(</span>InverseGamma<span style="color: #C57BDB;">(</span>&#957;&#8345; <span style="color: #FCCE7B;">/</span> <span style="color: #e69055; font-weight: bold;">2</span>, &#957;&#8345;&#963;&#178;&#8345;<span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-    <span style="color: #51afef;">end</span>
+    <span style="font-weight: bold;">function</span> <span style="font-weight: bold;">_update_&#961;</span>(&#961;, y, X, &#946;, &#963;&#178;, &#948;)
+        &#961;&#8346; = rand(Uniform(&#961;-&#948;, &#961;+&#948;)) |&gt; abs
+        &#961;&#8346; = minimum([&#961;&#8346;, 2-&#961;&#8346;])
+        Cor = _create_cor_matrix(n, &#961;)
+        Cor&#8346; = _create_cor_matrix(n, &#961;&#8346;)
+        lr = -0.5*(
+            logdet(Cor&#8346;) - logdet(Cor)  +
+            tr((y-X*&#946;)*(y-X*&#946;)' * (inv(Cor&#8346;) - inv(Cor)))/&#963;&#178;
+        )
+        <span style="font-weight: bold;">if</span> log(rand()) &lt; lr
+            ac += 1
+            <span style="font-weight: bold;">return</span> &#961;&#8346;
+        <span style="font-weight: bold;">else</span>
+            <span style="font-weight: bold;">return</span> &#961;
+        <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">end</span>
 
-    <span style="color: #51afef;">function</span> <span style="color: #5cEfFF;">_update_&#961;</span><span style="color: #51afef;">(</span>&#961;, y, X, &#946;, &#963;&#178;, &#948;<span style="color: #51afef;">)</span>
-        &#961;&#8346; = rand<span style="color: #51afef;">(</span>Uniform<span style="color: #C57BDB;">(</span>&#961;<span style="color: #FCCE7B;">-</span>&#948;, &#961;<span style="color: #FCCE7B;">+</span>&#948;<span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">|&gt;</span> abs
-        &#961;&#8346; = minimum<span style="color: #51afef;">(</span><span style="color: #C57BDB;">[</span>&#961;&#8346;, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #FCCE7B;">-</span>&#961;&#8346;<span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-        Cor = _create_cor_matrix<span style="color: #51afef;">(</span>n, &#961;<span style="color: #51afef;">)</span>
-        Cor&#8346; = _create_cor_matrix<span style="color: #51afef;">(</span>n, &#961;&#8346;<span style="color: #51afef;">)</span>
-        lr = <span style="color: #FCCE7B;">-</span><span style="color: #e69055; font-weight: bold;">0.5</span><span style="color: #FCCE7B;">*</span><span style="color: #51afef;">(</span>
-            logdet<span style="color: #C57BDB;">(</span>Cor&#8346;<span style="color: #C57BDB;">)</span> <span style="color: #FCCE7B;">-</span> logdet<span style="color: #C57BDB;">(</span>Cor<span style="color: #C57BDB;">)</span>  <span style="color: #FCCE7B;">+</span>
-            tr<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">(</span>y<span style="color: #FCCE7B;">-</span>X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #7bc275;">)</span><span style="color: #FCCE7B;">*</span><span style="color: #7bc275;">(</span>y<span style="color: #FCCE7B;">-</span>X<span style="color: #FCCE7B;">*</span>&#946;<span style="color: #7bc275;">)</span>' <span style="color: #FCCE7B;">*</span> <span style="color: #7bc275;">(</span>inv<span style="color: #a991f1;">(</span>Cor&#8346;<span style="color: #a991f1;">)</span> <span style="color: #FCCE7B;">-</span> inv<span style="color: #a991f1;">(</span>Cor<span style="color: #a991f1;">)</span><span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span><span style="color: #FCCE7B;">/</span>&#963;&#178;
-        <span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">if</span> log<span style="color: #51afef;">(</span>rand<span style="color: #C57BDB;">()</span><span style="color: #51afef;">)</span> <span style="color: #FCCE7B;">&lt;</span> lr
-            ac <span style="color: #FCCE7B;">+=</span> <span style="color: #e69055; font-weight: bold;">1</span>
-            <span style="color: #51afef;">return</span> &#961;&#8346;
-        <span style="color: #51afef;">else</span>
-            <span style="color: #51afef;">return</span> &#961;
-        <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">end</span>
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">MCMC algorithm
+</span>    <span style="font-weight: bold;">for</span> s <span style="font-weight: bold;">in</span> 1:S
+        Cor = _create_cor_matrix(n, &#961;)
+        iCor = inv(Cor)
 
-    <span style="color: #62686E;"># </span><span style="color: #62686E;">MCMC algorithm</span>
-    <span style="color: #51afef;">for</span> s <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:S
-        Cor = _create_cor_matrix<span style="color: #51afef;">(</span>n, &#961;<span style="color: #51afef;">)</span>
-        iCor = inv<span style="color: #51afef;">(</span>Cor<span style="color: #51afef;">)</span>
+        &#946; = _update_&#946;(y, X, &#963;&#178;, iCor, &#931;&#8320;, &#946;&#8320;)
+        &#963;&#178; = _update_&#963;&#178;(y, X, &#946;, iCor, &#957;&#8320;, &#963;&#8320;&#178;)
+        &#961; = _update_&#961;(&#961;, y, X, &#946;, &#963;&#178;, &#948;)
 
-        &#946; = _update_&#946;<span style="color: #51afef;">(</span>y, X, &#963;&#178;, iCor, &#931;&#8320;, &#946;&#8320;<span style="color: #51afef;">)</span>
-        &#963;&#178; = _update_&#963;&#178;<span style="color: #51afef;">(</span>y, X, &#946;, iCor, &#957;&#8320;, &#963;&#8320;&#178;<span style="color: #51afef;">)</span>
-        &#961; = _update_&#961;<span style="color: #51afef;">(</span>&#961;, y, X, &#946;, &#963;&#178;, &#948;<span style="color: #51afef;">)</span>
+        <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">store
+</span>        <span style="font-weight: bold;">if</span> s % thin == 0
+            <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">println(s, ac/s, &#946;, &#963;&#178;, &#961;)
+</span>            println(join([s, ac/s, &#946;, &#963;&#178;, &#961;], <span style="font-style: italic;">", "</span>))
+            params = vcat(&#946;, &#963;&#178;, &#961;)'
+            OUT = vcat(OUT, params)
+        <span style="font-weight: bold;">end</span>
+    <span style="font-weight: bold;">end</span>
 
-        <span style="color: #62686E;"># </span><span style="color: #62686E;">store</span>
-        <span style="color: #51afef;">if</span> s <span style="color: #FCCE7B;">%</span> thin <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">0</span>
-            <span style="color: #62686E;"># </span><span style="color: #62686E;">println(s, ac/s, &#946;, &#963;&#178;, &#961;)</span>
-            println<span style="color: #51afef;">(</span>join<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span>s, ac<span style="color: #FCCE7B;">/</span>s, &#946;, &#963;&#178;, &#961;<span style="color: #7bc275;">]</span>, <span style="color: #7bc275;">", "</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-            params = vcat<span style="color: #51afef;">(</span>&#946;, &#963;&#178;, &#961;<span style="color: #51afef;">)</span>'
-            OUT = vcat<span style="color: #51afef;">(</span>OUT, params<span style="color: #51afef;">)</span>
-        <span style="color: #51afef;">end</span>
-    <span style="color: #51afef;">end</span>
-
-    <span style="color: #51afef;">return</span> OUT
-<span style="color: #51afef;">end</span>
-</pre>
+    <span style="font-weight: bold;">return</span> OUT
+<span style="font-weight: bold;">end</span>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">set prior parameters</span>
-&#957;&#8320; = <span style="color: #e69055; font-weight: bold;">1</span>
-&#963;&#8320;&#178; = <span style="color: #e69055; font-weight: bold;">1</span>
-&#931;&#8320; = diagm<span style="color: #51afef;">(</span>repeat<span style="color: #C57BDB;">(</span><span style="color: #7bc275;">[</span><span style="color: #e69055; font-weight: bold;">1</span><span style="color: #FCCE7B;">/</span><span style="color: #e69055; font-weight: bold;">1000</span><span style="color: #7bc275;">]</span>, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">)</span><span style="color: #51afef;">)</span>
-&#946;&#8320; = <span style="color: #51afef;">[</span><span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">0</span>, <span style="color: #e69055; font-weight: bold;">0</span><span style="color: #51afef;">]</span>
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">set prior parameters
+</span>&#957;&#8320; = 1
+&#963;&#8320;&#178; = 1
+&#931;&#8320; = diagm(repeat([1/1000], 3))
+&#946;&#8320; = [0, 0, 0]
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">y = df<span style="color: #51afef;">[</span>:, <span style="color: #e69055; font-weight: bold;">1</span><span style="color: #51afef;">]</span>;
-X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">(</span>length<span style="color: #7bc275;">(</span>y<span style="color: #7bc275;">)</span><span style="color: #C57BDB;">)</span>, df<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">]</span>, df<span style="color: #C57BDB;">[</span>:,<span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">]</span><span style="color: #51afef;">)</span>
-</pre>
+<pre class="src src-julia"><code>y = df[:, 1];
+X = hcat(ones(length(y)), df[:,2], df[:,3])
+</code></pre>
 </div>
 
-<pre class="example" id="org9d0cd88">
+<pre class="example" id="org805a348">
 
 20×3 Matrix{Float64}:
  1.0  0.0  6.39
@@ -459,125 +442,128 @@ X = hcat<span style="color: #51afef;">(</span>ones<span style="color: #C57BDB;">
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-julia"><span style="color: #62686E;"># </span><span style="color: #62686E;">MCMC</span>
-S=<span style="color: #e69055; font-weight: bold;">25000</span>
-&#948;=<span style="color: #e69055; font-weight: bold;">0.1</span>
-thin=<span style="color: #e69055; font-weight: bold;">25</span>
-fitted_sample = fit_ar1_linear_model_for_repeated_individuals<span style="color: #51afef;">(</span>y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;, S=S, &#948;=&#948;, thin=thin<span style="color: #51afef;">)</span>;
-</pre>
+<pre class="src src-julia"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">MCMC
+</span>S=25000
+&#948;=0.1
+thin=25
+fitted_sample = fit_ar1_linear_model_for_repeated_individuals(y, X, &#946;&#8320;, &#931;&#8320;, &#957;&#8320;, &#963;&#8320;&#178;, S=S, &#948;=&#948;, thin=thin);
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">plot<span style="color: #51afef;">(</span>
-    map<span style="color: #C57BDB;">(</span>
-        <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #7bc275;">(</span>fitted_sample, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">)</span>, <span style="color: #7bc275;">[</span><span style="color: #7bc275;">"intercept"</span>, <span style="color: #7bc275;">"&#946;&#8321;"</span>, <span style="color: #7bc275;">"&#946;&#8322;"</span>, <span style="color: #7bc275;">"&#963;&#178;"</span>, <span style="color: #7bc275;">"&#961;"</span><span style="color: #7bc275;">]</span>
-    <span style="color: #C57BDB;">)</span> <span style="color: #51afef;">do</span> i, label
-        plot<span style="color: #C57BDB;">(</span>
-            fitted_sample<span style="color: #7bc275;">[</span>:, i<span style="color: #7bc275;">]</span>,
-            xlabel=<span style="color: #7bc275;">"scan/25"</span>,
+<pre class="src src-julia"><code>plot(
+    map(
+        1:size(fitted_sample, 2), [<span style="font-style: italic;">"intercept"</span>, <span style="font-style: italic;">"&#946;&#8321;"</span>, <span style="font-style: italic;">"&#946;&#8322;"</span>, <span style="font-style: italic;">"&#963;&#178;"</span>, <span style="font-style: italic;">"&#961;"</span>]
+    ) <span style="font-weight: bold;">do</span> i, label
+        plot(
+            fitted_sample[:, i],
+            xlabel=<span style="font-style: italic;">"scan/25"</span>,
             ylabel=label,
-            legend=<span style="color: #a991f1;">nothing</span>
-        <span style="color: #C57BDB;">)</span>
-    <span style="color: #51afef;">end</span>...,
-    layout=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">3</span>, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">900</span>, <span style="color: #e69055; font-weight: bold;">900</span><span style="color: #C57BDB;">)</span>
-<span style="color: #51afef;">)</span>
-savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../fig/ch10/ex10_3_scan.png"</span><span style="color: #51afef;">)</span>
-<span style="color: #7bc275;">"../../fig/ch10/ex10_3_scan.png"</span>
-</pre>
+            legend=<span style="font-weight: bold; text-decoration: underline;">nothing</span>
+        )
+    <span style="font-weight: bold;">end</span>...,
+    layout=(3, 2), size=(900, 900)
+)
+savefig(<span style="font-style: italic;">"../../fig/ch10/ex10_3_scan.png"</span>)
+<span style="font-style: italic;">"../../fig/ch10/ex10_3_scan.png"</span>
+</code></pre>
 </div>
 
 
-<div id="orgc4cfa9b" class="figure">
+<div id="orgeca0057" class="figure">
 <p><img src="./fig/ex10_3_scan.png" alt="ex10_3_scan.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Sample paths of the parameters</p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-julia">plot<span style="color: #51afef;">(</span>
-    map<span style="color: #C57BDB;">(</span>
-        <span style="color: #e69055; font-weight: bold;">1</span>:size<span style="color: #7bc275;">(</span>fitted_sample, <span style="color: #e69055; font-weight: bold;">2</span><span style="color: #7bc275;">)</span>, <span style="color: #7bc275;">[</span><span style="color: #7bc275;">"intercept"</span>, <span style="color: #7bc275;">"&#946;&#8321;"</span>, <span style="color: #7bc275;">"&#946;&#8322;"</span>, <span style="color: #7bc275;">"&#963;&#178;"</span>, <span style="color: #7bc275;">"&#961;"</span><span style="color: #7bc275;">]</span>
-    <span style="color: #C57BDB;">)</span> <span style="color: #51afef;">do</span> i, label
-        bar<span style="color: #C57BDB;">(</span>
-            <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">30</span>,
-            autocor<span style="color: #7bc275;">(</span>fitted_sample<span style="color: #a991f1;">[</span>:, i<span style="color: #a991f1;">]</span>, <span style="color: #e69055; font-weight: bold;">0</span>:<span style="color: #e69055; font-weight: bold;">30</span><span style="color: #7bc275;">)</span>,
-            xlabel=<span style="color: #7bc275;">"lag/25 of $label"</span>,
-            ylabel=<span style="color: #7bc275;">"ACF"</span>,
-            legend=<span style="color: #a991f1;">false</span>
-        <span style="color: #C57BDB;">)</span>
-    <span style="color: #51afef;">end</span>...,
-    layout=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">2</span>, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">900</span>, <span style="color: #e69055; font-weight: bold;">500</span><span style="color: #C57BDB;">)</span>, margin=<span style="color: #e69055; font-weight: bold;">5</span>mm
-<span style="color: #51afef;">)</span>
-savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"./../../fig/ch10/ex10_3_acf.png"</span><span style="color: #51afef;">)</span>
-<span style="color: #7bc275;">"./../../fig/ch10/ex10_3_acf.png"</span>
-</pre>
+<pre class="src src-julia"><code>plot(
+    map(
+        1:size(fitted_sample, 2), [<span style="font-style: italic;">"intercept"</span>, <span style="font-style: italic;">"&#946;&#8321;"</span>, <span style="font-style: italic;">"&#946;&#8322;"</span>, <span style="font-style: italic;">"&#963;&#178;"</span>, <span style="font-style: italic;">"&#961;"</span>]
+    ) <span style="font-weight: bold;">do</span> i, label
+        bar(
+            0:30,
+            autocor(fitted_sample[:, i], 0:30),
+            xlabel=<span style="font-style: italic;">"lag/25 of $label"</span>,
+            ylabel=<span style="font-style: italic;">"ACF"</span>,
+            legend=<span style="font-weight: bold; text-decoration: underline;">false</span>
+        )
+    <span style="font-weight: bold;">end</span>...,
+    layout=(2, 3), size=(900, 500), margin=5mm
+)
+savefig(<span style="font-style: italic;">"./../../fig/ch10/ex10_3_acf.png"</span>)
+<span style="font-style: italic;">"./../../fig/ch10/ex10_3_acf.png"</span>
+</code></pre>
 </div>
 
 
-<div id="org08ed543" class="figure">
+<div id="org6fa0073" class="figure">
 <p><img src="./fig/ex10_3_acf.png" alt="ex10_3_acf.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Autocorrelation plots of the parameters</p>
 </div>
 <p>
-図<a href="#orgc4cfa9b">1</a>、<a href="#org08ed543">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
+図<a href="#orgeca0057">1</a>、<a href="#org6fa0073">2</a>はそれぞれ、25,000スキャンのうち25スキャンごとに保存された各パラメーターのサンプルパスと、自己相関のプロットである。
+これらの結果から、MCMCサンプリングが十分に収束していること確認できる。
 </p>
 <p>
-Figure <a href="#orgc4cfa9b">1</a> and <a href="#org08ed543">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
+Figure <a href="#orgeca0057">1</a> and <a href="#org6fa0073">2</a> show the sample paths and autocorrelation plots of each parameter saved every 25 scans out of 25,000 scans.
 These results confirm that the MCMC sampling has sufficiently converged.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbced0a7" class="outline-2">
-<h2 id="orgbced0a7">d)</h2>
-<div class="outline-text-2" id="text-orgbced0a7">
+<div id="outline-container-org040e098" class="outline-2">
+<h2 id="org040e098">d)</h2>
+<div class="outline-text-2" id="text-org040e098">
 </div>
-<div id="outline-container-orgc11a68e" class="outline-3">
-<h3 id="orgc11a68e">Answer</h3>
-<div class="outline-text-3" id="text-orgc11a68e">
+<div id="outline-container-org3791816" class="outline-3">
+<h3 id="org3791816">Answer</h3>
+<div class="outline-text-3" id="text-org3791816">
 <div class="org-src-container">
-<pre class="src src-julia">figs = <span style="color: #51afef;">[]</span>
-<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> <span style="color: #e69055; font-weight: bold;">1</span>:<span style="color: #e69055; font-weight: bold;">3</span>
-    fig = plot_posterior_density<span style="color: #51afef;">(</span>
-        fitted_sample<span style="color: #C57BDB;">[</span>:, i<span style="color: #C57BDB;">]</span>, bandwidth=<span style="color: #e69055; font-weight: bold;">0.1</span>, xlabel=<span style="color: #7bc275;">"&#946;"</span> <span style="color: #FCCE7B;">*</span> <span style="color: #7bc275;">"_$i"</span>
-    <span style="color: #51afef;">)</span>
-    fig = vspan!<span style="color: #51afef;">(</span>
+<pre class="src src-julia"><code>figs = []
+<span style="font-weight: bold;">for</span> i <span style="font-weight: bold;">in</span> 1:3
+    fig = plot_posterior_density(
+        fitted_sample[:, i], bandwidth=0.1, xlabel=<span style="font-style: italic;">"&#946;"</span> * <span style="font-style: italic;">"_$i"</span>
+    )
+    fig = vspan!(
         fig,
-        confint<span style="color: #C57BDB;">(</span>lmfit<span style="color: #C57BDB;">)[</span>i, :<span style="color: #C57BDB;">]</span>,
-        color = <span style="color: #a991f1;">:blue</span>,
-        alpha = <span style="color: #e69055; font-weight: bold;">0.1</span>,
-        label = <span style="color: #7bc275;">"95% CI of OLS"</span>,
-        legend = i <span style="color: #FCCE7B;">==</span> <span style="color: #e69055; font-weight: bold;">3</span> <span style="color: #51afef;">?</span> <span style="color: #a991f1;">:topright</span> <span style="color: #51afef;">:</span> <span style="color: #a991f1;">nothing</span>,
-    <span style="color: #51afef;">)</span>
-    fig = vline!<span style="color: #51afef;">(</span>
+        confint(lmfit)[i, :],
+        color = <span style="font-weight: bold; text-decoration: underline;">:blue</span>,
+        alpha = 0.1,
+        label = <span style="font-style: italic;">"95% CI of OLS"</span>,
+        legend = i == 3 <span style="font-weight: bold;">?</span> <span style="font-weight: bold; text-decoration: underline;">:topright</span> <span style="font-weight: bold;">:</span> <span style="font-weight: bold; text-decoration: underline;">nothing</span>,
+    )
+    fig = vline!(
         fig,
-        <span style="color: #C57BDB;">[</span>coef<span style="color: #7bc275;">(</span>lmfit<span style="color: #7bc275;">)[</span>i<span style="color: #7bc275;">]</span><span style="color: #C57BDB;">]</span>,
-        color = <span style="color: #a991f1;">:blue</span>,
-        linestyle = <span style="color: #a991f1;">:dash</span>,
-        label = <span style="color: #7bc275;">"OLS estimate"</span>,
-    <span style="color: #51afef;">)</span>
-    push!<span style="color: #51afef;">(</span>figs, fig<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">end</span>
+        [coef(lmfit)[i]],
+        color = <span style="font-weight: bold; text-decoration: underline;">:blue</span>,
+        linestyle = <span style="font-weight: bold; text-decoration: underline;">:dash</span>,
+        label = <span style="font-style: italic;">"OLS estimate"</span>,
+    )
+    push!(figs, fig)
+<span style="font-weight: bold;">end</span>
 
-plot<span style="color: #51afef;">(</span>figs..., layout=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1</span>, <span style="color: #e69055; font-weight: bold;">3</span><span style="color: #C57BDB;">)</span>, size=<span style="color: #C57BDB;">(</span><span style="color: #e69055; font-weight: bold;">1000</span>, <span style="color: #e69055; font-weight: bold;">400</span><span style="color: #C57BDB;">)</span>, margin=<span style="color: #e69055; font-weight: bold;">5</span>mm<span style="color: #51afef;">)</span>
-savefig<span style="color: #51afef;">(</span><span style="color: #7bc275;">"../../fig/ch10/ex10_3d.png"</span><span style="color: #51afef;">)</span>
-<span style="color: #7bc275;">"../../fig/ch10/ex10_3d.png"</span>
-</pre>
+plot(figs..., layout=(1, 3), size=(1000, 400), margin=5mm)
+savefig(<span style="font-style: italic;">"../../fig/ch10/ex10_3d.png"</span>)
+<span style="font-style: italic;">"../../fig/ch10/ex10_3d.png"</span>
+</code></pre>
 </div>
 
 
-<div id="org9c65d1e" class="figure">
+<div id="orge5f02e7" class="figure">
 <p><img src="./fig/ex10_3d.png" alt="ex10_3d.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Posterior of the coefficients</p>
 </div>
 <p>
-図<a href="#org9c65d1e">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
-OLSによる点推定量と95%信頼区間を示している。切片(\(\beta_1\)), timeの係数(\(\beta_2\)), pHの係数(\(\beta_3\))について、MCMCサンプリングによる事後平均とOLS推定量はほぼ一致しているが、95%信用区間とOLSの信頼区間は異なる。もし点推定値のみに関心がある場合、同様な結論が得られるが、推定値の不確実性などを考慮したい場合、今回のベイズモデルとOLSモデルの結論は大きく異なる。
+図<a href="#orge5f02e7">3</a>は、MCMCサンプリングによる事後分布の分布、事後平均、95%信用区間と、
+OLSによる点推定量と95%信頼区間を示している。
+切片(\(\beta_1\)), timeの係数(\(\beta_2\)), pHの係数(\(\beta_3\))について、MCMCサンプリングによる事後平均とOLS推定量はほぼ一致しているが、95%信用区間とOLSの信頼区間は異なる。
+もし点推定値のみに関心がある場合、同様な結論が得られるが、推定値の不確実性などを考慮したい場合、今回のベイズモデルとOLSモデルの結論は大きく異なる。
 </p>
 <p>
-Figure <a href="#org9c65d1e">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
+Figure <a href="#orge5f02e7">3</a> shows the posterior density, posterior mean, and 95% credible interval of the coefficients obtained by MCMC sampling, as well as the point estimate and 95% confidence interval obtained by OLS.
 The posterior means of \(\beta_1\) and \(\beta_2\) are almost identical to the OLS estimates, but the 95% credible intervals and OLS confidence intervals differ.
 If only point estimates are of interest, similar conclusions can be drawn, but if uncertainties in the estimates are to be considered, the conclusions of the Bayesian model and the OLS model differ significantly.
 </p>
@@ -596,7 +582,7 @@ If only point estimates are of interest, similar conclusions can be drawn, but i
 
                                                 <p class="author"> Author:<a href="https://kaorubb.org/"> Kaoru Babasaki</a></p>
                                                 <p class="email" style="margin-bottom: 0em;">Email: <a href="mailto:bbkaoru1007@keio.jp">bbkaoru1007@keio.jp</a></p>
-                                                <p class="date">Last Updated: 2025-05-02 金 16:29</p>
+                                                <p class="date">Last Updated: 2026-10-17 Sat 08:42</p>
                                                 <p style="margin-bottom: 0em;">
                                                     <img src="/icons/house-color-icon.svg" alt="home" style="height: 1.2em; width: 1.2em; vertical-align: middle; margin-bottom: 0.6em;">
                                                     <a href="/index.html">Home</a> |
